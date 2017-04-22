@@ -1,0 +1,27 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "module": "AMD",
+        "moduleResolution": "node",
+        "target": "es5",
+        "noImplicitAny": false,
+        "sourceMap": false,
+        "lib": [
+            "ES2015"
+        ],
+        "outDir":"build",
+        "outFile": "./build/tsdo.js"
+    },
+    "rootDir":"lib",
+    "include": [
+        "*",
+        "**/*"
+    ],
+    "exclude": [
+        "node_modules/*",
+        "./lib/image/*",
+        "./lib/droplet/*",
+        "./common.ts",
+        "./node_modules/*"
+    ]
+}
