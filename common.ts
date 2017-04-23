@@ -47,39 +47,7 @@ export interface IDomainRecordEndpoint extends IEndpoint {
     updateById();
     deleteById();
 }
-export interface IDropletEndpoint extends IEndpoint {
-    create();
-    createMulti();
-    getById();
-    list();
-    listByTag();
-    listKernelsByDropletId();
-    listSnapshotsByDropletId();
-    listBackupsByDropletId();
-    listActionsByDropletId();
-    deleteById();
-    deleteByTag();
-    listNeighborsByDropletId();
-    listNeighbors();
-    enableBackupsById();
-    disableBackupsById();
-    rebootById();
-    powerCycleById();
-    shutdownById();
-    powerOffById();
-    powerOnById();
-    restoreById();
-    passwordResetById();
-    resizeById();
-    rebuildById();
-    renameById();
-    changeKernelById();
-    enableIPv6ById();
-    enablePrivateNetworkingById();
-    snapshotById();
-    actionsByTag();
-    getActionById();
-}
+
 
 export interface ILoadBalancerEndpoint extends IEndpoint {
     create();

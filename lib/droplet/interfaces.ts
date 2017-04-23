@@ -1,13 +1,59 @@
 'use strict';
-export interface IAccount{
-    readonly droplet_limit: number;
-    readonly email_verified: boolean;
-    readonly email: string;
-    readonly floating_ip_limit: number;
-    readonly status_message: string;
-    readonly status: string;
-    readonly uuid: string;
+import {IRegion} from '../region/interfaces';
+import {IImage} from '../image/interfaces';
+import {ISize} from '../size/interfaces';
+export interface IDroplet{
+    id: number;
+    name: string;
+    memory: number;
+    vcpus: number;
+    disk: number;
+    locked: boolean;
+    created_at: string;
+    status: string;
+    backup_ids: Array<string>;
+    snapshot_ids: Array<string>;
+    features: Array<string>;
+    region: IRegion;
+    image: IImage;
+    size: ISize;
+    size_slug: string;
+    networks: object;
+    kernel: any|null;
+    next_backup_window: any|null;
+    tags: Array<string>;
+    volume_ids: Array<string>;
 }
-export interface IAccountEndpoint extends IEndpoint{
+export interface IDropletEndpoint{
+    actionsByTag();
+    changeKernelById();
+    create();
+    createMulti();
+    deleteById();
+    deleteByTag();
+    disableBackupsById();
+    enableBackupsById();
+    enableIPv6ById();
+    enablePrivateNetworkingById();
     get();
+    getActionById();
+    list();
+    listActionsByDropletId();
+    listBackupsByDropletId();
+    listByTag();
+    listKernelsByDropletId();
+    listNeighbors();
+    listNeighborsByDropletId();
+    listSnapshotsByDropletId();
+    passwordResetById();
+    powerCycleById();
+    powerOffById();
+    powerOnById();
+    rebootById();
+    rebuildById();
+    renameById();
+    resizeById();
+    restoreById();
+    shutdownById();
+    snapshotById();
 }
