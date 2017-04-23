@@ -127,28 +127,3 @@ Size
 FloatingIP
 Tag
 */
-
-
-/*validator*/
-
-/*error handler*/
-export function errorHandler(error: AxiosError) {
-    let res = error.response;
-    if (!res) return Promise.reject(error);
-    error.message = [
-        res.status || '',
-        res.statusText || ''
-    ].join(' - ');
-    if (res.data && res.data.id) {
-        let data = res.data;
-        let id = ['[', data.id, ']'].join('');
-        error.message = [error.message, id].join(': ');
-        if (data.message) {
-            error.message = [
-                error.message,
-                data.message
-            ].join(' ');
-        }
-    }
-    return Promise.reject(error);
-};
