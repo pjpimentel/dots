@@ -21,6 +21,7 @@
         "node_modules/*",
         "./lib/image/*",
         "./lib/droplet/*",
+        "./test/*",
         "./common.ts",
         "./node_modules/*"
     ]

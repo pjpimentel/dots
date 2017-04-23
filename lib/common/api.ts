@@ -270,6 +270,7 @@ abstract class API{
         this.protocol = specs.protocol;
         this.timeout = specs.timeout;
         this.http = axios.create(this.axiosConfig);
+        this.loadEndpoints();
     }
     /**
      * load all endpoints instances

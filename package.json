@@ -1,5 +1,5 @@
 {
-  "name": "tsdo",
+  "name": "dots",
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
@@ -8,16 +8,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pjpimentel/tsdo.git"
+    "url": "git+https://github.com/pjpimentel/dots.git"
   },
   "author": "Pedro J. Pimentel",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pjpimentel/tsdo/issues"
+    "url": "https://github.com/pjpimentel/dots/issues"
   },
-  "homepage": "https://github.com/pjpimentel/tsdo#readme",
+  "homepage": "https://github.com/pjpimentel/dots#readme",
   "dependencies": {
     "@types/axios": "^0.14.0",
+    "@types/node": "^7.0.13",
     "axios": "^0.16.1"
   }
 }

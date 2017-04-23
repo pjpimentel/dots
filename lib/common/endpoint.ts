@@ -56,7 +56,7 @@ abstract class Endpoint{
         collection.items = res.data[property];
         collection.total = res.data.meta.total;
         collection.perPage = params.per_page;
-        collection.curPage = page;
+        collection.curPage = params.page;
         collection.minPage = 1;
         collection.maxPage = Math.ceil(collection.total / params.per_page);
         return collection;

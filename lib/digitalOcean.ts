@@ -65,3 +65,4 @@ class DigitalOcean extends API{
 }
 
 export default DigitalOcean;
+export {DigitalOcean};
