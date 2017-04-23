@@ -1,7 +1,65 @@
 # dots
-Digital Ocean API V2 wrapper. TypeScript - Javascript [browser&&nodejs]
+
+**Digital Ocean** API **V2** wrapper. **TypeScript** - **Javascript**
 
 Not tested in production.
+## Install
+``` bash
+    npm install --save dots
+```
+## Usage
+Typescript
+``` typescript
+    import DigitalOcean from 'dots';
+    const myApiToken = 'my-long-token';
+    const digitalOcean = new DigitalOcean(myApiToken);
+
+    async function main(){
+        try{
+            let account = await digitalOcean.Account.get();
+            console.log(account);
+        } catch(e){
+            console.log(e.message);
+        }
+    }
+
+    main();
+```
+Javascript - Nodejs
+``` javascript
+    const DigitalOcean = require('dots');
+    const myApiToken = 'my-long-token';
+    const digitalOcean = new DigitalOcean(myApiToken);
+
+    digitalOcean.Account.get()
+        .then(account => console.log(account))
+        .catch(e => console.log(e.message));
+```
+## Docs
+* **[Account](lib/account/README.md)**
+* [Action](lib/action/README.md)
+* [Volume](lib/volume/README.md)
+* [Certificate](lib/certificate/README.md)
+* [Domain](lib/domain/README.md)
+* [DomainRecord](lib/domainRecord/README.md)
+* [Droplet](lib/droplet/README.md)
+* [Image](lib/image/README.md)
+* [LoadBalancer](lib/loadBalancer/README.md)
+* [Snapshot](lib/snapshot/README.md)
+* [SSHKeys](lib/sshkey/README.md)
+* **[Region](lib/region/README.md)**
+* **[Size](lib/size/README.md)**
+* [FloatingIP](lib/floatingIP/README.md)
+* [Tag](lib/tag/README.md)
+
+## MAP
+Map with [DO Official API](https://developers.digitalocean.com/documentation/v2/);
+
+key = DO Endpoint
+
+value = {module}.{action}
+
+**All endpoints without values are not implemented yet**
 
 ``` json
 {
@@ -157,3 +215,8 @@ Not tested in production.
 }
 ```
 
+## License: [MIT](LICENSE)
+
+## TODO
+
+Compile to Browser usage.
