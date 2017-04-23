@@ -1,4 +1,3 @@
-
 'use strict';
 import { ISize } from './interfaces';
 import SizeEndpoint from './endpoint';

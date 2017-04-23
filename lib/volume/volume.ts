@@ -1,4 +1,3 @@
-
 'use strict';
 import {IVolume} from './interfaces';
 import VolumeEndpoint from './endpoint';

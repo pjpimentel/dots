@@ -1,4 +1,3 @@
-
 'use strict';
 /**
  * Snapshot raw object.

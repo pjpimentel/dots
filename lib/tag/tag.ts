@@ -1,4 +1,3 @@
-
 'use strict';
 import { ITag } from './interfaces';
 import TagEndpoint from './endpoint';

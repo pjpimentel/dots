@@ -110,7 +110,7 @@ class ImageEndpoint extends Endpoint implements IImageEndpoint {
      * @memberOf ImageEndpoint
      */
     public async list(
-        type: 'distribution' | 'appplication',
+        type: 'distribution' | 'appplication' | string,
         page: number,
         perPage?: number
     ): Promise<ICollection<Image>>;

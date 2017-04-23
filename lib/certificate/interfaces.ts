@@ -1,4 +1,3 @@
-
 'use strict';
 /**
  * Certificate raw object.

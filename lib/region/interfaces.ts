@@ -1,4 +1,3 @@
-
 'use strict';
 /**
  * Region raw object.

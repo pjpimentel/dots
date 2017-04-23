@@ -1,4 +1,3 @@
-
 'use strict';
 import {ICertificate} from './interfaces';
 import CertificateEndpoint from './endpoint';

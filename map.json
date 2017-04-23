@@ -80,20 +80,20 @@
         "Retrieve a Droplet Action": ""
     },
     "Images": {
-        "List all Images": "",
-        "List all Distribution Images": "",
-        "List all Application Images": "",
-        "List a User's Images": "",
-        "List all actions for an image": "",
-        "Retrieve an existing Image by id": "",
-        "Retrieve an existing Image by slug": "",
-        "Update an Image": "",
-        "Delete an Image": ""
+        "List all Images": "Image.list",
+        "List all Distribution Images": "Image.list",
+        "List all Application Images": "Image.list",
+        "List a User's Images": "Image.listPrivate",
+        "List all actions for an image": "Image.listActions",
+        "Retrieve an existing Image by id": "Image.get",
+        "Retrieve an existing Image by slug": "Image.get",
+        "Update an Image": "Image.update",
+        "Delete an Image": "Image.delete"
     },
     "Image Actions": {
-        "Transfer an Image": "",
-        "Convert an Image to a Snapshot": "",
-        "Retrieve an existing Image Action": ""
+        "Transfer an Image": "Image.transfer",
+        "Convert an Image to a Snapshot": "Image.convertToSnapshot",
+        "Retrieve an existing Image Action": "Image.getActionById"
     },
     "Load Balancers": {
         "Create a new Load Balancer": "",

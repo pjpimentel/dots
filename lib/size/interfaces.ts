@@ -1,4 +1,3 @@
-
 'use strict';
 /**
  * Size raw object.

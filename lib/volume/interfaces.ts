@@ -1,4 +1,3 @@
-
 'use strict';
 import {IRegion} from '../region/interfaces';
 /**

@@ -1,4 +1,3 @@
-
 'use strict';
 export interface IAccount{
     readonly droplet_limit: number;

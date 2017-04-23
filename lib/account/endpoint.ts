@@ -1,4 +1,3 @@
-
 'use strict';
 import {IAccount,IAccountEndpoint} from './interfaces';
 import Account from './account';

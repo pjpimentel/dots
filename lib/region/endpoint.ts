@@ -1,4 +1,3 @@
-
 'use strict';
 import {IRegion,IRegionEndpoint} from "./interfaces";
 import Region from './region';

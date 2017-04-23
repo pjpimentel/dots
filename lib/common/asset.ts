@@ -1,4 +1,3 @@
-
 'use strict';
 /**
  * Assets belongs to endpoints

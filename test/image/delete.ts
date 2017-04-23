@@ -1,9 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-import token from '../token';
-import DigitalOcean from '../../';
-
-const digitalOcean = new DigitalOcean(token);
+import digitalOcean from '../';
 
 let uid = parseInt(process.argv[2]);
 if(!uid) throw new Error('Invalid uid.');

@@ -1,4 +1,3 @@
-
 'use strict';
 import {IAction} from './interfaces';
 import ActionEndpoint from './endpoint';

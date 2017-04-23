@@ -1,4 +1,3 @@
-
 'use strict';
 import {AxiosInstance} from 'axios';
 import axios from 'axios';
@@ -8,7 +7,7 @@ import CertificateEndpoint from '../certificate/endpoint';
 //import DomainEndpoint from '../domain/endpoint';
 //import DropletEndpoint from '../droplet/endpoint';
 //import FloatingIPEndpoint from '../floatingIP/endpoint';
-//import ImageEndpointEndpoint from '../image/endpoint';
+import ImageEndpointEndpoint from '../image/endpoint';
 //import LoadBalancerEndpoint from '../loadBalancer/endpoint';
 //import ImageEndpoint from '../image/endpoint';
 import RegionEndpoint from '../region/endpoint';
@@ -206,7 +205,7 @@ abstract class API{
      * @type {ImageEndpointEndpoint}
      * @memberOf DigitalOcean
      */
-    //public Image: ImageEndpointEndpoint;
+    public Image: ImageEndpointEndpoint;
     /**
      * LoadBalancer endpoint
      * 
@@ -286,7 +285,7 @@ abstract class API{
         //this.Domain = new DomainEndpoint(this);
         //this.Droplet = new DropletEndpoint(this);
         //this.FloatingIP = new FloatingIPEndpoint(this);
-        //this.Image = new ImageEndpointEndpoint(this);
+        this.Image = new ImageEndpointEndpoint(this);
         //this.LoadBalancer = new LoadBalancerEndpoint(this);
         this.Region = new RegionEndpoint(this);
         this.Size = new SizeEndpoint(this);

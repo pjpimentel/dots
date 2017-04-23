@@ -1,4 +1,3 @@
-
 'use strict';
 import {ICollection, ICollectionParams} from "./interfaces";
 import API from './api';

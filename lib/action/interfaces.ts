@@ -1,4 +1,3 @@
-
 'use strict';
 /**
  * Action raw object

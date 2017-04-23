@@ -1,4 +1,3 @@
-
 'use strict';
 import { ISnapshot } from './interfaces';
 import SnapshotEndpoint from './endpoint';

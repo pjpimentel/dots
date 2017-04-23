@@ -1,4 +1,3 @@
-
 'use strict';
 import {AxiosError} from 'axios';
 import API from './common/api';

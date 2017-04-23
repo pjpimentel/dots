@@ -1,9 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-import token from '../token';
-import DigitalOcean from '../../';
-
-const digitalOcean = new DigitalOcean(token);
+import digitalOcean from '../';
 
 let uid = process.argv[2];
 

@@ -1,4 +1,3 @@
-
 'use strict';
 import { ISSHKey } from './interfaces';
 import SSHKeyEndpoint from './endpoint';

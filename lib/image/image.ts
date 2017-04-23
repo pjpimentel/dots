@@ -41,6 +41,16 @@ class Image extends Asset<ImageEndpoint> implements IImage{
         this.type = image.type;
     }
     /**
+     * Delete image.
+     * 
+     * @returns {Promise<void>} 
+     * 
+     * @memberOf Image
+     */
+    public async delete(): Promise<void>{
+        await this.endpoint.delete(this.id);
+    }
+    /**
      * Update image name.
      * 
      * @param {string} name 
