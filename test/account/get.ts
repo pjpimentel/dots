@@ -1,10 +1,13 @@
 #!/usr/bin/env node
 'use strict';
-import token from '../token';
-import DigitalOcean from '../../';
+import digitalOcean from '../';
 
-const digitalOcean = new DigitalOcean(token);
+async function main(){
+    try{
+        console.log(await digitalOcean.Account.get())
+    } catch(e){
+        console.log(e.message);
+    }
+}
 
-digitalOcean.Account.get()
-    .then(account => console.log(account))
-    .catch(e => console.log(e.message))
+main();

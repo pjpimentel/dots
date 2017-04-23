@@ -1,7 +1,8 @@
 {
     "compileOnSave": true,
     "compilerOptions": {
-        "module": "AMD",
+        //"module": "amd",
+        "module": "commonjs",
         "moduleResolution": "node",
         "target": "es5",
         "noImplicitAny": false,
@@ -9,8 +10,8 @@
         "lib": [
             "ES2015"
         ],
-        "outDir":"build",
-        "outFile": "./build/tsdo.js"
+        "outDir":"build"
+        ///"outFile": "./build/dots.js"
     },
     "rootDir":"lib",
     "include": [
@@ -19,9 +20,8 @@
     ],
     "exclude": [
         "node_modules/*",
-        "./lib/image/*",
         "./lib/droplet/*",
-        "./test/*",
+        "./test/image/*",
         "./common.ts",
         "./node_modules/*"
     ]

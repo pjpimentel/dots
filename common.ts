@@ -5,18 +5,7 @@ import { AxiosError } from 'axios';
 /*interfaces*/
 
 
-export interface IImage {
-    readonly id: number;
-    readonly name: string;
-    readonly type: string;
-    readonly distribution: string;
-    readonly slug: string | null;
-    readonly public: boolean;
-    readonly regions: Array<string>;
-    readonly min_disk_size: number;
-    readonly size_gigabytes: number;
-    readonly created_at: Date;
-}
+
 
 // export interface IParamsByName{
 //     name: string;
@@ -92,16 +81,7 @@ export interface IDropletEndpoint extends IEndpoint {
     actionsByTag();
     getActionById();
 }
-export interface IImageEndpoint extends IEndpoint {
-    delete(id: number);
-    get(id: number);
-    get(slug: string);
-    /*list(page: number, perPage?: number);*/
-    /*list(type: string, page: number, perPage?: number);*/
-    /*listActions(id: number, page: number, perPage?: number);*/
-    /*listPrivate(page: number, perPage?: number);*/
-    /*update(id: number, specs: IImageUpdateSpecs);*/
-}
+
 export interface ILoadBalancerEndpoint extends IEndpoint {
     create();
     createWithTag();
