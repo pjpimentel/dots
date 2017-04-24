@@ -20,7 +20,6 @@
     ],
     "exclude": [
         "node_modules/*",
-        "./lib/droplet/*",
         "./common.ts",
         "./node_modules/*"
     ]

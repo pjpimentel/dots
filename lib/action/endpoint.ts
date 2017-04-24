@@ -54,7 +54,7 @@ class ActionEndpoint extends Endpoint implements IActionEndpoint{
      * @memberOf ActionEndpoint
      */
     public async get(id: number): Promise<Action>{
-        let url: string = [this.prefix,id.toString()].join('/');
+        let url: string = [this.prefix,id].join('/');
         let res = await this.api.get(url);
         if(!res.data) throw this.api.invalidResponse;
         let action: IAction = <IAction> res.data.action;

@@ -55,7 +55,6 @@ class SSHKeyEndpoint extends Endpoint implements ISSHKeyEndpoint {
      */
     public async delete(id: number): Promise<void>;
     public async delete(uid: number | string): Promise<void> {
-        if (typeof uid === 'number') uid = uid.toString();
         let url = [this.prefix, uid].join('/');
         await this.api.delete(url);
         return;
@@ -103,7 +102,6 @@ class SSHKeyEndpoint extends Endpoint implements ISSHKeyEndpoint {
      */
     public async get(id: number): Promise<SSHKey>;
     public async get(uid: number | string): Promise<SSHKey> {
-        if (typeof uid === 'number') uid = uid.toString();
         let url: string = [this.prefix, uid].join('/');
         let res = await this.api.get(url);
         if (!res.data) throw this.api.invalidResponse;
@@ -119,7 +117,10 @@ class SSHKeyEndpoint extends Endpoint implements ISSHKeyEndpoint {
      * 
      * @memberOf SSHKeyEndpoint
      */
-    public async update(fingerprint: string, specs: ISSHKeySpecs): Promise<SSHKey>;
+    public async update(
+        fingerprint: string,
+        specs: ISSHKeySpecs
+    ): Promise<SSHKey>;
     /**
      * Update SSH Key by id.
      * 
@@ -130,8 +131,10 @@ class SSHKeyEndpoint extends Endpoint implements ISSHKeyEndpoint {
      * @memberOf SSHKeyEndpoint
      */
     public async update(id: number, specs: ISSHKeySpecs): Promise<SSHKey>;
-    public async update(uid: number | string, specs: ISSHKeySpecs): Promise<SSHKey> {
-        if (typeof uid === 'number') uid = uid.toString();
+    public async update(
+        uid: number | string,
+        specs: ISSHKeySpecs
+    ): Promise<SSHKey> {
         let url = [this.prefix, uid].join('/');
         let res = await this.api.put(url, specs);
         if (!res.data) throw new Error('Invalid API response.');

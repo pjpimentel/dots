@@ -32,7 +32,7 @@ class ImageEndpoint extends Endpoint implements IImageEndpoint {
      * @memberOf ImageEndpoint
      */
     public async convertToSnapshot(id: number): Promise<Action> {
-        let url: string = [this.prefix, id.toString(), 'actions'].join('/');
+        let url: string = [this.prefix, id, 'actions'].join('/');
         let params = { type: 'convert' };
         let res = await this.api.post(url, params);
         if (!res.data) throw this.api.invalidResponse;
@@ -48,7 +48,7 @@ class ImageEndpoint extends Endpoint implements IImageEndpoint {
      * @memberOf ImageEndpoint
      */
     public async delete(id: number): Promise<void> {
-        let url: string = [this.prefix, id.toString()].join('/');
+        let url: string = [this.prefix, id].join('/');
         await this.api.get(url);
         return;
     }
@@ -71,7 +71,7 @@ class ImageEndpoint extends Endpoint implements IImageEndpoint {
      */
     public async get(slug: string): Promise<Image>;
     public async get(uid: number | string): Promise<Image> {
-        if (typeof uid === 'string') uid = uid.toString();
+        if (typeof uid === 'string') uid = uid;
         let url: string = [this.prefix, uid].join('/');
         let res = await this.api.get(url);
         if (!res.data) throw this.api.invalidResponse;
@@ -88,12 +88,7 @@ class ImageEndpoint extends Endpoint implements IImageEndpoint {
      * @memberOf ImageEndpoint
      */
     public async getActionById(id: number, actionId: number): Promise<Action> {
-        let url: string = [
-            this.prefix,
-            id.toString(),
-            'actions',
-            actionId.toString()
-        ].join('/');
+        let url: string = [this.prefix, id, 'actions', actionId].join('/');
         let res = await this.api.get(url);
         if (!res.data) throw this.api.invalidResponse;
         let action: IAction = <IAction>res.data.action;
@@ -170,7 +165,7 @@ class ImageEndpoint extends Endpoint implements IImageEndpoint {
         perPage?: number
     ): Promise<ICollection<Action>> {
         let collection: ICollection<IAction> | ICollection<Action>;
-        let url: string = [this.prefix, id.toString(), 'actions'].join('/');
+        let url: string = [this.prefix, id, 'actions'].join('/');
         collection = await this.getCollection<IAction>(
             page,
             perPage,
@@ -214,7 +209,7 @@ class ImageEndpoint extends Endpoint implements IImageEndpoint {
      * @memberOf ImageEndpoint
      */
     public async transfer(id: number, regionSlug: string): Promise<Action> {
-        let url: string = [this.prefix, id.toString(), 'actions'].join('/');
+        let url: string = [this.prefix, id, 'actions'].join('/');
         let params = { type: 'transfer', region: regionSlug };
         let res = await this.api.post(url, params);
         if (!res.data) throw this.api.invalidResponse;
@@ -231,7 +226,7 @@ class ImageEndpoint extends Endpoint implements IImageEndpoint {
      * @memberOf ImageEndpoint
      */
     public async update(id: number, specs: IImageUpdateSpecs): Promise<Image> {
-        let url: string = [this.prefix, id.toString()].join('/');
+        let url: string = [this.prefix, id].join('/');
         let res = await this.api.post(url, specs);
         if (!res.data) throw this.api.invalidResponse;
         let image: IImage = <IImage>res.data.action;

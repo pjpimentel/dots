@@ -5,7 +5,7 @@ import AccountEndpoint from '../account/endpoint';
 import ActionEndpoint from '../action/endpoint';
 import CertificateEndpoint from '../certificate/endpoint';
 //import DomainEndpoint from '../domain/endpoint';
-//import DropletEndpoint from '../droplet/endpoint';
+import DropletEndpoint from '../droplet/endpoint';
 //import FloatingIPEndpoint from '../floatingIP/endpoint';
 import ImageEndpointEndpoint from '../image/endpoint';
 //import LoadBalancerEndpoint from '../loadBalancer/endpoint';
@@ -191,7 +191,7 @@ abstract class API{
      * @type {DropletEndpoint}
      * @memberOf DigitalOcean
      */
-    //public Droplet: DropletEndpoint;
+    public Droplet: DropletEndpoint;
     /**
      * FloatingIP endpoint
      * 
@@ -283,7 +283,7 @@ abstract class API{
         this.Action = new ActionEndpoint(this);
         this.Certificate = new CertificateEndpoint(this);
         //this.Domain = new DomainEndpoint(this);
-        //this.Droplet = new DropletEndpoint(this);
+        this.Droplet = new DropletEndpoint(this);
         //this.FloatingIP = new FloatingIPEndpoint(this);
         this.Image = new ImageEndpointEndpoint(this);
         //this.LoadBalancer = new LoadBalancerEndpoint(this);

@@ -1,40 +1,68 @@
 'use strict';
-import {IAccount} from './interfaces';
-import {IAccountEndpoint} from './interfaces';
-import Account from './account';
+import { IDroplet, IDropletEndpoint } from './interfaces';
+import Droplet from './droplet';
 import DigitalOcean from '../digitalOcean';
 import Endpoint from '../common/endpoint';
+import { ICollection } from '../common/interfaces';
 /**
- * Account endpoint
+ * Droplet endpoint
  * 
- * @class AccountEndpoint
+ * @class DropletEndpoint
  * @extends {Endpoint<DigitalOcean>}
- * @implements {IAccountEndpoint}
+ * @implements {IDropletEndpoint}
  */
-class AccountEndpoint extends Endpoint<DigitalOcean> implements IAccountEndpoint{
+class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     /**
-     * Creates an instance of AccountEndpoint.
+     * Creates an instance of DropletEndpoint.
      * @param {DigitalOcean} digitalOcean 
      * 
-     * @memberOf AccountEndpoint
+     * @memberOf DropletEndpoint
      */
-    constructor(digitalOcean: DigitalOcean){
-        super(digitalOcean, '/account');
+    constructor(digitalOcean: DigitalOcean) {
+        super(digitalOcean, '/droplets');
     }
     /**
-     * get account info
+     * Get droplet by id.
      * 
-     * @returns {Promise<Account>} 
+     * @param {number} id 
+     * @returns {Promise<Droplet>} 
      * 
-     * @memberOf AccountEndpoint
+     * @memberOf DropletEndpoint
      */
-    public async get(): Promise<Account>{
-        let url: string = this.prefix;
+    public async get(id: number): Promise<Droplet>{
+        let url = [this.prefix, id].join('/');
         let res = await this.api.get(url);
-        if(!res.data) throw this.api.invalidResponse;
-        let account: IAccount = <IAccount> res.data.account;
-        return new Account(this, account);
+        if (!res.data) throw this.api.invalidResponse;
+        let volume: IDroplet = <IDroplet> res.data.droplet;
+        return new Droplet(this, volume);
+    };
+    /**
+     * List all droplets.
+     * 
+     * @param {number} page 
+     * @param {number} [perPage] 
+     * @returns {Promise<ICollection<Droplet>>} 
+     * 
+     * @memberOf DropletEndpoint
+     */
+    public async list(
+        page: number,
+        perPage?: number
+    ): Promise<ICollection<Droplet>> {
+        let collection: ICollection<IDroplet> | ICollection<Droplet>;
+        let url: string = this.prefix;
+        collection = await this.getCollection<IDroplet>(
+            page,
+            perPage,
+            url,
+            'droplets'
+        );
+        collection = this.upcastCollection<IDroplet, Droplet>(
+            collection,
+            Droplet
+        );
+        return <ICollection<Droplet>> collection;
     }
 }
 
-export default AccountEndpoint;
+export default DropletEndpoint;
