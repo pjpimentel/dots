@@ -29,6 +29,7 @@ export interface IDropletEndpoint{
     // changeKernelById();
     // create();
     // createMulti();
+    createSnapshot(id: number, snapshotMame: string);
     // deleteById();
     // deleteByTag();
     // disableBackupsById();
@@ -38,22 +39,26 @@ export interface IDropletEndpoint{
     get(id: number);
     // getActionById();
     list(page: number, perPage?: number);
+    list(tag: string, page: number, perPage?: number);
     // listActionsByDropletId();
     // listBackupsByDropletId();
-    // listByTag();
+    listImages(
+        id: number,
+        type: 'snapshots'|'backups'|string,
+        page: number,
+        perPage?: number
+    );
     // listKernelsByDropletId();
     // listNeighbors();
     // listNeighborsByDropletId();
-    // listSnapshotsByDropletId();
-    // passwordResetById();
-    // powerCycleById();
-    // powerOffById();
-    // powerOnById();
-    // rebootById();
-    // rebuildById();
-    // renameById();
-    // resizeById();
-    // restoreById();
-    // shutdownById();
-    // snapshotById();
+    // passwordReset();
+    // powerCycle();
+    // powerOff();
+    // powerOn();
+    // reboot();
+    // rebuild();
+    // rename();
+    // resize();
+    // restore();
+    // shutdown();
 }
