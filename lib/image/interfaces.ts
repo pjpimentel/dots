@@ -6,7 +6,7 @@
  * @interface IImage
  */
 export interface IImage {
-    readonly created_at: Date;
+    readonly created_at: string;
     readonly distribution: string;
     readonly id: number;
     readonly min_disk_size: number;

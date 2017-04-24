@@ -11,7 +11,7 @@ import { IRegion } from "../region/interfaces";
  * @implements {IVolume}
  */
 class Volume extends Asset<VolumeEndpoint> implements IVolume{
-    readonly created_at: Date;
+    readonly created_at: string;
     readonly description: string;
     readonly droplet_ids: Array<number>;
     readonly id: string;

@@ -10,7 +10,7 @@ import Asset from '../common/asset';
  * @implements {ICertificate}
  */
 class Certificate extends Asset<CertificateEndpoint> implements ICertificate{
-    readonly created_at: Date;
+    readonly created_at: string;
     readonly id: string;
     readonly name: string;
     readonly not_after: Date;

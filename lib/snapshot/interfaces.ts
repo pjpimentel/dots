@@ -6,7 +6,7 @@
  * @interface ISnapshot
  */
 export interface ISnapshot{
-    readonly created_at: Date;
+    readonly created_at: string;
     readonly id: string;
     readonly min_disk_size: number;
     readonly name: string;

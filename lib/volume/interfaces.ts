@@ -7,7 +7,7 @@ import {IRegion} from '../region/interfaces';
  * @interface IVolume
  */
 export interface IVolume {
-    readonly created_at: Date;
+    readonly created_at: string;
     readonly description: string;
     readonly droplet_ids: Array<number>;
     readonly id: string;

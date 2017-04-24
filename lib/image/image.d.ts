@@ -10,7 +10,7 @@ declare interface IImage{
     readonly regions: Array<string>;
     readonly min_disk_size: number;
     readonly size_gigabytes: number;
-    readonly created_at: Date;
+    readonly created_at: string;
 }
 
 
@@ -67,6 +67,6 @@ declare class Image extends Asset<ImageEndpoint> implements IImage{
     readonly regions: Array<string>;
     readonly min_disk_size: number;
     readonly size_gigabytes: number;
-    readonly created_at: Date;
+    readonly created_at: string;
     constructor: AssetConstructor<ImageEndpoint,IImage,Image>(endpoint: ImageEndpoint, image: IImage);
 }*/

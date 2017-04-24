@@ -10,7 +10,7 @@ import Asset from '../common/asset';
  * @implements {IImage}
  */
 class Image extends Asset<ImageEndpoint> implements IImage{
-    readonly created_at: Date;
+    readonly created_at: string;
     readonly distribution: string;
     readonly id: number;
     readonly min_disk_size: number;

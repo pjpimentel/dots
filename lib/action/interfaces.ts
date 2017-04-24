@@ -6,12 +6,12 @@
  * @interface IAction
  */
 export interface IAction{
-    readonly completed_at: Date;
+    readonly completed_at: string;
     readonly id: number;
     readonly region_slug: string;
     readonly resource_id: number;
     readonly resource_type: string;
-    readonly started_at: Date;
+    readonly started_at: string;
     readonly status: string;
     readonly type: string;
 }

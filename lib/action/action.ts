@@ -10,12 +10,12 @@ import Asset from '../common/asset';
  * @implements {IAction}
  */
 class Action extends Asset<ActionEndpoint> implements IAction{
-    readonly completed_at: Date;
+    readonly completed_at: string;
     readonly id: number;
     readonly region_slug: string;
     readonly resource_id: number;
     readonly resource_type: string;
-    readonly started_at: Date;
+    readonly started_at: string;
     readonly status: string;
     readonly type: string;
     /**

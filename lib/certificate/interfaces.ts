@@ -6,7 +6,7 @@
  * @interface ICertificate
  */
 export interface ICertificate{
-    readonly created_at: Date;
+    readonly created_at: string;
     readonly id: string;
     readonly name: string;
     readonly not_after: Date;
