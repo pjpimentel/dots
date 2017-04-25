@@ -1,9 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-import token from '../token';
-import DigitalOcean from '../../';
-
-const digitalOcean = new DigitalOcean(token);
+import digitalOcean from '../';
 
 let id = parseInt(process.argv[2]);
 let name = process.argv[3];
@@ -14,5 +11,5 @@ if(!name) throw new Error('Invalid name.');
 digitalOcean
     .Droplet
     .createSnapshot(id, name)
-    .then(snapshot => console.log(snapshot))
+    .then(action => console.log(action))
     .catch(e => console.log(e.message));

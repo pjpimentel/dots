@@ -40,10 +40,59 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     ): Promise<Action> {
         let url = [this.prefix, id, 'actions'].join('/');
         let params = <any>{ type: 'snapshot', name: snapshotName };
-        let res = await this.api.post(url, params);
-        if (!res.data) throw this.api.invalidResponse;
-        let action: IAction = <IAction>res.data.action;
-        return new Action(this.api.Action, action);
+        return this.doAction(url, params);
+    }
+    /**
+     * Disable droplet backups.
+     * 
+     * @param {number} id 
+     * @returns {Promise<Action>} 
+     * 
+     * @memberOf DropletEndpoint
+     */
+    public async disableBackups(id: number): Promise<Action>{
+        let url = [this.prefix, id, 'actions'].join('/');
+        let params = <any>{ type: 'disable_backups' };
+        return this.doAction(url, params);
+    }
+    /**
+     * Enable droplet backups.
+     * 
+     * @param {number} id 
+     * @returns {Promise<Action>} 
+     * 
+     * @memberOf DropletEndpoint
+     */
+    public async enableBackups(id: number): Promise<Action>{
+        let url = [this.prefix, id, 'actions'].join('/');
+        let params = <any>{ type: 'enable_backups' };
+        return this.doAction(url, params);
+    }
+    /**
+     * Enable ipv6 networking in one droplet.
+     * 
+     * @param {number} id 
+     * @returns {Promise<Action>} 
+     * 
+     * @memberOf DropletEndpoint
+     */
+    public async enableIPv6(id: number): Promise<Action> {
+        let url = [this.prefix, id, 'actions'].join('/');
+        let params = <any>{ type: 'enable_ipv6' };
+        return this.doAction(url, params);
+    }
+    /**
+     * Enable private networking in one droplet.
+     * 
+     * @param {number} id 
+     * @returns {Promise<Action>} 
+     * 
+     * @memberOf DropletEndpoint
+     */
+    public async enablePrivateNetworking(id: number): Promise<Action> {
+        let url = [this.prefix, id, 'actions'].join('/');
+        let params = <any>{ type: 'enable_private_networking' };
+        return this.doAction(url, params);
     }
     /**
      * Get droplet by id.
@@ -147,6 +196,71 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
         );
         return <ICollection<Image>>collection;
     }
+    /**
+     * Power cycle droplet [similar to pushing the reset button].
+     * 
+     * @param {number} id 
+     * @returns {Promise<Action>} 
+     * 
+     * @memberOf DropletEndpoint
+     */
+    public async powerCycle(id: number): Promise<Action>{
+        let url = [this.prefix, id, 'actions'].join('/');
+        let params = <any>{ type: 'power_cycle' };
+        return this.doAction(url, params);
+    }
+    /**
+     * Power off a droplet.
+     * 
+     * @param {number} id 
+     * @returns {Promise<Action>} 
+     * 
+     * @memberOf DropletEndpoint
+     */
+    public async powerOff(id: number): Promise<Action> {
+        let url = [this.prefix, id, 'actions'].join('/');
+        let params = <any>{ type: 'power_off' };
+        return this.doAction(url, params);
+    }
+    /**
+     * Power on a droplet.
+     * 
+     * @param {number} id 
+     * @returns {Promise<Action>} 
+     * 
+     * @memberOf DropletEndpoint
+     */
+    public async powerOn(id: number): Promise<Action> {
+        let url = [this.prefix, id, 'actions'].join('/');
+        let params = <any>{ type: 'power_on' };
+        return this.doAction(url, params);
+    }
+    /**
+     * Reboot droplet [reboot in a graceful way].
+     * 
+     * @param {number} id 
+     * @returns {Promise<Action>} 
+     * 
+     * @memberOf DropletEndpoint
+     */
+    public async reboot(id: number): Promise<Action>{
+        let url = [this.prefix, id, 'actions'].join('/');
+        let params = <any>{ type: 'reboot' };
+        return this.doAction(url, params);
+    };
+    /**
+     * Shutdown a droplet [shutdown in a graceful way].
+     * 
+     * @param {number} id 
+     * @returns {Promise<Action>} 
+     * 
+     * @memberOf DropletEndpoint
+     */
+    public async shutdown(id: number): Promise<Action>{
+        let url = [this.prefix, id, 'actions'].join('/');
+        let params = <any>{ type: 'shutdown' };
+        return this.doAction(url, params);
+    };
 }
 
 export default DropletEndpoint;

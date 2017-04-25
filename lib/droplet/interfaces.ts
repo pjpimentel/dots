@@ -1,20 +1,20 @@
 'use strict';
-import {IRegion} from '../region/interfaces';
-import {IImage} from '../image/interfaces';
-import {ISize} from '../size/interfaces';
-export interface IDroplet{
+import { IRegion } from '../region/interfaces';
+import { IImage } from '../image/interfaces';
+import { ISize } from '../size/interfaces';
+export interface IDroplet {
     readonly backup_ids: Array<string>;
     readonly created_at: string;
     readonly disk: number;
     readonly features: Array<string>;
     readonly id: number;
     readonly image: IImage;
-    readonly kernel: any|null;
+    readonly kernel: any | null;
     readonly locked: boolean;
     readonly memory: number;
     readonly name: string;
     readonly networks: object;
-    readonly next_backup_window: any|null;
+    readonly next_backup_window: any | null;
     readonly region: IRegion;
     readonly size_slug: string;
     readonly size: ISize;
@@ -24,7 +24,7 @@ export interface IDroplet{
     readonly vcpus: number;
     readonly volume_ids: Array<string>;
 }
-export interface IDropletEndpoint{
+export interface IDropletEndpoint {
     // actionsByTag();
     // changeKernelById();
     // create();
@@ -32,10 +32,10 @@ export interface IDropletEndpoint{
     createSnapshot(id: number, snapshotMame: string);
     // deleteById();
     // deleteByTag();
-    // disableBackupsById();
-    // enableBackupsById();
-    // enableIPv6ById();
-    // enablePrivateNetworkingById();
+    disableBackups(id: number);
+    enableBackups(id: number);
+    enableIPv6(id: number);
+    enablePrivateNetworking(id: number);
     get(id: number);
     // getActionById();
     list(page: number, perPage?: number);
@@ -44,7 +44,7 @@ export interface IDropletEndpoint{
     // listBackupsByDropletId();
     listImages(
         id: number,
-        type: 'snapshots'|'backups'|string,
+        type: 'snapshots' | 'backups' | string,
         page: number,
         perPage?: number
     );
@@ -52,13 +52,13 @@ export interface IDropletEndpoint{
     // listNeighbors();
     // listNeighborsByDropletId();
     // passwordReset();
-    // powerCycle();
-    // powerOff();
-    // powerOn();
-    // reboot();
+    powerCycle(id: number);
+    powerOff(id: number);
+    powerOn(id: number);
+    reboot(id: number);
     // rebuild();
     // rename();
     // resize();
     // restore();
-    // shutdown();
+    shutdown(id: number);
 }

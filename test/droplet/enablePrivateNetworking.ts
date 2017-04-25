@@ -8,6 +8,6 @@ if(!id) throw new Error('Invalid id.');
 
 digitalOcean
     .Droplet
-    .get(id)
-    .then(droplet => console.log(droplet))
+    .enablePrivateNetworking(id)
+    .then(action => console.log(action))
     .catch(e => console.log(e.message));

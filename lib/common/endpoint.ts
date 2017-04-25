@@ -1,7 +1,8 @@
 'use strict';
-import {ICollection, ICollectionParams} from "./interfaces";
+import { ICollection, ICollectionParams } from "./interfaces";
 import API from './api';
-import { isActionArray } from "../action/interfaces";
+import Action from "../action/action";
+import { isActionArray, IAction } from "../action/interfaces";
 /**
  * Endpoint belongs to APIs
  * 
@@ -9,7 +10,7 @@ import { isActionArray } from "../action/interfaces";
  * @class Endpoint
  * @template API 
  */
-abstract class Endpoint{
+abstract class Endpoint {
     /**
      * reference to API instance
      * 
@@ -31,7 +32,7 @@ abstract class Endpoint{
      * 
      * @memberOf Endpoint
      */
-    constructor(api: API, prefix: string){
+    constructor(api: API, prefix: string) {
         this.api = api;
         this.prefix = prefix;
     }
@@ -47,11 +48,11 @@ abstract class Endpoint{
         perPage: number,
         url: string,
         property: string
-    ): Promise<ICollection<C>>{
+    ): Promise<ICollection<C>> {
         let params: ICollectionParams = this.getCollectionParams(page, perPage);
-        let collection: ICollection<C> = <ICollection<C>> {};
-        let res = await this.api.get(url,{params:params});
-        if(!res.data) throw this.api.invalidResponse;
+        let collection: ICollection<C> = <ICollection<C>>{};
+        let res = await this.api.get(url, { params: params });
+        if (!res.data) throw this.api.invalidResponse;
         collection.items = res.data[property];
         collection.total = res.data.meta.total;
         collection.perPage = params.per_page;
@@ -73,7 +74,7 @@ abstract class Endpoint{
     private getCollectionParams(
         page?: number,
         perPage?: number
-    ): ICollectionParams{
+    ): ICollectionParams {
         page = page || 1;
         perPage = perPage || 25;
         return {
@@ -93,15 +94,15 @@ abstract class Endpoint{
      * 
      * @memberOf Endpoint
      */
-    protected upcastCollection<I,C>(
+    protected upcastCollection<I, C>(
         from: ICollection<I>,
         to: any
-    ): ICollection<C>{
-        let collection: ICollection<C> = <ICollection<C>> {};
-        let endpoint: any = <any> this;
-        
-        if(isActionArray(from)) endpoint = this.api.Action;
-        
+    ): ICollection<C> {
+        let collection: ICollection<C> = <ICollection<C>>{};
+        let endpoint: any = <any>this;
+
+        if (isActionArray(from)) endpoint = this.api.Action;
+
         collection.total = from.total;
         collection.perPage = from.perPage;
         collection.curPage = from.curPage;
@@ -111,6 +112,22 @@ abstract class Endpoint{
             return new to(endpoint, item);
         });
         return collection;
+    }
+    /**
+     * Generic function to make a action request.
+     * 
+     * @protected
+     * @param {string} url 
+     * @param {object} params 
+     * @returns {Promise<Action>} 
+     * 
+     * @memberOf Endpoint
+     */
+    protected async doAction(url: string, params: object): Promise<Action> {
+        let res = await this.api.post(url, params);
+        if (!res.data) throw this.api.invalidResponse;
+        let action: IAction = <IAction>res.data.action;
+        return new Action(this.api.Action, action);
     }
 }
 
