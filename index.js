@@ -1,0 +1,1 @@
+module.exports.DigitalOcean = require('./build/').DigitalOcean;
