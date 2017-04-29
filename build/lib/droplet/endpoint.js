@@ -237,6 +237,24 @@ var DropletEndpoint = (function (_super) {
         });
     };
     /**
+     * Reset droplet password.
+     *
+     * @param {number} id
+     * @returns {Promise<Action>}
+     *
+     * @memberOf DropletEndpoint
+     */
+    DropletEndpoint.prototype.passwordReset = function (id) {
+        return __awaiter(this, void 0, void 0, function () {
+            var url, params;
+            return __generator(this, function (_a) {
+                url = [this.prefix, id, 'actions'].join('/');
+                params = { type: 'password_reset' };
+                return [2 /*return*/, this.doAction(url, params)];
+            });
+        });
+    };
+    /**
      * Power cycle droplet [similar to pushing the reset button].
      *
      * @param {number} id
@@ -309,6 +327,25 @@ var DropletEndpoint = (function (_super) {
         });
     };
     ;
+    /**
+     * Rename droplet.
+     *
+     * @param {number} id
+     * @param {string} newName
+     * @returns {Promise<Action>}
+     *
+     * @memberOf DropletEndpoint
+     */
+    DropletEndpoint.prototype.rename = function (id, newName) {
+        return __awaiter(this, void 0, void 0, function () {
+            var url, params;
+            return __generator(this, function (_a) {
+                url = [this.prefix, id, 'actions'].join('/');
+                params = { type: 'rename', name: newName };
+                return [2 /*return*/, this.doAction(url, params)];
+            });
+        });
+    };
     /**
      * Shutdown a droplet [shutdown in a graceful way].
      *

@@ -26,7 +26,7 @@ export interface IDroplet {
 }
 export interface IDropletEndpoint {
     // actionsByTag();
-    // changeKernelById();
+    changeKernel(id: number, kernelId: number);
     // create();
     // createMulti();
     createSnapshot(id: number, snapshotMame: string);
@@ -37,7 +37,7 @@ export interface IDropletEndpoint {
     enableIPv6(id: number);
     enablePrivateNetworking(id: number);
     get(id: number);
-    // getActionById();
+    getActionById(dropletId: number, actionId: number);
     list(page: number, perPage?: number);
     list(tag: string, page: number, perPage?: number);
     // listActionsByDropletId();
@@ -49,16 +49,20 @@ export interface IDropletEndpoint {
         perPage?: number
     );
     // listKernelsByDropletId();
-    // listNeighbors();
+    listNeighbors();
     // listNeighborsByDropletId();
-    // passwordReset();
+    passwordReset(id: number);
     powerCycle(id: number);
     powerOff(id: number);
     powerOn(id: number);
     reboot(id: number);
-    // rebuild();
-    // rename();
-    // resize();
-    // restore();
+    rebuild(id: number, imageSlug: string);
+    rebuild(id: number, imageId: number);
+    rename(id: number, newName: string);
+    resize(id: number, sizeSlug: string, resizeDisk: boolean);
+    restore(id: number, imageSlug: string);
+    restore(id: number, imageId: number);
     shutdown(id: number);
 }
+export type Neighbor = Array<IDroplet>;
+export type Neighbors = Array<Neighbor>;

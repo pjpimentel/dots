@@ -121,7 +121,7 @@ value = {module}.{action}
         "Delete a Droplet": "",
         "Deleting Droplets by Tag": "",
         "List Neighbors for a Droplet": "",
-        "List all Droplet Neighbors": ""
+        "List all Droplet Neighbors": "Droplet.listNeighbors"
     },
     "Droplet Actions": {
         "Enable Backups": "Droplet.enableBackups",
@@ -131,17 +131,17 @@ value = {module}.{action}
         "Shutdown a Droplet": "Droplet.shutdown",
         "Power Off a Droplet": "Droplet.powerOff",
         "Power On a Droplet": "Droplet.powerOn",
-        "Restore a Droplet": "",
-        "Password Reset a Droplet": "",
-        "Resize a Droplet": "",
-        "Rebuild a Droplet": "",
-        "Rename a Droplet": "",
-        "Change the Kernel": "",
+        "Restore a Droplet": "Droplet.restore",
+        "Password Reset a Droplet": "Droplet.passwordReset",
+        "Resize a Droplet": "Droplet.resize",
+        "Rebuild a Droplet": "Droplet.rebuild",
+        "Rename a Droplet": "Droplet.rename",
+        "Change the Kernel": "Droplet.changeKernel",
         "Enable IPv6": "Droplet.enableIPv6",
         "Enable Private Networking": "Droplet.enablePrivateNetworking",
         "Snapshot a Droplet": "Droplet.createSnapshot",
         "Acting on Tagged Droplets": "",
-        "Retrieve a Droplet Action": ""
+        "Retrieve a Droplet Action": "Droplet.getActionById"
     },
     "Images": {
         "List all Images": "Image.list",

@@ -1,1 +1,1 @@
-module.exports.DigitalOcean = require('./build/').DigitalOcean;
+module.exports = require('./build/').DigitalOcean;
