@@ -236,14 +236,30 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
      * 
      * @memberOf DropletEndpoint
      */
-    public async listNeighbors(): Promise<Neighbors> {
+    public async listNeighbors(): Promise<Array<Neighbors>> {
         let url = ['', 'reports', 'droplet_neighbors'].join('/');
         let res = await this.api.get(url);
         if (!res.data) throw this.api.invalidResponse;
-        let neighbors: Neighbors = <Neighbors>res.data.neighbors;
-        neighbors.map(neighbor =>
-            neighbor.map(droplet => new Droplet(this, droplet))
+        let collection: Array<Neighbors> = res.data.neighbors;
+        collection.map(neighbors =>
+            neighbors.map(droplet => new Droplet(this, droplet))
         );
+        return collection;
+    }
+    /**
+     * List droplet's neighbors.
+     * 
+     * @param {number} id 
+     * @returns {Promise<Neighbors>} 
+     * 
+     * @memberOf DropletEndpoint
+     */
+    public async listNeighborsByDropletId(id: number): Promise<Neighbors> {
+        let url = [this.prefix, id, 'neighbors'].join('/');
+        let res = await this.api.get(url);
+        if (!res.data) throw this.api.invalidResponse;
+        let neighbors: Neighbors = res.data.droplets;
+        neighbors.map(droplet => new Droplet(this, droplet))
         return neighbors;
     }
     /**

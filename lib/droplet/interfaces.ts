@@ -50,7 +50,7 @@ export interface IDropletEndpoint {
     );
     // listKernelsByDropletId();
     listNeighbors();
-    // listNeighborsByDropletId();
+    listNeighborsByDropletId(id: number);
     passwordReset(id: number);
     powerCycle(id: number);
     powerOff(id: number);
@@ -64,5 +64,4 @@ export interface IDropletEndpoint {
     restore(id: number, imageId: number);
     shutdown(id: number);
 }
-export type Neighbor = Array<IDroplet>;
-export type Neighbors = Array<Neighbor>;
+export type Neighbors = Array<IDroplet>;

@@ -120,7 +120,7 @@ value = {module}.{action}
         "List actions for a Droplet": "",
         "Delete a Droplet": "",
         "Deleting Droplets by Tag": "",
-        "List Neighbors for a Droplet": "",
+        "List Neighbors for a Droplet": "Droplet.listNeighborsByDropletId",
         "List all Droplet Neighbors": "Droplet.listNeighbors"
     },
     "Droplet Actions": {
