@@ -36,7 +36,7 @@ Javascript - Nodejs
         .catch(e => console.log(e.message));
 ```
 ## Docs
-* **[Account](lib/account/README.md)**
+* [Account](lib/account/README.md)
 * [Action](lib/action/README.md)
 * [Volume](lib/volume/README.md)
 * [Certificate](lib/certificate/README.md)
@@ -47,8 +47,8 @@ Javascript - Nodejs
 * [LoadBalancer](lib/loadBalancer/README.md)
 * [Snapshot](lib/snapshot/README.md)
 * [SSHKeys](lib/sshkey/README.md)
-* **[Region](lib/region/README.md)**
-* **[Size](lib/size/README.md)**
+* [Region](lib/region/README.md)
+* [Size](lib/size/README.md)
 * [FloatingIP](lib/floatingIP/README.md)
 * [Tag](lib/tag/README.md)
 
