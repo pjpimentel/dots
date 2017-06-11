@@ -1,15 +1,14 @@
 #!/usr/bin/env node
 'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
-var _1 = require("../");
+var token_1 = require("../token");
+var _1 = require("../../");
+var digitalOcean = new _1.default(token_1.default);
 var id = parseInt(process.argv[2]);
-var name = process.argv[3];
 if (!id)
     throw new Error('Invalid id.');
-if (!name)
-    throw new Error('Invalid name.');
-_1.default
+digitalOcean
     .Droplet
-    .rename(id, name)
-    .then(function (action) { return console.log(action); })
+    .delete(id)
+    .then(function () { return console.log('deleted!'); })
     .catch(function (e) { return console.log(e.message); });

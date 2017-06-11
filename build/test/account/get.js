@@ -9,8 +9,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t;
-    return { next: verb(0), "throw": verb(1), "return": verb(2) };
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
@@ -39,18 +39,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var _1 = require("../");
 function main() {
     return __awaiter(this, void 0, void 0, function () {
-        var _a, _b, _c, e_1;
-        return __generator(this, function (_d) {
-            switch (_d.label) {
+        var _a, _b, e_1;
+        return __generator(this, function (_c) {
+            switch (_c.label) {
                 case 0:
-                    _d.trys.push([0, 2, , 3]);
+                    _c.trys.push([0, 2, , 3]);
                     _b = (_a = console).log;
                     return [4 /*yield*/, _1.default.Account.get()];
                 case 1:
-                    _b.apply(_a, [_d.sent()]);
+                    _b.apply(_a, [_c.sent()]);
                     return [3 /*break*/, 3];
                 case 2:
-                    e_1 = _d.sent();
+                    e_1 = _c.sent();
                     console.log(e_1.message);
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];

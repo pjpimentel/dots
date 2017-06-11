@@ -109,7 +109,7 @@ value = {module}.{action}
         "Delete a Domain Record": ""
     },
     "Droplets": {
-        "Create a new Droplet": "",
+        "Create a new Droplet": "Droplet.create",
         "Create multiple Droplets": "",
         "Retrieve an existing Droplet by id": "Droplet.get",
         "List all Droplets": "Droplet.list",
@@ -118,8 +118,8 @@ value = {module}.{action}
         "List snapshots for a Droplet": "Droplet.listImages",
         "List backups for a Droplet": "Droplet.listImages",
         "List actions for a Droplet": "",
-        "Delete a Droplet": "",
-        "Deleting Droplets by Tag": "",
+        "Delete a Droplet": "Droplet.delete",
+        "Deleting Droplets by Tag": "Droplet.delete",
         "List Neighbors for a Droplet": "Droplet.listNeighborsByDropletId",
         "List all Droplet Neighbors": "Droplet.listNeighbors"
     },

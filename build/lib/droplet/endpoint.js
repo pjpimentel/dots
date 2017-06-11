@@ -18,8 +18,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t;
-    return { next: verb(0), "throw": verb(1), "return": verb(2) };
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
     function verb(n) { return function (v) { return step([n, v]); }; }
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
@@ -48,6 +48,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var image_1 = require("../image/image");
 var droplet_1 = require("./droplet");
 var endpoint_1 = require("../common/endpoint");
+var action_1 = require("../action/action");
 /**
  * Droplet endpoint
  *
@@ -67,6 +68,59 @@ var DropletEndpoint = (function (_super) {
         return _super.call(this, digitalOcean, '/droplets') || this;
     }
     /**
+     * Change droplet's kernel.
+     *
+     * @param {number} id
+     * @param {number} kernelId
+     * @returns {Promise<Action>}
+     *
+     * @memberOf DropletEndpoint
+     */
+    DropletEndpoint.prototype.changeKernel = function (id, kernelId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var url, params;
+            return __generator(this, function (_a) {
+                url = [this.prefix, id, 'actions'].join('/');
+                params = { type: 'change_kernel', kernel: kernelId };
+                return [2 /*return*/, this.doAction(url, params)];
+            });
+        });
+    };
+    /**
+     * Create new droplet.
+     *
+     * @param {IDropletSpecs} specs
+     * @returns {Promise<Droplet>}
+     *
+     * @memberof DropletEndpoint
+     */
+    DropletEndpoint.prototype.create = function (specs) {
+        return __awaiter(this, void 0, void 0, function () {
+            var url, res, droplet;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        url = this.prefix;
+                        if (!specs.name)
+                            throw new Error('Missing droplet name.');
+                        if (!specs.region)
+                            throw new Error('Missing droplet region.');
+                        if (!specs.size)
+                            throw new Error('Missing droplet size.');
+                        if (!specs.image)
+                            throw new Error('Missing droplet image.');
+                        return [4 /*yield*/, this.api.post(url, specs)];
+                    case 1:
+                        res = _a.sent();
+                        if (!res.data)
+                            throw this.api.invalidResponse;
+                        droplet = res.data.droplet;
+                        return [2 /*return*/, new droplet_1.default(this, droplet)];
+                }
+            });
+        });
+    };
+    /**
      * Create snapshot from droplet.
      *
      * @param {number} id
@@ -82,6 +136,26 @@ var DropletEndpoint = (function (_super) {
                 url = [this.prefix, id, 'actions'].join('/');
                 params = { type: 'snapshot', name: snapshotName };
                 return [2 /*return*/, this.doAction(url, params)];
+            });
+        });
+    };
+    DropletEndpoint.prototype.delete = function (param) {
+        return __awaiter(this, void 0, void 0, function () {
+            var params, url;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        params = {};
+                        url = this.prefix;
+                        if (typeof param === 'number')
+                            (url = [this.prefix, param].join('/'));
+                        else
+                            (params.tag_name = param);
+                        return [4 /*yield*/, this.api.delete(url, { params: params })];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
             });
         });
     };
@@ -184,6 +258,33 @@ var DropletEndpoint = (function (_super) {
         });
     };
     ;
+    /**
+     * Get droplet's action.
+     *
+     * @param {number} dropletId
+     * @param {number} actionId
+     * @returns {Promise<Action>}
+     *
+     * @memberOf DropletEndpoint
+     */
+    DropletEndpoint.prototype.getActionById = function (dropletId, actionId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var url, res, action;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        url = [this.prefix, dropletId, 'actions', actionId].join('/');
+                        return [4 /*yield*/, this.api.get(url)];
+                    case 1:
+                        res = _a.sent();
+                        if (!res.data)
+                            throw this.api.invalidResponse;
+                        action = res.data.action;
+                        return [2 /*return*/, new action_1.default(this.api.Action, action)];
+                }
+            });
+        });
+    };
     DropletEndpoint.prototype.list = function (a, b, c) {
         return __awaiter(this, void 0, void 0, function () {
             var tag, page, perPage, collection, url;
@@ -232,6 +333,63 @@ var DropletEndpoint = (function (_super) {
                         collection = _a.sent();
                         collection = this.upcastCollection(collection, image_1.default);
                         return [2 /*return*/, collection];
+                }
+            });
+        });
+    };
+    /**
+     * List droplets that are running on the same physical hardware.
+     *
+     * @returns {Promise<Array<any>>}
+     *
+     * @memberOf DropletEndpoint
+     */
+    DropletEndpoint.prototype.listNeighbors = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var url, res, collection;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        url = ['', 'reports', 'droplet_neighbors'].join('/');
+                        return [4 /*yield*/, this.api.get(url)];
+                    case 1:
+                        res = _a.sent();
+                        if (!res.data)
+                            throw this.api.invalidResponse;
+                        collection = res.data.neighbors;
+                        collection.map(function (neighbors) {
+                            return neighbors.map(function (droplet) { return new droplet_1.default(_this, droplet); });
+                        });
+                        return [2 /*return*/, collection];
+                }
+            });
+        });
+    };
+    /**
+     * List droplet's neighbors.
+     *
+     * @param {number} id
+     * @returns {Promise<Neighbors>}
+     *
+     * @memberOf DropletEndpoint
+     */
+    DropletEndpoint.prototype.listNeighborsByDropletId = function (id) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var url, res, neighbors;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        url = [this.prefix, id, 'neighbors'].join('/');
+                        return [4 /*yield*/, this.api.get(url)];
+                    case 1:
+                        res = _a.sent();
+                        if (!res.data)
+                            throw this.api.invalidResponse;
+                        neighbors = res.data.droplets;
+                        neighbors.map(function (droplet) { return new droplet_1.default(_this, droplet); });
+                        return [2 /*return*/, neighbors];
                 }
             });
         });
@@ -327,6 +485,16 @@ var DropletEndpoint = (function (_super) {
         });
     };
     ;
+    DropletEndpoint.prototype.rebuild = function (id, b) {
+        return __awaiter(this, void 0, void 0, function () {
+            var url, params;
+            return __generator(this, function (_a) {
+                url = [this.prefix, id, 'actions'].join('/');
+                params = { type: 'rebuild', image: b };
+                return [2 /*return*/, this.doAction(url, params)];
+            });
+        });
+    };
     /**
      * Rename droplet.
      *
@@ -342,6 +510,36 @@ var DropletEndpoint = (function (_super) {
             return __generator(this, function (_a) {
                 url = [this.prefix, id, 'actions'].join('/');
                 params = { type: 'rename', name: newName };
+                return [2 /*return*/, this.doAction(url, params)];
+            });
+        });
+    };
+    /**
+     * Resize droplet.
+     *
+     * @param {number} id
+     * @param {string} sizeSlug
+     * @param {boolean} increaseDisk
+     * @returns {Promise<Action>}
+     *
+     * @memberOf DropletEndpoint
+     */
+    DropletEndpoint.prototype.resize = function (id, sizeSlug, resizeDisk) {
+        return __awaiter(this, void 0, void 0, function () {
+            var url, params;
+            return __generator(this, function (_a) {
+                url = [this.prefix, id, 'actions'].join('/');
+                params = { type: 'resize', disk: resizeDisk, size: sizeSlug };
+                return [2 /*return*/, this.doAction(url, params)];
+            });
+        });
+    };
+    DropletEndpoint.prototype.restore = function (id, b) {
+        return __awaiter(this, void 0, void 0, function () {
+            var url, params;
+            return __generator(this, function (_a) {
+                url = [this.prefix, id, 'actions'].join('/');
+                params = { type: 'restore', image: b };
                 return [2 /*return*/, this.doAction(url, params)];
             });
         });

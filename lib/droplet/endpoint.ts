@@ -1,5 +1,5 @@
 'use strict';
-import { IDroplet, IDropletEndpoint, Neighbors, Neighbor } from './interfaces';
+import { IDroplet, IDropletEndpoint, Neighbors, IDropletSpecs } from './interfaces';
 import Image from '../image/image';
 import { IImage } from '../image/interfaces';
 import Droplet from './droplet';
@@ -40,6 +40,25 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
         return this.doAction(url, params);
     }
     /**
+     * Create new droplet.
+     * 
+     * @param {IDropletSpecs} specs 
+     * @returns {Promise<Droplet>} 
+     * 
+     * @memberof DropletEndpoint
+     */
+    public async create(specs: IDropletSpecs): Promise<Droplet> {
+        let url = this.prefix;
+        if (!specs.name) throw new Error('Missing droplet name.');
+        if (!specs.region) throw new Error('Missing droplet region.');
+        if (!specs.size) throw new Error('Missing droplet size.');
+        if (!specs.image) throw new Error('Missing droplet image.');
+        let res = await this.api.post(url, specs);
+        if (!res.data) throw this.api.invalidResponse;
+        let droplet: IDroplet = <IDroplet>res.data.droplet;
+        return new Droplet(this, droplet);
+    }
+    /**
      * Create snapshot from droplet.
      * 
      * @param {number} id 
@@ -55,6 +74,32 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
         let url = [this.prefix, id, 'actions'].join('/');
         let params = <any>{ type: 'snapshot', name: snapshotName };
         return this.doAction(url, params);
+    }
+    /**
+     * Delete droplet by Id.
+     * 
+     * @param {number} id 
+     * @returns {Promise<void>} 
+     * 
+     * @memberof DropletEndpoint
+     */
+    public async delete(id: number): Promise<void>;
+    /**
+     * Delete droplet by tag.
+     * 
+     * @param {string} tag 
+     * @returns {Promise<void>} 
+     * 
+     * @memberof DropletEndpoint
+     */
+    public async delete(tag: string): Promise<void>;
+    public async delete(param: string|number): Promise<void>{
+        let params = <any>{};
+        let url = this.prefix;
+        if(typeof param === 'number') (url = [this.prefix, param].join('/'));
+        else (params.tag_name = param);
+        await this.api.delete(url, { params: params });
+        return
     }
     /**
      * Disable droplet backups.

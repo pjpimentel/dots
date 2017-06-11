@@ -27,11 +27,11 @@ export interface IDroplet {
 export interface IDropletEndpoint {
     // actionsByTag();
     changeKernel(id: number, kernelId: number);
-    // create();
+    create(specs: IDropletSpecs);
     // createMulti();
     createSnapshot(id: number, snapshotMame: string);
-    // deleteById();
-    // deleteByTag();
+    delete(id: number);
+    delete(tag: string);
     disableBackups(id: number);
     enableBackups(id: number);
     enableIPv6(id: number);
@@ -65,3 +65,23 @@ export interface IDropletEndpoint {
     shutdown(id: number);
 }
 export type Neighbors = Array<IDroplet>;
+/**
+ * Droplet specs.
+ * 
+ * @export
+ * @interface IDropletSpecs
+ */
+export interface IDropletSpecs {
+    name: string;
+    region: string;
+    size: string;
+    image: string|number;
+    ssh_keys?: Array<string>;
+    backups?: boolean;
+    ipv6?: boolean;
+    private_networking?: boolean;
+    user_data?: Array<string>;
+    monitoring?: boolean;
+    volumes?: Array<string>;
+    tags?: Array<string>;
+}
