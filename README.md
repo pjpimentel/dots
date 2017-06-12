@@ -5,7 +5,8 @@
 Not tested in production.
 ## Install
 ``` bash
-    npm install --save dots
+    #npm install --save dots
+    npm install --save git+ssh://git@github.com:pjpimentel/dots.git
 ```
 ## Usage
 Typescript
