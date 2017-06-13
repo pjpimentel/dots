@@ -220,4 +220,6 @@ value = {module}.{action}
 
 ## TODO
 
+Endpoint docs
+Add firewall endpoint
 Compile to Browser usage.
