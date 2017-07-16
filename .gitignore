@@ -3,6 +3,7 @@ node_modules
 docs
 dumps
 bin
+docs
 sbin
 logs
 .tmp
