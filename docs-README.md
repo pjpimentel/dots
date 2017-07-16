@@ -41,16 +41,16 @@ Javascript - Nodejs
 * [Action](classes/actiontendpoint.html)
 * [Volume](classes/volumeendpoint.html)
 * [Certificate](classes/certificateendpoint.html)
-* [Domain](classes/accountendpoint.html)
-* [DomainRecord](classes/domainRecordendpoint.html)
+* Domain
+* DomainRecord
 * [Droplet](classes/dropletendpoint.html)
 * [Image](classes/imageendpoint.html)
-* [LoadBalancer](classes/loadBalancerendpoint.html)
+* LoadBalancer
 * [Snapshot](classes/snapshotendpoint.html)
 * [SSHKeys](classes/sshkeyendpoint.html)
 * [Region](classes/regionendpoint.html)
 * [Size](classes/sizeendpoint.html)
-* [FloatingIP](classes/floatingIPendpoint.html)
+* FloatingIP
 * [Tag](classes/tagendpoint.html)
 
 ## MAP
