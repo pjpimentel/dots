@@ -1,5 +1,6 @@
 {
     "compileOnSave": true,
+    "declaration": true,
     "compilerOptions": {
         //"module": "amd",
         "module": "commonjs",
