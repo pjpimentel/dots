@@ -5,13 +5,13 @@
 Not tested in production.
 ## Install
 ``` bash
-    #npm install --save dots
-    npm install --save git+ssh://git@github.com:pjpimentel/dots.git
+    #npm install --save git+ssh://git@github.com:pjpimentel/dots.git
+    npm install --save dots-wrapper
 ```
 ## Usage
 Typescript
 ``` typescript
-    import DigitalOcean from 'dots';
+    import DigitalOcean from 'dots-wrapper';
     const myApiToken = 'my-long-token';
     const digitalOcean = new DigitalOcean(myApiToken);
 
@@ -28,7 +28,7 @@ Typescript
 ```
 Javascript - Nodejs
 ``` javascript
-    const DigitalOcean = require('dots');
+    const DigitalOcean = require('dots-wrapper').DigitalOcean;
     const myApiToken = 'my-long-token';
     const digitalOcean = new DigitalOcean(myApiToken);
 
