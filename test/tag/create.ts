@@ -1,16 +1,10 @@
 #!/usr/bin/env node
-'use strict';
-import token from '../token';
-import DigitalOcean from '../../';
+import digitalOcean from '../';
 
-const digitalOcean = new DigitalOcean(token);
-
+let success = data => console.log(data);
+let error = error => console.log(error.message);
 let name = process.argv[2];
 
-if(!name) throw new Error('Invalid name.');
+if (!name) throw new Error('Invalid name.');
 
-digitalOcean
-    .Tag
-    .create({name:name})
-    .then(tag => console.log(tag))
-    .catch(e => console.log(e.message));
+digitalOcean.Tag.create({ name: name }).first().subscribe(success, error)

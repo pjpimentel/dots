@@ -4,7 +4,7 @@ import ImageEndpoint from './endpoint';
 import Asset from '../common/asset';
 /**
  * Image asset.
- * 
+ *
  * @class Image
  * @extends {Asset<ImageEndpoint>}
  * @implements {IImage}
@@ -22,10 +22,10 @@ class Image extends Asset<ImageEndpoint> implements IImage{
     readonly type: string;
     /**
      * Creates an instance of Image.
-     * @param {ImageEndpoint} endpoint 
-     * @param {IImage} image 
-     * 
-     * @memberOf Image
+     * @param {ImageEndpoint} endpoint
+     * @param {IImage} image
+     *
+     * @memberof Image
      */
     constructor(endpoint: ImageEndpoint, image: IImage){
         super(endpoint),
@@ -42,21 +42,21 @@ class Image extends Asset<ImageEndpoint> implements IImage{
     }
     /**
      * Delete image.
-     * 
-     * @returns {Promise<void>} 
-     * 
-     * @memberOf Image
+     *
+     * @returns {Promise<void>}
+     *
+     * @memberof Image
      */
     public async delete(): Promise<void>{
         await this.endpoint.delete(this.id);
     }
     /**
      * Update image name.
-     * 
-     * @param {string} name 
-     * @returns {Promise<void>} 
-     * 
-     * @memberOf Image
+     *
+     * @param {string} name
+     * @returns {Promise<void>}
+     *
+     * @memberof Image
      */
     public async setName(name: string): Promise<void>{
         await this.endpoint.update(this.id, {name: name});
@@ -64,11 +64,11 @@ class Image extends Asset<ImageEndpoint> implements IImage{
     }
     /**
      * Transfer image to another region.
-     * 
-     * @param {string} regionSlug 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf Image
+     *
+     * @param {string} regionSlug
+     * @returns {Promise<Action>}
+     *
+     * @memberof Image
      */
     public async transfer(regionSlug: string){
         return this.endpoint.transfer(this.id, regionSlug);

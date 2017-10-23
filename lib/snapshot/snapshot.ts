@@ -4,7 +4,7 @@ import SnapshotEndpoint from './endpoint';
 import Asset from '../common/asset';
 /**
  * Snapshot asset.
- * 
+ *
  * @class Snapshot
  * @extends {Asset<SnapshotEndpoint>}
  * @implements {ISnapshot}
@@ -20,10 +20,10 @@ class Snapshot extends Asset<SnapshotEndpoint> implements ISnapshot{
     readonly size_gigabytes: number;
     /**
      * Creates an instance of Snapshot.
-     * @param {SnapshotEndpoint} endpoint 
-     * @param {ISnapshot} snapshot 
-     * 
-     * @memberOf Snapshot
+     * @param {SnapshotEndpoint} endpoint
+     * @param {ISnapshot} snapshot
+     *
+     * @memberof Snapshot
      */
     constructor(endpoint: SnapshotEndpoint, snapshot: ISnapshot){
         super(endpoint),
@@ -38,10 +38,10 @@ class Snapshot extends Asset<SnapshotEndpoint> implements ISnapshot{
     }
     /**
      * Delete snapshot.
-     * 
-     * @returns {Promise<void>} 
-     * 
-     * @memberOf Snapshot
+     *
+     * @returns {Promise<void>}
+     *
+     * @memberof Snapshot
      */
     public async delete(): Promise<void>{
         return this.endpoint.delete(this.id);

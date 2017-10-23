@@ -8,7 +8,7 @@ import Action from "../action/action";
 import { ICollection } from "../common/interfaces";
 /**
  * Image endpoint.
- * 
+ *
  * @class ImageEndpoint
  * @extends {Endpoint<DigitalOcean>}
  * @implements {IImageEndpoint}
@@ -16,20 +16,20 @@ import { ICollection } from "../common/interfaces";
 class ImageEndpoint extends Endpoint implements IImageEndpoint {
     /**
      * Creates an instance of ImageEndpoint.
-     * @param {DigitalOcean} digitalOcean 
-     * 
-     * @memberOf ImageEndpoint
+     * @param {DigitalOcean} digitalOcean
+     *
+     * @memberof ImageEndpoint
      */
     constructor(digitalOcean: DigitalOcean) {
         super(digitalOcean, '/images');
     }
     /**
      * Convert image to snapshot.
-     * 
-     * @param {number} id 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf ImageEndpoint
+     *
+     * @param {number} id
+     * @returns {Promise<Action>}
+     *
+     * @memberof ImageEndpoint
      */
     public async convertToSnapshot(id: number): Promise<Action> {
         let url: string = [this.prefix, id, 'actions'].join('/');
@@ -41,11 +41,11 @@ class ImageEndpoint extends Endpoint implements IImageEndpoint {
     }
     /**
      * Delete image by id.
-     * 
-     * @param {number} id 
-     * @returns {Promise<void>} 
-     * 
-     * @memberOf ImageEndpoint
+     *
+     * @param {number} id
+     * @returns {Promise<void>}
+     *
+     * @memberof ImageEndpoint
      */
     public async delete(id: number): Promise<void> {
         let url: string = [this.prefix, id].join('/');
@@ -54,20 +54,20 @@ class ImageEndpoint extends Endpoint implements IImageEndpoint {
     }
     /**
      * Get image by id.
-     * 
-     * @param {number} id 
-     * @returns {Promise<Image>} 
-     * 
-     * @memberOf ImageEndpoint
+     *
+     * @param {number} id
+     * @returns {Promise<Image>}
+     *
+     * @memberof ImageEndpoint
      */
     public async get(id: number): Promise<Image>;
     /**
      * Get image by slug.
-     * 
-     * @param {string} slug 
-     * @returns {Promise<Image>} 
-     * 
-     * @memberOf ImageEndpoint
+     *
+     * @param {string} slug
+     * @returns {Promise<Image>}
+     *
+     * @memberof ImageEndpoint
      */
     public async get(slug: string): Promise<Image>;
     public async get(uid: number | string): Promise<Image> {
@@ -80,12 +80,12 @@ class ImageEndpoint extends Endpoint implements IImageEndpoint {
     }
     /**
      * Get images's action by id.
-     * 
-     * @param {number} id 
-     * @param {number} actionId 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf ImageEndpoint
+     *
+     * @param {number} id
+     * @param {number} actionId
+     * @returns {Promise<Action>}
+     *
+     * @memberof ImageEndpoint
      */
     public async getActionById(id: number, actionId: number): Promise<Action> {
         let url: string = [this.prefix, id, 'actions', actionId].join('/');
@@ -96,13 +96,13 @@ class ImageEndpoint extends Endpoint implements IImageEndpoint {
     }
     /**
      * List images by type.
-     * 
-     * @param {('distribution'|'appplication')} type 
-     * @param {number} page 
-     * @param {number} [perPage] 
-     * @returns {Promise<ICollection<Image>>} 
-     * 
-     * @memberOf ImageEndpoint
+     *
+     * @param {('distribution'|'appplication')} type
+     * @param {number} page
+     * @param {number} [perPage]
+     * @returns {Promise<ICollection<Image>>}
+     *
+     * @memberof ImageEndpoint
      */
     public async list(
         type: 'distribution' | 'appplication' | string,
@@ -111,12 +111,12 @@ class ImageEndpoint extends Endpoint implements IImageEndpoint {
     ): Promise<ICollection<Image>>;
     /**
      * List all images.
-     * 
-     * @param {number} page 
-     * @param {number} [perPage] 
-     * @returns {Promise<ICollection<Image>>} 
-     * 
-     * @memberOf ImageEndpoint
+     *
+     * @param {number} page
+     * @param {number} [perPage]
+     * @returns {Promise<ICollection<Image>>}
+     *
+     * @memberof ImageEndpoint
      */
     public async list(
         page: number,
@@ -151,13 +151,13 @@ class ImageEndpoint extends Endpoint implements IImageEndpoint {
     }
     /**
      * List image's actions.
-     * 
-     * @param {number} id 
-     * @param {number} page 
-     * @param {number} [perPage] 
-     * @returns {Promise<ICollection<Action>>} 
-     * 
-     * @memberOf ImageEndpoint
+     *
+     * @param {number} id
+     * @param {number} page
+     * @param {number} [perPage]
+     * @returns {Promise<ICollection<Action>>}
+     *
+     * @memberof ImageEndpoint
      */
     public async listActions(
         id: number,
@@ -177,12 +177,12 @@ class ImageEndpoint extends Endpoint implements IImageEndpoint {
     }
     /**
      * List User's images.
-     * 
-     * @param {number} page 
-     * @param {number} [perPage] 
-     * @returns {Promise<ICollection<Image>>} 
-     * 
-     * @memberOf ImageEndpoint
+     *
+     * @param {number} page
+     * @param {number} [perPage]
+     * @returns {Promise<ICollection<Image>>}
+     *
+     * @memberof ImageEndpoint
      */
     public async listPrivate(
         page: number,
@@ -201,12 +201,12 @@ class ImageEndpoint extends Endpoint implements IImageEndpoint {
     }
     /**
      * Transfer image to another region.
-     * 
-     * @param {number} id 
-     * @param {string} regionSlug 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf ImageEndpoint
+     *
+     * @param {number} id
+     * @param {string} regionSlug
+     * @returns {Promise<Action>}
+     *
+     * @memberof ImageEndpoint
      */
     public async transfer(id: number, regionSlug: string): Promise<Action> {
         let url: string = [this.prefix, id, 'actions'].join('/');
@@ -218,12 +218,12 @@ class ImageEndpoint extends Endpoint implements IImageEndpoint {
     }
     /**
      * Update image.
-     * 
-     * @param {number} id 
-     * @param {IImageUpdateSpecs} specs 
-     * @returns {Promise<Image>} 
-     * 
-     * @memberOf ImageEndpoint
+     *
+     * @param {number} id
+     * @param {IImageUpdateSpecs} specs
+     * @returns {Promise<Image>}
+     *
+     * @memberof ImageEndpoint
      */
     public async update(id: number, specs: IImageUpdateSpecs): Promise<Image> {
         let url: string = [this.prefix, id].join('/');

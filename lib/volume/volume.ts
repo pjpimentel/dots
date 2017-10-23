@@ -5,7 +5,7 @@ import Asset from '../common/asset';
 import { IRegion } from "../region/interfaces";
 /**
  * Volume asset.
- * 
+ *
  * @class Volume
  * @extends {Asset<VolumeEndpoint>}
  * @implements {IVolume}
@@ -20,10 +20,10 @@ class Volume extends Asset<VolumeEndpoint> implements IVolume{
     readonly size_gigabytes: number;
     /**
      * Creates an instance of Volume.
-     * @param {VolumeEndpoint} endpoint 
-     * @param {IVolume} volume 
-     * 
-     * @memberOf Volume
+     * @param {VolumeEndpoint} endpoint
+     * @param {IVolume} volume
+     *
+     * @memberof Volume
      */
     constructor(endpoint: VolumeEndpoint, volume: IVolume){
         super(endpoint);
@@ -37,43 +37,43 @@ class Volume extends Asset<VolumeEndpoint> implements IVolume{
     }
     /**
      * Attach volume to droplet.
-     * 
-     * @param {number} droplet_id 
-     * @returns 
-     * 
-     * @memberOf Volume
+     *
+     * @param {number} droplet_id
+     * @returns
+     *
+     * @memberof Volume
      */
     public async attach(droplet_id: number){
         return this.endpoint.attach(this.id, droplet_id);
     }
     /**
      * Create snapshot from volume.
-     * 
-     * @param {string} name 
-     * @returns 
-     * 
-     * @memberOf Volume
+     *
+     * @param {string} name
+     * @returns
+     *
+     * @memberof Volume
      */
     public async createSnapshot(name: string){
         return this.endpoint.createSnapshot(this.id, name);
     }
     /**
      * Delete volume
-     * 
-     * @returns 
-     * 
-     * @memberOf Volume
+     *
+     * @returns
+     *
+     * @memberof Volume
      */
     public async delete(){
         return this.endpoint.delete(this.id);
     }
     /**
      * Detach volume from droplet.
-     * 
-     * @param {number} [droplet_id] 
-     * @returns 
-     * 
-     * @memberOf Volume
+     *
+     * @param {number} [droplet_id]
+     * @returns
+     *
+     * @memberof Volume
      */
     public async detach(droplet_id?: number){
         if (!droplet_id) droplet_id = this.droplet_ids[0] || null;
@@ -81,35 +81,35 @@ class Volume extends Asset<VolumeEndpoint> implements IVolume{
     }
     /**
      * Get volume's action.
-     * 
-     * @param {number} id 
-     * @returns 
-     * 
-     * @memberOf Volume
+     *
+     * @param {number} id
+     * @returns
+     *
+     * @memberof Volume
      */
     public async getActionById(id: number){
         return this.endpoint.getActionById(this.id, id);
     }
     /**
      * List all volume's action.
-     * 
-     * @param {number} page 
-     * @param {number} [perPage] 
-     * @returns 
-     * 
-     * @memberOf Volume
+     *
+     * @param {number} page
+     * @param {number} [perPage]
+     * @returns
+     *
+     * @memberof Volume
      */
     public async listActions(page: number, perPage?: number){
         return this.endpoint.listActions(this.id, page, perPage);
     }
     /**
      * List all volume's snapshots.
-     * 
-     * @param {number} page 
-     * @param {number} [perPage] 
-     * @returns 
-     * 
-     * @memberOf Volume
+     *
+     * @param {number} page
+     * @param {number} [perPage]
+     * @returns
+     *
+     * @memberof Volume
      */
     public async listSnapshots(page: number, perPage?: number){
         return this.endpoint.listSnapshots(this.id, page, perPage);

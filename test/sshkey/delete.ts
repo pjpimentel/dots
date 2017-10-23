@@ -1,19 +1,14 @@
 #!/usr/bin/env node
-'use strict';
-import token from '../token';
-import DigitalOcean from '../../';
+import digitalOcean from '../';
 
-const digitalOcean = new DigitalOcean(token);
+let success = key => console.log('deleted!');
+let error = error => console.log(error.message);
+let uid = process.argv[2];
 
-let uid = parseInt(process.argv[2]);
-if(!uid) throw new Error('Invalid uid.');
+if (!uid) throw new Error('Invalid uid.');
 
-digitalOcean
-    .SSHKey
+digitalOcean.SSHKey
     .get(uid)
-    .then(key => {
-        key.delete()
-            .then(() => console.log('deleted!'))
-            .catch(e => console.log(e.message));
-    })
-    .catch(e => console.log(e.message));
+    .first()
+    .flatMap(key => digitalOcean.SSHKey.delete(key.id).first())
+    .subscribe(success, error)

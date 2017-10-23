@@ -3,7 +3,7 @@ import {AxiosError} from 'axios';
 import API from './common/api';
 /**
  * Digital Ocean API
- * 
+ *
  * @export
  * @class DigitalOcean
  * @extends {API}
@@ -11,11 +11,11 @@ import API from './common/api';
 class DigitalOcean extends API{
     /**
      * error fn handler interceptor
-     * 
+     *
      * @private
      * @static
-     * 
-     * @memberOf DigitalOcean
+     *
+     * @memberof DigitalOcean
      */
     private static errorHandler(error: AxiosError) {
         let res = error.response;
@@ -39,10 +39,10 @@ class DigitalOcean extends API{
     };
     /**
      * Creates an instance of DigitalOcean.
-     * @param {string} token 
-     * @param {number} [timeout] 
-     * 
-     * @memberOf DigitalOcean
+     * @param {string} token
+     * @param {number} [timeout]
+     *
+     * @memberof DigitalOcean
      */
     constructor(token: string, timeout?: number) {
         super({

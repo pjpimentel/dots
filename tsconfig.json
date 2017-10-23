@@ -23,7 +23,11 @@
         "lib/common/*.ts",
         "test/*",
         "test/account/*",
-        "test/size/*"
+        "test/size/*",
+        "test/tag/*",
+        "test/region/*",
+        "test/action/*",
+        "test/sshkey/*"
     ],
     "exclude": [
         "node_modules/*",

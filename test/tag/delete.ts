@@ -1,19 +1,10 @@
 #!/usr/bin/env node
-'use strict';
-import token from '../token';
-import DigitalOcean from '../../';
+import digitalOcean from '../';
 
-const digitalOcean = new DigitalOcean(token);
-
+let success = data => console.log('deleted!');
+let error = error => console.log(error.message);
 let name = process.argv[2];
-if(!name) throw new Error('Invalid name.');
 
-digitalOcean
-    .Tag
-    .get(name)
-    .then(tag => {
-        tag.delete()
-            .then(() => console.log('deleted!'))
-            .catch(e => console.log(e.message));
-    })
-    .catch(e => console.log(e.message));
+if (!name) throw new Error('Invalid name.');
+
+digitalOcean.Tag.delete(name).first().subscribe(success, error)

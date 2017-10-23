@@ -4,7 +4,7 @@ import CertificateEndpoint from './endpoint';
 import Asset from '../common/asset';
 /**
  * Certificate asset.
- * 
+ *
  * @class Certificate
  * @extends {Asset<CertificateEndpoint>}
  * @implements {ICertificate}
@@ -17,10 +17,10 @@ class Certificate extends Asset<CertificateEndpoint> implements ICertificate{
     readonly sha1_fingerprint: string;
     /**
      * Creates an instance of Certificate.
-     * @param {CertificateEndpoint} endpoint 
-     * @param {ICertificate} certificate 
-     * 
-     * @memberOf Certificate
+     * @param {CertificateEndpoint} endpoint
+     * @param {ICertificate} certificate
+     *
+     * @memberof Certificate
      */
     constructor(endpoint: CertificateEndpoint, certificate: ICertificate){
         super(endpoint),
@@ -32,10 +32,10 @@ class Certificate extends Asset<CertificateEndpoint> implements ICertificate{
     }
     /**
      * Delete certificate
-     * 
-     * @returns {Promise<void>} 
-     * 
-     * @memberOf Certificate
+     *
+     * @returns {Promise<void>}
+     *
+     * @memberof Certificate
      */
     public async delete(): Promise<void>{
         return this.endpoint.delete(this.id);

@@ -1,4 +1,4 @@
-import { IAccount, ISize } from './interfaces';
+import { IAccount, ISize, ITag, IResource, IRegion, IAction, ISSHKey } from './interfaces';
 /**
  * Guard of string[];
  *
@@ -56,4 +56,132 @@ export function isSize(data: any): data is ISize {
 export function isArrayOfSize(data: any): data is ISize[] {
     if (!Array.isArray(data)) return false;
     return data.every(isSize);
+}
+/**
+ * Guard of ITag.
+ *
+ * @export
+ * @param {*} data
+ * @returns {data is ITag}
+ */
+export function isTag(data: any): data is ITag {
+    if (typeof (data as ITag).name !== 'string') return false;
+    // if(!isArrayOfResource((data as ITag).resources)) return false;
+    return true;
+}
+/**
+ * Guard of ITag[].
+ *
+ * @export
+ * @param {*} data
+ * @returns {data is ITag}
+ */
+export function isArrayOfTag(data: any): data is ITag {
+    if (!Array.isArray(data)) return false;
+    return data.every(isTag);
+}
+/**
+ * Guard of IResource.
+ *
+ * @export
+ * @param {*} data
+ * @returns {data is IResource}
+ */
+export function isResource(data: any): data is IResource {
+    if (typeof (data as IResource).resource_id !== 'string') return false;
+    if (typeof (data as IResource).resource_type !== 'string') return false;
+    return true;
+}
+/**
+ * Guard of IResource[].
+ *
+ * @export
+ * @param {*} data
+ * @returns {data is Array<IResource>}
+ */
+export function isArrayOfResource(data: any): data is IResource[] {
+    if (!Array.isArray(data)) return false;
+    return data.every(isResource);
+}
+/**
+ * Guard of IRegion
+ *
+ * @export
+ * @param {*} data
+ * @returns {data is IRegion}
+ */
+export function isRegion(data: any): data is IRegion {
+    if (typeof (data as IRegion).slug !== 'string') return false;
+    if (typeof (data as IRegion).name !== 'string') return false;
+    if (typeof (data as IRegion).available !== 'boolean') return false;
+    if (!isArrayOfString((data as IRegion).sizes)) return false;
+    if (!isArrayOfString((data as IRegion).features)) return false;
+    return true;
+}
+/**
+ * Guard of IRegion[]
+ *
+ * @export
+ * @param {*} data
+ * @returns {data is IRegion}
+ */
+export function isArrayOfRegion(data: any): data is IRegion[] {
+    if (!Array.isArray(data)) return false;
+    return data.every(isRegion);
+}
+/**
+ * Guard of IAction
+ *
+ * @export
+ * @param {*} data
+ * @returns {data is IAction}
+ */
+export function isAction(data: any): data is IAction {
+    if (typeof (data as IAction).id !== 'number') return false;
+    if (typeof (data as IAction).status !== 'string') return false;
+    if (typeof (data as IAction).type !== 'string') return false;
+    if (typeof (data as IAction).started_at !== 'string') return false;
+    if (typeof (data as IAction).completed_at !== 'string') return false;
+    if (typeof (data as IAction).resource_type !== 'string') return false;
+    if((data as IAction).resource_id !== null)
+        if (typeof (data as IAction).resource_id !== 'number') return false;
+    if((data as IAction).region_slug !== null)
+        if (typeof (data as IAction).region_slug !== 'string') return false;
+    return true;
+}
+/**
+ * Guard of IAction[]
+ *
+ * @export
+ * @param {*} data
+ * @returns {data is IAction[]}
+ */
+export function isArrayOfAction(data: any): data is IAction[] {
+    if (!Array.isArray(data)) return false;
+    return data.every(isAction);
+}
+/**
+ * Guard of ISSHKey
+ *
+ * @export
+ * @param {*} data
+ * @returns {data is ISSHKey}
+ */
+export function isSSHKey(data: any): data is ISSHKey {
+    if (typeof (data as ISSHKey).id !== 'number') return false;
+    if (typeof (data as ISSHKey).fingerprint !== 'string') return false;
+    if (typeof (data as ISSHKey).name !== 'string') return false;
+    if (typeof (data as ISSHKey).public_key !== 'string') return false;
+    return true;
+}
+/**
+ * Guard of ISSHKey[]
+ *
+ * @export
+ * @param {*} data
+ * @returns {data is ISSHKey[]}
+ */
+export function isArrayOfSSHKey(data: any): data is ISSHKey[] {
+    if (!Array.isArray(data)) return false;
+    return data.every(isSSHKey);
 }

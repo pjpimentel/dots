@@ -1,5 +1,5 @@
 #!/bin/bash
-typedoc \
+node_modules/typedoc/bin/typedoc \
 	--gaID	UA-102652050-1 \
 	--gaSite auto \
 	--readme ./docs-README.md \

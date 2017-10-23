@@ -17,7 +17,7 @@ export default class AccountEndpoint extends Endpoint implements IAccountEndpoin
      * Creates an instance of AccountEndpoint.
      * @param {DigitalOcean} digitalOcean
      *
-     * @memberOf AccountEndpoint
+     * @memberof AccountEndpoint
      */
     constructor(digitalOcean: DigitalOcean) {
         super(digitalOcean, '/account');
@@ -27,7 +27,7 @@ export default class AccountEndpoint extends Endpoint implements IAccountEndpoin
      *
      * @returns {Observable<IAccount>}
      *
-     * @memberOf AccountEndpoint
+     * @memberof AccountEndpoint
      */
     public get(): Observable<IAccount> {
         let url: string = this.prefix;

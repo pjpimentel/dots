@@ -1,23 +1,17 @@
 #!/usr/bin/env node
-'use strict';
-import token from '../token';
-import DigitalOcean from '../../';
+import digitalOcean from '../';
 
-const digitalOcean = new DigitalOcean(token);
-
+let success = key => console.log(key.name);
+let error = error => console.log(error.message);
 let uid = process.argv[2];
 let name = process.argv[3];
 
-if(!uid) throw new Error('Invalid uid.');
-if(!name) throw new Error('Invaluid name.');
+if (!uid) throw new Error('Invalid uid.');
+if (!name) throw new Error('Invaluid name.');
 
-digitalOcean
-    .SSHKey
+digitalOcean.SSHKey
     .get(uid)
-    .then(key => {
-        console.log(key.name);
-        key.setName(name)
-            .then(() => console.log(key.name))
-            .catch(e => console.log(e.message));
-    })
-    .catch(e => console.log(e.message));
+    .first()
+    .map(key => success(key) || key)
+    .flatMap(key => digitalOcean.SSHKey.update(key.id, { name: name }).first())
+    .subscribe(success, error)

@@ -10,7 +10,7 @@ import { IAction } from "../action/interfaces";
 import Action from "../action/action";
 /**
  * Droplet endpoint
- * 
+ *
  * @class DropletEndpoint
  * @extends {Endpoint<DigitalOcean>}
  * @implements {IDropletEndpoint}
@@ -18,21 +18,21 @@ import Action from "../action/action";
 class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     /**
      * Creates an instance of DropletEndpoint.
-     * @param {DigitalOcean} digitalOcean 
-     * 
-     * @memberOf DropletEndpoint
+     * @param {DigitalOcean} digitalOcean
+     *
+     * @memberof DropletEndpoint
      */
     constructor(digitalOcean: DigitalOcean) {
         super(digitalOcean, '/droplets');
     }
     /**
      * Change droplet's kernel.
-     * 
-     * @param {number} id 
-     * @param {number} kernelId 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @param {number} id
+     * @param {number} kernelId
+     * @returns {Promise<Action>}
+     *
+     * @memberof DropletEndpoint
      */
     public async changeKernel(id: number, kernelId: number): Promise<Action> {
         let url = [this.prefix, id, 'actions'].join('/');
@@ -41,10 +41,10 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     }
     /**
      * Create new droplet.
-     * 
-     * @param {IDropletSpecs} specs 
-     * @returns {Promise<Droplet>} 
-     * 
+     *
+     * @param {IDropletSpecs} specs
+     * @returns {Promise<Droplet>}
+     *
      * @memberof DropletEndpoint
      */
     public async create(specs: IDropletSpecs): Promise<Droplet> {
@@ -60,12 +60,12 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     }
     /**
      * Create snapshot from droplet.
-     * 
-     * @param {number} id 
-     * @param {string} snapshotName 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @param {number} id
+     * @param {string} snapshotName
+     * @returns {Promise<Action>}
+     *
+     * @memberof DropletEndpoint
      */
     public async createSnapshot(
         id: number,
@@ -77,19 +77,19 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     }
     /**
      * Delete droplet by Id.
-     * 
-     * @param {number} id 
-     * @returns {Promise<void>} 
-     * 
+     *
+     * @param {number} id
+     * @returns {Promise<void>}
+     *
      * @memberof DropletEndpoint
      */
     public async delete(id: number): Promise<void>;
     /**
      * Delete droplet by tag.
-     * 
-     * @param {string} tag 
-     * @returns {Promise<void>} 
-     * 
+     *
+     * @param {string} tag
+     * @returns {Promise<void>}
+     *
      * @memberof DropletEndpoint
      */
     public async delete(tag: string): Promise<void>;
@@ -103,11 +103,11 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     }
     /**
      * Disable droplet backups.
-     * 
-     * @param {number} id 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @param {number} id
+     * @returns {Promise<Action>}
+     *
+     * @memberof DropletEndpoint
      */
     public async disableBackups(id: number): Promise<Action> {
         let url = [this.prefix, id, 'actions'].join('/');
@@ -116,11 +116,11 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     }
     /**
      * Enable droplet backups.
-     * 
-     * @param {number} id 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @param {number} id
+     * @returns {Promise<Action>}
+     *
+     * @memberof DropletEndpoint
      */
     public async enableBackups(id: number): Promise<Action> {
         let url = [this.prefix, id, 'actions'].join('/');
@@ -129,11 +129,11 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     }
     /**
      * Enable ipv6 networking in one droplet.
-     * 
-     * @param {number} id 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @param {number} id
+     * @returns {Promise<Action>}
+     *
+     * @memberof DropletEndpoint
      */
     public async enableIPv6(id: number): Promise<Action> {
         let url = [this.prefix, id, 'actions'].join('/');
@@ -142,11 +142,11 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     }
     /**
      * Enable private networking in one droplet.
-     * 
-     * @param {number} id 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @param {number} id
+     * @returns {Promise<Action>}
+     *
+     * @memberof DropletEndpoint
      */
     public async enablePrivateNetworking(id: number): Promise<Action> {
         let url = [this.prefix, id, 'actions'].join('/');
@@ -155,11 +155,11 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     }
     /**
      * Get droplet by id.
-     * 
-     * @param {number} id 
-     * @returns {Promise<Droplet>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @param {number} id
+     * @returns {Promise<Droplet>}
+     *
+     * @memberof DropletEndpoint
      */
     public async get(id: number): Promise<Droplet> {
         let url = [this.prefix, id].join('/');
@@ -170,12 +170,12 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     };
     /**
      * Get droplet's action.
-     * 
-     * @param {number} dropletId 
-     * @param {number} actionId 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @param {number} dropletId
+     * @param {number} actionId
+     * @returns {Promise<Action>}
+     *
+     * @memberof DropletEndpoint
      */
     public async getActionById(
         dropletId: number,
@@ -189,13 +189,13 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     }
     /**
      * List droplets by tag.
-     * 
-     * @param {string} tag 
-     * @param {number} page 
-     * @param {number} [perPage] 
-     * @returns {Promise<ICollection<Droplet>>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @param {string} tag
+     * @param {number} page
+     * @param {number} [perPage]
+     * @returns {Promise<ICollection<Droplet>>}
+     *
+     * @memberof DropletEndpoint
      */
     public async list(
         tag: string,
@@ -204,12 +204,12 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     ): Promise<ICollection<Droplet>>;
     /**
      * List all droplets.
-     * 
-     * @param {number} page 
-     * @param {number} [perPage] 
-     * @returns {Promise<ICollection<Droplet>>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @param {number} page
+     * @param {number} [perPage]
+     * @returns {Promise<ICollection<Droplet>>}
+     *
+     * @memberof DropletEndpoint
      */
     public async list(
         page: number,
@@ -244,13 +244,13 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     }
     /**
      * List all droplet's snapshots. [droplet ? snapshot = image]
-     * 
-     * @param {number} id 
-     * @param {number} page 
-     * @param {number} [perPage] 
-     * @returns {Promise<ICollection<Image>>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @param {number} id
+     * @param {number} page
+     * @param {number} [perPage]
+     * @returns {Promise<ICollection<Image>>}
+     *
+     * @memberof DropletEndpoint
      */
     public async listImages(
         id: number,
@@ -276,10 +276,10 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     }
     /**
      * List droplets that are running on the same physical hardware.
-     * 
-     * @returns {Promise<Array<any>>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @returns {Promise<Array<any>>}
+     *
+     * @memberof DropletEndpoint
      */
     public async listNeighbors(): Promise<Array<Neighbors>> {
         let url = ['', 'reports', 'droplet_neighbors'].join('/');
@@ -293,11 +293,11 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     }
     /**
      * List droplet's neighbors.
-     * 
-     * @param {number} id 
-     * @returns {Promise<Neighbors>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @param {number} id
+     * @returns {Promise<Neighbors>}
+     *
+     * @memberof DropletEndpoint
      */
     public async listNeighborsByDropletId(id: number): Promise<Neighbors> {
         let url = [this.prefix, id, 'neighbors'].join('/');
@@ -309,11 +309,11 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     }
     /**
      * Reset droplet password.
-     * 
-     * @param {number} id 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @param {number} id
+     * @returns {Promise<Action>}
+     *
+     * @memberof DropletEndpoint
      */
     public async passwordReset(id: number): Promise<Action> {
         let url = [this.prefix, id, 'actions'].join('/');
@@ -322,11 +322,11 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     }
     /**
      * Power cycle droplet [similar to pushing the reset button].
-     * 
-     * @param {number} id 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @param {number} id
+     * @returns {Promise<Action>}
+     *
+     * @memberof DropletEndpoint
      */
     public async powerCycle(id: number): Promise<Action> {
         let url = [this.prefix, id, 'actions'].join('/');
@@ -335,11 +335,11 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     }
     /**
      * Power off a droplet.
-     * 
-     * @param {number} id 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @param {number} id
+     * @returns {Promise<Action>}
+     *
+     * @memberof DropletEndpoint
      */
     public async powerOff(id: number): Promise<Action> {
         let url = [this.prefix, id, 'actions'].join('/');
@@ -348,11 +348,11 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     }
     /**
      * Power on a droplet.
-     * 
-     * @param {number} id 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @param {number} id
+     * @returns {Promise<Action>}
+     *
+     * @memberof DropletEndpoint
      */
     public async powerOn(id: number): Promise<Action> {
         let url = [this.prefix, id, 'actions'].join('/');
@@ -361,11 +361,11 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     }
     /**
      * Reboot droplet [reboot in a graceful way].
-     * 
-     * @param {number} id 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @param {number} id
+     * @returns {Promise<Action>}
+     *
+     * @memberof DropletEndpoint
      */
     public async reboot(id: number): Promise<Action> {
         let url = [this.prefix, id, 'actions'].join('/');
@@ -374,22 +374,22 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     };
     /**
      * Rebuild droplet by image slug.
-     * 
-     * @param {number} id 
-     * @param {string} imageSlug 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @param {number} id
+     * @param {string} imageSlug
+     * @returns {Promise<Action>}
+     *
+     * @memberof DropletEndpoint
      */
     public async rebuild(id: number, imageSlug: string): Promise<Action>;
     /**
      * Rebuild droplet by image id.
-     * 
-     * @param {number} id 
-     * @param {number} imageId 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @param {number} id
+     * @param {number} imageId
+     * @returns {Promise<Action>}
+     *
+     * @memberof DropletEndpoint
      */
     public async rebuild(id: number, imageId: number): Promise<Action>;
     public async rebuild(id: number, b: string | number): Promise<Action> {
@@ -399,12 +399,12 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     }
     /**
      * Rename droplet.
-     * 
-     * @param {number} id 
-     * @param {string} newName 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @param {number} id
+     * @param {string} newName
+     * @returns {Promise<Action>}
+     *
+     * @memberof DropletEndpoint
      */
     public async rename(id: number, newName: string): Promise<Action> {
         let url = [this.prefix, id, 'actions'].join('/');
@@ -413,13 +413,13 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     }
     /**
      * Resize droplet.
-     * 
-     * @param {number} id 
-     * @param {string} sizeSlug 
-     * @param {boolean} increaseDisk 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @param {number} id
+     * @param {string} sizeSlug
+     * @param {boolean} increaseDisk
+     * @returns {Promise<Action>}
+     *
+     * @memberof DropletEndpoint
      */
     public async resize(
         id: number,
@@ -432,22 +432,22 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     }
     /**
      * Restore droplet by image slug.
-     * 
-     * @param {number} id 
-     * @param {string} imageSlug 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @param {number} id
+     * @param {string} imageSlug
+     * @returns {Promise<Action>}
+     *
+     * @memberof DropletEndpoint
      */
     public async restore(id: number, imageSlug: string): Promise<Action>;
     /**
      * Restore droplet by image id.
-     * 
-     * @param {number} id 
-     * @param {number} imageId 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @param {number} id
+     * @param {number} imageId
+     * @returns {Promise<Action>}
+     *
+     * @memberof DropletEndpoint
      */
     public async restore(id: number, imageId: number): Promise<Action>;
     public async restore(id: number, b: string | number): Promise<Action> {
@@ -457,11 +457,11 @@ class DropletEndpoint extends Endpoint implements IDropletEndpoint {
     }
     /**
      * Shutdown a droplet [shutdown in a graceful way].
-     * 
-     * @param {number} id 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf DropletEndpoint
+     *
+     * @param {number} id
+     * @returns {Promise<Action>}
+     *
+     * @memberof DropletEndpoint
      */
     public async shutdown(id: number): Promise<Action> {
         let url = [this.prefix, id, 'actions'].join('/');

@@ -10,7 +10,7 @@ import { IAction } from "../action/interfaces";
 import { ICollection } from "../common/interfaces";
 /**
  * Volume endpoint.
- * 
+ *
  * @class VolumeEndpoint
  * @extends {Endpoint}
  * @implements {IVolumeEndpoint}
@@ -18,30 +18,30 @@ import { ICollection } from "../common/interfaces";
 class VolumeEndpoint extends Endpoint implements IVolumeEndpoint {
     /**
      * Creates an instance of VolumeEndpoint.
-     * @param {DigitalOcean} digitalOcean 
-     * 
-     * @memberOf VolumeEndpoint
+     * @param {DigitalOcean} digitalOcean
+     *
+     * @memberof VolumeEndpoint
      */
     constructor(digitalOcean: DigitalOcean) {
         super(digitalOcean, '/volumes');
     }
     /**
      * Attach volume to droplet by volume id.
-     * 
-     * @param {string} id 
-     * @param {number} dropletId 
-     * 
-     * @memberOf VolumeEndpoint
+     *
+     * @param {string} id
+     * @param {number} dropletId
+     *
+     * @memberof VolumeEndpoint
      */
     public async attach(id: string, dropletId: number);
     /**
      * Attach volume to droplet by volume name.
-     * 
-     * @param {string} name 
-     * @param {number} dropletId 
-     * @param {string} region 
-     * 
-     * @memberOf VolumeEndpoint
+     *
+     * @param {string} name
+     * @param {number} dropletId
+     * @param {string} region
+     *
+     * @memberof VolumeEndpoint
      */
     public async attach(name: string, dropletId: number, region: string);
     public async attach(a: string, b: number, c?: string): Promise<Action> {
@@ -65,11 +65,11 @@ class VolumeEndpoint extends Endpoint implements IVolumeEndpoint {
     }
     /**
      * Create new volume.
-     * 
-     * @param {IVolumeSpecs} specs 
-     * @returns {Promise<Volume>} 
-     * 
-     * @memberOf VolumeEndpoint
+     *
+     * @param {IVolumeSpecs} specs
+     * @returns {Promise<Volume>}
+     *
+     * @memberof VolumeEndpoint
      */
     public async create(specs: IVolumeSpecs): Promise<Volume> {
         let url = this.prefix;
@@ -82,12 +82,12 @@ class VolumeEndpoint extends Endpoint implements IVolumeEndpoint {
     }
     /**
      * Create new Snapshot from volume.
-     * 
-     * @param {string} id 
-     * @param {string} snapshotName 
-     * @returns {Promise<Snapshot>} 
-     * 
-     * @memberOf VolumeEndpoint
+     *
+     * @param {string} id
+     * @param {string} snapshotName
+     * @returns {Promise<Snapshot>}
+     *
+     * @memberof VolumeEndpoint
      */
     public async createSnapshot(
         id: string,
@@ -103,19 +103,19 @@ class VolumeEndpoint extends Endpoint implements IVolumeEndpoint {
     }
     /**
      * Delete volume by id.
-     * 
-     * @param {string} id 
-     * 
-     * @memberOf VolumeEndpoint
+     *
+     * @param {string} id
+     *
+     * @memberof VolumeEndpoint
      */
     public async delete(id: string);
     /**
      * Delete volume by name.
-     * 
-     * @param {string} name 
-     * @param {string} region 
-     * 
-     * @memberOf VolumeEndpoint
+     *
+     * @param {string} name
+     * @param {string} region
+     *
+     * @memberof VolumeEndpoint
      */
     public async delete(name: string, region: string);
     public async delete(name: string, region?: string): Promise<void> {
@@ -129,21 +129,21 @@ class VolumeEndpoint extends Endpoint implements IVolumeEndpoint {
     }
     /**
      * Detach volume to droplet by volume id.
-     * 
-     * @param {string} id 
-     * @param {number} dropletId 
-     * 
-     * @memberOf VolumeEndpoint
+     *
+     * @param {string} id
+     * @param {number} dropletId
+     *
+     * @memberof VolumeEndpoint
      */
     public async detach(id: string, dropletId: number);
     /**
      * Detach volume to droplet by volume name.
-     * 
-     * @param {string} name 
-     * @param {number} dropletId 
-     * @param {string} region 
-     * 
-     * @memberOf VolumeEndpoint
+     *
+     * @param {string} name
+     * @param {number} dropletId
+     * @param {string} region
+     *
+     * @memberof VolumeEndpoint
      */
     public async detach(name: string, dropletId: number, region: string);
     public async detach(a: string, b: number, c?: string): Promise<Action> {
@@ -167,12 +167,12 @@ class VolumeEndpoint extends Endpoint implements IVolumeEndpoint {
     }
     /**
      * Get volume's action by id.
-     * 
-     * @param {string} volumeId 
-     * @param {number} actionId 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf VolumeEndpoint
+     *
+     * @param {string} volumeId
+     * @param {number} actionId
+     * @returns {Promise<Action>}
+     *
+     * @memberof VolumeEndpoint
      */
     public async getActionById(
         volumeId: string,
@@ -186,11 +186,11 @@ class VolumeEndpoint extends Endpoint implements IVolumeEndpoint {
     }
     /**
      * Get volume by id.
-     * 
-     * @param {string} id 
-     * @returns {Promise<Volume>} 
-     * 
-     * @memberOf VolumeEndpoint
+     *
+     * @param {string} id
+     * @returns {Promise<Volume>}
+     *
+     * @memberof VolumeEndpoint
      */
     public async get(id: string): Promise<Volume> {
         let url = [this.prefix, id].join('/');
@@ -201,12 +201,12 @@ class VolumeEndpoint extends Endpoint implements IVolumeEndpoint {
     }
     /**
      * List all volumes.
-     * 
-     * @param {number} page 
-     * @param {number} [perPage] 
-     * @returns {Promise<ICollection<Volume>>} 
-     * 
-     * @memberOf VolumeEndpoint
+     *
+     * @param {number} page
+     * @param {number} [perPage]
+     * @returns {Promise<ICollection<Volume>>}
+     *
+     * @memberof VolumeEndpoint
      */
     public async list(
         page: number,
@@ -225,13 +225,13 @@ class VolumeEndpoint extends Endpoint implements IVolumeEndpoint {
     }
     /**
      * List all volumes's actions.
-     * 
-     * @param {string} volumeId 
-     * @param {number} page 
-     * @param {number} [perPage] 
-     * @returns {Promise<ICollection<Action>>} 
-     * 
-     * @memberOf VolumeEndpoint
+     *
+     * @param {string} volumeId
+     * @param {number} page
+     * @param {number} [perPage]
+     * @returns {Promise<ICollection<Action>>}
+     *
+     * @memberof VolumeEndpoint
      */
     public async listActions(
         volumeId: string,
@@ -251,14 +251,14 @@ class VolumeEndpoint extends Endpoint implements IVolumeEndpoint {
     }
     /**
      * List all volumes by name.
-     * 
-     * @param {string} name 
-     * @param {string} region 
-     * @param {number} page 
-     * @param {number} [perPage] 
-     * @returns {Promise<ICollection<Volume>>} 
-     * 
-     * @memberOf VolumeEndpoint
+     *
+     * @param {string} name
+     * @param {string} region
+     * @param {number} page
+     * @param {number} [perPage]
+     * @returns {Promise<ICollection<Volume>>}
+     *
+     * @memberof VolumeEndpoint
      */
     public async listByName(
         name: string,
@@ -286,13 +286,13 @@ class VolumeEndpoint extends Endpoint implements IVolumeEndpoint {
     }
     /**
      * List all volumes's snapshots.
-     * 
-     * @param {string} volumeId 
-     * @param {number} page 
-     * @param {number} [perPage] 
-     * @returns {Promise<ICollection<Snapshot>>} 
-     * 
-     * @memberOf VolumeEndpoint
+     *
+     * @param {string} volumeId
+     * @param {number} page
+     * @param {number} [perPage]
+     * @returns {Promise<ICollection<Snapshot>>}
+     *
+     * @memberof VolumeEndpoint
      */
     public async listSnapshots(
         volumeId: string,
@@ -315,12 +315,12 @@ class VolumeEndpoint extends Endpoint implements IVolumeEndpoint {
     }
     /**
      * Resize volume.
-     * 
-     * @param {string} id 
-     * @param {number} size 
-     * @returns {Promise<Action>} 
-     * 
-     * @memberOf VolumeEndpoint
+     *
+     * @param {string} id
+     * @param {number} size
+     * @returns {Promise<Action>}
+     *
+     * @memberof VolumeEndpoint
      */
     public async resize(id: string, size: number): Promise<Action> {
         let url: string = [this.prefix, id, 'actions'].join('/');

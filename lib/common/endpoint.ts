@@ -18,14 +18,14 @@ abstract class Endpoint {
      * reference to API instance
      *
      * @type {API}
-     * @memberOf Endpoint
+     * @memberof Endpoint
      */
     readonly api: API;
     /**
      * url prefix
      *
      * @type {string}
-     * @memberOf Endpoint
+     * @memberof Endpoint
      */
     readonly prefix: string;
     /**
@@ -33,7 +33,7 @@ abstract class Endpoint {
      * @param {API} api
      * @param {string} prefix
      *
-     * @memberOf Endpoint
+     * @memberof Endpoint
      */
     constructor(api: API, prefix: string) {
         this.api = api;
@@ -74,7 +74,7 @@ abstract class Endpoint {
      * @param {number} [perPage]
      * @returns {ICollectionParams}
      *
-     * @memberOf Endpoint
+     * @memberof Endpoint
      */
     private getCollectionParams(page?: number, perPage?: number): ICollectionParams {
         page = page || 1;
@@ -92,7 +92,7 @@ abstract class Endpoint {
      * @param {object} params
      * @returns {Promise<Action>}
      *
-     * @memberOf Endpoint
+     * @memberof Endpoint
      */
     // protected async doAction(url: string, params: object): Promise<IAction> {
     //     let res = await this.api.post(url, params);
@@ -113,12 +113,12 @@ abstract class Endpoint {
      */
     protected fromPromise<T>(promise: AxiosPromise, property?: string, filter?: (v: any, i: number) => boolean): Observable<T> {
         let dataValidator = data => { if (!data) throw this.api.invalidResponse; return data };
-        let objectValidator = data => {
-            if (typeof data !== 'object') throw this.api.invalidResponse;
-            if (Object.keys(data).length === 0) throw this.api.invalidResponse;
-            return data;
-        };
-        let observable = Observable.fromPromise(promise).map(res => res.data).map(dataValidator).map(objectValidator);
+        // let objectValidator = data => {
+        //     if (typeof data !== 'object') throw this.api.invalidResponse;
+        //     if (Object.keys(data).length === 0) throw this.api.invalidResponse;
+        //     return data;
+        // };
+        let observable = Observable.fromPromise(promise).map(res => res.data);
         if (property) observable = observable.map(data => data[property]).map(dataValidator);
         if (filter) observable = observable.filter(filter).map(dataValidator);
         return observable;

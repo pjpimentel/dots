@@ -43,3 +43,4 @@ logs
 *.wma
 
 *.sql
+test/token.ts

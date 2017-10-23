@@ -1,10 +1,10 @@
-'use strict';
-import { isArrayOfSize, isSize } from './common/type.guards';
+import { Observable } from 'rxjs';
+
 import Endpoint from './common/endpoint';
 import { ICollection } from './common/interfaces';
-import DigitalOcean from './digitalOcean';
 import { ISize, ISizeEndpoint } from './common/interfaces';
-import { Observable } from 'rxjs';
+import { isSize } from './common/type.guards';
+import DigitalOcean from './digitalOcean';
 
 /**
  * Size endpoint.
@@ -13,12 +13,12 @@ import { Observable } from 'rxjs';
  * @extends {Endpoint}
  * @implements {ISizeEndpoint}
  */
-class SizeEndpoint extends Endpoint implements ISizeEndpoint {
+export default class SizeEndpoint extends Endpoint implements ISizeEndpoint {
     /**
      * Creates an instance of SizeEndpoint.
      * @param {DigitalOcean} digitalOcean
      *
-     * @memberOf SizeEndpoint
+     * @memberof SizeEndpoint
      */
     constructor(digitalOcean: DigitalOcean) {
         super(digitalOcean, '/sizes');
@@ -28,15 +28,12 @@ class SizeEndpoint extends Endpoint implements ISizeEndpoint {
      *
      * @param {number} page
      * @param {number} [perPage]
-     * @returns {Promise<ICollection<Size>>}
+     * @returns {Promise<ICollection<ISize>>}
      *
-     * @memberOf SizeEndpoint
+     * @memberof SizeEndpoint
      */
     public list(page: number, perPage?: number): Observable<ICollection<ISize>> {
-        let collection: ICollection<ISize>;
         let url: string = this.prefix;
         return this.getCollection<ISize>(page, perPage, url, 'sizes', isSize)
     }
 }
-
-export default SizeEndpoint;

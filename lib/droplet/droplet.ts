@@ -7,7 +7,7 @@ import { IImage } from '../image/interfaces';
 import { ISize } from "../size/interfaces";
 /**
  * Droplet asset.
- * 
+ *
  * @class Droplet
  * @extends {Asset<DropletEndpoint>}
  * @implements {IDroplet}
@@ -35,10 +35,10 @@ class Droplet extends Asset<DropletEndpoint> implements IDroplet {
     readonly volume_ids: Array<string>;
     /**
      * Creates an instance of Droplet.
-     * @param {DropletEndpoint} endpoint 
-     * @param {IDroplet} droplet 
-     * 
-     * @memberOf Droplet
+     * @param {DropletEndpoint} endpoint
+     * @param {IDroplet} droplet
+     *
+     * @memberof Droplet
      */
     constructor(endpoint: DropletEndpoint, droplet: IDroplet) {
         super(endpoint);

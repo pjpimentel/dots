@@ -10,7 +10,7 @@ import Endpoint from '../common/endpoint';
 import {ICollection} from "../common/interfaces";
 /**
  * Certificate endpoint.
- * 
+ *
  * @class CertificateEndpoint
  * @extends {Endpoint}
  * @implements {ICertificateEndpoint}
@@ -18,20 +18,20 @@ import {ICollection} from "../common/interfaces";
 class CertificateEndpoint extends Endpoint implements ICertificateEndpoint{
     /**
      * Creates an instance of CertificateEndpoint.
-     * @param {DigitalOcean} digitalOcean 
-     * 
-     * @memberOf CertificateEndpoint
+     * @param {DigitalOcean} digitalOcean
+     *
+     * @memberof CertificateEndpoint
      */
     constructor(digitalOcean: DigitalOcean){
         super(digitalOcean, '/account/keys');
     }
     /**
      * Create new certificate.
-     * 
-     * @param {ICertificateSpecs} specs 
-     * @returns {Promise<Certificate>} 
-     * 
-     * @memberOf CertificateEndpoint
+     *
+     * @param {ICertificateSpecs} specs
+     * @returns {Promise<Certificate>}
+     *
+     * @memberof CertificateEndpoint
      */
     public async create(specs: ICertificateSpecs): Promise<Certificate>{
         let url: string = this.prefix;
@@ -42,11 +42,11 @@ class CertificateEndpoint extends Endpoint implements ICertificateEndpoint{
     };
     /**
      * Delete certificate by id.
-     * 
-     * @param {string} id 
-     * @returns {Promise<void>} 
-     * 
-     * @memberOf CertificateEndpoint
+     *
+     * @param {string} id
+     * @returns {Promise<void>}
+     *
+     * @memberof CertificateEndpoint
      */
     public async delete(id: string): Promise<void>{
         let url = [this.prefix,id].join('/');
@@ -55,12 +55,12 @@ class CertificateEndpoint extends Endpoint implements ICertificateEndpoint{
     }
     /**
      * List all certificates.
-     * 
-     * @param {number} page 
-     * @param {number} [perPage] 
-     * @returns {Promise<ICollection<Certificate>>} 
-     * 
-     * @memberOf CertificateEndpoint
+     *
+     * @param {number} page
+     * @param {number} [perPage]
+     * @returns {Promise<ICollection<Certificate>>}
+     *
+     * @memberof CertificateEndpoint
      */
     public async list(
         page: number,
@@ -79,11 +79,11 @@ class CertificateEndpoint extends Endpoint implements ICertificateEndpoint{
     }
     /**
      * Get certificate by id.
-     * 
-     * @param {string} id 
-     * @returns {Promise<Certificate>} 
-     * 
-     * @memberOf CertificateEndpoint
+     *
+     * @param {string} id
+     * @returns {Promise<Certificate>}
+     *
+     * @memberof CertificateEndpoint
      */
     public async get(id: string): Promise<Certificate>{
         let url: string = [this.prefix,id].join('/');

@@ -1,15 +1,10 @@
 #!/usr/bin/env node
-'use strict';
-import token from '../token';
-import DigitalOcean from '../../';
+import digitalOcean from '../';
 
-const Do = new DigitalOcean(token);
-
+let success = data => console.log(data);
+let error = error => console.log(error.message);
 let id = parseInt(process.argv[2]);
 
-if(!id)
-    throw new Error('Missing id.');
+if (!id) throw new Error('Invalid id.');
 
-Do.Action.get(id)
-    .then(action => console.log(action))
-    .catch(e => console.log(e.message));
+digitalOcean.Action.get(id).first().subscribe(success, error)
