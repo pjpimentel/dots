@@ -1,0 +1,15 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "files.exclude": {
+        "**/node_modules": true,
+        "**/typings.d.ts": true,
+        "**/.{a,e}*": true,
+        "**/karma.*": true,
+        "**/protractor.*": true,
+        "**/tslint.*": true,
+        "**/.vscode": true,
+        "**/package-lock.json": true,
+        "docs" : true
+    },
+    "git.ignoreLimitWarning": true
+}

@@ -1,39 +1,39 @@
 'use strict';
 import {AxiosInstance} from 'axios';
 import axios from 'axios';
-import AccountEndpoint from '../account/endpoint';
-import ActionEndpoint from '../action/endpoint';
-import CertificateEndpoint from '../certificate/endpoint';
+import AccountEndpoint from '../account';
+// import ActionEndpoint from '../action/endpoint';
+// import CertificateEndpoint from '../certificate/endpoint';
 //import DomainEndpoint from '../domain/endpoint';
-import DropletEndpoint from '../droplet/endpoint';
+// import DropletEndpoint from '../droplet/endpoint';
 //import FloatingIPEndpoint from '../floatingIP/endpoint';
-import ImageEndpointEndpoint from '../image/endpoint';
+// import ImageEndpointEndpoint from '../image/endpoint';
 //import LoadBalancerEndpoint from '../loadBalancer/endpoint';
 //import ImageEndpoint from '../image/endpoint';
-import RegionEndpoint from '../region/endpoint';
-import SizeEndpoint from '../size/endpoint';
-import SnapshotEndpoint from '../snapshot/endpoint';
-import SSHKeyEndpoint from '../sshkey/endpoint';
-import TagEndpoint from '../tag/endpoint';
-import VolumeEndpoint from '../volume/endpoint';
+// import RegionEndpoint from '../region/endpoint';
+import SizeEndpoint from '../size';
+// import SnapshotEndpoint from '../snapshot/endpoint';
+// import SSHKeyEndpoint from '../sshkey/endpoint';
+// import TagEndpoint from '../tag/endpoint';
+// import VolumeEndpoint from '../volume/endpoint';
 import {IHeader,IaxiosConfig,IAPISpecs } from "./interfaces";
 /**
  * Generic API client
- * 
+ *
  * @abstract
  * @class API
  */
 abstract class API{
     /**
      * Default invalid response throwable error
-     * 
+     *
      * @type {Error}
      * @memberOf API
      */
     public invalidResponse: Error;
     /**
      * default request headers
-     * 
+     *
      * @protected
      * @type {Array<IHeader>}
      * @memberOf API
@@ -41,7 +41,7 @@ abstract class API{
     protected headers: Array<IHeader>;
     /**
      * host $protocol://$host$prefix
-     * 
+     *
      * @protected
      * @type {string}
      * @memberOf API
@@ -49,7 +49,7 @@ abstract class API{
     protected host: string;
     /**
      * axios client
-     * 
+     *
      * @protected
      * @type {AxiosInstance}
      * @memberOf API
@@ -57,7 +57,7 @@ abstract class API{
     protected http: AxiosInstance;
     /**
      * prefix $protocol://$host$prefix
-     * 
+     *
      * @protected
      * @type {string}
      * @memberOf API
@@ -65,7 +65,7 @@ abstract class API{
     protected prefix: string;
     /**
      * protocol $protocol://$host$prefix
-     * 
+     *
      * @protected
      * @type {('http'|'https')}
      * @memberOf API
@@ -73,7 +73,7 @@ abstract class API{
     protected protocol: 'http'|'https';
     /**
      * request timeout
-     * 
+     *
      * @protected
      * @type {number}
      * @memberOf API
@@ -81,7 +81,7 @@ abstract class API{
     protected timeout: number;
     /**
      *  $protocol://$host$prefix
-     * 
+     *
      * @readonly
      * @private
      * @type {string}
@@ -97,10 +97,10 @@ abstract class API{
     }
     /**
      * turn headers array into key -> value object
-     * 
+     *
      * @readonly
      * @private
-     * 
+     *
      * @memberOf API
      */
     private get headersObj(){
@@ -112,7 +112,7 @@ abstract class API{
     }
     /**
      * axios config object
-     * 
+     *
      * @readonly
      * @private
      * @type {IaxiosConfig}
@@ -127,138 +127,138 @@ abstract class API{
     }
     /**
      * alias to axios.get
-     * 
+     *
      * @readonly
-     * 
+     *
      * @memberOf API
      */
     public get get(){return this.http.get;}
     /**
      * alias to axios.post
-     * 
+     *
      * @readonly
-     * 
+     *
      * @memberOf API
      */
     public get post(){return this.http.post;}
     /**
      * alias to axios.put
-     * 
+     *
      * @readonly
-     * 
+     *
      * @memberOf API
      */
     public get put(){return this.http.put;}
     /**
      * alias to axios.delete
-     * 
+     *
      * @readonly
-     * 
+     *
      * @memberOf API
      */
     public get delete(){return this.http.delete;}
         /**
      * Account endpoint
-     * 
+     *
      * @type {AccountEndpoint}
      * @memberOf DigitalOcean
      */
     public Account: AccountEndpoint;
     /**
      * Action endpoint
-     * 
+     *
      * @type {ActionEndpoint}
      * @memberOf DigitalOcean
      */
-    public Action: ActionEndpoint;
+    // public Action: ActionEndpoint;
     /**
      * Certificate endpoint
-     * 
+     *
      * @type {CertificateEndpoint}
      * @memberOf DigitalOcean
      */
-    public Certificate: CertificateEndpoint;
+    // public Certificate: CertificateEndpoint;
     /**
      * Domain endpoint
-     * 
+     *
      * @type {DomainEndpoint}
      * @memberOf DigitalOcean
      */
     //public Domain: DomainEndpoint;
     /**
      * Droplet endpoint
-     * 
+     *
      * @type {DropletEndpoint}
      * @memberOf DigitalOcean
      */
-    public Droplet: DropletEndpoint;
+    // public Droplet: DropletEndpoint;
     /**
      * FloatingIP endpoint
-     * 
+     *
      * @type {FloatingIPEndpoint}
      * @memberOf DigitalOcean
      */
     //public FloatingIP: FloatingIPEndpoint;
     /**
      * Image endpoint
-     * 
+     *
      * @type {ImageEndpointEndpoint}
      * @memberOf DigitalOcean
      */
-    public Image: ImageEndpointEndpoint;
+    // public Image: ImageEndpointEndpoint;
     /**
      * LoadBalancer endpoint
-     * 
+     *
      * @type {LoadBalancerEndpoint}
      * @memberOf DigitalOcean
      */
     //public LoadBalancer: LoadBalancerEndpoint;
     /**
      * Region endpoint
-     * 
+     *
      * @type {RegionEndpoint}
      * @memberOf DigitalOcean
      */
-    public Region: RegionEndpoint;
+    // public Region: RegionEndpoint;
     /**
      * Size endpoint
-     * 
+     *
      * @type {SizeEndpoint}
      * @memberOf DigitalOcean
      */
     public Size: SizeEndpoint;
     /**
      * Snapshot endpoint
-     * 
+     *
      * @type {SnapshotEndpoint}
      * @memberOf DigitalOcean
      */
-    public Snapshot: SnapshotEndpoint;
+    // public Snapshot: SnapshotEndpoint;
     /**
      * SSHKey endpoint
-     * 
+     *
      * @type {SSHKeyEndpoint}
      * @memberOf DigitalOcean
      */
-    public SSHKey: SSHKeyEndpoint;
+    // public SSHKey: SSHKeyEndpoint;
     /**
      * Tag endpoint
-     * 
+     *
      * @type {TagEndpoint}
      * @memberOf DigitalOcean
      */
-    public Tag: TagEndpoint;
+    // public Tag: TagEndpoint;
     /**
      * Volume endpoint
-     * 
+     *
      * @type {VolumeEndpoint}
      * @memberOf DigitalOcean
      */
-    public Volume: VolumeEndpoint;
+    // public Volume: VolumeEndpoint;
     /**
      * Creates an instance of API.
-     * @param {IAPISpecs} specs 
-     * 
+     * @param {IAPISpecs} specs
+     *
      * @memberOf API
      */
     constructor(specs: IAPISpecs){
@@ -273,26 +273,26 @@ abstract class API{
     }
     /**
      * load all endpoints instances
-     * 
+     *
      * @private
-     * 
+     *
      * @memberOf DigitalOcean
      */
     private loadEndpoints(): void {
         this.Account = new AccountEndpoint(this);
-        this.Action = new ActionEndpoint(this);
-        this.Certificate = new CertificateEndpoint(this);
+        // this.Action = new ActionEndpoint(this);
+        // this.Certificate = new CertificateEndpoint(this);
         //this.Domain = new DomainEndpoint(this);
-        this.Droplet = new DropletEndpoint(this);
+        // this.Droplet = new DropletEndpoint(this);
         //this.FloatingIP = new FloatingIPEndpoint(this);
-        this.Image = new ImageEndpointEndpoint(this);
+        // this.Image = new ImageEndpointEndpoint(this);
         //this.LoadBalancer = new LoadBalancerEndpoint(this);
-        this.Region = new RegionEndpoint(this);
+        // this.Region = new RegionEndpoint(this);
         this.Size = new SizeEndpoint(this);
-        this.Snapshot = new SnapshotEndpoint(this);
-        this.SSHKey = new SSHKeyEndpoint(this);
-        this.Tag = new TagEndpoint(this);
-        this.Volume = new VolumeEndpoint(this);
+        // this.Snapshot = new SnapshotEndpoint(this);
+        // this.SSHKey = new SSHKeyEndpoint(this);
+        // this.Tag = new TagEndpoint(this);
+        // this.Volume = new VolumeEndpoint(this);
     }
 }
 

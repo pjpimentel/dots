@@ -1,13 +1,6 @@
 #!/usr/bin/env node
-'use strict';
 import digitalOcean from '../';
 
-async function main(){
-    try{
-        console.log(await digitalOcean.Account.get())
-    } catch(e){
-        console.log(e.message);
-    }
-}
-
-main();
+let success = data => console.log(data);
+let error = error => console.log(error.message);
+digitalOcean.Account.get().first().subscribe(success, error)

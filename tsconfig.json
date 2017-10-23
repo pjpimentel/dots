@@ -9,19 +9,53 @@
         "noImplicitAny": false,
         "sourceMap": false,
         "lib": [
-            "es2015"
+            "es2015",
+            "dom"
         ],
-        "outDir":"build"
+        "outDir": "dist"
         ///"outFile": "./build/dots.js"
     },
-    "rootDir":"lib",
+    "rootDir": "lib",
     "include": [
         "*",
-        "**/*"
+        // "**/*",
+        "lib/*.ts",
+        "lib/common/*.ts",
+        "test/*",
+        "test/account/*",
+        "test/size/*"
     ],
     "exclude": [
         "node_modules/*",
         "./common.ts",
         "./node_modules/*"
+        // "./lib/*/*"
     ]
 }
+// {
+//     "compileOnSave": false,
+//     "compilerOptions": {
+//         "outDir": "./dist/",
+//         "module": "es2015",
+//         "baseUrl": "src",
+//         "sourceMap": true,
+//         "declaration": false,
+//         "moduleResolution": "node",
+//         "emitDecoratorMetadata": true,
+//         "experimentalDecorators": true,
+//         "target": "es5",
+//         "typeRoots": [
+//             "node_modules/@types"
+//         ],
+//         "lib": [
+//             "es2016",
+//             "dom"
+//         ],
+//         "exclude": [
+//             "node_modules/*",
+//             "./common.ts",
+//             "./node_modules/*",
+//             "./dist/*"
+//         ]
+//     }
+// }
