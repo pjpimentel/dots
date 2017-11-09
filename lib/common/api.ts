@@ -12,10 +12,10 @@ import ActionEndpoint from '../action';
 //import ImageEndpoint from '../image/endpoint';
 import RegionEndpoint from '../region';
 import SizeEndpoint from '../size';
-// import SnapshotEndpoint from '../snapshot/endpoint';
+import SnapshotEndpoint from '../snapshot';
 import SSHKeyEndpoint from '../sshkey';
 import TagEndpoint from '../tag';
-// import VolumeEndpoint from '../volume/endpoint';
+import VolumeEndpoint from '../volume';
 import {IHeader,IaxiosConfig,IAPISpecs } from "./interfaces";
 /**
  * Generic API client
@@ -233,7 +233,7 @@ abstract class API{
      * @type {SnapshotEndpoint}
      * @memberof DigitalOcean
      */
-    // public Snapshot: SnapshotEndpoint;
+    public Snapshot: SnapshotEndpoint;
     /**
      * SSHKey endpoint
      *
@@ -254,7 +254,7 @@ abstract class API{
      * @type {VolumeEndpoint}
      * @memberof DigitalOcean
      */
-    // public Volume: VolumeEndpoint;
+    public Volume: VolumeEndpoint;
     /**
      * Creates an instance of API.
      * @param {IAPISpecs} specs
@@ -289,10 +289,10 @@ abstract class API{
         //this.LoadBalancer = new LoadBalancerEndpoint(this);
         this.Region = new RegionEndpoint(this);
         this.Size = new SizeEndpoint(this);
-        // this.Snapshot = new SnapshotEndpoint(this);
+        this.Snapshot = new SnapshotEndpoint(this);
         this.SSHKey = new SSHKeyEndpoint(this);
         this.Tag = new TagEndpoint(this);
-        // this.Volume = new VolumeEndpoint(this);
+        this.Volume = new VolumeEndpoint(this);
     }
 }
 

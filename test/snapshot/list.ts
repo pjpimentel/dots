@@ -1,23 +1,16 @@
 #!/usr/bin/env node
-'use strict';
-import token from '../token';
-import DigitalOcean from '../../';
+import digitalOcean from '../';
 
-const digitalOcean = new DigitalOcean(token);
-
+let success = data => console.log(data);
+let error = error => console.log(error.message);
 let page = parseInt(process.argv[2]);
 let perPage = parseInt(process.argv[3]);
 let resourceType = process.argv[4];
 
-if(!page) page = 1;
-if(!perPage) perPage = null;
+if (!page) page = 1;
+if (!perPage) perPage = null;
 
-let promise;
-if(resourceType)
-    promise = digitalOcean.Snapshot.list(resourceType, page, perPage);
-else
-    promise = digitalOcean.Snapshot.list(page, perPage);
+let observable = digitalOcean.Snapshot.list(page, perPage);
+if (resourceType) observable = digitalOcean.Snapshot.list(resourceType, page, perPage);
 
-promise
-    .then(collection => console.log(collection))
-    .catch(e => console.log(e.message));
+observable.first().subscribe(success, error);

@@ -1,16 +1,10 @@
 #!/usr/bin/env node
-'use strict';
-import token from '../token';
-import DigitalOcean from '../../';
+import digitalOcean from '../';
 
-const digitalOcean = new DigitalOcean(token);
-
+let success = data => console.log('deleted!');
+let error = error => console.log(error.message);
 let id = process.argv[2];
 
-if(!id) throw new Error('Invalid id.');
+if (!id) throw new Error('Invalid id.');
 
-digitalOcean
-    .Snapshot
-    .delete(id)
-    .then(() => console.log('deleted!'))
-    .catch(e => console.log(e.message));
+digitalOcean.Snapshot.delete(id).first().subscribe(success, error)

@@ -157,6 +157,38 @@ export interface ISSHKey {
     readonly name: string;
     readonly public_key: string;
 }
+
+/**
+ * Volume raw object.
+ *
+ * @export
+ * @interface IVolume
+ */
+export interface IVolume {
+    readonly created_at: string;
+    readonly description: string;
+    readonly droplet_ids: number[];
+    readonly id: string;
+    readonly name: string;
+    readonly region: IRegion; //TODO: change this type
+    readonly size_gigabytes: number;
+}
+/**
+ * Snapshot raw object.
+ *
+ * @export
+ * @interface ISnapshot
+ */
+export interface ISnapshot {
+    readonly created_at: string;
+    readonly id: string;
+    readonly min_disk_size: number;
+    readonly name: string;
+    readonly regions: string[];
+    readonly resource_id: string;
+    readonly resource_type: string;
+    readonly size_gigabytes: number;
+}
 /**
  * Specs
  */
@@ -178,6 +210,19 @@ export interface ITagSpecs {
 export interface ISSHKeySpecs {
     name: string;
     public_key?: string;
+}
+/**
+ * Volume specs.
+ *
+ * @export
+ * @interface IVolumeSpecs
+ */
+export interface IVolumeSpecs {
+    description?: string;
+    name: string;
+    region?: string;
+    size_gigabytes: number;
+    snapshot_id?: string;
 }
 /**
  * ENDPOINTS
@@ -253,4 +298,40 @@ export interface ISSHKeyEndpoint {
     list(page: number, perPage?: number): Observable<ICollection<ISSHKey>>;
     update(fingerprint: string, specs: ISSHKeySpecs): Observable<ISSHKey>;
     update(id: number, specs: ISSHKeySpecs): Observable<ISSHKey>;
+}
+/**
+ * Volume endpoint methods.
+ *
+ * @export
+ * @interface IVolumeEndpoint
+ * @extends {IEndpoint}
+ */
+export interface IVolumeEndpoint {
+    attach(id: string, dropletId: number): Observable<IAction>;
+    attach(name: string, dropletId: number, region: string): Observable<IAction>;
+    create(specs: IVolumeSpecs): Observable<IVolume>;
+    createSnapshot(id: string, snapshotName: string): Observable<ISnapshot>;
+    delete(id: string): Observable<void>;
+    delete(name: string, region?: string): Observable<void>;
+    detach(id: string, dropletId: number): Observable<IAction>;
+    detach(name: string, dropletId: number, region: string): Observable<IAction>;
+    getActionById(volumeId: string, actionId: number): Observable<IAction>;
+    get(id: string): Observable<IVolume>;
+    list(page: number, perPage?: number): Observable<ICollection<IVolume>>;
+    listActions(volumeId: string, page: number, perPage?: number): Observable<ICollection<IAction>>;
+    listByName(name: string, region: string, page: number, perPage?: number): Observable<ICollection<IVolume>>;
+    listSnapshots(volumeId: string, page: number, perPage?: number): Observable<ICollection<ISnapshot>>;
+    resize(id: string, size: number): Observable<IAction>;
+}
+/**
+ * Snapshot endpoint methods.
+ *
+ * @export
+ * @interface ISnapshotEndpoint
+ */
+export interface ISnapshotEndpoint {
+    delete(id: string): Observable<void>;
+    get(id: string): Observable<ISnapshot>;
+    list(page: number, perPage?: number): Observable<ICollection<ISnapshot>>;
+    list(resourceType: string, page: number, perPage?: number): Observable<ICollection<ISnapshot>>;
 }

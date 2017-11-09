@@ -1,4 +1,4 @@
-import { IAccount, ISize, ITag, IResource, IRegion, IAction, ISSHKey } from './interfaces';
+import { IAccount, ISize, ITag, IResource, IRegion, IAction, ISSHKey, ISnapshot, IVolume } from './interfaces';
 /**
  * Guard of string[];
  *
@@ -8,7 +8,18 @@ import { IAccount, ISize, ITag, IResource, IRegion, IAction, ISSHKey } from './i
  */
 export function isArrayOfString(data: any): data is string[] {
     if (!Array.isArray(data)) return false;
-    return data.every(elem => elem.typeof !== 'string')
+    return data.every(elem => elem.typeof !== 'string');
+}
+/**
+ * Guard of number[];
+ *
+ * @export
+ * @param {*} data
+ * @returns {data is number[]}
+ */
+export function isArrayOfNumber(data: any): data is number[] {
+    if (!Array.isArray(data)) return false;
+    return data.every(elem => elem.typeof !== 'number');
 }
 /**
  * Guard of IAccount.
@@ -143,9 +154,9 @@ export function isAction(data: any): data is IAction {
     if (typeof (data as IAction).started_at !== 'string') return false;
     if (typeof (data as IAction).completed_at !== 'string') return false;
     if (typeof (data as IAction).resource_type !== 'string') return false;
-    if((data as IAction).resource_id !== null)
+    if ((data as IAction).resource_id !== null)
         if (typeof (data as IAction).resource_id !== 'number') return false;
-    if((data as IAction).region_slug !== null)
+    if ((data as IAction).region_slug !== null)
         if (typeof (data as IAction).region_slug !== 'string') return false;
     return true;
 }
@@ -184,4 +195,61 @@ export function isSSHKey(data: any): data is ISSHKey {
 export function isArrayOfSSHKey(data: any): data is ISSHKey[] {
     if (!Array.isArray(data)) return false;
     return data.every(isSSHKey);
+}
+/**
+ * Guard of ISnapshot
+ *
+ * @export
+ * @param {*} data
+ * @returns {data is ISnapshot}
+ */
+export function isSnapshot(data: any): data is ISnapshot {
+    if (typeof (data as ISnapshot).created_at !== 'string') return false;
+    if (typeof (data as ISnapshot).id !== 'string') return false;
+    if (typeof (data as ISnapshot).min_disk_size !== 'number') return false;
+    if (typeof (data as ISnapshot).name !== 'string') return false;
+    if (typeof (data as ISnapshot).resource_id !== 'string') return false;
+    if (typeof (data as ISnapshot).resource_type !== 'string') return false;
+    if (typeof (data as ISnapshot).size_gigabytes !== 'number') return false;
+    if (!isArrayOfString((data as ISnapshot).regions)) return false;
+    return true;
+}
+/**
+ * Guard of ISnapshot[]
+ *
+ * @export
+ * @param {*} data
+ * @returns {data is ISnapshot[]}
+ */
+export function isArrayOfSnapshot(data: any): data is ISnapshot[] {
+    if (!Array.isArray(data)) return false;
+    return data.every(isSnapshot);
+}
+/**
+ * Guard of IVolume
+ *
+ * @export
+ * @param {*} data
+ * @returns {data is IVolume}
+ */
+export function isVolume(data: any): data is IVolume {
+    if (typeof (data as IVolume).created_at !== 'string') return false;
+    if (typeof (data as IVolume).description !== 'string') return false;
+    if (typeof (data as IVolume).id !== 'string') return false;
+    if (typeof (data as IVolume).name !== 'string') return false;
+    if (typeof (data as IVolume).size_gigabytes !== 'number') return false;
+    if (!isRegion((data as IVolume).region)) return false;
+    if (!isArrayOfNumber((data as IVolume).droplet_ids)) return false;
+    return true;
+}
+/**
+ * Guard of IVolume[]
+ *
+ * @export
+ * @param {*} data
+ * @returns {data is IVolume[]}
+ */
+export function isArrayOfVolume(data: any): data is IVolume[] {
+    if (!Array.isArray(data)) return false;
+    return data.every(isVolume);
 }
