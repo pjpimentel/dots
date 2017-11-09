@@ -1,18 +1,13 @@
 #!/usr/bin/env node
 'use strict';
-import token from '../token';
-import DigitalOcean from '../../';
+import digitalOcean from '../';
 
-const digitalOcean = new DigitalOcean(token);
-
+let success = data => console.log(data);
+let error = error => console.log(error.message);
 let page = parseInt(process.argv[2]);
 let perPage = parseInt(process.argv[3]);
 
-if(!page) page = 1;
-if(!perPage) perPage = null;
+if (!page) page = 1;
+if (!perPage) perPage = null;
 
-digitalOcean
-    .Volume
-    .list(page, perPage)
-    .then(collection => console.log(collection))
-    .catch(e => console.log(e.message));
+digitalOcean.Volume.list(page, perPage).first().subscribe(success, error);

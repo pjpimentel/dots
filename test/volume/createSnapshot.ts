@@ -1,18 +1,12 @@
 #!/usr/bin/env node
-'use strict';
-import token from '../token';
-import DigitalOcean from '../../';
+import digitalOcean from '../';
 
-const digitalOcean = new DigitalOcean(token);
-
+let success = data => console.log(data);
+let error = error => console.log(error.message);
 let id = process.argv[2];
 let name = process.argv[3];
 
-if(!id) throw new Error('Invalid id.');
-if(!name) throw new Error('Invalid name.');
+if (!id) throw new Error('Invalid id.');
+if (!name) throw new Error('Invalid name.');
 
-digitalOcean
-    .Volume
-    .createSnapshot(id, name)
-    .then(snapshot => console.log(snapshot))
-    .catch(e => console.log(e.message));
+digitalOcean.Volume.createSnapshot(id, name).first().subscribe(success, error)

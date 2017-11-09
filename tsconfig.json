@@ -29,7 +29,7 @@
         "test/action/*",
         "test/sshkey/*",
         "test/snapshot/*",
-        "test/volume/*" //TODO
+        "test/volume/*"
     ],
     "exclude": [
         "node_modules/*",

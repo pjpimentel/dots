@@ -1,19 +1,12 @@
 #!/usr/bin/env node
-'use strict';
-import token from '../token';
-import DigitalOcean from '../../';
+import digitalOcean from '../';
 
-const digitalOcean = new DigitalOcean(token);
-
+let success = data => console.log('deleted!');
+let error = error => console.log(error.message);
 let name = process.argv[2];
 let region = process.argv[3];
 
-if(!name) throw new Error('Invalid name.');
-if(!region) region = undefined
+if (!name) throw new Error('Invalid name.');
+if (!region) region = undefined
 
-
-digitalOcean
-    .Volume
-    .delete(name, region)
-    .then(() => console.log('deleted!'))
-    .catch(e => console.log(e.message));
+digitalOcean.Volume.delete(name, region).first().subscribe(success, error)
