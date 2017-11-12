@@ -1,4 +1,4 @@
 #!/usr/bin/env node
 'use strict';
-const token ='1250eee7d4e46e3cb58f5006c12840cc9d4d81d84a0f3601a30101bd17f2ec56';
+const token ='549d665581ac56a2e4f4fcc76a45c3765ca177a5b0e013a29aea8c7d2bcaf189';
 export default token;

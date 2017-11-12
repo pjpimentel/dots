@@ -1,4 +1,4 @@
-import { IAccount, ISize, ITag, IResource, IRegion, IAction, ISSHKey, ISnapshot, IVolume } from './interfaces';
+import { IAccount, ISize, ITag, IResource, IRegion, IAction, ISSHKey, ISnapshot, IVolume, IImage } from './interfaces';
 /**
  * Guard of string[];
  *
@@ -252,4 +252,39 @@ export function isVolume(data: any): data is IVolume {
 export function isArrayOfVolume(data: any): data is IVolume[] {
     if (!Array.isArray(data)) return false;
     return data.every(isVolume);
+}
+
+/**
+ * Guard of IImage
+ *
+ * @export
+ * @param {*} data
+ * @returns {data is IImage}
+ */
+export function isImage(data: any): data is IImage {
+    data = data as IImage;
+    if (typeof (data as IImage).created_at !== 'string') return false;
+    if (typeof (data as IImage).distribution !== 'string') return false;
+    if (typeof (data as IImage).id !== 'number') return false;
+    if (typeof (data as IImage).name !== 'string') return false;
+    if (typeof (data as IImage).size_gigabytes !== 'number') return false;
+    if (typeof (data as IImage).slug !== 'string') return false;
+    if (typeof (data as IImage).min_disk_size !== 'number') return false;
+    if (typeof (data as IImage).public !== 'boolean') return false;
+    if (typeof (data as IImage).min_disk_size !== 'number') return false;
+    if (typeof (data as IImage).slug !== null && typeof (data as IImage).slug !== 'string') return false;
+    if (typeof (data as IImage).type !== 'string') return false;
+    if (!isArrayOfString(typeof (data as IImage).regions)) return false;
+    return true;
+}
+/**
+ * Guard of IImage[]
+ *
+ * @export
+ * @param {*} data
+ * @returns {data is IImage[]}
+ */
+export function isArrayOfImage(data: any): data is IImage[] {
+    if (!Array.isArray(data)) return false;
+    return data.every(isImage);
 }
