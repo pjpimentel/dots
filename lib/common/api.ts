@@ -1,4 +1,3 @@
-'use strict';
 import {AxiosInstance} from 'axios';
 import axios from 'axios';
 import AccountEndpoint from '../account';

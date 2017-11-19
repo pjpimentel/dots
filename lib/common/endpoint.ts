@@ -1,4 +1,3 @@
-'use strict';
 import { Observable } from 'rxjs';
 
 import { ICollection, ICollectionParams } from "./interfaces";

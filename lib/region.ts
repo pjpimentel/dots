@@ -1,4 +1,3 @@
-'use strict';
 import DigitalOcean from './digitalOcean';
 import Endpoint from './common/endpoint';
 import { ICollection, IRegion, IRegionEndpoint } from "./common/interfaces";

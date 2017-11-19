@@ -1,4 +1,3 @@
-'use strict';
 import { IRegion } from '../region/interfaces';
 import { IImage } from '../image/interfaces';
 import { ISize } from '../size/interfaces';
@@ -67,7 +66,7 @@ export interface IDropletEndpoint {
 export type Neighbors = Array<IDroplet>;
 /**
  * Droplet specs.
- * 
+ *
  * @export
  * @interface IDropletSpecs
  */

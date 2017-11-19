@@ -1,4 +1,3 @@
-'use strict';
 import { IDroplet } from './interfaces';
 import DropletEndpoint from './endpoint';
 import Asset from '../common/asset';

@@ -1,4 +1,3 @@
-'use strict';
 import { IDroplet, IDropletEndpoint, Neighbors, IDropletSpecs } from './interfaces';
 import Image from '../image/image';
 import { IImage } from '../image/interfaces';
