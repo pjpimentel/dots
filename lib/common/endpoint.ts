@@ -1,10 +1,11 @@
-import { Observable } from 'rxjs';
+import { AxiosPromise } from "axios";
+import { Observable } from "rxjs";
 
-import { ICollection, ICollectionParams } from "./interfaces";
-import API from './api';
-// import Action from "../action/action";
-// import { isActionArray, IAction } from "../action/interfaces";
-import { AxiosPromise } from 'axios';
+import API from "./api";
+import { IAction, ICollection, ICollectionParams } from "./interfaces";
+import { isAction } from "./type.guards";
+
+type predicate<T> = (value: T, index: number) => boolean;
 /**
  * Endpoint belongs to APIs
  *
@@ -12,21 +13,23 @@ import { AxiosPromise } from 'axios';
  * @class Endpoint
  * @template API
  */
-abstract class Endpoint {
+export default abstract class Endpoint {
     /**
      * reference to API instance
      *
+     * @protected
      * @type {API}
      * @memberof Endpoint
      */
-    readonly api: API;
+    protected readonly api: API;
     /**
      * url prefix
      *
+     * @protected
      * @type {string}
      * @memberof Endpoint
      */
-    readonly prefix: string;
+    protected readonly prefix: string;
     /**
      * Creates an instance of Endpoint.
      * @param {API} api
@@ -50,11 +53,11 @@ abstract class Endpoint {
      * @returns {Observable<ICollection<C>>}
      * @memberof Endpoint
      */
-    protected getCollection<C>(page: number, perPage: number, url: string, property: string, filter?: (v: any, i: number) => boolean): Observable<ICollection<C>> {
-        let params: ICollectionParams = this.getCollectionParams(page, perPage);
-        return this.fromPromise(this.api.get(url, { params: params }))
+    protected getCollection<C>(page: number, perPage: number, url: string, property: string, filter?: predicate<C>): Observable<ICollection<C>> {
+        const params: ICollectionParams = this.getCollectionParams(page, perPage);
+        return this.fromPromise(this.api.get(url, { params }))
             .map((data: any) => {
-                let collection: ICollection<C> = <ICollection<C>>{};
+                const collection: ICollection<C> = {} as ICollection<C>;
                 collection.items = data[property];
                 if (filter && !collection.items.every(filter)) throw this.api.invalidResponse;
                 collection.total = data && data.meta ? data.meta.total : undefined;
@@ -63,7 +66,44 @@ abstract class Endpoint {
                 collection.minPage = 1;
                 collection.maxPage = Math.ceil(collection.total / params.per_page);
                 return collection;
-            })
+            });
+    }
+    /**
+     * Generic function to make a action request.
+     *
+     * @protected
+     * @param {string} url
+     * @param {object} params
+     * @returns {Observable<Action>}
+     *
+     * @memberof Endpoint
+     */
+    protected doAction(url: string, params: object): Observable<IAction> {
+        const promise = this.api.post(url, params);
+        return this.fromPromise(promise, "action", isAction);
+    }
+    /**
+     * Create observable from axios promise.
+     *
+     * @protected
+     * @template T
+     * @param {AxiosPromise} promise
+     * @param {string} [property]
+     * @param {(v: any, i: number) => boolean} [filter]
+     * @returns {Observable<T>}
+     * @memberof Endpoint
+     */
+    protected fromPromise<T>(promise: AxiosPromise, property?: string, filter?: predicate<T>): Observable<T> {
+        const dataValidator = data => { if (!data) throw this.api.invalidResponse; return data; };
+        // let objectValidator = data => {
+        //     if (typeof data !== 'object') throw this.api.invalidResponse;
+        //     if (Object.keys(data).length === 0) throw this.api.invalidResponse;
+        //     return data;
+        // };
+        let observable = Observable.fromPromise(promise).map(res => res.data);
+        if (property) observable = observable.map(data => data[property]).map(dataValidator);
+        if (filter) observable = observable.filter(filter).map(dataValidator);
+        return observable;
     }
     /**
      * Get object with collection params
@@ -76,52 +116,6 @@ abstract class Endpoint {
      * @memberof Endpoint
      */
     private getCollectionParams(page?: number, perPage?: number): ICollectionParams {
-        page = page || 1;
-        perPage = perPage || 25;
-        return {
-            per_page: perPage,
-            page: page
-        };
-    }
-    /**
-     * Generic function to make a action request.
-     *
-     * @protected
-     * @param {string} url
-     * @param {object} params
-     * @returns {Promise<Action>}
-     *
-     * @memberof Endpoint
-     */
-    // protected async doAction(url: string, params: object): Promise<IAction> {
-    //     let res = await this.api.post(url, params);
-    //     if (!res.data) throw this.api.invalidResponse;
-    //     let action: IAction = <IAction>res.data.action;
-    //     return action;
-    // }
-    /**
-     * Create observable from axios promise.
-     *
-     * @protected
-     * @template T
-     * @param {AxiosPromise} promise
-     * @param {string} [property]
-     * @param {(v: any, i: number) => boolean} [filter]
-     * @returns {Observable<T>}
-     * @memberof Endpoint
-     */
-    protected fromPromise<T>(promise: AxiosPromise, property?: string, filter?: (v: any, i: number) => boolean): Observable<T> {
-        let dataValidator = data => { if (!data) throw this.api.invalidResponse; return data };
-        // let objectValidator = data => {
-        //     if (typeof data !== 'object') throw this.api.invalidResponse;
-        //     if (Object.keys(data).length === 0) throw this.api.invalidResponse;
-        //     return data;
-        // };
-        let observable = Observable.fromPromise(promise).map(res => res.data);
-        if (property) observable = observable.map(data => data[property]).map(dataValidator);
-        if (filter) observable = observable.filter(filter).map(dataValidator);
-        return observable;
+        return { per_page: perPage || 25, page: page || 1 };
     }
 }
-
-export default Endpoint;

@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable } from "rxjs";
 /**
  * Header interface
  *
@@ -27,10 +27,10 @@ export interface IaxiosConfig {
  * @interface IAPISpecs
  */
 export interface IAPISpecs {
-    headers: Array<IHeader>;
+    headers: IHeader[];
     host: string;
     prefix: string;
-    protocol: 'http' | 'https';
+    protocol: "http" | "https";
     timeout: number;
     invalidResponse: Error;
 }
@@ -47,7 +47,7 @@ export interface ICollection<C> {
     maxPage: number;
     perPage: number;
     total: number;
-    items: Array<C>;
+    items: C[];
 }
 /**
  * Collection request default Params
@@ -104,7 +104,7 @@ export interface ISize {
     readonly memory: number;
     readonly vcpus: number;
     readonly disk: number;
-    readonly regions: Array<string>;
+    readonly regions: string[];
 }
 /**
  * Tag raw object.
@@ -202,7 +202,7 @@ export interface IImage {
     readonly min_disk_size: number;
     readonly name: string;
     readonly public: boolean;
-    readonly regions: Array<string>;
+    readonly regions: string[];
     readonly size_gigabytes: number;
     readonly slug: string | null;
     readonly type: string;
@@ -213,12 +213,40 @@ export interface IImage {
  * @export
  * @interface ICertificate
  */
-export interface ICertificate{
+export interface ICertificate {
     readonly created_at: string;
     readonly id: string;
     readonly name: string;
     readonly not_after: Date;
     readonly sha1_fingerprint: string;
+}
+/**
+ * Droplet raw object.
+ *
+ * @export
+ * @interface IDroplet
+ */
+export interface IDroplet {
+    readonly backup_ids: string[];
+    readonly created_at: string;
+    readonly disk: number;
+    readonly features: string[];
+    readonly id: number;
+    readonly image: IImage;
+    readonly kernel: any | null;
+    readonly locked: boolean;
+    readonly memory: number;
+    readonly name: string;
+    readonly networks: object;
+    readonly next_backup_window: any | null;
+    readonly region: IRegion;
+    readonly size_slug: string;
+    readonly size: ISize;
+    readonly snapshot_ids: string[];
+    readonly status: string;
+    readonly tags: string[];
+    readonly vcpus: number;
+    readonly volume_ids: string[];
 }
 /**
  * Specs
@@ -261,7 +289,7 @@ export interface IVolumeSpecs {
  * @export
  * @interface IImageUpdateSpecs
  */
-export interface IImageUpdateSpecs{
+export interface IImageUpdateSpecs {
     name: string;
 }
 /**
@@ -270,11 +298,31 @@ export interface IImageUpdateSpecs{
  * @export
  * @interface ICertificateSpecs
  */
-export interface ICertificateSpecs{
+export interface ICertificateSpecs {
     certificate_chain?: string;
     leaf_certificate: string;
     name: string;
     private_key: string;
+}
+/**
+ * Droplet specs.
+ *
+ * @export
+ * @interface IDropletSpecs
+ */
+export interface IDropletSpecs {
+    name: string;
+    region: string;
+    size: string;
+    image: string | number;
+    ssh_keys?: string[];
+    backups?: boolean;
+    ipv6?: boolean;
+    private_networking?: boolean;
+    user_data?: string[];
+    monitoring?: boolean;
+    volumes?: string[];
+    tags?: string[];
 }
 /**
  * ENDPOINTS
@@ -393,18 +441,18 @@ export interface ISnapshotEndpoint {
  * @export
  * @interface IImageEndpoint
  */
-export interface IImageEndpoint{
-    convertToSnapshot(id: number);
-    delete(id: number);
-    get(id: number);
-    get(slug: string);
-    getActionById(id: number, actionId: number);
-    list(page: number, perPage?: number);
-    list(type: string, page: number, perPage?: number);
-    listActions(id: number, page: number, perPage?: number);
-    listPrivate(page: number, perPage?: number);
-    transfer(id: number, regionSlug: string);
-    update(id: number, specs: IImageUpdateSpecs);
+export interface IImageEndpoint {
+    convertToSnapshot(id: number): Observable<IAction>;
+    delete(id: number): Observable<void>;
+    get(id: number): Observable<IImage>;
+    get(slug: string): Observable<IImage>;
+    getActionById(id: number, actionId: number): Observable<IAction>;
+    list(page: number, perPage?: number): Observable<ICollection<IImage>>;
+    list(type: string, page: number, perPage?: number): Observable<ICollection<IImage>>;
+    listActions(id: number, page: number, perPage?: number): Observable<ICollection<IAction>>;
+    listPrivate(page: number, perPage?: number): Observable<ICollection<IImage>>;
+    transfer(id: number, regionSlug: string): Observable<IAction>;
+    update(id: number, specs: IImageUpdateSpecs): Observable<IImage>;
 }
 
 /**
@@ -413,7 +461,7 @@ export interface IImageEndpoint{
  * @export
  * @interface IBucketEndpoint
  */
-export interface IBucketEndpoint{
+export interface IBucketEndpoint {
     convertToSnapshot(id: number);
     delete(id: number);
     get(id: number);
@@ -431,9 +479,50 @@ export interface IBucketEndpoint{
  * @export
  * @interface ICertificateEndpoint
  */
-export interface ICertificateEndpoint{
-    create(specs: ICertificateSpecs);
-    delete(id: string);
-    get(id: string);
+export interface ICertificateEndpoint {
+    create(specs: ICertificateSpecs): Observable<ICertificate>;
+    delete(id: string): Observable<void>;
+    get(id: string): Observable<ICertificate>;
+    list(page: number, perPage?: number): Observable<ICollection<ICertificate>>;
+}
+/**
+ * Droplet endpoint methods
+ *
+ * @export
+ * @interface IDropletEndpoint
+ */
+export interface IDropletEndpoint {
+    // actionsByTag();
+    changeKernel(id: number, kernelId: number): Observable<IAction>;
+    create(specs: IDropletSpecs);
+    // createMulti();
+    createSnapshot(id: number, snapshotMame: string);
+    delete(id: number);
+    delete(tag: string);
+    disableBackups(id: number);
+    enableBackups(id: number);
+    enableIPv6(id: number);
+    enablePrivateNetworking(id: number);
+    get(id: number);
+    getActionById(dropletId: number, actionId: number);
     list(page: number, perPage?: number);
+    list(tag: string, page: number, perPage?: number);
+    // listActionsByDropletId();
+    // listBackupsByDropletId();
+    listImages(id: number, type: "snapshots" | "backups" | string, page: number, perPage?: number);
+    // listKernelsByDropletId();
+    listNeighbors();
+    listNeighborsByDropletId(id: number);
+    passwordReset(id: number);
+    powerCycle(id: number);
+    powerOff(id: number);
+    powerOn(id: number);
+    reboot(id: number);
+    rebuild(id: number, imageSlug: string);
+    rebuild(id: number, imageId: number);
+    rename(id: number, newName: string);
+    resize(id: number, sizeSlug: string, resizeDisk: boolean);
+    restore(id: number, imageSlug: string);
+    restore(id: number, imageId: number);
+    shutdown(id: number);
 }

@@ -4,6 +4,10 @@
         "tslint:recommended"
     ],
     "jsRules": {},
-    "rules": {},
+    "rules": {
+        "curly": [true, "ignore-same-line"],
+        "arrow-return-shorthand": true,
+        "arrow-parens": [true, "ban-single-arg-parens"]
+    },
     "rulesDirectory": []
 }

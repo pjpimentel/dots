@@ -28,7 +28,7 @@ export default class SizeEndpoint extends Endpoint implements ISizeEndpoint {
      *
      * @param {number} page
      * @param {number} [perPage]
-     * @returns {Promise<ICollection<ISize>>}
+     * @returns {Observable<ICollection<ISize>>}
      *
      * @memberof SizeEndpoint
      */
