@@ -4,7 +4,8 @@
   "description": "Digital Ocean API V2 wrapper. TypeScript - Javascript",
   "main": "build/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -18,9 +19,9 @@
   "homepage": "https://github.com/pjpimentel/dots",
   "dependencies": {
     "@types/axios": "^0.14.0",
-    "@types/node": "^7.0.13",
-    "axios": "^0.16.1",
-    "rxjs": "^5.5.0"
+    "@types/node": "^7.0.48",
+    "axios": "^0.16.2",
+    "rxjs": "^5.5.2"
   },
   "devDependencies": {
     "typedoc": "^0.9.0"
