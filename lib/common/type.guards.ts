@@ -1,4 +1,16 @@
-import { IAccount, ISize, ITag, IResource, IRegion, IAction, ISSHKey, ISnapshot, IVolume, IImage } from './interfaces';
+import {
+    IAccount,
+    IAction,
+    ICertificate,
+    IImage,
+    IRegion,
+    IResource,
+    ISize,
+    ISnapshot,
+    ISSHKey,
+    ITag,
+    IVolume,
+} from './interfaces';
 /**
  * Guard of string[];
  *
@@ -253,7 +265,6 @@ export function isArrayOfVolume(data: any): data is IVolume[] {
     if (!Array.isArray(data)) return false;
     return data.every(isVolume);
 }
-
 /**
  * Guard of IImage
  *
@@ -285,6 +296,32 @@ export function isImage(data: any): data is IImage {
  * @returns {data is IImage[]}
  */
 export function isArrayOfImage(data: any): data is IImage[] {
+    if (!Array.isArray(data)) return false;
+    return data.every(isImage);
+}
+/**
+ * Guard of ICertificate
+ *
+ * @export
+ * @param {*} data
+ * @returns {data is ICertificate}
+ */
+export function isCertificate(data: any): data is ICertificate {
+    if (typeof (data as ICertificate).created_at !== 'string') return false;
+    if (typeof (data as ICertificate).not_after !== 'string') return false;
+    if (typeof (data as ICertificate).id !== 'string') return false;
+    if (typeof (data as ICertificate).name !== 'string') return false;
+    if (typeof (data as ICertificate).sha1_fingerprint !== 'string') return false;
+    return true;
+}
+/**
+ * Guard of ICertificate[]
+ *
+ * @export
+ * @param {*} data
+ * @returns {data is ICertificate[]}
+ */
+export function isArrayOfCertificate(data: any): data is ICertificate[] {
     if (!Array.isArray(data)) return false;
     return data.every(isImage);
 }

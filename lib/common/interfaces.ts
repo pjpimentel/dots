@@ -208,6 +208,19 @@ export interface IImage {
     readonly type: string;
 }
 /**
+ * Certificate raw object.
+ *
+ * @export
+ * @interface ICertificate
+ */
+export interface ICertificate{
+    readonly created_at: string;
+    readonly id: string;
+    readonly name: string;
+    readonly not_after: Date;
+    readonly sha1_fingerprint: string;
+}
+/**
  * Specs
  */
 /**
@@ -249,7 +262,19 @@ export interface IVolumeSpecs {
  * @interface IImageUpdateSpecs
  */
 export interface IImageUpdateSpecs{
-    name: string
+    name: string;
+}
+/**
+ * Certificate specs
+ *
+ * @export
+ * @interface ICertificateSpecs
+ */
+export interface ICertificateSpecs{
+    certificate_chain?: string;
+    leaf_certificate: string;
+    name: string;
+    private_key: string;
 }
 /**
  * ENDPOINTS
@@ -380,4 +405,35 @@ export interface IImageEndpoint{
     listPrivate(page: number, perPage?: number);
     transfer(id: number, regionSlug: string);
     update(id: number, specs: IImageUpdateSpecs);
+}
+
+/**
+ * Bucket endpoint methods.
+ *
+ * @export
+ * @interface IBucketEndpoint
+ */
+export interface IBucketEndpoint{
+    convertToSnapshot(id: number);
+    delete(id: number);
+    get(id: number);
+    get(slug: string);
+    getActionById(id: number, actionId: number);
+    list(page: number, perPage?: number);
+    list(type: string, page: number, perPage?: number);
+    listActions(id: number, page: number, perPage?: number);
+    listPrivate(page: number, perPage?: number);
+    transfer(id: number, regionSlug: string);
+}
+/**
+ * Certificate endpoint methods
+ *
+ * @export
+ * @interface ICertificateEndpoint
+ */
+export interface ICertificateEndpoint{
+    create(specs: ICertificateSpecs);
+    delete(id: string);
+    get(id: string);
+    list(page: number, perPage?: number);
 }
