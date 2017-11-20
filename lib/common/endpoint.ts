@@ -5,7 +5,7 @@ import API from "./api";
 import { IAction, ICollection, ICollectionParams } from "./interfaces";
 import { isAction } from "./type.guards";
 
-type predicate<T> = (value: T, index: number) => boolean;
+export type predicate<T> = (value: T, index: number) => boolean;
 /**
  * Endpoint belongs to APIs
  *

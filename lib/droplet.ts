@@ -5,7 +5,7 @@ import { IAction, ICollection, IDroplet, IDropletEndpoint, IDropletSpecs, IImage
 import { isAction, isArrayOfDroplet, isDroplet, isImage } from "./common/type.guards";
 import DigitalOcean from "./digitalOcean";
 
-type imageType = "snapshots" | "backups";
+export type imageType = "snapshots" | "backups";
 /**
  * Droplet endpoint
  *

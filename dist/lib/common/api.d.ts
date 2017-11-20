@@ -1,5 +1,4 @@
-import axios, { AxiosInstance, AxiosPromise, AxiosRequestConfig } from "axios";
-// import * as axios from "axios";
+import { AxiosInstance, AxiosPromise, AxiosRequestConfig } from "axios";
 import AccountEndpoint from "../account";
 import ActionEndpoint from "../action";
 import CertificateEndpoint from "../certificate";
@@ -11,12 +10,7 @@ import SnapshotEndpoint from "../snapshot";
 import SSHKeyEndpoint from "../sshkey";
 import TagEndpoint from "../tag";
 import VolumeEndpoint from "../volume";
-import { IAPISpecs, IaxiosConfig, IHeader } from "./interfaces";
-
-// import DomainEndpoint from '../domain/endpoint';
-// import FloatingIPEndpoint from '../floatingIP/endpoint';
-// import ImageEndpointEndpoint from '../image/endpoint';
-// import LoadBalancerEndpoint from '../loadBalancer/endpoint';
+import { IAPISpecs, IHeader } from "./interfaces";
 /**
  * Generic API client
  *
@@ -31,7 +25,7 @@ export default abstract class API {
      * @type {Error}
      * @memberof API
      */
-    public invalidResponse: Error;
+    invalidResponse: Error;
     /**
      * alias to axios.get
      *
@@ -39,7 +33,7 @@ export default abstract class API {
      *
      * @memberof API
      */
-    public get get() { return this.http.get; }
+    readonly get: (url: string, config?: AxiosRequestConfig) => AxiosPromise;
     /**
      * alias to axios.post
      *
@@ -47,7 +41,7 @@ export default abstract class API {
      *
      * @memberof API
      */
-    public get post() { return this.http.post; }
+    readonly post: (url: string, data?: any, config?: AxiosRequestConfig) => AxiosPromise;
     /**
      * alias to axios.put
      *
@@ -55,7 +49,7 @@ export default abstract class API {
      *
      * @memberof API
      */
-    public get put() { return this.http.put; }
+    readonly put: (url: string, data?: any, config?: AxiosRequestConfig) => AxiosPromise;
     /**
      * alias to axios.delete
      *
@@ -63,105 +57,102 @@ export default abstract class API {
      *
      * @memberof API
      */
-    public get delete() { return this.http.delete; }
+    readonly delete: (url: string, config?: AxiosRequestConfig) => AxiosPromise;
     /**
      * Account endpoint
      *
      * @type {AccountEndpoint}
      * @memberof DigitalOcean
      */
-    public Account: AccountEndpoint;
+    Account: AccountEndpoint;
     /**
      * Action endpoint
      *
      * @type {ActionEndpoint}
      * @memberof DigitalOcean
      */
-    public Action: ActionEndpoint;
+    Action: ActionEndpoint;
     /**
      * Certificate endpoint
      *
      * @type {CertificateEndpoint}
      * @memberof DigitalOcean
      */
-    public Certificate: CertificateEndpoint;
+    Certificate: CertificateEndpoint;
     /**
      * Domain endpoint
      *
      * @type {DomainEndpoint}
      * @memberof DigitalOcean
      */
-    // public Domain: DomainEndpoint;
     /**
      * Droplet endpoint
      *
      * @type {DropletEndpoint}
      * @memberof DigitalOcean
      */
-    public Droplet: DropletEndpoint;
+    Droplet: DropletEndpoint;
     /**
      * FloatingIP endpoint
      *
      * @type {FloatingIPEndpoint}
      * @memberof DigitalOcean
      */
-    // public FloatingIP: FloatingIPEndpoint;
     /**
      * Image endpoint
      *
      * @type {ImageEndpoint}
      * @memberof DigitalOcean
      */
-    public Image: ImageEndpoint;
+    Image: ImageEndpoint;
     /**
      * LoadBalancer endpoint
      *
      * @type {LoadBalancerEndpoint}
      * @memberof DigitalOcean
      */
-    // public LoadBalancer: LoadBalancerEndpoint;
     /**
      * Region endpoint
      *
      * @type {RegionEndpoint}
      * @memberof DigitalOcean
      */
-    public Region: RegionEndpoint;
+    Region: RegionEndpoint;
     /**
      * Size endpoint
      *
      * @type {SizeEndpoint}
      * @memberof DigitalOcean
      */
-    public Size: SizeEndpoint;
+    Size: SizeEndpoint;
     /**
      * Snapshot endpoint
      *
      * @type {SnapshotEndpoint}
      * @memberof DigitalOcean
      */
-    public Snapshot: SnapshotEndpoint;
+    Snapshot: SnapshotEndpoint;
     /**
      * SSHKey endpoint
      *
      * @type {SSHKeyEndpoint}
      * @memberof DigitalOcean
      */
-    public SSHKey: SSHKeyEndpoint;
+    SSHKey: SSHKeyEndpoint;
     /**
      * Tag endpoint
      *
      * @type {TagEndpoint}
      * @memberof DigitalOcean
      */
-    public Tag: TagEndpoint;
+    Tag: TagEndpoint;
     /**
      * Volume endpoint
      *
      * @type {VolumeEndpoint}
      * @memberof DigitalOcean
      */
-    public Volume: VolumeEndpoint;
+    Volume: VolumeEndpoint;
     /**
      * Creates an instance of API.
      * @param {IAPISpecs} specs
@@ -224,9 +215,7 @@ export default abstract class API {
      * @type {string}
      * @memberof API
      */
-    private get baseUrl(): string {
-        return `${this.protocol}://${this.host}${this.prefix}`;
-    }
+    private readonly baseUrl;
     /**
      * turn headers array into key -> value object
      *
@@ -235,11 +224,7 @@ export default abstract class API {
      *
      * @memberof API
      */
-    private get headersObj() {
-        const obj = {};
-        this.headers.forEach(header => obj[header.key] = header.value);
-        return obj;
-    }
+    private readonly headersObj;
     /**
      * axios config object
      *
@@ -248,19 +233,8 @@ export default abstract class API {
      * @type {IaxiosConfig}
      * @memberof API
      */
-    private get axiosConfig(): IaxiosConfig {
-        return { baseURL: this.baseUrl, headers: this.headersObj, timeout: this.timeout };
-    }
-    constructor(specs: IAPISpecs) {
-        this.headers = specs.headers;
-        this.host = specs.host;
-        this.invalidResponse = specs.invalidResponse;
-        this.prefix = specs.prefix || "/";
-        this.protocol = specs.protocol;
-        this.timeout = specs.timeout;
-        this.http = axios.create(this.axiosConfig);
-        this.loadEndpoints();
-    }
+    private readonly axiosConfig;
+    constructor(specs: IAPISpecs);
     /**
      * load all endpoints instances
      *
@@ -268,20 +242,5 @@ export default abstract class API {
      *
      * @memberof DigitalOcean
      */
-    private loadEndpoints(): void {
-        this.Account = new AccountEndpoint(this);
-        this.Action = new ActionEndpoint(this);
-        this.Certificate = new CertificateEndpoint(this);
-        // this.Domain = new DomainEndpoint(this);
-        this.Droplet = new DropletEndpoint(this);
-        // this.FloatingIP = new FloatingIPEndpoint(this);
-        this.Image = new ImageEndpoint(this);
-        // this.LoadBalancer = new LoadBalancerEndpoint(this);
-        this.Region = new RegionEndpoint(this);
-        this.Size = new SizeEndpoint(this);
-        this.Snapshot = new SnapshotEndpoint(this);
-        this.SSHKey = new SSHKeyEndpoint(this);
-        this.Tag = new TagEndpoint(this);
-        this.Volume = new VolumeEndpoint(this);
-    }
+    private loadEndpoints();
 }

@@ -2,10 +2,12 @@
   "name": "dots-wrapper",
   "version": "2.0.0",
   "description": "Digital Ocean API V2 wrapper. TypeScript - Javascript",
-  "main": "build/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "prepublish": "npm run build",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

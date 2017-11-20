@@ -1,10 +1,10 @@
-import { Observable } from 'rxjs';
+import { Observable } from "rxjs";
 
-import digitalOcean from '../test';
-import Endpoint from './common/endpoint';
-import { IAction, ICollection, ISnapshot, IVolume, IVolumeEndpoint, IVolumeSpecs } from './common/interfaces';
-import { isAction, isVolume, isSnapshot } from './common/type.guards';
-import DigitalOcean from './digitalOcean';
+import Endpoint from "./common/endpoint";
+import { IAction, ICollection, ISnapshot, IVolume, IVolumeEndpoint, IVolumeSpecs } from "./common/interfaces";
+import { isAction, isSnapshot, isVolume } from "./common/type.guards";
+import DigitalOcean from "./digitalOcean";
+
 /**
  * Volume endpoint.
  *
@@ -20,7 +20,7 @@ export default class VolumeEndpoint extends Endpoint implements IVolumeEndpoint 
      * @memberof VolumeEndpoint
      */
     constructor(digitalOcean: DigitalOcean) {
-        super(digitalOcean, '/volumes');
+        super(digitalOcean, "/volumes");
     }
     /**
      * Attach volume to droplet by volume id.
@@ -48,7 +48,7 @@ export default class VolumeEndpoint extends Endpoint implements IVolumeEndpoint 
         if (c) ((volumeName = a) && (region = c));
         else volumeId = a;
         url = `${this.prefix}/${volumeId}/actions`;
-        params.type = 'attach';
+        params.type = "attach";
         params.droplet_id = dropletId;
         if (!volumeId) {
             url = `${this.prefix}/actions`;
@@ -56,7 +56,7 @@ export default class VolumeEndpoint extends Endpoint implements IVolumeEndpoint 
             params.region = region;
         }
         let promise = this.api.post(url, params);
-        return this.fromPromise(promise, 'action', isAction);
+        return this.fromPromise(promise, "action", isAction);
     }
     /**
      * Create new volume.
@@ -69,9 +69,9 @@ export default class VolumeEndpoint extends Endpoint implements IVolumeEndpoint 
     public create(specs: IVolumeSpecs): Observable<IVolume> {
         let url = this.prefix;
         if (specs.snapshot_id) specs.region = undefined;
-        else if (!specs.region) throw new Error('Missing volume region.');
+        else if (!specs.region) throw new Error("Missing volume region.");
         let promise = this.api.post(url, specs)
-        return this.fromPromise(promise, 'volume', isVolume);
+        return this.fromPromise(promise, "volume", isVolume);
     }
     /**
      * Create new Snapshot from volume.
@@ -87,7 +87,7 @@ export default class VolumeEndpoint extends Endpoint implements IVolumeEndpoint 
         let params = <any>{};
         if (snapshotName) params.name = snapshotName;
         let promise = this.api.post(url, params);
-        return this.fromPromise(promise, 'snapshot', isSnapshot);
+        return this.fromPromise(promise, "snapshot", isSnapshot);
     }
     /**
      * Delete volume by id.
@@ -139,7 +139,7 @@ export default class VolumeEndpoint extends Endpoint implements IVolumeEndpoint 
         if (c) ((volumeName = a) && (region = c));
         else volumeId = a;
         url = `${this.prefix}/${volumeId}/actions`;
-        params.type = 'detach';
+        params.type = "detach";
         params.droplet_id = dropletId;
         if (!volumeId) {
             url = `${this.prefix}/actions`;
@@ -147,7 +147,7 @@ export default class VolumeEndpoint extends Endpoint implements IVolumeEndpoint 
             params.region = region;
         }
         let promise = this.api.post(url, params);
-        return this.fromPromise(promise, 'action', isAction);
+        return this.fromPromise(promise, "action", isAction);
     }
     /**
      * Get volume's action by id.
@@ -161,7 +161,7 @@ export default class VolumeEndpoint extends Endpoint implements IVolumeEndpoint 
     public getActionById(volumeId: string, actionId: number): Observable<IAction> {
         let url: string = `${this.prefix}/${volumeId}/actions/${actionId}`;
         let promise = this.api.get(url);
-        return this.fromPromise(promise, 'action', isAction);
+        return this.fromPromise(promise, "action", isAction);
     }
     /**
      * Get volume by id.
@@ -174,7 +174,7 @@ export default class VolumeEndpoint extends Endpoint implements IVolumeEndpoint 
     public get(id: string): Observable<IVolume> {
         let url: string = `${this.prefix}/${id}`;
         let promise = this.api.get(url);
-        return this.fromPromise(promise, 'volume', isVolume);
+        return this.fromPromise(promise, "volume", isVolume);
     }
     /**
      * List all volumes.
@@ -187,7 +187,7 @@ export default class VolumeEndpoint extends Endpoint implements IVolumeEndpoint 
      */
     public list(page: number, perPage?: number): Observable<ICollection<IVolume>> {
         let url: string = this.prefix;
-        return this.getCollection<IVolume>(page, perPage, url, 'volumes', isVolume);
+        return this.getCollection<IVolume>(page, perPage, url, "volumes", isVolume);
     }
     /**
      * List all volumes's actions.
@@ -201,7 +201,7 @@ export default class VolumeEndpoint extends Endpoint implements IVolumeEndpoint 
      */
     public listActions(volumeId: string, page: number, perPage?: number): Observable<ICollection<IAction>> {
         let url: string = `${this.prefix}/${volumeId}/actions`;
-        return this.getCollection<IAction>(page, perPage, url, 'actions', isAction);
+        return this.getCollection<IAction>(page, perPage, url, "actions", isAction);
     }
     /**
      * List all volumes by name.
@@ -216,7 +216,7 @@ export default class VolumeEndpoint extends Endpoint implements IVolumeEndpoint 
      */
     public listByName(name: string, region: string, page: number, perPage?: number): Observable<ICollection<IVolume>> {
         let url: string = `${this.prefix}?name=${name}&region=${region}`;
-        return this.getCollection<IVolume>(page, perPage, url, 'volumes', isVolume);
+        return this.getCollection<IVolume>(page, perPage, url, "volumes", isVolume);
     }
     /**
      * List all volumes's snapshots.
@@ -230,7 +230,7 @@ export default class VolumeEndpoint extends Endpoint implements IVolumeEndpoint 
      */
     public listSnapshots(volumeId: string, page: number, perPage?: number): Observable<ICollection<ISnapshot>> {
         let url: string = `${this.prefix}/${volumeId}/snapshots`;
-        return this.getCollection<ISnapshot>(page, perPage, url, 'snapshots', isSnapshot);
+        return this.getCollection<ISnapshot>(page, perPage, url, "snapshots", isSnapshot);
     }
     /**
      * Resize volume.
@@ -243,8 +243,8 @@ export default class VolumeEndpoint extends Endpoint implements IVolumeEndpoint 
      */
     public resize(id: string, size: number): Observable<IAction> {
         let url: string = `${this.prefix}/${id}/actions`;
-        let params = { type: 'resize', size_gigabytes: size };
+        let params = { type: "resize", size_gigabytes: size };
         let promise = this.api.post(url, params);
-        return this.fromPromise(promise, 'action', isAction);
+        return this.fromPromise(promise, "action", isAction);
     }
 }

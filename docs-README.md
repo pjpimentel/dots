@@ -15,16 +15,7 @@ Typescript
     const myApiToken = 'my-long-token';
     const digitalOcean = new DigitalOcean(myApiToken);
 
-    async function main(){
-        try{
-            let account = await digitalOcean.Account.get();
-            console.log(account);
-        } catch(e){
-            console.log(e.message);
-        }
-    }
-
-    main();
+    digitalOcean.Account.get().first().subscribe(account => console.log(account), err => console.log(err.message));
 ```
 Javascript - Nodejs
 ``` javascript
@@ -32,9 +23,7 @@ Javascript - Nodejs
     const myApiToken = 'my-long-token';
     const digitalOcean = new DigitalOcean(myApiToken);
 
-    digitalOcean.Account.get()
-        .then(account => console.log(account))
-        .catch(e => console.log(e.message));
+    digitalOcean.Account.get().first().subscribe(account => console.log(account), err => console.log(err.message));
 ```
 ## Docs
 * [Account](classes/accountendpoint.html)

@@ -4,10 +4,11 @@
     "compilerOptions": {
         //"module": "amd",
         "module": "commonjs",
-        "moduleResolution": "node",
+        // "moduleResolution": "node",
+        "declaration": true,
         "target": "es5",
         "noImplicitAny": false,
-        "sourceMap": false,
+        "sourceMap": true,
         "lib": [
             "es2015",
             "dom"
@@ -18,50 +19,11 @@
     "rootDir": "lib",
     "include": [
         "*",
-        // "**/*",
-        "lib/*.ts",
-        "lib/common/*.ts",
-        "test/*",
-        "test/account/*",
-        "test/size/*",
-        "test/tag/*",
-        "test/region/*",
-        "test/action/*",
-        "test/sshkey/*",
-        "test/snapshot/*",
-        "test/volume/*"
+        "*.ts"
     ],
     "exclude": [
         "node_modules/*",
-        "./common.ts",
         "./node_modules/*"
         // "./lib/*/*"
     ]
 }
-// {
-//     "compileOnSave": false,
-//     "compilerOptions": {
-//         "outDir": "./dist/",
-//         "module": "es2015",
-//         "baseUrl": "src",
-//         "sourceMap": true,
-//         "declaration": false,
-//         "moduleResolution": "node",
-//         "emitDecoratorMetadata": true,
-//         "experimentalDecorators": true,
-//         "target": "es5",
-//         "typeRoots": [
-//             "node_modules/@types"
-//         ],
-//         "lib": [
-//             "es2016",
-//             "dom"
-//         ],
-//         "exclude": [
-//             "node_modules/*",
-//             "./common.ts",
-//             "./node_modules/*",
-//             "./dist/*"
-//         ]
-//     }
-// }

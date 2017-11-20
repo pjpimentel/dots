@@ -2,7 +2,6 @@
 node_modules
 docs
 dumps
-dist
 bin
 docs
 sbin
