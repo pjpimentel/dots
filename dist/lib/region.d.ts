@@ -1,7 +1,7 @@
 import DigitalOcean from './digitalOcean';
 import Endpoint from './common/endpoint';
 import { ICollection, IRegion, IRegionEndpoint } from "./common/interfaces";
-import { Observable } from 'rxjs';
+import { Observable } from "rxjs/Observable";
 /**
  * Region endpoint.
  *

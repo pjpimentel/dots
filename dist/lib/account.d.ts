@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable } from "rxjs/Observable";
 import Endpoint from './common/endpoint';
 import { IAccount, IAccountEndpoint } from './common/interfaces';
 import DigitalOcean from './digitalOcean';

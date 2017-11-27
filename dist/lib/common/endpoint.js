@@ -1,6 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var rxjs_1 = require("rxjs");
+require("rxjs/add/observable/fromPromise");
+require("rxjs/add/operator/filter");
+require("rxjs/add/operator/map");
+var Observable_1 = require("rxjs/Observable");
 var type_guards_1 = require("./type.guards");
 /**
  * Endpoint belongs to APIs
@@ -84,7 +87,7 @@ var Endpoint = /** @class */ (function () {
         //     if (Object.keys(data).length === 0) throw this.api.invalidResponse;
         //     return data;
         // };
-        var observable = rxjs_1.Observable.fromPromise(promise).map(function (res) { return res.data; });
+        var observable = Observable_1.Observable.fromPromise(promise).map(function (res) { return res.data; });
         if (property)
             observable = observable.map(function (data) { return data[property]; }).map(dataValidator);
         if (filter)

@@ -1,5 +1,8 @@
+import "rxjs/add/observable/fromPromise";
+import "rxjs/add/operator/filter";
+import "rxjs/add/operator/map";
 import { AxiosPromise } from "axios";
-import { Observable } from "rxjs";
+import { Observable } from "rxjs/Observable";
 import API from "./api";
 import { IAction, ICollection } from "./interfaces";
 export declare type predicate<T> = (value: T, index: number) => boolean;

@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable } from "rxjs/Observable";
 import DigitalOcean from './digitalOcean';
 import Endpoint from './common/endpoint';
 import { IImage, IImageEndpoint, IImageUpdateSpecs, IAction, ICollection } from './common/interfaces';
