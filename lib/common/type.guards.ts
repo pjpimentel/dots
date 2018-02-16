@@ -280,13 +280,12 @@ export function isImage(data: any): data is IImage {
     if (typeof (data as IImage).id !== "number") return false;
     if (typeof (data as IImage).name !== "string") return false;
     if (typeof (data as IImage).size_gigabytes !== "number") return false;
-    if (typeof (data as IImage).slug !== "string") return false;
     if (typeof (data as IImage).min_disk_size !== "number") return false;
     if (typeof (data as IImage).public !== "boolean") return false;
     if (typeof (data as IImage).min_disk_size !== "number") return false;
-    if (typeof (data as IImage).slug !== null && typeof (data as IImage).slug !== "string") return false;
+    if ((data as IImage).slug !== null && typeof (data as IImage).slug !== "string") return false;
     if (typeof (data as IImage).type !== "string") return false;
-    if (!isArrayOfString(typeof (data as IImage).regions)) return false;
+    // if ((data as IImage).regions !== null && !isArrayOfString(typeof (data as IImage).regions)) return false;
     return true;
 }
 /**
