@@ -353,20 +353,17 @@ function isImage(data) {
         return false;
     if (typeof data.size_gigabytes !== "number")
         return false;
-    if (typeof data.slug !== "string")
-        return false;
     if (typeof data.min_disk_size !== "number")
         return false;
     if (typeof data.public !== "boolean")
         return false;
     if (typeof data.min_disk_size !== "number")
         return false;
-    if (typeof data.slug !== null && typeof data.slug !== "string")
+    if (data.slug !== null && typeof data.slug !== "string")
         return false;
     if (typeof data.type !== "string")
         return false;
-    if (!isArrayOfString(typeof data.regions))
-        return false;
+    // if ((data as IImage).regions !== null && !isArrayOfString(typeof (data as IImage).regions)) return false;
     return true;
 }
 exports.isImage = isImage;
