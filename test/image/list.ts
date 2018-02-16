@@ -2,19 +2,14 @@
 'use strict';
 import digitalOcean from '../';
 
-let page = parseInt(process.argv[2]);
-let perPage = parseInt(process.argv[3]);
-let resourceType = process.argv[4];
+const success = data => console.log(data);
+const error = error => console.log(error.message);
+const page = parseInt(process.argv[2]) || 1;
+const perPage = parseInt(process.argv[3]) || null
+const resourceType = process.argv[4];
 
-if(!page) page = 1;
-if(!perPage) perPage = null;
+let observable = digitalOcean.Image.list(page, perPage);
+if (resourceType)
+    digitalOcean.Image.list(resourceType, page, perPage);
 
-let promise;
-if(resourceType)
-    promise = digitalOcean.Image.list(resourceType, page, perPage);
-else
-    promise = digitalOcean.Image.list(page, perPage);
-
-promise
-    .then(collection => console.log(collection))
-    .catch(e => console.log(e.message));
+observable.subscribe(success, error);
