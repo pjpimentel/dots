@@ -63,7 +63,7 @@ export default abstract class Endpoint {
             .map((data: any) => {
                 const collection: ICollection<C> = {} as ICollection<C>;
                 collection.items = data[property];
-                if (filter && !collection.items.every(filter)) throw this.api.invalidResponse;
+                // if (filter && !collection.items.every(filter)) throw this.api.invalidResponse; //TODO: recheck type guards
                 collection.total = data && data.meta ? data.meta.total : undefined;
                 collection.perPage = params.per_page;
                 collection.curPage = params.page;
@@ -106,7 +106,7 @@ export default abstract class Endpoint {
         // };
         let observable = Observable.fromPromise(promise).map(res => res.data);
         if (property) observable = observable.map(data => data[property]).map(dataValidator);
-        if (filter) observable = observable.filter(filter).map(dataValidator);
+        // if (filter) observable = observable.filter(filter).map(dataValidator); //TODO: recheck type guards
         return observable;
     }
     /**
