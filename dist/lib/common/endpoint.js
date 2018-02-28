@@ -37,14 +37,12 @@ var Endpoint = /** @class */ (function () {
      * @memberof Endpoint
      */
     Endpoint.prototype.getCollection = function (page, perPage, url, property, filter) {
-        var _this = this;
         var params = this.getCollectionParams(page, perPage);
         return this.fromPromise(this.api.get(url, { params: params }))
             .map(function (data) {
             var collection = {};
             collection.items = data[property];
-            if (filter && !collection.items.every(filter))
-                throw _this.api.invalidResponse;
+            // if (filter && !collection.items.every(filter)) throw this.api.invalidResponse; //TODO: recheck type guards
             collection.total = data && data.meta ? data.meta.total : undefined;
             collection.perPage = params.per_page;
             collection.curPage = params.page;
@@ -90,8 +88,7 @@ var Endpoint = /** @class */ (function () {
         var observable = Observable_1.Observable.fromPromise(promise).map(function (res) { return res.data; });
         if (property)
             observable = observable.map(function (data) { return data[property]; }).map(dataValidator);
-        if (filter)
-            observable = observable.filter(filter).map(dataValidator);
+        // if (filter) observable = observable.filter(filter).map(dataValidator); //TODO: recheck type guards
         return observable;
     };
     /**
