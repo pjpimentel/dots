@@ -1,11 +1,11 @@
-import { Observable } from "rxjs/Observable";
+import { Observable } from 'rxjs';
 
-import Endpoint from "./common/endpoint";
-import { IAction, ICollection, IDroplet, IDropletEndpoint, IDropletSpecs, IImage } from "./common/interfaces";
-import { isAction, isArrayOfDroplet, isDroplet, isImage } from "./common/type.guards";
-import DigitalOcean from "./digitalOcean";
+import Endpoint from './common/endpoint';
+import { IAction, ICollection, IDroplet, IDropletEndpoint, IDropletSpecs, IImage } from './common/interfaces';
+import { isAction, isArrayOfDroplet, isDroplet, isImage } from './common/type.guards';
+import DigitalOcean from './digitalOcean';
 
-export type imageType = "snapshots" | "backups";
+export type imageType = 'snapshots' | 'backups';
 /**
  * Droplet endpoint
  *
@@ -21,7 +21,7 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      * @memberof DropletEndpoint
      */
     constructor(digitalOcean: DigitalOcean) {
-        super(digitalOcean, "/droplets");
+        super(digitalOcean, '/droplets');
     }
     /**
      * Change droplet's kernel.
@@ -32,9 +32,9 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public changeKernel(id: number, kernelId: number): Observable<IAction> {
+    changeKernel(id: number, kernelId: number): Observable<IAction> {
         const url = `${this.prefix}/${id}/actions`;
-        const params = { type: "change_kernel", kernel: kernelId };
+        const params = { type: 'change_kernel', kernel: kernelId };
         return this.doAction(url, params);
     }
     /**
@@ -45,10 +45,10 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public create(specs: IDropletSpecs): Observable<IDroplet> {
+    create(specs: IDropletSpecs): Observable<IDroplet> {
         const url = this.prefix;
         const promise = this.api.post(url, specs);
-        return this.fromPromise(promise, "droplet", isDroplet);
+        return this.fromPromise(promise, 'droplet', isDroplet);
     }
     /**
      * Create snapshot from droplet.
@@ -59,9 +59,9 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public createSnapshot(id: number, snapshotName: string): Observable<IAction> {
+    createSnapshot(id: number, snapshotName: string): Observable<IAction> {
         const url = `${this.prefix}/${id}/actions`;
-        const params = { type: "snapshot", name: snapshotName };
+        const params = { type: 'snapshot', name: snapshotName };
         return this.doAction(url, params);
     }
     /**
@@ -72,7 +72,7 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public delete(id: number): Observable<void>;
+    delete(id: number): Observable<void>;
     /**
      * Delete droplet by tag.
      *
@@ -82,11 +82,11 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      * @memberof DropletEndpoint
      */
     // tslint:disable-next-line:unified-signatures
-    public delete(tag: string): Observable<void>;
-    public delete(param: string | number): Observable<void> {
+    delete(tag: string): Observable<void>;
+    delete(param: string | number): Observable<void> {
         const params = {} as any;
         let url = this.prefix;
-        if (typeof param === "number") url += `/${param}`;
+        if (typeof param === 'number') url += `/${param}`;
         else params.tag_name = param;
         const promise = this.api.delete(url, { params });
         return this.fromPromise(promise);
@@ -99,9 +99,9 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public disableBackups(id: number): Observable<IAction> {
+    disableBackups(id: number): Observable<IAction> {
         const url = `${this.prefix}/${id}/actions`;
-        const params = { type: "disable_backups" } as any;
+        const params = { type: 'disable_backups' } as any;
         return this.doAction(url, params);
     }
     /**
@@ -112,9 +112,9 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public enableBackups(id: number): Observable<IAction> {
+    enableBackups(id: number): Observable<IAction> {
         const url = `${this.prefix}/${id}/actions`;
-        const params = { type: "enable_backups" } as any;
+        const params = { type: 'enable_backups' } as any;
         return this.doAction(url, params);
     }
     /**
@@ -125,9 +125,9 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public enableIPv6(id: number): Observable<IAction> {
+    enableIPv6(id: number): Observable<IAction> {
         const url = `${this.prefix}/${id}/actions`;
-        const params = { type: "enable_ipv6" } as any;
+        const params = { type: 'enable_ipv6' } as any;
         return this.doAction(url, params);
     }
     /**
@@ -138,9 +138,9 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public enablePrivateNetworking(id: number): Observable<IAction> {
+    enablePrivateNetworking(id: number): Observable<IAction> {
         const url = `${this.prefix}/${id}/actions`;
-        const params = { type: "enable_private_networking" } as any;
+        const params = { type: 'enable_private_networking' } as any;
         return this.doAction(url, params);
     }
     /**
@@ -151,10 +151,10 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public get(id: number): Observable<IDroplet> {
+    get(id: number): Observable<IDroplet> {
         const url = `${this.prefix}/${id}`;
         const promise = this.api.get(url);
-        return this.fromPromise(promise, "droplet", isDroplet);
+        return this.fromPromise(promise, 'droplet', isDroplet);
     }
     /**
      * Get droplet's action.
@@ -165,10 +165,10 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public getActionById(dropletId: number, actionId: number): Observable<IAction> {
+    getActionById(dropletId: number, actionId: number): Observable<IAction> {
         const url = `${this.prefix}/${dropletId}/actions/${actionId}`;
         const promise = this.api.get(url);
-        return this.fromPromise(promise, "action", isAction);
+        return this.fromPromise(promise, 'action', isAction);
     }
     /**
      * List droplets by tag.
@@ -180,7 +180,7 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public list(tag: string, page: number, perPage?: number): Observable<ICollection<IDroplet>>;
+    list(tag: string, page: number, perPage?: number): Observable<ICollection<IDroplet>>;
     /**
      * List all droplets.
      *
@@ -190,18 +190,18 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public list(page: number, perPage?: number): Observable<ICollection<IDroplet>>;
-    public list(a: string | number, b: number, c?: number): Observable<ICollection<IDroplet>> {
+    list(page: number, perPage?: number): Observable<ICollection<IDroplet>>;
+    list(a: string | number, b: number, c?: number): Observable<ICollection<IDroplet>> {
         let tag: string = null;
         let page: number = null;
         let perPage: number = null;
         // tslint:disable-next-line:no-unused-expression
-        if (typeof a === "string") ((tag = a) && (page = b) && (perPage = c));
+        if (typeof a === 'string') ((tag = a) && (page = b) && (perPage = c));
         // tslint:disable-next-line:no-unused-expression
         else ((page = a) && (perPage = b));
         let url: string = this.prefix;
         if (tag) url = `${url}?tag_name=${tag}`;
-        return this.getCollection<IDroplet>(page, perPage, url, "droplets");
+        return this.getCollection<IDroplet>(page, perPage, url, 'droplets');
     }
     /**
      * List all droplet's snapshots. [droplet ? snapshot = image]
@@ -213,8 +213,8 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public listImages(id: number, type: imageType, page: number, perPage?: number): Observable<ICollection<IImage>> {
-        const url: string = `${this.prefix}/${id}/${type}`;
+    listImages(id: number, type: imageType, page: number, perPage?: number): Observable<ICollection<IImage>> {
+        const url = `${this.prefix}/${id}/${type}`;
         return this.getCollection<IImage>(page, perPage, url, type, isImage);
     }
     /**
@@ -224,10 +224,10 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public listNeighbors(): Observable<IDroplet[]> {
-        const url = `reports/droplet_neighbors`;
+    listNeighbors(): Observable<IDroplet[]> {
+        const url = 'reports/droplet_neighbors';
         const promise = this.api.get(url);
-        return this.fromPromise(promise, "neighbors");
+        return this.fromPromise(promise, 'neighbors');
     }
     /**
      * List droplet's neighbors.
@@ -237,10 +237,10 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public listNeighborsByDropletId(id: number): Observable<IDroplet[]> {
+    listNeighborsByDropletId(id: number): Observable<IDroplet[]> {
         const url = `${this.prefix}/${id}/neighbors`;
         const promise = this.api.get(url);
-        return this.fromPromise(promise, "droplets", isArrayOfDroplet);
+        return this.fromPromise(promise, 'droplets', isArrayOfDroplet);
     }
     /**
      * Reset droplet password.
@@ -250,9 +250,9 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public passwordReset(id: number): Observable<IAction> {
+    passwordReset(id: number): Observable<IAction> {
         const url = `${this.prefix}/${id}/actions`;
-        const params = { type: "password_reset" } as any;
+        const params = { type: 'password_reset' } as any;
         return this.doAction(url, params);
     }
     /**
@@ -263,9 +263,9 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public powerCycle(id: number): Observable<IAction> {
+    powerCycle(id: number): Observable<IAction> {
         const url = `${this.prefix}/${id}/actions`;
-        const params = { type: "power_cycle" } as any;
+        const params = { type: 'power_cycle' } as any;
         return this.doAction(url, params);
     }
     /**
@@ -276,9 +276,9 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public powerOff(id: number): Observable<IAction> {
+    powerOff(id: number): Observable<IAction> {
         const url = `${this.prefix}/${id}/actions`;
-        const params = { type: "power_off" } as any;
+        const params = { type: 'power_off' } as any;
         return this.doAction(url, params);
     }
     /**
@@ -289,9 +289,9 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public powerOn(id: number): Observable<IAction> {
+    powerOn(id: number): Observable<IAction> {
         const url = `${this.prefix}/${id}/actions`;
-        const params = { type: "power_on" } as any;
+        const params = { type: 'power_on' } as any;
         return this.doAction(url, params);
     }
     /**
@@ -302,9 +302,9 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public reboot(id: number): Observable<IAction> {
+    reboot(id: number): Observable<IAction> {
         const url = `${this.prefix}/${id}/actions`;
-        const params = { type: "reboot" } as any;
+        const params = { type: 'reboot' } as any;
         return this.doAction(url, params);
     }
     /**
@@ -316,7 +316,7 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public rebuild(id: number, imageSlug: string): Observable<IAction>;
+    rebuild(id: number, imageSlug: string): Observable<IAction>;
     /**
      * Rebuild droplet by image id.
      *
@@ -327,10 +327,10 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      * @memberof DropletEndpoint
      */
     // tslint:disable-next-line:unified-signatures
-    public rebuild(id: number, imageId: number): Observable<IAction>;
-    public rebuild(id: number, b: string | number): Observable<IAction> {
+    rebuild(id: number, imageId: number): Observable<IAction>;
+    rebuild(id: number, b: string | number): Observable<IAction> {
         const url = `${this.prefix}/${id}/actions`;
-        const params = { type: "rebuild", image: b } as any;
+        const params = { type: 'rebuild', image: b } as any;
         return this.doAction(url, params);
     }
     /**
@@ -342,9 +342,9 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public rename(id: number, newName: string): Observable<IAction> {
+    rename(id: number, newName: string): Observable<IAction> {
         const url = `${this.prefix}/${id}/actions`;
-        const params = { type: "rename", name: newName } as any;
+        const params = { type: 'rename', name: newName } as any;
         return this.doAction(url, params);
     }
     /**
@@ -357,9 +357,9 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public resize(id: number, sizeSlug: string, resizeDisk: boolean = false): Observable<IAction> {
+    resize(id: number, sizeSlug: string, resizeDisk = false): Observable<IAction> {
         const url = `${this.prefix}/${id}/actions`;
-        const params = { type: "resize", disk: resizeDisk, size: sizeSlug } as any;
+        const params = { type: 'resize', disk: resizeDisk, size: sizeSlug } as any;
         return this.doAction(url, params);
     }
     /**
@@ -371,7 +371,7 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public restore(id: number, imageSlug: string): Observable<IAction>;
+    restore(id: number, imageSlug: string): Observable<IAction>;
     /**
      * Restore droplet by image id.
      *
@@ -382,10 +382,10 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      * @memberof DropletEndpoint
      */
     // tslint:disable-next-line:unified-signatures
-    public restore(id: number, imageId: number): Observable<IAction>;
-    public restore(id: number, b: string | number): Observable<IAction> {
+    restore(id: number, imageId: number): Observable<IAction>;
+    restore(id: number, b: string | number): Observable<IAction> {
         const url = `${this.prefix}/${id}/actions`;
-        const params = { type: "restore", image: b } as any;
+        const params = { type: 'restore', image: b } as any;
         return this.doAction(url, params);
     }
     /**
@@ -396,9 +396,9 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      *
      * @memberof DropletEndpoint
      */
-    public shutdown(id: number): Observable<IAction> {
+    shutdown(id: number): Observable<IAction> {
         const url = `${this.prefix}/${id}/actions`;
-        const params = { type: "shutdown" } as any;
+        const params = { type: 'shutdown' } as any;
         return this.doAction(url, params);
     }
 }

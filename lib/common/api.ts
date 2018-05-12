@@ -1,17 +1,17 @@
-import axios, { AxiosInstance, AxiosPromise, AxiosRequestConfig } from "axios";
+import axios, { AxiosInstance, AxiosPromise, AxiosRequestConfig } from 'axios';
 // import * as axios from "axios";
-import AccountEndpoint from "../account";
-import ActionEndpoint from "../action";
-import CertificateEndpoint from "../certificate";
-import DropletEndpoint from "../droplet";
-import ImageEndpoint from "../image";
-import RegionEndpoint from "../region";
-import SizeEndpoint from "../size";
-import SnapshotEndpoint from "../snapshot";
-import SSHKeyEndpoint from "../sshkey";
-import TagEndpoint from "../tag";
-import VolumeEndpoint from "../volume";
-import { IAPISpecs, IaxiosConfig, IHeader } from "./interfaces";
+import AccountEndpoint from '../account';
+import ActionEndpoint from '../action';
+import CertificateEndpoint from '../certificate';
+import DropletEndpoint from '../droplet';
+import ImageEndpoint from '../image';
+import RegionEndpoint from '../region';
+import SizeEndpoint from '../size';
+import SnapshotEndpoint from '../snapshot';
+import SSHKeyEndpoint from '../sshkey';
+import TagEndpoint from '../tag';
+import VolumeEndpoint from '../volume';
+import { IAPISpecs, IaxiosConfig, IHeader } from './interfaces';
 
 // import DomainEndpoint from '../domain/endpoint';
 // import FloatingIPEndpoint from '../floatingIP/endpoint';
@@ -31,7 +31,7 @@ export default abstract class API {
      * @type {Error}
      * @memberof API
      */
-    public invalidResponse: Error;
+    invalidResponse: Error;
     /**
      * alias to axios.get
      *
@@ -39,7 +39,7 @@ export default abstract class API {
      *
      * @memberof API
      */
-    public get get() { return this.http.get; }
+    get get() { return this.http.get; }
     /**
      * alias to axios.post
      *
@@ -47,7 +47,7 @@ export default abstract class API {
      *
      * @memberof API
      */
-    public get post() { return this.http.post; }
+    get post() { return this.http.post; }
     /**
      * alias to axios.put
      *
@@ -55,7 +55,7 @@ export default abstract class API {
      *
      * @memberof API
      */
-    public get put() { return this.http.put; }
+    get put() { return this.http.put; }
     /**
      * alias to axios.delete
      *
@@ -63,28 +63,28 @@ export default abstract class API {
      *
      * @memberof API
      */
-    public get delete() { return this.http.delete; }
+    get delete() { return this.http.delete; }
     /**
      * Account endpoint
      *
      * @type {AccountEndpoint}
      * @memberof DigitalOcean
      */
-    public Account: AccountEndpoint;
+    Account: AccountEndpoint;
     /**
      * Action endpoint
      *
      * @type {ActionEndpoint}
      * @memberof DigitalOcean
      */
-    public Action: ActionEndpoint;
+    Action: ActionEndpoint;
     /**
      * Certificate endpoint
      *
      * @type {CertificateEndpoint}
      * @memberof DigitalOcean
      */
-    public Certificate: CertificateEndpoint;
+    Certificate: CertificateEndpoint;
     /**
      * Domain endpoint
      *
@@ -98,7 +98,7 @@ export default abstract class API {
      * @type {DropletEndpoint}
      * @memberof DigitalOcean
      */
-    public Droplet: DropletEndpoint;
+    Droplet: DropletEndpoint;
     /**
      * FloatingIP endpoint
      *
@@ -112,7 +112,7 @@ export default abstract class API {
      * @type {ImageEndpoint}
      * @memberof DigitalOcean
      */
-    public Image: ImageEndpoint;
+    Image: ImageEndpoint;
     /**
      * LoadBalancer endpoint
      *
@@ -126,42 +126,42 @@ export default abstract class API {
      * @type {RegionEndpoint}
      * @memberof DigitalOcean
      */
-    public Region: RegionEndpoint;
+    Region: RegionEndpoint;
     /**
      * Size endpoint
      *
      * @type {SizeEndpoint}
      * @memberof DigitalOcean
      */
-    public Size: SizeEndpoint;
+    Size: SizeEndpoint;
     /**
      * Snapshot endpoint
      *
      * @type {SnapshotEndpoint}
      * @memberof DigitalOcean
      */
-    public Snapshot: SnapshotEndpoint;
+    Snapshot: SnapshotEndpoint;
     /**
      * SSHKey endpoint
      *
      * @type {SSHKeyEndpoint}
      * @memberof DigitalOcean
      */
-    public SSHKey: SSHKeyEndpoint;
+    SSHKey: SSHKeyEndpoint;
     /**
      * Tag endpoint
      *
      * @type {TagEndpoint}
      * @memberof DigitalOcean
      */
-    public Tag: TagEndpoint;
+    Tag: TagEndpoint;
     /**
      * Volume endpoint
      *
      * @type {VolumeEndpoint}
      * @memberof DigitalOcean
      */
-    public Volume: VolumeEndpoint;
+    Volume: VolumeEndpoint;
     /**
      * Creates an instance of API.
      * @param {IAPISpecs} specs
@@ -207,7 +207,7 @@ export default abstract class API {
      * @type {('http'|'https')}
      * @memberof API
      */
-    protected protocol: "http" | "https";
+    protected protocol: 'http' | 'https';
     /**
      * request timeout
      *
@@ -237,7 +237,7 @@ export default abstract class API {
      */
     private get headersObj() {
         const obj = {};
-        this.headers.forEach(header => obj[header.key] = header.value);
+        this.headers.forEach((header) => obj[header.key] = header.value);
         return obj;
     }
     /**
@@ -255,7 +255,7 @@ export default abstract class API {
         this.headers = specs.headers;
         this.host = specs.host;
         this.invalidResponse = specs.invalidResponse;
-        this.prefix = specs.prefix || "/";
+        this.prefix = specs.prefix || '/';
         this.protocol = specs.protocol;
         this.timeout = specs.timeout;
         this.http = axios.create(this.axiosConfig);

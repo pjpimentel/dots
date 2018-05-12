@@ -1,9 +1,9 @@
-import { Observable } from "rxjs/Observable";
-import DigitalOcean from './digitalOcean';
+import { Observable } from 'rxjs';
 import Endpoint from './common/endpoint';
-import { IImage, IImageEndpoint, IImageUpdateSpecs, IAction, ICollection } from './common/interfaces';
-import { isImage, isAction } from './common/type.guards';
-//TODO: test
+import { IAction, ICollection, IImage, IImageEndpoint, IImageUpdateSpecs } from './common/interfaces';
+import { isAction, isImage } from './common/type.guards';
+import DigitalOcean from './digitalOcean';
+// TODO: test
 /**
  * Image endpoint.
  *
@@ -29,10 +29,10 @@ export default class ImageEndpoint extends Endpoint implements IImageEndpoint {
      *
      * @memberof ImageEndpoint
      */
-    public convertToSnapshot(id: number): Observable<IAction> {
-        let url: string = `${this.prefix}/${id}/actions`;
-        let params = { type: 'convert' };
-        let promise = this.api.post(url, params);
+    convertToSnapshot(id: number): Observable<IAction> {
+        const url = `${this.prefix}/${id}/actions`;
+        const params = { type: 'convert' };
+        const promise = this.api.post(url, params);
         return this.fromPromise(promise, 'action', isAction);
     }
     /**
@@ -43,9 +43,9 @@ export default class ImageEndpoint extends Endpoint implements IImageEndpoint {
      *
      * @memberof ImageEndpoint
      */
-    public delete(id: number): Observable<void> {
-        let url: string = `${this.prefix}/${id}`;
-        let promise = this.api.get(url);
+    delete(id: number): Observable<void> {
+        const url = `${this.prefix}/${id}`;
+        const promise = this.api.get(url);
         return this.fromPromise(promise);
     }
     /**
@@ -56,7 +56,7 @@ export default class ImageEndpoint extends Endpoint implements IImageEndpoint {
      *
      * @memberof ImageEndpoint
      */
-    public get(id: number): Observable<IImage>;
+    get(id: number): Observable<IImage>;
     /**
      * Get image by slug.
      *
@@ -65,10 +65,10 @@ export default class ImageEndpoint extends Endpoint implements IImageEndpoint {
      *
      * @memberof ImageEndpoint
      */
-    public get(slug: string): Observable<IImage>;
-    public get(uid: number | string): Observable<IImage> {
-        let url: string = `${this.prefix}/${uid}`;
-        let promise = this.api.get(url);
+    get(slug: string): Observable<IImage>;
+    get(uid: number | string): Observable<IImage> {
+        const url = `${this.prefix}/${uid}`;
+        const promise = this.api.get(url);
         return this.fromPromise(promise, 'image', isImage);
     }
     /**
@@ -80,9 +80,9 @@ export default class ImageEndpoint extends Endpoint implements IImageEndpoint {
      *
      * @memberof ImageEndpoint
      */
-    public getActionById(id: number, actionId: number): Observable<IAction> {
-        let url: string = `${this.prefix}/${id}/actions/${actionId}`;
-        let promise = this.api.get(url);
+    getActionById(id: number, actionId: number): Observable<IAction> {
+        const url = `${this.prefix}/${id}/actions/${actionId}`;
+        const promise = this.api.get(url);
         return this.fromPromise(promise, 'action', isAction);
     }
     /**
@@ -95,7 +95,7 @@ export default class ImageEndpoint extends Endpoint implements IImageEndpoint {
      *
      * @memberof ImageEndpoint
      */
-    public list(type: 'distribution' | 'appplication' | string, page: number, perPage?: number): Observable<ICollection<IImage>>;
+    list(type: 'distribution' | 'appplication' | string, page: number, perPage?: number): Observable<ICollection<IImage>>;
     /**
      * List all images.
      *
@@ -105,8 +105,8 @@ export default class ImageEndpoint extends Endpoint implements IImageEndpoint {
      *
      * @memberof ImageEndpoint
      */
-    public list(page: number, perPage?: number): Observable<ICollection<IImage>>;
-    public list(a: string | number, b: number, c?: number): Observable<ICollection<IImage>> {
+    list(page: number, perPage?: number): Observable<ICollection<IImage>>;
+    list(a: string | number, b: number, c?: number): Observable<ICollection<IImage>> {
         let type: string = null, page: number = null, perPage: number = null;
         if (typeof a === 'string') ((type = a) && (page = b) && (perPage = c));
         else ((page = a) && (perPage = b));
@@ -124,8 +124,8 @@ export default class ImageEndpoint extends Endpoint implements IImageEndpoint {
      *
      * @memberof ImageEndpoint
      */
-    public listActions(id: number, page: number, perPage?: number): Observable<ICollection<IAction>> {
-        let url: string = `${this.prefix}/${id}/actions`;
+    listActions(id: number, page: number, perPage?: number): Observable<ICollection<IAction>> {
+        const url = `${this.prefix}/${id}/actions`;
         return this.getCollection<IAction>(page, perPage, url, 'actions');
     }
     /**
@@ -137,8 +137,8 @@ export default class ImageEndpoint extends Endpoint implements IImageEndpoint {
      *
      * @memberof ImageEndpoint
      */
-    public listPrivate(page: number, perPage?: number): Observable<ICollection<IImage>> {
-        let url: string = `${this.prefix}?private=true`;
+    listPrivate(page: number, perPage?: number): Observable<ICollection<IImage>> {
+        const url = `${this.prefix}?private=true`;
         return this.getCollection<IImage>(page, perPage, url, 'images');
     }
     /**
@@ -150,10 +150,10 @@ export default class ImageEndpoint extends Endpoint implements IImageEndpoint {
      *
      * @memberof ImageEndpoint
      */
-    public transfer(id: number, regionSlug: string): Observable<IAction> {
-        let url: string = `${this.prefix}/${id}/actions`;
-        let params = { type: 'transfer', region: regionSlug };
-        let promise = this.api.post(url, params);
+    transfer(id: number, regionSlug: string): Observable<IAction> {
+        const url = `${this.prefix}/${id}/actions`;
+        const params = { type: 'transfer', region: regionSlug };
+        const promise = this.api.post(url, params);
         return this.fromPromise(promise, 'action', isAction);
     }
     /**
@@ -165,9 +165,9 @@ export default class ImageEndpoint extends Endpoint implements IImageEndpoint {
      *
      * @memberof ImageEndpoint
      */
-    public update(id: number, specs: IImageUpdateSpecs): Observable<IImage> {
-        let url: string = `${this.prefix}/${id}`;
-        let promise = this.api.post(url, specs);
+    update(id: number, specs: IImageUpdateSpecs): Observable<IImage> {
+        const url = `${this.prefix}/${id}`;
+        const promise = this.api.post(url, specs);
         return this.fromPromise(promise, 'action', isAction);
     }
 }

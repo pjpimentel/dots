@@ -1,9 +1,9 @@
-import { Observable } from "rxjs/Observable";
+import { Observable } from 'rxjs';
 
 import Endpoint from './common/endpoint';
 import { IAccount, IAccountEndpoint } from './common/interfaces';
-import DigitalOcean from './digitalOcean';
 import { isAccount } from './common/type.guards';
+import DigitalOcean from './digitalOcean';
 
 /**
  * Account endpoint
@@ -29,9 +29,9 @@ export default class AccountEndpoint extends Endpoint implements IAccountEndpoin
      *
      * @memberof AccountEndpoint
      */
-    public get(): Observable<IAccount> {
-        let url: string = this.prefix;
-        let promise = this.api.get(url);
+    get(): Observable<IAccount> {
+        const url: string = this.prefix;
+        const promise = this.api.get(url);
         return this.fromPromise(promise, 'account', isAccount);
     }
 }

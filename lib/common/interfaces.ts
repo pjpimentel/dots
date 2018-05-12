@@ -1,4 +1,4 @@
-import { Observable } from "rxjs/Observable";
+import { Observable } from 'rxjs';
 /**
  * Header interface
  *
@@ -30,7 +30,7 @@ export interface IAPISpecs {
     headers: IHeader[];
     host: string;
     prefix: string;
-    protocol: "http" | "https";
+    protocol: 'http' | 'https';
     timeout: number;
     invalidResponse: Error;
 }
@@ -58,7 +58,7 @@ export interface ICollection<C> {
 export interface ICollectionParams {
     page: number;
     per_page: number;
-};
+}
 /**
  * Resource raw object.
  *
@@ -170,7 +170,7 @@ export interface IVolume {
     readonly droplet_ids: number[];
     readonly id: string;
     readonly name: string;
-    readonly region: IRegion; //TODO: change this type
+    readonly region: IRegion; // TODO: change this type
     readonly size_gigabytes: number;
 }
 /**
@@ -509,7 +509,7 @@ export interface IDropletEndpoint {
     list(tag: string, page: number, perPage?: number);
     // listActionsByDropletId();
     // listBackupsByDropletId();
-    listImages(id: number, type: "snapshots" | "backups" | string, page: number, perPage?: number);
+    listImages(id: number, type: 'snapshots' | 'backups' | string, page: number, perPage?: number);
     // listKernelsByDropletId();
     listNeighbors();
     listNeighborsByDropletId(id: number);

@@ -7,7 +7,7 @@ import API from './common/api';
  * @class DigitalOcean
  * @extends {API}
  */
-class DigitalOcean extends API{
+class DigitalOcean extends API {
     /**
      * error fn handler interceptor
      *
@@ -17,25 +17,25 @@ class DigitalOcean extends API{
      * @memberof DigitalOcean
      */
     private static errorHandler(error: AxiosError) {
-        let res = error.response;
+        const res = error.response;
         if (!res) return Promise.reject(error);
         error.message = [
             res.status || '',
-            res.statusText || ''
+            res.statusText || '',
         ].join(' - ');
         if (res.data && res.data.id) {
-            let data = res.data;
-            let id = ['[', data.id, ']'].join('');
+            const data = res.data;
+            const id = ['[', data.id, ']'].join('');
             error.message = [error.message, id].join(': ');
             if (data.message) {
                 error.message = [
                     error.message,
-                    data.message
+                    data.message,
                 ].join(' ');
             }
         }
         return Promise.reject(error);
-    };
+    }
     /**
      * Creates an instance of DigitalOcean.
      * @param {string} token
@@ -51,15 +51,15 @@ class DigitalOcean extends API{
             timeout: timeout || 5000,
             headers: [
                 { key: 'Authorization', value: ['Bearer', token].join(' ') },
-                { key: 'Content-Type', value: 'application/json' }
+                { key: 'Content-Type', value: 'application/json' },
             ],
-            invalidResponse: new Error('Invalid API response.')
+            invalidResponse: new Error('Invalid API response.'),
         });
         this.http
             .interceptors
             .response
             .use(null, DigitalOcean.errorHandler);
-    };
+    }
 }
 
 export default DigitalOcean;

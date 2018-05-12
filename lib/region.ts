@@ -1,8 +1,8 @@
-import DigitalOcean from './digitalOcean';
+import { Observable } from 'rxjs';
 import Endpoint from './common/endpoint';
-import { ICollection, IRegion, IRegionEndpoint } from "./common/interfaces";
-import { Observable } from "rxjs/Observable";
+import { ICollection, IRegion, IRegionEndpoint } from './common/interfaces';
 import { isRegion } from './common/type.guards';
+import DigitalOcean from './digitalOcean';
 /**
  * Region endpoint.
  *
@@ -29,8 +29,8 @@ export default class RegionEndpoint extends Endpoint implements IRegionEndpoint 
      *
      * @memberof RegionEndpoint
      */
-    public list(page: number, perPage?: number ): Observable<ICollection<IRegion>> {
-        let url: string = this.prefix;
-        return this.getCollection(page, perPage, url, 'regions', isRegion)
+    list(page: number, perPage?: number ): Observable<ICollection<IRegion>> {
+        const url: string = this.prefix;
+        return this.getCollection(page, perPage, url, 'regions', isRegion);
     }
 }

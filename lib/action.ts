@@ -1,4 +1,4 @@
-import { Observable } from "rxjs/Observable";
+import { Observable } from 'rxjs';
 
 import Endpoint from './common/endpoint';
 import { IAction, IActionEndpoint, ICollection } from './common/interfaces';
@@ -31,9 +31,9 @@ export default class ActionEndpoint extends Endpoint implements IActionEndpoint 
      *
      * @memberof ActionEndpoint
      */
-    public list(page: number, perPage?: number): Observable<ICollection<IAction>> {
-        let url: string = this.prefix;
-        return this.getCollection<IAction>(page, perPage, url, 'actions', isAction)
+    list(page: number, perPage?: number): Observable<ICollection<IAction>> {
+        const url: string = this.prefix;
+        return this.getCollection<IAction>(page, perPage, url, 'actions', isAction);
     }
     /**
      * Get action by id.
@@ -43,9 +43,9 @@ export default class ActionEndpoint extends Endpoint implements IActionEndpoint 
      *
      * @memberof ActionEndpoint
      */
-    public get(id: number): Observable<IAction> {
-        let url: string = `${this.prefix}/${id}`;
-        let promise = this.api.get(url);
+    get(id: number): Observable<IAction> {
+        const url = `${this.prefix}/${id}`;
+        const promise = this.api.get(url);
         return this.fromPromise(promise, 'action', isAction);
     }
 }

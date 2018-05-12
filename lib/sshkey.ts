@@ -1,4 +1,4 @@
-import { Observable } from "rxjs/Observable";
+import { Observable } from 'rxjs';
 
 import Endpoint from './common/endpoint';
 import { ICollection, ISSHKey, ISSHKeyEndpoint, ISSHKeySpecs } from './common/interfaces';
@@ -30,11 +30,11 @@ export default class SSHKeyEndpoint extends Endpoint implements ISSHKeyEndpoint 
      *
      * @memberof SSHKeyEndpoint
      */
-    public create(specs: ISSHKeySpecs): Observable<ISSHKey> {
-        let url: string = this.prefix;
-        let promise = this.api.post(url, specs);
+    create(specs: ISSHKeySpecs): Observable<ISSHKey> {
+        const url: string = this.prefix;
+        const promise = this.api.post(url, specs);
         return this.fromPromise(promise, 'ssh_key', isSSHKey);
-    };
+    }
     /**
      * Delete SSH key by fingerprint.
      *
@@ -43,7 +43,7 @@ export default class SSHKeyEndpoint extends Endpoint implements ISSHKeyEndpoint 
      *
      * @memberof SSHKeyEndpoint
      */
-    public delete(fingerprint: string): Observable<void>;
+    delete(fingerprint: string): Observable<void>;
     /**
      * Delete SSH key by id.
      *
@@ -52,10 +52,10 @@ export default class SSHKeyEndpoint extends Endpoint implements ISSHKeyEndpoint 
      *
      * @memberof SSHKeyEndpoint
      */
-    public delete(id: number): Observable<void>;
-    public delete(uid: number | string): Observable<void> {
-        let url: string = `${this.prefix}/${uid}`;
-        let promise = this.api.delete(url);
+    delete(id: number): Observable<void>;
+    delete(uid: number | string): Observable<void> {
+        const url = `${this.prefix}/${uid}`;
+        const promise = this.api.delete(url);
         return this.fromPromise(promise);
     }
     /**
@@ -67,8 +67,8 @@ export default class SSHKeyEndpoint extends Endpoint implements ISSHKeyEndpoint 
      *
      * @memberof SSHKeyEndpoint
      */
-    public list(page: number, perPage?: number): Observable<ICollection<ISSHKey>> {
-        let url: string = this.prefix;
+    list(page: number, perPage?: number): Observable<ICollection<ISSHKey>> {
+        const url: string = this.prefix;
         return this.getCollection<ISSHKey>(page, perPage, url, 'ssh_keys', isSSHKey);
     }
     /**
@@ -79,7 +79,7 @@ export default class SSHKeyEndpoint extends Endpoint implements ISSHKeyEndpoint 
      *
      * @memberof SSHKeyEndpoint
      */
-    public get(fingerprint: string): Observable<ISSHKey>;
+    get(fingerprint: string): Observable<ISSHKey>;
     /**
      * Get SSH Key by id.
      *
@@ -88,10 +88,10 @@ export default class SSHKeyEndpoint extends Endpoint implements ISSHKeyEndpoint 
      *
      * @memberof SSHKeyEndpoint
      */
-    public get(id: number): Observable<ISSHKey>;
-    public get(uid: number | string): Observable<ISSHKey> {
-        let url: string = `${this.prefix}/${uid}`;
-        let promise = this.api.get(url);
+    get(id: number): Observable<ISSHKey>;
+    get(uid: number | string): Observable<ISSHKey> {
+        const url = `${this.prefix}/${uid}`;
+        const promise = this.api.get(url);
         return this.fromPromise(promise, 'ssh_key', isSSHKey);
     }
     /**
@@ -103,7 +103,7 @@ export default class SSHKeyEndpoint extends Endpoint implements ISSHKeyEndpoint 
      *
      * @memberof SSHKeyEndpoint
      */
-    public update(fingerprint: string, specs: ISSHKeySpecs): Observable<ISSHKey>;
+    update(fingerprint: string, specs: ISSHKeySpecs): Observable<ISSHKey>;
     /**
      * Update SSH Key by id.
      *
@@ -113,10 +113,10 @@ export default class SSHKeyEndpoint extends Endpoint implements ISSHKeyEndpoint 
      *
      * @memberof SSHKeyEndpoint
      */
-    public update(id: number, specs: ISSHKeySpecs): Observable<ISSHKey>;
-    public update(uid: number | string, specs: ISSHKeySpecs): Observable<ISSHKey> {
-        let url: string = `${this.prefix}/${uid}`;
-        let promise = this.api.put(url, specs);
+    update(id: number, specs: ISSHKeySpecs): Observable<ISSHKey>;
+    update(uid: number | string, specs: ISSHKeySpecs): Observable<ISSHKey> {
+        const url = `${this.prefix}/${uid}`;
+        const promise = this.api.put(url, specs);
         return this.fromPromise(promise, 'ssh_key', isSSHKey);
-    };
+    }
 }

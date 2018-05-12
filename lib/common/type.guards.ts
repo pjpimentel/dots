@@ -2,6 +2,7 @@ import {
     IAccount,
     IAction,
     ICertificate,
+    IDroplet,
     IImage,
     IRegion,
     IResource,
@@ -10,7 +11,6 @@ import {
     ISSHKey,
     ITag,
     IVolume,
-    IDroplet,
 } from './interfaces';
 /**
  * Guard of string[];
@@ -21,7 +21,7 @@ import {
  */
 export function isArrayOfString(data: any): data is string[] {
     if (!Array.isArray(data)) return false;
-    return data.every(elem => elem.typeof !== 'string');
+    return data.every((elem) => elem.typeof !== 'string');
 }
 /**
  * Guard of number[];
@@ -32,7 +32,7 @@ export function isArrayOfString(data: any): data is string[] {
  */
 export function isArrayOfNumber(data: any): data is number[] {
     if (!Array.isArray(data)) return false;
-    return data.every(elem => elem.typeof !== 'number');
+    return data.every((elem) => elem.typeof !== 'number');
 }
 /**
  * Guard of IAccount.
@@ -167,10 +167,12 @@ export function isAction(data: any): data is IAction {
     if (typeof (data as IAction).started_at !== 'string') return false;
     if (typeof (data as IAction).completed_at !== 'string') return false;
     if (typeof (data as IAction).resource_type !== 'string') return false;
-    if ((data as IAction).resource_id !== null)
+    if ((data as IAction).resource_id !== null) {
         if (typeof (data as IAction).resource_id !== 'number') return false;
-    if ((data as IAction).region_slug !== null)
+    }
+    if ((data as IAction).region_slug !== null) {
         if (typeof (data as IAction).region_slug !== 'string') return false;
+    }
     return true;
 }
 /**
@@ -194,8 +196,8 @@ export function isArrayOfAction(data: any): data is IAction[] {
 export function isSSHKey(data: any): data is ISSHKey {
     if (typeof (data as ISSHKey).id !== 'number') return false;
     if (typeof (data as ISSHKey).fingerprint !== 'string') return false;
-    if (typeof (data as ISSHKey).name !== "string") return false;
-    if (typeof (data as ISSHKey).public_key !== "string") return false;
+    if (typeof (data as ISSHKey).name !== 'string') return false;
+    if (typeof (data as ISSHKey).public_key !== 'string') return false;
     return true;
 }
 /**
@@ -217,13 +219,13 @@ export function isArrayOfSSHKey(data: any): data is ISSHKey[] {
  * @returns {data is ISnapshot}
  */
 export function isSnapshot(data: any): data is ISnapshot {
-    if (typeof (data as ISnapshot).created_at !== "string") return false;
-    if (typeof (data as ISnapshot).id !== "string") return false;
-    if (typeof (data as ISnapshot).min_disk_size !== "number") return false;
-    if (typeof (data as ISnapshot).name !== "string") return false;
-    if (typeof (data as ISnapshot).resource_id !== "string") return false;
-    if (typeof (data as ISnapshot).resource_type !== "string") return false;
-    if (typeof (data as ISnapshot).size_gigabytes !== "number") return false;
+    if (typeof (data as ISnapshot).created_at !== 'string') return false;
+    if (typeof (data as ISnapshot).id !== 'string') return false;
+    if (typeof (data as ISnapshot).min_disk_size !== 'number') return false;
+    if (typeof (data as ISnapshot).name !== 'string') return false;
+    if (typeof (data as ISnapshot).resource_id !== 'string') return false;
+    if (typeof (data as ISnapshot).resource_type !== 'string') return false;
+    if (typeof (data as ISnapshot).size_gigabytes !== 'number') return false;
     if (!isArrayOfString((data as ISnapshot).regions)) return false;
     return true;
 }
@@ -246,11 +248,11 @@ export function isArrayOfSnapshot(data: any): data is ISnapshot[] {
  * @returns {data is IVolume}
  */
 export function isVolume(data: any): data is IVolume {
-    if (typeof (data as IVolume).created_at !== "string") return false;
-    if (typeof (data as IVolume).description !== "string") return false;
-    if (typeof (data as IVolume).id !== "string") return false;
-    if (typeof (data as IVolume).name !== "string") return false;
-    if (typeof (data as IVolume).size_gigabytes !== "number") return false;
+    if (typeof (data as IVolume).created_at !== 'string') return false;
+    if (typeof (data as IVolume).description !== 'string') return false;
+    if (typeof (data as IVolume).id !== 'string') return false;
+    if (typeof (data as IVolume).name !== 'string') return false;
+    if (typeof (data as IVolume).size_gigabytes !== 'number') return false;
     if (!isRegion((data as IVolume).region)) return false;
     if (!isArrayOfNumber((data as IVolume).droplet_ids)) return false;
     return true;
@@ -275,16 +277,16 @@ export function isArrayOfVolume(data: any): data is IVolume[] {
  */
 export function isImage(data: any): data is IImage {
     data = data as IImage;
-    if (typeof (data as IImage).created_at !== "string") return false;
-    if (typeof (data as IImage).distribution !== "string") return false;
-    if (typeof (data as IImage).id !== "number") return false;
-    if (typeof (data as IImage).name !== "string") return false;
-    if (typeof (data as IImage).size_gigabytes !== "number") return false;
-    if (typeof (data as IImage).min_disk_size !== "number") return false;
-    if (typeof (data as IImage).public !== "boolean") return false;
-    if (typeof (data as IImage).min_disk_size !== "number") return false;
-    if ((data as IImage).slug !== null && typeof (data as IImage).slug !== "string") return false;
-    if (typeof (data as IImage).type !== "string") return false;
+    if (typeof (data as IImage).created_at !== 'string') return false;
+    if (typeof (data as IImage).distribution !== 'string') return false;
+    if (typeof (data as IImage).id !== 'number') return false;
+    if (typeof (data as IImage).name !== 'string') return false;
+    if (typeof (data as IImage).size_gigabytes !== 'number') return false;
+    if (typeof (data as IImage).min_disk_size !== 'number') return false;
+    if (typeof (data as IImage).public !== 'boolean') return false;
+    if (typeof (data as IImage).min_disk_size !== 'number') return false;
+    if ((data as IImage).slug !== null && typeof (data as IImage).slug !== 'string') return false;
+    if (typeof (data as IImage).type !== 'string') return false;
     // if ((data as IImage).regions !== null && !isArrayOfString(typeof (data as IImage).regions)) return false;
     return true;
 }
@@ -307,11 +309,11 @@ export function isArrayOfImage(data: any): data is IImage[] {
  * @returns {data is ICertificate}
  */
 export function isCertificate(data: any): data is ICertificate {
-    if (typeof (data as ICertificate).created_at !== "string") return false;
-    if (typeof (data as ICertificate).not_after !== "string") return false;
-    if (typeof (data as ICertificate).id !== "string") return false;
-    if (typeof (data as ICertificate).name !== "string") return false;
-    if (typeof (data as ICertificate).sha1_fingerprint !== "string") return false;
+    if (typeof (data as ICertificate).created_at !== 'string') return false;
+    if (typeof (data as ICertificate).not_after !== 'string') return false;
+    if (typeof (data as ICertificate).id !== 'string') return false;
+    if (typeof (data as ICertificate).name !== 'string') return false;
+    if (typeof (data as ICertificate).sha1_fingerprint !== 'string') return false;
     return true;
 }
 /**
@@ -334,18 +336,18 @@ export function isArrayOfCertificate(data: any): data is ICertificate[] {
  * @returns {data is IDroplet}
  */
 export function isDroplet(data: any): data is IDroplet {
-    if (typeof (data as IDroplet).created_at !== "string") return false;
-    if (typeof (data as IDroplet).disk !== "number") return false;
-    if (typeof (data as IDroplet).id !== "number") return false;
-    if (typeof (data as IDroplet).kernel !== "string") return false; // TODO: kernel type
-    if (typeof (data as IDroplet).locked !== "boolean") return false;
-    if (typeof (data as IDroplet).memory !== "number") return false;
-    if (typeof (data as IDroplet).name !== "string") return false;
-    if (typeof (data as IDroplet).networks !== "object") return false; // TODO: networks type
+    if (typeof (data as IDroplet).created_at !== 'string') return false;
+    if (typeof (data as IDroplet).disk !== 'number') return false;
+    if (typeof (data as IDroplet).id !== 'number') return false;
+    if (typeof (data as IDroplet).kernel !== 'string') return false; // TODO: kernel type
+    if (typeof (data as IDroplet).locked !== 'boolean') return false;
+    if (typeof (data as IDroplet).memory !== 'number') return false;
+    if (typeof (data as IDroplet).name !== 'string') return false;
+    if (typeof (data as IDroplet).networks !== 'object') return false; // TODO: networks type
     // if (typeof (data as IDroplet).next_backup_window !== 'string') return false;  // TODO: next_backup_window type
-    if (typeof (data as IDroplet).size_slug !== "string") return false;
-    if (typeof (data as IDroplet).status !== "string") return false;
-    if (typeof (data as IDroplet).vcpus !== "number") return false;
+    if (typeof (data as IDroplet).size_slug !== 'string') return false;
+    if (typeof (data as IDroplet).status !== 'string') return false;
+    if (typeof (data as IDroplet).vcpus !== 'number') return false;
     if (!isArrayOfString((data as IDroplet).backup_ids)) return false;
     if (!isArrayOfString((data as IDroplet).features)) return false;
     if (!isArrayOfString((data as IDroplet).snapshot_ids)) return false;

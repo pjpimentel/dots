@@ -1,13 +1,10 @@
-import "rxjs/add/observable/fromPromise";
-import "rxjs/add/operator/filter";
-import "rxjs/add/operator/map";
+import { AxiosPromise } from 'axios';
+import { from, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import { AxiosPromise } from "axios";
-import { Observable } from "rxjs/Observable";
-
-import API from "./api";
-import { IAction, ICollection, ICollectionParams } from "./interfaces";
-import { isAction } from "./type.guards";
+import API from './api';
+import { IAction, ICollection, ICollectionParams } from './interfaces';
+import { isAction } from './type.guards';
 
 export type predicate<T> = (value: T, index: number) => boolean;
 /**
@@ -57,20 +54,27 @@ export default abstract class Endpoint {
      * @returns {Observable<ICollection<C>>}
      * @memberof Endpoint
      */
-    protected getCollection<C>(page: number, perPage: number, url: string, property: string, filter?: predicate<C>): Observable<ICollection<C>> {
+    protected getCollection<C>(
+        page: number,
+        perPage: number,
+        url: string,
+        property: string,
+        filter?: predicate<C>,
+    ): Observable<ICollection<C>> {
         const params: ICollectionParams = this.getCollectionParams(page, perPage);
         return this.fromPromise(this.api.get(url, { params }))
-            .map((data: any) => {
-                const collection: ICollection<C> = {} as ICollection<C>;
-                collection.items = data[property];
-                // if (filter && !collection.items.every(filter)) throw this.api.invalidResponse; //TODO: recheck type guards
-                collection.total = data && data.meta ? data.meta.total : undefined;
-                collection.perPage = params.per_page;
-                collection.curPage = params.page;
-                collection.minPage = 1;
-                collection.maxPage = Math.ceil(collection.total / params.per_page);
-                return collection;
-            });
+            .pipe(
+                map((data: any) => {
+                    const collection: ICollection<C> = {} as ICollection<C>;
+                    collection.items = data[property];
+                    collection.total = data && data.meta ? data.meta.total : undefined;
+                    collection.perPage = params.per_page;
+                    collection.curPage = params.page;
+                    collection.minPage = 1;
+                    collection.maxPage = Math.ceil(collection.total / params.per_page);
+                    return collection;
+                }),
+            );
     }
     /**
      * Generic function to make a action request.
@@ -84,7 +88,7 @@ export default abstract class Endpoint {
      */
     protected doAction(url: string, params: object): Observable<IAction> {
         const promise = this.api.post(url, params);
-        return this.fromPromise(promise, "action", isAction);
+        return this.fromPromise(promise, 'action', isAction);
     }
     /**
      * Create observable from axios promise.
@@ -98,15 +102,19 @@ export default abstract class Endpoint {
      * @memberof Endpoint
      */
     protected fromPromise<T>(promise: AxiosPromise, property?: string, filter?: predicate<T>): Observable<T> {
-        const dataValidator = data => { if (!data) throw this.api.invalidResponse; return data; };
-        // let objectValidator = data => {
-        //     if (typeof data !== 'object') throw this.api.invalidResponse;
-        //     if (Object.keys(data).length === 0) throw this.api.invalidResponse;
-        //     return data;
-        // };
-        let observable = Observable.fromPromise(promise).map(res => res.data);
-        if (property) observable = observable.map(data => data[property]).map(dataValidator);
-        // if (filter) observable = observable.filter(filter).map(dataValidator); //TODO: recheck type guards
+        const dataValidator = (data) => {
+            if (!data) throw this.api.invalidResponse;
+            return data;
+        };
+        let observable = from(promise).pipe(
+            map((res) => res.data),
+        );
+        if (property) {
+            observable = observable.pipe(
+                map((data) => data[property]),
+                map(dataValidator),
+            );
+        }
         return observable;
     }
     /**

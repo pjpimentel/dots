@@ -1,4 +1,4 @@
-import { Observable } from "rxjs/Observable";
+import { Observable } from 'rxjs';
 
 import Endpoint from './common/endpoint';
 import { ICollection, ISnapshot, ISnapshotEndpoint } from './common/interfaces';
@@ -30,9 +30,9 @@ export default class SnapshotEndpoint extends Endpoint implements ISnapshotEndpo
      *
      * @memberof SnapshotEndpoint
      */
-    public delete(id: string): Observable<void> {
-        let url: string = `${this.prefix}/${id}`;
-        let promise = this.api.delete(url);
+    delete(id: string): Observable<void> {
+        const url = `${this.prefix}/${id}`;
+        const promise = this.api.delete(url);
         return this.fromPromise(promise);
     }
     /**
@@ -43,9 +43,9 @@ export default class SnapshotEndpoint extends Endpoint implements ISnapshotEndpo
      *
      * @memberof SnapshotEndpoint
      */
-    public get(id: string): Observable<ISnapshot> {
-        let url: string = `${this.prefix}/${id}`;
-        let promise = this.api.get(url);
+    get(id: string): Observable<ISnapshot> {
+        const url = `${this.prefix}/${id}`;
+        const promise = this.api.get(url);
         return this.fromPromise(promise, 'snapshot', isSnapshot);
     }
     /**
@@ -56,7 +56,7 @@ export default class SnapshotEndpoint extends Endpoint implements ISnapshotEndpo
      *
      * @memberof SnapshotEndpoint
      */
-    public list(page: number, perPage?: number): Observable<ICollection<ISnapshot>>;
+    list(page: number, perPage?: number): Observable<ICollection<ISnapshot>>;
     /**
      * List all snaphsots by resource type.
      *
@@ -66,8 +66,8 @@ export default class SnapshotEndpoint extends Endpoint implements ISnapshotEndpo
      *
      * @memberof SnapshotEndpoint
      */
-    public list(resourceType: string, page: number, perPage?: number): Observable<ICollection<ISnapshot>>;
-    public list(a: string | number, b: number, c?: number): Observable<ICollection<ISnapshot>> {
+    list(resourceType: string, page: number, perPage?: number): Observable<ICollection<ISnapshot>>;
+    list(a: string | number, b: number, c?: number): Observable<ICollection<ISnapshot>> {
         let resourceType: string = null, page: number = null, perPage: number = null;
         if (typeof a === 'string') ((resourceType = a) && (page = b) && (perPage = c));
         else ((page = a) && (perPage = b));

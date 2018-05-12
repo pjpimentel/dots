@@ -1,4 +1,4 @@
-import { Observable } from "rxjs/Observable";
+import { Observable } from 'rxjs';
 
 import Endpoint from './common/endpoint';
 import { ICollection } from './common/interfaces';
@@ -32,8 +32,8 @@ export default class SizeEndpoint extends Endpoint implements ISizeEndpoint {
      *
      * @memberof SizeEndpoint
      */
-    public list(page: number, perPage?: number): Observable<ICollection<ISize>> {
-        let url: string = this.prefix;
-        return this.getCollection<ISize>(page, perPage, url, 'sizes', isSize)
+    list(page: number, perPage?: number): Observable<ICollection<ISize>> {
+        const url: string = this.prefix;
+        return this.getCollection<ISize>(page, perPage, url, 'sizes', isSize);
     }
 }
