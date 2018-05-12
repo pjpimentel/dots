@@ -1,6 +1,6 @@
 {
   "name": "dots-wrapper",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "description": "Digital Ocean API V2 wrapper. TypeScript - Javascript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
