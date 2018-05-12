@@ -16,7 +16,7 @@
         "outDir": "dist"
         ///"outFile": "./build/dots.js"
     },
-    "rootDir": "lib",
+    "rootDir": "src",
     "include": [
         "*",
         "*.ts"
