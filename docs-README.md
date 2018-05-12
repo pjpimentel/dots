@@ -15,15 +15,21 @@ Typescript
     const myApiToken = 'my-long-token';
     const digitalOcean = new DigitalOcean(myApiToken);
 
-    digitalOcean.Account.get().first().subscribe(account => console.log(account), err => console.log(err.message));
+    digitalOcean.Account.get().subscribe(
+        account => console.log(account),
+        err => console.log(err.message)
+    );
 ```
 Javascript - Nodejs
 ``` javascript
-    const DigitalOcean = require('dots-wrapper').DigitalOcean;
+    const {DigitalOcean} = require('dots-wrapper');
     const myApiToken = 'my-long-token';
     const digitalOcean = new DigitalOcean(myApiToken);
 
-    digitalOcean.Account.get().first().subscribe(account => console.log(account), err => console.log(err.message));
+    digitalOcean.Account.get().subscribe(
+        account => console.log(account),
+        err => console.log(err.message)
+    );
 ```
 ## Docs
 * [Account](classes/accountendpoint.html)

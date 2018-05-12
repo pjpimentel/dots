@@ -5,5 +5,5 @@ node_modules/typedoc/bin/typedoc \
 	--readme ./docs-README.md \
 	--mode file \
 	--module commonjs \
-	--out ./docs ./lib \
-	--exclude ./lib/test
+	--out ./docs ./src \
+	--exclude ./src/test
