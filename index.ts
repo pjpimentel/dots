@@ -1,3 +1,3 @@
-import DigitalOcean from "./lib/digitalOcean";
+import DigitalOcean from './src/digitalOcean';
 export default DigitalOcean;
 export {DigitalOcean};
