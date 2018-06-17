@@ -1,0 +1,49 @@
+import DigitalOcean from '../';
+import AccountTests from './account.spec';
+import ActionTests from './action.spec';
+
+const token = '';
+const endpointsTestMap = {
+  // "Domain: () => true,
+  // "FloatingIP: () => true,
+  // "LoadBalancer: () => true,
+  Account: AccountTests,
+  Action: ActionTests,
+  Certificate: () => true,
+  Droplet: () => true,
+  Image: () => true,
+  Region: () => true,
+  Size: () => true,
+  Snapshot: () => true,
+  SshKey: () => true,
+  Tag: () => true,
+  Volume: () => true,
+};
+const requiredEndpoints = Object.keys(endpointsTestMap);
+
+describe('DigitalOcean', () => {
+  it('class should be a constructor', () =>
+    expect(typeof DigitalOcean).toEqual('function'),
+  );
+  it('token should be string', () => expect(typeof token).toBe('string'));
+  const digitalOcean = new DigitalOcean(token);
+  it('instance should be instanceOf DigitalOcean', () =>
+    expect(digitalOcean instanceof DigitalOcean).toBeTruthy(),
+  );
+  it('instance should be a object', () =>
+    expect(typeof digitalOcean).toBe('object'),
+  );
+  // TODO: check if token is accessible beforeAll
+  const instanceKeys = Object.keys(digitalOcean);
+  requiredEndpoints.forEach((requiredEndpoint) => {
+    const endpoint = digitalOcean[requiredEndpoint];
+    const tests = endpointsTestMap[requiredEndpoint];
+
+    describe(`${requiredEndpoint} endpoint`, () => {
+      it('should exists on instance', () => expect(endpoint).toBeDefined());
+      it('should be a object', () => expect(typeof endpoint).toBe('object'));
+      if (typeof tests === 'function') tests(digitalOcean);
+    });
+  });
+
+});
