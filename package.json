@@ -7,7 +7,7 @@
   "scripts": {
     "prepublish": "npm run build",
     "build": "tsc",
-    "test": "jasmine-ts \"spec/digitalOcean.spec.ts\"",
+    "test": "nyc jasmine-ts \"spec/digitalOcean.spec.ts\"",
     "cover": "nyc npm test"
   },
   "repository": {

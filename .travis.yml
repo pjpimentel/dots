@@ -1,8 +1,8 @@
 language: node_js
+
 node_js:
+  - 'latest'
   - 'stable'
-  - '9'
-  - '8'
   - '7'
   - '6'
 
@@ -15,15 +15,12 @@ branches:
   only:
     - feature/10
 
+install:
+  - npm install
+
 cache:
   directories:
     - node_modules
+
 git:
   depth: false
-
-jobs:
-  include:
-    - stage: install
-      script: npm install
-    - stage: test
-      script: npm run cover
