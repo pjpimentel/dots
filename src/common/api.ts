@@ -1,5 +1,4 @@
 import axios, { AxiosInstance, AxiosPromise, AxiosRequestConfig } from 'axios';
-// import * as axios from "axios";
 import AccountEndpoint from '../account';
 import ActionEndpoint from '../action';
 import CertificateEndpoint from '../certificate';
@@ -163,11 +162,13 @@ export default abstract class API {
      */
     Volume: VolumeEndpoint;
     /**
-     * Creates an instance of API.
-     * @param {IAPISpecs} specs
+     * request timeout
      *
+     * @public
+     * @type {number}
      * @memberof API
      */
+    timeout: number;
     /**
      * default request headers
      *
@@ -209,14 +210,6 @@ export default abstract class API {
      */
     protected protocol: 'http' | 'https';
     /**
-     * request timeout
-     *
-     * @protected
-     * @type {number}
-     * @memberof API
-     */
-    protected timeout: number;
-    /**
      *  $protocol://$host$prefix
      *
      * @readonly
@@ -251,6 +244,12 @@ export default abstract class API {
     private get axiosConfig(): IaxiosConfig {
         return { baseURL: this.baseUrl, headers: this.headersObj, timeout: this.timeout };
     }
+    /**
+     * Creates an instance of API.
+     * @param {IAPISpecs} specs
+     *
+     * @memberof API
+     */
     constructor(specs: IAPISpecs) {
         this.headers = specs.headers;
         this.host = specs.host;

@@ -11,6 +11,7 @@ import {
     ISSHKey,
     ITag,
     IVolume,
+    ICollection,
 } from './interfaces';
 /**
  * Guard of string[];
@@ -369,4 +370,21 @@ export function isDroplet(data: any): data is IDroplet {
 export function isArrayOfDroplet(data: any): data is IDroplet[] {
     if (!Array.isArray(data)) return false;
     return data.every(isDroplet);
+}
+/**
+ * Guard of ICollection<any>
+ *
+ * @export
+ * @param {*} data
+ * @returns {data is ICollection<any>}
+ */
+export function isCollection(data: any): data is ICollection<any> {
+    if (typeof data !== 'object') return false;
+    if (typeof data.minPage !== 'number') return false;
+    if (typeof data.maxPage !== 'number') return false;
+    if (typeof data.curPage !== 'number') return false;
+    if (typeof data.perPage !== 'number') return false;
+    if (typeof data.total !== 'number') return false;
+    if (!Array.isArray(data.items)) return false;
+    return true;
 }
