@@ -43,3 +43,6 @@ logs
 
 *.sql
 test/token.ts
+
+coverage
+.nyc_output

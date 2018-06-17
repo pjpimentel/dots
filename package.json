@@ -7,7 +7,8 @@
   "scripts": {
     "prepublish": "npm run build",
     "build": "tsc",
-    "test": "jasmine-ts \"spec/digitalOcean.spec.ts\""
+    "test": "jasmine-ts \"spec/digitalOcean.spec.ts\"",
+    "cover": "nyc npm test"
   },
   "repository": {
     "type": "git",
@@ -24,10 +25,27 @@
     "rxjs": "^6.1.0"
   },
   "devDependencies": {
-    "@types/node": "^7.0.55",
     "@types/jasmine": "^2.8.8",
+    "@types/node": "^7.0.55",
     "jasmine-spec-reporter": "^4.2.1",
     "jasmine-ts": "^0.2.1",
+    "nyc": "^12.0.2",
+    "source-map-support": "^0.5.6",
     "typedoc": "^0.11.1"
+  },
+  "nyc": {
+    "extension": [
+      "*.ts"
+    ],
+    "exclude": [
+      "**/*.d.ts",
+      "dist/src/common",
+      "coverage"
+    ],
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "all": true
   }
 }
