@@ -1,20 +1,29 @@
 language: node_js
-
 node_js:
   - 'stable'
+  - '9'
+  - '8'
+  - '7'
+  - '6'
 
 sudo: false
+
+matrix:
+  fast_finish: true
 
 branches:
   only:
     - feature/10
 
-install:
-  - npm install
-
 cache:
   directories:
     - node_modules
-
 git:
-  depth: 1
+  depth: false
+
+jobs:
+  include:
+    - stage: install
+      script: npm install
+    - stage: test
+      script: npm run cover
