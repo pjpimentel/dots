@@ -2,16 +2,16 @@ import {DigitalOcean} from '../';
 import AccountTests from './account.spec';
 import ActionTests from './action.spec';
 
-const token = '';
+const token = process.env.DO_READ_TOKEN || '';
 const endpointsTestMap = {
-  // "Domain: () => true,
-  // "FloatingIP: () => true,
-  // "LoadBalancer: () => true,
   Account: AccountTests,
   Action: ActionTests,
   Certificate: () => true,
+  Domain: () => true,
   Droplet: () => true,
+  FloatingIP: () => true,
   Image: () => true,
+  LoadBalancer: () => true,
   Region: () => true,
   Size: () => true,
   Snapshot: () => true,
