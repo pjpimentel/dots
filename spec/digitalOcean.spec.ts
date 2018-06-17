@@ -38,7 +38,8 @@ describe('DigitalOcean', () => {
   requiredEndpoints.forEach((requiredEndpoint) => {
     const endpoint = digitalOcean[requiredEndpoint];
     const tests = endpointsTestMap[requiredEndpoint];
-
+    // skinping not implemented tests
+    if (tests.toString() === 'function () { return true; }') return true;
     describe(`${requiredEndpoint} endpoint`, () => {
       it('should exists on instance', () => expect(endpoint).toBeDefined());
       it('should be a object', () => expect(typeof endpoint).toBe('object'));
