@@ -1,4 +1,4 @@
-import DigitalOcean from '../';
+import {DigitalOcean} from '../';
 import AccountTests from './account.spec';
 import ActionTests from './action.spec';
 
