@@ -96,15 +96,15 @@ export interface IAccount {
  * @interface ISize
  */
 export interface ISize {
-    readonly slug: string;
-    readonly available: boolean;
-    readonly transfer: number;
-    readonly price_monthly: number;
-    readonly price_hourly: number;
-    readonly memory: number;
-    readonly vcpus: number;
-    readonly disk: number;
-    readonly regions: string[];
+    slug: string;
+    available: boolean;
+    transfer: number;
+    price_monthly: number;
+    price_hourly: number;
+    memory: number;
+    vcpus: number;
+    disk: number;
+    regions: string[];
 }
 /**
  * Tag raw object.
@@ -113,8 +113,8 @@ export interface ISize {
  * @interface ITag
  */
 export interface ITag {
-    readonly name: string;
-    readonly resources: IResource[];
+    name: string;
+    resources: IResource[];
 }
 /**
  * Region raw object.
@@ -123,11 +123,11 @@ export interface ITag {
  * @interface IRegion
  */
 export interface IRegion {
-    readonly slug: string;
-    readonly name: string;
-    readonly sizes: string[];
-    readonly available: boolean;
-    readonly features: string[];
+    slug: string;
+    name: string;
+    sizes: string[];
+    available: boolean;
+    features: string[];
 }
 /**
  * Action raw object
@@ -136,14 +136,14 @@ export interface IRegion {
  * @interface IAction
  */
 export interface IAction {
-    readonly completed_at: string;
-    readonly id: number;
-    readonly region_slug: string;
-    readonly resource_id: number;
-    readonly resource_type: string;
-    readonly started_at: string;
-    readonly status: string;
-    readonly type: string;
+    completed_at: string;
+    id: number;
+    region_slug: string;
+    resource_id: number;
+    resource_type: string;
+    started_at: string;
+    status: string;
+    type: string;
 }
 /**
  * SSH Key raw object.
@@ -152,10 +152,10 @@ export interface IAction {
  * @interface ISSHKey
  */
 export interface ISSHKey {
-    readonly fingerprint: string;
-    readonly id: number;
-    readonly name: string;
-    readonly public_key: string;
+    fingerprint: string;
+    id: number;
+    name: string;
+    public_key: string;
 }
 
 /**
@@ -165,13 +165,13 @@ export interface ISSHKey {
  * @interface IVolume
  */
 export interface IVolume {
-    readonly created_at: string;
-    readonly description: string;
-    readonly droplet_ids: number[];
-    readonly id: string;
-    readonly name: string;
-    readonly region: IRegion; // TODO: change this type
-    readonly size_gigabytes: number;
+    created_at: string;
+    description: string;
+    droplet_ids: number[];
+    id: string;
+    name: string;
+    region: IRegion; // TODO: change this type
+    size_gigabytes: number;
 }
 /**
  * Snapshot raw object.
@@ -180,14 +180,14 @@ export interface IVolume {
  * @interface ISnapshot
  */
 export interface ISnapshot {
-    readonly created_at: string;
-    readonly id: string;
-    readonly min_disk_size: number;
-    readonly name: string;
-    readonly regions: string[];
-    readonly resource_id: string;
-    readonly resource_type: string;
-    readonly size_gigabytes: number;
+    created_at: string;
+    id: string;
+    min_disk_size: number;
+    name: string;
+    regions: string[];
+    resource_id: string;
+    resource_type: string;
+    size_gigabytes: number;
 }
 /**
  * Image raw object.
@@ -196,16 +196,16 @@ export interface ISnapshot {
  * @interface IImage
  */
 export interface IImage {
-    readonly created_at: string;
-    readonly distribution: string;
-    readonly id: number;
-    readonly min_disk_size: number;
-    readonly name: string;
-    readonly public: boolean;
-    readonly regions: string[];
-    readonly size_gigabytes: number;
-    readonly slug: string | null;
-    readonly type: string;
+    created_at: string;
+    distribution: string;
+    id: number;
+    min_disk_size: number;
+    name: string;
+    public: boolean;
+    regions: string[];
+    size_gigabytes: number;
+    slug: string | null;
+    type: string;
 }
 /**
  * Certificate raw object.
@@ -214,11 +214,11 @@ export interface IImage {
  * @interface ICertificate
  */
 export interface ICertificate {
-    readonly created_at: string;
-    readonly id: string;
-    readonly name: string;
-    readonly not_after: Date;
-    readonly sha1_fingerprint: string;
+    created_at: string;
+    id: string;
+    name: string;
+    not_after: Date;
+    sha1_fingerprint: string;
 }
 /**
  * Droplet raw object.
@@ -227,26 +227,26 @@ export interface ICertificate {
  * @interface IDroplet
  */
 export interface IDroplet {
-    readonly backup_ids: string[];
-    readonly created_at: string;
-    readonly disk: number;
-    readonly features: string[];
-    readonly id: number;
-    readonly image: IImage;
-    readonly kernel: any | null;
-    readonly locked: boolean;
-    readonly memory: number;
-    readonly name: string;
-    readonly networks: object;
-    readonly next_backup_window: any | null;
-    readonly region: IRegion;
-    readonly size_slug: string;
-    readonly size: ISize;
-    readonly snapshot_ids: string[];
-    readonly status: string;
-    readonly tags: string[];
-    readonly vcpus: number;
-    readonly volume_ids: string[];
+    backup_ids: string[];
+    created_at: string;
+    disk: number;
+    features: string[];
+    id: number;
+    image: IImage;
+    kernel: any | null;
+    locked: boolean;
+    memory: number;
+    name: string;
+    networks: object;
+    next_backup_window: any | null;
+    region: IRegion;
+    size_slug: string;
+    size: ISize;
+    snapshot_ids: string[];
+    status: string;
+    tags: string[];
+    vcpus: number;
+    volume_ids: string[];
 }
 /**
  * Specs
