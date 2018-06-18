@@ -44,11 +44,11 @@ export function isArrayOfNumber(data: any): data is number[] {
  */
 export function isAccount(data: any): data is IAccount {
     if (typeof (data as IAccount).droplet_limit !== 'number') return false;
-    if (typeof (data as IAccount).email_verified !== 'boolean') return false;
     if (typeof (data as IAccount).email !== 'string') return false;
+    if (typeof (data as IAccount).email_verified !== 'boolean') return false;
     if (typeof (data as IAccount).floating_ip_limit !== 'number') return false;
-    if (typeof (data as IAccount).status_message !== 'string') return false;
     if (typeof (data as IAccount).status !== 'string') return false;
+    if (typeof (data as IAccount).status_message !== 'string') return false;
     if (typeof (data as IAccount).uuid !== 'string') return false;
     return true;
 }

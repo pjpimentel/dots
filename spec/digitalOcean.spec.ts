@@ -1,6 +1,7 @@
 import {DigitalOcean} from '../';
 import AccountTests from './account.spec';
 import ActionTests from './action.spec';
+import GuardTests from './common/type.guards.spec';
 
 const token = process.env.DO_READ_TOKEN || '';
 const endpointsTestMap = {
@@ -33,6 +34,8 @@ describe('DigitalOcean', () => {
   it('instance should be a object', () =>
     expect(typeof digitalOcean).toBe('object'),
   );
+  // running guard tests
+  GuardTests(digitalOcean);
   // TODO: check if token is accessible beforeAll
   const instanceKeys = Object.keys(digitalOcean);
   requiredEndpoints.forEach((requiredEndpoint) => {
