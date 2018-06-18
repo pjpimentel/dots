@@ -2,6 +2,7 @@ import {
     IAccount,
     IAction,
     ICertificate,
+    ICollection,
     IDroplet,
     IImage,
     IRegion,
@@ -11,7 +12,6 @@ import {
     ISSHKey,
     ITag,
     IVolume,
-    ICollection,
 } from './interfaces';
 /**
  * Guard of string[];

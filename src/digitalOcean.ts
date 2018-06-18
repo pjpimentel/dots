@@ -45,20 +45,18 @@ class DigitalOcean extends API {
      */
     constructor(token: string, timeout?: number) {
         super({
-            protocol: 'https',
-            host: 'api.digitalocean.com',
-            prefix: '/v2',
-            timeout: timeout || 5000,
             headers: [
                 { key: 'Authorization', value: ['Bearer', token].join(' ') },
                 { key: 'Content-Type', value: 'application/json' },
             ],
+            host: 'api.digitalocean.com',
             invalidResponse: new Error('Invalid API response.'),
+            prefix: '/v2',
+            protocol: 'https',
+            timeout: timeout || 5000,
+
         });
-        this.http
-            .interceptors
-            .response
-            .use(null, DigitalOcean.errorHandler);
+        this.http.interceptors.response.use(null, DigitalOcean.errorHandler);
     }
 }
 
