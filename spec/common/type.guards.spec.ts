@@ -1,5 +1,5 @@
 import DigitalOcean from '../../';
-import { IAccount } from '../../src/common/interfaces';
+import { IAccount, IAction } from '../../src/common/interfaces';
 import {
   isAccount,
   isAction,
@@ -54,6 +54,26 @@ export default function(digitalOcean: DigitalOcean) {
     });
     describe('IAction', () => {
       shouldBeAFn('isAction', isAction);
+      const action: Partial<IAction> = {};
+      shouldReturnFalse('completed_at', 'string', isAction, copyObj(action));
+      action.completed_at = '';
+      shouldReturnFalse('id', 'number', isAction, copyObj(action));
+      action.id = 0;
+      shouldReturnFalse('region_slug', 'string|null', isAction, copyObj(action));
+      action.region_slug = '';
+      shouldReturnFalse('resource_id', 'number|null', isAction, copyObj(action));
+      action.resource_id = 0;
+      shouldReturnFalse('resource_type', 'string', isAction, copyObj(action));
+      action.resource_type = '';
+      shouldReturnFalse('started_at', 'string', isAction, copyObj(action));
+      action.started_at = '';
+      shouldReturnFalse('status', 'string', isAction, copyObj(action));
+      action.status = '';
+      shouldReturnFalse('type', 'string', isAction, copyObj(action));
+      action.type = '';
+      action.region_slug = null;
+      action.resource_id = null;
+      shouldReturnTrue('isAction', isAction, copyObj(action));
     });
     describe('ICertificate', () => {
       shouldBeAFn('isCertificate', isCertificate);

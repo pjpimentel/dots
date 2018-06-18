@@ -1,4 +1,10 @@
 import {
+    isBoolean,
+    isNull,
+    isNumber,
+    isString,
+} from 'util';
+import {
     IAccount,
     IAction,
     ICertificate,
@@ -13,6 +19,26 @@ import {
     ITag,
     IVolume,
 } from './interfaces';
+/**
+ * Guard of null|number
+ *
+ * @export
+ * @param {*} data
+ * @returns {data is null|number}
+ */
+export function isNumberOrNull(data: any): data is null|number {
+    return isNull(data) || isNumber(data);
+}
+/**
+ * Guard of null|string
+ *
+ * @export
+ * @param {*} data
+ * @returns {data is null|string}
+ */
+export function isStringOrNull(data: any): data is null|string {
+    return isNull(data) || isString(data);
+}
 /**
  * Guard of string[];
  *
@@ -43,13 +69,13 @@ export function isArrayOfNumber(data: any): data is number[] {
  * @returns {data is IAccount}
  */
 export function isAccount(data: any): data is IAccount {
-    if (typeof (data as IAccount).droplet_limit !== 'number') return false;
-    if (typeof (data as IAccount).email !== 'string') return false;
-    if (typeof (data as IAccount).email_verified !== 'boolean') return false;
-    if (typeof (data as IAccount).floating_ip_limit !== 'number') return false;
-    if (typeof (data as IAccount).status !== 'string') return false;
-    if (typeof (data as IAccount).status_message !== 'string') return false;
-    if (typeof (data as IAccount).uuid !== 'string') return false;
+    if (!isNumber(data.droplet_limit)) return false;
+    if (!isString(data.email)) return false;
+    if (!isBoolean(data.email_verified)) return false;
+    if (!isNumber(data.floating_ip_limit)) return false;
+    if (!isString(data.status)) return false;
+    if (!isString(data.status_message)) return false;
+    if (!isString(data.uuid)) return false;
     return true;
 }
 /**
@@ -162,18 +188,14 @@ export function isArrayOfRegion(data: any): data is IRegion[] {
  * @returns {data is IAction}
  */
 export function isAction(data: any): data is IAction {
-    if (typeof (data as IAction).id !== 'number') return false;
-    if (typeof (data as IAction).status !== 'string') return false;
-    if (typeof (data as IAction).type !== 'string') return false;
-    if (typeof (data as IAction).started_at !== 'string') return false;
-    if (typeof (data as IAction).completed_at !== 'string') return false;
-    if (typeof (data as IAction).resource_type !== 'string') return false;
-    if ((data as IAction).resource_id !== null) {
-        if (typeof (data as IAction).resource_id !== 'number') return false;
-    }
-    if ((data as IAction).region_slug !== null) {
-        if (typeof (data as IAction).region_slug !== 'string') return false;
-    }
+    if (!isString(data.completed_at)) return false;
+    if (!isNumber(data.id)) return false;
+    if (!isStringOrNull(data.region_slug)) return false;
+    if (!isNumberOrNull(data.resource_id)) return false;
+    if (!isString(data.resource_type)) return false;
+    if (!isString(data.started_at)) return false;
+    if (!isString(data.status)) return false;
+    if (!isString(data.type)) return false;
     return true;
 }
 /**
