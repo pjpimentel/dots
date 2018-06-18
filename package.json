@@ -48,6 +48,7 @@
       "ts-node/register"
     ],
     "reporter": [
+      "text-summary",
       "text",
       "html"
     ],
