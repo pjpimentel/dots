@@ -3,6 +3,7 @@ import {
   IAccount,
   IAction,
   ICertificate,
+  ICollection,
 } from '../../src/common/interfaces';
 import {
   isAccount,
@@ -102,6 +103,21 @@ export default function(digitalOcean: DigitalOcean) {
     });
     describe('ICollection', () => {
       shouldBeAFn('isCollection', isCollection);
+      shouldReturnFalse('collection', 'object', isCollection, null);
+      const collection: Partial<ICollection<any>> = {};
+      shouldReturnFalse('items', 'any[]', isCollection, copyObj(collection));
+      collection.items = [];
+      shouldReturnFalse('curPage', 'number', isCollection, copyObj(collection));
+      collection.curPage = 0;
+      shouldReturnFalse('maxPage', 'number', isCollection, copyObj(collection));
+      collection.maxPage = 0;
+      shouldReturnFalse('minPage', 'number', isCollection, copyObj(collection));
+      collection.minPage = 0;
+      shouldReturnFalse('perPage', 'number', isCollection, copyObj(collection));
+      collection.perPage = 0;
+      shouldReturnFalse('total', 'number', isCollection, copyObj(collection));
+      collection.total = 0;
+      shouldReturnTrue('isCollection', isCollection, copyObj(collection));
     });
     describe('IDroplet', () => {
       shouldBeAFn('isDroplet', isDroplet);
