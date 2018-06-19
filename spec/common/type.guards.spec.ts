@@ -4,6 +4,7 @@ import {
   IAction,
   ICertificate,
   ICollection,
+  ISSHKey,
 } from '../../src/common/interfaces';
 import {
   isAccount,
@@ -40,6 +41,7 @@ export default function(digitalOcean: DigitalOcean) {
   describe('Type guards', () => {
     describe('IAccount', () => {
       shouldBeAFn('isAccount', isAccount);
+      shouldReturnFalse('account', 'object', isAccount, null);
       const account: Partial<IAccount> = {};
       shouldReturnFalse('droplet_limit', 'number', isAccount, copyObj(account));
       account.droplet_limit = 0;
@@ -59,6 +61,7 @@ export default function(digitalOcean: DigitalOcean) {
     });
     describe('IAction', () => {
       shouldBeAFn('isAction', isAction);
+      shouldReturnFalse('action', 'object', isAction, null);
       const action: Partial<IAction> = {};
       shouldReturnFalse('completed_at', 'string', isAction, copyObj(action));
       action.completed_at = '';
@@ -82,6 +85,7 @@ export default function(digitalOcean: DigitalOcean) {
     });
     describe('ICertificate', () => {
       shouldBeAFn('isCertificate', isCertificate);
+      shouldReturnFalse('certificate', 'object', isCertificate, null);
       const certificate: Partial<ICertificate> = {};
       shouldReturnFalse('dns_names', 'string[]', isCertificate, copyObj(certificate));
       certificate.dns_names = [''];
@@ -139,6 +143,17 @@ export default function(digitalOcean: DigitalOcean) {
     });
     describe('ISSHKey', () => {
       shouldBeAFn('isSSHKey', isSSHKey);
+      shouldReturnFalse('sshKey', 'object', isSSHKey, null);
+      const sshKey: Partial<ISSHKey> = {};
+      shouldReturnFalse('id', 'number', isSSHKey, copyObj(sshKey));
+      sshKey.id = 0;
+      shouldReturnFalse('fingerprint', 'string', isSSHKey, copyObj(sshKey));
+      sshKey.fingerprint = '';
+      shouldReturnFalse('name', 'string', isSSHKey, copyObj(sshKey));
+      sshKey.name = '';
+      shouldReturnFalse('public_key', 'string', isSSHKey, copyObj(sshKey));
+      sshKey.public_key = '';
+      shouldReturnTrue('isSSHKey', isSSHKey, copyObj(sshKey));
     });
     describe('ITag', () => {
       shouldBeAFn('isTag', isTag);
