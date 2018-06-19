@@ -219,10 +219,11 @@ export function isArrayOfAction(data: any): data is IAction[] {
  * @returns {data is ISSHKey}
  */
 export function isSSHKey(data: any): data is ISSHKey {
-    if (typeof (data as ISSHKey).id !== 'number') return false;
-    if (typeof (data as ISSHKey).fingerprint !== 'string') return false;
-    if (typeof (data as ISSHKey).name !== 'string') return false;
-    if (typeof (data as ISSHKey).public_key !== 'string') return false;
+    if (!isObject(data)) return false;
+    if (!isNumber(data.id)) return false;
+    if (!isString(data.fingerprint)) return false;
+    if (!isString(data.name)) return false;
+    if (!isString(data.public_key)) return false;
     return true;
 }
 /**
