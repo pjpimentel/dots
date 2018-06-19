@@ -49,8 +49,8 @@ export function isStringOrNull(data: any): data is null|string {
  * @returns {data is string[]}
  */
 export function isArrayOfString(data: any): data is string[] {
-    if (!Array.isArray(data)) return false;
-    return data.every((elem) => elem.typeof !== 'string');
+    if (!isArray(data)) return false;
+    return data.every(isString);
 }
 /**
  * Guard of number[];
@@ -71,6 +71,7 @@ export function isArrayOfNumber(data: any): data is number[] {
  * @returns {data is IAccount}
  */
 export function isAccount(data: any): data is IAccount {
+    if (!isObject(data)) return false;
     if (!isNumber(data.droplet_limit)) return false;
     if (!isString(data.email)) return false;
     if (!isBoolean(data.email_verified)) return false;
@@ -190,6 +191,7 @@ export function isArrayOfRegion(data: any): data is IRegion[] {
  * @returns {data is IAction}
  */
 export function isAction(data: any): data is IAction {
+    if (!isObject(data)) return false;
     if (!isString(data.completed_at)) return false;
     if (!isNumber(data.id)) return false;
     if (!isStringOrNull(data.region_slug)) return false;
@@ -335,6 +337,7 @@ export function isArrayOfImage(data: any): data is IImage[] {
  * @returns {data is ICertificate}
  */
 export function isCertificate(data: any): data is ICertificate {
+    if (!isObject(data)) return false;
     if (!isArrayOfString(data.dns_names)) return false;
     if (!isString(data.created_at)) return false;
     if (!isString(data.id)) return false;
