@@ -114,7 +114,7 @@ export interface ISize {
  */
 export interface ITag {
     name: string;
-    resources: IResource[];
+    resources: object;
 }
 /**
  * Region raw object.

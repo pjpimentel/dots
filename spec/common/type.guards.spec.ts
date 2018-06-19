@@ -5,6 +5,7 @@ import {
   ICertificate,
   ICollection,
   ISSHKey,
+  ITag,
 } from '../../src/common/interfaces';
 import {
   isAccount,
@@ -157,6 +158,13 @@ export default function(digitalOcean: DigitalOcean) {
     });
     describe('ITag', () => {
       shouldBeAFn('isTag', isTag);
+      shouldReturnFalse('tag', 'object', isTag, null);
+      const tag: Partial<ITag> = {};
+      shouldReturnFalse('name', 'string', isTag, copyObj(tag));
+      tag.name = '';
+      shouldReturnFalse('resources', 'object', isTag, copyObj(tag));
+      tag.resources = {};
+      shouldReturnTrue('isTag', isTag, copyObj(tag));
     });
     describe('IVolume', () => {
       shouldBeAFn('isVolume', isVolume);

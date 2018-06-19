@@ -119,8 +119,9 @@ export function isArrayOfSize(data: any): data is ISize[] {
  * @returns {data is ITag}
  */
 export function isTag(data: any): data is ITag {
-    if (typeof (data as ITag).name !== 'string') return false;
-    // if(!isArrayOfResource((data as ITag).resources)) return false;
+    if (!isObject(data)) return false;
+    if (!isString(data.name)) return false;
+    if (!isObject(data.resources)) return false;
     return true;
 }
 /**
