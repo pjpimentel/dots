@@ -1,7 +1,9 @@
 import {
+    isArray,
     isBoolean,
     isNull,
     isNumber,
+    isObject,
     isString,
 } from 'util';
 import {
@@ -404,12 +406,12 @@ export function isArrayOfDroplet(data: any): data is IDroplet[] {
  * @returns {data is ICollection<any>}
  */
 export function isCollection(data: any): data is ICollection<any> {
-    if (typeof data !== 'object') return false;
-    if (typeof data.minPage !== 'number') return false;
-    if (typeof data.maxPage !== 'number') return false;
-    if (typeof data.curPage !== 'number') return false;
-    if (typeof data.perPage !== 'number') return false;
-    if (typeof data.total !== 'number') return false;
-    if (!Array.isArray(data.items)) return false;
+    if (!isObject(data)) return false;
+    if (!isArray(data.items)) return false;
+    if (!isNumber(data.curPage)) return false;
+    if (!isNumber(data.maxPage)) return false;
+    if (!isNumber(data.minPage)) return false;
+    if (!isNumber(data.perPage)) return false;
+    if (!isNumber(data.total)) return false;
     return true;
 }

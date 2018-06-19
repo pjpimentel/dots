@@ -42,12 +42,12 @@ export interface IAPISpecs {
  * @template C
  */
 export interface ICollection<C> {
-    minPage: number;
     curPage: number;
+    items: C[];
     maxPage: number;
+    minPage: number;
     perPage: number;
     total: number;
-    items: C[];
 }
 /**
  * Collection request default Params
