@@ -332,11 +332,14 @@ export function isArrayOfImage(data: any): data is IImage[] {
  * @returns {data is ICertificate}
  */
 export function isCertificate(data: any): data is ICertificate {
-    if (typeof (data as ICertificate).created_at !== 'string') return false;
-    if (typeof (data as ICertificate).not_after !== 'string') return false;
-    if (typeof (data as ICertificate).id !== 'string') return false;
-    if (typeof (data as ICertificate).name !== 'string') return false;
-    if (typeof (data as ICertificate).sha1_fingerprint !== 'string') return false;
+    if (!isArrayOfString(data.dns_names)) return false;
+    if (!isString(data.created_at)) return false;
+    if (!isString(data.id)) return false;
+    if (!isString(data.name)) return false;
+    if (!isString(data.not_after)) return false;
+    if (!isString(data.sha1_fingerprint)) return false;
+    if (!isString(data.state)) return false;
+    if (!isString(data.type)) return false;
     return true;
 }
 /**

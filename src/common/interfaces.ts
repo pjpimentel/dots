@@ -215,10 +215,13 @@ export interface IImage {
  */
 export interface ICertificate {
     created_at: string;
+    dns_names: string[];
     id: string;
     name: string;
-    not_after: Date;
+    not_after: string;
     sha1_fingerprint: string;
+    state: string;
+    type: string;
 }
 /**
  * Droplet raw object.
