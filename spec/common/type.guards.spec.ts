@@ -1,5 +1,9 @@
 import DigitalOcean from '../../';
-import { IAccount, IAction } from '../../src/common/interfaces';
+import {
+  IAccount,
+  IAction,
+  ICertificate,
+} from '../../src/common/interfaces';
 import {
   isAccount,
   isAction,
@@ -77,6 +81,24 @@ export default function(digitalOcean: DigitalOcean) {
     });
     describe('ICertificate', () => {
       shouldBeAFn('isCertificate', isCertificate);
+      const certificate: Partial<ICertificate> = {};
+      shouldReturnFalse('dns_names', 'string[]', isCertificate, copyObj(certificate));
+      certificate.dns_names = [''];
+      shouldReturnFalse('created_at', 'string', isCertificate, copyObj(certificate));
+      certificate.created_at = '';
+      shouldReturnFalse('id', 'string', isCertificate, copyObj(certificate));
+      certificate.id = '';
+      shouldReturnFalse('name', 'string', isCertificate, copyObj(certificate));
+      certificate.name = '';
+      shouldReturnFalse('not_after', 'string', isCertificate, copyObj(certificate));
+      certificate.not_after = '';
+      shouldReturnFalse('sha1_fingerprint', 'string', isCertificate, copyObj(certificate));
+      certificate.sha1_fingerprint = '';
+      shouldReturnFalse('state', 'string', isCertificate, copyObj(certificate));
+      certificate.state = '';
+      shouldReturnFalse('type', 'string', isCertificate, copyObj(certificate));
+      certificate.type = '';
+      shouldReturnTrue('isCertificate', isCertificate, copyObj(certificate));
     });
     describe('ICollection', () => {
       shouldBeAFn('isCollection', isCollection);
