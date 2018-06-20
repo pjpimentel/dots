@@ -144,8 +144,9 @@ export function isArrayOfTag(data: any): data is ITag {
  * @returns {data is IResource}
  */
 export function isResource(data: any): data is IResource {
-    if (typeof (data as IResource).resource_id !== 'string') return false;
-    if (typeof (data as IResource).resource_type !== 'string') return false;
+    if (!isObject(data)) return false;
+    if (!isString(data.resource_id)) return false;
+    if (!isString(data.resource_type)) return false;
     return true;
 }
 /**

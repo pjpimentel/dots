@@ -7,6 +7,7 @@ import {
   ISSHKey,
   ITag,
   ISize,
+  IResource,
 } from '../../src/common/interfaces';
 import {
   isAccount,
@@ -136,6 +137,13 @@ export default function(digitalOcean: DigitalOcean) {
     });
     describe('IResource', () => {
       shouldBeAFn('isResource', isResource);
+      shouldReturnFalse('resource', 'object', isResource, null);
+      const resource: Partial<IResource> = {};
+      shouldReturnFalse('resource_id', 'string', isResource, copyObj(resource));
+      resource.resource_id = '';
+      shouldReturnFalse('resource_type', 'string', isResource, copyObj(resource));
+      resource.resource_type = '';
+      shouldReturnTrue('isResource', isResource, copyObj(resource));
     });
     describe('ISize', () => {
       shouldBeAFn('isSize', isSize);
