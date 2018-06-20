@@ -46,3 +46,4 @@ test/token.ts
 
 coverage
 .nyc_output
+dist

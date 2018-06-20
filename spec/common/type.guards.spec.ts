@@ -6,6 +6,7 @@ import {
   ICollection,
   ISSHKey,
   ITag,
+  ISize,
 } from '../../src/common/interfaces';
 import {
   isAccount,
@@ -138,6 +139,27 @@ export default function(digitalOcean: DigitalOcean) {
     });
     describe('ISize', () => {
       shouldBeAFn('isSize', isSize);
+      shouldReturnFalse('size', 'object', isSize, null);
+      const size: Partial<ISize> = {};
+      shouldReturnFalse('available', 'boolean', isSize, copyObj(size));
+      size.available = true;
+      shouldReturnFalse('disk', 'number', isSize, copyObj(size));
+      size.disk = 0;
+      shouldReturnFalse('memory', 'number', isSize, copyObj(size));
+      size.memory = 0;
+      shouldReturnFalse('price_hourly', 'number', isSize, copyObj(size));
+      size.price_hourly = 0;
+      shouldReturnFalse('price_monthly', 'number', isSize, copyObj(size));
+      size.price_monthly = 0;
+      shouldReturnFalse('regions', 'string[]', isSize, copyObj(size));
+      size.regions = [''];
+      shouldReturnFalse('transfer', 'number', isSize, copyObj(size));
+      size.transfer = 0;
+      shouldReturnFalse('vcpus', 'number', isSize, copyObj(size));
+      size.vcpus = 0;
+      shouldReturnFalse('slug', 'string', isSize, copyObj(size));
+      size.slug = '';
+      shouldReturnTrue('isSize', isSize, copyObj(size));
     });
     describe('ISnapshot', () => {
       shouldBeAFn('isSnapshot', isSnapshot);

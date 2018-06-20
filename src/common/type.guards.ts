@@ -89,15 +89,16 @@ export function isAccount(data: any): data is IAccount {
  * @returns {data is ISize}
  */
 export function isSize(data: any): data is ISize {
-    if (typeof (data as ISize).slug !== 'string') return false;
-    if (typeof (data as ISize).available !== 'boolean') return false;
-    if (typeof (data as ISize).transfer !== 'number') return false;
-    if (typeof (data as ISize).price_monthly !== 'number') return false;
-    if (typeof (data as ISize).price_hourly !== 'number') return false;
-    if (typeof (data as ISize).memory !== 'number') return false;
-    if (typeof (data as ISize).vcpus !== 'number') return false;
-    if (typeof (data as ISize).disk !== 'number') return false;
-    if (isArrayOfString((data as ISize).regions) === false) return false;
+    if (!isObject(data)) return false;
+    if (!isBoolean(data.available)) return false;
+    if (!isNumber(data.disk)) return false;
+    if (!isNumber(data.memory)) return false;
+    if (!isNumber(data.price_hourly)) return false;
+    if (!isNumber(data.price_monthly)) return false;
+    if (!isArrayOfString(data.regions)) return false;
+    if (!isNumber(data.transfer)) return false;
+    if (!isNumber(data.vcpus)) return false;
+    if (!isString(data.slug)) return false;
     return true;
 }
 /**
