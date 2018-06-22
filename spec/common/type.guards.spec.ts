@@ -4,6 +4,7 @@ import {
   IAction,
   ICertificate,
   ICollection,
+  IRegion,
   IResource,
   ISize,
   ISSHKey,
@@ -134,6 +135,19 @@ export default function(digitalOcean: DigitalOcean) {
     });
     describe('IRegion', () => {
       shouldBeAFn('isRegion', isRegion);
+      shouldReturnFalse('region', 'object', isRegion, null);
+      const region: Partial<IRegion> = {};
+      shouldReturnFalse('available', 'boolean', isRegion, copyObj(region));
+      region.available = true;
+      shouldReturnFalse('features', 'string[]', isRegion, copyObj(region));
+      region.features = [''];
+      shouldReturnFalse('name', 'string', isRegion, copyObj(region));
+      region.name = '';
+      shouldReturnFalse('sizes', 'string[]', isRegion, copyObj(region));
+      region.sizes = [''];
+      shouldReturnFalse('slug', 'string', isRegion, copyObj(region));
+      region.slug = '';
+      shouldReturnTrue('isRegion', isRegion, copyObj(region));
     });
     describe('IResource', () => {
       shouldBeAFn('isResource', isResource);

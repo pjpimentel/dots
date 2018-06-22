@@ -168,11 +168,12 @@ export function isArrayOfResource(data: any): data is IResource[] {
  * @returns {data is IRegion}
  */
 export function isRegion(data: any): data is IRegion {
-    if (typeof (data as IRegion).slug !== 'string') return false;
-    if (typeof (data as IRegion).name !== 'string') return false;
-    if (typeof (data as IRegion).available !== 'boolean') return false;
-    if (!isArrayOfString((data as IRegion).sizes)) return false;
-    if (!isArrayOfString((data as IRegion).features)) return false;
+    if (!isObject(data)) return false;
+    if (!isBoolean(data.available)) return false;
+    if (!isArrayOfString(data.features)) return false;
+    if (!isString(data.name)) return false;
+    if (!isArrayOfString(data.sizes)) return false;
+    if (!isString(data.slug)) return false;
     return true;
 }
 /**
