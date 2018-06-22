@@ -33,9 +33,8 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      * @memberof DropletEndpoint
      */
     changeKernel(id: number, kernelId: number): Observable<IAction> {
-        const url = `${this.prefix}/${id}/actions`;
         const params = { type: 'change_kernel', kernel: kernelId };
-        return this.doAction(url, params);
+        return this.doDropletAction(id, params);
     }
     /**
      * Create new droplet.
@@ -60,9 +59,8 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      * @memberof DropletEndpoint
      */
     createSnapshot(id: number, snapshotName: string): Observable<IAction> {
-        const url = `${this.prefix}/${id}/actions`;
         const params = { type: 'snapshot', name: snapshotName };
-        return this.doAction(url, params);
+        return this.doDropletAction(id, params);
     }
     /**
      * Delete droplet by Id.
@@ -100,9 +98,7 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      * @memberof DropletEndpoint
      */
     disableBackups(id: number): Observable<IAction> {
-        const url = `${this.prefix}/${id}/actions`;
-        const params = { type: 'disable_backups' } as any;
-        return this.doAction(url, params);
+        return this.doDropletAction(id, { type: 'disable_backups' });
     }
     /**
      * Enable droplet backups.
@@ -113,9 +109,7 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      * @memberof DropletEndpoint
      */
     enableBackups(id: number): Observable<IAction> {
-        const url = `${this.prefix}/${id}/actions`;
-        const params = { type: 'enable_backups' } as any;
-        return this.doAction(url, params);
+        return this.doDropletAction(id, { type: 'enable_backups' });
     }
     /**
      * Enable ipv6 networking in one droplet.
@@ -126,9 +120,7 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      * @memberof DropletEndpoint
      */
     enableIPv6(id: number): Observable<IAction> {
-        const url = `${this.prefix}/${id}/actions`;
-        const params = { type: 'enable_ipv6' } as any;
-        return this.doAction(url, params);
+        return this.doDropletAction(id, { type: 'enable_ipv6' });
     }
     /**
      * Enable private networking in one droplet.
@@ -139,9 +131,7 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      * @memberof DropletEndpoint
      */
     enablePrivateNetworking(id: number): Observable<IAction> {
-        const url = `${this.prefix}/${id}/actions`;
-        const params = { type: 'enable_private_networking' } as any;
-        return this.doAction(url, params);
+        return this.doDropletAction(id, { type: 'enable_private_networking' });
     }
     /**
      * Get droplet by id.
@@ -251,9 +241,7 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      * @memberof DropletEndpoint
      */
     passwordReset(id: number): Observable<IAction> {
-        const url = `${this.prefix}/${id}/actions`;
-        const params = { type: 'password_reset' } as any;
-        return this.doAction(url, params);
+        return this.doDropletAction(id, {type: 'password_reset'});
     }
     /**
      * Power cycle droplet [similar to pushing the reset button].
@@ -264,9 +252,7 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      * @memberof DropletEndpoint
      */
     powerCycle(id: number): Observable<IAction> {
-        const url = `${this.prefix}/${id}/actions`;
-        const params = { type: 'power_cycle' } as any;
-        return this.doAction(url, params);
+        return this.doDropletAction(id, {type: 'power_cycle'});
     }
     /**
      * Power off a droplet.
@@ -277,9 +263,7 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      * @memberof DropletEndpoint
      */
     powerOff(id: number): Observable<IAction> {
-        const url = `${this.prefix}/${id}/actions`;
-        const params = { type: 'power_off' } as any;
-        return this.doAction(url, params);
+        return this.doDropletAction(id, {type: 'power_off'});
     }
     /**
      * Power on a droplet.
@@ -290,9 +274,7 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      * @memberof DropletEndpoint
      */
     powerOn(id: number): Observable<IAction> {
-        const url = `${this.prefix}/${id}/actions`;
-        const params = { type: 'power_on' } as any;
-        return this.doAction(url, params);
+        return this.doDropletAction(id, {type: 'power_on'});
     }
     /**
      * Reboot droplet [reboot in a graceful way].
@@ -303,9 +285,7 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      * @memberof DropletEndpoint
      */
     reboot(id: number): Observable<IAction> {
-        const url = `${this.prefix}/${id}/actions`;
-        const params = { type: 'reboot' } as any;
-        return this.doAction(url, params);
+        return this.doDropletAction(id, {type: 'reboot'});
     }
     /**
      * Rebuild droplet by image slug.
@@ -329,9 +309,8 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
     // tslint:disable-next-line:unified-signatures
     rebuild(id: number, imageId: number): Observable<IAction>;
     rebuild(id: number, b: string | number): Observable<IAction> {
-        const url = `${this.prefix}/${id}/actions`;
-        const params = { type: 'rebuild', image: b } as any;
-        return this.doAction(url, params);
+        const params = { type: 'rebuild', image: b };
+        return this.doDropletAction(id, params);
     }
     /**
      * Rename droplet.
@@ -343,9 +322,8 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      * @memberof DropletEndpoint
      */
     rename(id: number, newName: string): Observable<IAction> {
-        const url = `${this.prefix}/${id}/actions`;
-        const params = { type: 'rename', name: newName } as any;
-        return this.doAction(url, params);
+        const params = { type: 'rename', name: newName };
+        return this.doDropletAction(id, params);
     }
     /**
      * Resize droplet.
@@ -358,9 +336,8 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      * @memberof DropletEndpoint
      */
     resize(id: number, sizeSlug: string, resizeDisk = false): Observable<IAction> {
-        const url = `${this.prefix}/${id}/actions`;
-        const params = { type: 'resize', disk: resizeDisk, size: sizeSlug } as any;
-        return this.doAction(url, params);
+        const params = { type: 'resize', disk: resizeDisk, size: sizeSlug };
+        return this.doDropletAction(id, params);
     }
     /**
      * Restore droplet by image slug.
@@ -384,9 +361,8 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
     // tslint:disable-next-line:unified-signatures
     restore(id: number, imageId: number): Observable<IAction>;
     restore(id: number, b: string | number): Observable<IAction> {
-        const url = `${this.prefix}/${id}/actions`;
-        const params = { type: 'restore', image: b } as any;
-        return this.doAction(url, params);
+        const params = { type: 'restore', image: b };
+        return this.doDropletAction(id, params);
     }
     /**
      * Shutdown a droplet [shutdown in a graceful way].
@@ -397,8 +373,19 @@ export default class DropletEndpoint extends Endpoint implements IDropletEndpoin
      * @memberof DropletEndpoint
      */
     shutdown(id: number): Observable<IAction> {
+        return this.doDropletAction(id, {type: 'shutdown'});
+    }
+    /**
+     * Execute droplet action
+     *
+     * @private
+     * @param {number} id
+     * @param {string} type
+     * @returns {Observable<IAction>}
+     * @memberof DropletEndpoint
+     */
+    private doDropletAction(id: number, params: object): Observable<IAction> {
         const url = `${this.prefix}/${id}/actions`;
-        const params = { type: 'shutdown' } as any;
         return this.doAction(url, params);
     }
 }
