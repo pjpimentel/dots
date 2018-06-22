@@ -1,11 +1,11 @@
 language: node_js
 
 node_js:
-  - '10'
-  # - '9'
-  # - '8'
-  # - '7'
-  # - '6'
+  - 10
+  - 9
+  - 8
+  - 7
+  - 6
 
 sudo: false
 
@@ -38,36 +38,21 @@ git:
 stages:
   - build
   - test
-  - coverage
-  - quality gate
+  - quality check
   - deploy
 
 jobs:
  include:
     - stage: build
       script: npm run build
-      node_js:
-        - 10
-        - 9
-        - 8
-        - 7
-        - 6
     - stage: test
       script: npm run test:unit
+    - stage: quality check
       node_js:
         - 10
-        - 9
-        - 8
-        - 7
-        - 6
-    - stage: coverage
-      node_js:
-        - 10
-      script: npm run test:coverage
-    - stage: quality gate
-      node_js:
-        - 10
-      script: sonar-scanner
+      script:
+        - npm run test:coverage
+        - sonar-scanner
     - stage: npm release
       node_js:
         - 10
