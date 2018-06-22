@@ -91,11 +91,11 @@ export default class TagEndpoint extends Endpoint implements ITagEndpoint {
                 if (typeof a === 'number') a = a.toString();
                 if (typeof a !== 'string') throw new TypeError('Expecting resource id as first parameter.');
                 if (typeof b !== 'string') throw new TypeError('Expecting resource type as second parameter.');
-                a = { resource_id: a as string, resource_type: b as string } as IResource;
+                a = { resource_id: a, resource_type: b } as IResource;
             }
-            a = [(a as IResource)] as IResource[];
+            a = [a];
         }
-        resources = a as IResource[];
+        resources = a;
         return resources;
     }
     /**

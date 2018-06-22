@@ -42,28 +42,7 @@ export default class VolumeEndpoint extends Endpoint implements IVolumeEndpoint 
      */
     attach(name: string, dropletId: number, region: string): Observable<IAction>;
     attach(a: string, b: number, c?: string): Observable<IAction> {
-        const dropletId = b;
-        let volumeId = null;
-        let volumeName = null;
-        let region = null;
-        let url: string = null;
-        const params: any = {};
-        if (c) {
-            volumeName = a;
-            region = c;
-        } else {
-            volumeId = a;
-        }
-        url = `${this.prefix}/${volumeId}/actions`;
-        params.type = 'attach';
-        params.droplet_id = dropletId;
-        if (!volumeId) {
-            url = `${this.prefix}/actions`;
-            params.volume_name = volumeName;
-            params.region = region;
-        }
-        const promise = this.api.post(url, params);
-        return this.fromPromise(promise, 'action', isAction);
+        return this.attachOrDetach('attach', a, b, c);
     }
     /**
      * Create new volume.
@@ -147,28 +126,7 @@ export default class VolumeEndpoint extends Endpoint implements IVolumeEndpoint 
      */
     detach(name: string, dropletId: number, region: string): Observable<IAction>;
     detach(a: string, b: number, c?: string): Observable<IAction> {
-        const dropletId = b;
-        let volumeId = null;
-        let volumeName = null;
-        let region = null;
-        let url: string = null;
-        const params: any = {};
-        if (c) {
-            volumeName = a;
-            region = c;
-        } else {
-            volumeId = a;
-        }
-        url = `${this.prefix}/${volumeId}/actions`;
-        params.type = 'detach';
-        params.droplet_id = dropletId;
-        if (!volumeId) {
-            url = `${this.prefix}/actions`;
-            params.volume_name = volumeName;
-            params.region = region;
-        }
-        const promise = this.api.post(url, params);
-        return this.fromPromise(promise, 'action', isAction);
+        return this.attachOrDetach('detach', a, b, c);
     }
     /**
      * Get volume's action by id.
@@ -265,6 +223,46 @@ export default class VolumeEndpoint extends Endpoint implements IVolumeEndpoint 
     resize(id: string, size: number): Observable<IAction> {
         const url = `${this.prefix}/${id}/actions`;
         const params = { type: 'resize', size_gigabytes: size };
+        const promise = this.api.post(url, params);
+        return this.fromPromise(promise, 'action', isAction);
+    }
+    /**
+     * Generic fn to atach or detach
+     *
+     * @private
+     * @param {('detach'|'attach')} type
+     * @param {string} a
+     * @param {number} b
+     * @param {string} [c]
+     * @returns {Observable<IAction>}
+     * @memberof VolumeEndpoint
+     */
+    private attachOrDetach(
+        type: 'detach'|'attach',
+        a: string,
+        b: number,
+        c?: string,
+    ): Observable<IAction> {
+        const dropletId = b;
+        let volumeId = null;
+        let volumeName = null;
+        let region = null;
+        let url: string = null;
+        const params: any = {};
+        if (c) {
+            volumeName = a;
+            region = c;
+        } else {
+            volumeId = a;
+        }
+        url = `${this.prefix}/${volumeId}/actions`;
+        params.type = type;
+        params.droplet_id = dropletId;
+        if (!volumeId) {
+            url = `${this.prefix}/actions`;
+            params.volume_name = volumeName;
+            params.region = region;
+        }
         const promise = this.api.post(url, params);
         return this.fromPromise(promise, 'action', isAction);
     }
