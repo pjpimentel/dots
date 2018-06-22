@@ -50,7 +50,8 @@
     "reporter": [
       "text-summary",
       "text",
-      "html"
+      "html",
+      "lcov"
     ],
     "sourceMap": true,
     "instrument": true
