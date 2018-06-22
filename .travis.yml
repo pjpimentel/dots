@@ -23,10 +23,10 @@ branches:
 install:
   - npm install
 
-script:
-  - npm test
-  - npm run build
-  - sonar-scanner
+# script:
+#   - npm test
+#   - npm run build
+#   - sonar-scanner
 
 cache:
   directories:
@@ -34,3 +34,49 @@ cache:
 
 git:
   depth: false
+
+stages:
+  - build
+  - test
+  - coverage
+  - quality gate
+  - deploy
+
+jobs:
+ include:
+    - stage: build
+      script: npm run build
+      node_js:
+        - 10
+        - 9
+        - 8
+        - 7
+        - 6
+    - stage: test
+      script: npm run test:unit
+      node_js:
+        - 10
+        - 9
+        - 8
+        - 7
+        - 6
+    - stage: coverage
+      node_js:
+        - 10
+      script: npm run test:coverage
+    - stage: quality gate
+      node_js:
+        - 10
+      script: sonar-scanner
+    - stage: npm release
+      node_js:
+        - 10
+      script: echo "deploying..."
+  # include:
+  #   - stage: npm release
+  #     node_js: '10'
+  #     script:
+  #     deploy:
+  #       provider: npm
+  #       api_key: $NPM_API_KEY
+  #       on: deploy-npm-release

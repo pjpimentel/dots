@@ -6,9 +6,9 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "prepublish": "npm run build",
-    "build": "tsc",
-    "test": "export TS_NODE_FAST=YES && nyc jasmine-ts --config=spec/support/jasmine.json \"spec/digitalOcean.spec.ts\"",
-    "cover": "nyc npm test"
+    "build": "rm -rf ./dist && tsc",
+    "test:unit": "jasmine-ts --config=spec/support/jasmine.json \"spec/digitalOcean.spec.ts\"",
+    "test:coverage": "(export TS_NODE_FAST=YES && nyc npm run test:unit) || exit 0"
   },
   "repository": {
     "type": "git",
