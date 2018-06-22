@@ -24,6 +24,7 @@ install:
   - npm install
 
 script:
+  - npm test
   - npm run build
   - sonar-scanner
 

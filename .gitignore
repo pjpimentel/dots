@@ -45,6 +45,5 @@ logs
 test/token.ts
 
 coverage
-!coverage/lcov.info
 .nyc_output
 dist
