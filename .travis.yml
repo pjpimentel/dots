@@ -1,7 +1,5 @@
 language: node_js
 
-
-
 sudo: false
 
 matrix:
@@ -35,29 +33,41 @@ jobs:
  include:
     - stage: build
       script: npm run build
-      node_js:
-        - '10'
-        - '9'
-        - '8'
-        - '7'
-        - '6'
+      node_js: '10'
+    - stage: build
+      script: npm run build
+      node_js: '9'
+    - stage: build
+      script: npm run build
+      node_js: '8'
+    - stage: build
+      script: npm run build
+      node_js: '7'
+    - stage: build
+      script: npm run build
+      node_js: '6'
     - stage: test
       script: npm run test:unit
-      node_js:
-        - '10'
-        - '9'
-        - '8'
-        - '7'
-        - '6'
+      node_js: '10'
+    - stage: test
+      script: npm run test:unit
+      node_js: '9'
+    - stage: test
+      script: npm run test:unit
+      node_js: '8'
+    - stage: test
+      script: npm run test:unit
+      node_js: '7'
+    - stage: test
+      script: npm run test:unit
+      node_js: '6'
     - stage: quality check
-      node_js:
-        - '10'
+      node_js: '10'
       script:
         - npm run test:coverage
         - sonar-scanner
     - stage: npm release
-      node_js:
-        - '10'
+      node_js: '10'
       script: echo "deploying..."
   # include:
   #   - stage: npm release
