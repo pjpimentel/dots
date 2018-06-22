@@ -12,12 +12,20 @@ sudo: false
 matrix:
   fast_finish: true
 
+addons:
+  sonarcloud:
+    organization: "pjpimentel-github"
+
 branches:
   only:
-    - feature/10
+    - beta
 
 install:
   - npm install
+
+script:
+  - npm run build
+  - sonar-scanner
 
 cache:
   directories:
