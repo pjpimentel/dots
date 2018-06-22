@@ -4,10 +4,10 @@ import {
   IAction,
   ICertificate,
   ICollection,
+  IResource,
+  ISize,
   ISSHKey,
   ITag,
-  ISize,
-  IResource,
 } from '../../src/common/interfaces';
 import {
   isAccount,
