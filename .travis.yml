@@ -1,11 +1,6 @@
 language: node_js
 
-node_js:
-  - 10
-  - 9
-  - 8
-  - 7
-  - 6
+
 
 sudo: false
 
@@ -22,11 +17,6 @@ branches:
 
 install:
   - npm install
-
-# script:
-#   - npm test
-#   - npm run build
-#   - sonar-scanner
 
 cache:
   directories:
@@ -45,17 +35,29 @@ jobs:
  include:
     - stage: build
       script: npm run build
+      node_js:
+        - '10'
+        - '9'
+        - '8'
+        - '7'
+        - '6'
     - stage: test
       script: npm run test:unit
+      node_js:
+        - '10'
+        - '9'
+        - '8'
+        - '7'
+        - '6'
     - stage: quality check
       node_js:
-        - 10
+        - '10'
       script:
         - npm run test:coverage
         - sonar-scanner
     - stage: npm release
       node_js:
-        - 10
+        - '10'
       script: echo "deploying..."
   # include:
   #   - stage: npm release
