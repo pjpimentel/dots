@@ -1,12 +1,12 @@
 import { AxiosPromise } from 'axios';
 import { from, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
 import API from './api';
 import { IAction, ICollection, ICollectionParams } from './interfaces';
 import { isAction } from './type.guards';
 
-export type predicate<T> = (value: T, index: number) => boolean;
+export type predicate<T> = (value: T, index?: number) => boolean;
 /**
  * Endpoint belongs to APIs
  *
@@ -59,21 +59,25 @@ export default abstract class Endpoint {
         perPage: number,
         url: string,
         property: string,
-        filter?: predicate<C>,
+        guard?: predicate<C>,
     ): Observable<ICollection<C>> {
         const params: ICollectionParams = this.getCollectionParams(page, perPage);
-        return this.fromPromise(this.api.get(url, { params }))
+        const promise = this.api.get(url, { params });
+        return this.fromPromise(promise)
             .pipe(
                 map((data: any) => {
-                    const collection: ICollection<C> = {} as ICollection<C>;
-                    collection.items = data[property];
-                    collection.total = data && data.meta ? data.meta.total : undefined;
-                    collection.perPage = params.per_page;
-                    collection.curPage = params.page;
-                    collection.minPage = 1;
+                    const collection: ICollection<C> = {
+                        curPage: params.page,
+                        items: data[property],
+                        maxPage: 1,
+                        minPage: 1,
+                        perPage: params.per_page,
+                        total: data && data.meta ? data.meta.total : undefined,
+                    };
                     collection.maxPage = Math.ceil(collection.total / params.per_page);
                     return collection;
                 }),
+                filter(guard),
             );
     }
     /**
@@ -97,13 +101,14 @@ export default abstract class Endpoint {
      * @template T
      * @param {AxiosPromise} promise
      * @param {string} [property]
-     * @param {(v: any, i: number) => boolean} [filter]
+     * @param {(v: any, i: number) => boolean} [guard]
      * @returns {Observable<T>}
      * @memberof Endpoint
      */
-    protected fromPromise<T>(promise: AxiosPromise, property?: string, filter?: predicate<T>): Observable<T> {
+    protected fromPromise<T>(promise: AxiosPromise, property?: string, guard?: predicate<T>): Observable<T> {
         const dataValidator = (data) => {
             if (!data) throw this.api.invalidResponse;
+            if (!guard(data)) throw this.api.invalidResponse;
             return data;
         };
         let observable = from(promise).pipe(

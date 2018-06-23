@@ -5,7 +5,7 @@ import { DigitalOcean } from '../src/digitalOcean';
 
 export default function(digitalOcean: DigitalOcean) {
   const Action = digitalOcean.Action;
-  let actionToTest: IAction;
+  let actionToTest: IAction = {} as IAction;
   describe('List Actions', () => {
     it('`list` should exists', () => expect(Action.get).toBeDefined());
     it('`list` should be a function', () => expect(typeof Action.get).toBe('function'));
@@ -13,7 +13,7 @@ export default function(digitalOcean: DigitalOcean) {
       const perPage = 10;
       const onActions = (collection) => {
         expect(collection).toBeDefined();
-        expect(isCollection(collection)).toBeTruthy();
+        expect(isCollection<IAction>(collection, isAction)).toBeTruthy();
         expect(collection.perPage).toBe(perPage);
         const actions = collection.items;
         expect(Array.isArray(actions)).toBeTruthy();
