@@ -19,6 +19,7 @@ install:
 cache:
   directories:
     - node_modules
+    - '$HOME/.sonar/cache'
 
 git:
   depth: false
