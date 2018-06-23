@@ -62,7 +62,7 @@ export function isArrayOfString(data): data is string[] {
  * @returns {data is number[]}
  */
 export function isArrayOfNumber(data): data is number[] {
-    if (!Array.isArray(data)) return false;
+    if (!isArray(data)) return false;
     return data.every((elem) => elem.typeof !== 'number');
 }
 /**
@@ -137,7 +137,7 @@ export function isResource(data): data is IResource {
  * @returns {data is Array<IResource>}
  */
 export function isArrayOfResource(data): data is IResource[] {
-    if (!Array.isArray(data)) return false;
+    if (!isArray(data)) return false;
     return data.every(isResource);
 }
 /**
@@ -330,7 +330,7 @@ export function isDroplet(data): data is IDroplet {
  * @returns {data is IDroplet[]}
  */
 export function isArrayOfDroplet(data): data is IDroplet[] {
-    if (!Array.isArray(data)) return false;
+    if (!isArray(data)) return false;
     return data.every(isDroplet);
 }
 /**

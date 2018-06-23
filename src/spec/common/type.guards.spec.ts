@@ -17,6 +17,8 @@ import {
 import {
   isAccount,
   isAction,
+  isArrayOfDroplet,
+  isArrayOfResource,
   isCertificate,
   isCollection,
   isDroplet,
@@ -233,6 +235,12 @@ export function GuardTests(digitalOcean: DigitalOcean) {
       droplet.next_backup_window = null;
       shouldReturnTrue('isDroplet', isDroplet, copyObj(droplet));
     });
+    describe('IDroplet[]', () => {
+      shouldBeAFn('isArrayOfDroplet', isArrayOfDroplet);
+      shouldReturnFalse('droplets', 'droplet[]', isArrayOfDroplet, null);
+      const droplets: IDroplet[] = [];
+      shouldReturnTrue('isResource', isArrayOfDroplet, droplets);
+    });
     describe('IImage', () => {
       shouldBeAFn('isImage', isImage);
       shouldReturnFalse('image', 'object', isImage, null);
@@ -285,6 +293,12 @@ export function GuardTests(digitalOcean: DigitalOcean) {
       shouldReturnFalse('resource_type', 'string', isResource, copyObj(resource));
       resource.resource_type = '';
       shouldReturnTrue('isResource', isResource, copyObj(resource));
+    });
+    describe('IResource[]', () => {
+      shouldBeAFn('isArrayOfResource', isArrayOfResource);
+      shouldReturnFalse('resources', 'resouce[]', isArrayOfResource, null);
+      const resources: IResource[] = [{resource_id: '', resource_type: ''}];
+      shouldReturnTrue('isResource', isArrayOfResource, resources);
     });
     describe('ISize', () => {
       shouldBeAFn('isSize', isSize);
