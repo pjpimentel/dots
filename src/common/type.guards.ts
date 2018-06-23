@@ -278,13 +278,16 @@ export function isArrayOfSnapshot(data): data is ISnapshot[] {
  * @returns {data is IVolume}
  */
 export function isVolume(data): data is IVolume {
-    if (typeof (data as IVolume).created_at !== 'string') return false;
-    if (typeof (data as IVolume).description !== 'string') return false;
-    if (typeof (data as IVolume).id !== 'string') return false;
-    if (typeof (data as IVolume).name !== 'string') return false;
-    if (typeof (data as IVolume).size_gigabytes !== 'number') return false;
-    if (!isRegion((data as IVolume).region)) return false;
-    if (!isArrayOfNumber((data as IVolume).droplet_ids)) return false;
+    if (!isObject(data)) return false;
+    if (!isString(data.created_at)) return false;
+    if (!isString(data.description)) return false;
+    if (!isArrayOfNumber(data.droplet_ids)) return false;
+    if (!isString(data.filesystem_label)) return false;
+    if (!isString(data.filesystem_type)) return false;
+    if (!isString(data.id)) return false;
+    if (!isString(data.name)) return false;
+    if (!isRegion(data.region)) return false;
+    if (!isNumber(data.size_gigabytes)) return false;
     return true;
 }
 /**

@@ -12,6 +12,7 @@ import {
   ISnapshot,
   ISSHKey,
   ITag,
+  IVolume,
 } from '../../src/common/interfaces';
 import {
   isAccount,
@@ -344,6 +345,33 @@ export default function(digitalOcean: DigitalOcean) {
     });
     describe('IVolume', () => {
       shouldBeAFn('isVolume', isVolume);
+      shouldReturnFalse('volume', 'object', isVolume, null);
+      const volume: Partial<IVolume> = {};
+      shouldReturnFalse('created_at', 'string', isVolume, copyObj(volume));
+      volume.created_at = '';
+      shouldReturnFalse('description', 'string', isVolume, copyObj(volume));
+      volume.description = '';
+      shouldReturnFalse('droplet_ids', 'number[]', isVolume, copyObj(volume));
+      volume.droplet_ids = [0];
+      shouldReturnFalse('filesystem_label', 'number[]', isVolume, copyObj(volume));
+      volume.filesystem_label = '';
+      shouldReturnFalse('filesystem_type', 'number[]', isVolume, copyObj(volume));
+      volume.filesystem_type = '';
+      shouldReturnFalse('id', 'string', isVolume, copyObj(volume));
+      volume.id = '';
+      shouldReturnFalse('name', 'string', isVolume, copyObj(volume));
+      volume.name = '';
+      shouldReturnFalse('region', 'IRegion', isVolume, copyObj(volume));
+      volume.region = {
+        available: true,
+        features: [''],
+        name: '',
+        sizes: [''],
+        slug: '',
+      };
+      shouldReturnFalse('size_gigabytes', 'number', isVolume, copyObj(volume));
+      volume.size_gigabytes = 0;
+      shouldReturnTrue('isVolume', isVolume, copyObj(volume));
     });
   });
 }

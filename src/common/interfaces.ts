@@ -179,9 +179,11 @@ export interface IVolume {
     created_at: string;
     description: string;
     droplet_ids: number[];
+    filesystem_label: string;
+    filesystem_type: string;
     id: string;
     name: string;
-    region: IRegion; // TODO: change this type
+    region: IRegion;
     size_gigabytes: number;
 }
 /**
