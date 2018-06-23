@@ -310,6 +310,7 @@ export function isArrayOfVolume(data): data is IVolume[] {
  * @returns {data is IImage}
  */
 export function isImage(data): data is IImage {
+    if (!isObject(data)) return false;
     data = data as IImage;
     if (typeof (data as IImage).created_at !== 'string') return false;
     if (typeof (data as IImage).distribution !== 'string') return false;
@@ -391,24 +392,25 @@ export function isDroplet(data): data is IDroplet {
     if (!isString(data.created_at)) return false;
     if (!isNumber(data.disk)) return false;
     if (!isNumber(data.id)) return false;
-    if (!isKernel(data.kernel)) return false;
+    if (!isNull(data.kernel) && !isKernel(data.kernel)) return false;
     if (!isBoolean(data.locked)) return false;
     if (!isNumber(data.memory)) return false;
     if (!isString(data.name)) return false;
-    if (!isObject(data.networks)) return false; // TODO: networks type
-    // i!isString(f (data.next_backup_window)) return false;  // TODO: next_backup_window type
+    if (!isObject(data.networks)) return false;
+    if (!isNull(data.next_backup_window) && !isObject(data.next_backup_window)) {
+        return false;
+    }
     if (!isString(data.size_slug)) return false;
     if (!isString(data.status)) return false;
     if (!isNumber(data.vcpus)) return false;
-    if (!isArrayOfString((data as IDroplet).backup_ids)) return false;
-    if (!isArrayOfString((data as IDroplet).features)) return false;
-    if (!isArrayOfString((data as IDroplet).snapshot_ids)) return false;
-    if (!isArrayOfString((data as IDroplet).tags)) return false;
-    if (!isArrayOfString((data as IDroplet).volume_ids)) return false;
-    if (!isImage((data as IDroplet).image)) return false;
-    if (!isRegion((data as IDroplet).region)) return false;
-    if (!isSize((data as IDroplet).size)) return false;
-
+    if (!isArrayOfString(data.backup_ids)) return false;
+    if (!isArrayOfString(data.features)) return false;
+    if (!isArrayOfString(data.snapshot_ids)) return false;
+    if (!isArrayOfString(data.tags)) return false;
+    if (!isArrayOfString(data.volume_ids)) return false;
+    if (!isImage(data.image)) return false;
+    if (!isRegion(data.region)) return false;
+    if (!isSize(data.size)) return false;
     return true;
 }
 /**

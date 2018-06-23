@@ -4,6 +4,7 @@ import {
   IAction,
   ICertificate,
   ICollection,
+  IDroplet,
   IKernel,
   IRegion,
   IResource,
@@ -144,6 +145,77 @@ export default function(digitalOcean: DigitalOcean) {
     });
     describe('IDroplet', () => {
       shouldBeAFn('isDroplet', isDroplet);
+      const droplet: Partial<IDroplet> = {};
+      shouldReturnFalse('created_at', 'string', isDroplet, copyObj(droplet));
+      droplet.created_at = '';
+      shouldReturnFalse('disk', 'number', isDroplet, copyObj(droplet));
+      droplet.disk = 0;
+      shouldReturnFalse('id', 'number', isDroplet, copyObj(droplet));
+      droplet.id = 0;
+      shouldReturnFalse('kernel', 'kernel|null', isDroplet, copyObj(droplet));
+      droplet.kernel = { id: 0, name: '', version: ''  };
+      shouldReturnFalse('locked', 'boolean', isDroplet, copyObj(droplet));
+      droplet.locked = true;
+      shouldReturnFalse('memory', 'number', isDroplet, copyObj(droplet));
+      droplet.memory = 0;
+      shouldReturnFalse('name', 'string', isDroplet, copyObj(droplet));
+      droplet.name = '';
+      shouldReturnFalse('networks', 'object', isDroplet, copyObj(droplet));
+      droplet.networks = {};
+      shouldReturnFalse('next_backup_window', 'object', isDroplet, copyObj(droplet));
+      droplet.next_backup_window = {};
+      shouldReturnFalse('size_slug', 'string', isDroplet, copyObj(droplet));
+      droplet.size_slug = '';
+      shouldReturnFalse('status', 'string', isDroplet, copyObj(droplet));
+      droplet.status = 'new';
+      shouldReturnFalse('vcpus', 'number', isDroplet, copyObj(droplet));
+      droplet.vcpus = 0;
+      shouldReturnFalse('backup_ids', 'string[]', isDroplet, copyObj(droplet));
+      droplet.backup_ids = [''];
+      shouldReturnFalse('features', 'string[]', isDroplet, copyObj(droplet));
+      droplet.features = [''];
+      shouldReturnFalse('snapshot_ids', 'string[]', isDroplet, copyObj(droplet));
+      droplet.snapshot_ids = [''];
+      shouldReturnFalse('tags', 'string[]', isDroplet, copyObj(droplet));
+      droplet.tags = [''];
+      shouldReturnFalse('volume_ids', 'string[]', isDroplet, copyObj(droplet));
+      droplet.volume_ids = [''];
+      shouldReturnFalse('image', 'image', isDroplet, copyObj(droplet));
+      droplet.image = {
+        created_at: '',
+        distribution: '',
+        id: 0,
+        min_disk_size: 0,
+        name: '',
+        public: true,
+        regions: [''],
+        size_gigabytes: 0,
+        slug: '',
+        type: '',
+      };
+      shouldReturnFalse('region', 'region', isDroplet, copyObj(droplet));
+      droplet.region = {
+        available: true,
+        features: [''],
+        name: '',
+        sizes: [''],
+        slug: '',
+      };
+      shouldReturnFalse('size', 'size', isDroplet, copyObj(droplet));
+      droplet.size = {
+        available: true,
+        disk: 0,
+        memory: 0,
+        price_hourly: 0,
+        price_monthly: 0,
+        regions: [''],
+        slug: '',
+        transfer: 0,
+        vcpus: 0,
+      };
+      droplet.kernel = null;
+      droplet.next_backup_window = null;
+      shouldReturnTrue('isDroplet', isDroplet, copyObj(droplet));
     });
     describe('IImage', () => {
       shouldBeAFn('isImage', isImage);

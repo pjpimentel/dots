@@ -107,15 +107,15 @@ export interface IAccount {
  * @interface ISize
  */
 export interface ISize {
-    slug: string;
     available: boolean;
-    transfer: number;
-    price_monthly: number;
-    price_hourly: number;
-    memory: number;
-    vcpus: number;
     disk: number;
+    memory: number;
+    price_hourly: number;
+    price_monthly: number;
     regions: string[];
+    slug: string;
+    transfer: number;
+    vcpus: number;
 }
 /**
  * Tag raw object.
@@ -134,11 +134,11 @@ export interface ITag {
  * @interface IRegion
  */
 export interface IRegion {
-    slug: string;
-    name: string;
-    sizes: string[];
     available: boolean;
     features: string[];
+    name: string;
+    sizes: string[];
+    slug: string;
 }
 /**
  * Action raw object
@@ -257,7 +257,7 @@ export interface IDroplet {
     size_slug: string;
     size: ISize;
     snapshot_ids: string[];
-    status: string;
+    status: 'new'|'active'|'off'|'archive';
     tags: string[];
     vcpus: number;
     volume_ids: string[];
