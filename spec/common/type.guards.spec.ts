@@ -117,21 +117,32 @@ export default function(digitalOcean: DigitalOcean) {
     });
     describe('ICollection', () => {
       shouldBeAFn('isCollection', isCollection);
+      const isSizeCollection = (value) => isCollection<ISize>(value, isSize);
       shouldReturnFalse('collection', 'object', isCollection, null);
-      const collection: Partial<ICollection<any>> = {};
-      shouldReturnFalse('items', 'any[]', isCollection, copyObj(collection));
-      collection.items = [];
-      shouldReturnFalse('curPage', 'number', isCollection, copyObj(collection));
+      const collection: Partial<ICollection<ISize>> = {};
+      shouldReturnFalse('items', 'ISize[]', isSizeCollection, copyObj(collection));
+      collection.items = [{
+        available: true,
+        disk: 0,
+        memory: 0,
+        price_hourly: 0,
+        price_monthly: 0,
+        regions: [''],
+        slug: '',
+        transfer: 0,
+        vcpus: 0,
+      }];
+      shouldReturnFalse('curPage', 'number', isSizeCollection, copyObj(collection));
       collection.curPage = 0;
-      shouldReturnFalse('maxPage', 'number', isCollection, copyObj(collection));
+      shouldReturnFalse('maxPage', 'number', isSizeCollection, copyObj(collection));
       collection.maxPage = 0;
-      shouldReturnFalse('minPage', 'number', isCollection, copyObj(collection));
+      shouldReturnFalse('minPage', 'number', isSizeCollection, copyObj(collection));
       collection.minPage = 0;
-      shouldReturnFalse('perPage', 'number', isCollection, copyObj(collection));
+      shouldReturnFalse('perPage', 'number', isSizeCollection, copyObj(collection));
       collection.perPage = 0;
-      shouldReturnFalse('total', 'number', isCollection, copyObj(collection));
+      shouldReturnFalse('total', 'number', isSizeCollection, copyObj(collection));
       collection.total = 0;
-      shouldReturnTrue('isCollection', isCollection, copyObj(collection));
+      shouldReturnTrue('isCollection', isSizeCollection, copyObj(collection));
     });
     describe('IKernel', () => {
       shouldBeAFn('isKernel', isKernel);

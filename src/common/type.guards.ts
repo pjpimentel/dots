@@ -439,7 +439,9 @@ export function isArrayOfDroplet(data): data is IDroplet[] {
  * @param {*} data
  * @returns {data is ICollection<any>}
  */
-export function isCollection(data): data is ICollection<any> {
+export function isCollection<T>(
+    data,
+    guard: (d) => d is T): data is ICollection<T> {
     if (!isObject(data)) return false;
     if (!isArray(data.items)) return false;
     if (!isNumber(data.curPage)) return false;
@@ -447,5 +449,6 @@ export function isCollection(data): data is ICollection<any> {
     if (!isNumber(data.minPage)) return false;
     if (!isNumber(data.perPage)) return false;
     if (!isNumber(data.total)) return false;
+    if (!data.items.every(guard)) return false;
     return true;
 }
