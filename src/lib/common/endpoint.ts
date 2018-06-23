@@ -1,10 +1,10 @@
 import { AxiosPromise } from 'axios';
 import { from, Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 import API from './api';
 import { IAction, ICollection, ICollectionParams } from './interfaces';
-import { isAction } from './type.guards';
+import { isAction, isCollection } from './type.guards';
 
 export type predicate<T> = (value: T, index?: number) => boolean;
 /**
@@ -59,7 +59,7 @@ export default abstract class Endpoint {
         perPage: number,
         url: string,
         property: string,
-        guard?: predicate<C>,
+        guard?: (data) => data is C,
     ): Observable<ICollection<C>> {
         const params: ICollectionParams = this.getCollectionParams(page, perPage);
         const promise = this.api.get(url, { params });
@@ -77,7 +77,11 @@ export default abstract class Endpoint {
                     collection.maxPage = Math.ceil(collection.total / params.per_page);
                     return collection;
                 }),
-                filter(guard),
+                tap((collection) => {
+                    if (!isCollection<C>(collection, guard)) {
+                        throw this.api.invalidResponse;
+                    }
+                }),
             );
     }
     /**

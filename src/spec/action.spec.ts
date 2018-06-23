@@ -37,6 +37,8 @@ export function ActionTests(digitalOcean: DigitalOcean) {
   describe('Get Action', () => {
     it('`Get` should exists', () => expect(Action.get).toBeDefined());
     it('`Get` should be a function', () => expect(typeof Action.get).toBe('function'));
+    it('`actionToTest` should exists', () => expect(actionToTest).toBeDefined());
+    it('`actionToTest.id` should exists', () => expect(actionToTest.id).toBeDefined());
     it('`Get` should return Action object', (done) => {
       const onAction = (action) => {
         expect(action).toBeDefined();
