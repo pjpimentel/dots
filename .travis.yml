@@ -35,33 +35,33 @@ jobs:
     - stage: build
       script: npm run build
       node_js: '10'
-    - stage: build
-      script: npm run build
-      node_js: '9'
-    - stage: build
-      script: npm run build
-      node_js: '8'
-    - stage: build
-      script: npm run build
-      node_js: '7'
-    - stage: build
-      script: npm run build
-      node_js: '6'
+    # - stage: build
+    #   script: npm run build
+    #   node_js: '9'
+    # - stage: build
+    #   script: npm run build
+    #   node_js: '8'
+    # - stage: build
+    #   script: npm run build
+    #   node_js: '7'
+    # - stage: build
+    #   script: npm run build
+    #   node_js: '6'
     - stage: test
       script: npm run test:unit
       node_js: '10'
-    - stage: test
-      script: npm run test:unit
-      node_js: '9'
-    - stage: test
-      script: npm run test:unit
-      node_js: '8'
-    - stage: test
-      script: npm run test:unit
-      node_js: '7'
-    - stage: test
-      script: npm run test:unit
-      node_js: '6'
+    # - stage: test
+    #   script: npm run test:unit
+    #   node_js: '9'
+    # - stage: test
+    #   script: npm run test:unit
+    #   node_js: '8'
+    # - stage: test
+    #   script: npm run test:unit
+    #   node_js: '7'
+    # - stage: test
+    #   script: npm run test:unit
+    #   node_js: '6'
     - stage: quality check
       node_js: '10'
       script:
