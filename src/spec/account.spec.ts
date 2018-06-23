@@ -2,7 +2,7 @@ import { finalize } from 'rxjs/operators';
 import { isAccount } from '../lib/common/type.guards';
 import { DigitalOcean } from '../lib/digitalOcean';
 
-export default function(digitalOcean: DigitalOcean) {
+export function AccountTests(digitalOcean: DigitalOcean) {
   const Account = digitalOcean.Account;
   describe('Get Account', () => {
     it('`Get` should exists', () => expect(Account.get).toBeDefined());

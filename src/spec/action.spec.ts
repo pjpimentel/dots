@@ -3,7 +3,7 @@ import { IAction } from '../lib/common/interfaces';
 import { isAction, isCollection } from '../lib/common/type.guards';
 import { DigitalOcean } from '../lib/digitalOcean';
 
-export default function(digitalOcean: DigitalOcean) {
+export function ActionTests(digitalOcean: DigitalOcean) {
   const Action = digitalOcean.Action;
   let actionToTest: IAction = {} as IAction;
   describe('List Actions', () => {

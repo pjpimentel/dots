@@ -1,7 +1,7 @@
 import { DigitalOcean } from '../lib/digitalOcean';
-import AccountTests from './account.spec';
-import ActionTests from './action.spec';
-import GuardTests from './common/type.guards.spec';
+import { AccountTests } from './account.spec';
+import { ActionTests } from './action.spec';
+import { GuardTests } from './common/type.guards.spec';
 
 const token = process.env.DO_READ_TOKEN || '';
 const endpointsTestMap = {

@@ -32,7 +32,7 @@ import {
 } from '../../lib/common/type.guards';
 import { DigitalOcean } from '../../lib/digitalOcean';
 
-export default function(digitalOcean: DigitalOcean) {
+export function GuardTests(digitalOcean: DigitalOcean) {
   const shouldBeAFn = (key, fn) =>
     it(`\`${key}\` should be a function`, () => {
       expect(fn).toBeDefined();
