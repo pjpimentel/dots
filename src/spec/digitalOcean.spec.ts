@@ -7,18 +7,18 @@ const token = process.env.DO_READ_TOKEN || '';
 const endpointsTestMap = {
   Account: AccountTests,
   Action: ActionTests,
-  Certificate: () => true,
-  Domain: () => true,
-  Droplet: () => true,
-  FloatingIP: () => true,
-  Image: () => true,
-  LoadBalancer: () => true,
-  Region: () => true,
-  Size: () => true,
-  Snapshot: () => true,
-  SshKey: () => true,
-  Tag: () => true,
-  Volume: () => true,
+  // Certificate: () => true,
+  // Domain: () => true,
+  // Droplet: () => true,
+  // FloatingIP: () => true,
+  // Image: () => true,
+  // LoadBalancer: () => true,
+  // Region: () => true,
+  // Size: () => true,
+  // Snapshot: () => true,
+  // SshKey: () => true,
+  // Tag: () => true,
+  // Volume: () => true,
 };
 const requiredEndpoints = Object.keys(endpointsTestMap);
 
@@ -41,8 +41,6 @@ describe('DigitalOcean', () => {
   requiredEndpoints.forEach((requiredEndpoint) => {
     const endpoint = digitalOcean[requiredEndpoint];
     const tests = endpointsTestMap[requiredEndpoint];
-    // skinping not implemented tests
-    if (tests.toString() === 'function () { return true; }') return true;
     describe(`${requiredEndpoint} endpoint`, () => {
       it('should exists on instance', () => expect(endpoint).toBeDefined());
       it('should be a object', () => expect(typeof endpoint).toBe('object'));
