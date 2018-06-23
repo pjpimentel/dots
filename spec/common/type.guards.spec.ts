@@ -7,6 +7,7 @@ import {
   IRegion,
   IResource,
   ISize,
+  ISnapshot,
   ISSHKey,
   ITag,
 } from '../../src/common/interfaces';
@@ -185,6 +186,25 @@ export default function(digitalOcean: DigitalOcean) {
     });
     describe('ISnapshot', () => {
       shouldBeAFn('isSnapshot', isSnapshot);
+      shouldReturnFalse('snapshot', 'object', isSnapshot, null);
+      const snapshot: Partial<ISnapshot> = {};
+      shouldReturnFalse('regions', 'string[]', isSnapshot, copyObj(snapshot));
+      snapshot.regions = [''];
+      shouldReturnFalse('min_disk_size', 'number', isSnapshot, copyObj(snapshot));
+      snapshot.min_disk_size = 0;
+      shouldReturnFalse('size_gigabytes', 'number', isSnapshot, copyObj(snapshot));
+      snapshot.size_gigabytes = 0;
+      shouldReturnFalse('created_at', 'string', isSnapshot, copyObj(snapshot));
+      snapshot.created_at = '';
+      shouldReturnFalse('id', 'string', isSnapshot, copyObj(snapshot));
+      snapshot.id = '';
+      shouldReturnFalse('name', 'string', isSnapshot, copyObj(snapshot));
+      snapshot.name = '';
+      shouldReturnFalse('resource_id', 'string', isSnapshot, copyObj(snapshot));
+      snapshot.resource_id = '';
+      shouldReturnFalse('resource_type', 'string', isSnapshot, copyObj(snapshot));
+      snapshot.resource_type = '';
+      shouldReturnTrue('isSnapshot', isSnapshot, copyObj(snapshot));
     });
     describe('ISSHKey', () => {
       shouldBeAFn('isSSHKey', isSSHKey);

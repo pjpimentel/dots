@@ -251,14 +251,15 @@ export function isArrayOfSSHKey(data: any): data is ISSHKey[] {
  * @returns {data is ISnapshot}
  */
 export function isSnapshot(data: any): data is ISnapshot {
-    if (typeof (data as ISnapshot).created_at !== 'string') return false;
-    if (typeof (data as ISnapshot).id !== 'string') return false;
-    if (typeof (data as ISnapshot).min_disk_size !== 'number') return false;
-    if (typeof (data as ISnapshot).name !== 'string') return false;
-    if (typeof (data as ISnapshot).resource_id !== 'string') return false;
-    if (typeof (data as ISnapshot).resource_type !== 'string') return false;
-    if (typeof (data as ISnapshot).size_gigabytes !== 'number') return false;
-    if (!isArrayOfString((data as ISnapshot).regions)) return false;
+    if (!isObject(data)) return false;
+    if (!isArrayOfString(data.regions)) return false;
+    if (!isNumber(data.min_disk_size)) return false;
+    if (!isNumber(data.size_gigabytes)) return false;
+    if (!isString(data.created_at)) return false;
+    if (!isString(data.id)) return false;
+    if (!isString(data.name)) return false;
+    if (!isString(data.resource_id)) return false;
+    if (!isString(data.resource_type)) return false;
     return true;
 }
 /**
