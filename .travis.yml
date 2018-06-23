@@ -77,6 +77,7 @@ jobs:
       script:
         - git config --global user.email "travis@travis-ci.org"
         - git config --global user.name "Travis CI"
+        - git checkout $TRAVIS_BRANCH
         - |
             PACKAGE_VERSION=$(cat package.json |\
             grep version |\
@@ -87,7 +88,6 @@ jobs:
         - TAG=v$PACKAGE_VERSION-$TRAVIS_BUILD_NUMBER
         - git tag $TAG -m "[ci] git tag ${TAG}"
         - npm version from-git -m "[ci] npm version ${TAG}"
-        - git checkout $TRAVIS_BRANCH
         - git add package*.json
         - git commit --message "[ci] travis build $TRAVIS_BUILD_NUMBER"
         - git remote set-url origin $GH_REPO
