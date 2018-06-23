@@ -185,20 +185,28 @@ export interface IVolume {
     size_gigabytes: number;
 }
 /**
+ * Image/Snapshot common properties.
+ *
+ * @export
+ * @interface IImageLike
+ */
+export interface IImageLike {
+    created_at: string;
+    min_disk_size: number;
+    name: string;
+    regions: string[];
+    size_gigabytes: number;
+}
+/**
  * Snapshot raw object.
  *
  * @export
  * @interface ISnapshot
  */
-export interface ISnapshot {
-    created_at: string;
+export interface ISnapshot extends IImageLike {
     id: string;
-    min_disk_size: number;
-    name: string;
-    regions: string[];
     resource_id: string;
     resource_type: string;
-    size_gigabytes: number;
 }
 /**
  * Image raw object.
@@ -206,15 +214,10 @@ export interface ISnapshot {
  * @export
  * @interface IImage
  */
-export interface IImage {
-    created_at: string;
+export interface IImage extends IImageLike {
     distribution: string;
     id: number;
-    min_disk_size: number;
-    name: string;
     public: boolean;
-    regions: string[];
-    size_gigabytes: number;
     slug: string | null;
     type: string;
 }

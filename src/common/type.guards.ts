@@ -13,6 +13,7 @@ import {
     ICollection,
     IDroplet,
     IImage,
+    IImageLike,
     IKernel,
     IRegion,
     IResource,
@@ -252,13 +253,8 @@ export function isArrayOfSSHKey(data): data is ISSHKey[] {
  * @returns {data is ISnapshot}
  */
 export function isSnapshot(data): data is ISnapshot {
-    if (!isObject(data)) return false;
-    if (!isArrayOfString(data.regions)) return false;
-    if (!isNumber(data.min_disk_size)) return false;
-    if (!isNumber(data.size_gigabytes)) return false;
-    if (!isString(data.created_at)) return false;
+    if (!isImageLike(data as ISnapshot)) return false;
     if (!isString(data.id)) return false;
-    if (!isString(data.name)) return false;
     if (!isString(data.resource_id)) return false;
     if (!isString(data.resource_type)) return false;
     return true;
@@ -303,6 +299,22 @@ export function isArrayOfVolume(data): data is IVolume[] {
     return data.every(isVolume);
 }
 /**
+ * Guard of IImageLike.
+ *
+ * @export
+ * @param {*} data
+ * @returns {data is IImageLike}
+ */
+export function isImageLike(data): data is IImageLike {
+    if (!isObject(data)) return false;
+    if (!isArrayOfString(data.regions)) return false;
+    if (!isNumber(data.min_disk_size)) return false;
+    if (!isNumber(data.size_gigabytes)) return false;
+    if (!isString(data.created_at)) return false;
+    if (!isString(data.name)) return false;
+    return true;
+}
+/**
  * Guard of IImage
  *
  * @export
@@ -310,19 +322,12 @@ export function isArrayOfVolume(data): data is IVolume[] {
  * @returns {data is IImage}
  */
 export function isImage(data): data is IImage {
-    if (!isObject(data)) return false;
-    data = data as IImage;
-    if (typeof (data as IImage).created_at !== 'string') return false;
-    if (typeof (data as IImage).distribution !== 'string') return false;
-    if (typeof (data as IImage).id !== 'number') return false;
-    if (typeof (data as IImage).name !== 'string') return false;
-    if (typeof (data as IImage).size_gigabytes !== 'number') return false;
-    if (typeof (data as IImage).min_disk_size !== 'number') return false;
-    if (typeof (data as IImage).public !== 'boolean') return false;
-    if (typeof (data as IImage).min_disk_size !== 'number') return false;
-    if ((data as IImage).slug !== null && typeof (data as IImage).slug !== 'string') return false;
-    if (typeof (data as IImage).type !== 'string') return false;
-    // if ((data as IImage).regions !== null && !isArrayOfString(typeof (data as IImage).regions)) return false;
+    if (!isImageLike(data as IImage)) return false;
+    if (!isNumber(data.id)) return false;
+    if (!isString(data.distribution)) return false;
+    if (!isBoolean(data.public)) return false;
+    if (!isStringOrNull(data.slug)) return false;
+    if (!isString(data.type)) return false;
     return true;
 }
 /**
