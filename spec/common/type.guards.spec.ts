@@ -4,6 +4,7 @@ import {
   IAction,
   ICertificate,
   ICollection,
+  IKernel,
   IRegion,
   IResource,
   ISize,
@@ -18,6 +19,7 @@ import {
   isCollection,
   isDroplet,
   isImage,
+  isKernel,
   isRegion,
   isResource,
   isSize,
@@ -127,6 +129,18 @@ export default function(digitalOcean: DigitalOcean) {
       shouldReturnFalse('total', 'number', isCollection, copyObj(collection));
       collection.total = 0;
       shouldReturnTrue('isCollection', isCollection, copyObj(collection));
+    });
+    describe('IKernel', () => {
+      shouldBeAFn('isKernel', isKernel);
+      shouldReturnFalse('kernel', 'object', isKernel, null);
+      const kernel: Partial<IKernel> = {};
+      shouldReturnFalse('id', 'number', isKernel, copyObj(kernel));
+      kernel.id = 0;
+      shouldReturnFalse('name', 'string', isKernel, copyObj(kernel));
+      kernel.name = '';
+      shouldReturnFalse('version', 'string', isKernel, copyObj(kernel));
+      kernel.version = '';
+      shouldReturnTrue('isKernel', isKernel, copyObj(kernel));
     });
     describe('IDroplet', () => {
       shouldBeAFn('isDroplet', isDroplet);

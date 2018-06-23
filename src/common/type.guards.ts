@@ -13,6 +13,7 @@ import {
     ICollection,
     IDroplet,
     IImage,
+    IKernel,
     IRegion,
     IResource,
     ISize,
@@ -28,7 +29,7 @@ import {
  * @param {*} data
  * @returns {data is null|number}
  */
-export function isNumberOrNull(data: any): data is null|number {
+export function isNumberOrNull(data): data is null|number {
     return isNull(data) || isNumber(data);
 }
 /**
@@ -38,7 +39,7 @@ export function isNumberOrNull(data: any): data is null|number {
  * @param {*} data
  * @returns {data is null|string}
  */
-export function isStringOrNull(data: any): data is null|string {
+export function isStringOrNull(data): data is null|string {
     return isNull(data) || isString(data);
 }
 /**
@@ -48,7 +49,7 @@ export function isStringOrNull(data: any): data is null|string {
  * @param {*} data
  * @returns {data is string[]}
  */
-export function isArrayOfString(data: any): data is string[] {
+export function isArrayOfString(data): data is string[] {
     if (!isArray(data)) return false;
     return data.every(isString);
 }
@@ -59,7 +60,7 @@ export function isArrayOfString(data: any): data is string[] {
  * @param {*} data
  * @returns {data is number[]}
  */
-export function isArrayOfNumber(data: any): data is number[] {
+export function isArrayOfNumber(data): data is number[] {
     if (!Array.isArray(data)) return false;
     return data.every((elem) => elem.typeof !== 'number');
 }
@@ -70,7 +71,7 @@ export function isArrayOfNumber(data: any): data is number[] {
  * @param {*} data
  * @returns {data is IAccount}
  */
-export function isAccount(data: any): data is IAccount {
+export function isAccount(data): data is IAccount {
     if (!isObject(data)) return false;
     if (!isNumber(data.droplet_limit)) return false;
     if (!isString(data.email)) return false;
@@ -88,7 +89,7 @@ export function isAccount(data: any): data is IAccount {
  * @param {*} data
  * @returns {data is ISize}
  */
-export function isSize(data: any): data is ISize {
+export function isSize(data): data is ISize {
     if (!isObject(data)) return false;
     if (!isBoolean(data.available)) return false;
     if (!isNumber(data.disk)) return false;
@@ -108,7 +109,7 @@ export function isSize(data: any): data is ISize {
  * @param {*} data
  * @returns {data is ISize[]}
  */
-export function isArrayOfSize(data: any): data is ISize[] {
+export function isArrayOfSize(data): data is ISize[] {
     if (!Array.isArray(data)) return false;
     return data.every(isSize);
 }
@@ -119,7 +120,7 @@ export function isArrayOfSize(data: any): data is ISize[] {
  * @param {*} data
  * @returns {data is ITag}
  */
-export function isTag(data: any): data is ITag {
+export function isTag(data): data is ITag {
     if (!isObject(data)) return false;
     if (!isString(data.name)) return false;
     if (!isObject(data.resources)) return false;
@@ -132,7 +133,7 @@ export function isTag(data: any): data is ITag {
  * @param {*} data
  * @returns {data is ITag}
  */
-export function isArrayOfTag(data: any): data is ITag {
+export function isArrayOfTag(data): data is ITag {
     if (!Array.isArray(data)) return false;
     return data.every(isTag);
 }
@@ -143,7 +144,7 @@ export function isArrayOfTag(data: any): data is ITag {
  * @param {*} data
  * @returns {data is IResource}
  */
-export function isResource(data: any): data is IResource {
+export function isResource(data): data is IResource {
     if (!isObject(data)) return false;
     if (!isString(data.resource_id)) return false;
     if (!isString(data.resource_type)) return false;
@@ -156,7 +157,7 @@ export function isResource(data: any): data is IResource {
  * @param {*} data
  * @returns {data is Array<IResource>}
  */
-export function isArrayOfResource(data: any): data is IResource[] {
+export function isArrayOfResource(data): data is IResource[] {
     if (!Array.isArray(data)) return false;
     return data.every(isResource);
 }
@@ -167,7 +168,7 @@ export function isArrayOfResource(data: any): data is IResource[] {
  * @param {*} data
  * @returns {data is IRegion}
  */
-export function isRegion(data: any): data is IRegion {
+export function isRegion(data): data is IRegion {
     if (!isObject(data)) return false;
     if (!isBoolean(data.available)) return false;
     if (!isArrayOfString(data.features)) return false;
@@ -183,7 +184,7 @@ export function isRegion(data: any): data is IRegion {
  * @param {*} data
  * @returns {data is IRegion}
  */
-export function isArrayOfRegion(data: any): data is IRegion[] {
+export function isArrayOfRegion(data): data is IRegion[] {
     if (!Array.isArray(data)) return false;
     return data.every(isRegion);
 }
@@ -194,7 +195,7 @@ export function isArrayOfRegion(data: any): data is IRegion[] {
  * @param {*} data
  * @returns {data is IAction}
  */
-export function isAction(data: any): data is IAction {
+export function isAction(data): data is IAction {
     if (!isObject(data)) return false;
     if (!isString(data.completed_at)) return false;
     if (!isNumber(data.id)) return false;
@@ -213,7 +214,7 @@ export function isAction(data: any): data is IAction {
  * @param {*} data
  * @returns {data is IAction[]}
  */
-export function isArrayOfAction(data: any): data is IAction[] {
+export function isArrayOfAction(data): data is IAction[] {
     if (!Array.isArray(data)) return false;
     return data.every(isAction);
 }
@@ -224,7 +225,7 @@ export function isArrayOfAction(data: any): data is IAction[] {
  * @param {*} data
  * @returns {data is ISSHKey}
  */
-export function isSSHKey(data: any): data is ISSHKey {
+export function isSSHKey(data): data is ISSHKey {
     if (!isObject(data)) return false;
     if (!isNumber(data.id)) return false;
     if (!isString(data.fingerprint)) return false;
@@ -239,7 +240,7 @@ export function isSSHKey(data: any): data is ISSHKey {
  * @param {*} data
  * @returns {data is ISSHKey[]}
  */
-export function isArrayOfSSHKey(data: any): data is ISSHKey[] {
+export function isArrayOfSSHKey(data): data is ISSHKey[] {
     if (!Array.isArray(data)) return false;
     return data.every(isSSHKey);
 }
@@ -250,7 +251,7 @@ export function isArrayOfSSHKey(data: any): data is ISSHKey[] {
  * @param {*} data
  * @returns {data is ISnapshot}
  */
-export function isSnapshot(data: any): data is ISnapshot {
+export function isSnapshot(data): data is ISnapshot {
     if (!isObject(data)) return false;
     if (!isArrayOfString(data.regions)) return false;
     if (!isNumber(data.min_disk_size)) return false;
@@ -269,7 +270,7 @@ export function isSnapshot(data: any): data is ISnapshot {
  * @param {*} data
  * @returns {data is ISnapshot[]}
  */
-export function isArrayOfSnapshot(data: any): data is ISnapshot[] {
+export function isArrayOfSnapshot(data): data is ISnapshot[] {
     if (!Array.isArray(data)) return false;
     return data.every(isSnapshot);
 }
@@ -280,7 +281,7 @@ export function isArrayOfSnapshot(data: any): data is ISnapshot[] {
  * @param {*} data
  * @returns {data is IVolume}
  */
-export function isVolume(data: any): data is IVolume {
+export function isVolume(data): data is IVolume {
     if (typeof (data as IVolume).created_at !== 'string') return false;
     if (typeof (data as IVolume).description !== 'string') return false;
     if (typeof (data as IVolume).id !== 'string') return false;
@@ -297,7 +298,7 @@ export function isVolume(data: any): data is IVolume {
  * @param {*} data
  * @returns {data is IVolume[]}
  */
-export function isArrayOfVolume(data: any): data is IVolume[] {
+export function isArrayOfVolume(data): data is IVolume[] {
     if (!Array.isArray(data)) return false;
     return data.every(isVolume);
 }
@@ -308,7 +309,7 @@ export function isArrayOfVolume(data: any): data is IVolume[] {
  * @param {*} data
  * @returns {data is IImage}
  */
-export function isImage(data: any): data is IImage {
+export function isImage(data): data is IImage {
     data = data as IImage;
     if (typeof (data as IImage).created_at !== 'string') return false;
     if (typeof (data as IImage).distribution !== 'string') return false;
@@ -330,7 +331,7 @@ export function isImage(data: any): data is IImage {
  * @param {*} data
  * @returns {data is IImage[]}
  */
-export function isArrayOfImage(data: any): data is IImage[] {
+export function isArrayOfImage(data): data is IImage[] {
     if (!Array.isArray(data)) return false;
     return data.every(isImage);
 }
@@ -341,7 +342,7 @@ export function isArrayOfImage(data: any): data is IImage[] {
  * @param {*} data
  * @returns {data is ICertificate}
  */
-export function isCertificate(data: any): data is ICertificate {
+export function isCertificate(data): data is ICertificate {
     if (!isObject(data)) return false;
     if (!isArrayOfString(data.dns_names)) return false;
     if (!isString(data.created_at)) return false;
@@ -360,11 +361,24 @@ export function isCertificate(data: any): data is ICertificate {
  * @param {*} data
  * @returns {data is ICertificate[]}
  */
-export function isArrayOfCertificate(data: any): data is ICertificate[] {
+export function isArrayOfCertificate(data): data is ICertificate[] {
     if (!Array.isArray(data)) return false;
     return data.every(isCertificate);
 }
-
+/**
+ * Guard of IKernel
+ *
+ * @export
+ * @param {*} data
+ * @returns {data is IKernel}
+ */
+export function isKernel(data): data is IKernel {
+    if (!isObject(data)) return false;
+    if (!isNumber(data.id)) return false;
+    if (!isString(data.name)) return false;
+    if (!isString(data.version)) return false;
+    return true;
+}
 /**
  * Guard of IDroplet
  *
@@ -372,19 +386,20 @@ export function isArrayOfCertificate(data: any): data is ICertificate[] {
  * @param {*} data
  * @returns {data is IDroplet}
  */
-export function isDroplet(data: any): data is IDroplet {
-    if (typeof (data as IDroplet).created_at !== 'string') return false;
-    if (typeof (data as IDroplet).disk !== 'number') return false;
-    if (typeof (data as IDroplet).id !== 'number') return false;
-    if (typeof (data as IDroplet).kernel !== 'string') return false; // TODO: kernel type
-    if (typeof (data as IDroplet).locked !== 'boolean') return false;
-    if (typeof (data as IDroplet).memory !== 'number') return false;
-    if (typeof (data as IDroplet).name !== 'string') return false;
-    if (typeof (data as IDroplet).networks !== 'object') return false; // TODO: networks type
-    // if (typeof (data as IDroplet).next_backup_window !== 'string') return false;  // TODO: next_backup_window type
-    if (typeof (data as IDroplet).size_slug !== 'string') return false;
-    if (typeof (data as IDroplet).status !== 'string') return false;
-    if (typeof (data as IDroplet).vcpus !== 'number') return false;
+export function isDroplet(data): data is IDroplet {
+    if (!isObject(data)) return false;
+    if (!isString(data.created_at)) return false;
+    if (!isNumber(data.disk)) return false;
+    if (!isNumber(data.id)) return false;
+    if (!isKernel(data.kernel)) return false;
+    if (!isBoolean(data.locked)) return false;
+    if (!isNumber(data.memory)) return false;
+    if (!isString(data.name)) return false;
+    if (!isObject(data.networks)) return false; // TODO: networks type
+    // i!isString(f (data.next_backup_window)) return false;  // TODO: next_backup_window type
+    if (!isString(data.size_slug)) return false;
+    if (!isString(data.status)) return false;
+    if (!isNumber(data.vcpus)) return false;
     if (!isArrayOfString((data as IDroplet).backup_ids)) return false;
     if (!isArrayOfString((data as IDroplet).features)) return false;
     if (!isArrayOfString((data as IDroplet).snapshot_ids)) return false;
@@ -403,7 +418,7 @@ export function isDroplet(data: any): data is IDroplet {
  * @param {*} data
  * @returns {data is IDroplet[]}
  */
-export function isArrayOfDroplet(data: any): data is IDroplet[] {
+export function isArrayOfDroplet(data): data is IDroplet[] {
     if (!Array.isArray(data)) return false;
     return data.every(isDroplet);
 }
@@ -414,7 +429,7 @@ export function isArrayOfDroplet(data: any): data is IDroplet[] {
  * @param {*} data
  * @returns {data is ICollection<any>}
  */
-export function isCollection(data: any): data is ICollection<any> {
+export function isCollection(data): data is ICollection<any> {
     if (!isObject(data)) return false;
     if (!isArray(data.items)) return false;
     if (!isNumber(data.curPage)) return false;

@@ -75,6 +75,17 @@ export interface IResource {
  * RAW
  */
 /**
+ * Kernel raw object
+ *
+ * @export
+ * @interface IKernel
+ */
+export interface IKernel {
+    id: number;
+    name: string;
+    version: string;
+}
+/**
  * Account raw object
  *
  * @export
@@ -236,12 +247,12 @@ export interface IDroplet {
     features: string[];
     id: number;
     image: IImage;
-    kernel: any | null;
+    kernel: IKernel | null;
     locked: boolean;
     memory: number;
     name: string;
     networks: object;
-    next_backup_window: any | null;
+    next_backup_window: object | null; // TODO: get object spec
     region: IRegion;
     size_slug: string;
     size: ISize;
