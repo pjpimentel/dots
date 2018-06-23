@@ -82,12 +82,4 @@ jobs:
         - npm version prepatch -m "[ci] npm version ${TAG}"
         - git push --tags
         - git push origin beta
-        # - npm publish --tag beta
-  # include:
-  #   - stage: npm release
-  #     node_js: '10'
-  #     script:
-  #     deploy:
-  #       provider: npm
-  #       api_key: $NPM_API_KEY
-  #       on: deploy-npm-release
+        - npm publish --tag beta
