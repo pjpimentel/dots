@@ -5,6 +5,7 @@ import {
   ICertificate,
   ICollection,
   IDroplet,
+  IImage,
   IKernel,
   IRegion,
   IResource,
@@ -145,6 +146,7 @@ export default function(digitalOcean: DigitalOcean) {
     });
     describe('IDroplet', () => {
       shouldBeAFn('isDroplet', isDroplet);
+      shouldReturnFalse('droplet', 'object', isDroplet, null);
       const droplet: Partial<IDroplet> = {};
       shouldReturnFalse('created_at', 'string', isDroplet, copyObj(droplet));
       droplet.created_at = '';
@@ -219,6 +221,30 @@ export default function(digitalOcean: DigitalOcean) {
     });
     describe('IImage', () => {
       shouldBeAFn('isImage', isImage);
+      shouldReturnFalse('image', 'object', isImage, null);
+      const image: Partial<IImage> = {};
+      shouldReturnFalse('created_at', 'string', isImage, copyObj(image));
+      image.created_at =  '';
+      shouldReturnFalse('distribution', 'string', isImage, copyObj(image));
+      image.distribution =  '';
+      shouldReturnFalse('id', 'number', isImage, copyObj(image));
+      image.id =  0;
+      shouldReturnFalse('min_disk_size', 'number', isImage, copyObj(image));
+      image.min_disk_size =  0;
+      shouldReturnFalse('name', 'string', isImage, copyObj(image));
+      image.name =  '';
+      shouldReturnFalse('public', 'boolean', isImage, copyObj(image));
+      image.public =  true;
+      shouldReturnFalse('regions', 'string[]', isImage, copyObj(image));
+      image.regions =  [''];
+      shouldReturnFalse('size_gigabytes', 'number', isImage, copyObj(image));
+      image.size_gigabytes =  0;
+      shouldReturnFalse('slug', 'string|null', isImage, copyObj(image));
+      image.slug =  '';
+      shouldReturnFalse('type', 'string', isImage, copyObj(image));
+      image.type =  '';
+      image.slug = null;
+      shouldReturnTrue('isImage', isImage, copyObj(image));
     });
     describe('IRegion', () => {
       shouldBeAFn('isRegion', isRegion);
