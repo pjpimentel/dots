@@ -104,17 +104,6 @@ export function isSize(data): data is ISize {
     return true;
 }
 /**
- * Guard of ISize[].
- *
- * @export
- * @param {*} data
- * @returns {data is ISize[]}
- */
-export function isArrayOfSize(data): data is ISize[] {
-    if (!Array.isArray(data)) return false;
-    return data.every(isSize);
-}
-/**
  * Guard of ITag.
  *
  * @export
@@ -126,17 +115,6 @@ export function isTag(data): data is ITag {
     if (!isString(data.name)) return false;
     if (!isObject(data.resources)) return false;
     return true;
-}
-/**
- * Guard of ITag[].
- *
- * @export
- * @param {*} data
- * @returns {data is ITag}
- */
-export function isArrayOfTag(data): data is ITag {
-    if (!Array.isArray(data)) return false;
-    return data.every(isTag);
 }
 /**
  * Guard of IResource.
@@ -179,17 +157,6 @@ export function isRegion(data): data is IRegion {
     return true;
 }
 /**
- * Guard of IRegion[]
- *
- * @export
- * @param {*} data
- * @returns {data is IRegion}
- */
-export function isArrayOfRegion(data): data is IRegion[] {
-    if (!Array.isArray(data)) return false;
-    return data.every(isRegion);
-}
-/**
  * Guard of IAction
  *
  * @export
@@ -209,17 +176,6 @@ export function isAction(data): data is IAction {
     return true;
 }
 /**
- * Guard of IAction[]
- *
- * @export
- * @param {*} data
- * @returns {data is IAction[]}
- */
-export function isArrayOfAction(data): data is IAction[] {
-    if (!Array.isArray(data)) return false;
-    return data.every(isAction);
-}
-/**
  * Guard of ISSHKey
  *
  * @export
@@ -235,17 +191,6 @@ export function isSSHKey(data): data is ISSHKey {
     return true;
 }
 /**
- * Guard of ISSHKey[]
- *
- * @export
- * @param {*} data
- * @returns {data is ISSHKey[]}
- */
-export function isArrayOfSSHKey(data): data is ISSHKey[] {
-    if (!Array.isArray(data)) return false;
-    return data.every(isSSHKey);
-}
-/**
  * Guard of ISnapshot
  *
  * @export
@@ -258,17 +203,6 @@ export function isSnapshot(data): data is ISnapshot {
     if (!isString(data.resource_id)) return false;
     if (!isString(data.resource_type)) return false;
     return true;
-}
-/**
- * Guard of ISnapshot[]
- *
- * @export
- * @param {*} data
- * @returns {data is ISnapshot[]}
- */
-export function isArrayOfSnapshot(data): data is ISnapshot[] {
-    if (!Array.isArray(data)) return false;
-    return data.every(isSnapshot);
 }
 /**
  * Guard of IVolume
@@ -289,17 +223,6 @@ export function isVolume(data): data is IVolume {
     if (!isRegion(data.region)) return false;
     if (!isNumber(data.size_gigabytes)) return false;
     return true;
-}
-/**
- * Guard of IVolume[]
- *
- * @export
- * @param {*} data
- * @returns {data is IVolume[]}
- */
-export function isArrayOfVolume(data): data is IVolume[] {
-    if (!Array.isArray(data)) return false;
-    return data.every(isVolume);
 }
 /**
  * Guard of IImageLike.
@@ -334,17 +257,6 @@ export function isImage(data): data is IImage {
     return true;
 }
 /**
- * Guard of IImage[]
- *
- * @export
- * @param {*} data
- * @returns {data is IImage[]}
- */
-export function isArrayOfImage(data): data is IImage[] {
-    if (!Array.isArray(data)) return false;
-    return data.every(isImage);
-}
-/**
  * Guard of ICertificate
  *
  * @export
@@ -362,17 +274,6 @@ export function isCertificate(data): data is ICertificate {
     if (!isString(data.state)) return false;
     if (!isString(data.type)) return false;
     return true;
-}
-/**
- * Guard of ICertificate[]
- *
- * @export
- * @param {*} data
- * @returns {data is ICertificate[]}
- */
-export function isArrayOfCertificate(data): data is ICertificate[] {
-    if (!Array.isArray(data)) return false;
-    return data.every(isCertificate);
 }
 /**
  * Guard of IKernel
