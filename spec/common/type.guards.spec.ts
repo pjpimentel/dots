@@ -1,4 +1,3 @@
-import DigitalOcean from '../../';
 import {
   IAccount,
   IAction,
@@ -30,6 +29,7 @@ import {
   isTag,
   isVolume,
 } from '../../src/common/type.guards';
+import { DigitalOcean } from '../../src/digitalOcean';
 
 export default function(digitalOcean: DigitalOcean) {
   const shouldBeAFn = (key, fn) =>

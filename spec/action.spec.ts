@@ -1,7 +1,7 @@
 import { finalize } from 'rxjs/operators';
-import DigitalOcean from '../';
 import { IAction } from '../src/common/interfaces';
 import { isAction, isCollection } from '../src/common/type.guards';
+import { DigitalOcean } from '../src/digitalOcean';
 
 export default function(digitalOcean: DigitalOcean) {
   const Action = digitalOcean.Action;

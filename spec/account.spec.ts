@@ -1,6 +1,6 @@
 import { finalize } from 'rxjs/operators';
-import DigitalOcean from '../';
 import { isAccount } from '../src/common/type.guards';
+import { DigitalOcean } from '../src/digitalOcean';
 
 export default function(digitalOcean: DigitalOcean) {
   const Account = digitalOcean.Account;
