@@ -24,6 +24,10 @@ cache:
 git:
   depth: false
 
+env:
+  global:
+  - GH_REPO="https://${GH_TOKEN}@github.com/pjpimentel/dots.git"
+
 stages:
   - build
   - test
@@ -69,7 +73,27 @@ jobs:
         - sonar-scanner
     - stage: npm release
       node_js: '10'
-      script: echo "deploying..."
+      if: branch = beta
+      script:
+        - git config --global user.email "travis@travis-ci.org"
+        - git config --global user.name "Travis CI"
+        - |
+            PACKAGE_VERSION=$(cat package.json |\
+            grep version |\
+            head -1 |\
+            awk -F: '{ print $2 }' |\
+            sed 's/[",]//g' |\
+            tr -d '[[:space:]]')
+        - TAG=v$PACKAGE_VERSION-$TRAVIS_COMMIT
+        - git tag $TAG -m "[ci] git tag ${TAG}"
+        - npm version from-git -m "[ci] npm version ${TAG}"
+        - git checkout -b $TRAVIS_BRANCH
+        - git add package*.json
+        - git commit --message "[ci] travis build $TRAVIS_BUILD_NUMBER"
+        - git remote add origin $GH_REPO
+        - git push origin $TAG
+        - git push origin beta
+        # - npm publish --tag beta
   # include:
   #   - stage: npm release
   #     node_js: '10'
