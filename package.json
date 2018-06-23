@@ -7,8 +7,8 @@
   "scripts": {
     "prepublish": "npm run build",
     "build": "rm -rf ./dist && tsc",
-    "test:unit": "jasmine-ts --config=spec/support/jasmine.json \"spec/digitalOcean.spec.ts\"",
-    "test:coverage": "(export TS_NODE_FAST=YES && nyc npm run test:unit) || exit 0"
+    "test:unit": "ts-node node_modules/.bin/jasmine --config=./src/spec/support/jasmine.json",
+    "test:coverage": "nyc npm run test:unit"
   },
   "repository": {
     "type": "git",
@@ -31,7 +31,7 @@
     "jasmine-ts": "^0.2.1",
     "nyc": "^12.0.2",
     "source-map-support": "^0.5.6",
-    "ts-node": "^6.1.1",
+    "ts-node": "^7.0.0",
     "typedoc": "^0.11.1",
     "typescript": "^2.9.2"
   },
@@ -44,9 +44,7 @@
       ".ts",
       ".tsx"
     ],
-    "require": [
-      "ts-node/register"
-    ],
+    "require": [],
     "reporter": [
       "text-summary",
       "text",
@@ -54,6 +52,7 @@
       "lcov"
     ],
     "sourceMap": true,
-    "instrument": true
+    "instrument": true,
+    "cache": false
   }
 }
