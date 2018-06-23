@@ -345,11 +345,11 @@ export function isCollection<T>(
     guard: (d) => d is T): data is ICollection<T> {
     if (!isObject(data)) return false;
     if (!isArray(data.items)) return false;
+    if (!data.items.every(guard)) return false;
     if (!isNumber(data.curPage)) return false;
     if (!isNumber(data.maxPage)) return false;
     if (!isNumber(data.minPage)) return false;
     if (!isNumber(data.perPage)) return false;
     if (!isNumber(data.total)) return false;
-    if (!data.items.every(guard)) return false;
     return true;
 }

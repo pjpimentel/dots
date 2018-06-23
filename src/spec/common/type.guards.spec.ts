@@ -120,6 +120,8 @@ export default function(digitalOcean: DigitalOcean) {
       const isSizeCollection = (value) => isCollection<ISize>(value, isSize);
       shouldReturnFalse('collection', 'object', isCollection, null);
       const collection: Partial<ICollection<ISize>> = {};
+      shouldReturnFalse('items', '[]', isSizeCollection, copyObj(collection));
+      collection.items = [{} as ISize];
       shouldReturnFalse('items', 'ISize[]', isSizeCollection, copyObj(collection));
       collection.items = [{
         available: true,
@@ -235,22 +237,22 @@ export default function(digitalOcean: DigitalOcean) {
       shouldBeAFn('isImage', isImage);
       shouldReturnFalse('image', 'object', isImage, null);
       const image: Partial<IImage> = {};
-      shouldReturnFalse('created_at', 'string', isImage, copyObj(image));
-      image.created_at =  '';
-      shouldReturnFalse('distribution', 'string', isImage, copyObj(image));
-      image.distribution =  '';
-      shouldReturnFalse('id', 'number', isImage, copyObj(image));
-      image.id =  0;
-      shouldReturnFalse('min_disk_size', 'number', isImage, copyObj(image));
-      image.min_disk_size =  0;
-      shouldReturnFalse('name', 'string', isImage, copyObj(image));
-      image.name =  '';
-      shouldReturnFalse('public', 'boolean', isImage, copyObj(image));
-      image.public =  true;
       shouldReturnFalse('regions', 'string[]', isImage, copyObj(image));
       image.regions =  [''];
+      shouldReturnFalse('min_disk_size', 'number', isImage, copyObj(image));
+      image.min_disk_size =  0;
       shouldReturnFalse('size_gigabytes', 'number', isImage, copyObj(image));
       image.size_gigabytes =  0;
+      shouldReturnFalse('created_at', 'string', isImage, copyObj(image));
+      image.created_at =  '';
+      shouldReturnFalse('name', 'string', isImage, copyObj(image));
+      image.name =  '';
+      shouldReturnFalse('id', 'number', isImage, copyObj(image));
+      image.id =  0;
+      shouldReturnFalse('distribution', 'string', isImage, copyObj(image));
+      image.distribution =  '';
+      shouldReturnFalse('public', 'boolean', isImage, copyObj(image));
+      image.public =  true;
       shouldReturnFalse('slug', 'string|null', isImage, copyObj(image));
       image.slug =  '';
       shouldReturnFalse('type', 'string', isImage, copyObj(image));
@@ -320,10 +322,10 @@ export default function(digitalOcean: DigitalOcean) {
       snapshot.size_gigabytes = 0;
       shouldReturnFalse('created_at', 'string', isSnapshot, copyObj(snapshot));
       snapshot.created_at = '';
-      shouldReturnFalse('id', 'string', isSnapshot, copyObj(snapshot));
-      snapshot.id = '';
       shouldReturnFalse('name', 'string', isSnapshot, copyObj(snapshot));
       snapshot.name = '';
+      shouldReturnFalse('id', 'string', isSnapshot, copyObj(snapshot));
+      snapshot.id = '';
       shouldReturnFalse('resource_id', 'string', isSnapshot, copyObj(snapshot));
       snapshot.resource_id = '';
       shouldReturnFalse('resource_type', 'string', isSnapshot, copyObj(snapshot));
