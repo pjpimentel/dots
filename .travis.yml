@@ -79,17 +79,8 @@ jobs:
         - git config --global user.email "travis@travis-ci.org"
         - git config --global user.name "Travis CI"
         - git checkout $TRAVIS_BRANCH
-        - |
-            PACKAGE_VERSION=$(cat package.json |\
-            grep version |\
-            head -1 |\
-            awk -F: '{ print $2 }' |\
-            sed 's/[",]//g' |\
-            tr -d '[[:space:]]')
-        - TAG=v$PACKAGE_VERSION-$TRAVIS_BUILD_NUMBER
-        - git tag $TAG -m "[ci] git tag ${TAG}"
-        - npm version from-git -m "[ci] npm version ${TAG}"
-        - git push origin $TAG
+        - npm version prepatch -m "[ci] npm version ${TAG}"
+        - git push --tags
         - git push origin beta
         # - npm publish --tag beta
   # include:
