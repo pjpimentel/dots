@@ -13,7 +13,7 @@ import {
   ISSHKey,
   ITag,
   IVolume,
-} from '../../src/common/interfaces';
+} from '../../lib/common/interfaces';
 import {
   isAccount,
   isAction,
@@ -29,8 +29,8 @@ import {
   isSSHKey,
   isTag,
   isVolume,
-} from '../../src/common/type.guards';
-import { DigitalOcean } from '../../src/digitalOcean';
+} from '../../lib/common/type.guards';
+import { DigitalOcean } from '../../lib/digitalOcean';
 
 export default function(digitalOcean: DigitalOcean) {
   const shouldBeAFn = (key, fn) =>

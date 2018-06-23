@@ -1,4 +1,4 @@
-import { DigitalOcean } from '../src/digitalOcean';
+import { DigitalOcean } from '../lib/digitalOcean';
 import AccountTests from './account.spec';
 import ActionTests from './action.spec';
 import GuardTests from './common/type.guards.spec';
