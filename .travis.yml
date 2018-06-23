@@ -84,13 +84,13 @@ jobs:
             awk -F: '{ print $2 }' |\
             sed 's/[",]//g' |\
             tr -d '[[:space:]]')
-        - TAG=v$PACKAGE_VERSION-$TRAVIS_COMMIT
+        - TAG=v$PACKAGE_VERSION-$TRAVIS_BUILD_NUMBER
         - git tag $TAG -m "[ci] git tag ${TAG}"
         - npm version from-git -m "[ci] npm version ${TAG}"
-        - git checkout -b $TRAVIS_BRANCH
+        - git checkout $TRAVIS_BRANCH
         - git add package*.json
         - git commit --message "[ci] travis build $TRAVIS_BUILD_NUMBER"
-        - git remote add origin $GH_REPO
+        - git remote set-url origin $GH_REPO
         - git push origin $TAG
         - git push origin beta
         # - npm publish --tag beta
