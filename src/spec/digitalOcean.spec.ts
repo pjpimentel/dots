@@ -39,7 +39,6 @@ describe('DigitalOcean', () => {
   // running guard tests
   GuardTests(digitalOcean);
   // TODO: check if token is accessible beforeAll
-  const instanceKeys = Object.keys(digitalOcean);
   requiredEndpoints.forEach((requiredEndpoint) => {
     const endpoint = digitalOcean[requiredEndpoint];
     const tests = endpointsTestMap[requiredEndpoint];

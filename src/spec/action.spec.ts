@@ -31,6 +31,7 @@ export function ActionTests(digitalOcean: DigitalOcean) {
         .subscribe(onActions, onError);
     }, digitalOcean.timeout);
     it('`list` should return Error', (done) => {
+      // tslint:disable-next-line
       Action.list('a' as any, perPage)
         .pipe(finalize(done))
         .subscribe(onActions, onError);

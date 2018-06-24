@@ -29,6 +29,7 @@ export function SizeTests(digitalOcean: DigitalOcean) {
         .subscribe(onSizes, onError);
     }, digitalOcean.timeout);
     it('`list` should return error', (done) => {
+      // tslint:disable-next-line
       Size.list('a' as any, -50)
         .pipe(finalize(done))
         .subscribe(onSizes, onError);

@@ -29,6 +29,7 @@ export function RegionTests(digitalOcean: DigitalOcean) {
         .subscribe(onRegions, onError);
     }, digitalOcean.timeout);
     it('`list` should return Error', (done) => {
+      // tslint:disable-next-line
       Region.list('a' as any, -50)
         .pipe(finalize(done))
         .subscribe(onRegions, onError);
