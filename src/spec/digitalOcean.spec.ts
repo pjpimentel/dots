@@ -6,7 +6,7 @@ import { RegionTests } from './region.spec';
 import { SizeTests } from './size.spec';
 import { SSHKeyTests } from './sshkey.spec';
 
-const token = process.env.DO_READ_TOKEN;
+const token = process.env.DO_WRITE_TOKEN || process.env.DO_READ_TOKEN;
 const endpointsTestMap = {
   Account: AccountTests,
   Action: ActionTests,

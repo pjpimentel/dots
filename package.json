@@ -31,6 +31,7 @@
     "jasmine-ts": "^0.2.1",
     "nyc": "^12.0.2",
     "source-map-support": "^0.5.6",
+    "ssh-keygen": "^0.4.1",
     "ts-node": "^7.0.0",
     "typedoc": "^0.11.1",
     "typescript": "^2.9.2"
