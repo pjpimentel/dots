@@ -1,17 +1,37 @@
 # dots
 
-**Digital Ocean** API **V2** wrapper. **TypeScript** - **Javascript**
+## **digital ocean** API **v2** wrapper
 
-Not tested in production.
+[![travis](https://img.shields.io/travis/pjpimentel/dots/master.svg?longCache=true)](https://travis-ci.org/pjpimentel/dots)
+[![quality](https://sonarcloud.io/api/project_badges/measure?branch=master&project=dots&metric=alert_status)](https://sonarcloud.io/dashboard?branch=master&id=dots)
+[![coverage](https://sonarcloud.io/api/project_badges/measure?branch=master&project=dots&metric=coverage)](https://sonarcloud.io/dashboard?branch=master&id=dots)
+[![security](https://sonarcloud.io/api/project_badges/measure?branch=master&project=dots&metric=security_rating)](https://sonarcloud.io/dashboard?branch=master&id=dots)
+
+[![npm version](https://img.shields.io/npm/v/dots-wrapper/latest.svg?longCache=true)](https://www.npmjs.com/package/dots-wrapper?activeTab=versions)
+[![npm downloads](https://img.shields.io/npm/dt/dots-wrapper.svg?longCache=true)](https://www.npmjs.com/package/dots-wrapper)
+[![dependencies](https://img.shields.io/david/pjpimentel/dots.svg?longCache=true)](https://www.npmjs.com/package/dots-wrapper?activeTab=dependencies)
+[![license](https://img.shields.io/npm/l/dots-wrapper.svg?longCache=true)](https://github.com/pjpimentel/dots/blob/master/LICENSE)
+
+**beta**
+
+[![travis](https://img.shields.io/travis/pjpimentel/dots/beta.svg?longCache=true)](https://travis-ci.org/pjpimentel/dots)
+[![quality](https://sonarcloud.io/api/project_badges/measure?branch=beta&project=dots&metric=alert_status)](https://sonarcloud.io/dashboard?branch=beta&id=dots)
+[![coverage](https://sonarcloud.io/api/project_badges/measure?branch=beta&project=dots&metric=coverage)](https://sonarcloud.io/dashboard?branch=beta&id=dots)
+[![security](https://sonarcloud.io/api/project_badges/measure?branch=beta&project=dots&metric=security_rating)](https://sonarcloud.io/dashboard?branch=beta&id=dots)
+
+[![npm version](https://img.shields.io/npm/v/dots-wrapper/beta.svg?longCache=true)](https://www.npmjs.com/package/dots-wrapper?activeTab=versions)
+[![npm downloads](https://img.shields.io/npm/dt/dots-wrapper.svg?longCache=true)](https://www.npmjs.com/package/dots-wrapper)
+[![dependencies](https://img.shields.io/david/pjpimentel/dots/beta.svg?longCache=true)](https://www.npmjs.com/package/dots-wrapper?activeTab=dependencies)
+[![license](https://img.shields.io/npm/l/dots-wrapper.svg?longCache=true)](https://github.com/pjpimentel/dots/blob/beta/LICENSE)
+
 ## Install
 ``` bash
-    #npm install --save git+ssh://git@github.com:pjpimentel/dots.git
-    npm install --save dots-wrapper
+    npm install --save dots-wrapper@latest
 ```
 ## Usage
 Typescript
 ``` typescript
-    import DigitalOcean from 'dots-wrapper';
+    import { DigitalOcean } from 'dots-wrapper';
     const myApiToken = 'my-long-token';
     const digitalOcean = new DigitalOcean(myApiToken);
 
@@ -22,7 +42,7 @@ Typescript
 ```
 Javascript - Nodejs
 ``` javascript
-    const {DigitalOcean} = require('dots-wrapper');
+    const { DigitalOcean } = require('dots-wrapper');
     const myApiToken = 'my-long-token';
     const digitalOcean = new DigitalOcean(myApiToken);
 
@@ -40,5 +60,7 @@ Javascript - Nodejs
 ## TODO
 
 Endpoint docs
+
 Add firewall endpoint
+
 Compile to Browser usage.

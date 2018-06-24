@@ -43,3 +43,12 @@ logs
 
 *.sql
 test/token.ts
+
+coverage
+.nyc_output
+dist
+
+#sonar
+.sonar_lock
+report-task.txt
+.scannerwork

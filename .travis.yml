@@ -1,0 +1,92 @@
+language: node_js
+
+sudo: false
+
+matrix:
+  fast_finish: true
+
+addons:
+  sonarcloud:
+    organization: "pjpimentel-github"
+
+branches:
+  only:
+    - beta
+
+install:
+  - npm install
+
+cache:
+  directories:
+    - node_modules
+    - '$HOME/.sonar/cache'
+
+git:
+  depth: false
+
+env:
+  global:
+  - GH_REPO="https://${GH_TOKEN}@github.com/pjpimentel/dots.git"
+
+stages:
+  - build
+  - test
+  - quality check
+  - deploy
+
+jobs:
+ include:
+    - stage: build
+      script: npm run build
+      node_js: '10'
+    # - stage: build
+    #   script: npm run build
+    #   node_js: '9'
+    # - stage: build
+    #   script: npm run build
+    #   node_js: '8'
+    # - stage: build
+    #   script: npm run build
+    #   node_js: '7'
+    # - stage: build
+    #   script: npm run build
+    #   node_js: '6'
+    - stage: test
+      script: npm run test:unit
+      node_js: '10'
+    # - stage: test
+    #   script: npm run test:unit
+    #   node_js: '9'
+    # - stage: test
+    #   script: npm run test:unit
+    #   node_js: '8'
+    # - stage: test
+    #   script: npm run test:unit
+    #   node_js: '7'
+    # - stage: test
+    #   script: npm run test:unit
+    #   node_js: '6'
+    - stage: quality check
+      node_js: '10'
+      script:
+        - npm run test:coverage
+        - sonar-scanner
+    - stage: npm release
+      node_js: '10'
+      env:
+        - NODE_ENV=production
+      if: branch = beta
+      script:
+        - rm -rf node_modules
+        - npm install
+        - git add .
+        - git stash
+        - git remote set-url origin $GH_REPO
+        - git config --global user.email "travis@travis-ci.org"
+        - git config --global user.name "Travis CI"
+        - git checkout $TRAVIS_BRANCH
+        - npm version prepatch -m "[ci skip] travis ${TRAVIS_JOB_ID}"
+        - git push --tags
+        - git push origin beta
+        - npm config set '//registry.npmjs.org/:_authToken' $NPM_TOKEN
+        - npm publish --tag beta
