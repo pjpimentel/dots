@@ -79,6 +79,8 @@ jobs:
       script:
         - rm -rf node_modules
         - npm install
+        - git add .
+        - git stash
         - git remote set-url origin $GH_REPO
         - git config --global user.email "travis@travis-ci.org"
         - git config --global user.name "Travis CI"
