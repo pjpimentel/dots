@@ -7,30 +7,32 @@ import { DigitalOcean } from '../lib/digitalOcean';
 export function ActionTests(digitalOcean: DigitalOcean) {
   const Action = digitalOcean.Action;
   let actionToTest: IAction = {} as IAction;
+  const perPage = 10;
+  const onActions = (collection) => {
+    expect(collection).toBeDefined();
+    expect(isCollection<IAction>(collection, isAction)).toBeTruthy();
+    expect(collection.perPage).toBe(perPage);
+    const actions = collection.items;
+    expect(isArray(actions)).toBeTruthy();
+    expect(collection.items.length).toBeLessThanOrEqual(perPage);
+    actions.forEach((action) => expect(isAction(action)).toBeTruthy());
+    actionToTest = actions[Math.floor(Math.random() * actions.length) + 1];
+  };
+  const onError = (err) => {
+    expect(err instanceof Error).toBeTruthy();
+    expect(typeof err.message).toBe('string');
+  };
   describe('List Actions', () => {
     it('`list` should exists', () => expect(Action.list).toBeDefined());
     it('`list` should be a function', () => expect(typeof Action.list).toBe('function'));
     it('`list` should return Action\'s collecion', (done) => {
-      const perPage = 10;
-      const onActions = (collection) => {
-        expect(collection).toBeDefined();
-        expect(isCollection<IAction>(collection, isAction)).toBeTruthy();
-        expect(collection.perPage).toBe(perPage);
-        const actions = collection.items;
-        expect(isArray(actions)).toBeTruthy();
-        expect(collection.items.length).toBeLessThanOrEqual(perPage);
-        actions.forEach((action) => expect(isAction(action)).toBeTruthy());
-        actionToTest = actions[Math.floor(Math.random() * actions.length) + 1];
-      };
-      const onError = (err) => {
-        expect(err instanceof Error).toBeTruthy();
-        expect(typeof err.message).toBe('string');
-        fail(err.message);
-      };
       Action.list(0, perPage)
-        .pipe(
-          finalize(done),
-        )
+        .pipe(finalize(done))
+        .subscribe(onActions, onError);
+    }, digitalOcean.timeout);
+    it('`list` should return Error', (done) => {
+      Action.list('a' as any, perPage)
+        .pipe(finalize(done))
         .subscribe(onActions, onError);
     }, digitalOcean.timeout);
   });
@@ -46,15 +48,8 @@ export function ActionTests(digitalOcean: DigitalOcean) {
         expect(isAction(action)).toBeTruthy();
         expect(action.id).toBe(actionToTest.id);
       };
-      const onError = (err) => {
-        expect(err instanceof Error).toBeTruthy();
-        expect(typeof err.message).toBe('string');
-        fail(err.message);
-      };
       Action.get(actionToTest.id)
-        .pipe(
-          finalize(done),
-        )
+        .pipe(finalize(done))
         .subscribe(onAction, onError);
     }, digitalOcean.timeout);
   });

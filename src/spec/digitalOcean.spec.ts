@@ -5,7 +5,7 @@ import { GuardTests } from './common/type.guards.spec';
 import { RegionTests } from './region.spec';
 import { SizeTests } from './size.spec';
 
-const token = process.env.DO_READ_TOKEN || '';
+const token = process.env.DO_READ_TOKEN;
 const endpointsTestMap = {
   Account: AccountTests,
   Action: ActionTests,
@@ -46,7 +46,8 @@ describe('DigitalOcean', () => {
     describe(`${requiredEndpoint} endpoint`, () => {
       it('should exists on instance', () => expect(endpoint).toBeDefined());
       it('should be a object', () => expect(typeof endpoint).toBe('object'));
-      if (typeof tests === 'function') tests(digitalOcean);
+      it('tests should be a fn', () => expect(typeof tests).toBe('function'));
+      tests(digitalOcean);
     });
   });
 
