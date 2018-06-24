@@ -73,8 +73,12 @@ jobs:
         - sonar-scanner
     - stage: npm release
       node_js: '10'
+      env:
+        - NODE_ENV=production
       if: branch = beta
       script:
+        - rm -rf node_modules
+        - npm install
         - git remote set-url origin $GH_REPO
         - git config --global user.email "travis@travis-ci.org"
         - git config --global user.name "Travis CI"

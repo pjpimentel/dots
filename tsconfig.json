@@ -17,8 +17,7 @@
         ///"outFile": "./build/dots.js"
     },
     "include": [
-        "src/*",
-        "src/**/*.ts"
+        "src/lib/**/*.ts"
     ],
     "exclude": [
         "node_modules/*",
