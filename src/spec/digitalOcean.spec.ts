@@ -2,6 +2,7 @@ import { DigitalOcean } from '../lib/digitalOcean';
 import { AccountTests } from './account.spec';
 import { ActionTests } from './action.spec';
 import { GuardTests } from './common/type.guards.spec';
+import { RegionTests } from './region.spec';
 
 const token = process.env.DO_READ_TOKEN || '';
 const endpointsTestMap = {
@@ -13,7 +14,7 @@ const endpointsTestMap = {
   // FloatingIP: () => true,
   // Image: () => true,
   // LoadBalancer: () => true,
-  // Region: () => true,
+  Region: RegionTests,
   // Size: () => true,
   // Snapshot: () => true,
   // SshKey: () => true,
