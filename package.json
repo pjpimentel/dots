@@ -36,11 +36,8 @@
     "typescript": "^2.9.2"
   },
   "nyc": {
-    "exclude": [
-      "src/spec/**/*.ts"
-    ],
     "include": [
-      "src/lib/**/*.ts"
+      "src/**/*.ts"
     ],
     "extension": [
       ".ts",
