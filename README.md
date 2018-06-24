@@ -1,15 +1,13 @@
 # dots
 
-**Digital Ocean** API **V2** wrapper. **TypeScript** - **Javascript**
-
-**latest**
+## **digital ocean** API **v2** wrapper
 
 [![travis](https://img.shields.io/travis/pjpimentel/dots/master.svg?longCache=true)](https://travis-ci.org/pjpimentel/dots)
 [![quality](https://sonarcloud.io/api/project_badges/measure?branch=master&project=dots&metric=alert_status)](https://sonarcloud.io/dashboard?branch=master&id=dots)
 [![coverage](https://sonarcloud.io/api/project_badges/measure?branch=master&project=dots&metric=coverage)](https://sonarcloud.io/dashboard?branch=master&id=dots)
 [![security](https://sonarcloud.io/api/project_badges/measure?branch=master&project=dots&metric=security_rating)](https://sonarcloud.io/dashboard?branch=master&id=dots)
 
-[![npm version](https://img.shields.io/npm/v/dots-wrapper/master.svg?longCache=true)](https://www.npmjs.com/package/dots-wrapper?activeTab=versions)
+[![npm version](https://img.shields.io/npm/v/dots-wrapper/latest.svg?longCache=true)](https://www.npmjs.com/package/dots-wrapper?activeTab=versions)
 [![npm downloads](https://img.shields.io/npm/dt/dots-wrapper.svg?longCache=true)](https://www.npmjs.com/package/dots-wrapper)
 [![dependencies](https://img.shields.io/david/pjpimentel/dots.svg?longCache=true)](https://www.npmjs.com/package/dots-wrapper?activeTab=dependencies)
 [![license](https://img.shields.io/npm/l/dots-wrapper.svg?longCache=true)](https://github.com/pjpimentel/dots/blob/master/LICENSE)
@@ -33,7 +31,7 @@
 ## Usage
 Typescript
 ``` typescript
-    import DigitalOcean from 'dots-wrapper';
+    import { DigitalOcean } from 'dots-wrapper';
     const myApiToken = 'my-long-token';
     const digitalOcean = new DigitalOcean(myApiToken);
 
@@ -44,7 +42,7 @@ Typescript
 ```
 Javascript - Nodejs
 ``` javascript
-    const {DigitalOcean} = require('dots-wrapper');
+    const { DigitalOcean } = require('dots-wrapper');
     const myApiToken = 'my-long-token';
     const digitalOcean = new DigitalOcean(myApiToken);
 
@@ -62,5 +60,7 @@ Javascript - Nodejs
 ## TODO
 
 Endpoint docs
+
 Add firewall endpoint
+
 Compile to Browser usage.
