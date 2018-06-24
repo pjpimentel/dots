@@ -3,6 +3,7 @@ import { AccountTests } from './account.spec';
 import { ActionTests } from './action.spec';
 import { GuardTests } from './common/type.guards.spec';
 import { RegionTests } from './region.spec';
+import { SizeTests } from './size.spec';
 
 const token = process.env.DO_READ_TOKEN || '';
 const endpointsTestMap = {
@@ -15,7 +16,7 @@ const endpointsTestMap = {
   // Image: () => true,
   // LoadBalancer: () => true,
   Region: RegionTests,
-  // Size: () => true,
+  Size: SizeTests,
   // Snapshot: () => true,
   // SshKey: () => true,
   // Tag: () => true,
