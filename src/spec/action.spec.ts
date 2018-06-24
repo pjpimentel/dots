@@ -16,7 +16,7 @@ export function ActionTests(digitalOcean: DigitalOcean) {
     expect(isArray(actions)).toBeTruthy();
     expect(collection.items.length).toBeLessThanOrEqual(perPage);
     actions.forEach((action) => expect(isAction(action)).toBeTruthy());
-    actionToTest = actions[Math.floor(Math.random() * actions.length) + 1];
+    actionToTest = actions[Math.floor(Math.random() * actions.length)];
   };
   const onError = (err) => {
     expect(err instanceof Error).toBeTruthy();
