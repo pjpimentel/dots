@@ -12,6 +12,7 @@ addons:
 branches:
   only:
     - beta
+    - master
 
 install:
   - npm install
