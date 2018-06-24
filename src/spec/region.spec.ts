@@ -17,22 +17,23 @@ export function RegionTests(digitalOcean: DigitalOcean) {
       expect(collection.items.length).toBeLessThanOrEqual(perPage);
       regions.forEach((action) => expect(isRegion(action)).toBeTruthy());
     };
-    const onError = (err) => {
+    const onError = (err, shouldFail) => {
       expect(err instanceof Error).toBeTruthy();
       expect(typeof err.message).toBe('string');
+      if (shouldFail) fail(err);
     };
     it('`list` should exists', () => expect(Region.list).toBeDefined());
     it('`list` should be a function', () => expect(typeof Region.list).toBe('function'));
     it('`list` should return Region\'s collecion', (done) => {
       Region.list(0, perPage)
         .pipe(finalize(done))
-        .subscribe(onRegions, onError);
+        .subscribe(onRegions, (err) => onError(err, true));
     }, digitalOcean.timeout);
     it('`list` should return Error', (done) => {
       // tslint:disable-next-line
       Region.list('a' as any, -50)
         .pipe(finalize(done))
-        .subscribe(onRegions, onError);
+        .subscribe(onRegions, (err) => onError(err, false));
     }, digitalOcean.timeout);
   });
 }

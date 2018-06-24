@@ -18,9 +18,10 @@ export function ActionTests(digitalOcean: DigitalOcean) {
     actions.forEach((action) => expect(isAction(action)).toBeTruthy());
     actionToTest = actions[Math.floor(Math.random() * actions.length)];
   };
-  const onError = (err) => {
+  const onError = (err, shouldFail) => {
     expect(err instanceof Error).toBeTruthy();
     expect(typeof err.message).toBe('string');
+    if (shouldFail) fail(err);
   };
   describe('List Actions', () => {
     it('`list` should exists', () => expect(Action.list).toBeDefined());
@@ -28,13 +29,13 @@ export function ActionTests(digitalOcean: DigitalOcean) {
     it('`list` should return Action\'s collecion', (done) => {
       Action.list(0, perPage)
         .pipe(finalize(done))
-        .subscribe(onActions, onError);
+        .subscribe(onActions, (err) => onError(err, true));
     }, digitalOcean.timeout);
     it('`list` should return Error', (done) => {
       // tslint:disable-next-line
       Action.list('a' as any, perPage)
         .pipe(finalize(done))
-        .subscribe(onActions, onError);
+        .subscribe(onActions, (err) => onError(err, false));
     }, digitalOcean.timeout);
   });
 
@@ -51,7 +52,7 @@ export function ActionTests(digitalOcean: DigitalOcean) {
       };
       Action.get(actionToTest.id)
         .pipe(finalize(done))
-        .subscribe(onAction, onError);
+        .subscribe(onAction, (err) => onError(err, true));
     }, digitalOcean.timeout);
   });
 }

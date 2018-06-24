@@ -17,22 +17,23 @@ export function SizeTests(digitalOcean: DigitalOcean) {
       expect(collection.items.length).toBeLessThanOrEqual(perPage);
       sizes.forEach((action) => expect(isSize(action)).toBeTruthy());
     };
-    const onError = (err) => {
+    const onError = (err, shouldFail) => {
       expect(err instanceof Error).toBeTruthy();
       expect(typeof err.message).toBe('string');
+      if (shouldFail) fail(err);
     };
     it('`list` should exists', () => expect(Size.list).toBeDefined());
     it('`list` should be a function', () => expect(typeof Size.list).toBe('function'));
     it('`list` should return Size\'s collecion', (done) => {
       Size.list(0, perPage)
         .pipe(finalize(done))
-        .subscribe(onSizes, onError);
+        .subscribe(onSizes, (err) => onError(err, true));
     }, digitalOcean.timeout);
     it('`list` should return error', (done) => {
       // tslint:disable-next-line
       Size.list('a' as any, -50)
         .pipe(finalize(done))
-        .subscribe(onSizes, onError);
+        .subscribe(onSizes, (err) => onError(err, false));
     }, digitalOcean.timeout);
   });
 }

@@ -9,14 +9,18 @@ export function AccountTests(digitalOcean: DigitalOcean) {
       expect(account).toBeDefined();
       expect(isAccount(account)).toBeTruthy();
     };
-    const onError = (err) => {
+    const onError = (err, shouldFail) => {
       expect(err instanceof Error).toBeTruthy();
       expect(typeof err.message).toBe('string');
+      if (shouldFail) fail(err);
     };
     it('`Get` should exists', () => expect(Account.get).toBeDefined());
     it('`Get` should be a function', () => expect(typeof Account.get).toBe('function'));
     it('`Get` should return account object', (done) => {
-      Account.get().pipe(finalize(done)).subscribe(onAccount, onError);
+      Account.get().pipe(
+        finalize(done),
+      )
+      .subscribe(onAccount, (err) => onError(err, true));
     }, digitalOcean.timeout);
     it('`Get` should return error', (done) => {
       const throwError = () => {
@@ -27,7 +31,7 @@ export function AccountTests(digitalOcean: DigitalOcean) {
           finalize(done),
           tap(throwError),
         )
-        .subscribe(onAccount, onError);
+        .subscribe(onAccount, (err) => onError(err, false));
     }, digitalOcean.timeout);
   });
 }
