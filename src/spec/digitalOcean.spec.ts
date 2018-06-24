@@ -4,6 +4,7 @@ import { ActionTests } from './action.spec';
 import { GuardTests } from './common/type.guards.spec';
 import { RegionTests } from './region.spec';
 import { SizeTests } from './size.spec';
+import { SSHKeyTests } from './sshkey.spec';
 
 const token = process.env.DO_READ_TOKEN;
 const endpointsTestMap = {
@@ -18,7 +19,8 @@ const endpointsTestMap = {
   Region: RegionTests,
   Size: SizeTests,
   // Snapshot: () => true,
-  // SshKey: () => true,
+  // tslint:disable-next-line
+  SSHKey: SSHKeyTests,
   // Tag: () => true,
   // Volume: () => true,
 };
