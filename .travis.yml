@@ -82,4 +82,5 @@ jobs:
         - npm version prepatch -m "[ci] npm version ${TAG}"
         - git push --tags
         - git push origin beta
+        - npm config set '//registry.npmjs.org/:_authToken' $NPM_TOKEN
         - npm publish --tag beta
