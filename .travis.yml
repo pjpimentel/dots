@@ -79,7 +79,7 @@ jobs:
         - git config --global user.email "travis@travis-ci.org"
         - git config --global user.name "Travis CI"
         - git checkout $TRAVIS_BRANCH
-        - npm version prepatch -m "[ci] npm version ${TAG}"
+        - npm version prepatch -m "[ci skip] travis ${TRAVIS_JOB_ID}"
         - git push --tags
         - git push origin beta
         - npm config set '//registry.npmjs.org/:_authToken' $NPM_TOKEN
