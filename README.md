@@ -23,7 +23,7 @@
 
 [![npm version](https://img.shields.io/npm/v/dots-wrapper/beta.svg?longCache=true)](https://www.npmjs.com/package/dots-wrapper?activeTab=versions)
 [![npm downloads](https://img.shields.io/npm/dt/dots-wrapper.svg?longCache=true)](https://www.npmjs.com/package/dots-wrapper)
-[![dependencies](https://img.shields.io/david/pjpimentel/dots.svg?longCache=true)](https://www.npmjs.com/package/dots-wrapper?activeTab=dependencies)
+[![dependencies](https://img.shields.io/david/pjpimentel/dots/beta.svg?longCache=true)](https://www.npmjs.com/package/dots-wrapper?activeTab=dependencies)
 [![license](https://img.shields.io/npm/l/dots-wrapper.svg?longCache=true)](https://github.com/pjpimentel/dots/blob/beta/LICENSE)
 
 ## Install
