@@ -13,6 +13,7 @@ branches:
   only:
     - beta
     - master
+    - bug/14
 
 install:
   - npm install
