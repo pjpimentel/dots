@@ -78,35 +78,39 @@ jobs:
         - NODE_ENV=production
       if: branch = beta
       script:
-        - rm -rf node_modules
-        - npm install
-        - git add .
-        - git stash
-        - git remote set-url origin $GH_REPO
-        - git config --global user.email "travis@travis-ci.org"
-        - git config --global user.name "Travis CI"
-        - git checkout $TRAVIS_BRANCH
-        - npm version prepatch -m "[ci skip] travis ${TRAVIS_JOB_ID}"
-        - git push --tags
-        - git push origin beta
-        - npm config set '//registry.npmjs.org/:_authToken' $NPM_TOKEN
-        - npm publish --tag beta
+        - if [ "${TRAVIS_EVENT_TYPE}" == "pull_request" ]; then
+            rm -rf node_modules;
+            npm install;
+            git add .;
+            git stash;
+            git remote set-url origin $GH_REPO;
+            git config --global user.email "travis@travis-ci.org";
+            git config --global user.name "Travis CI";
+            git checkout $TRAVIS_BRANCH;
+            npm version prepatch -m "[ci skip] travis ${TRAVIS_JOB_ID}";
+            git push --tags;
+            git push origin beta;
+            npm config set '//registry.npmjs.org/:_authToken' $NPM_TOKEN;
+            npm publish --tag beta;
+          fi
     - stage: npm release
       node_js: '10'
       env:
         - NODE_ENV=production
       if: branch = master
       script:
-        - rm -rf node_modules
-        - npm install
-        - git add .
-        - git stash
-        - git remote set-url origin $GH_REPO
-        - git config --global user.email "travis@travis-ci.org"
-        - git config --global user.name "Travis CI"
-        - git checkout $TRAVIS_BRANCH
-        - npm version minor -m "[ci skip] travis ${TRAVIS_JOB_ID}"
-        - git push --tags
-        - git push origin master
-        - npm config set '//registry.npmjs.org/:_authToken' $NPM_TOKEN
-        - npm publish --tag latest
+        - if [ "${TRAVIS_EVENT_TYPE}" == "pull_request" ]; then
+            rm -rf node_modules;
+            npm install;
+            git add .;
+            git stash;
+            git remote set-url origin $GH_REPO;
+            git config --global user.email "travis@travis-ci.org";
+            git config --global user.name "Travis CI";
+            git checkout $TRAVIS_BRANCH;
+            npm version minor -m "[ci skip] travis ${TRAVIS_JOB_ID}";
+            git push --tags;
+            git push origin master;
+            npm config set '//registry.npmjs.org/:_authToken' $NPM_TOKEN;
+            npm publish --tag latest;
+          fi
