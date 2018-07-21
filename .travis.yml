@@ -80,11 +80,11 @@ jobs:
       if: branch = bug/14
       script:
         - if [ "${TRAVIS_EVENT_TYPE}" == "pull_request" ]; then
-            echo "pull_request"
-          fi;
+            echo "pull_request";
+          fi
         - if [ "${TRAVIS_EVENT_TYPE}" == "push" ]; then
-            echo "push"
-          fi;
+            echo "push";
+          fi
     - stage: npm release
       node_js: '10'
       env:
@@ -105,7 +105,7 @@ jobs:
             git push origin beta;
             npm config set '//registry.npmjs.org/:_authToken' $NPM_TOKEN;
             npm publish --tag beta;
-          fi;
+          fi
     - stage: npm release
       node_js: '10'
       env:
@@ -126,4 +126,4 @@ jobs:
             git push origin master;
             npm config set '//registry.npmjs.org/:_authToken' $NPM_TOKEN;
             npm publish --tag latest;
-          fi;
+          fi
