@@ -13,7 +13,6 @@ branches:
   only:
     - beta
     - master
-    - bug/14
 
 install:
   - npm install
@@ -73,18 +72,6 @@ jobs:
       script:
         - npm run test:coverage
         - sonar-scanner
-    - stage: npm release
-      node_js: '10'
-      env:
-        - NODE_ENV=production
-      if: branch = bug/14
-      script:
-        - if [ "${TRAVIS_EVENT_TYPE}" == "pull_request" ]; then
-            echo "pull_request";
-          fi
-        - if [ "${TRAVIS_EVENT_TYPE}" == "push" ]; then
-            echo "push";
-          fi
     - stage: npm release
       node_js: '10'
       env:
