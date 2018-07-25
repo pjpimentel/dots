@@ -1,6 +1,7 @@
 import {
     isArray,
     isBoolean,
+    isFunction,
     isNull,
     isNumber,
     isObject,
@@ -345,7 +346,8 @@ export function isCollection<T>(
     guard: (d) => d is T): data is ICollection<T> {
     if (!isObject(data)) return false;
     if (!isArray(data.items)) return false;
-    if (!data.items.every(guard)) return false;
+    // TODO: track from where guard is comming undefined
+    if (isFunction(guard) && !data.items.every(guard)) return false;
     if (!isNumber(data.curPage)) return false;
     if (!isNumber(data.maxPage)) return false;
     if (!isNumber(data.minPage)) return false;
