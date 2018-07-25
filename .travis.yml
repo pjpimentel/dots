@@ -13,6 +13,7 @@ branches:
   only:
     - beta
     - master
+    - dev
 
 install:
   - npm install
@@ -78,7 +79,7 @@ jobs:
         - NODE_ENV=production
       if: branch = beta
       script:
-        - if [ "${TRAVIS_EVENT_TYPE}" != "cron" ]; then
+        - if [ "${TRAVIS_EVENT_TYPE}" != "pull_request" ]; then
             rm -rf node_modules;
             npm install;
             git add .;
@@ -99,7 +100,7 @@ jobs:
         - NODE_ENV=production
       if: branch = master
       script:
-        - if [ "${TRAVIS_EVENT_TYPE}" != "cron" ]; then
+        - if [ "${TRAVIS_EVENT_TYPE}" != "pull_request" ]; then
             rm -rf node_modules;
             npm install;
             git add .;
