@@ -13,6 +13,7 @@ branches:
   only:
     - beta
     - master
+    - dev
 
 install:
   - npm install
@@ -52,9 +53,11 @@ jobs:
     # - stage: build
     #   script: npm run build
     #   node_js: '6'
-    - stage: test
-      script: npm run test:unit
+    - stage: quality check
       node_js: '10'
+      script:
+        - npm run test:coverage
+        - sonar-scanner
     # - stage: test
     #   script: npm run test:unit
     #   node_js: '9'
@@ -67,18 +70,13 @@ jobs:
     # - stage: test
     #   script: npm run test:unit
     #   node_js: '6'
-    - stage: quality check
-      node_js: '10'
-      script:
-        - npm run test:coverage
-        - sonar-scanner
     - stage: npm release
       node_js: '10'
       env:
         - NODE_ENV=production
       if: branch = beta
       script:
-        - if [ "${TRAVIS_EVENT_TYPE}" != "cron" ]; then
+        - if [ "${TRAVIS_EVENT_TYPE}" != "pull_request" ]; then
             rm -rf node_modules;
             npm install;
             git add .;
@@ -99,7 +97,7 @@ jobs:
         - NODE_ENV=production
       if: branch = master
       script:
-        - if [ "${TRAVIS_EVENT_TYPE}" != "cron" ]; then
+        - if [ "${TRAVIS_EVENT_TYPE}" != "pull_request" ]; then
             rm -rf node_modules;
             npm install;
             git add .;
