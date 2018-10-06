@@ -88,14 +88,14 @@ export default class ImageEndpoint extends Endpoint implements IImageEndpoint {
     /**
      * List images by type.
      *
-     * @param {('distribution'|'appplication')} type
+     * @param {('distribution'|'application')} type
      * @param {number} page
      * @param {number} [perPage]
      * @returns {Observable<ICollection<IImage>>}
      *
      * @memberof ImageEndpoint
      */
-    list(type: 'distribution' | 'appplication' | string, page: number, perPage?: number): Observable<ICollection<IImage>>;
+    list(type: 'distribution' | 'application' | string, page: number, perPage?: number): Observable<ICollection<IImage>>;
     /**
      * List all images.
      *
