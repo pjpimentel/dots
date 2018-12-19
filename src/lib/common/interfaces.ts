@@ -338,7 +338,7 @@ export interface IDropletSpecs {
     backups?: boolean;
     ipv6?: boolean;
     private_networking?: boolean;
-    user_data?: string[];
+    user_data?: string;
     monitoring?: boolean;
     volumes?: string[];
     tags?: string[];
