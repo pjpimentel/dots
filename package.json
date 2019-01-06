@@ -1,12 +1,12 @@
 {
   "name": "dots-wrapper",
-  "version": "2.5.0",
+  "version": "2.5.1-0",
   "description": "Digital Ocean API V2 wrapper. TypeScript - Javascript",
   "main": "dist/digitalOcean.js",
   "types": "dist/digitalOcean.d.ts",
   "scripts": {
     "prepublish": "npm run build",
-    "build": "rm -rf ./dist && node_modules/.bin/tsc",
+    "build": "rm -rf ./dist && tsc",
     "test:unit": "ts-node node_modules/.bin/jasmine --config=./src/spec/support/jasmine.json",
     "test:coverage": "node_modules/.bin/nyc npm run test:unit"
   },
@@ -22,20 +22,20 @@
   "homepage": "https://github.com/pjpimentel/dots",
   "dependencies": {
     "axios": "^0.16.2",
-    "rxjs": "^6.2.1",
-    "typescript": "^2.9.2",
-    "util": "^0.11.0"
+    "rxjs": "^6.3.3",
+    "util": "^0.11.1"
   },
   "devDependencies": {
-    "@types/jasmine": "^2.8.8",
-    "@types/node": "^10.3.3",
-    "jasmine": "^3.1.0",
+    "@types/jasmine": "^2.8.14",
+    "@types/node": "^10.12.18",
+    "jasmine": "^3.3.1",
     "jasmine-spec-reporter": "^4.2.1",
     "nyc": "^12.0.2",
-    "source-map-support": "^0.5.6",
+    "source-map-support": "^0.5.9",
     "ssh-keygen": "^0.4.1",
-    "ts-node": "^7.0.0",
-    "typedoc": "^0.11.1"
+    "ts-node": "^7.0.1",
+    "typedoc": "^0.11.1",
+    "typescript": "^2.9.2"
   },
   "nyc": {
     "include": [
