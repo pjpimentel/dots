@@ -6,7 +6,7 @@
   "types": "dist/digitalOcean.d.ts",
   "scripts": {
     "prepublish": "npm run build",
-    "build": "rm -rf ./dist && node_modules/.bin/tsc",
+    "build": "rm -rf ./dist && tsc",
     "test:unit": "ts-node node_modules/.bin/jasmine --config=./src/spec/support/jasmine.json",
     "test:coverage": "node_modules/.bin/nyc npm run test:unit"
   },
