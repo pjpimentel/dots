@@ -63,6 +63,7 @@ jobs:
           fi
         - rm -rf node_modules;
           npm install;
+          npm install -g typescript;
           git add .;
           git stash;
           git remote set-url origin $GH_REPO;
@@ -91,6 +92,7 @@ jobs:
           fi
         - rm -rf node_modules;
           npm install;
+          npm install -g typescript;
           git add .;
           git stash;
           git remote set-url origin $GH_REPO;
