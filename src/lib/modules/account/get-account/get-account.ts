@@ -1,5 +1,3 @@
-import { AxiosInstance } from 'axios';
-
 export interface IGetAccountApiResponse {
   account: IAccount;
 }

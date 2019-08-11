@@ -1,3 +1,1 @@
-export {
-  listRegions,
-} from './list-regions';
+export * from './list-regions/list-regions';

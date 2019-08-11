@@ -1,3 +1,1 @@
-export {
-  listSizes,
-} from './list-sizes';
+export * from './list-sizes/list-sizes';

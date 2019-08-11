@@ -1,3 +1,1 @@
-export {
-  getAccount,
-} from './get-account';
+export * from './get-account/get-account';
