@@ -5,10 +5,10 @@ import {getAccount} from './get-account';
 import * as MOCK from './get-account.mock';
 
 describe('account', () => {
-  const PATH = '/account';
+  const URL = '/account';
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
-  mock.onGet(PATH).reply(
+  mock.onGet(URL).reply(
     MOCK.response.headers.status,
     MOCK.response.body,
     MOCK.response.headers,
@@ -36,7 +36,7 @@ describe('account', () => {
       expect(typeof response.status).toBe('number');
       /// validate request
       const {request} = response;
-      expect(request.url).toBe(context.endpoint + PATH);
+      expect(request.url).toBe(context.endpoint + URL);
       expect(request.method).toBe('get');
       expect(request.headers).toMatchObject(MOCK.request.headers);
       /// validate data

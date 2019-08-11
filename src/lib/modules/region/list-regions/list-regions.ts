@@ -1,10 +1,10 @@
 import { AxiosInstance } from 'axios';
 
-export interface IListRegionsResponse extends IListResponse {
+export interface IListRegionsApiResponse extends IListResponse {
   regions: IRegion[];
 }
 
-type ListRegionsResponse = IResponse<IListRegionsResponse>;
+type ListRegionsResponse = IResponse<IListRegionsApiResponse>;
 
 export const listRegions = ({
   endpoint,
@@ -12,9 +12,10 @@ export const listRegions = ({
 }: IContext<AxiosInstance>) => async ({
   page = 1,
   perPage = 25,
-}: IListRequest): Promise<ListRegionsResponse> => {
+}: IListRequest): Promise<Readonly<ListRegionsResponse>> => {
   const path = '/regions';
-  const url = `${endpoint}${path}?page=${page}&per_page=${perPage}`;
+  const queryParams = {page, per_page: perPage};
+  const url = `${path}`;
 
-  return httpClient.get<IListRegionsResponse>(url);
+  return httpClient.get<IListRegionsApiResponse>(url, {params: queryParams});
 };

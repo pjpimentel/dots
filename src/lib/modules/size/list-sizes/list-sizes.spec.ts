@@ -3,12 +3,11 @@ import MockAdapter from 'axios-mock-adapter';
 import { createContext } from '../../../utils';
 import {listSizes} from './list-sizes';
 import * as MOCK from './list-sizes.mock';
-import { isRegion } from '../../../common/type.guards';
 
 describe('size', () => {
   const PAGE = 3;
   const PER_PAGE = 26;
-  const URL = `/sizes`;
+  const URL = '/sizes';
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(

@@ -11,7 +11,7 @@ export const getAccount = ({
   httpClient,
 }: IContext<AxiosInstance>) => async (): Promise<Readonly<GetAccountResponse>> => {
   const path = '/account';
-  const url = `${endpoint}${path}`;
+  const url = `${path}`;
 
   return httpClient.get<IGetAccountApiResponse>(url);
 };
