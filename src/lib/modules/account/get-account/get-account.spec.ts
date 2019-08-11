@@ -1,10 +1,21 @@
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
+import { createContext } from '../../../utils';
 import {getAccount} from './get-account';
-import { createContext } from '../../../utils/create-context';
+import * as MOCK from './get-account.mock';
 
 describe('account', () => {
-  let context: IContext<AxiosInstance>;
-  beforeAll(() => {
-    context = createContext();
+  const PATH = '/account';
+  const TOKEN = 'bearer-token';
+  const mock = new MockAdapter(axios);
+  mock.onGet(PATH).reply(
+    MOCK.response.headers.status,
+    MOCK.response.body,
+    MOCK.response.headers,
+  );
+  const context = createContext({
+    axios,
+    token: TOKEN,
   });
   describe('get-account', () => {
     it('should be a fn', () => {
@@ -13,26 +24,36 @@ describe('account', () => {
     it('should return a fn', () => {
       expect(typeof getAccount(context)).toBe('function');
     });
-    it('should return a Promise<IResponse<IGetAccountApiResponse>>', async () => {
+    it('should return IResponse<IGetAccountApiResponse>', async () => {
       const _getAccount = getAccount(context);
       const response = await _getAccount();
+      Object.assign(response, { request: mock.history.get[0]});
       /// validate response schema
       expect(typeof response).toBe('object');
       expect(typeof response.data).toBe('object');
       expect(typeof response.headers).toBe('object');
+      expect(typeof response.request).toBe('object');
       expect(typeof response.status).toBe('number');
-      expect(typeof response.statusText).toBe('string');
-      /// validate data schema
+      /// validate request
+      const {request} = response;
+      expect(request.url).toBe(context.endpoint + PATH);
+      expect(request.method).toBe('get');
+      expect(request.headers).toMatchObject(MOCK.request.headers);
+      /// validate data
       expect(response.data).toBeDefined();
       expect(response.data.account).toBeDefined();
       const {account} = response.data;
-      expect(account.droplet_limit).toBeDefined();
-      expect(account.email_verified).toBeDefined();
-      expect(account.email).toBeDefined();
-      expect(account.floating_ip_limit).toBeDefined();
-      expect(account.status_message).toBeDefined();
-      expect(account.status).toBeDefined();
-      expect(account.uuid).toBeDefined();
+      expect(typeof account.droplet_limit).toBe('number');
+      expect(typeof account.email_verified).toBe('boolean');
+      expect(typeof account.email).toBe('string');
+      expect(typeof account.floating_ip_limit).toBe('number');
+      expect(typeof account.status_message).toBe('string');
+      expect(typeof account.status).toBe('string');
+      expect(typeof account.uuid).toBe('string');
+      /// validate headers
+      const {headers, status} = response;
+      expect(headers).toMatchObject(MOCK.response.headers);
+      expect(status).toBe(MOCK.response.headers.status);
     });
   });
 });

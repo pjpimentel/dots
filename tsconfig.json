@@ -1,27 +1,25 @@
 {
-    "compileOnSave": true,
+  "compileOnSave": true,
+  "compilerOptions": {
     "declaration": true,
-    "compilerOptions": {
-        //"module": "amd",
-        "module": "commonjs",
-        // "moduleResolution": "node",
-        "declaration": true,
-        "target": "es5",
-        "noImplicitAny": false,
-        "sourceMap": true,
-        "lib": [
-            "es2015",
-            "dom"
-        ],
-        "outDir": "dist"
-        ///"outFile": "./build/dots.js"
-    },
-    "include": [
-        "src/lib/**/*.ts"
-    ],
-    "exclude": [
-        "node_modules/*",
-        "./node_modules/*"
-        // "./lib/*/*"
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "outDir": "dist",
+    "sourceMap": true,
+    "strict": true,
+    "target": "es2015",
+    "typeRoots": [
+      "src/**/*.d.ts",
+      "node_modules/@types"
     ]
+  },
+  "declaration": true,
+  "exclude": [
+    "node_modules",
+  ],
+  "include": [
+    "src/lib/**/*",
+    "src/types",
+  ]
 }
