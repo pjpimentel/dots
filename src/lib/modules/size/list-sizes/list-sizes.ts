@@ -1,10 +1,10 @@
 import { AxiosInstance } from 'axios';
 
-export interface IListSizeResponse extends IListResponse {
+export interface IListSizeApiResponse extends IListResponse {
   sizes: ISize[];
 }
 
-type ListSizesResponse = IResponse<IListSizeResponse>;
+type ListSizesResponse = IResponse<IListSizeApiResponse>;
 
 export const listSizes = ({
   endpoint,
@@ -12,9 +12,10 @@ export const listSizes = ({
 }: IContext<AxiosInstance>) => async ({
   page = 1,
   perPage = 25,
-}: IListRequest): Promise<IResponse<ListSizesResponse>> => {
+}: IListRequest): Promise<Readonly<ListSizesResponse>> => {
   const path = '/sizes';
-  const url = `${endpoint}${path}?page=${page}&per_page=${perPage}`;
+  const queryParams = {page, per_page: perPage};
+  const url = `${path}`;
 
-  return httpClient.get<ListSizesResponse>(url);
+  return httpClient.get<IListSizeApiResponse>(url, {params: queryParams});
 };
