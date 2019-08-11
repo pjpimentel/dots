@@ -1,11 +1,4 @@
 {
-    "Account": {
-        "Get User Information": "Account.get"
-    },
-    "Actions": {
-        "List all Actions": "Action.list",
-        "Retrieve an existing Action": "Action.get"
-    },
     "Block Storage": {
         "List all volumes": "Volume.list",
         "Create a new volume": "Volume.create",
@@ -121,12 +114,6 @@
         "Update a Key": "SSHKey.update",
         "Destroy a Key": "SSHKey.delete"
     },
-    "Regions": {
-        "List all Regions": "Region.list"
-    },
-    "Sizes": {
-        "List all Sizes": "Size.list"
-    },
     "Floating IPs": {
         "List all Floating IPs": "",
         "Create a new Floating IP assigned to a Droplet": "",
@@ -140,12 +127,11 @@
         "List all actions for a Floating IP": "",
         "Retrieve an existing Floating IP Action": ""
     },
-    "Tags": {
-        "Create a new Tag": "Tag.create",
-        "Retrieve a Tag": "Tag.get",
-        "List all Tags": "Tag.list",
-        "Tag a Resource": "Tag.tagResource",
-        "Untag a Resource": "Tag.untagResource",
-        "Delete a Tag": "Tag.delete"
-    }
 }
+JSON.stringify(Array.from(document.querySelectorAll('.sidebar ul'))
+	.map((list) => {
+		return {
+			title: list.querySelector('a').innerText,
+			endpoints: Array.from(list.querySelectorAll('ul li')).map((endpoint) => endpoint.innerText)
+		}
+    }).splice(1), null, 2)

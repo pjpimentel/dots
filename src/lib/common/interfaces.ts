@@ -86,21 +86,6 @@ export interface IKernel {
     version: string;
 }
 /**
- * Account raw object
- *
- * @export
- * @interface IAccount
- */
-export interface IAccount {
-    droplet_limit: number;
-    email_verified: boolean;
-    email: string;
-    floating_ip_limit: number;
-    status_message: string;
-    status: string;
-    uuid: string;
-}
-/**
  * Size raw object.
  *
  * @export
@@ -139,22 +124,6 @@ export interface IRegion {
     name: string;
     sizes: string[];
     slug: string;
-}
-/**
- * Action raw object
- *
- * @export
- * @interface IAction
- */
-export interface IAction {
-    completed_at: string;
-    id: number;
-    region_slug: string;
-    resource_id: number;
-    resource_type: string;
-    started_at: string;
-    status: string;
-    type: string;
 }
 /**
  * SSH Key raw object.
@@ -223,50 +192,7 @@ export interface IImage extends IImageLike {
     slug: string | null;
     type: string;
 }
-/**
- * Certificate raw object.
- *
- * @export
- * @interface ICertificate
- */
-export interface ICertificate {
-    created_at: string;
-    dns_names: string[];
-    id: string;
-    name: string;
-    not_after: string;
-    sha1_fingerprint: string;
-    state: string;
-    type: string;
-}
-/**
- * Droplet raw object.
- *
- * @export
- * @interface IDroplet
- */
-export interface IDroplet {
-    backup_ids: string[];
-    created_at: string;
-    disk: number;
-    features: string[];
-    id: number;
-    image: IImage;
-    kernel: IKernel | null;
-    locked: boolean;
-    memory: number;
-    name: string;
-    networks: object;
-    next_backup_window: object | null; // TODO: get object spec
-    region: IRegion;
-    size_slug: string;
-    size: ISize;
-    snapshot_ids: string[];
-    status: 'new'|'active'|'off'|'archive';
-    tags: string[];
-    vcpus: number;
-    volume_ids: string[];
-}
+
 /**
  * Specs
  */

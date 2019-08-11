@@ -3,13 +3,13 @@ import { AxiosInstance, AxiosRequestConfig, AxiosStatic } from 'axios';
 interface ICreateContextInput {
   axios: AxiosStatic;
   endpoint?: string;
-  requestTimeout?: number;
+  requestTimeoutInMs?: number;
   token: string;
 }
 
 export const createContext = ({
   axios,
-  requestTimeout = 1000 * 15, /// 15 seconds
+  requestTimeoutInMs = 1000 * 15, /// 15 seconds
   endpoint = 'https://api.digitalocean.com/v2',
   token,
 }: ICreateContextInput): Readonly<IContext<AxiosInstance>> => {
@@ -22,7 +22,7 @@ export const createContext = ({
   const axiosConfig: AxiosRequestConfig = freeze({
     baseURL: endpoint,
     headers,
-    timeout: requestTimeout,
+    timeout: requestTimeoutInMs,
   });
   const httpClient = axios.create(axiosConfig);
 

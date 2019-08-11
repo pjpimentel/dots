@@ -1,17 +1,17 @@
 import axios from 'axios';
-import { getAccount } from '../modules/account';
-import { listRegions } from '../modules/region';
-import { listSizes } from '../modules/size';
-import { createContext } from './create-context';
+import { getAccount } from '../../modules/account';
+import { listRegions } from '../../modules/region';
+import { listSizes } from '../../modules/size';
+import { createContext } from '../create-context/create-context';
 
 interface ICreateApiClientInput {
   endpoint?: string;
-  requestTimeout?: number;
+  requestTimeoutInMs?: number;
   token: string;
 }
 
 export const createApiClient = ({
-  requestTimeout,
+  requestTimeoutInMs,
   endpoint,
   token,
 }: ICreateApiClientInput) => {
@@ -19,7 +19,7 @@ export const createApiClient = ({
   const context = createContext({
     axios,
     endpoint,
-    requestTimeout,
+    requestTimeoutInMs,
     token,
   });
   const account = freeze({

@@ -1,15 +1,15 @@
 import axios, { AxiosInstance, AxiosPromise, AxiosRequestConfig } from 'axios';
-import AccountEndpoint from '../account';
-import ActionEndpoint from '../action';
-import CertificateEndpoint from '../certificate';
-import DropletEndpoint from '../droplet';
-import ImageEndpoint from '../image';
-import RegionEndpoint from '../region';
-import SizeEndpoint from '../size';
-import SnapshotEndpoint from '../snapshot';
-import SSHKeyEndpoint from '../sshkey';
-import TagEndpoint from '../tag';
-import VolumeEndpoint from '../volume';
+import AccountEndpoint from '../modules/account';
+import ActionEndpoint from '../modules/action';
+import CertificateEndpoint from '../modules/certificate';
+import DropletEndpoint from '../modules/droplet';
+import ImageEndpoint from '../modules/image';
+import RegionEndpoint from '../modules/region';
+import SizeEndpoint from '../modules/size';
+import SnapshotEndpoint from '../modules/snapshot';
+import SSHKeyEndpoint from '../modules/sshkey';
+import TagEndpoint from '../modules/tag';
+import VolumeEndpoint from '../modules/volume';
 import { IAPISpecs, IaxiosConfig, IHeader } from './interfaces';
 
 // import DomainEndpoint from '../domain/endpoint';
