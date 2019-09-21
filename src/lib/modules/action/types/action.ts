@@ -6,6 +6,6 @@ interface IAction {
   resource_id: number;
   resource_type: string;
   started_at: string;
-  status: string;
+  status: 'in-progress' | 'completed' | 'errored' | string;
   type: string;
 }

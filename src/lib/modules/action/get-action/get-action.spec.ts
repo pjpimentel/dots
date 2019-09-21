@@ -1,11 +1,11 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { createContext } from '../../../utils';
-import {getAccount} from './get-account';
+import {getAction} from './get-action';
 import * as MOCK from './get-action.mock';
 
-describe('account', () => {
-  const URL = '/account';
+describe('action', () => {
+  const URL = '/action';
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
@@ -17,16 +17,17 @@ describe('account', () => {
     axios,
     token: TOKEN,
   });
-  describe('get-account', () => {
+  describe('get-action', () => {
     it('should be a fn', () => {
-      expect(typeof getAccount).toBe('function');
+      expect(typeof getAction).toBe('function');
     });
     it('should return a fn', () => {
-      expect(typeof getAccount(context)).toBe('function');
+      expect(typeof getAction(context)).toBe('function');
     });
-    it('should return IResponse<IGetAccountApiResponse>', async () => {
-      const _getAccount = getAccount(context);
-      const response = await _getAccount();
+    it('should return IResponse<IGetActionApiResponse>', async () => {
+      const _getAction = getAction(context);
+      const actionId = MOCK.response.body.action.id;
+      const response = await _getAction({id: actionId});
       Object.assign(response, { request: mock.history.get[0]});
       /// validate response schema
       expect(typeof response).toBe('object');
@@ -41,15 +42,17 @@ describe('account', () => {
       expect(request.headers).toMatchObject(MOCK.request.headers);
       /// validate data
       expect(response.data).toBeDefined();
-      expect(response.data.account).toBeDefined();
-      const {account} = response.data;
-      expect(typeof account.droplet_limit).toBe('number');
-      expect(typeof account.email_verified).toBe('boolean');
-      expect(typeof account.email).toBe('string');
-      expect(typeof account.floating_ip_limit).toBe('number');
-      expect(typeof account.status_message).toBe('string');
-      expect(typeof account.status).toBe('string');
-      expect(typeof account.uuid).toBe('string');
+      expect(response.data.action).toBeDefined();
+      const {action} = response.data;
+      expect(typeof action.completed_at).toBe('string');
+      expect(typeof action.id).toBe('string');
+      expect(typeof action.region_slug).toBe('string');
+      expect(typeof action.resource_type).toBe('string');
+      expect(typeof action.resource_id).toBe('number');
+      expect(typeof action.started_at).toBe('string')
+      expect(typeof action.status).toBe('string')
+      expect(['in-progress', 'completed', 'errored']).toContain(action.status);
+      expect(typeof action.type).toBe('string');
       /// validate headers
       const {headers, status} = response;
       expect(headers).toMatchObject(MOCK.response.headers);
