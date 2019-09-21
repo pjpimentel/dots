@@ -7,7 +7,6 @@ export interface IGetAccountApiResponse {
 type GetAccountResponse = IResponse<IGetAccountApiResponse>;
 
 export const getAccount = ({
-  endpoint,
   httpClient,
 }: IContext<AxiosInstance>) => async (): Promise<Readonly<GetAccountResponse>> => {
   const path = '/account';

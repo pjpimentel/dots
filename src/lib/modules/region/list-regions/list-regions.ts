@@ -7,7 +7,6 @@ export interface IListRegionsApiResponse extends IListResponse {
 type ListRegionsResponse = IResponse<IListRegionsApiResponse>;
 
 export const listRegions = ({
-  endpoint,
   httpClient,
 }: IContext<AxiosInstance>) => async ({
   page = 1,

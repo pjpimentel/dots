@@ -7,7 +7,6 @@ export interface IListSizeApiResponse extends IListResponse {
 type ListSizesResponse = IResponse<IListSizeApiResponse>;
 
 export const listSizes = ({
-  endpoint,
   httpClient,
 }: IContext<AxiosInstance>) => async ({
   page = 1,
