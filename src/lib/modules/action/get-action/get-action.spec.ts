@@ -5,7 +5,7 @@ import {getAction} from './get-action';
 import * as MOCK from './get-action.mock';
 
 describe('action', () => {
-  const URL = '/action';
+  const URL = `/action/${MOCK.response.body.action.id}`;
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
@@ -45,7 +45,7 @@ describe('action', () => {
       expect(response.data.action).toBeDefined();
       const {action} = response.data;
       expect(typeof action.completed_at).toBe('string');
-      expect(typeof action.id).toBe('string');
+      expect(typeof action.id).toBe('number');
       expect(typeof action.region_slug).toBe('string');
       expect(typeof action.resource_type).toBe('string');
       expect(typeof action.resource_id).toBe('number');

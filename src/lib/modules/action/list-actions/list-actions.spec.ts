@@ -55,7 +55,7 @@ describe('action', () => {
       const {actions} = response.data;
       const [action] = actions;
       expect(typeof action.completed_at).toBe('string');
-      expect(typeof action.id).toBe('string');
+      expect(typeof action.id).toBe('number');
       expect(typeof action.region_slug).toBe('string');
       expect(typeof action.resource_type).toBe('string');
       expect(typeof action.resource_id).toBe('number');
