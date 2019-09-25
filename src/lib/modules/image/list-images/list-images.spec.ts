@@ -54,7 +54,7 @@ describe('image', () => {
       expect(response.data.images).toBeDefined();
       const {images} = response.data;
       const [image] = images;
-      expect(typeof image.id).toBe('string');
+      expect(typeof image.id).toBe('number');
       expect(typeof image.name).toBe('string');
       expect(typeof image.type).toBe('string');
       expect(typeof image.status).toBe('string');
@@ -64,7 +64,6 @@ describe('image', () => {
       image.regions.forEach((region) => {
         expect(typeof region).toBe('string');
       });
-      expect(typeof image.slug).toBe('string');
       /// validate headers
       const {headers, status} = response;
       expect(headers).toMatchObject(MOCK.response.headers);
