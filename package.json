@@ -8,7 +8,7 @@
     "prepublish": "npm run build",
     "build": "rm -rf ./dist && tsc",
     "test:unit": "ts-node node_modules/.bin/jasmine --config=./src/spec/support/jasmine.json",
-    "test:coverage": "node_modules/.bin/nyc npm run test:unit",
+    "test:coverage": "jest",
     "test": "jest"
   },
   "repository": {
