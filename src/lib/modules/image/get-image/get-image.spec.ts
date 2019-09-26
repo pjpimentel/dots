@@ -5,8 +5,8 @@ import {getImage} from './get-image';
 import * as MOCK from './get-image.mock';
 
 describe('image', () => {
-  const URL_BY_ID = `/image/${MOCK.response.body.image.id}`;
-  const URL_BY_SLUG = `/image/${MOCK.response.body.image.slug}`;
+  const URL_BY_ID = `/images/${MOCK.response.body.image.id}`;
+  const URL_BY_SLUG = `/images/${MOCK.response.body.image.slug}`;
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
   mock.onGet(URL_BY_ID).reply(

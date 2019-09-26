@@ -4,7 +4,7 @@ export interface ICreateCustomImageApiResponse {
   image: IImage;
 }
 
-export interface ICreateCustomImageApiRequest extends IListRequest {
+export interface ICreateCustomImageApiRequest {
     description?: string;
     distribution?: string;
     name: string;
