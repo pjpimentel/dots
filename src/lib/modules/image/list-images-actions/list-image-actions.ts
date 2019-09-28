@@ -8,7 +8,7 @@ export interface IListImageActionsApiRequest extends IListRequest {
   id: number;
 }
 
-type ListImageActionssResponse = IResponse<IListImageActionsApiResponse>;
+type ListImageActionsResponse = IResponse<IListImageActionsApiResponse>;
 
 export const listImageActions = ({
   httpClient,
@@ -16,7 +16,7 @@ export const listImageActions = ({
   page = 1,
   perPage = 25,
   id,
-}: IListImageActionsApiRequest): Promise<Readonly<ListImageActionssResponse>> => {
+}: IListImageActionsApiRequest): Promise<Readonly<ListImageActionsResponse>> => {
   const path = `/images/${id}/actions`;
   const queryParams = {page, per_page: perPage};
   const url = `${path}`;

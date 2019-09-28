@@ -30,7 +30,7 @@ describe('image', () => {
     it('should return a fn', () => {
       expect(typeof listImageActions(context)).toBe('function');
     });
-    it('should return IResponse<IListImageApiResponse>', async () => {
+    it('should return IResponse<IListImageActionsResponse>', async () => {
       const _listImageActions = listImageActions(context);
       const response = await _listImageActions({
         id: IMAGE_ID,
