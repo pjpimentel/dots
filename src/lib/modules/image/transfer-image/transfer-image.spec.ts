@@ -21,14 +21,14 @@ describe('image', () => {
   beforeEach(() => {
     mock.resetHistory();
   });
-  describe('update-image', () => {
+  describe('transfer-image', () => {
     it('should be a fn', () => {
       expect(typeof transferImage).toBe('function');
     });
     it('should return a fn', () => {
       expect(typeof transferImage(context)).toBe('function');
     });
-    it('should return IResponse<IUpdateImageApiResponse>', async () => {
+    it('should return IResponse<ITransferImageApiResponse>', async () => {
       const _transferImage = transferImage(context);
       const response = await _transferImage({
         id: IMAGE_ID,
@@ -47,7 +47,10 @@ describe('image', () => {
       expect(request.method).toBe('post');
       expect(request.headers).toMatchObject(MOCK.request.headers);
       expect(request.data).toBeDefined();
-      expect(JSON.parse(request.data)).toMatchObject(MOCK.request.body);
+      const body = JSON.parse(request.data);
+      expect(body).toMatchObject(MOCK.request.body);
+      expect(body.type).toBe('transfer');
+      expect(typeof body.region).toBe('string');
       /// validate data
       expect(response.data).toBeDefined();
       const {action} = response.data;
