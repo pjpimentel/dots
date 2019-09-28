@@ -1,3 +1,4 @@
+export * from './convert-image-to-snapshot/convert-image-to-snapshot';
 export * from './create-custom-image/create-custom-image';
 export * from './delete-image/delete-image';
 export * from './get-image/get-image';
