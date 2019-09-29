@@ -55,7 +55,7 @@ describe('snapshot', () => {
       expect(response.data.snapshots).toBeDefined();
       const {snapshots} = response.data;
       const [snapshot] = snapshots;
-      expect(typeof snapshot.id).toBe('number');
+      expect(typeof snapshot.id).toBe('string');
       expect(typeof snapshot.name).toBe('string');
       expect(typeof snapshot.min_disk_size).toBe('number');
       expect(typeof snapshot.size_gigabytes).toBe('number');

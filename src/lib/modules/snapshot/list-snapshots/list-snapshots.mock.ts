@@ -8,7 +8,7 @@ export const response = {
     "body": {
       "snapshots": [
         {
-          "id": 6372321,
+          "id": '6372321',
           "name": "5.10 x64",
           "regions": [
             "nyc1",
