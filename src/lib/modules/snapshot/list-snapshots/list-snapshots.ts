@@ -6,7 +6,9 @@ export interface IListSnapshotApiResponse extends IListResponse {
 
 export type ISnapshotType = 'distribution' | 'application' | undefined;
 
-export interface IListSnapshotApiRequest extends IListRequest {}
+export interface IListSnapshotApiRequest extends IListRequest {
+  resourceType?: 'droplet' | 'volume';
+}
 
 type ListSnapshotsResponse = IResponse<IListSnapshotApiResponse>;
 
@@ -15,9 +17,14 @@ export const listSnapshots = ({
 }: IContext<AxiosInstance>) => async ({
   page = 1,
   perPage = 25,
-}: IListRequest): Promise<Readonly<ListSnapshotsResponse>> => {
+  resourceType = undefined,
+}: IListSnapshotApiRequest): Promise<Readonly<ListSnapshotsResponse>> => {
   const path = '/snapshots';
   const queryParams = {page, per_page: perPage};
+  const hasResourceTypeFilter = typeof resourceType === 'string';
+
+  if (hasResourceTypeFilter) Object.assign(queryParams, {resource_type: resourceType});
+
   const url = `${path}`;
 
   return httpClient.get<IListSnapshotApiResponse>(url, {params: queryParams});

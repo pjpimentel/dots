@@ -47,6 +47,7 @@ describe('snapshot', () => {
       expect(request.params).toBeDefined();
       expect(request.params.page).toBe(PAGE);
       expect(request.params.per_page).toBe(PER_PAGE);
+      expect(request.params.resource_type).toBeUndefined();
       /// validate data
       expect(response.data).toBeDefined();
       expect(response.data.links).toBeDefined();
@@ -78,6 +79,26 @@ describe('snapshot', () => {
       expect(request.params).toBeDefined();
       expect(request.params.page).toBe(defaultPage);
       expect(request.params.per_page).toBe(defaultPerPage);
+    });
+    it('should accept `resourceType` filter', async () => {
+      const firstType = 'droplet';
+      const secondType = 'volume';
+
+      const _listSnapshots = listSnapshots(context);
+      const firstResponse = await _listSnapshots({resourceType: firstType});
+      const secondResponse = await _listSnapshots({resourceType: secondType});
+
+      Object.assign(firstResponse, { request: mock.history.get[0]});
+      Object.assign(secondResponse, { request: mock.history.get[1]});
+      /// validate both requests
+      const [
+        {request: {params: firstParams}},
+        {request: {params: secondParams}},
+      ] = await Promise.all([firstResponse, secondResponse]);
+      expect(firstParams).toBeDefined();
+      expect(firstParams.resource_type).toBe(firstType);
+      expect(secondParams).toBeDefined();
+      expect(secondParams.resource_type).toBe(secondType);
     });
   });
 });
