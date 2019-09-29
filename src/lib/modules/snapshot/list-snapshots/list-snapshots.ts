@@ -23,7 +23,9 @@ export const listSnapshots = ({
   const queryParams = {page, per_page: perPage};
   const hasResourceTypeFilter = typeof resourceType === 'string';
 
-  if (hasResourceTypeFilter) Object.assign(queryParams, {resource_type: resourceType});
+  if (hasResourceTypeFilter) {
+    Object.assign(queryParams, {resource_type: resourceType,});
+  }
 
   const url = `${path}`;
 
