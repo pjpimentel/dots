@@ -31,7 +31,7 @@ describe('image', () => {
     });
     it('should return IResponse<IListImageApiResponse>', async () => {
       const _listImages = listImages(context);
-      const response = await _listImages({page: PAGE, perPage: PER_PAGE});
+      const response = await _listImages({page: PAGE, per_page: PER_PAGE});
       Object.assign(response, { request: mock.history.get[0]});
       /// validate response schema
       expect(typeof response).toBe('object');
@@ -71,7 +71,7 @@ describe('image', () => {
     });
     it('should have default parameters', async () => {
       const defaultPage = 1;
-      const defaultPerPage = 25;
+      const defaultper_page = 25;
       const _listImages = listImages(context);
       const response = await _listImages({});
       Object.assign(response, { request: mock.history.get[0]});
@@ -79,7 +79,7 @@ describe('image', () => {
       const {request} = response;
       expect(request.params).toBeDefined();
       expect(request.params.page).toBe(defaultPage);
-      expect(request.params.per_page).toBe(defaultPerPage);
+      expect(request.params.per_page).toBe(defaultper_page);
     });
     it('should accept `tagName` filter', async () => {
       const tagName = 'my-tag-name';

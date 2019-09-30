@@ -31,7 +31,7 @@ describe('volume', () => {
     });
     it('should return IResponse<ListVolumesResponse>', async () => {
       const _listVolumes = listVolumes(context);
-      const response = await _listVolumes({page: PAGE, perPage: PER_PAGE});
+      const response = await _listVolumes({page: PAGE, per_page: PER_PAGE});
       Object.assign(response, {request: mock.history.get[0]});
       /// validate response schema
       expect(typeof response).toBe('object');
@@ -64,7 +64,7 @@ describe('volume', () => {
     });
     it('should have default parameters', async () => {
       const defaultPage = 1;
-      const defaultPerPage = 25;
+      const defaultper_page = 25;
       const _listVolumes = listVolumes(context);
       const response = await _listVolumes({});
       Object.assign(response, { request: mock.history.get[0]});
@@ -72,7 +72,7 @@ describe('volume', () => {
       const {request} = response;
       expect(request.params).toBeDefined();
       expect(request.params.page).toBe(defaultPage);
-      expect(request.params.per_page).toBe(defaultPerPage);
+      expect(request.params.per_page).toBe(defaultper_page);
     });
     it('should accept `name` filter', async () => {
       const name = 'my-volume';

@@ -35,7 +35,7 @@ describe('image', () => {
       const response = await _listImageActions({
         id: IMAGE_ID,
         page: PAGE,
-        perPage: PER_PAGE,
+        per_page: PER_PAGE,
       });
       Object.assign(response, { request: mock.history.get[0]});
       /// validate response schema
@@ -70,7 +70,7 @@ describe('image', () => {
     });
     it('should have default parameters', async () => {
       const defaultPage = 1;
-      const defaultPerPage = 25;
+      const defaultper_page = 25;
       const _listImageActions = listImageActions(context);
       const response = await _listImageActions({id: IMAGE_ID});
       Object.assign(response, { request: mock.history.get[0]});
@@ -78,7 +78,7 @@ describe('image', () => {
       const {request} = response;
       expect(request.params).toBeDefined();
       expect(request.params.page).toBe(defaultPage);
-      expect(request.params.per_page).toBe(defaultPerPage);
+      expect(request.params.per_page).toBe(defaultper_page);
     });
   });
 });

@@ -10,10 +10,10 @@ export const listSizes = ({
   httpClient,
 }: IContext<AxiosInstance>) => async ({
   page = 1,
-  perPage = 25,
+  per_page = 25,
 }: IListRequest): Promise<Readonly<ListSizesResponse>> => {
   const path = '/sizes';
-  const queryParams = {page, per_page: perPage};
+  const queryParams = {page, per_page};
   const url = `${path}`;
 
   return httpClient.get<IListSizeApiResponse>(url, {params: queryParams});

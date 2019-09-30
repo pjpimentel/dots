@@ -15,10 +15,10 @@ export const listVolumes = ({
 }: IContext<AxiosInstance>) => async ({
   name,
   page = 1,
-  perPage = 25,
+  per_page = 25,
 }: IListVolumesApiRequest): Promise<Readonly<ListVolumesResponse>> => {
   const path = '/volumes';
-  const queryParams = {page, per_page: perPage};
+  const queryParams = {page, per_page};
   const hasNameFilter = typeof name === 'string';
 
   if (hasNameFilter) Object.assign(queryParams, {name});

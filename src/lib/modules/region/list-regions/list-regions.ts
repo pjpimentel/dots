@@ -10,10 +10,10 @@ export const listRegions = ({
   httpClient,
 }: IContext<AxiosInstance>) => async ({
   page = 1,
-  perPage = 25,
+  per_page = 25,
 }: IListRequest): Promise<Readonly<ListRegionsResponse>> => {
   const path = '/regions';
-  const queryParams = {page, per_page: perPage};
+  const queryParams = {page, per_page};
   const url = `${path}`;
 
   return httpClient.get<IListRegionsApiResponse>(url, {params: queryParams});

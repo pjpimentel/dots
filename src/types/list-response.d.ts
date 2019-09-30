@@ -5,6 +5,6 @@ interface IListResponse {
 }
 // items: C[];
 // lastPage: number;
-// perPage: number;
+// per_page: number;
 // total: number;
 // currentPage: number;

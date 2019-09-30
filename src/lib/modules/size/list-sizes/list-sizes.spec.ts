@@ -31,7 +31,7 @@ describe('size', () => {
     });
     it('should return IResponse<IListSizeApiResponse>', async () => {
       const _listSizes = listSizes(context);
-      const response = await _listSizes({page: PAGE, perPage: PER_PAGE});
+      const response = await _listSizes({page: PAGE, per_page: PER_PAGE});
       Object.assign(response, { request: mock.history.get[0]});
       /// validate response schema
       expect(typeof response).toBe('object');
@@ -73,7 +73,7 @@ describe('size', () => {
     });
     it('should have default parameters', async () => {
       const defaultPage = 1;
-      const defaultPerPage = 25;
+      const defaultper_page = 25;
       const _listSizes = listSizes(context);
       const response = await _listSizes({});
       Object.assign(response, { request: mock.history.get[0]});
@@ -81,7 +81,7 @@ describe('size', () => {
       const {request} = response;
       expect(request.params).toBeDefined();
       expect(request.params.page).toBe(defaultPage);
-      expect(request.params.per_page).toBe(defaultPerPage);
+      expect(request.params.per_page).toBe(defaultper_page);
     });
   });
 });

@@ -18,13 +18,13 @@ export const listImages = ({
   httpClient,
 }: IContext<AxiosInstance>) => async ({
   page = 1,
-  perPage = 25,
+  per_page = 25,
   tagName,
   type,
   userImages,
 }: IListImageApiRequest): Promise<Readonly<ListImagesResponse>> => {
   const path = '/images';
-  const queryParams = {page, per_page: perPage};
+  const queryParams = {page, per_page};
   const hasTypeFilter = typeof type === 'string';
   const hasPrivateFilter = typeof userImages === 'boolean';
   const hasTagFilter = typeof tagName === 'string';

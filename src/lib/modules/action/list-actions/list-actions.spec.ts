@@ -31,7 +31,7 @@ describe('action', () => {
     });
     it('should return IResponse<IListActionApiResponse>', async () => {
       const _listActions = listActions(context);
-      const response = await _listActions({page: PAGE, perPage: PER_PAGE});
+      const response = await _listActions({page: PAGE, per_page: PER_PAGE});
       Object.assign(response, { request: mock.history.get[0]});
       /// validate response schema
       expect(typeof response).toBe('object');
@@ -70,7 +70,7 @@ describe('action', () => {
     });
     it('should have default parameters', async () => {
       const defaultPage = 1;
-      const defaultPerPage = 25;
+      const defaultper_page = 25;
       const _listActions = listActions(context);
       const response = await _listActions({});
       Object.assign(response, { request: mock.history.get[0]});
@@ -78,7 +78,7 @@ describe('action', () => {
       const {request} = response;
       expect(request.params).toBeDefined();
       expect(request.params.page).toBe(defaultPage);
-      expect(request.params.per_page).toBe(defaultPerPage);
+      expect(request.params.per_page).toBe(defaultper_page);
     });
   });
 });

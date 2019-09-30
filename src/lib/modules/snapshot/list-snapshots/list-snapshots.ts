@@ -14,11 +14,11 @@ export const listSnapshots = ({
   httpClient,
 }: IContext<AxiosInstance>) => async ({
   page = 1,
-  perPage = 25,
+  per_page = 25,
   resourceType = undefined,
 }: IListSnapshotApiRequest): Promise<Readonly<ListSnapshotsResponse>> => {
   const path = '/snapshots';
-  const queryParams = {page, per_page: perPage};
+  const queryParams = {page, per_page};
   const hasResourceTypeFilter = typeof resourceType === 'string';
 
   if (hasResourceTypeFilter) {

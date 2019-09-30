@@ -31,7 +31,7 @@ describe('snapshot', () => {
     });
     it('should return IResponse<IListImageApiResponse>', async () => {
       const _listSnapshots = listSnapshots(context);
-      const response = await _listSnapshots({page: PAGE, perPage: PER_PAGE});
+      const response = await _listSnapshots({page: PAGE, per_page: PER_PAGE});
       Object.assign(response, { request: mock.history.get[0]});
       /// validate response schema
       expect(typeof response).toBe('object');
@@ -70,7 +70,7 @@ describe('snapshot', () => {
     });
     it('should have default parameters', async () => {
       const defaultPage = 1;
-      const defaultPerPage = 25;
+      const defaultper_page = 25;
       const _listSnapshots = listSnapshots(context);
       const response = await _listSnapshots({});
       Object.assign(response, { request: mock.history.get[0]});
@@ -78,7 +78,7 @@ describe('snapshot', () => {
       const {request} = response;
       expect(request.params).toBeDefined();
       expect(request.params.page).toBe(defaultPage);
-      expect(request.params.per_page).toBe(defaultPerPage);
+      expect(request.params.per_page).toBe(defaultper_page);
     });
     it('should accept `resourceType` filter', async () => {
       const firstType = 'droplet';
