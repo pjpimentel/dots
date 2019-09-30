@@ -81,15 +81,15 @@ describe('image', () => {
       expect(request.params.page).toBe(defaultPage);
       expect(request.params.per_page).toBe(defaultper_page);
     });
-    it('should accept `tagName` filter', async () => {
-      const tagName = 'my-tag-name';
+    it('should accept `tag_name` filter', async () => {
+      const tag_name = 'my-tag-name';
       const _listImages = listImages(context);
-      const response = await _listImages({tagName});
+      const response = await _listImages({tag_name});
       Object.assign(response, { request: mock.history.get[0]});
       /// validate request
       const {request} = response;
       expect(request.params).toBeDefined();
-      expect(request.params.tag_name).toBe(tagName);
+      expect(request.params.tag_name).toBe(tag_name);
     });
     it('should accept `type` filter', async () => {
       const type = 'distribution';
@@ -101,15 +101,15 @@ describe('image', () => {
       expect(request.params).toBeDefined();
       expect(request.params.type).toBe(type);
     });
-    it('should accept `userImages` filter', async () => {
-      const userImages = true
+    it('should accept `user_images` filter', async () => {
+      const user_images = true
       const _listImages = listImages(context);
-      const response = await _listImages({userImages});
+      const response = await _listImages({user_images});
       Object.assign(response, { request: mock.history.get[0]});
       /// validate request
       const {request} = response;
       expect(request.params).toBeDefined();
-      expect(request.params.private).toBe(userImages);
+      expect(request.params.private).toBe(user_images);
     });
   });
 });

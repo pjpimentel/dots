@@ -80,13 +80,13 @@ describe('snapshot', () => {
       expect(request.params.page).toBe(defaultPage);
       expect(request.params.per_page).toBe(defaultper_page);
     });
-    it('should accept `resourceType` filter', async () => {
+    it('should accept `resource_type` filter', async () => {
       const firstType = 'droplet';
       const secondType = 'volume';
 
       const _listSnapshots = listSnapshots(context);
-      const firstResponse = await _listSnapshots({resourceType: firstType});
-      const secondResponse = await _listSnapshots({resourceType: secondType});
+      const firstResponse = await _listSnapshots({resource_type: firstType});
+      const secondResponse = await _listSnapshots({resource_type: secondType});
 
       Object.assign(firstResponse, { request: mock.history.get[0]});
       Object.assign(secondResponse, { request: mock.history.get[1]});

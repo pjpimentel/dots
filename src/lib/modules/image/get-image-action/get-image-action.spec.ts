@@ -29,7 +29,7 @@ describe('image', () => {
     it('should return IResponse<IGetImageActionApiResponse>', async () => {
       const _getImageAction = getImageAction(context);
       const response = await _getImageAction({
-        actionId: ACTION_ID,
+        action_id: ACTION_ID,
         id: IMAGE_ID,
       });
       Object.assign(response, { request: mock.history.get[0]});

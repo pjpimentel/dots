@@ -26,8 +26,8 @@ describe('action', () => {
     });
     it('should return IResponse<IGetActionApiResponse>', async () => {
       const _getAction = getAction(context);
-      const actionId = MOCK.response.body.action.id;
-      const response = await _getAction({id: actionId});
+      const action_id = MOCK.response.body.action.id;
+      const response = await _getAction({id: action_id});
       Object.assign(response, { request: mock.history.get[0]});
       /// validate response schema
       expect(typeof response).toBe('object');

@@ -8,8 +8,8 @@ export type IImageType = 'distribution' | 'application' | undefined;
 
 export interface IListImageApiRequest extends IListRequest {
     type?: IImageType;
-    userImages?: boolean;
-    tagName?: string;
+    user_images?: boolean;
+    tag_name?: string;
 }
 
 type ListImagesResponse = IResponse<IListImageApiResponse>;
@@ -19,19 +19,19 @@ export const listImages = ({
 }: IContext<AxiosInstance>) => async ({
   page = 1,
   per_page = 25,
-  tagName,
+  tag_name,
   type,
-  userImages,
+  user_images,
 }: IListImageApiRequest): Promise<Readonly<ListImagesResponse>> => {
   const path = '/images';
   const queryParams = {page, per_page};
   const hasTypeFilter = typeof type === 'string';
-  const hasPrivateFilter = typeof userImages === 'boolean';
-  const hasTagFilter = typeof tagName === 'string';
+  const hasPrivateFilter = typeof user_images === 'boolean';
+  const hasTagFilter = typeof tag_name === 'string';
 
   if (hasTypeFilter) Object.assign(queryParams, {type});
-  if (hasPrivateFilter) Object.assign(queryParams, {private: userImages});
-  if (hasTagFilter) Object.assign(queryParams, {tag_name: tagName});
+  if (hasPrivateFilter) Object.assign(queryParams, {private: user_images});
+  if (hasTagFilter) Object.assign(queryParams, {tag_name});
 
   const url = `${path}`;
 
