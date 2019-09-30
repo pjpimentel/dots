@@ -4,8 +4,6 @@ export interface IListSnapshotApiResponse extends IListResponse {
   snapshots: ISnapshot[];
 }
 
-export type ISnapshotType = 'distribution' | 'application' | undefined;
-
 export interface IListSnapshotApiRequest extends IListRequest {
   resourceType?: 'droplet' | 'volume';
 }
