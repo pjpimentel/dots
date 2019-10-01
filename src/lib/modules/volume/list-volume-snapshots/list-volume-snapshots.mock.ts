@@ -25,8 +25,7 @@ export const response = {
       "meta": {
         "total": 1
       }
-    }
-    ,
+    },
     "headers": {
       "content-type": "application/json; charset=utf-8",
       "status": 200,
