@@ -1,8 +1,8 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { createContext } from '../../../utils';
-import {attachVolumeToDroplet} from './attach-volume-to-droplet';
-import * as MOCK from './attach-volume-to-droplet.mock';
+import {detachVolumeFromDroplet} from './detach-volume-from-droplet';
+import * as MOCK from './detach-volume-from-droplet.mock';
 
 describe('volume', () => {
   const VOLUME_ID = MOCK.response.body.action.resource_id;
@@ -26,16 +26,16 @@ describe('volume', () => {
   beforeEach(() => {
     mock.resetHistory();
   });
-  describe('attach-volume-to-droplet', () => {
+  describe('detach-volume-to-droplet', () => {
     it('should be a fn', () => {
-      expect(typeof attachVolumeToDroplet).toBe('function');
+      expect(typeof detachVolumeFromDroplet).toBe('function');
     });
     it('should return a fn', () => {
-      expect(typeof attachVolumeToDroplet(context)).toBe('function');
+      expect(typeof detachVolumeFromDroplet(context)).toBe('function');
     });
-    it('should return IResponse<AttachVolumeToDropletResponse>', async () => {
-      const _attachVolumeToDroplet = attachVolumeToDroplet(context);
-      const response = await _attachVolumeToDroplet({
+    it('should return IResponse<DetachVolumeToDropletResponse>', async () => {
+      const _detachVolumeFromDroplet = detachVolumeFromDroplet(context);
+      const response = await _detachVolumeFromDroplet({
         id: VOLUME_ID,
         ...MOCK.request.body
       });
@@ -54,7 +54,7 @@ describe('volume', () => {
       expect(request.data).toBeDefined();
       const requestBody = JSON.parse(request.data);
       expect(requestBody).toMatchObject(MOCK.request.body);
-      expect(requestBody.type).toBe('attach');
+      expect(requestBody.type).toBe('detach');
       /// validate data
       expect(response.data).toBeDefined();
       const {action} = response.data;
@@ -66,8 +66,8 @@ describe('volume', () => {
       expect(status).toBe(MOCK.response.headers.status);
     });
     it('should POST only required parameters', async () => {
-      const _attachVolumeToDroplet = attachVolumeToDroplet(context);
-      const response = await _attachVolumeToDroplet({
+      const _detachVolumeFromDroplet = detachVolumeFromDroplet(context);
+      const response = await _detachVolumeFromDroplet({
         id: VOLUME_ID,
         ...MOCK.request.minimumBody
       });
