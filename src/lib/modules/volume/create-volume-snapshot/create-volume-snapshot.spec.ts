@@ -5,8 +5,6 @@ import {createVolumeSnapshot} from './create-volume-snapshot';
 import * as MOCK from './create-volume-snapshot.mock';
 
 describe('volume', () => {
-  const PAGE = 3;
-  const PER_PAGE = 26;
   const VOLUME_ID = MOCK.response.body.snapshot.resource_id;
   const SNAPSHOT_NAME = MOCK.request.body.name;
   const URL = `/volumes/${VOLUME_ID}/snapshots`;
