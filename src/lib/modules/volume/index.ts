@@ -1,3 +1,4 @@
+export * from './attach-volume-to-droplet/attach-volume-to-droplet';
 export * from './create-volume-snapshot/create-volume-snapshot';
 export * from './create-volume/create-volume';
 export * from './delete-volume/delete-volume';
