@@ -28,7 +28,6 @@ describe('action', () => {
     });
     it('should return IResponse<IGetActionApiResponse>', async () => {
       const _getVolumeAction = getVolumeAction(context);
-      const action_id = MOCK.response.body.action.id;
       const response = await _getVolumeAction({
         action_id: ACTION_ID,
         volume_id: VOLUME_ID,
