@@ -6,3 +6,4 @@ export * from './detach-volume-from-droplet/detach-volume-from-droplet';
 export * from './get-volume/get-volume';
 export * from './list-volume-snapshots/list-volume-snapshots';
 export * from './list-volumes/list-volumes';
+export * from './resize-volume/resize-volume';
