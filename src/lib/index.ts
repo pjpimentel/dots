@@ -1,3 +1,4 @@
+export * from './modules/droplet';
 export * from './modules/account';
 export * from './modules/action';
 export * from './modules/image'

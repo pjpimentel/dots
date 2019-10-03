@@ -1,6 +1,6 @@
 import { AxiosInstance } from 'axios';
 
-export interface ICreateVolumeApiResponse extends IListResponse {
+export interface ICreateVolumeApiResponse {
   volume: IVolume;
 }
 
