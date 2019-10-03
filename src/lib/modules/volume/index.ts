@@ -4,6 +4,7 @@ export * from './create-volume/create-volume';
 export * from './delete-volume/delete-volume';
 export * from './detach-volume-from-droplet/detach-volume-from-droplet';
 export * from './get-volume/get-volume';
+export * from './list-volume-actions/list-volume-actions';
 export * from './list-volume-snapshots/list-volume-snapshots';
 export * from './list-volumes/list-volumes';
 export * from './resize-volume/resize-volume';
