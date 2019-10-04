@@ -10,7 +10,7 @@ interface IDroplet {
   locked: boolean;
   memory: number;
   name: string;
-  networks:	object[]; // TODO: INetwork[];
+  networks:	INetwork;
   next_backup_window: object; // TODO: IBackupWindow
   region: string;
   size_slug: string;
