@@ -4,6 +4,7 @@ export * from './get-droplet/get-droplet';
 export * from './list-droplet-actions/list-droplet-actions';
 export * from './list-droplet-backups/list-droplet-backups';
 export * from './list-droplet-kernels/list-droplet-kernels';
+export * from './list-droplet-neighborhoods/list-droplet-neighborhoods';
 export * from './list-droplet-neighbors/list-droplet-neighbors';
 export * from './list-droplet-snapshots/list-droplet-snapshots';
 export * from './list-droplets/list-droplets';
