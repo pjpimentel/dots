@@ -5,6 +5,7 @@ export * from './delete-droplet/delete-droplet';
 export * from './disable-droplet-backups/disable-droplet-backups';
 export * from './enable-droplet-backups/enable-droplet-backups';
 export * from './enable-droplet-ipv6/enable-droplet-ipv6';
+export * from './enable-droplet-private-networking/enable-droplet-private-networking';
 export * from './get-droplet/get-droplet';
 export * from './list-droplet-actions/list-droplet-actions';
 export * from './list-droplet-backups/list-droplet-backups';
