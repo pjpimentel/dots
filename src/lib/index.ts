@@ -1,13 +1,12 @@
 import * as modules from './modules';
-import * as utils from './utils';
+import * as _utils from './utils';
 
-export const dotsWrapper = {
-  modules,
-  utils: {
-    ...utils,
-    createApiClient: utils.createApiClient({
-      modules,
-      createContext: utils.createContext,
-    }),
-  },
+const utils = {
+  createApiClient: _utils.createApiClient({
+    modules,
+    createContext: _utils.createContext,
+  }),
+  createContext: _utils.createContext,
 };
+
+export {modules, utils};
