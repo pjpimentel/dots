@@ -20,6 +20,6 @@
   ],
   "include": [
     "src/lib/**/*",
-    "src/types",
+    "src/types", "src/index.ts", "src/index.spec.ts", "src/utils", "src/modules",
   ]
 }
