@@ -1,5 +1,6 @@
 export * from './create-droplet/create-droplet';
 export * from './create-droplets/create-droplets';
+export * from './delete-droplet/delete-droplet';
 export * from './get-droplet/get-droplet';
 export * from './list-droplet-actions/list-droplet-actions';
 export * from './list-droplet-backups/list-droplet-backups';
