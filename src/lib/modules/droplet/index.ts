@@ -3,6 +3,7 @@ export * from './create-droplet/create-droplet';
 export * from './create-droplets/create-droplets';
 export * from './delete-droplet/delete-droplet';
 export * from './disable-droplet-backups/disable-droplet-backups';
+export * from './do-action-by-droplet-tag/do-action-by-droplet-tag';
 export * from './enable-droplet-backups/enable-droplet-backups';
 export * from './enable-droplet-ipv6/enable-droplet-ipv6';
 export * from './enable-droplet-private-networking/enable-droplet-private-networking';
