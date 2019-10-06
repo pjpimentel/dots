@@ -7,6 +7,7 @@ export * from './do-action-by-droplet-tag/do-action-by-droplet-tag';
 export * from './enable-droplet-backups/enable-droplet-backups';
 export * from './enable-droplet-ipv6/enable-droplet-ipv6';
 export * from './enable-droplet-private-networking/enable-droplet-private-networking';
+export * from './get-droplet-action/get-droplet-action';
 export * from './get-droplet/get-droplet';
 export * from './list-droplet-actions/list-droplet-actions';
 export * from './list-droplet-backups/list-droplet-backups';
