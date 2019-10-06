@@ -12,5 +12,6 @@ export * from './list-droplet-neighbors/list-droplet-neighbors';
 export * from './list-droplet-snapshots/list-droplet-snapshots';
 export * from './list-droplets/list-droplets';
 export * from './power-cycle-droplet/power-cycle-droplet';
+export * from './power-off-droplet/power-off-droplet';
 export * from './reboot-droplet/reboot-droplet';
 export * from './shutdown-droplet/shutdown-droplet';
