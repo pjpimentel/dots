@@ -21,7 +21,7 @@ describe('droplet', () => {
   beforeEach(() => {
     mock.resetHistory();
   });
-  describe('reboot-droplet', () => {
+  describe('shutdown-droplet', () => {
     it('should be a fn', () => {
       expect(typeof shutdownDroplet).toBe('function');
     });
