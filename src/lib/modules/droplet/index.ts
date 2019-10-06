@@ -1,3 +1,4 @@
+export * from './change-droplet-kernel/change-droplet-kernel';
 export * from './create-droplet/create-droplet';
 export * from './create-droplets/create-droplets';
 export * from './delete-droplet/delete-droplet';
