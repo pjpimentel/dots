@@ -15,5 +15,6 @@ export * from './power-cycle-droplet/power-cycle-droplet';
 export * from './power-off-droplet/power-off-droplet';
 export * from './power-on-droplet/power-on-droplet';
 export * from './reboot-droplet/reboot-droplet';
+export * from './reset-droplet-password/reset-droplet-password';
 export * from './restore-droplet/restore-droplet';
 export * from './shutdown-droplet/shutdown-droplet';
