@@ -1,6 +1,7 @@
 export * from './create-droplet/create-droplet';
 export * from './create-droplets/create-droplets';
 export * from './delete-droplet/delete-droplet';
+export * from './disable-droplet-backups/disable-droplet-backups';
 export * from './enable-droplet-backups/enable-droplet-backups';
 export * from './get-droplet/get-droplet';
 export * from './list-droplet-actions/list-droplet-actions';
@@ -10,4 +11,4 @@ export * from './list-droplet-neighborhoods/list-droplet-neighborhoods';
 export * from './list-droplet-neighbors/list-droplet-neighbors';
 export * from './list-droplet-snapshots/list-droplet-snapshots';
 export * from './list-droplets/list-droplets';
-export * from './disable-droplet-backups/disable-droplet-backups';
+export * from './reboot-droplet/reboot-droplet';
