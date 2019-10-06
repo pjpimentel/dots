@@ -13,3 +13,4 @@ export * from './list-droplet-snapshots/list-droplet-snapshots';
 export * from './list-droplets/list-droplets';
 export * from './power-cycle-droplet/power-cycle-droplet';
 export * from './reboot-droplet/reboot-droplet';
+export * from './shutdown-droplet/shutdown-droplet';
