@@ -1,6 +1,6 @@
 import { AxiosInstance, AxiosRequestConfig, AxiosStatic } from 'axios';
 
-interface ICreateContextInput {
+export interface ICreateContextInput {
   axios: AxiosStatic;
   endpoint?: string;
   requestTimeoutInMs?: number;
