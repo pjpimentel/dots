@@ -10,3 +10,4 @@ export * from './list-droplet-neighborhoods/list-droplet-neighborhoods';
 export * from './list-droplet-neighbors/list-droplet-neighbors';
 export * from './list-droplet-snapshots/list-droplet-snapshots';
 export * from './list-droplets/list-droplets';
+export * from './disable-droplet-backups/disable-droplet-backups';
