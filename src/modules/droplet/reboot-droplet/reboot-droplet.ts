@@ -8,7 +8,7 @@ export interface IRebootDropletApiRequest {
   id: string;
 }
 
-type RebootDropletResponse = IResponse<IRebootDropletApiResponse>;
+export type RebootDropletResponse = IResponse<IRebootDropletApiResponse>;
 
 export const rebootDroplet = ({
   httpClient,

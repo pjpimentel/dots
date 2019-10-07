@@ -4,7 +4,7 @@ export interface IDeleteDropletApiRequest {
   id: string;
 }
 
-type DeleteDropletResponse = IResponse<void>;
+export type DeleteDropletResponse = IResponse<void>;
 
 export const deleteDroplet = ({
   httpClient,

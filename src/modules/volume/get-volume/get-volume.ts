@@ -8,7 +8,7 @@ export interface IGetVolumeApiRequest {
   id: string;
 }
 
-type GetVolumeResponse = IResponse<IGetVolumeApiResponse>;
+export type GetVolumeResponse = IResponse<IGetVolumeApiResponse>;
 
 export const getVolume = ({
   httpClient,

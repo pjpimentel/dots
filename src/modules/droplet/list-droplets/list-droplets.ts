@@ -8,7 +8,7 @@ export interface IListDropletsApiRequest extends IListRequest {
   tag_name?: string;
 }
 
-type ListDropletsResponse = IResponse<IListDropletsApiResponse>;
+export type ListDropletsResponse = IResponse<IListDropletsApiResponse>;
 
 export const listDroplets = ({
   httpClient,

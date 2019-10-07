@@ -8,7 +8,7 @@ export interface IGetDropletApiRequest {
   id: number;
 }
 
-type GetDropletResponse = IResponse<IGetDropletApiResponse>;
+export type GetDropletResponse = IResponse<IGetDropletApiResponse>;
 
 export const getDroplet = ({
   httpClient,

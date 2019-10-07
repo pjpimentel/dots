@@ -12,7 +12,7 @@ export interface IListImageApiRequest extends IListRequest {
     tag_name?: string;
 }
 
-type ListImagesResponse = IResponse<IListImageApiResponse>;
+export type ListImagesResponse = IResponse<IListImageApiResponse>;
 
 export const listImages = ({
   httpClient,

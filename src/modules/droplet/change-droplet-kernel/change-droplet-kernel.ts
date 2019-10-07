@@ -9,7 +9,7 @@ export interface IChangeDropletKernelApiRequest {
   kernel: number;
 }
 
-type ChangeDropletKernelResponse = IResponse<IChangeDropletKernelApiResponse>;
+export type ChangeDropletKernelResponse = IResponse<IChangeDropletKernelApiResponse>;
 
 export const changeDropletKernel = ({
   httpClient,

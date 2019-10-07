@@ -4,7 +4,7 @@ export interface IListActionApiResponse extends IListResponse {
   actions: IAction[];
 }
 
-type ListActionsResponse = IResponse<IListActionApiResponse>;
+export type ListActionsResponse = IResponse<IListActionApiResponse>;
 
 export const listActions = ({
   httpClient,

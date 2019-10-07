@@ -4,7 +4,7 @@ export interface IDeleteImageApiRequest {
   id: number;
 }
 
-type DeleteImageRes = IResponse<void>;
+export type DeleteImageRes = IResponse<void>;
 
 export const deleteImage = ({
   httpClient,

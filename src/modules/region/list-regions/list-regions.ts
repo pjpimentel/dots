@@ -4,7 +4,7 @@ export interface IListRegionsApiResponse extends IListResponse {
   regions: IRegion[];
 }
 
-type ListRegionsResponse = IResponse<IListRegionsApiResponse>;
+export type ListRegionsResponse = IResponse<IListRegionsApiResponse>;
 
 export const listRegions = ({
   httpClient,

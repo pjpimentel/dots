@@ -2,14 +2,12 @@
   "name": "dots-wrapper",
   "version": "2.6.0",
   "description": "Digital Ocean API V2 wrapper. TypeScript - Javascript",
-  "main": "dist/digitalOcean.js",
-  "types": "dist/digitalOcean.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "prepublish": "npm run build",
     "build": "rm -rf ./dist && tsc",
-    "test:unit": "ts-node node_modules/.bin/jasmine --config=./src/spec/support/jasmine.json",
-    "test:coverage": "jest",
-    "test": "jest"
+    "test": "jest",
+    "docs": "typedoc --json dist/docs.json --mode modules"
   },
   "repository": {
     "type": "git",
@@ -34,25 +32,7 @@
     "babel-jest": "^24.8.0",
     "jest": "^24.8.0",
     "ts-jest": "^24.0.2",
+    "typedoc": "^0.15.0",
     "typescript": "^3.5.3"
-  },
-  "nyc": {
-    "include": [
-      "src/**/*.ts"
-    ],
-    "extension": [
-      ".ts",
-      ".tsx"
-    ],
-    "require": [],
-    "reporter": [
-      "text-summary",
-      "text",
-      "html",
-      "lcov"
-    ],
-    "sourceMap": true,
-    "instrument": true,
-    "cache": false
   }
 }

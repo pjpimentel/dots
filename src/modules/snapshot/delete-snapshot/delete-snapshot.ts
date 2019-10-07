@@ -4,7 +4,7 @@ export interface IDeleteSnapshotApiRequest {
   id: number;
 }
 
-type DeleteSnapshotRes = IResponse<void>;
+export type DeleteSnapshotRes = IResponse<void>;
 
 export const deleteSnapshot = ({
   httpClient,

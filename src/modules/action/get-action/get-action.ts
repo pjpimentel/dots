@@ -8,7 +8,7 @@ export interface IGetActionApiResponse {
   action: IAction;
 }
 
-type GetActionResponse = IResponse<IGetActionApiResponse>;
+export type GetActionResponse = IResponse<IGetActionApiResponse>;
 
 export const getAction = ({
   httpClient,

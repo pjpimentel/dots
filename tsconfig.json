@@ -1,25 +1,28 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
+    "allowUnreachableCode": false,
     "declaration": true,
     "esModuleInterop": true,
     "module": "commonjs",
     "noImplicitAny": true,
     "outDir": "dist",
+    "removeComments": true,
     "sourceMap": true,
     "strict": true,
     "target": "es2015",
     "typeRoots": [
-      "src/**/*.d.ts",
+      "**/*.d.ts",
       "node_modules/@types"
     ]
   },
   "declaration": true,
   "exclude": [
-    "node_modules",
+    "node_modules", "**/*.spec.ts", "**/*.mock.ts"
   ],
   "include": [
-    "src/lib/**/*",
-    "src/types", "src/index.ts", "src/index.spec.ts", "src/utils", "src/modules",
+    "src/**/*",
+    "src/types",
+    "**/*/types"
   ]
 }

@@ -18,7 +18,7 @@ export interface IDoActionByDropletTagApiRequest {
     | string;
 }
 
-type DoActionByDropletTagResponse = IResponse<IDoActionByDropletTagApiResponse>;
+export type DoActionByDropletTagResponse = IResponse<IDoActionByDropletTagApiResponse>;
 
 export const doActionByDropletTag = ({
   httpClient,

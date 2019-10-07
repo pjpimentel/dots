@@ -8,7 +8,7 @@ export interface IListDropletNeighborsApiRequest extends IListRequest {
   id: number;
 }
 
-type ListDropletNeighborsResponse = IResponse<IListDropletNeighborsApiResponse>;
+export type ListDropletNeighborsResponse = IResponse<IListDropletNeighborsApiResponse>;
 
 export const listDropletNeighbors = ({
   httpClient,

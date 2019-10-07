@@ -8,7 +8,7 @@ export interface IPowerOffDropletApiRequest {
   id: string;
 }
 
-type PowerOffDropletResponse = IResponse<IPowerOffDropletApiResponse>;
+export type PowerOffDropletResponse = IResponse<IPowerOffDropletApiResponse>;
 
 export const powerOffDroplet = ({
   httpClient,

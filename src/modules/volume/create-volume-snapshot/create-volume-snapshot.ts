@@ -10,7 +10,7 @@ export interface ICreateVolumeSnapshotApiRequest {
   tags?: string[];
 }
 
-type CreateVolumeSnapshotRes = IResponse<ICreateVolumeSnapshotApiResponse>;
+export type CreateVolumeSnapshotRes = IResponse<ICreateVolumeSnapshotApiResponse>;
 
 export const createVolumeSnapshot = ({
   httpClient,

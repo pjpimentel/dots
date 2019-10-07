@@ -8,7 +8,7 @@ export interface IListImageActionsApiRequest extends IListRequest {
   id: number;
 }
 
-type ListImageActionsResponse = IResponse<IListImageActionsApiResponse>;
+export type ListImageActionsResponse = IResponse<IListImageActionsApiResponse>;
 
 export const listImageActions = ({
   httpClient,

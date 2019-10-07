@@ -9,7 +9,7 @@ export interface IRenameDropletApiRequest {
   name: string;
 }
 
-type RenameDropletResponse = IResponse<IRenameDropletApiResponse>;
+export type RenameDropletResponse = IResponse<IRenameDropletApiResponse>;
 
 export const renameDroplet = ({
   httpClient,

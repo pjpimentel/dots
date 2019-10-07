@@ -8,7 +8,7 @@ export interface IGetSnapshotApiResponse {
   snapshot: ISnapshot;
 }
 
-type GetSnapshotResponse = IResponse<IGetSnapshotApiResponse>;
+export type GetSnapshotResponse = IResponse<IGetSnapshotApiResponse>;
 
 export const getSnapshot = ({
   httpClient,

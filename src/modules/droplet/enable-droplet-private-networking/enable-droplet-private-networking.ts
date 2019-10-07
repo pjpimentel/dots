@@ -8,7 +8,7 @@ export interface IEnableDropletPrivateNetworkingApiRequest {
   id: string;
 }
 
-type EnableDropletPrivateNetworkingResponse = IResponse<IEnableDropletPrivateNetworkingApiResponse>;
+export type EnableDropletPrivateNetworkingResponse = IResponse<IEnableDropletPrivateNetworkingApiResponse>;
 
 export const enableDropletPrivateNetworking = ({
   httpClient,

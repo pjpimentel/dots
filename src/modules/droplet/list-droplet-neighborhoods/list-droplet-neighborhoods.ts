@@ -4,7 +4,7 @@ export interface IListDropletNeighborhoodsApiResponse extends IListResponse {
   neighbors: Array<IDroplet[]>;
 }
 
-type ListDropletNeighborhoodsResponse = IResponse<IListDropletNeighborhoodsApiResponse>;
+export type ListDropletNeighborhoodsResponse = IResponse<IListDropletNeighborhoodsApiResponse>;
 
 export const listDropletNeighborhoods = ({
   httpClient,

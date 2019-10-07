@@ -11,7 +11,7 @@ export interface IUpdateImageApiRequest {
   name?: string;
 }
 
-type UpdateImageRes = IResponse<IUpdateImageApiResponse>;
+export type UpdateImageRes = IResponse<IUpdateImageApiResponse>;
 
 export const updateImage = ({
   httpClient,

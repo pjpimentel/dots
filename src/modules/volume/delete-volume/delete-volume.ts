@@ -4,7 +4,7 @@ export interface IDeleteVolumeApiRequest {
   id: string;
 }
 
-type DeleteVolumeResponse = IResponse<void>;
+export type DeleteVolumeResponse = IResponse<void>;
 
 export const deleteVolume = ({
   httpClient,

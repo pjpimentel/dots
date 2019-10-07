@@ -8,7 +8,7 @@ export interface IListSnapshotApiRequest extends IListRequest {
   resource_type?: 'droplet' | 'volume';
 }
 
-type ListSnapshotsResponse = IResponse<IListSnapshotApiResponse>;
+export type ListSnapshotsResponse = IResponse<IListSnapshotApiResponse>;
 
 export const listSnapshots = ({
   httpClient,

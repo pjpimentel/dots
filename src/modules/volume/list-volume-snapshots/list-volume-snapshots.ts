@@ -8,7 +8,7 @@ export interface IListVolumeSnapshotsApiRequest extends IListRequest {
   id: string;
 }
 
-type ListVolumeSnapshotsRes = IResponse<IListVolumeSnapshotsApiResponse>;
+export type ListVolumeSnapshotsRes = IResponse<IListVolumeSnapshotsApiResponse>;
 
 export const listVolumeSnapshots = ({
   httpClient,

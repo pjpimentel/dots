@@ -8,7 +8,7 @@ export interface IResetDropletPasswordApiRequest {
   id: string;
 }
 
-type ResetDropletPasswordResponse = IResponse<IResetDropletPasswordApiResponse>;
+export type ResetDropletPasswordResponse = IResponse<IResetDropletPasswordApiResponse>;
 
 export const resetDropletPassword = ({
   httpClient,

@@ -9,7 +9,7 @@ export interface IGetVolumeActionApiResponse {
   action: IAction;
 }
 
-type GetVolumeActionResponse = IResponse<IGetVolumeActionApiResponse>;
+export type GetVolumeActionResponse = IResponse<IGetVolumeActionApiResponse>;
 
 export const getVolumeAction = ({
   httpClient,

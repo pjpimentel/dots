@@ -13,7 +13,7 @@ export interface ICreateCustomImageApiRequest {
     url: string;
 }
 
-type CreateCustomImageRes = IResponse<ICreateCustomImageApiResponse>;
+export type CreateCustomImageRes = IResponse<ICreateCustomImageApiResponse>;
 
 export const createCustomImage = ({
   httpClient,

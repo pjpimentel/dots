@@ -8,7 +8,7 @@ export interface IEnableDropletBackupsApiRequest {
   id: string;
 }
 
-type EnableDropletBackupsResponse = IResponse<IEnableDropletBackupsApiResponse>;
+export type EnableDropletBackupsResponse = IResponse<IEnableDropletBackupsApiResponse>;
 
 export const enableDropletBackups = ({
   httpClient,

@@ -9,7 +9,7 @@ export interface IGetImageActionApiResponse {
   action: IAction;
 }
 
-type GetImageActionResponse = IResponse<IGetImageActionApiResponse>;
+export type GetImageActionResponse = IResponse<IGetImageActionApiResponse>;
 
 export const getImageAction = ({
   httpClient,

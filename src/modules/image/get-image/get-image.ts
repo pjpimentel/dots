@@ -9,7 +9,7 @@ export interface IGetImageApiResponse {
   image: IImage;
 }
 
-type GetImageResponse = IResponse<IGetImageApiResponse>;
+export type GetImageResponse = IResponse<IGetImageApiResponse>;
 
 export const getImage = ({
   httpClient,

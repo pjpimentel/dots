@@ -8,7 +8,7 @@ export interface IListDropletBackupsApiRequest extends IListRequest {
   id: number;
 }
 
-type ListDropletBackupsResponse = IResponse<IListDropletBackupsApiResponse>;
+export type ListDropletBackupsResponse = IResponse<IListDropletBackupsApiResponse>;
 
 export const listDropletBackups = ({
   httpClient,

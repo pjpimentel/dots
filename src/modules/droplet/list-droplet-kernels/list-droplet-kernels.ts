@@ -8,7 +8,7 @@ export interface IListDropletKernelsApiRequest extends IListRequest {
   id: number;
 }
 
-type ListDropletKernelsResponse = IResponse<IListDropletKernelsApiResponse>;
+export type ListDropletKernelsResponse = IResponse<IListDropletKernelsApiResponse>;
 
 export const listDropletKernels = ({
   httpClient,

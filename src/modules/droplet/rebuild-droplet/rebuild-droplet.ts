@@ -9,7 +9,7 @@ export interface IRebuildDropletApiRequest {
   image: string|number;
 }
 
-type RebuildDropletResponse = IResponse<IRebuildDropletApiResponse>;
+export type RebuildDropletResponse = IResponse<IRebuildDropletApiResponse>;
 
 export const rebuildDroplet = ({
   httpClient,

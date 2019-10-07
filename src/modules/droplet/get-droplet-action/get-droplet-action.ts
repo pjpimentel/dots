@@ -9,7 +9,7 @@ export interface IGetDropletActionApiResponse {
   action: IAction;
 }
 
-type GetDropletActionResponse = IResponse<IGetDropletActionApiResponse>;
+export type GetDropletActionResponse = IResponse<IGetDropletActionApiResponse>;
 
 export const getDropletAction = ({
   httpClient,

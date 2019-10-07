@@ -8,7 +8,7 @@ export interface IConvertImageToSnapshotApiRequest {
   id: number;
 }
 
-type ConvertImageToSnapshotRes = IResponse<IConvertImageToSnapshotApiResponse>;
+export type ConvertImageToSnapshotRes = IResponse<IConvertImageToSnapshotApiResponse>;
 
 export const convertImageToSnapshot = ({
   httpClient,

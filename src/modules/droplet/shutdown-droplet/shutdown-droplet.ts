@@ -8,7 +8,7 @@ export interface IShutdownDropletApiRequest {
   id: string;
 }
 
-type ShutdownDropletResponse = IResponse<IShutdownDropletApiResponse>;
+export type ShutdownDropletResponse = IResponse<IShutdownDropletApiResponse>;
 
 export const shutdownDroplet = ({
   httpClient,

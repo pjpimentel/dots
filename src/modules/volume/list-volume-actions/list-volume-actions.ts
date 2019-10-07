@@ -8,7 +8,7 @@ export interface IListVolumeActionsApiRequest extends IListRequest {
   id: string;
 }
 
-type ListVolumeActionssResponse = IResponse<IListVolumeActionsApiResponse>;
+export type ListVolumeActionssResponse = IResponse<IListVolumeActionsApiResponse>;
 
 export const listVolumeActions = ({
   httpClient,

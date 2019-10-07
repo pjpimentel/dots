@@ -10,7 +10,7 @@ export interface IDetachVolumeToDropletApiRequest {
   region?: string;
 }
 
-type DetachVolumeToDropletResponse = IResponse<IDetachVolumeToDropletApiResponse>;
+export type DetachVolumeToDropletResponse = IResponse<IDetachVolumeToDropletApiResponse>;
 
 export const detachVolumeFromDroplet = ({
   httpClient,

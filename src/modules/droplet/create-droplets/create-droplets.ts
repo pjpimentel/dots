@@ -19,7 +19,7 @@ export interface ICreateDropletsApiRequest {
   volumes?: string[];
 }
 
-type CreateDropletsResponse = IResponse<ICreateDropletsApiResponse>;
+export type CreateDropletsResponse = IResponse<ICreateDropletsApiResponse>;
 
 export const createDroplets = ({
   httpClient,

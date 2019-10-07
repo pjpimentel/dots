@@ -11,9 +11,6 @@ addons:
 
 branches:
   only:
-    - beta
-    - master
-    - dev
     - v3.0.0
 
 install:
@@ -32,76 +29,13 @@ env:
   - GH_REPO="https://${GH_TOKEN}@github.com/pjpimentel/dots.git"
 
 stages:
-  - build
-  - test
-  - quality check
-  - deploy
+  - build and sonar
 
 jobs:
  include:
-    - stage: build
-      script: npm run build
-      node_js: '10'
-    - stage: quality check
+    - stage: build and sonar
       node_js: '10'
       script:
-        - npm run test:coverage
+        - npm run build
+        - npm run test
         - sonar-scanner
-    - stage: npm release
-      node_js: '10'
-      env:
-        - NODE_ENV=production
-      if: branch = beta
-      script:
-        - if [ "${TRAVIS_EVENT_TYPE}" == "pull_request" ]; then
-            exit 0;
-          fi
-        - if [ "${TRAVIS_EVENT_TYPE}" == "cron" ]; then
-            exit 0;
-          fi
-        - if [ "${TRAVIS_EVENT_TYPE}" == "api" ]; then
-            exit 0;
-          fi
-        - rm -rf node_modules;
-          npm install;
-          npm install -g typescript;
-          git add .;
-          git stash;
-          git remote set-url origin $GH_REPO;
-          git config --global user.email "travis@travis-ci.org";
-          git config --global user.name "Travis CI";
-          git checkout $TRAVIS_BRANCH;
-          npm version prepatch -m "[ci skip] travis ${TRAVIS_JOB_ID}";
-          git push --tags;
-          git push origin beta;
-          npm config set '//registry.npmjs.org/:_authToken' $NPM_TOKEN;
-          npm publish --tag beta;
-    - stage: npm release
-      node_js: '10'
-      env:
-        - NODE_ENV=production
-      if: branch = master
-      script:
-        - if [ "${TRAVIS_EVENT_TYPE}" == "pull_request" ]; then
-            exit 0;
-          fi
-        - if [ "${TRAVIS_EVENT_TYPE}" == "cron" ]; then
-            exit 0;
-          fi
-        - if [ "${TRAVIS_EVENT_TYPE}" == "api" ]; then
-            exit 0;
-          fi
-        - rm -rf node_modules;
-          npm install;
-          npm install -g typescript;
-          git add .;
-          git stash;
-          git remote set-url origin $GH_REPO;
-          git config --global user.email "travis@travis-ci.org";
-          git config --global user.name "Travis CI";
-          git checkout $TRAVIS_BRANCH;
-          npm version minor -m "[ci skip] travis ${TRAVIS_JOB_ID}";
-          git push --tags;
-          git push origin master;
-          npm config set '//registry.npmjs.org/:_authToken' $NPM_TOKEN;
-          npm publish --tag latest;

@@ -8,7 +8,7 @@ export interface IEnableDropletIpv6ApiRequest {
   id: string;
 }
 
-type EnableDropletIpv6Response = IResponse<IEnableDropletIpv6ApiResponse>;
+export type EnableDropletIpv6Response = IResponse<IEnableDropletIpv6ApiResponse>;
 
 export const enableDropletIpv6 = ({
   httpClient,

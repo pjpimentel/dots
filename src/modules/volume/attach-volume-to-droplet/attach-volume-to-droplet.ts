@@ -10,7 +10,7 @@ export interface IAttachVolumeToDropletApiRequest {
   region?: string;
 }
 
-type AttachVolumeToDropletResponse = IResponse<IAttachVolumeToDropletApiResponse>;
+export type AttachVolumeToDropletResponse = IResponse<IAttachVolumeToDropletApiResponse>;
 
 export const attachVolumeToDroplet = ({
   httpClient,

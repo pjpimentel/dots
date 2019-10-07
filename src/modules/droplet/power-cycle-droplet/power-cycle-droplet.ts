@@ -8,7 +8,7 @@ export interface IPowerCycleDropletApiRequest {
   id: string;
 }
 
-type PowerCycleDropletResponse = IResponse<IPowerCycleDropletApiResponse>;
+export type PowerCycleDropletResponse = IResponse<IPowerCycleDropletApiResponse>;
 
 export const powerCycleDroplet = ({
   httpClient,

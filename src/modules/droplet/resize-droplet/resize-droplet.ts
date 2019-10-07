@@ -10,7 +10,7 @@ export interface IResizeDropletApiRequest {
   size: string;
 }
 
-type ResizeDropletResponse = IResponse<IResizeDropletApiResponse>;
+export type ResizeDropletResponse = IResponse<IResizeDropletApiResponse>;
 
 export const resizeDroplet = ({
   httpClient,

@@ -9,7 +9,7 @@ export interface ISnapshotDropletApiRequest {
   name?: string;
 }
 
-type SnapshotDropletResponse = IResponse<ISnapshotDropletApiResponse>;
+export type SnapshotDropletResponse = IResponse<ISnapshotDropletApiResponse>;
 
 export const snapshotDroplet = ({
   httpClient,

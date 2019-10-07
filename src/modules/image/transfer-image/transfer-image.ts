@@ -9,7 +9,7 @@ export interface ITransferImageApiRequest {
   region: string;
 }
 
-type TransferImageRes = IResponse<ITransferImageApiResponse>;
+export type TransferImageRes = IResponse<ITransferImageApiResponse>;
 
 export const transferImage = ({
   httpClient,

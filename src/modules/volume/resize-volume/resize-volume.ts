@@ -10,7 +10,7 @@ export interface IResizeVolumeToDropletApiRequest {
   size_gigabytes: number;
 }
 
-type ResizeVolumeToDropletResponse = IResponse<IResizeVolumeToDropletApiResponse>;
+export type ResizeVolumeToDropletResponse = IResponse<IResizeVolumeToDropletApiResponse>;
 
 export const resizeVolume = ({
   httpClient,

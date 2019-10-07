@@ -15,7 +15,7 @@ export interface ICreateVolumeApiRequest {
   tags?: string[];
 }
 
-type CreateVolumeResponse = IResponse<ICreateVolumeApiResponse>;
+export type CreateVolumeResponse = IResponse<ICreateVolumeApiResponse>;
 
 export const createVolume = ({
   httpClient,

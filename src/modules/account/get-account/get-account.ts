@@ -4,7 +4,7 @@ export interface IGetAccountApiResponse {
   account: IAccount;
 }
 
-type GetAccountResponse = IResponse<IGetAccountApiResponse>;
+export type GetAccountResponse = IResponse<IGetAccountApiResponse>;
 
 export const getAccount = ({
   httpClient,

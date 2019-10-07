@@ -4,7 +4,7 @@ export interface IListSizeApiResponse extends IListResponse {
   sizes: ISize[];
 }
 
-type ListSizesResponse = IResponse<IListSizeApiResponse>;
+export type ListSizesResponse = IResponse<IListSizeApiResponse>;
 
 export const listSizes = ({
   httpClient,
