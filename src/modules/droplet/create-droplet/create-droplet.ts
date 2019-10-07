@@ -23,7 +23,7 @@ export type CreateDropletResponse = IResponse<ICreateDropletApiResponse>;
 
 export const createDroplet = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   backups,
   image,
   ipv6,

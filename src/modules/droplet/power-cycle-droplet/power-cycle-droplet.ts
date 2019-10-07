@@ -12,7 +12,7 @@ export type PowerCycleDropletResponse = IResponse<IPowerCycleDropletApiResponse>
 
 export const powerCycleDroplet = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
 }: IPowerCycleDropletApiRequest): Promise<Readonly<PowerCycleDropletResponse>> => {
   const path = `/droplets/${id}/actions`;

@@ -17,7 +17,7 @@ export type CreateCustomImageRes = IResponse<ICreateCustomImageApiResponse>;
 
 export const createCustomImage = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   description,
   distribution,
   name,

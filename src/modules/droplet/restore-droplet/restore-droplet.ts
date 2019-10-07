@@ -13,7 +13,7 @@ export type RestoreDropletResponse = IResponse<IRestoreDropletApiResponse>;
 
 export const restoreDroplet = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
   image,
 }: IRestoreDropletApiRequest): Promise<Readonly<RestoreDropletResponse>> => {

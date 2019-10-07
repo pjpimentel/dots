@@ -22,7 +22,7 @@ export type DoActionByDropletTagResponse = IResponse<IDoActionByDropletTagApiRes
 
 export const doActionByDropletTag = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   tag_name,
   type,
 }: IDoActionByDropletTagApiRequest): Promise<Readonly<DoActionByDropletTagResponse>> => {

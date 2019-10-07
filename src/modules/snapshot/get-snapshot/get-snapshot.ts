@@ -12,7 +12,7 @@ export type GetSnapshotResponse = IResponse<IGetSnapshotApiResponse>;
 
 export const getSnapshot = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
 }: IGetSnapshotApiRequest): Promise<Readonly<GetSnapshotResponse>> => {
   const path = `/snapshots/${id}`;

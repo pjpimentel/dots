@@ -8,7 +8,7 @@ export type ListDropletNeighborhoodsResponse = IResponse<IListDropletNeighborhoo
 
 export const listDropletNeighborhoods = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   page = 1,
   per_page = 25,
 }: IListRequest): Promise<Readonly<ListDropletNeighborhoodsResponse>> => {

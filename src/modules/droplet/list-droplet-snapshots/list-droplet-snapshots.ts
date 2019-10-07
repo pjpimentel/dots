@@ -12,7 +12,7 @@ export type ListDropletSnapshotsResponse = IResponse<IListDropletSnapshotsApiRes
 
 export const listDropletSnapshots = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
   page = 1,
   per_page = 25,

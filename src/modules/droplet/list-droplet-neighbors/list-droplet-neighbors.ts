@@ -12,7 +12,7 @@ export type ListDropletNeighborsResponse = IResponse<IListDropletNeighborsApiRes
 
 export const listDropletNeighbors = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
   page = 1,
   per_page = 25,

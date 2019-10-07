@@ -8,7 +8,7 @@ export type DeleteDropletResponse = IResponse<void>;
 
 export const deleteDroplet = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
 }: IDeleteDropletApiRequest): Promise<Readonly<DeleteDropletResponse>> => {
   const path = `/droplets/${id}`;

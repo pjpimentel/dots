@@ -8,7 +8,7 @@ export type DeleteImageRes = IResponse<void>;
 
 export const deleteImage = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
 }: IDeleteImageApiRequest): Promise<Readonly<DeleteImageRes>> => {
   const path = `/images/${id}`;

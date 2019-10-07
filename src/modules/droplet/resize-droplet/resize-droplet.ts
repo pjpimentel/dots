@@ -14,7 +14,7 @@ export type ResizeDropletResponse = IResponse<IResizeDropletApiResponse>;
 
 export const resizeDroplet = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   disk,
   id,
   size,

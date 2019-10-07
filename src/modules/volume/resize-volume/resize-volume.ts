@@ -14,7 +14,7 @@ export type ResizeVolumeToDropletResponse = IResponse<IResizeVolumeToDropletApiR
 
 export const resizeVolume = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
   region,
   size_gigabytes,

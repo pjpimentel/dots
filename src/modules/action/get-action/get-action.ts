@@ -12,7 +12,7 @@ export type GetActionResponse = IResponse<IGetActionApiResponse>;
 
 export const getAction = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
 }: IGetActionApiRequest): Promise<Readonly<GetActionResponse>> => {
   const path = `/action/${id}`;

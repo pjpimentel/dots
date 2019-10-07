@@ -12,7 +12,7 @@ export type ListDropletKernelsResponse = IResponse<IListDropletKernelsApiRespons
 
 export const listDropletKernels = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
   page = 1,
   per_page = 25,

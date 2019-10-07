@@ -12,7 +12,7 @@ export type ConvertImageToSnapshotRes = IResponse<IConvertImageToSnapshotApiResp
 
 export const convertImageToSnapshot = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
 }: IConvertImageToSnapshotApiRequest): Promise<Readonly<ConvertImageToSnapshotRes>> => {
   const path = `/images/${id}/actions`;

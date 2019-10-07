@@ -12,7 +12,7 @@ export type DisableDropletBackupsResponse = IResponse<IDisableDropletBackupsApiR
 
 export const disableDropletBackups = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
 }: IDisableDropletBackupsApiRequest): Promise<Readonly<DisableDropletBackupsResponse>> => {
   const path = `/droplets/${id}/actions`;

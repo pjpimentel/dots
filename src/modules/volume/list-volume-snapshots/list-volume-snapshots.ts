@@ -12,7 +12,7 @@ export type ListVolumeSnapshotsRes = IResponse<IListVolumeSnapshotsApiResponse>;
 
 export const listVolumeSnapshots = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
   page = 1,
   per_page = 25,

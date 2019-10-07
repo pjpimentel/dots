@@ -13,7 +13,7 @@ export type GetDropletActionResponse = IResponse<IGetDropletActionApiResponse>;
 
 export const getDropletAction = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   action_id,
   droplet_id,
 }: IGetDropletActionApiRequest): Promise<Readonly<GetDropletActionResponse>> => {

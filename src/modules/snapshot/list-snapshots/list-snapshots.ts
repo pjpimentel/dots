@@ -12,7 +12,7 @@ export type ListSnapshotsResponse = IResponse<IListSnapshotApiResponse>;
 
 export const listSnapshots = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   page = 1,
   per_page = 25,
   resource_type = undefined,

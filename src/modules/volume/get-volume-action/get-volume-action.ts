@@ -13,7 +13,7 @@ export type GetVolumeActionResponse = IResponse<IGetVolumeActionApiResponse>;
 
 export const getVolumeAction = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   action_id,
   volume_id,
 }: IGetVolumeActionApiRequest): Promise<Readonly<GetVolumeActionResponse>> => {

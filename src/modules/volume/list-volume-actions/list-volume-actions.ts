@@ -12,7 +12,7 @@ export type ListVolumeActionssResponse = IResponse<IListVolumeActionsApiResponse
 
 export const listVolumeActions = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
   page = 1,
   per_page = 25,

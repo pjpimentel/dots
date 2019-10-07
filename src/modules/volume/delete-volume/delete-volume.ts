@@ -8,7 +8,7 @@ export type DeleteVolumeResponse = IResponse<void>;
 
 export const deleteVolume = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
 }: IDeleteVolumeApiRequest): Promise<Readonly<DeleteVolumeResponse>> => {
   const path = `/volumes/${id}`;

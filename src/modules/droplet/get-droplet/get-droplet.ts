@@ -12,7 +12,7 @@ export type GetDropletResponse = IResponse<IGetDropletApiResponse>;
 
 export const getDroplet = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
 }: IGetDropletApiRequest): Promise<Readonly<GetDropletResponse>> => {
   const path = `/droplets/${id}`;

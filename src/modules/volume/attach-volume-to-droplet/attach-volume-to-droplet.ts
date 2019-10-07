@@ -14,7 +14,7 @@ export type AttachVolumeToDropletResponse = IResponse<IAttachVolumeToDropletApiR
 
 export const attachVolumeToDroplet = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   droplet_id,
   id,
   region,

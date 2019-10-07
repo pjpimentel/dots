@@ -19,7 +19,7 @@ export type CreateVolumeResponse = IResponse<ICreateVolumeApiResponse>;
 
 export const createVolume = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   description,
   filesystem_label,
   filesystem_type,

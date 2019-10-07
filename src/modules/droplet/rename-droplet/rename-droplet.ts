@@ -13,7 +13,7 @@ export type RenameDropletResponse = IResponse<IRenameDropletApiResponse>;
 
 export const renameDroplet = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
   name,
 }: IRenameDropletApiRequest): Promise<Readonly<RenameDropletResponse>> => {

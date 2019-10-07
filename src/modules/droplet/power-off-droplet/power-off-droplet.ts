@@ -12,7 +12,7 @@ export type PowerOffDropletResponse = IResponse<IPowerOffDropletApiResponse>;
 
 export const powerOffDroplet = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
 }: IPowerOffDropletApiRequest): Promise<Readonly<PowerOffDropletResponse>> => {
   const path = `/droplets/${id}/actions`;

@@ -12,7 +12,7 @@ export type ResetDropletPasswordResponse = IResponse<IResetDropletPasswordApiRes
 
 export const resetDropletPassword = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
 }: IResetDropletPasswordApiRequest): Promise<Readonly<ResetDropletPasswordResponse>> => {
   const path = `/droplets/${id}/actions`;

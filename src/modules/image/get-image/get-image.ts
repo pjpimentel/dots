@@ -13,7 +13,7 @@ export type GetImageResponse = IResponse<IGetImageApiResponse>;
 
 export const getImage = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
   slug,
 }: IGetImageApiRequest): Promise<Readonly<GetImageResponse>> => {

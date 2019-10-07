@@ -8,7 +8,7 @@ export type ListSizesResponse = IResponse<IListSizeApiResponse>;
 
 export const listSizes = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   page = 1,
   per_page = 25,
 }: IListRequest): Promise<Readonly<ListSizesResponse>> => {

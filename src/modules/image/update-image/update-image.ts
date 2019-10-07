@@ -15,7 +15,7 @@ export type UpdateImageRes = IResponse<IUpdateImageApiResponse>;
 
 export const updateImage = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   description,
   distribution,
   id,

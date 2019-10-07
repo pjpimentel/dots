@@ -13,7 +13,7 @@ export type GetImageActionResponse = IResponse<IGetImageActionApiResponse>;
 
 export const getImageAction = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
   action_id,
 }: IGetImageActionApiRequest): Promise<Readonly<GetImageActionResponse>> => {

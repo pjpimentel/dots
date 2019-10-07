@@ -12,7 +12,7 @@ export type EnableDropletPrivateNetworkingResponse = IResponse<IEnableDropletPri
 
 export const enableDropletPrivateNetworking = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
 }: IEnableDropletPrivateNetworkingApiRequest): Promise<Readonly<EnableDropletPrivateNetworkingResponse>> => {
   const path = `/droplets/${id}/actions`;

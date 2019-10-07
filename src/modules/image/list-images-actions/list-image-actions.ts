@@ -12,7 +12,7 @@ export type ListImageActionsResponse = IResponse<IListImageActionsApiResponse>;
 
 export const listImageActions = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   page = 1,
   per_page = 25,
   id,

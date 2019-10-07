@@ -8,7 +8,7 @@ export type DeleteSnapshotRes = IResponse<void>;
 
 export const deleteSnapshot = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
 }: IDeleteSnapshotApiRequest): Promise<Readonly<DeleteSnapshotRes>> => {
   const path = `/snapshots/${id}`;

@@ -14,7 +14,7 @@ export type DetachVolumeToDropletResponse = IResponse<IDetachVolumeToDropletApiR
 
 export const detachVolumeFromDroplet = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   droplet_id,
   id,
   region,

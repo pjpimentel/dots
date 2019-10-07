@@ -12,7 +12,7 @@ export type EnableDropletIpv6Response = IResponse<IEnableDropletIpv6ApiResponse>
 
 export const enableDropletIpv6 = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
 }: IEnableDropletIpv6ApiRequest): Promise<Readonly<EnableDropletIpv6Response>> => {
   const path = `/droplets/${id}/actions`;

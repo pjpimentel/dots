@@ -13,7 +13,7 @@ export type ChangeDropletKernelResponse = IResponse<IChangeDropletKernelApiRespo
 
 export const changeDropletKernel = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
   kernel,
 }: IChangeDropletKernelApiRequest): Promise<Readonly<ChangeDropletKernelResponse>> => {

@@ -8,7 +8,7 @@ export type GetAccountResponse = IResponse<IGetAccountApiResponse>;
 
 export const getAccount = ({
   httpClient,
-}: IContext<AxiosInstance>) => async (): Promise<Readonly<GetAccountResponse>> => {
+}: IContext<AxiosInstance>) => (): Promise<Readonly<GetAccountResponse>> => {
   const path = '/account';
   const url = `${path}`;
 

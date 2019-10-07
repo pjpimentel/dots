@@ -12,7 +12,7 @@ export type GetVolumeResponse = IResponse<IGetVolumeApiResponse>;
 
 export const getVolume = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
 }: IGetVolumeApiRequest): Promise<Readonly<GetVolumeResponse>> => {
   const path = `/volumes/${id}`;

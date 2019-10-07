@@ -14,7 +14,7 @@ export type CreateVolumeSnapshotRes = IResponse<ICreateVolumeSnapshotApiResponse
 
 export const createVolumeSnapshot = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
   name,
   tags,

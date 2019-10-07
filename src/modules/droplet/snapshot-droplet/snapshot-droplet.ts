@@ -13,7 +13,7 @@ export type SnapshotDropletResponse = IResponse<ISnapshotDropletApiResponse>;
 
 export const snapshotDroplet = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
   name,
 }: ISnapshotDropletApiRequest): Promise<Readonly<SnapshotDropletResponse>> => {

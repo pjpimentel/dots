@@ -13,7 +13,7 @@ export type TransferImageRes = IResponse<ITransferImageApiResponse>;
 
 export const transferImage = ({
   httpClient,
-}: IContext<AxiosInstance>) => async ({
+}: IContext<AxiosInstance>) => ({
   id,
   region,
 }: ITransferImageApiRequest): Promise<Readonly<TransferImageRes>> => {
