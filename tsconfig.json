@@ -18,11 +18,10 @@
   },
   "declaration": true,
   "exclude": [
-    "node_modules", "**/*.spec.ts", "**/*.mock.ts"
+    "node_modules"
   ],
   "include": [
     "src/**/*",
-    "src/types",
     "**/*/types"
   ]
 }
