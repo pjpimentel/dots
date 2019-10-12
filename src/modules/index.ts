@@ -3,6 +3,7 @@ import * as action from './action';
 import * as domain from './domain';
 import * as droplet from './droplet';
 import * as image from './image';
+import * as loadBalancer from './load-balancer';
 import * as region from './region';
 import * as size from './size';
 import * as snapshot from './snapshot';
@@ -14,6 +15,7 @@ export {
   domain,
   droplet,
   image,
+  loadBalancer,
   region,
   size,
   snapshot,
