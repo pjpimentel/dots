@@ -15,10 +15,10 @@ export const rebootDroplet = ({
 }: IContext<AxiosInstance>) => ({
   id,
 }: IRebootDropletApiRequest): Promise<Readonly<RebootDropletResponse>> => {
-  const path = `/droplets/${id}/actions`;
+  const path = '/droplets';
   const type = 'reboot';
   const body = {type};
-  const url = `${path}`;
+  const url = `${path}/${id}/actions`;
 
   return httpClient.post<IRebootDropletApiResponse>(url, body);
 };

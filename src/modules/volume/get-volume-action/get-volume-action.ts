@@ -17,8 +17,8 @@ export const getVolumeAction = ({
   action_id,
   volume_id,
 }: IGetVolumeActionApiRequest): Promise<Readonly<GetVolumeActionResponse>> => {
-  const path = `/volumes/${volume_id}/actions/${action_id}`;
-  const url = `${path}`;
+  const path = '/volumes';
+  const url = `${path}/${volume_id}/actions/${action_id}`;
 
   return httpClient.get<IGetVolumeActionApiResponse>(url);
 };

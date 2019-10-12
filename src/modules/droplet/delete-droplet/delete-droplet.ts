@@ -11,8 +11,8 @@ export const deleteDroplet = ({
 }: IContext<AxiosInstance>) => ({
   id,
 }: IDeleteDropletApiRequest): Promise<Readonly<DeleteDropletResponse>> => {
-  const path = `/droplets/${id}`;
-  const url = `${path}`;
+  const path = '/droplets';
+  const url = `${path}/${id}`;
 
   return httpClient.delete(url);
 };

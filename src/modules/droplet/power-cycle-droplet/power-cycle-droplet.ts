@@ -15,10 +15,10 @@ export const powerCycleDroplet = ({
 }: IContext<AxiosInstance>) => ({
   id,
 }: IPowerCycleDropletApiRequest): Promise<Readonly<PowerCycleDropletResponse>> => {
-  const path = `/droplets/${id}/actions`;
+  const path = '/droplets';
   const type = 'power_cycle';
   const body = {type};
-  const url = `${path}`;
+  const url = `${path}/${id}/actions`;
 
   return httpClient.post<IPowerCycleDropletApiResponse>(url, body);
 };

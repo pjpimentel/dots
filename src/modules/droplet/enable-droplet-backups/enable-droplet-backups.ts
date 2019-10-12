@@ -15,10 +15,10 @@ export const enableDropletBackups = ({
 }: IContext<AxiosInstance>) => ({
   id,
 }: IEnableDropletBackupsApiRequest): Promise<Readonly<EnableDropletBackupsResponse>> => {
-  const path = `/droplets/${id}/actions`;
+  const path = '/droplets';
   const type = 'enable_backups';
   const body = {type};
-  const url = `${path}`;
+  const url = `${path}/${id}/actions`;
 
   return httpClient.post<IEnableDropletBackupsApiResponse>(url, body);
 };

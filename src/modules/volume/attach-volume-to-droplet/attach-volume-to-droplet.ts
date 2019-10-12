@@ -19,10 +19,10 @@ export const attachVolumeToDroplet = ({
   id,
   region,
 }: IAttachVolumeToDropletApiRequest): Promise<Readonly<AttachVolumeToDropletResponse>> => {
-  const path = `/volumes/${id}/actions`;
+  const path = '/volumes';
   const type = 'attach';
   const body = {droplet_id, region, type};
-  const url = `${path}`;
+  const url = `${path}/${id}/actions`;
 
   return httpClient.post<IAttachVolumeToDropletApiResponse>(url, body);
 };

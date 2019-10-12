@@ -15,8 +15,8 @@ export const getDomain = ({
 }: IContext<AxiosInstance>) => ({
   name,
 }: IGetDomainApiRequest): Promise<Readonly<GetDomainResponse>> => {
-  const path = `/domains/${name}`;
-  const url = `${path}`;
+  const path = '/domains';
+  const url = `${path}/${name}`;
 
   return httpClient.get<IGetDomainApiResponse>(url);
 };

@@ -15,10 +15,10 @@ export const powerOffDroplet = ({
 }: IContext<AxiosInstance>) => ({
   id,
 }: IPowerOffDropletApiRequest): Promise<Readonly<PowerOffDropletResponse>> => {
-  const path = `/droplets/${id}/actions`;
+  const path = '/droplets';
   const type = 'power_off';
   const body = {type};
-  const url = `${path}`;
+  const url = `${path}/${id}/actions`;
 
   return httpClient.post<IPowerOffDropletApiResponse>(url, body);
 };

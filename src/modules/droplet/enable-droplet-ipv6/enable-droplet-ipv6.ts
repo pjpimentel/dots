@@ -15,10 +15,10 @@ export const enableDropletIpv6 = ({
 }: IContext<AxiosInstance>) => ({
   id,
 }: IEnableDropletIpv6ApiRequest): Promise<Readonly<EnableDropletIpv6Response>> => {
-  const path = `/droplets/${id}/actions`;
+  const path = '/droplets';
   const type = 'enable_ipv6';
   const body = {type};
-  const url = `${path}`;
+  const url = `${path}/${id}/actions`;
 
   return httpClient.post<IEnableDropletIpv6ApiResponse>(url, body);
 };

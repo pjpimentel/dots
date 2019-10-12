@@ -11,8 +11,8 @@ export const deleteVolume = ({
 }: IContext<AxiosInstance>) => ({
   id,
 }: IDeleteVolumeApiRequest): Promise<Readonly<DeleteVolumeResponse>> => {
-  const path = `/volumes/${id}`;
-  const url = `${path}`;
+  const path = '/volumes';
+  const url = `${path}/${id}`;
 
   return httpClient.delete(url);
 };

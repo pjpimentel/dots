@@ -17,8 +17,8 @@ export const getImage = ({
   id,
   slug,
 }: IGetImageApiRequest): Promise<Readonly<GetImageResponse>> => {
-  const path = `/images/${id || slug}`;
-  const url = `${path}`;
+  const path = '/images';
+  const url = `${path}/${id || slug}`;
 
   return httpClient.get<IGetImageApiResponse>(url);
 };

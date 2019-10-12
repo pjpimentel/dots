@@ -26,7 +26,7 @@ export const updateDomainRecord = ({
   type,
   weight,
 }: IUpdateDomainRecordApiRequest): Promise<Readonly<UpdateDomainRecordResponse>> => {
-  const path = `/domains/${domain_name}/records/${domain_record_id}`;
+  const path = '/domains';
   const body = {
     data,
     flags,
@@ -38,7 +38,7 @@ export const updateDomainRecord = ({
     type,
     weight,
   };
-  const url = `${path}`;
+  const url = `${path}/${domain_name}/records/${domain_record_id}`;
 
   return httpClient.put<IUpdateDomainRecordApiResponse>(url, body);
 };

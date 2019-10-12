@@ -17,8 +17,8 @@ export const transferImage = ({
   id,
   region,
 }: ITransferImageApiRequest): Promise<Readonly<TransferImageRes>> => {
-  const path = `/images/${id}/actions`;
-  const url = `${path}`;
+  const path = '/images';
+  const url = `${path}/${id}/actions`;
   const body = {type: 'transfer', region};
 
   return httpClient.post<ITransferImageApiResponse>(url, body);

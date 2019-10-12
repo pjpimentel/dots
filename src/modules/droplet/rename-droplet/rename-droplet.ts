@@ -17,10 +17,10 @@ export const renameDroplet = ({
   id,
   name,
 }: IRenameDropletApiRequest): Promise<Readonly<RenameDropletResponse>> => {
-  const path = `/droplets/${id}/actions`;
+  const path = '/droplets';
   const type = 'rename';
   const body = {name, type};
-  const url = `${path}`;
+  const url = `${path}/${id}/actions`;
 
   return httpClient.post<IRenameDropletApiResponse>(url, body);
 };

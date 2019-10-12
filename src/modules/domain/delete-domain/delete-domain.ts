@@ -11,8 +11,8 @@ export const deleteDomain = ({
 }: IContext<AxiosInstance>) => ({
   name,
 }: IDeleteDomainApiRequest): Promise<Readonly<DeleteDomainResponse>> => {
-  const path = `/domains/${name}`;
-  const url = `${path}`;
+  const path = '/domains';
+  const url = `${path}/${name}`;
 
   return httpClient.delete(url);
 };

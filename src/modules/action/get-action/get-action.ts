@@ -15,8 +15,8 @@ export const getAction = ({
 }: IContext<AxiosInstance>) => ({
   id,
 }: IGetActionApiRequest): Promise<Readonly<GetActionResponse>> => {
-  const path = `/action/${id}`;
-  const url = `${path}`;
+  const path = '/action';
+  const url = `${path}/${id}`;
 
   return httpClient.get<IGetActionApiResponse>(url);
 };

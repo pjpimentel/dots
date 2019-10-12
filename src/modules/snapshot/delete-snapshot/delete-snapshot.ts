@@ -11,8 +11,8 @@ export const deleteSnapshot = ({
 }: IContext<AxiosInstance>) => ({
   id,
 }: IDeleteSnapshotApiRequest): Promise<Readonly<DeleteSnapshotRes>> => {
-  const path = `/snapshots/${id}`;
-  const url = `${path}`;
+  const path = '/snapshots';
+  const url = `${path}/${id}`;
 
   return httpClient.delete(url);
 };

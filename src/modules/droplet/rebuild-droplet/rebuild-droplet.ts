@@ -17,10 +17,10 @@ export const rebuildDroplet = ({
   id,
   image,
 }: IRebuildDropletApiRequest): Promise<Readonly<RebuildDropletResponse>> => {
-  const path = `/droplets/${id}/actions`;
+  const path = '/droplets';
   const type = 'rebuild';
   const body = {image, type};
-  const url = `${path}`;
+  const url = `${path}/${id}/actions`;
 
   return httpClient.post<IRebuildDropletApiResponse>(url, body);
 };

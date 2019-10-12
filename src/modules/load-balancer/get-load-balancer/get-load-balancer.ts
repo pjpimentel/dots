@@ -15,8 +15,8 @@ export const getLoadBalancer = ({
 }: IContext<AxiosInstance>) => ({
   id,
 }: IGetLoadBalancerApiRequest): Promise<Readonly<GetLoadBalancerResponse>> => {
-  const path = `/load_balancers/${id}`;
-  const url = `${path}`;
+  const path = '/load_balancers';
+  const url = `${path}/${id}`;
 
   return httpClient.get<IGetLoadBalancerApiResponse>(url);
 };

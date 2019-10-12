@@ -17,10 +17,10 @@ export const changeDropletKernel = ({
   id,
   kernel,
 }: IChangeDropletKernelApiRequest): Promise<Readonly<ChangeDropletKernelResponse>> => {
-  const path = `/droplets/${id}/actions`;
+  const path = '/droplets';
   const type = 'change_kernel';
   const body = {kernel, type};
-  const url = `${path}`;
+  const url = `${path}/${id}/actions`;
 
   return httpClient.post<IChangeDropletKernelApiResponse>(url, body);
 };

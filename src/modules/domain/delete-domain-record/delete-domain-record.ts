@@ -13,8 +13,8 @@ export const deleteDomainRecord = ({
   domain_name,
   domain_record_id,
 }: IDeleteDomainRecordApiRequest): Promise<Readonly<DeleteDomainRecordResponse>> => {
-  const path = `/domains/${domain_name}/records/${domain_record_id}`;
-  const url = `${path}`;
+  const path = '/domains';
+  const url = `${path}/${domain_name}/records/${domain_record_id}`;
 
   return httpClient.delete(url);
 };

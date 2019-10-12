@@ -21,8 +21,8 @@ export const updateImage = ({
   id,
   name,
 }: IUpdateImageApiRequest): Promise<Readonly<UpdateImageRes>> => {
-  const path = `/images/${id}`;
-  const url = `${path}`;
+  const path = '/images';
+  const url = `${path}/${id}`;
   const body = {description, distribution, name};
 
   return httpClient.post<IUpdateImageApiResponse>(url, body);

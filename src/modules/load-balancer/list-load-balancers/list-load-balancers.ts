@@ -12,7 +12,7 @@ export const listLoadBalancers = ({
   page = 1,
   per_page = 25,
 }: IListRequest): Promise<Readonly<ListLoadBalancersResponse>> => {
-  const path = `/load_balancers`;
+  const path = '/load_balancers';
   const queryParams = {page, per_page};
   const url = `${path}`;
 

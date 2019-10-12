@@ -11,8 +11,8 @@ export const deleteImage = ({
 }: IContext<AxiosInstance>) => ({
   id,
 }: IDeleteImageApiRequest): Promise<Readonly<DeleteImageRes>> => {
-  const path = `/images/${id}`;
-  const url = `${path}`;
+  const path = '/images';
+  const url = `${path}/${id}`;
 
   return httpClient.delete(url);
 };

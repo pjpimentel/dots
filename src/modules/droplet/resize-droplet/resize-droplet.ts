@@ -19,10 +19,10 @@ export const resizeDroplet = ({
   id,
   size,
 }: IResizeDropletApiRequest): Promise<Readonly<ResizeDropletResponse>> => {
-  const path = `/droplets/${id}/actions`;
+  const path = '/droplets';
   const type = 'resize';
   const body = {disk, size, type};
-  const url = `${path}`;
+  const url = `${path}/${id}/actions`;
 
   return httpClient.post<IResizeDropletApiResponse>(url, body);
 };

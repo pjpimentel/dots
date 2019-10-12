@@ -15,10 +15,10 @@ export const powerOnDroplet = ({
 }: IContext<AxiosInstance>) => ({
   id,
 }: IPowerOnDropletApiRequest): Promise<Readonly<PowerOnDropletResponse>> => {
-  const path = `/droplets/${id}/actions`;
+  const path = '/droplets';
   const type = 'power_on';
   const body = {type};
-  const url = `${path}`;
+  const url = `${path}/${id}/actions`;
 
   return httpClient.post<IPowerOnDropletApiResponse>(url, body);
 };

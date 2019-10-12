@@ -17,8 +17,8 @@ export const getImageAction = ({
   id,
   action_id,
 }: IGetImageActionApiRequest): Promise<Readonly<GetImageActionResponse>> => {
-  const path = `/images/${id}/actions/${action_id}`;
-  const url = `${path}`;
+  const path = '/images';
+  const url = `${path}/${id}/actions/${action_id}`;
 
   return httpClient.get<IGetImageActionApiResponse>(url);
 };

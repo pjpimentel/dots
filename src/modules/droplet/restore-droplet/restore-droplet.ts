@@ -17,10 +17,10 @@ export const restoreDroplet = ({
   id,
   image,
 }: IRestoreDropletApiRequest): Promise<Readonly<RestoreDropletResponse>> => {
-  const path = `/droplets/${id}/actions`;
+  const path = '/droplets';
   const type = 'restore';
   const body = {image, type};
-  const url = `${path}`;
+  const url = `${path}/${id}/actions`;
 
   return httpClient.post<IRestoreDropletApiResponse>(url, body);
 };
