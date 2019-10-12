@@ -31,6 +31,17 @@ export const createApiClient = ({
     getAction: modules.action.getAction(context),
     listActions: modules.action.listActions(context),
   });
+  const domain = Object.freeze({
+    createDomain: modules.domain.createDomain(context),
+    createDomainRecord: modules.domain.createDomainRecord(context),
+    deleteDomain: modules.domain.deleteDomain(context),
+    deleteDomainRecord: modules.domain.deleteDomainRecord(context),
+    getDomain: modules.domain.getDomain(context),
+    getDomainRecord: modules.domain.getDomainRecord(context),
+    listDomainRecords: modules.domain.listDomainRecords(context),
+    listDomains: modules.domain.listDomains(context),
+    updateDomainRecord: modules.domain.updateDomainRecord(context),
+  })
   const droplet = Object.freeze({
     changeDropletKernel: modules.droplet.changeDropletKernel(context),
     createDroplet: modules.droplet.createDroplet(context),
@@ -101,6 +112,7 @@ export const createApiClient = ({
   return Object.freeze({
     account,
     action,
+    domain,
     droplet,
     image,
     region,

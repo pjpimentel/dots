@@ -86,18 +86,17 @@ describe('utils', () => {
       // expect(client.database.listConnectionPools).toBeInstanceOf(Function);
       // expect(client.database.getConnectionPool).toBeInstanceOf(Function);
       // expect(client.database.deleteConnectionPool).toBeInstanceOf(Function);
-      /// domains
-      // expect(client.domain).toBeDefined();
-      // expect(client.domain.listDomains).toBeInstanceOf(Function);
-      // expect(client.domain.createDomain).toBeInstanceOf(Function);
-      // expect(client.domain.getDomain).toBeInstanceOf(Function);
-      // expect(client.domain.deleteDomain).toBeInstanceOf(Function);
-      /// domains-records
-      // expect(client.domainRecord.listDomainRecords).toBeInstanceOf(Function);
-      // expect(client.domainRecord.createDomainRecord).toBeInstanceOf(Function);
-      // expect(client.domainRecord.getDomainRecord).toBeInstanceOf(Function);
-      // expect(client.domainRecord.updateDomainRecord).toBeInstanceOf(Function);
-      // expect(client.domainRecord.deleteDomainRecord).toBeInstanceOf(Function);
+      // domains
+      expect(client.domain).toBeDefined();
+      expect(client.domain.createDomain).toBeInstanceOf(Function);
+      expect(client.domain.createDomainRecord).toBeInstanceOf(Function);
+      expect(client.domain.deleteDomain).toBeInstanceOf(Function);
+      expect(client.domain.deleteDomainRecord).toBeInstanceOf(Function);
+      expect(client.domain.getDomain).toBeInstanceOf(Function);
+      expect(client.domain.getDomainRecord).toBeInstanceOf(Function);
+      expect(client.domain.listDomainRecords).toBeInstanceOf(Function);
+      expect(client.domain.listDomains).toBeInstanceOf(Function);
+      expect(client.domain.updateDomainRecord).toBeInstanceOf(Function);
       /// droplets
       expect(client.droplet).toBeDefined();
       expect(client.droplet.createDroplet).toBeInstanceOf(Function);

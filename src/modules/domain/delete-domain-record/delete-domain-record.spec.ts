@@ -6,7 +6,7 @@ import * as MOCK from './delete-domain-record.mock';
 
 describe('domain', () => {
   const DOMAIN_NAME = 'domain-name';
-  const DOMAIN_RECORD_ID = Math.floor(Math.random() * 1000) + 1;
+  const DOMAIN_RECORD_ID = 12345;
   const URL = `/domains/${DOMAIN_NAME}/records/${DOMAIN_RECORD_ID}`;
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
