@@ -1,4 +1,5 @@
 export * from './add-droplets-to-load-balancer/add-droplets-to-load-balancer';
+export * from './add-rules-to-load-balancer/add-rules-to-load-balancer';
 export * from './create-load-balancer/create-load-balancer';
 export * from './delete-load-balancer/delete-load-balancer';
 export * from './get-load-balancer/get-load-balancer';
