@@ -40,5 +40,5 @@ export const updateDomainRecord = ({
   };
   const url = `${path}`;
 
-  return httpClient.post<IUpdateDomainRecordApiResponse>(url, body);
+  return httpClient.put<IUpdateDomainRecordApiResponse>(url, body);
 };

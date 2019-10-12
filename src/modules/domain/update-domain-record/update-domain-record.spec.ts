@@ -10,7 +10,7 @@ describe('domain', () => {
   const URL = `/domains/${DOMAIN_NAME}/records/${DOMAIN_RECORD_ID}`;
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
-  mock.onPost(URL, MOCK.request.body).reply(
+  mock.onPut(URL, MOCK.request.body).reply(
     MOCK.response.headers.status,
     MOCK.response.body,
     MOCK.response.headers,
@@ -36,7 +36,7 @@ describe('domain', () => {
         domain_record_id: DOMAIN_RECORD_ID,
         ...MOCK.request.body
       });
-      Object.assign(response, {request: mock.history.post[0]});
+      Object.assign(response, {request: mock.history.put[0]});
       /// validate response schema
       expect(typeof response).toBe('object');
       expect(typeof response.data).toBe('object');
@@ -46,7 +46,7 @@ describe('domain', () => {
       /// validate request
       const {request} = response;
       expect(request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('post');
+      expect(request.method).toBe('put');
       expect(request.headers).toMatchObject(MOCK.request.headers);
       expect(request.data).toBeDefined();
       const requestBody = JSON.parse(request.data);
