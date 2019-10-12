@@ -5,3 +5,4 @@ export * from './get-domain-record/get-domain-record';
 export * from './get-domain/get-domain';
 export * from './list-domain-records/list-domain-records';
 export * from './list-domains/list-domains';
+export * from './update-domain-record/update-domain-record';
