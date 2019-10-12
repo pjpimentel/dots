@@ -4,6 +4,7 @@ interface ILoadBalancer {
   enable_proxy_protocol?: boolean;
   forwarding_rules: IForwardingRule[];
   health_check?: IHealthCheck;
+  id?: string;
   name: string;
   redirect_http_to_https?: boolean;
   region: string;
