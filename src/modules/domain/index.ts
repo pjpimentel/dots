@@ -1,5 +1,6 @@
 export * from './create-domain-record/create-domain-record';
 export * from './create-domain/create-domain';
+export * from './delete-domain-record/delete-domain-record';
 export * from './delete-domain/delete-domain';
 export * from './get-domain-record/get-domain-record';
 export * from './get-domain/get-domain';
