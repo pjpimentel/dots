@@ -17,7 +17,7 @@ export const removeDropletsFromLoadBalancer = ({
   const body = {
     droplet_ids,
   };
-  const url = `${path}/${id}`;
+  const url = `${path}/${id}/droplets`;
 
   return httpClient.delete(url, {data: body});
 };

@@ -17,7 +17,7 @@ export const addDropletsToLoadBalancer = ({
   const body = {
     droplet_ids,
   };
-  const url = `${path}/${id}`;
+  const url = `${path}/${id}/droplets`;
 
   return httpClient.post<void>(url, body);
 };

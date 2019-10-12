@@ -6,7 +6,7 @@ import * as MOCK from './remove-droplets-from-load-balancer.mock';
 
 describe('load-balancer', () => {
   const LOAD_BALANCER_ID = 'load-balancer-id';
-  const URL = `/load_balancers/${LOAD_BALANCER_ID}`;
+  const URL = `/load_balancers/${LOAD_BALANCER_ID}/droplets`;
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
   mock.onDelete(URL, MOCK.request.body).reply(
