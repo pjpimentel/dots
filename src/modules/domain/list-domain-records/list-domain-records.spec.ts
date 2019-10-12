@@ -33,7 +33,7 @@ describe('domain', () => {
     it('should return IResponse<IListDomainApiResponse>', async () => {
       const _listDomainRecords = listDomainRecords(context);
       const response = await _listDomainRecords({
-        domain: DOMAIN_NAME,
+        domain_name: DOMAIN_NAME,
         page: PAGE,
         per_page: PER_PAGE,
       });
@@ -71,7 +71,7 @@ describe('domain', () => {
       const defaultper_page = 25;
       const _listDomainRecords = listDomainRecords(context);
       const response = await _listDomainRecords({
-        domain: DOMAIN_NAME,
+        domain_name: DOMAIN_NAME,
       });
       Object.assign(response, { request: mock.history.get[0]});
       /// validate request

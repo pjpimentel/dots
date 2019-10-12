@@ -1,11 +1,11 @@
 interface IDomainRecord {
   data: string;
-  flags: number;
+  flags: number | null;
   id: number;
   name: string;
   port: number | null;
   priority: number | null;
-  tag: string;
+  tag: string | null;
   ttl: number;
   type: string;
   weight: number | null;
