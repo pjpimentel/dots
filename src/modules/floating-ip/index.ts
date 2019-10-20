@@ -1,3 +1,4 @@
+export * from './assign-ip-to-droplet/assign-ip-to-droplet';
 export * from './create-floating-ip/create-floating-ip';
 export * from './delete-floating-ip/delete-floating-ip';
 export * from './get-floating-ip/get-floating-ip';
