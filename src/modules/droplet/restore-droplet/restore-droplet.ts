@@ -1,6 +1,6 @@
 import { AxiosInstance } from 'axios';
 
-export interface IRestoreDropletApiResponse extends IListResponse {
+export interface IRestoreDropletApiResponse {
   action: IAction;
 }
 

@@ -1,6 +1,6 @@
 import { AxiosInstance } from 'axios';
 
-export interface IDetachVolumeToDropletApiResponse extends IListResponse {
+export interface IDetachVolumeToDropletApiResponse {
   action: IAction;
 }
 
