@@ -20,7 +20,7 @@ describe('ssh-key', () => {
   beforeEach(() => {
     mock.resetHistory();
   });
-  describe('create-sshKey', () => {
+  describe('create-ssh-key', () => {
     it('should be a fn', () => {
       expect(typeof createSshKey).toBe('function');
     });
