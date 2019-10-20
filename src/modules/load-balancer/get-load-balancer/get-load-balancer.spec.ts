@@ -28,7 +28,7 @@ describe('load-balancer', () => {
     it('should return a fn', () => {
       expect(typeof getLoadBalancer(context)).toBe('function');
     });
-    it('should return IResponse<IGetLoadBalancerApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _getLoadBalancer = getLoadBalancer(context);
       const response = await _getLoadBalancer({id: LOAD_BALANCER_ID});
       Object.assign(response, { request: mock.history.get[0]});

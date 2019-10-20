@@ -32,7 +32,7 @@ describe('floating-ip', () => {
     it('should return a fn', () => {
       expect(typeof createFloatingIp(context)).toBe('function');
     });
-    it('should return IResponse<ICreateFloatingIpApiResponse> - by droplet', async () => {
+    it('should return a valid response', async () => {
       const _createFloatingIp = createFloatingIp(context);
       const response = await _createFloatingIp(MOCK.request.bodyByDropletId);
       Object.assign(response, {request: mock.history.post[0]});
@@ -60,7 +60,7 @@ describe('floating-ip', () => {
       expect(status).toBe(MOCK.response.headers.status);
     });
 
-    it('should return IResponse<ICreateFloatingIpApiResponse> - by region', async () => {
+    it('should return a valid response', async () => {
       const _createFloatingIp = createFloatingIp(context);
       const response = await _createFloatingIp(MOCK.request.bodyByRegion);
       Object.assign(response, {request: mock.history.post[0]});

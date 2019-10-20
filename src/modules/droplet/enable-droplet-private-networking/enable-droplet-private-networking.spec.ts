@@ -28,7 +28,7 @@ describe('droplet', () => {
     it('should return a fn', () => {
       expect(typeof enableDropletPrivateNetworking(context)).toBe('function');
     });
-    it('should return IResponse<EnableDropletPrivateNetworkingResponse>', async () => {
+    it('should return a valid response', async () => {
       const _enableDropletPrivateNetworking = enableDropletPrivateNetworking(context);
       const response = await _enableDropletPrivateNetworking({
         id: DROPLET_ID,

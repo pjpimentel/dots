@@ -27,7 +27,7 @@ describe('droplet', () => {
     it('should return a fn', () => {
       expect(typeof getDroplet(context)).toBe('function');
     });
-    it('should return IResponse<IGetDropletApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _getDroplet = getDroplet(context);
       const response = await _getDroplet({id: MOCK.response.body.droplet.id});
       Object.assign(response, {request: mock.history.get[0]});

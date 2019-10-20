@@ -29,7 +29,7 @@ describe('snapshot', () => {
     it('should return a fn', () => {
       expect(typeof listSnapshots(context)).toBe('function');
     });
-    it('should return IResponse<IListImageApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _listSnapshots = listSnapshots(context);
       const response = await _listSnapshots({page: PAGE, per_page: PER_PAGE});
       Object.assign(response, { request: mock.history.get[0]});

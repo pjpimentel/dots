@@ -28,7 +28,7 @@ describe('domain', () => {
     it('should return a fn', () => {
       expect(typeof getDomain(context)).toBe('function');
     });
-    it('should return IResponse<IGetDomainApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _getDomain = getDomain(context);
       const response = await _getDomain({name: DOMAIN_NAME});
       Object.assign(response, { request: mock.history.get[0]});

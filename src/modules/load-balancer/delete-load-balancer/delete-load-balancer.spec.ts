@@ -28,7 +28,7 @@ describe('load-balancer', () => {
     it('should return a fn', () => {
       expect(typeof deleteLoadBalancer(context)).toBe('function');
     });
-    it('should return IResponse<void>', async () => {
+    it('should return a valid response', async () => {
       const _deleteLoadBalancer = deleteLoadBalancer(context);
       const response = await _deleteLoadBalancer({id: LOAD_BALANCER_ID});
       Object.assign(response, {request: mock.history.delete[0]});

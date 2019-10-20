@@ -26,7 +26,7 @@ describe('image', () => {
     it('should return a fn', () => {
       expect(typeof getImageAction(context)).toBe('function');
     });
-    it('should return IResponse<IGetImageActionApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _getImageAction = getImageAction(context);
       const response = await _getImageAction({
         action_id: ACTION_ID,

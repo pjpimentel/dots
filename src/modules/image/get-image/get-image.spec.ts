@@ -30,7 +30,7 @@ describe('image', () => {
     it('should return a fn', () => {
       expect(typeof getImage(context)).toBe('function');
     });
-    it('should return IResponse<IGetImageApiResponse> (by id)', async () => {
+    it('should return a valid response', async () => {
       const _getImage = getImage(context);
       const imageId = MOCK.response.body.image.id;
       const response = await _getImage({id: imageId});
@@ -64,7 +64,7 @@ describe('image', () => {
       expect(headers).toMatchObject(MOCK.response.headers);
       expect(status).toBe(MOCK.response.headers.status);
     });
-    it('should return IResponse<IGetImageApiResponse> (by slug)', async () => {
+    it('should return a valid response', async () => {
       const _getImage = getImage(context);
       const imageSlug = MOCK.response.body.image.slug;
       const response = await _getImage({slug: imageSlug});

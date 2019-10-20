@@ -24,7 +24,7 @@ describe('snapshot', () => {
     it('should return a fn', () => {
       expect(typeof getSnapshot(context)).toBe('function');
     });
-    it('should return IResponse<IGetSnapshotApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _getSnapshot = getSnapshot(context);
       const snapshotId = MOCK.response.body.snapshot.id;
       const response = await _getSnapshot({id: snapshotId});

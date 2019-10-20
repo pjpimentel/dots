@@ -26,7 +26,7 @@ describe('action', () => {
     it('should return a fn', () => {
       expect(typeof getVolumeAction(context)).toBe('function');
     });
-    it('should return IResponse<IGetActionApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _getVolumeAction = getVolumeAction(context);
       const response = await _getVolumeAction({
         action_id: ACTION_ID,

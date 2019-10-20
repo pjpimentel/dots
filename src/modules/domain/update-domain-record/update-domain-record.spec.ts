@@ -29,7 +29,7 @@ describe('domain', () => {
     it('should return a fn', () => {
       expect(typeof updateDomainRecord(context)).toBe('function');
     });
-    it('should return IResponse<IUpdateDomainRecordApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _updateDomainRecord = updateDomainRecord(context);
       const response = await _updateDomainRecord({
         domain_name: DOMAIN_NAME,

@@ -28,7 +28,7 @@ describe('image', () => {
     it('should return a fn', () => {
       expect(typeof transferImage(context)).toBe('function');
     });
-    it('should return IResponse<ITransferImageApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _transferImage = transferImage(context);
       const response = await _transferImage({
         id: IMAGE_ID,

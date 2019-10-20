@@ -33,7 +33,7 @@ describe('volume', () => {
     it('should return a fn', () => {
       expect(typeof detachVolumeFromDroplet(context)).toBe('function');
     });
-    it('should return IResponse<DetachVolumeToDropletResponse>', async () => {
+    it('should return a valid response', async () => {
       const _detachVolumeFromDroplet = detachVolumeFromDroplet(context);
       const response = await _detachVolumeFromDroplet({
         id: VOLUME_ID,

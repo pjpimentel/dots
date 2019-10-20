@@ -29,7 +29,7 @@ describe('domain', () => {
     it('should return a fn', () => {
       expect(typeof deleteDomainRecord(context)).toBe('function');
     });
-    it('should return IResponse<IGetDomainApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _deleteDomainRecord = deleteDomainRecord(context);
       const response = await _deleteDomainRecord({
         domain_name: DOMAIN_NAME,

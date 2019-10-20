@@ -29,7 +29,7 @@ describe('floating-ip', () => {
     it('should return a fn', () => {
       expect(typeof listFloatingIps(context)).toBe('function');
     });
-    it('should return IResponse<IListFloatingIpsApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _listFloatingIps = listFloatingIps(context);
       const response = await _listFloatingIps({page: PAGE, per_page: PER_PAGE});
       Object.assign(response, { request: mock.history.get[0]});

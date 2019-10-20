@@ -28,7 +28,7 @@ describe('image', () => {
     it('should return a fn', () => {
       expect(typeof convertImageToSnapshot(context)).toBe('function');
     });
-    it('should return IResponse<IConvertImageToSnapshotApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _convertImageToSnapshot = convertImageToSnapshot(context);
       const response = await _convertImageToSnapshot({
         id: IMAGE_ID,

@@ -30,7 +30,7 @@ describe('action', () => {
     it('should return a fn', () => {
       expect(typeof listVolumeActions(context)).toBe('function');
     });
-    it('should return IResponse<ListVolumeActionssResponse>', async () => {
+    it('should return a valid response', async () => {
       const _listVolumeActions = listVolumeActions(context);
       const response = await _listVolumeActions({
         id: VOLUME_ID,

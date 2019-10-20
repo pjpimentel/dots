@@ -30,7 +30,7 @@ describe('domain', () => {
     it('should return a fn', () => {
       expect(typeof listDomainRecords(context)).toBe('function');
     });
-    it('should return IResponse<IListDomainApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _listDomainRecords = listDomainRecords(context);
       const response = await _listDomainRecords({
         domain_name: DOMAIN_NAME,

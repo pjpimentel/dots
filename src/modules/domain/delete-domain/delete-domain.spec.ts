@@ -28,7 +28,7 @@ describe('domain', () => {
     it('should return a fn', () => {
       expect(typeof deleteDomain(context)).toBe('function');
     });
-    it('should return IResponse<IDeleteDomainApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _deleteDomain = deleteDomain(context);
       const response = await _deleteDomain({name: DOMAIN_NAME});
       Object.assign(response, { request: mock.history.delete[0]});

@@ -26,7 +26,7 @@ describe('action', () => {
     it('should return a fn', () => {
       expect(typeof getDropletAction(context)).toBe('function');
     });
-    it('should return IResponse<IGetActionApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _getDropletAction = getDropletAction(context);
       const response = await _getDropletAction({
         action_id: ACTION_ID,

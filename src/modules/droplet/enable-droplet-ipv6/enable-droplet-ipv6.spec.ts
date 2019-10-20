@@ -28,7 +28,7 @@ describe('droplet', () => {
     it('should return a fn', () => {
       expect(typeof enableDropletIpv6(context)).toBe('function');
     });
-    it('should return IResponse<EnableDropletIpv6Response>', async () => {
+    it('should return a valid response', async () => {
       const _enableDropletIpv6 = enableDropletIpv6(context);
       const response = await _enableDropletIpv6({
         id: DROPLET_ID,

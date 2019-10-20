@@ -33,7 +33,7 @@ describe('droplet', () => {
     it('should return a fn', () => {
       expect(typeof resizeDroplet(context)).toBe('function');
     });
-    it('should return IResponse<ResizeDropletResponse>', async () => {
+    it('should return a valid response', async () => {
       const _resizeDroplet = resizeDroplet(context);
       const response = await _resizeDroplet({
         id: DROPLET_ID,

@@ -28,7 +28,7 @@ describe('image', () => {
     it('should return a fn', () => {
       expect(typeof deleteImage(context)).toBe('function');
     });
-    it('should return IResponse<IUpdateImageApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _deleteImage = deleteImage(context);
       const response = await _deleteImage({id: IMAGE_ID});
       Object.assign(response, { request: mock.history.delete[0]});

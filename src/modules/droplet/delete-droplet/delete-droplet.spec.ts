@@ -28,7 +28,7 @@ describe('droplet', () => {
     it('should return a fn', () => {
       expect(typeof deleteDroplet(context)).toBe('function');
     });
-    it('should return IResponse<void>', async () => {
+    it('should return a valid response', async () => {
       const _deleteDroplet = deleteDroplet(context);
       const response = await _deleteDroplet({id: DROPLET_ID});
       Object.assign(response, {request: mock.history.delete[0]});

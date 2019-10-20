@@ -28,7 +28,7 @@ describe('domain', () => {
     it('should return a fn', () => {
       expect(typeof createDomainRecord(context)).toBe('function');
     });
-    it('should return IResponse<ICreateDomainRecordApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _createDomainRecord = createDomainRecord(context);
       const response = await _createDomainRecord({
         domain_name: DOMAIN_NAME,

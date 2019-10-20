@@ -28,7 +28,7 @@ describe('load-balancer', () => {
     it('should return a fn', () => {
       expect(typeof addRulesToLoadBalancer(context)).toBe('function');
     });
-    it('should return IResponse<IAddRulesToLoadBalancerApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _addRulesToLoadBalancer = addRulesToLoadBalancer(context);
       const response = await _addRulesToLoadBalancer({
         ...MOCK.request.body,

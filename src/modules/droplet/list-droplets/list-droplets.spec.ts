@@ -29,7 +29,7 @@ describe('droplet', () => {
     it('should return a fn', () => {
       expect(typeof listDroplets(context)).toBe('function');
     });
-    it('should return IResponse<ListDropletsResponse>', async () => {
+    it('should return a valid response', async () => {
       const _listDroplets = listDroplets(context);
       const response = await _listDroplets({page: PAGE, per_page: PER_PAGE});
       Object.assign(response, {request: mock.history.get[0]});

@@ -29,7 +29,7 @@ describe('load-balancer', () => {
     it('should return a fn', () => {
       expect(typeof listLoadBalancers(context)).toBe('function');
     });
-    it('should return IResponse<IListImageApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _listLoadBalancers = listLoadBalancers(context);
       const response = await _listLoadBalancers({page: PAGE, per_page: PER_PAGE});
       Object.assign(response, { request: mock.history.get[0]});

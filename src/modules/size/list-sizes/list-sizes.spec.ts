@@ -29,7 +29,7 @@ describe('size', () => {
     it('should return a fn', () => {
       expect(typeof listSizes(context)).toBe('function');
     });
-    it('should return IResponse<IListSizeApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _listSizes = listSizes(context);
       const response = await _listSizes({page: PAGE, per_page: PER_PAGE});
       Object.assign(response, { request: mock.history.get[0]});

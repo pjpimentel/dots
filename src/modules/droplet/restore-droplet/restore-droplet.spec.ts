@@ -28,7 +28,7 @@ describe('droplet', () => {
     it('should return a fn', () => {
       expect(typeof restoreDroplet(context)).toBe('function');
     });
-    it('should return IResponse<RestoreDropletResponse>', async () => {
+    it('should return a valid response', async () => {
       const _restoreDroplet = restoreDroplet(context);
       const response = await _restoreDroplet({
         id: DROPLET_ID,

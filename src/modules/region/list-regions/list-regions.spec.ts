@@ -29,7 +29,7 @@ describe('region', () => {
     it('should return a fn', () => {
       expect(typeof listRegions(context)).toBe('function');
     });
-    it('should return IResponse<IListSizeApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _listRegions = listRegions(context);
       const response = await _listRegions({page: PAGE, per_page: PER_PAGE});
       Object.assign(response, { request: mock.history.get[0]});

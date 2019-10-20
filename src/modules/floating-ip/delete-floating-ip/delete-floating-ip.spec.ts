@@ -28,7 +28,7 @@ describe('floating-ip', () => {
     it('should return a fn', () => {
       expect(typeof deleteFloatingIp(context)).toBe('function');
     });
-    it('should return IResponse<void>', async () => {
+    it('should return a valid response', async () => {
       const _deleteFloatingIp = deleteFloatingIp(context);
       const response = await _deleteFloatingIp({ip: IP_ADDRESS});
       Object.assign(response, {request: mock.history.delete[0]});

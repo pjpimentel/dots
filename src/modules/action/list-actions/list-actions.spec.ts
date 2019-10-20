@@ -29,7 +29,7 @@ describe('action', () => {
     it('should return a fn', () => {
       expect(typeof listActions(context)).toBe('function');
     });
-    it('should return IResponse<IListActionApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _listActions = listActions(context);
       const response = await _listActions({page: PAGE, per_page: PER_PAGE});
       Object.assign(response, { request: mock.history.get[0]});

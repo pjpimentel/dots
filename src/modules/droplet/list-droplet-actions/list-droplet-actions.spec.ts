@@ -30,7 +30,7 @@ describe('droplet', () => {
     it('should return a fn', () => {
       expect(typeof listDropletActions(context)).toBe('function');
     });
-    it('should return IResponse<ListDropletsResponse>', async () => {
+    it('should return a valid response', async () => {
       const _listDropletActions = listDropletActions(context);
       const response = await _listDropletActions({
         id: DROPLET_ID,

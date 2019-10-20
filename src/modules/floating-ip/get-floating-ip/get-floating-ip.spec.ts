@@ -27,7 +27,7 @@ describe('floating-ip', () => {
     it('should return a fn', () => {
       expect(typeof getFloatingIp(context)).toBe('function');
     });
-    it('should return IResponse<IGetFloatingIpApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _getFloatingIp = getFloatingIp(context);
       const response = await _getFloatingIp({
         ip: MOCK.response.body.floating_ip.ip

@@ -27,7 +27,7 @@ describe('droplet', () => {
     it('should return a fn', () => {
       expect(typeof doActionByDropletTag(context)).toBe('function');
     });
-    it('should return IResponse<ListDropletsResponse>', async () => {
+    it('should return a valid response', async () => {
       const TAG_NAME = 'MY-TAG';
       const _doActionByDropletTag = doActionByDropletTag(context);
       const response = await _doActionByDropletTag({

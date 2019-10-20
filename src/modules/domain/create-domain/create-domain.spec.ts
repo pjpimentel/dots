@@ -32,7 +32,7 @@ describe('domain', () => {
     it('should return a fn', () => {
       expect(typeof createDomain(context)).toBe('function');
     });
-    it('should return IResponse<ICreateDomainApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _createDomain = createDomain(context);
       const response = await _createDomain(MOCK.request.body);
       Object.assign(response, {request: mock.history.post[0]});

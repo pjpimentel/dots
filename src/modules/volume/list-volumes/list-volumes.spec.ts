@@ -29,7 +29,7 @@ describe('volume', () => {
     it('should return a fn', () => {
       expect(typeof listVolumes(context)).toBe('function');
     });
-    it('should return IResponse<ListVolumesResponse>', async () => {
+    it('should return a valid response', async () => {
       const _listVolumes = listVolumes(context);
       const response = await _listVolumes({page: PAGE, per_page: PER_PAGE});
       Object.assign(response, {request: mock.history.get[0]});

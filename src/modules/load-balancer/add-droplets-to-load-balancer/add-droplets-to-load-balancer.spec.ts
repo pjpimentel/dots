@@ -28,7 +28,7 @@ describe('load-balancer', () => {
     it('should return a fn', () => {
       expect(typeof addDropletsToLoadBalancer(context)).toBe('function');
     });
-    it('should return IResponse<IAddDropletsToLoadBalancerApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _addDropletsToLoadBalancer = addDropletsToLoadBalancer(context);
       const response = await _addDropletsToLoadBalancer({
         ...MOCK.request.body,

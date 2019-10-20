@@ -27,7 +27,7 @@ describe('volume', () => {
     it('should return a fn', () => {
       expect(typeof getVolume(context)).toBe('function');
     });
-    it('should return IResponse<IGetVolumeApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _getVolume = getVolume(context);
       const response = await _getVolume({id: MOCK.response.body.volume.id});
       Object.assign(response, {request: mock.history.get[0]});

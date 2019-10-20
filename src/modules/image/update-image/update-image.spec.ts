@@ -27,7 +27,7 @@ describe('image', () => {
     it('should return a fn', () => {
       expect(typeof updateImage(context)).toBe('function');
     });
-    it('should return IResponse<IUpdateImageApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _updateImage = updateImage(context);
       const newPayload = {
         ...MOCK.request.body,

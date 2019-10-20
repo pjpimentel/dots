@@ -33,7 +33,7 @@ describe('droplet', () => {
     it('should return a fn', () => {
       expect(typeof snapshotDroplet(context)).toBe('function');
     });
-    it('should return IResponse<SnapshotDropletResponse>', async () => {
+    it('should return a valid response', async () => {
       const _snapshotDroplet = snapshotDroplet(context);
       const response = await _snapshotDroplet({
         id: DROPLET_ID,

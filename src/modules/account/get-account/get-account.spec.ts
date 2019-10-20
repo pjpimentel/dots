@@ -24,7 +24,7 @@ describe('account', () => {
     it('should return a fn', () => {
       expect(typeof getAccount(context)).toBe('function');
     });
-    it('should return IResponse<IGetAccountApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _getAccount = getAccount(context);
       const response = await _getAccount();
       Object.assign(response, { request: mock.history.get[0]});

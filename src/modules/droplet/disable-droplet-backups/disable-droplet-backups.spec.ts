@@ -28,7 +28,7 @@ describe('droplet', () => {
     it('should return a fn', () => {
       expect(typeof disableDropletBackups(context)).toBe('function');
     });
-    it('should return IResponse<DisableDropletBackupsResponse>', async () => {
+    it('should return a valid response', async () => {
       const _disableDropletBackups = disableDropletBackups(context);
       const response = await _disableDropletBackups({
         id: DROPLET_ID,

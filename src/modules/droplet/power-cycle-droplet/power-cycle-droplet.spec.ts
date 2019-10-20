@@ -28,7 +28,7 @@ describe('droplet', () => {
     it('should return a fn', () => {
       expect(typeof powerCycleDroplet(context)).toBe('function');
     });
-    it('should return IResponse<PowerCycleDropletResponse>', async () => {
+    it('should return a valid response', async () => {
       const _powerCycleDroplet = powerCycleDroplet(context);
       const response = await _powerCycleDroplet({
         id: DROPLET_ID,

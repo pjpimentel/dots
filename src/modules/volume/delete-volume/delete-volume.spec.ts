@@ -28,7 +28,7 @@ describe('volume', () => {
     it('should return a fn', () => {
       expect(typeof deleteVolume(context)).toBe('function');
     });
-    it('should return IResponse<void>', async () => {
+    it('should return a valid response', async () => {
       const _deleteVolume = deleteVolume(context);
       const response = await _deleteVolume({id: VOLUME_ID});
       Object.assign(response, {request: mock.history.delete[0]});

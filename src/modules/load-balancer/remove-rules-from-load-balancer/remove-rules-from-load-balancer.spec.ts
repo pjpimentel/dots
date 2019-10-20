@@ -28,7 +28,7 @@ describe('load-balancer', () => {
     it('should return a fn', () => {
       expect(typeof removeRulesFromLoadBalancer(context)).toBe('function');
     });
-    it('should return IResponse<IRemoveRulesFromLoadBalancerApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _removeRulesFromLoadBalancer = removeRulesFromLoadBalancer(context);
       const response = await _removeRulesFromLoadBalancer({
         ...MOCK.request.body,

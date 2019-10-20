@@ -27,7 +27,7 @@ describe('image', () => {
     it('should return a fn', () => {
       expect(typeof createCustomImage(context)).toBe('function');
     });
-    it('should return IResponse<ICreateCustomImageApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _createCustomImage = createCustomImage(context);
       const newImage = MOCK.request.body;
       const response = await _createCustomImage(newImage);

@@ -29,7 +29,7 @@ describe('volume', () => {
     it('should return a fn', () => {
       expect(typeof createVolumeSnapshot(context)).toBe('function');
     });
-    it('should return IResponse<CreateVolumeSnapshotRes>', async () => {
+    it('should return a valid response', async () => {
       const _createVolumeSnapshot = createVolumeSnapshot(context);
       const response = await _createVolumeSnapshot({
         id: VOLUME_ID,

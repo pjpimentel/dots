@@ -24,7 +24,7 @@ describe('action', () => {
     it('should return a fn', () => {
       expect(typeof getAction(context)).toBe('function');
     });
-    it('should return IResponse<IGetActionApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _getAction = getAction(context);
       const action_id = MOCK.response.body.action.id;
       const response = await _getAction({id: action_id});

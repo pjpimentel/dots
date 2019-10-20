@@ -32,7 +32,7 @@ describe('droplet', () => {
     it('should return a fn', () => {
       expect(typeof createDroplets(context)).toBe('function');
     });
-    it('should return IResponse<IcreateDropletsApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _createDroplets = createDroplets(context);
       const response = await _createDroplets(MOCK.request.body);
       Object.assign(response, {request: mock.history.post[0]});

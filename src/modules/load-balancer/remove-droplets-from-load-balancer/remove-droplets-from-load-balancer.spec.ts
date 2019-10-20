@@ -28,7 +28,7 @@ describe('load-balancer', () => {
     it('should return a fn', () => {
       expect(typeof removeDropletsFromLoadBalancer(context)).toBe('function');
     });
-    it('should return IResponse<IRemoveDropletsToLoadBalancerApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _removeDropletsFromLoadBalancer = removeDropletsFromLoadBalancer(context);
       const response = await _removeDropletsFromLoadBalancer({
         ...MOCK.request.body,

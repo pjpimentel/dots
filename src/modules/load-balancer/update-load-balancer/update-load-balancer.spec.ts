@@ -33,7 +33,7 @@ describe('load-balancer', () => {
     it('should return a fn', () => {
       expect(typeof updateLoadBalancer(context)).toBe('function');
     });
-    it('should return IResponse<IUpdateLoadBalancerApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _updateLoadBalancer = updateLoadBalancer(context);
       const response = await _updateLoadBalancer({
         ...MOCK.request.body,

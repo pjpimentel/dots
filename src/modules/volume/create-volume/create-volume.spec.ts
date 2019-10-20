@@ -32,7 +32,7 @@ describe('volume', () => {
     it('should return a fn', () => {
       expect(typeof createVolume(context)).toBe('function');
     });
-    it('should return IResponse<ICreateVolumeApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _createVolume = createVolume(context);
       const response = await _createVolume(MOCK.request.body);
       Object.assign(response, {request: mock.history.post[0]});

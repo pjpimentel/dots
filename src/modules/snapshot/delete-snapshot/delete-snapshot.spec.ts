@@ -28,7 +28,7 @@ describe('snapshot', () => {
     it('should return a fn', () => {
       expect(typeof deleteSnapshot(context)).toBe('function');
     });
-    it('should return IResponse<IUpdateSnapshotApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _deleteSnapshot = deleteSnapshot(context);
       const response = await _deleteSnapshot({id: IMAGE_ID});
       Object.assign(response, { request: mock.history.delete[0]});

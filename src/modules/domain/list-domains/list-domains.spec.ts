@@ -29,7 +29,7 @@ describe('domain', () => {
     it('should return a fn', () => {
       expect(typeof listDomains(context)).toBe('function');
     });
-    it('should return IResponse<IListDomainApiResponse>', async () => {
+    it('should return a valid response', async () => {
       const _listDomains = listDomains(context);
       const response = await _listDomains({page: PAGE, per_page: PER_PAGE});
       Object.assign(response, { request: mock.history.get[0]});
