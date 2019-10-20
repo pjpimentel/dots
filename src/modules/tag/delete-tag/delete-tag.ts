@@ -11,7 +11,7 @@ export const deleteTag = ({
 }: IContext<AxiosInstance>) => ({
   tag_name,
 }: IDeleteTagApiRequest): Promise<Readonly<DeleteTagResponse>> => {
-  const path = '/certificates';
+  const path = '/tags';
   const url = `${path}/${tag_name}`;
 
   return httpClient.delete(url);
