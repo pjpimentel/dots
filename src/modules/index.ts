@@ -10,6 +10,7 @@ import * as loadBalancer from './load-balancer';
 import * as region from './region';
 import * as size from './size';
 import * as snapshot from './snapshot';
+import * as sshKey from './ssh-key';
 import * as volume from './volume';
 
 export {
@@ -25,5 +26,6 @@ export {
   region,
   size,
   snapshot,
+  sshKey,
   volume,
 };
