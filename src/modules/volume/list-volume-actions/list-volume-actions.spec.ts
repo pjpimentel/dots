@@ -4,7 +4,7 @@ import { createContext } from '../../../utils';
 import {listVolumeActions} from './list-volume-actions';
 import * as MOCK from './list-volume-actions.mock';
 
-describe('action', () => {
+describe('volume', () => {
   const VOLUME_ID = MOCK.response.body.actions[0].resource_id;
   const PAGE = 3;
   const PER_PAGE = 26;

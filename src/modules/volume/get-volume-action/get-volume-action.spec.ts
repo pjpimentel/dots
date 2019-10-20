@@ -4,7 +4,7 @@ import { createContext } from '../../../utils';
 import {getVolumeAction} from './get-volume-action';
 import * as MOCK from './get-volume-action.mock';
 
-describe('action', () => {
+describe('volume', () => {
   const VOLUME_ID = MOCK.response.body.action.resource_id;
   const ACTION_ID = MOCK.response.body.action.id;
   const URL = `/volumes/${VOLUME_ID}/actions/${ACTION_ID}`;
