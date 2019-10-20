@@ -1,14 +1,14 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { createContext } from '../../../utils';
-import {createSshKey} from './create-ssh-key';
-import * as MOCK from './create-ssh-key.mock';
+import {updateSshKey} from './update-ssh-key';
+import * as MOCK from './update-ssh-key.mock';
 
 describe('ssh-key', () => {
-  const URL = '/account/keys';
+  const URL = `/account/keys/${MOCK.response.body.ssh_key.id}`;
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
-  mock.onPost(URL, MOCK.request.body).reply(
+  mock.onPut(URL, MOCK.request.body).reply(
     MOCK.response.headers.status,
     MOCK.response.body,
     MOCK.response.headers,
@@ -20,17 +20,20 @@ describe('ssh-key', () => {
   beforeEach(() => {
     mock.resetHistory();
   });
-  describe('create-ssh-key', () => {
+  describe('update-ssh-key', () => {
     it('should be a fn', () => {
-      expect(typeof createSshKey).toBe('function');
+      expect(typeof updateSshKey).toBe('function');
     });
     it('should return a fn', () => {
-      expect(typeof createSshKey(context)).toBe('function');
+      expect(typeof updateSshKey(context)).toBe('function');
     });
     it('should return a valid response', async () => {
-      const _createSshKey = createSshKey(context);
-      const response = await _createSshKey(MOCK.request.body);
-      Object.assign(response, {request: mock.history.post[0]});
+      const _updateSshKey = updateSshKey(context);
+      const response = await _updateSshKey({
+        ...MOCK.request.body,
+        id: MOCK.response.body.ssh_key.id,
+      });
+      Object.assign(response, {request: mock.history.put[0]});
       /// validate response schema
       expect(typeof response).toBe('object');
       expect(typeof response.data).toBe('object');
@@ -40,7 +43,7 @@ describe('ssh-key', () => {
       /// validate request
       const {request} = response;
       expect(request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('post');
+      expect(request.method).toBe('put');
       expect(request.headers).toMatchObject(MOCK.request.headers);
       expect(request.data).toBeDefined();
       const requestBody = JSON.parse(request.data);
