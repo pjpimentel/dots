@@ -1,5 +1,6 @@
 import * as account from './account';
 import * as action from './action';
+import * as certificate from './certificate';
 import * as domain from './domain';
 import * as droplet from './droplet';
 import * as firewall from './firewall';
@@ -14,6 +15,7 @@ import * as volume from './volume';
 export {
   account,
   action,
+  certificate,
   domain,
   droplet,
   firewall,
