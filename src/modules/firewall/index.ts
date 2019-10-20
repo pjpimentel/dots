@@ -1,4 +1,5 @@
 export * from './add-droplets-to-firewall/add-droplets-to-firewall';
+export * from './add-rules-to-firewall/add-rules-to-firewall';
 export * from './create-firewall/create-firewall';
 export * from './delete-firewall/delete-firewall';
 export * from './delete-firewall/delete-firewall';
