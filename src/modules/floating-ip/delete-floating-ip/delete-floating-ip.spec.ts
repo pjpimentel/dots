@@ -4,7 +4,7 @@ import { createContext } from '../../../utils';
 import {deleteFloatingIp} from './delete-floating-ip';
 import * as MOCK from './delete-floating-ip.mock';
 
-describe('floatingIp', () => {
+describe('floating-ip', () => {
   const IP_ADDRESS = 'my-floating-ip';
   const URL = `/floating_ips/${IP_ADDRESS}`;
   const TOKEN = 'bearer-token';

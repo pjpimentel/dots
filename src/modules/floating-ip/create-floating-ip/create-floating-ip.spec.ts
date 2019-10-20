@@ -4,7 +4,7 @@ import { createContext } from '../../../utils';
 import {createFloatingIp} from './create-floating-ip';
 import * as MOCK from './create-floating-ip.mock';
 
-describe('domain', () => {
+describe('floating-ip', () => {
   const URL = '/floating_ips';
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);

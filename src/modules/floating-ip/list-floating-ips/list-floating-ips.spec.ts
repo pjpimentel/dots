@@ -4,7 +4,7 @@ import { createContext } from '../../../utils';
 import {listFloatingIps} from './list-floating-ips';
 import * as MOCK from './list-floating-ips.mock';
 
-describe('floating-ips', () => {
+describe('floating-ip', () => {
   const PAGE = 3;
   const PER_PAGE = 26;
   const URL = '/floating_ips';
