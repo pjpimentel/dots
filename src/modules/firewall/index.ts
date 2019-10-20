@@ -5,4 +5,6 @@ export * from './delete-firewall/delete-firewall';
 export * from './delete-firewall/delete-firewall';
 export * from './get-firewall/get-firewall';
 export * from './list-firewalls/list-firewalls';
+export * from './remove-droplets-from-firewall/remove-droplets-from-firewall';
+export * from './remove-rules-from-firewall/remove-rules-from-firewall';
 export * from './update-firewall/update-firewall';
