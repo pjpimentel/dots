@@ -11,6 +11,7 @@ import * as region from './region';
 import * as size from './size';
 import * as snapshot from './snapshot';
 import * as sshKey from './ssh-key';
+import * as tag from './tag';
 import * as volume from './volume';
 
 export {
@@ -27,5 +28,6 @@ export {
   size,
   snapshot,
   sshKey,
+  tag,
   volume,
 };

@@ -13,8 +13,8 @@ export const createApiClient = ({
   createContext: typeof import('../create-context/create-context').createContext;
   modules: typeof import('../../modules')
 }) => ({
-  requestTimeoutInMs,
   endpoint,
+  requestTimeoutInMs,
   token,
 }: ICreateApiClientInput) => {
   const context = createContext({
@@ -24,12 +24,22 @@ export const createApiClient = ({
     token,
   });
 
+  const _options = Object.freeze({
+    endpoint,
+    requestTimeoutInMs,
+  });
   const account = Object.freeze({
     getAccount: modules.account.getAccount(context),
   });
   const action = Object.freeze({
     getAction: modules.action.getAction(context),
     listActions: modules.action.listActions(context),
+  });
+  const certificate = Object.freeze({
+    listCertificates: modules.certificate.listCertificates(context),
+    getCertificate: modules.certificate.getCertificate(context),
+    deleteCertificate: modules.certificate.deleteCertificate(context),
+    createCertificate: modules.certificate.createCertificate(context),
   });
   const domain = Object.freeze({
     createDomain: modules.domain.createDomain(context),
@@ -73,6 +83,29 @@ export const createApiClient = ({
     shutdownDroplet: modules.droplet.shutdownDroplet(context),
     snapshotDroplet: modules.droplet.snapshotDroplet(context),
   });
+  const firewall = Object.freeze({
+    addDropletsToFirewall: modules.firewall.addDropletsToFirewall(context),
+    addRulesToFirewall: modules.firewall.addRulesToFirewall(context),
+    addTagsToFirewall: modules.firewall.addTagsToFirewall(context),
+    createFirewall: modules.firewall.createFirewall(context),
+    deleteFirewall: modules.firewall.deleteFirewall(context),
+    getFirewall: modules.firewall.getFirewall(context),
+    listFirewalls: modules.firewall.listFirewalls(context),
+    removeDropletsFromFirewall: modules.firewall.removeDropletsFromFirewall(context),
+    removeRulesFromFirewall: modules.firewall.removeRulesFromFirewall(context),
+    removeTagsFromFirewall: modules.firewall.removeTagsFromFirewall(context),
+    updateFirewall: modules.firewall.updateFirewall(context),
+  });
+  const floatingIp = Object.freeze({
+    assignIpToDroplet: modules.floatingIp.assignIpToDroplet(context),
+    createFloatingIp: modules.floatingIp.createFloatingIp(context),
+    deleteFloatingIp: modules.floatingIp.deleteFloatingIp(context),
+    getFloatingIp: modules.floatingIp.getFloatingIp(context),
+    getFloatingIpAction: modules.floatingIp.getFloatingIpAction(context),
+    listFloatingIpActions: modules.floatingIp.listFloatingIpActions(context),
+    listFloatingIps: modules.floatingIp.listFloatingIps(context),
+    unassignIpFromDroplet: modules.floatingIp.unassignIpFromDroplet(context),
+  });
   const image = Object.freeze({
     convertImageToSnapshot: modules.image.convertImageToSnapshot(context),
     createCustomImage: modules.image.createCustomImage(context),
@@ -84,6 +117,17 @@ export const createApiClient = ({
     transferImage: modules.image.transferImage(context),
     updateImage: modules.image.updateImage(context),
   });
+  const loadBalancer = Object.freeze({
+    addDropletsToLoadBalancer: modules.loadBalancer.addDropletsToLoadBalancer(context),
+    addRulesToLoadBalancer: modules.loadBalancer.addRulesToLoadBalancer(context),
+    createLoadBalancer: modules.loadBalancer.createLoadBalancer(context),
+    deleteLoadBalancer: modules.loadBalancer.deleteLoadBalancer(context),
+    getLoadBalancer: modules.loadBalancer.getLoadBalancer(context),
+    listLoadBalancers: modules.loadBalancer.listLoadBalancers(context),
+    removeDropletsFromLoadBalancer: modules.loadBalancer.removeDropletsFromLoadBalancer(context),
+    removeRulesFromLoadBalancer: modules.loadBalancer.removeRulesFromLoadBalancer(context),
+    updateLoadBalancer: modules.loadBalancer.updateLoadBalancer(context),
+  });
   const region = Object.freeze({
     listRegions: modules.region.listRegions(context),
   });
@@ -94,6 +138,21 @@ export const createApiClient = ({
     deleteSnapshot: modules.snapshot.deleteSnapshot(context),
     getSnapshot: modules.snapshot.getSnapshot(context),
     listSnapshots: modules.snapshot.listSnapshots(context),
+  });
+  const sshKey = Object.freeze({
+    createSshKey: modules.sshKey.createSshKey(context),
+    destroySshKey: modules.sshKey.destroySshKey(context),
+    getSshKey: modules.sshKey.getSshKey(context),
+    listSshKeys: modules.sshKey.listSshKeys(context),
+    updateSshKey: modules.sshKey.updateSshKey(context),
+  });
+  const tag = Object.freeze({
+    createTag: modules.tag.createTag(context),
+    deleteTag: modules.tag.deleteTag(context),
+    getTag: modules.tag.getTag(context),
+    listTags: modules.tag.listTags(context),
+    tagResources: modules.tag.tagResources(context),
+    untagResources: modules.tag.untagResources(context),
   });
   const volume = Object.freeze({
     attachVolumeToDroplet: modules.volume.attachVolumeToDroplet(context),
@@ -110,14 +169,21 @@ export const createApiClient = ({
   });
 
   return Object.freeze({
+    _options,
     account,
     action,
+    certificate,
     domain,
     droplet,
+    firewall,
+    floatingIp,
     image,
+    loadBalancer,
     region,
     size,
     snapshot,
+    sshKey,
+    tag,
     volume,
   });
 };
