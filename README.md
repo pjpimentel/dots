@@ -1,44 +1,55 @@
 # dots
 
-## **digital ocean** API **v2** wrapper
+## **digital ocean** API wrapper
 
 [![travis](https://img.shields.io/travis/pjpimentel/dots/master.svg?longCache=true)](https://travis-ci.org/pjpimentel/dots)
 [![quality](https://sonarcloud.io/api/project_badges/measure?branch=master&project=dots&metric=alert_status)](https://sonarcloud.io/dashboard?branch=master&id=dots)
 [![coverage](https://sonarcloud.io/api/project_badges/measure?branch=master&project=dots&metric=coverage)](https://sonarcloud.io/dashboard?branch=master&id=dots)
 [![security](https://sonarcloud.io/api/project_badges/measure?branch=master&project=dots&metric=security_rating)](https://sonarcloud.io/dashboard?branch=master&id=dots)
 
-[![npm version](https://img.shields.io/npm/v/dots-wrapper/latest.svg?longCache=true)](https://www.npmjs.com/package/dots-wrapper?activeTab=versions)
-[![npm downloads](https://img.shields.io/npm/dt/dots-wrapper.svg?longCache=true)](https://www.npmjs.com/package/dots-wrapper)
-[![dependencies](https://img.shields.io/david/pjpimentel/dots.svg?longCache=true)](https://www.npmjs.com/package/dots-wrapper?activeTab=dependencies)
-[![license](https://img.shields.io/npm/l/dots-wrapper.svg?longCache=true)](https://github.com/pjpimentel/dots/blob/master/LICENSE)
-
-## Install
+## install
 ``` bash
     npm install --save dots-wrapper@latest
 ```
-## Usage
-Typescript
+## usage
+typescript/nodejs
 ``` typescript
     import { createApiClient } from 'dots-wrapper';
     const myApiToken = 'my-long-token';
-    const digitalOcean = createApiClient({token: myApiToken});
+    const dots = createApiClient({token: myApiToken});
 
-    const account = await digitalOcean.account.getAccount();
-
-    console.log(account);
-```
-Javascript - Nodejs
-``` javascript
-    import { createApiClient } from 'dots-wrapper';
-    const myApiToken = 'my-long-token';
-    const digitalOcean = createApiClient({token: myApiToken});
-
-    const account = await digitalOcean.account.getAccount();
+    const account = await dots.account.getAccount();
 
     console.log(account);
 ```
-## Docs
+## docs
 
-## [https://dots.pimentel.co](https://dots.pimentel.co)
+1. [account](src/modules/account/README.md#account)
+    1. [get-account](src/modules/account/README.md#get-account)
+1. [action](src/modules/action/README.md#action)
+    1. [get-action](src/modules/action/README.md#get-action)
+    1. [list-actions](src/modules/action/README.md#list-actions)
+1. [certificate](src/modules/certificate/README.md#certificate)
+    1. [create-certificate](src/modules/certificate/README.md#create-certificate)
+    1. [delete-certificates](src/modules/certificate/README.md#delete-certificates)
+    1. [get-certificate](src/modules/certificate/README.md#get-certificate)
+    1. [list-certificates](src/modules/certificate/README.md#list-certificates)
+
+
+account
+action
+certificate
+domain
+droplet
+firewall
+floating-ip
+image
+load-balancer
+region
+size
+snapshot
+ssh-key
+tag
+volume
 
 ## License: [MIT](LICENSE)
