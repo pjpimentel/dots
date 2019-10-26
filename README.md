@@ -1,4 +1,4 @@
-# dots
+# ··· dots ···
 
 ## **digital ocean** API wrapper
 
@@ -31,25 +31,18 @@ typescript/nodejs
     1. [list-actions](src/modules/action/README.md#list-actions)
 1. [certificate](src/modules/certificate/README.md#certificate)
     1. [create-certificate](src/modules/certificate/README.md#create-certificate)
-    1. [delete-certificates](src/modules/certificate/README.md#delete-certificates)
+    1. [delete-certificate](src/modules/certificate/README.md#delete-certificate)
     1. [get-certificate](src/modules/certificate/README.md#get-certificate)
     1. [list-certificates](src/modules/certificate/README.md#list-certificates)
+1. [domain](src/modules/domain/README.md#domain)
+    1. [create-domain](src/modules/domain/README.md#create-domain)
+    1. [create-domain-record](src/modules/domain/README.md#create-domain-record)
+    1. [delete-domain](src/modules/domain/README.md#delete-domain)
+    1. [delete-domain-record](src/modules/domain/README.md#delete-domain-record)
+    1. [get-domain](src/modules/domain/README.md#get-domain)
+    1. [get-domain-record](src/modules/domain/README.md#get-domain-record)
+    1. [list-domain-records](src/modules/domain/README.md#list-domain-records)
+    1. [list-domains](src/modules/domain/README.md#list-domains)
+    1. [update-domain-record](src/modules/domain/README.md#update-domain-record)
 
-
-account
-action
-certificate
-domain
-droplet
-firewall
-floating-ip
-image
-load-balancer
-region
-size
-snapshot
-ssh-key
-tag
-volume
-
-## License: [MIT](LICENSE)
+## license: [mit](LICENSE)
