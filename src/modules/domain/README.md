@@ -133,7 +133,7 @@ try {
 }
 ```
 
-## update-domain-records
+## update-domain-record
 [original documentation](https://developers.digitalocean.com/documentation/v2/#update-a-domain-record)
 
 ```javascript
