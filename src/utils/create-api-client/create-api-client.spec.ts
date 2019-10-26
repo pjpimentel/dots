@@ -9,7 +9,7 @@ const KEYS_BLACKLIST = ['types', '_options'];
 
 const _FN_REF = () => true;
 const _IS_KEY_BLACK_LISTED = ({blacklist}: {blacklist: string[]}) => (key: string) => blacklist.includes(key);
-const _IS_DIR = ({isKeyBlacklisted}: {isKeyBlacklisted: (v: string) => boolean}) => (dir: Dirent) => dir.isDirectory() && !isKeyBlacklisted(dir.name);
+const _IS_DIR = ({isBlacklisted}: {isBlacklisted: (v: string) => boolean}) => (dir: Dirent) => dir.isDirectory() && !isBlacklisted(dir.name);
 const _GET_NAME = () => (dir: Dirent) => dir.name;
 const _GET_FULL_PATH = (prefix: string) => (suffix: string) => `${prefix}/${suffix}`;
 const _JOIN_AND_CAPITALIZE = () => (value: string) => {
@@ -28,7 +28,7 @@ const _JOIN_AND_CAPITALIZE = () => (value: string) => {
 };
 
 const isKeyBlacklisted = _IS_KEY_BLACK_LISTED({blacklist: KEYS_BLACKLIST});
-const isDir = _IS_DIR({isKeyBlacklisted})
+const isDir = _IS_DIR({isBlacklisted: isKeyBlacklisted});
 const getDirName = _GET_NAME();
 const joinAndCapitalize = _JOIN_AND_CAPITALIZE();
 const getFullPath = _GET_FULL_PATH(MODULES_ROOT);
@@ -48,11 +48,11 @@ const _createEndpointsMirror = (folders: string[]) => folders.reduce((endpoints,
   return {...endpoints, [prettyFnName]: _FN_REF};
 }, {});
 /// {account: {getAccount}, action: {getAction, listActions}}
-const ENDPOINTS = MODULES.reduce((modules, _module) => {
+const ENDPOINTS = MODULES.reduce((mods, _module) => {
   const folders = _getFolders(_module)
   const prettyModuleName = joinAndCapitalize(_module);
 
-  return {...modules, [prettyModuleName]: _createEndpointsMirror(folders)};
+  return {...mods, [prettyModuleName]: _createEndpointsMirror(folders)};
 }, {});
 const isValidKey = (key: string = '') => key && key[0] !== '_';
 

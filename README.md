@@ -2,10 +2,10 @@
 
 ## **digital ocean** API wrapper
 
-[![travis](https://img.shields.io/travis/pjpimentel/dots/master.svg?longCache=true)](https://travis-ci.org/pjpimentel/dots)
-[![quality](https://sonarcloud.io/api/project_badges/measure?branch=master&project=dots&metric=alert_status)](https://sonarcloud.io/dashboard?branch=master&id=dots)
-[![coverage](https://sonarcloud.io/api/project_badges/measure?branch=master&project=dots&metric=coverage)](https://sonarcloud.io/dashboard?branch=master&id=dots)
-[![security](https://sonarcloud.io/api/project_badges/measure?branch=master&project=dots&metric=security_rating)](https://sonarcloud.io/dashboard?branch=master&id=dots)
+[![travis](https://img.shields.io/travis/pjpimentel/dots/v3.0.0.svg?longCache=true)](https://travis-ci.org/pjpimentel/dots)
+[![quality](https://sonarcloud.io/api/project_badges/measure?branch=v3.0.0&project=dots&metric=alert_status)](https://sonarcloud.io/dashboard?branch=v3.0.0&id=dots)
+[![coverage](https://sonarcloud.io/api/project_badges/measure?branch=v3.0.0&project=dots&metric=coverage)](https://sonarcloud.io/dashboard?branch=v3.0.0&id=dots)
+[![security](https://sonarcloud.io/api/project_badges/measure?branch=v3.0.0&project=dots&metric=security_rating)](https://sonarcloud.io/dashboard?branch=v3.0.0&id=dots)
 
 ## install
 ``` bash
