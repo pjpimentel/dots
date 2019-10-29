@@ -29,7 +29,9 @@ describe('droplet', () => {
     });
     it('should return a valid response', async () => {
       const _getDroplet = getDroplet(context);
-      const response = await _getDroplet({id: MOCK.response.body.droplet.id});
+      const response = await _getDroplet({
+        droplet_id: MOCK.response.body.droplet.id,
+      });
       Object.assign(response, {request: mock.history.get[0]});
       /// validate response schema
       expect(typeof response).toBe('object');

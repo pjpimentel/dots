@@ -5,7 +5,7 @@ export interface IGetDropletApiResponse {
 }
 
 export interface IGetDropletApiRequest {
-  id: number;
+  droplet_id: number;
 }
 
 export type GetDropletResponse = IResponse<IGetDropletApiResponse>;
@@ -13,10 +13,10 @@ export type GetDropletResponse = IResponse<IGetDropletApiResponse>;
 export const getDroplet = ({
   httpClient,
 }: IContext<AxiosInstance>) => ({
-  id,
+  droplet_id,
 }: IGetDropletApiRequest): Promise<Readonly<GetDropletResponse>> => {
   const path = '/droplets';
-  const url = `${path}/${id}`;
+  const url = `${path}/${droplet_id}`;
 
   return httpClient.get<IGetDropletApiResponse>(url);
 };

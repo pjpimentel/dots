@@ -5,7 +5,7 @@ import {getDropletAction} from './get-droplet-action';
 import * as MOCK from './get-droplet-action.mock';
 
 describe('action', () => {
-  const DROPLET_ID = MOCK.response.body.action.resource_id;
+  const DROPLET_ID = Number(MOCK.response.body.action.resource_id);
   const ACTION_ID = MOCK.response.body.action.id;
   const URL = `/droplets/${DROPLET_ID}/actions/${ACTION_ID}`;
   const TOKEN = 'bearer-token';

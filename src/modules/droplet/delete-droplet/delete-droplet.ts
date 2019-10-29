@@ -1,7 +1,7 @@
 import { AxiosInstance } from 'axios';
 
 export interface IDeleteDropletApiRequest {
-  id: string;
+  droplet_id: number;
 }
 
 export type DeleteDropletResponse = IResponse<void>;
@@ -9,10 +9,10 @@ export type DeleteDropletResponse = IResponse<void>;
 export const deleteDroplet = ({
   httpClient,
 }: IContext<AxiosInstance>) => ({
-  id,
+  droplet_id,
 }: IDeleteDropletApiRequest): Promise<Readonly<DeleteDropletResponse>> => {
   const path = '/droplets';
-  const url = `${path}/${id}`;
+  const url = `${path}/${droplet_id}`;
 
   return httpClient.delete(url);
 };

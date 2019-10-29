@@ -5,7 +5,7 @@ export interface IShutdownDropletApiResponse {
 }
 
 export interface IShutdownDropletApiRequest {
-  id: string;
+  droplet_id: number;
 }
 
 export type ShutdownDropletResponse = IResponse<IShutdownDropletApiResponse>;
@@ -13,12 +13,12 @@ export type ShutdownDropletResponse = IResponse<IShutdownDropletApiResponse>;
 export const shutdownDroplet = ({
   httpClient,
 }: IContext<AxiosInstance>) => ({
-  id,
+  droplet_id,
 }: IShutdownDropletApiRequest): Promise<Readonly<ShutdownDropletResponse>> => {
   const path = '/droplets';
   const type = 'shutdown';
   const body = {type};
-  const url = `${path}/${id}/actions`;
+  const url = `${path}/${droplet_id}/actions`;
 
   return httpClient.post<IShutdownDropletApiResponse>(url, body);
 };

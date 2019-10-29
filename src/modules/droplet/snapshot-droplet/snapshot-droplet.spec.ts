@@ -5,7 +5,7 @@ import {snapshotDroplet} from './snapshot-droplet';
 import * as MOCK from './snapshot-droplet.mock';
 
 describe('droplet', () => {
-  const DROPLET_ID = MOCK.response.body.action.resource_id;
+  const DROPLET_ID = Number(MOCK.response.body.action.resource_id);
   const URL = `/droplets/${DROPLET_ID}/actions`;
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
@@ -36,7 +36,7 @@ describe('droplet', () => {
     it('should return a valid response', async () => {
       const _snapshotDroplet = snapshotDroplet(context);
       const response = await _snapshotDroplet({
-        id: DROPLET_ID,
+        droplet_id: DROPLET_ID,
         name: MOCK.request.body.name,
       });
       Object.assign(response, {request: mock.history.post[0]});
@@ -69,7 +69,7 @@ describe('droplet', () => {
     it('should POST only required parameters', async () => {
       const _snapshotDroplet = snapshotDroplet(context);
       const response = await _snapshotDroplet({
-        id: DROPLET_ID,
+        droplet_id: DROPLET_ID,
       });
       Object.assign(response, {request: mock.history.post[0]});
       /// validate request

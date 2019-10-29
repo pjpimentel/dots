@@ -6,7 +6,7 @@
 ```javascript
 try {
   const input = {
-    id: 123, // number,
+    droplet_id: 123, // number,
     kernel: 123, // number
   };
   const {data:{action}} = await dots.droplet.changeDropletKernel(input);
@@ -58,7 +58,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 123, // number
+    droplet_id: 123, // number
   };
   const {status} = await dots.droplet.deleteDroplet(input);
   console.log(status);
@@ -73,7 +73,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 123, // number
+    droplet_id: 123, // number
   };
   const {data:{action}} = await dots.droplet.disableDropletBackups(input);
   console.log(action);
@@ -104,7 +104,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 123, // number
+    droplet_id: 123, // number
   };
   const {data:{action}} = await dots.droplet.enableDropletBackups(input);
   console.log(action);
@@ -119,7 +119,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 123, // number
+    droplet_id: 123, // number
   };
   const {data:{action}} = await dots.droplet.enableDropletIpv6(input);
   console.log(action);
@@ -134,7 +134,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 123, // number
+    droplet_id: 123, // number
   };
   const {data:{action}} = await dots.droplet.enableDropletPrivateNetworking(input);
   console.log(action);
@@ -149,7 +149,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 123, // number
+    droplet_id: 123, // number
   };
   const {data:{droplet}} = await dots.droplet.getDroplet(input);
   console.log(droplet);
@@ -164,8 +164,8 @@ try {
 ```javascript
 try {
   const input = {
-    action_id: 123, // number
-    droplet_id: 123, // number
+    action_droplet_id: 123, // number
+    droplet_droplet_id: 123, // number
   };
   const {data:{action}} = await dots.droplet.getDropletAction(input);
   console.log(action);
@@ -180,7 +180,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 123, // number
+    droplet_id: 123, // number
     per_page: 100, // number
   };
   const {data:{actions}} = await dots.droplet.listDropletActions(input);
@@ -196,7 +196,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 123, // number
+    droplet_id: 123, // number
     per_page: 100, // number
   };
   const {data:{backups}} = await dots.droplet.listDropletBackups(input);
@@ -212,7 +212,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 123, // number
+    droplet_id: 123, // number
     per_page: 100, // number
   };
   const {data:{kernels}} = await dots.droplet.listDropletKernels(input);
@@ -228,7 +228,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 123, // number
+    droplet_id: 123, // number
     per_page: 100, // number
   };
   const {data:{neighbors}} = await dots.droplet.listDropletNeighborhoods(input);
@@ -244,7 +244,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 123, // number
+    droplet_id: 123, // number
     per_page: 100, // number
   };
   const {data:{droplets}} = await dots.droplet.listDropletNeighbors(input);
@@ -278,7 +278,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 123, // number
+    droplet_id: 123, // number
     per_page: 100, // number
   };
   const {data:{snapshots}} = await dots.droplet.listDropletSnapshots(input);
@@ -294,7 +294,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 123, // number
+    droplet_id: 123, // number
   };
   const {data:{action}} = await dots.droplet.powerCycleDroplet(input);
   console.log(action);
@@ -309,7 +309,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 123, // number
+    droplet_id: 123, // number
   };
   const {data:{action}} = await dots.droplet.powerOffDroplet(input);
   console.log(action);
@@ -324,7 +324,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 123, // number
+    droplet_id: 123, // number
   };
   const {data:{action}} = await dots.droplet.powerOnDroplet(input);
   console.log(action);
@@ -339,7 +339,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 123, // number
+    droplet_id: 123, // number
   };
   const {data:{action}} = await dots.droplet.rebootDroplet(input);
   console.log(action);
@@ -354,7 +354,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 123, // number
+    droplet_id: 123, // number
     image: "new-image", // string
   };
   const {data:{action}} = await dots.droplet.rebuildDroplet(input);
@@ -370,7 +370,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 123, // number
+    droplet_id: 123, // number
     name: 'new-name', // string
   };
   const {data:{action}} = await dots.droplet.renameDroplet(input);
@@ -386,7 +386,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 123, // number
+    droplet_id: 123, // number
   };
   const {data:{action}} = await dots.droplet.resetDropletPassword(input);
   console.log(action);
@@ -401,7 +401,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 123, // number
+    droplet_id: 123, // number
     type: "resize", // string
     size: "1gb", // string
   };
@@ -418,7 +418,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 123, // string,
+    droplet_id: 123, // string,
     image: 123 // string|number,
   };
   const {data:{droplet}} = await dots.droplet.restoreDroplet(input);
@@ -434,7 +434,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 123, // number
+    droplet_id: 123, // number
   };
   const {data:{action}} = await dots.droplet.shutdownDroplet(input);
   console.log(action);
@@ -449,7 +449,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 123, // number
+    droplet_id: 123, // number
   };
   const {data:{action}} = await dots.droplet.snapshotDroplet(input);
   console.log(action);

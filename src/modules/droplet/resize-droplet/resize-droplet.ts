@@ -6,7 +6,7 @@ export interface IResizeDropletApiResponse {
 
 export interface IResizeDropletApiRequest {
   disk?: boolean;
-  id: string;
+  droplet_id: number;
   size: string;
 }
 
@@ -16,13 +16,13 @@ export const resizeDroplet = ({
   httpClient,
 }: IContext<AxiosInstance>) => ({
   disk,
-  id,
+  droplet_id,
   size,
 }: IResizeDropletApiRequest): Promise<Readonly<ResizeDropletResponse>> => {
   const path = '/droplets';
   const type = 'resize';
   const body = {disk, size, type};
-  const url = `${path}/${id}/actions`;
+  const url = `${path}/${droplet_id}/actions`;
 
   return httpClient.post<IResizeDropletApiResponse>(url, body);
 };

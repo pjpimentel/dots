@@ -33,7 +33,7 @@ describe('droplet', () => {
     it('should return a valid response', async () => {
       const _listDropletSnapshots = listDropletSnapshots(context);
       const response = await _listDropletSnapshots({
-        id: DROPLET_ID,
+        droplet_id: DROPLET_ID,
         page: PAGE,
         per_page: PER_PAGE,
       });
@@ -72,7 +72,7 @@ describe('droplet', () => {
       const defaultper_page = 25;
       const _listDropletSnapshots = listDropletSnapshots(context);
       const response = await _listDropletSnapshots({
-        id: DROPLET_ID,
+        droplet_id: DROPLET_ID,
       });
       Object.assign(response, { request: mock.history.get[0]});
       /// validate request

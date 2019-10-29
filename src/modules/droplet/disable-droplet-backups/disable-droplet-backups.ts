@@ -5,7 +5,7 @@ export interface IDisableDropletBackupsApiResponse {
 }
 
 export interface IDisableDropletBackupsApiRequest {
-  id: string;
+  droplet_id: number;
 }
 
 export type DisableDropletBackupsResponse = IResponse<IDisableDropletBackupsApiResponse>;
@@ -13,12 +13,12 @@ export type DisableDropletBackupsResponse = IResponse<IDisableDropletBackupsApiR
 export const disableDropletBackups = ({
   httpClient,
 }: IContext<AxiosInstance>) => ({
-  id,
+  droplet_id,
 }: IDisableDropletBackupsApiRequest): Promise<Readonly<DisableDropletBackupsResponse>> => {
   const path = '/droplets';
   const type = 'disable_backups';
   const body = {type};
-  const url = `${path}/${id}/actions`;
+  const url = `${path}/${droplet_id}/actions`;
 
   return httpClient.post<IDisableDropletBackupsApiResponse>(url, body);
 };

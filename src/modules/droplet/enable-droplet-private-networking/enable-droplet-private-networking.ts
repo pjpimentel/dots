@@ -5,7 +5,7 @@ export interface IEnableDropletPrivateNetworkingApiResponse {
 }
 
 export interface IEnableDropletPrivateNetworkingApiRequest {
-  id: string;
+  droplet_id: number;
 }
 
 export type EnableDropletPrivateNetworkingResponse = IResponse<IEnableDropletPrivateNetworkingApiResponse>;
@@ -13,12 +13,12 @@ export type EnableDropletPrivateNetworkingResponse = IResponse<IEnableDropletPri
 export const enableDropletPrivateNetworking = ({
   httpClient,
 }: IContext<AxiosInstance>) => ({
-  id,
+  droplet_id,
 }: IEnableDropletPrivateNetworkingApiRequest): Promise<Readonly<EnableDropletPrivateNetworkingResponse>> => {
   const path = '/droplets';
   const type = 'enable_private_networking';
   const body = {type};
-  const url = `${path}/${id}/actions`;
+  const url = `${path}/${droplet_id}/actions`;
 
   return httpClient.post<IEnableDropletPrivateNetworkingApiResponse>(url, body);
 };

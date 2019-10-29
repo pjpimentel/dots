@@ -5,7 +5,7 @@ import {enableDropletPrivateNetworking} from './enable-droplet-private-networkin
 import * as MOCK from './enable-droplet-private-networking.mock';
 
 describe('droplet', () => {
-  const DROPLET_ID = MOCK.response.body.action.resource_id;
+  const DROPLET_ID = Number(MOCK.response.body.action.resource_id);
   const URL = `/droplets/${DROPLET_ID}/actions`;
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
@@ -31,7 +31,7 @@ describe('droplet', () => {
     it('should return a valid response', async () => {
       const _enableDropletPrivateNetworking = enableDropletPrivateNetworking(context);
       const response = await _enableDropletPrivateNetworking({
-        id: DROPLET_ID,
+        droplet_id: DROPLET_ID,
       });
       Object.assign(response, {request: mock.history.post[0]});
       /// validate response schema

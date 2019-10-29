@@ -5,7 +5,7 @@ import {deleteDroplet} from './delete-droplet';
 import * as MOCK from './delete-droplet.mock';
 
 describe('droplet', () => {
-  const DROPLET_ID = 'my-droplet-id';
+  const DROPLET_ID = 123;
   const URL = `/droplets/${DROPLET_ID}`;
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
@@ -30,7 +30,7 @@ describe('droplet', () => {
     });
     it('should return a valid response', async () => {
       const _deleteDroplet = deleteDroplet(context);
-      const response = await _deleteDroplet({id: DROPLET_ID});
+      const response = await _deleteDroplet({droplet_id: DROPLET_ID});
       Object.assign(response, {request: mock.history.delete[0]});
       /// validate response schema
       expect(typeof response).toBe('object');

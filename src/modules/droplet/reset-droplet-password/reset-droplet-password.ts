@@ -5,7 +5,7 @@ export interface IResetDropletPasswordApiResponse {
 }
 
 export interface IResetDropletPasswordApiRequest {
-  id: string;
+  droplet_id: number;
 }
 
 export type ResetDropletPasswordResponse = IResponse<IResetDropletPasswordApiResponse>;
@@ -13,12 +13,12 @@ export type ResetDropletPasswordResponse = IResponse<IResetDropletPasswordApiRes
 export const resetDropletPassword = ({
   httpClient,
 }: IContext<AxiosInstance>) => ({
-  id,
+  droplet_id,
 }: IResetDropletPasswordApiRequest): Promise<Readonly<ResetDropletPasswordResponse>> => {
   const path = '/droplets';
   const type = 'password_reset';
   const body = {type};
-  const url = `${path}/${id}/actions`;
+  const url = `${path}/${droplet_id}/actions`;
 
   return httpClient.post<IResetDropletPasswordApiResponse>(url, body);
 };

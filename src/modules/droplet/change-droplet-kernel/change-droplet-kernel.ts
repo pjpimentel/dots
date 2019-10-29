@@ -5,7 +5,7 @@ export interface IChangeDropletKernelApiResponse {
 }
 
 export interface IChangeDropletKernelApiRequest {
-  id: string;
+  droplet_id: number;
   kernel: number;
 }
 
@@ -14,13 +14,13 @@ export type ChangeDropletKernelResponse = IResponse<IChangeDropletKernelApiRespo
 export const changeDropletKernel = ({
   httpClient,
 }: IContext<AxiosInstance>) => ({
-  id,
+  droplet_id,
   kernel,
 }: IChangeDropletKernelApiRequest): Promise<Readonly<ChangeDropletKernelResponse>> => {
   const path = '/droplets';
   const type = 'change_kernel';
   const body = {kernel, type};
-  const url = `${path}/${id}/actions`;
+  const url = `${path}/${droplet_id}/actions`;
 
   return httpClient.post<IChangeDropletKernelApiResponse>(url, body);
 };

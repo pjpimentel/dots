@@ -5,7 +5,7 @@ export interface IRebootDropletApiResponse {
 }
 
 export interface IRebootDropletApiRequest {
-  id: string;
+  droplet_id: number;
 }
 
 export type RebootDropletResponse = IResponse<IRebootDropletApiResponse>;
@@ -13,12 +13,12 @@ export type RebootDropletResponse = IResponse<IRebootDropletApiResponse>;
 export const rebootDroplet = ({
   httpClient,
 }: IContext<AxiosInstance>) => ({
-  id,
+  droplet_id,
 }: IRebootDropletApiRequest): Promise<Readonly<RebootDropletResponse>> => {
   const path = '/droplets';
   const type = 'reboot';
   const body = {type};
-  const url = `${path}/${id}/actions`;
+  const url = `${path}/${droplet_id}/actions`;
 
   return httpClient.post<IRebootDropletApiResponse>(url, body);
 };

@@ -5,7 +5,7 @@ export interface IPowerOffDropletApiResponse {
 }
 
 export interface IPowerOffDropletApiRequest {
-  id: string;
+  droplet_id: number;
 }
 
 export type PowerOffDropletResponse = IResponse<IPowerOffDropletApiResponse>;
@@ -13,12 +13,12 @@ export type PowerOffDropletResponse = IResponse<IPowerOffDropletApiResponse>;
 export const powerOffDroplet = ({
   httpClient,
 }: IContext<AxiosInstance>) => ({
-  id,
+  droplet_id,
 }: IPowerOffDropletApiRequest): Promise<Readonly<PowerOffDropletResponse>> => {
   const path = '/droplets';
   const type = 'power_off';
   const body = {type};
-  const url = `${path}/${id}/actions`;
+  const url = `${path}/${droplet_id}/actions`;
 
   return httpClient.post<IPowerOffDropletApiResponse>(url, body);
 };

@@ -5,7 +5,7 @@ export interface IPowerCycleDropletApiResponse {
 }
 
 export interface IPowerCycleDropletApiRequest {
-  id: string;
+  droplet_id: number;
 }
 
 export type PowerCycleDropletResponse = IResponse<IPowerCycleDropletApiResponse>;
@@ -13,12 +13,12 @@ export type PowerCycleDropletResponse = IResponse<IPowerCycleDropletApiResponse>
 export const powerCycleDroplet = ({
   httpClient,
 }: IContext<AxiosInstance>) => ({
-  id,
+  droplet_id,
 }: IPowerCycleDropletApiRequest): Promise<Readonly<PowerCycleDropletResponse>> => {
   const path = '/droplets';
   const type = 'power_cycle';
   const body = {type};
-  const url = `${path}/${id}/actions`;
+  const url = `${path}/${droplet_id}/actions`;
 
   return httpClient.post<IPowerCycleDropletApiResponse>(url, body);
 };

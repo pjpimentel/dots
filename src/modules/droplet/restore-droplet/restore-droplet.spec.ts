@@ -5,7 +5,7 @@ import {restoreDroplet} from './restore-droplet';
 import * as MOCK from './restore-droplet.mock';
 
 describe('droplet', () => {
-  const DROPLET_ID = MOCK.response.body.action.resource_id;
+  const DROPLET_ID = Number(MOCK.response.body.action.resource_id);
   const URL = `/droplets/${DROPLET_ID}/actions`;
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
@@ -31,7 +31,7 @@ describe('droplet', () => {
     it('should return a valid response', async () => {
       const _restoreDroplet = restoreDroplet(context);
       const response = await _restoreDroplet({
-        id: DROPLET_ID,
+        droplet_id: DROPLET_ID,
         image: MOCK.request.body.image,
       });
       Object.assign(response, {request: mock.history.post[0]});

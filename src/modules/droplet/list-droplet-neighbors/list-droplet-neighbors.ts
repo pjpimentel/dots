@@ -5,7 +5,7 @@ export interface IListDropletNeighborsApiResponse extends IListResponse {
 }
 
 export interface IListDropletNeighborsApiRequest extends IListRequest {
-  id: number;
+  droplet_id: number;
 }
 
 export type ListDropletNeighborsResponse = IResponse<IListDropletNeighborsApiResponse>;
@@ -13,13 +13,13 @@ export type ListDropletNeighborsResponse = IResponse<IListDropletNeighborsApiRes
 export const listDropletNeighbors = ({
   httpClient,
 }: IContext<AxiosInstance>) => ({
-  id,
+  droplet_id,
   page = 1,
   per_page = 25,
 }: IListDropletNeighborsApiRequest): Promise<Readonly<ListDropletNeighborsResponse>> => {
   const path = '/droplets';
   const queryParams = {page, per_page};
-  const url = `${path}/${id}/neighbors`;
+  const url = `${path}/${droplet_id}/neighbors`;
 
   return httpClient.get<IListDropletNeighborsApiResponse>(url, {
     params: queryParams,
