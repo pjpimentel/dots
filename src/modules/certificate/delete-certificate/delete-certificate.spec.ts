@@ -30,7 +30,9 @@ describe('certificate', () => {
     });
     it('should return a valid response', async () => {
       const _deleteCertificate = deleteCertificate(context);
-      const response = await _deleteCertificate({id: CERTIFICATE_ID});
+      const response = await _deleteCertificate({
+        certificate_id: CERTIFICATE_ID,
+      });
       Object.assign(response, { request: mock.history.delete[0]});
       /// validate response schema
       expect(typeof response).toBe('object');

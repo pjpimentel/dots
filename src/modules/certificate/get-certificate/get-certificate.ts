@@ -5,7 +5,7 @@ export interface IGetCertificateApiResponse {
 }
 
 export interface IGetCertificateApiRequest {
-  id: string;
+  certificate_id: string;
 }
 
 export type GetCertificateResponse = IResponse<IGetCertificateApiResponse>;
@@ -13,10 +13,10 @@ export type GetCertificateResponse = IResponse<IGetCertificateApiResponse>;
 export const getCertificate = ({
   httpClient,
 }: IContext<AxiosInstance>) => ({
-  id,
+  certificate_id,
 }: IGetCertificateApiRequest): Promise<Readonly<GetCertificateResponse>> => {
   const path = '/certificates';
-  const url = `${path}/${id}`;
+  const url = `${path}/${certificate_id}`;
 
   return httpClient.get<IGetCertificateApiResponse>(url);
 };

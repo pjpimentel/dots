@@ -1,7 +1,7 @@
 import { AxiosInstance } from 'axios';
 
 export interface IGetActionApiRequest {
-  id: number;
+  action_id: number;
 }
 
 export interface IGetActionApiResponse {
@@ -13,10 +13,10 @@ export type GetActionResponse = IResponse<IGetActionApiResponse>;
 export const getAction = ({
   httpClient,
 }: IContext<AxiosInstance>) => ({
-  id,
+  action_id,
 }: IGetActionApiRequest): Promise<Readonly<GetActionResponse>> => {
   const path = '/action';
-  const url = `${path}/${id}`;
+  const url = `${path}/${action_id}`;
 
   return httpClient.get<IGetActionApiResponse>(url);
 };

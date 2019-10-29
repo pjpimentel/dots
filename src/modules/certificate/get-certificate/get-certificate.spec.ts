@@ -30,7 +30,7 @@ describe('certificate', () => {
     });
     it('should return a valid response', async () => {
       const _getCertificate = getCertificate(context);
-      const response = await _getCertificate({id: CERTIFICATE_ID});
+      const response = await _getCertificate({certificate_id: CERTIFICATE_ID});
       Object.assign(response, { request: mock.history.get[0]});
       /// validate response schema
       expect(typeof response).toBe('object');

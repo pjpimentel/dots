@@ -1,7 +1,7 @@
 import { AxiosInstance } from 'axios';
 
 export interface IDeleteCertificateApiRequest {
-  id: string;
+  certificate_id: string;
 }
 
 export type DeleteCertificateResponse = IResponse<void>;
@@ -9,10 +9,10 @@ export type DeleteCertificateResponse = IResponse<void>;
 export const deleteCertificate = ({
   httpClient,
 }: IContext<AxiosInstance>) => ({
-  id,
+  certificate_id,
 }: IDeleteCertificateApiRequest): Promise<Readonly<DeleteCertificateResponse>> => {
   const path = '/certificates';
-  const url = `${path}/${id}`;
+  const url = `${path}/${certificate_id}`;
 
   return httpClient.delete(url);
 };
