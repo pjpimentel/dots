@@ -32,7 +32,7 @@ describe('firewall', () => {
       const _addDropletsToFirewall = addDropletsToFirewall(context);
       const response = await _addDropletsToFirewall({
         ...MOCK.request.body,
-        id: FIREWALL_ID,
+        firewall_id: FIREWALL_ID,
       });
       Object.assign(response, {request: mock.history.post[0]});
       /// validate response schema

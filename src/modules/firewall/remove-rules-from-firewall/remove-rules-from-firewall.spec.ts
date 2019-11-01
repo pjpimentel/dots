@@ -32,7 +32,7 @@ describe('firewall', () => {
       const _removeRulesFromFirewall = removeRulesFromFirewall(context);
       const response = await _removeRulesFromFirewall({
         ...MOCK.request.body,
-        id: FIREWALL_ID,
+        firewall_id: FIREWALL_ID,
       });
       Object.assign(response, {request: mock.history.delete[0]});
       /// validate response schema

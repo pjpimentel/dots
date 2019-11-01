@@ -30,7 +30,7 @@ describe('firewall', () => {
     });
     it('should return a valid response', async () => {
       const _deleteFirewall = deleteFirewall(context);
-      const response = await _deleteFirewall({id: FIREWALL_ID});
+      const response = await _deleteFirewall({firewall_id: FIREWALL_ID});
       Object.assign(response, {request: mock.history.delete[0]});
       /// validate response schema
       expect(typeof response).toBe('object');

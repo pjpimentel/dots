@@ -2,7 +2,7 @@ import { AxiosInstance } from 'axios';
 
 export interface IRemoveDropletsFromFirewallApiRequest {
   droplet_ids: number[]
-  id: string;
+  firewall_id: string;
 }
 
 export type RemoveDropletsFromFirewallResponse = IResponse<void>;
@@ -11,13 +11,13 @@ export const removeDropletsFromFirewall = ({
   httpClient,
 }: IContext<AxiosInstance>) => ({
   droplet_ids,
-  id,
+  firewall_id,
 }: IRemoveDropletsFromFirewallApiRequest): Promise<Readonly<RemoveDropletsFromFirewallResponse>> => {
   const path = '/firewalls';
   const body = {
     droplet_ids,
   };
-  const url = `${path}/${id}/droplets`;
+  const url = `${path}/${firewall_id}/droplets`;
 
   return httpClient.delete(url, {data: body});
 };

@@ -2,7 +2,7 @@ import { AxiosInstance } from 'axios';
 
 export interface IAddDropletsToFirewallApiRequest {
   droplet_ids: number[]
-  id: string;
+  firewall_id: string;
 }
 
 export type AddDropletsToFirewallResponse = IResponse<void>;
@@ -11,13 +11,13 @@ export const addDropletsToFirewall = ({
   httpClient,
 }: IContext<AxiosInstance>) => ({
   droplet_ids,
-  id,
+  firewall_id,
 }: IAddDropletsToFirewallApiRequest): Promise<Readonly<AddDropletsToFirewallResponse>> => {
   const path = '/firewalls';
   const body = {
     droplet_ids,
   };
-  const url = `${path}/${id}/droplets`;
+  const url = `${path}/${firewall_id}/droplets`;
 
   return httpClient.post<void>(url, body);
 };

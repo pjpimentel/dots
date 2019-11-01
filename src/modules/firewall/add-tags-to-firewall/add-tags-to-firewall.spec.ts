@@ -32,7 +32,7 @@ describe('firewall', () => {
       const _addTagsToFirewall = addTagsToFirewall(context);
       const response = await _addTagsToFirewall({
         ...MOCK.request.body,
-        id: FIREWALL_ID,
+        firewall_id: FIREWALL_ID,
       });
       Object.assign(response, {request: mock.history.post[0]});
       /// validate response schema
