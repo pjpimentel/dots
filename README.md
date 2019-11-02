@@ -86,5 +86,16 @@ typescript/nodejs
     1. [remove-rules-from-firewall](src/modules/firewall/README.md#remove-rules-from-firewall)
     1. [remove-tags-from-firewall](src/modules/firewall/README.md#remove-tags-from-firewall)
     1. [update-firewal](src/modules/firewall/README.md#update-firewal)
+1. [floating-ip](src/modules/floating-ip/README.md#floating-ip)
+    1. [assign-ip-to-droplet](src/modules/floating-ip/README.md#assign-ip-to-droplet)
+    1. [create-floating-ip](src/modules/floating-ip/README.md#create-floating-ip)
+    1. [delete-floating-ip](src/modules/floating-ip/README.md#delete-floating-ip)
+    1. [get-floating-ip](src/modules/floating-ip/README.md#get-floating-ip)
+    1. [get-floating-ip-action](src/modules/floating-ip/README.md#get-floating-ip-action)
+    1. [list-floating-ip-actions](src/modules/floating-ip/README.md#list-floating-ip-actions)
+    1. [list-floating-ips](src/modules/floating-ip/README.md#list-floating-ips)
+    1. [unassign-ip-from-droplet](src/modules/floating-ip/README.md#unassign-ip-from-droplet)
+
+
 
 ## license: [mit](LICENSE)
