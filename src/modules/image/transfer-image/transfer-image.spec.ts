@@ -31,7 +31,7 @@ describe('image', () => {
     it('should return a valid response', async () => {
       const _transferImage = transferImage(context);
       const response = await _transferImage({
-        id: IMAGE_ID,
+        image_id: IMAGE_ID,
         region: 'nyc2',
       });
       Object.assign(response, { request: mock.history.post[0]});

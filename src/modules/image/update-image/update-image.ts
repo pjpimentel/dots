@@ -7,7 +7,7 @@ export interface IUpdateImageApiResponse {
 export interface IUpdateImageApiRequest {
   description?: string;
   distribution?: string;
-  id: number;
+  image_id: number;
   name?: string;
 }
 
@@ -18,11 +18,11 @@ export const updateImage = ({
 }: IContext<AxiosInstance>) => ({
   description,
   distribution,
-  id,
+  image_id,
   name,
 }: IUpdateImageApiRequest): Promise<Readonly<UpdateImageRes>> => {
   const path = '/images';
-  const url = `${path}/${id}`;
+  const url = `${path}/${image_id}`;
   const body = {description, distribution, name};
 
   return httpClient.post<IUpdateImageApiResponse>(url, body);

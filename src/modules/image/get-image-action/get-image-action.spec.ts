@@ -30,7 +30,7 @@ describe('image', () => {
       const _getImageAction = getImageAction(context);
       const response = await _getImageAction({
         action_id: ACTION_ID,
-        id: IMAGE_ID,
+        image_id: IMAGE_ID,
       });
       Object.assign(response, { request: mock.history.get[0]});
       /// validate response schema

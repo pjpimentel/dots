@@ -31,7 +31,7 @@ describe('image', () => {
     it('should return a valid response', async () => {
       const _convertImageToSnapshot = convertImageToSnapshot(context);
       const response = await _convertImageToSnapshot({
-        id: IMAGE_ID,
+        image_id: IMAGE_ID,
       });
       Object.assign(response, { request: mock.history.post[0]});
       /// validate response schema

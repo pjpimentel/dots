@@ -31,7 +31,7 @@ describe('image', () => {
       const _updateImage = updateImage(context);
       const newPayload = {
         ...MOCK.request.body,
-        id: MOCK.response.body.image.id,
+        image_id: MOCK.response.body.image.id,
       };
       const response = await _updateImage(newPayload);
       Object.assign(response, { request: mock.history.post[0]});

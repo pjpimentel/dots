@@ -5,7 +5,7 @@ export interface ITransferImageApiResponse {
 }
 
 export interface ITransferImageApiRequest {
-  id: number;
+  image_id: number;
   region: string;
 }
 
@@ -14,11 +14,11 @@ export type TransferImageRes = IResponse<ITransferImageApiResponse>;
 export const transferImage = ({
   httpClient,
 }: IContext<AxiosInstance>) => ({
-  id,
+  image_id,
   region,
 }: ITransferImageApiRequest): Promise<Readonly<TransferImageRes>> => {
   const path = '/images';
-  const url = `${path}/${id}/actions`;
+  const url = `${path}/${image_id}/actions`;
   const body = {type: 'transfer', region};
 
   return httpClient.post<ITransferImageApiResponse>(url, body);

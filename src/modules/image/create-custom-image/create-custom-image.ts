@@ -5,12 +5,12 @@ export interface ICreateCustomImageApiResponse {
 }
 
 export interface ICreateCustomImageApiRequest {
-    description?: string;
-    distribution?: string;
-    name: string;
-    region: string;
-    tags?: string[];
-    url: string;
+  description?: string;
+  distribution?: string;
+  name: string;
+  region: string;
+  tags?: string[];
+  url: string;
 }
 
 export type CreateCustomImageRes = IResponse<ICreateCustomImageApiResponse>;

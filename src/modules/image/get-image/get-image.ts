@@ -1,7 +1,7 @@
 import { AxiosInstance } from 'axios';
 
 export interface IGetImageApiRequest {
-  id?: number;
+  image_id?: number;
   slug?: string;
 }
 
@@ -14,11 +14,11 @@ export type GetImageResponse = IResponse<IGetImageApiResponse>;
 export const getImage = ({
   httpClient,
 }: IContext<AxiosInstance>) => ({
-  id,
+  image_id,
   slug,
 }: IGetImageApiRequest): Promise<Readonly<GetImageResponse>> => {
   const path = '/images';
-  const url = `${path}/${id || slug}`;
+  const url = `${path}/${image_id || slug}`;
 
   return httpClient.get<IGetImageApiResponse>(url);
 };

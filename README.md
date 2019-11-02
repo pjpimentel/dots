@@ -95,7 +95,16 @@ typescript/nodejs
     1. [list-floating-ip-actions](src/modules/floating-ip/README.md#list-floating-ip-actions)
     1. [list-floating-ips](src/modules/floating-ip/README.md#list-floating-ips)
     1. [unassign-ip-from-droplet](src/modules/floating-ip/README.md#unassign-ip-from-droplet)
-
+1. [image](src/modules/image/README.md#image)
+    1. [convert-image-to-snapshot](src/modules/image/README.md#convert-image-to-snapshot)
+    1. [create-custom-image](src/modules/image/README.md#create-custom-image)
+    1. [delete-image](src/modules/image/README.md#delete-image)
+    1. [get-image](src/modules/image/README.md#get-image)
+    1. [get-image-action](src/modules/image/README.md#get-image-action)
+    1. [list-image-actions](src/modules/image/README.md#list-image-actions)
+    1. [list-images](src/modules/image/README.md#list-images)
+    1. [transfer-image](src/modules/image/README.md#transfer-image)
+    1. [update-image](src/modules/image/README.md#update-image)
 
 
 ## license: [mit](LICENSE)

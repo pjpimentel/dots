@@ -30,7 +30,7 @@ describe('image', () => {
     });
     it('should return a valid response', async () => {
       const _deleteImage = deleteImage(context);
-      const response = await _deleteImage({id: IMAGE_ID});
+      const response = await _deleteImage({image_id: IMAGE_ID});
       Object.assign(response, { request: mock.history.delete[0]});
       /// validate response schema
       expect(typeof response).toBe('object');

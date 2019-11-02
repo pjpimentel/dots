@@ -33,7 +33,7 @@ describe('image', () => {
     it('should return a valid response', async () => {
       const _getImage = getImage(context);
       const imageId = MOCK.response.body.image.id;
-      const response = await _getImage({id: imageId});
+      const response = await _getImage({image_id: imageId});
       Object.assign(response, { request: mock.history.get[0]});
       /// validate response schema
       expect(typeof response).toBe('object');

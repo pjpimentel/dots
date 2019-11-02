@@ -1,7 +1,7 @@
 import { AxiosInstance } from 'axios';
 
 export interface IDeleteImageApiRequest {
-  id: number;
+  image_id: number;
 }
 
 export type DeleteImageRes = IResponse<void>;
@@ -9,10 +9,10 @@ export type DeleteImageRes = IResponse<void>;
 export const deleteImage = ({
   httpClient,
 }: IContext<AxiosInstance>) => ({
-  id,
+  image_id,
 }: IDeleteImageApiRequest): Promise<Readonly<DeleteImageRes>> => {
   const path = '/images';
-  const url = `${path}/${id}`;
+  const url = `${path}/${image_id}`;
 
   return httpClient.delete(url);
 };

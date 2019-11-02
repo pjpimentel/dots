@@ -7,9 +7,9 @@ export interface IListImageApiResponse extends IListResponse {
 export type IImageType = 'distribution' | 'application' | undefined;
 
 export interface IListImageApiRequest extends IListRequest {
-    type?: IImageType;
-    user_images?: boolean;
-    tag_name?: string;
+  type?: IImageType;
+  user_images?: boolean;
+  tag_name?: string;
 }
 
 export type ListImagesResponse = IResponse<IListImageApiResponse>;

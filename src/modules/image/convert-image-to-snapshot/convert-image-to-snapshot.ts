@@ -5,7 +5,7 @@ export interface IConvertImageToSnapshotApiResponse {
 }
 
 export interface IConvertImageToSnapshotApiRequest {
-  id: number;
+  image_id: number;
 }
 
 export type ConvertImageToSnapshotRes = IResponse<IConvertImageToSnapshotApiResponse>;
@@ -13,10 +13,10 @@ export type ConvertImageToSnapshotRes = IResponse<IConvertImageToSnapshotApiResp
 export const convertImageToSnapshot = ({
   httpClient,
 }: IContext<AxiosInstance>) => ({
-  id,
+  image_id,
 }: IConvertImageToSnapshotApiRequest): Promise<Readonly<ConvertImageToSnapshotRes>> => {
   const path = '/images';
-  const url = `${path}/${id}/actions`;
+  const url = `${path}/${image_id}/actions`;
   const body = {type: 'convert'};
 
   return httpClient.post<IConvertImageToSnapshotApiResponse>(url, body);

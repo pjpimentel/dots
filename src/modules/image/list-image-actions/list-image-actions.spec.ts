@@ -33,7 +33,7 @@ describe('image', () => {
     it('should return a valid response', async () => {
       const _listImageActions = listImageActions(context);
       const response = await _listImageActions({
-        id: IMAGE_ID,
+        image_id: IMAGE_ID,
         page: PAGE,
         per_page: PER_PAGE,
       });
@@ -72,7 +72,7 @@ describe('image', () => {
       const defaultPage = 1;
       const defaultper_page = 25;
       const _listImageActions = listImageActions(context);
-      const response = await _listImageActions({id: IMAGE_ID});
+      const response = await _listImageActions({image_id: IMAGE_ID});
       Object.assign(response, { request: mock.history.get[0]});
       /// validate request
       const {request} = response;
