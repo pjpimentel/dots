@@ -40,4 +40,6 @@ jobs:
           npm ci
           npm run test
       - name: sonar-cloud scan
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         uses: SonarSource/sonarcloud-github-action@v1.1
