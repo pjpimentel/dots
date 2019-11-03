@@ -1,9 +1,10 @@
-name: dots
+name: build
 
 on: [push]
 
 jobs:
-  build:
+  quality-check:
+    name: quality check
     runs-on: ubuntu-18.04
     env:
       CI: true
