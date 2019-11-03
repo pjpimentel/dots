@@ -2,26 +2,47 @@
 
 ## **digital ocean** API wrapper
 
-[![travis](https://img.shields.io/travis/pjpimentel/dots/v3.0.0.svg?longCache=true)](https://travis-ci.org/pjpimentel/dots)
-[![quality](https://sonarcloud.io/api/project_badges/measure?branch=v3.0.0&project=dots&metric=alert_status)](https://sonarcloud.io/dashboard?branch=v3.0.0&id=dots)
-[![coverage](https://sonarcloud.io/api/project_badges/measure?branch=v3.0.0&project=dots&metric=coverage)](https://sonarcloud.io/dashboard?branch=v3.0.0&id=dots)
-[![security](https://sonarcloud.io/api/project_badges/measure?branch=v3.0.0&project=dots&metric=security_rating)](https://sonarcloud.io/dashboard?branch=v3.0.0&id=dots)
+[![travis](https://img.shields.io/travis/pjpimentel/dots/master.svg?longCache=true)](https://travis-ci.org/pjpimentel/dots)
+[![quality](https://sonarcloud.io/api/project_badges/measure?branch=master&project=dots&metric=alert_status)](https://sonarcloud.io/dashboard?branch=master&id=dots)
+[![coverage](https://sonarcloud.io/api/project_badges/measure?branch=master&project=dots&metric=coverage)](https://sonarcloud.io/dashboard?branch=master&id=dots)
+[![security](https://sonarcloud.io/api/project_badges/measure?branch=master&project=dots&metric=security_rating)](https://sonarcloud.io/dashboard?branch=master&id=dots)
 
-## install
+## installing
 ``` bash
     npm install --save dots-wrapper@latest
 ```
-## usage
-typescript/nodejs
+## using
+
+### typescript
 ``` typescript
-    import { createApiClient } from 'dots-wrapper';
-    const myApiToken = 'my-long-token';
-    const dots = createApiClient({token: myApiToken});
+  import { createApiClient } from 'dots-wrapper';
+  const myApiToken = 'my-long-token';
+  const dots = createApiClient({token: myApiToken});
 
-    const account = await dots.account.getAccount();
-
+  const main = async () => {
+    const {data:{account}} = await dots.account.getAccount();
     console.log(account);
+  };
+
+  main();
 ```
+
+### javascript/nodejs
+``` javascript
+  const {createApiClient} = require('dots-wrapper');
+  const myApiToken = 'my-long-token';
+  const dots = createApiClient({token: myApiToken});
+
+  const main = async () => {
+    const {data:{account}} = await dots.account.getAccount();
+    console.log(account);
+  };
+
+  main();
+```
+
+### ~~browser~~ (wip)
+
 ## docs
 
 1. [account](src/modules/account/README.md#account)
@@ -105,6 +126,14 @@ typescript/nodejs
     1. [list-images](src/modules/image/README.md#list-images)
     1. [transfer-image](src/modules/image/README.md#transfer-image)
     1. [update-image](src/modules/image/README.md#update-image)
+1. ~~[load-balancer](src/modules/load-balancer/README.md#load-balancer)~~ (available, docs WIP)
+1. ~~[region](src/modules/region/README.md#region)~~ (available, docs WIP)
+1. ~~[size](src/modules/size/README.md#size)~~ (available, docs WIP)
+1. ~~[snapshot](src/modules/snapshot/README.md#snapshot)~~ (available, docs WIP)
+1. ~~[ssh-key](src/modules/ssh-key/README.md#ssh-key)~~ (available, docs WIP)
+1. ~~[tag](src/modules/tag/README.md#tag)~~ (available, docs WIP)
+1. ~~[volume](src/modules/volume/README.md#volume)~~ (available, docs WIP)
+
 
 
 ## license: [mit](LICENSE)
