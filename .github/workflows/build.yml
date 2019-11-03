@@ -39,6 +39,7 @@ jobs:
         run: |
           npm ci
           npm run test
+          sed -i -- 's/$GITHUB_WORKSPACE/\/github\/workspace/g' coverage/lcov.info
       - name: sonar-cloud scan
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
