@@ -12,14 +12,32 @@ jobs:
       matrix:
         node-version: [8.x, 10.x, 12.x]
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: npm install
-      run: npm ci
-    - name: npm test
-      run: npm run test
-    - name: npm build
-      run: npm run build
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: npm ci
+      - name: npm test
+        run: npm run test
+      - name: npm build
+        run: npm run build
+  quality-check:
+    name: quality-check
+    runs-on: ubuntu-18.04
+    needs: test
+    env:
+      CI: true
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: install && test
+        run: |
+          npm ci
+          npm run test
+      - name: sonar-cloud scan
+        uses: SonarSource/sonarcloud-github-action@v1.1
