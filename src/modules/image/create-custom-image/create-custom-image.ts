@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IImage } from '..';
 
 export interface ICreateCustomImageApiResponse {
   image: IImage;
@@ -17,7 +18,7 @@ export type CreateCustomImageRes = IResponse<ICreateCustomImageApiResponse>;
 
 export const createCustomImage = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   description,
   distribution,
   name,

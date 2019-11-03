@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext, IListResponse, IListRequest } from '../../../types';
+import { ITag } from '..';
 
 export interface IListTagsApiResponse extends IListResponse {
   tags: ITag[];
@@ -8,7 +9,7 @@ export type ListTagsResponse = IResponse<IListTagsApiResponse>;
 
 export const listTags = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   page = 1,
   per_page = 25,
 }: IListRequest): Promise<Readonly<ListTagsResponse>> => {

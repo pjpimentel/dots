@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IAction } from '../../action';
 
 export interface IGetVolumeActionApiRequest {
   action_id: string | number;
@@ -13,7 +14,7 @@ export type GetVolumeActionResponse = IResponse<IGetVolumeActionApiResponse>;
 
 export const getVolumeAction = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   action_id,
   volume_id,
 }: IGetVolumeActionApiRequest): Promise<Readonly<GetVolumeActionResponse>> => {

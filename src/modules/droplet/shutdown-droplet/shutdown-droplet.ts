@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IAction } from '../../action';
 
 export interface IShutdownDropletApiResponse {
   action: IAction;
@@ -12,7 +13,7 @@ export type ShutdownDropletResponse = IResponse<IShutdownDropletApiResponse>;
 
 export const shutdownDroplet = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   droplet_id,
 }: IShutdownDropletApiRequest): Promise<Readonly<ShutdownDropletResponse>> => {
   const path = '/droplets';

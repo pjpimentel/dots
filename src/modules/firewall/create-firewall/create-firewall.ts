@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IFirewall } from '..';
 
 export interface ICreateFirewallApiResponse {
   firewall: IFirewall;
@@ -8,7 +9,7 @@ export type CreateFirewallResponse = IResponse<ICreateFirewallApiResponse>;
 
 export const createFirewall = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   droplet_ids,
   inbound_rules,
   name,

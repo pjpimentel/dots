@@ -7,3 +7,4 @@ export * from './list-load-balancers/list-load-balancers';
 export * from './remove-droplets-from-load-balancer/remove-droplets-from-load-balancer';
 export * from './remove-rules-from-load-balancer/remove-rules-from-load-balancer';
 export * from './update-load-balancer/update-load-balancer';
+export * from './types';

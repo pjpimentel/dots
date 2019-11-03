@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IAction } from '../../action';
 
 export interface IEnableDropletIpv6ApiResponse {
   action: IAction;
@@ -12,7 +13,7 @@ export type EnableDropletIpv6Response = IResponse<IEnableDropletIpv6ApiResponse>
 
 export const enableDropletIpv6 = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   droplet_id,
 }: IEnableDropletIpv6ApiRequest): Promise<Readonly<EnableDropletIpv6Response>> => {
   const path = '/droplets';

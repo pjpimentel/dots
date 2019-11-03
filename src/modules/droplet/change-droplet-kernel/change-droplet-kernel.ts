@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IAction } from '../../action';
 
 export interface IChangeDropletKernelApiResponse {
   action: IAction;
@@ -13,7 +14,7 @@ export type ChangeDropletKernelResponse = IResponse<IChangeDropletKernelApiRespo
 
 export const changeDropletKernel = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   droplet_id,
   kernel,
 }: IChangeDropletKernelApiRequest): Promise<Readonly<ChangeDropletKernelResponse>> => {

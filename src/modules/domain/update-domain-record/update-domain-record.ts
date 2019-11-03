@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IDomainRecord } from '..';
 
 export interface IUpdateDomainRecordApiResponse {
   domain_record: IDomainRecord;
@@ -13,7 +14,7 @@ export type UpdateDomainRecordResponse = IResponse<IUpdateDomainRecordApiRespons
 
 export const updateDomainRecord = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   data,
   domain_name,
   domain_record_id,

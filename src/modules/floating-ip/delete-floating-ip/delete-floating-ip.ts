@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
 
 export interface IDeleteFloatingIpApiRequest {
   ip: string;
@@ -8,7 +8,7 @@ export type DeleteFloatingIpResponse = IResponse<void>;
 
 export const deleteFloatingIp = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   ip,
 }: IDeleteFloatingIpApiRequest): Promise<Readonly<DeleteFloatingIpResponse>> => {
   const path = '/floating_ips';

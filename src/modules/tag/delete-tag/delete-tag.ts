@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
 
 export interface IDeleteTagApiRequest {
   tag_name: string;
@@ -8,7 +8,7 @@ export type DeleteTagResponse = IResponse<void>;
 
 export const deleteTag = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   tag_name,
 }: IDeleteTagApiRequest): Promise<Readonly<DeleteTagResponse>> => {
   const path = '/tags';

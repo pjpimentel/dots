@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
 
 export interface IAddTagsToFirewallApiRequest {
   firewall_id: string;
@@ -9,7 +9,7 @@ export type AddTagsToFirewallResponse = IResponse<void>;
 
 export const addTagsToFirewall = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   firewall_id,
   tags,
 }: IAddTagsToFirewallApiRequest): Promise<Readonly<AddTagsToFirewallResponse>> => {

@@ -9,3 +9,4 @@ export * from './list-volume-actions/list-volume-actions';
 export * from './list-volume-snapshots/list-volume-snapshots';
 export * from './list-volumes/list-volumes';
 export * from './resize-volume/resize-volume';
+export * from './types';

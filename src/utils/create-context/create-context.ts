@@ -1,4 +1,5 @@
 import { AxiosInstance, AxiosRequestConfig, AxiosStatic } from 'axios';
+import { IContext } from '../../types';
 
 export interface ICreateContextInput {
   axios: AxiosStatic;
@@ -12,7 +13,7 @@ export const createContext = ({
   requestTimeoutInMs = 1000 * 15, /// 15 seconds
   endpoint = 'https://api.digitalocean.com/v2',
   token,
-}: ICreateContextInput): Readonly<IContext<AxiosInstance>> => {
+}: ICreateContextInput): Readonly<IContext> => {
 
   const {freeze} = Object;
   const headers = freeze({

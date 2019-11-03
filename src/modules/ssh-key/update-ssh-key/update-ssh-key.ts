@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { ISshKey } from '..';
 
 export interface IUpdateSshKeyApiResponse {
   ssh_key: ISshKey;
@@ -13,7 +14,7 @@ export type UpdateSshKeyResponse = IResponse<IUpdateSshKeyApiResponse>;
 
 export const updateSshKey = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   name,
   id,
 }: IUpdateSshKeyApiRequest): Promise<Readonly<UpdateSshKeyResponse>> => {

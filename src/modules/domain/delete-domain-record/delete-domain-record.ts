@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
 
 export interface IDeleteDomainRecordApiRequest {
   domain_name: string;
@@ -9,7 +9,7 @@ export type DeleteDomainRecordResponse = IResponse<void>;
 
 export const deleteDomainRecord = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   domain_name,
   domain_record_id,
 }: IDeleteDomainRecordApiRequest): Promise<Readonly<DeleteDomainRecordResponse>> => {

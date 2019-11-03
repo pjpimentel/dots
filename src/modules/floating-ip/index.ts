@@ -6,3 +6,4 @@ export * from './get-floating-ip/get-floating-ip';
 export * from './list-floating-ip-actions/list-floating-ip-actions';
 export * from './list-floating-ips/list-floating-ips';
 export * from './unassign-ip-from-droplet/unassign-ip-from-droplet';
+export * from './types';

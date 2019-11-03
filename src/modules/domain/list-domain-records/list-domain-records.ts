@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext, IListResponse, IListRequest } from '../../../types';
+import { IDomainRecord } from '..';
 
 export interface IListDomainRecordsApiResponse extends IListResponse {
   domain_records: IDomainRecord[];
@@ -12,7 +13,7 @@ export interface IListDomainRecordsRequest extends IListRequest{
 
 export const listDomainRecords = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   domain_name,
   page = 1,
   per_page = 25,

@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext, IListResponse, IListRequest } from '../../../types';
+import { ISize } from '..';
 
 export interface IListSizeApiResponse extends IListResponse {
   sizes: ISize[];
@@ -8,7 +9,7 @@ export type ListSizesResponse = IResponse<IListSizeApiResponse>;
 
 export const listSizes = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   page = 1,
   per_page = 25,
 }: IListRequest): Promise<Readonly<ListSizesResponse>> => {

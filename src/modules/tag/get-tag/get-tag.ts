@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { ITag } from '..';
 
 export interface IGetTagApiResponse {
   tag: ITag;
@@ -12,7 +13,7 @@ export type GetTagResponse = IResponse<IGetTagApiResponse>;
 
 export const getTag = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   tag_name,
 }: IGetTagApiRequest): Promise<Readonly<GetTagResponse>> => {
   const path = '/tags';

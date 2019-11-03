@@ -1,5 +1,6 @@
 
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IAction } from '../../action';
 
 export interface IUnassignIpFromDropletApiResponse {
   action: IAction;
@@ -13,7 +14,7 @@ export type UnassignIpFromDropletResponse = IResponse<IUnassignIpFromDropletApiR
 
 export const unassignIpFromDroplet = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   ip,
 }: IUnassignIpFromDropletApiRequest): Promise<Readonly<UnassignIpFromDropletResponse>> => {
   const path = '/floating_ips';

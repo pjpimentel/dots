@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
 
 export interface IDeleteDropletApiRequest {
   droplet_id: number;
@@ -8,7 +8,7 @@ export type DeleteDropletResponse = IResponse<void>;
 
 export const deleteDroplet = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   droplet_id,
 }: IDeleteDropletApiRequest): Promise<Readonly<DeleteDropletResponse>> => {
   const path = '/droplets';

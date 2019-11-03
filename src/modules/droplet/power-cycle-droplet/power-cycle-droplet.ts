@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IAction } from '../../action';
 
 export interface IPowerCycleDropletApiResponse {
   action: IAction;
@@ -12,7 +13,7 @@ export type PowerCycleDropletResponse = IResponse<IPowerCycleDropletApiResponse>
 
 export const powerCycleDroplet = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   droplet_id,
 }: IPowerCycleDropletApiRequest): Promise<Readonly<PowerCycleDropletResponse>> => {
   const path = '/droplets';

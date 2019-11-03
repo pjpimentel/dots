@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext, IListResponse, IListRequest } from '../../../types';
+import { IVolume } from '..';
 
 export interface IListVolumesApiResponse extends IListResponse {
   volumes: IVolume[];
@@ -12,7 +13,7 @@ export type ListVolumesResponse = IResponse<IListVolumesApiResponse>;
 
 export const listVolumes = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   name,
   page = 1,
   per_page = 25,

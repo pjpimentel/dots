@@ -27,3 +27,4 @@ export * from './resize-droplet/resize-droplet';
 export * from './restore-droplet/restore-droplet';
 export * from './shutdown-droplet/shutdown-droplet';
 export * from './snapshot-droplet/snapshot-droplet';
+export * from './types';

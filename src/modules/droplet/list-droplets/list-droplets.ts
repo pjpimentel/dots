@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext, IListResponse, IListRequest } from '../../../types';
+import { IDroplet } from '..';
 
 export interface IListDropletsApiResponse extends IListResponse {
   droplets: IDroplet[];
@@ -12,7 +13,7 @@ export type ListDropletsResponse = IResponse<IListDropletsApiResponse>;
 
 export const listDroplets = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   page = 1,
   per_page = 25,
   tag_name,

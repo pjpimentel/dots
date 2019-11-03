@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { ISnapshot } from '../../snapshot';
 
 export interface ICreateVolumeSnapshotApiResponse {
   snapshot: ISnapshot;
@@ -14,7 +15,7 @@ export type CreateVolumeSnapshotRes = IResponse<ICreateVolumeSnapshotApiResponse
 
 export const createVolumeSnapshot = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   id,
   name,
   tags,

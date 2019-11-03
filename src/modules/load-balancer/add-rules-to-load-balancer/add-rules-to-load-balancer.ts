@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IForwardingRule } from '..';
 
 export interface IAddRulesToLoadBalancerApiRequest {
   forwarding_rules: IForwardingRule[]
@@ -9,7 +10,7 @@ export type AddRulesToLoadBalancerResponse = IResponse<void>;
 
 export const addRulesToLoadBalancer = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   forwarding_rules,
   id,
 }: IAddRulesToLoadBalancerApiRequest): Promise<Readonly<AddRulesToLoadBalancerResponse>> => {

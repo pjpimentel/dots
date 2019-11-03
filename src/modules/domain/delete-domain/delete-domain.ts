@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
 
 export interface IDeleteDomainApiRequest {
   name: string;
@@ -8,7 +8,7 @@ export type DeleteDomainResponse = IResponse<void>;
 
 export const deleteDomain = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   name,
 }: IDeleteDomainApiRequest): Promise<Readonly<DeleteDomainResponse>> => {
   const path = '/domains';

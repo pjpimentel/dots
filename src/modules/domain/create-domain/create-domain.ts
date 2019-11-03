@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IDomain } from '..';
 
 export interface ICreateDomainApiResponse {
   domain: IDomain;
@@ -13,7 +14,7 @@ export type CreateDomainResponse = IResponse<ICreateDomainApiResponse>;
 
 export const createDomain = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   ip_address,
   name,
 }: ICreateDomainApiRequest): Promise<Readonly<CreateDomainResponse>> => {

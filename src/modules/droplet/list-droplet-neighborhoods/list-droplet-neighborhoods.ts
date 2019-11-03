@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext, IListResponse, IListRequest } from '../../../types';
+import { IDroplet } from '..';
 
 export interface IListDropletNeighborhoodsApiResponse extends IListResponse {
   neighbors: Array<IDroplet[]>;
@@ -8,7 +9,7 @@ export type ListDropletNeighborhoodsResponse = IResponse<IListDropletNeighborhoo
 
 export const listDropletNeighborhoods = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   page = 1,
   per_page = 25,
 }: IListRequest): Promise<Readonly<ListDropletNeighborhoodsResponse>> => {

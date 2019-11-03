@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { ISnapshot } from '..';
 
 export interface IGetSnapshotApiRequest {
   id: string;
@@ -12,7 +13,7 @@ export type GetSnapshotResponse = IResponse<IGetSnapshotApiResponse>;
 
 export const getSnapshot = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   id,
 }: IGetSnapshotApiRequest): Promise<Readonly<GetSnapshotResponse>> => {
   const path = '/snapshots';

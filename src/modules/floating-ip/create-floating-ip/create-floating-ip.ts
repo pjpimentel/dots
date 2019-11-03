@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IFloatingIP } from '..';
 
 export interface ICreateFloatingIpApiResponse {
   floating_ip: IFloatingIP;
@@ -20,7 +21,7 @@ export type CreateFloatingIpResponse = IResponse<ICreateFloatingIpApiResponse>;
 
 export const createFloatingIp = ({
   httpClient,
-}: IContext<AxiosInstance>) => (body: CreateFloatingIpApiRequest): Promise<Readonly<CreateFloatingIpResponse>> => {
+}: IContext) => (body: CreateFloatingIpApiRequest): Promise<Readonly<CreateFloatingIpResponse>> => {
   const path = '/floating_ips';
   const url = `${path}`;
 

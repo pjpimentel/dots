@@ -1,5 +1,6 @@
 
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IAction } from '../../action';
 
 export interface IAssignIpToDropletApiResponse {
   action: IAction;
@@ -14,7 +15,7 @@ export type AssignIpToDropletResponse = IResponse<IAssignIpToDropletApiResponse>
 
 export const assignIpToDroplet = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   droplet_id,
   ip,
 }: IAssignIpToDropletApiRequest): Promise<Readonly<AssignIpToDropletResponse>> => {

@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext, IListResponse, IListRequest } from '../../../types';
+import { ISnapshot } from '../../snapshot';
 
 export interface IListVolumeSnapshotsApiResponse extends IListResponse {
   snapshots: ISnapshot[];
@@ -12,7 +13,7 @@ export type ListVolumeSnapshotsRes = IResponse<IListVolumeSnapshotsApiResponse>;
 
 export const listVolumeSnapshots = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   id,
   page = 1,
   per_page = 25,

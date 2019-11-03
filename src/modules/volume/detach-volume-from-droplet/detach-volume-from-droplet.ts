@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IAction } from '../../action';
 
 export interface IDetachVolumeToDropletApiResponse {
   action: IAction;
@@ -14,7 +15,7 @@ export type DetachVolumeToDropletResponse = IResponse<IDetachVolumeToDropletApiR
 
 export const detachVolumeFromDroplet = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   droplet_id,
   id,
   region,

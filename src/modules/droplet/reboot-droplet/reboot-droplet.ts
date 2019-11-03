@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IAction } from '../../action';
 
 export interface IRebootDropletApiResponse {
   action: IAction;
@@ -12,7 +13,7 @@ export type RebootDropletResponse = IResponse<IRebootDropletApiResponse>;
 
 export const rebootDroplet = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   droplet_id,
 }: IRebootDropletApiRequest): Promise<Readonly<RebootDropletResponse>> => {
   const path = '/droplets';

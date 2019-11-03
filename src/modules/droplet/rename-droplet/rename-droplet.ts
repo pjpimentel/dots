@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IAction } from '../../action';
 
 export interface IRenameDropletApiResponse {
   action: IAction;
@@ -13,7 +14,7 @@ export type RenameDropletResponse = IResponse<IRenameDropletApiResponse>;
 
 export const renameDroplet = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   droplet_id,
   name,
 }: IRenameDropletApiRequest): Promise<Readonly<RenameDropletResponse>> => {

@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
 
 export interface IRemoveDropletsFromLoadBalancerApiRequest {
   droplet_ids: number[]
@@ -9,7 +9,7 @@ export type RemoveDropletsFromLoadBalancerResponse = IResponse<void>;
 
 export const removeDropletsFromLoadBalancer = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   droplet_ids,
   id,
 }: IRemoveDropletsFromLoadBalancerApiRequest): Promise<Readonly<RemoveDropletsFromLoadBalancerResponse>> => {

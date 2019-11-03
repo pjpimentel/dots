@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IAction } from '../../action';
 
 export interface IGetDropletActionApiRequest {
   action_id: string | number;
@@ -13,7 +14,7 @@ export type GetDropletActionResponse = IResponse<IGetDropletActionApiResponse>;
 
 export const getDropletAction = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   action_id,
   droplet_id,
 }: IGetDropletActionApiRequest): Promise<Readonly<GetDropletActionResponse>> => {

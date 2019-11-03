@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IAction } from '../../action';
 
 export interface IResetDropletPasswordApiResponse {
   action: IAction;
@@ -12,7 +13,7 @@ export type ResetDropletPasswordResponse = IResponse<IResetDropletPasswordApiRes
 
 export const resetDropletPassword = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   droplet_id,
 }: IResetDropletPasswordApiRequest): Promise<Readonly<ResetDropletPasswordResponse>> => {
   const path = '/droplets';

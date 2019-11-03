@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IDomainRecord } from '..';
 
 export interface ICreateDomainRecordApiResponse {
   domain_record: IDomainRecord;
@@ -12,7 +13,7 @@ export type CreateDomainRecordResponse = IResponse<ICreateDomainRecordApiRespons
 
 export const createDomainRecord = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   domain_name,
   data,
   flags,

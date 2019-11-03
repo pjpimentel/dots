@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IVolume } from '..';
 
 export interface ICreateVolumeApiResponse {
   volume: IVolume;
@@ -19,7 +20,7 @@ export type CreateVolumeResponse = IResponse<ICreateVolumeApiResponse>;
 
 export const createVolume = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   description,
   filesystem_label,
   filesystem_type,

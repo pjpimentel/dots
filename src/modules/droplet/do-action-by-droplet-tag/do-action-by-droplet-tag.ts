@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IAction } from '../../action';
 
 export interface IDoActionByDropletTagApiResponse {
   actions: IAction[];
@@ -22,7 +23,7 @@ export type DoActionByDropletTagResponse = IResponse<IDoActionByDropletTagApiRes
 
 export const doActionByDropletTag = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   tag_name,
   type,
 }: IDoActionByDropletTagApiRequest): Promise<Readonly<DoActionByDropletTagResponse>> => {

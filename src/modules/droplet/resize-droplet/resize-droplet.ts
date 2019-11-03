@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IAction } from '../../action';
 
 export interface IResizeDropletApiResponse {
   action: IAction;
@@ -14,7 +15,7 @@ export type ResizeDropletResponse = IResponse<IResizeDropletApiResponse>;
 
 export const resizeDroplet = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   disk,
   droplet_id,
   size,

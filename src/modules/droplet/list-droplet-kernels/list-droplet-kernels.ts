@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext, IListResponse, IListRequest } from '../../../types';
+import { IKernel } from '..';
 
 export interface IListDropletKernelsApiResponse extends IListResponse {
   kernels: IKernel[];
@@ -12,7 +13,7 @@ export type ListDropletKernelsResponse = IResponse<IListDropletKernelsApiRespons
 
 export const listDropletKernels = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   droplet_id,
   page = 1,
   per_page = 25,

@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IFirewall } from '..';
 
 export interface IGetFirewallApiResponse {
   firewall: IFirewall;
@@ -12,7 +13,7 @@ export type GetFirewallResponse = IResponse<IGetFirewallApiResponse>;
 
 export const getFirewall = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   firewall_id,
 }: IGetFirewallApiRequest): Promise<Readonly<GetFirewallResponse>> => {
   const path = '/firewalls';

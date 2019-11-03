@@ -7,3 +7,4 @@ export * from './list-image-actions/list-image-actions';
 export * from './list-images/list-images';
 export * from './transfer-image/transfer-image';
 export * from './update-image/update-image';
+export * from './types';

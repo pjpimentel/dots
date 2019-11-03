@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IAction } from '../../action';
 
 export interface IDisableDropletBackupsApiResponse {
   action: IAction;
@@ -12,7 +13,7 @@ export type DisableDropletBackupsResponse = IResponse<IDisableDropletBackupsApiR
 
 export const disableDropletBackups = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   droplet_id,
 }: IDisableDropletBackupsApiRequest): Promise<Readonly<DisableDropletBackupsResponse>> => {
   const path = '/droplets';

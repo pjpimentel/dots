@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext, IListResponse, IListRequest } from '../../../types';
+import { ISnapshot } from '../../snapshot';
 
 export interface IListDropletSnapshotsApiResponse extends IListResponse {
   snapshots: ISnapshot[];
@@ -12,7 +13,7 @@ export type ListDropletSnapshotsResponse = IResponse<IListDropletSnapshotsApiRes
 
 export const listDropletSnapshots = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   droplet_id,
   page = 1,
   per_page = 25,

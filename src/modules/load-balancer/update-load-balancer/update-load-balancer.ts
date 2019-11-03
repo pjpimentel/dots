@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { ILoadBalancer } from '..';
 
 export interface IUpdateLoadBalancerApiResponse {
   load_balancer: ILoadBalancer;
@@ -8,7 +9,7 @@ export type UpdateLoadBalancerResponse = IResponse<IUpdateLoadBalancerApiRespons
 
 export const updateLoadBalancer = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   id,
   algorithm,
   droplet_ids,

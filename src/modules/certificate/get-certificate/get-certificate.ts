@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { ICertificate } from '..';
 
 export interface IGetCertificateApiResponse {
   certificate: ICertificate;
@@ -12,7 +13,7 @@ export type GetCertificateResponse = IResponse<IGetCertificateApiResponse>;
 
 export const getCertificate = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   certificate_id,
 }: IGetCertificateApiRequest): Promise<Readonly<GetCertificateResponse>> => {
   const path = '/certificates';

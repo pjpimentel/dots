@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
 
 export interface IRemoveTagsFromFirewallApiRequest {
   firewall_id: string;
@@ -9,7 +9,7 @@ export type RemoveTagsFromFirewallResponse = IResponse<void>;
 
 export const removeTagsFromFirewall = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   firewall_id,
   tags,
 }: IRemoveTagsFromFirewallApiRequest): Promise<Readonly<RemoveTagsFromFirewallResponse>> => {

@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
 
 export interface IDeleteFirewallApiRequest {
   firewall_id: string;
@@ -8,7 +8,7 @@ export type DeleteFirewallResponse = IResponse<void>;
 
 export const deleteFirewall = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   firewall_id,
 }: IDeleteFirewallApiRequest): Promise<Readonly<DeleteFirewallResponse>> => {
   const path = '/firewalls';

@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext, IListResponse, IListRequest } from '../../../types';
+import { IFirewall } from '..';
 
 export interface IListFirewallsApiResponse extends IListResponse {
   firewalls: IFirewall[];
@@ -8,7 +9,7 @@ export type ListFirewallsResponse = IResponse<IListFirewallsApiResponse>;
 
 export const listFirewalls = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   page = 1,
   per_page = 25,
 }: IListRequest): Promise<Readonly<ListFirewallsResponse>> => {

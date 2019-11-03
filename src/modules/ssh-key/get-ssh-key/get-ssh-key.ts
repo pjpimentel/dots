@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { ISshKey } from '..';
 
 export interface IGetSshKeyApiResponse {
   ssh_key: ISshKey;
@@ -12,7 +13,7 @@ export type GetSshKeyResponse = IResponse<IGetSshKeyApiResponse>;
 
 export const getSshKey = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   id,
 }: IGetSshKeyApiRequest): Promise<Readonly<GetSshKeyResponse>> => {
   const path = '/account/keys';

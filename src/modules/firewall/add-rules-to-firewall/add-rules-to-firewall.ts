@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IFirewallInboundRule, IFirewallOutboundRule } from '..';
 
 export interface IAddRulesToFirewallApiRequest {
   firewall_id: string;
@@ -10,7 +11,7 @@ export type AddRulesToFirewallResponse = IResponse<void>;
 
 export const addRulesToFirewall = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   firewall_id,
   inbound_rules,
   outbound_rules,

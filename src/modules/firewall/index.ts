@@ -10,3 +10,4 @@ export * from './remove-droplets-from-firewall/remove-droplets-from-firewall';
 export * from './remove-rules-from-firewall/remove-rules-from-firewall';
 export * from './remove-tags-from-firewall/remove-tags-from-firewall';
 export * from './update-firewall/update-firewall';
+export * from './types';

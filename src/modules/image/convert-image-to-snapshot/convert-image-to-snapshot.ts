@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IAction } from '../../action';
 
 export interface IConvertImageToSnapshotApiResponse {
   action: IAction;
@@ -12,7 +13,7 @@ export type ConvertImageToSnapshotRes = IResponse<IConvertImageToSnapshotApiResp
 
 export const convertImageToSnapshot = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   image_id,
 }: IConvertImageToSnapshotApiRequest): Promise<Readonly<ConvertImageToSnapshotRes>> => {
   const path = '/images';

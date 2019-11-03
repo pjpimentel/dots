@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext, IListResponse, IListRequest } from '../../../types';
+import { IImage } from '..';
 
 export interface IListImageApiResponse extends IListResponse {
   images: IImage[];
@@ -16,7 +17,7 @@ export type ListImagesResponse = IResponse<IListImageApiResponse>;
 
 export const listImages = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   page = 1,
   per_page = 25,
   tag_name,

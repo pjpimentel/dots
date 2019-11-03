@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IImage } from '..';
 
 export interface IUpdateImageApiResponse {
   image: IImage;
@@ -15,7 +16,7 @@ export type UpdateImageRes = IResponse<IUpdateImageApiResponse>;
 
 export const updateImage = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   description,
   distribution,
   image_id,

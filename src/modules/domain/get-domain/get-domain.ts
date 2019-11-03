@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IDomain } from '..';
 
 export interface IGetDomainApiResponse {
   domain: IDomain;
@@ -12,7 +13,7 @@ export type GetDomainResponse = IResponse<IGetDomainApiResponse>;
 
 export const getDomain = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   name,
 }: IGetDomainApiRequest): Promise<Readonly<GetDomainResponse>> => {
   const path = '/domains';

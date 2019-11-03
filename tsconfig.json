@@ -12,16 +12,18 @@
     "strict": true,
     "target": "es2015",
     "typeRoots": [
-      "**/*.d.ts",
       "node_modules/@types"
     ]
   },
   "declaration": true,
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "**/*/*.spec.ts",
+    "*.spec.ts",
+    "*.mock.ts",
+    "**/*/*.mock.ts"
   ],
   "include": [
     "src/**/*",
-    "**/*/types"
   ]
 }

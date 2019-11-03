@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
 
 export interface IRemoveDropletsFromFirewallApiRequest {
   droplet_ids: number[]
@@ -9,7 +9,7 @@ export type RemoveDropletsFromFirewallResponse = IResponse<void>;
 
 export const removeDropletsFromFirewall = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   droplet_ids,
   firewall_id,
 }: IRemoveDropletsFromFirewallApiRequest): Promise<Readonly<RemoveDropletsFromFirewallResponse>> => {

@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IAction } from '../../action';
 
 export interface IGetImageActionApiRequest {
   image_id: number;
@@ -13,7 +14,7 @@ export type GetImageActionResponse = IResponse<IGetImageActionApiResponse>;
 
 export const getImageAction = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   image_id,
   action_id,
 }: IGetImageActionApiRequest): Promise<Readonly<GetImageActionResponse>> => {

@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { ICertificate } from '..';
 
 export interface ICreateCertificateApiResponse {
   certificate: ICertificate;
@@ -17,7 +18,7 @@ export type CreateCertificateResponse = IResponse<ICreateCertificateApiResponse>
 
 export const createCertificate = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   certificate_chain,
   dns_names,
   leaf_certificate,

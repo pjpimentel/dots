@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IAction } from '..';
 
 export interface IGetActionApiRequest {
   action_id: number;
@@ -12,7 +13,7 @@ export type GetActionResponse = IResponse<IGetActionApiResponse>;
 
 export const getAction = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   action_id,
 }: IGetActionApiRequest): Promise<Readonly<GetActionResponse>> => {
   const path = '/action';

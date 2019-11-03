@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext, IListResponse, IListRequest } from '../../../types';
+import { IAction } from '../../action';
 
 export interface IListFloatingIpActionsApiResponse extends IListResponse {
   actions: IAction[];
@@ -12,7 +13,7 @@ export type ListFloatingIpActionssResponse = IResponse<IListFloatingIpActionsApi
 
 export const listFloatingIpActions = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   ip,
   page = 1,
   per_page = 25,

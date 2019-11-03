@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
 
 export interface IDeleteImageApiRequest {
   image_id: number;
@@ -8,7 +8,7 @@ export type DeleteImageRes = IResponse<void>;
 
 export const deleteImage = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   image_id,
 }: IDeleteImageApiRequest): Promise<Readonly<DeleteImageRes>> => {
   const path = '/images';

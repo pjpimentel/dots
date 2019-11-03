@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IForwardingRule } from '..';
 
 export interface IRemoveRulesFromLoadBalancerApiRequest {
   forwarding_rules: IForwardingRule[]
@@ -9,7 +10,7 @@ export type RemoveRulesFromLoadBalancerResponse = IResponse<void>;
 
 export const removeRulesFromLoadBalancer = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   forwarding_rules,
   id,
 }: IRemoveRulesFromLoadBalancerApiRequest): Promise<Readonly<RemoveRulesFromLoadBalancerResponse>> => {

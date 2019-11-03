@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IDroplet } from '..';
 
 export interface ICreateDropletApiResponse {
   droplet: IDroplet;
@@ -23,7 +24,7 @@ export type CreateDropletResponse = IResponse<ICreateDropletApiResponse>;
 
 export const createDroplet = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   backups,
   image,
   ipv6,

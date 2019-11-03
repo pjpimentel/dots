@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { ISshKey } from '..';
 
 export interface ICreateSshKeyApiResponse {
   ssh_key: ISshKey;
@@ -13,7 +14,7 @@ export type CreateSshKeyResponse = IResponse<ICreateSshKeyApiResponse>;
 
 export const createSshKey = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   name,
   public_key,
 }: ICreateSshKeyApiRequest): Promise<Readonly<CreateSshKeyResponse>> => {

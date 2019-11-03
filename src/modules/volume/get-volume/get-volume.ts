@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IVolume } from '..';
 
 export interface IGetVolumeApiResponse {
   volume: IVolume;
@@ -12,7 +13,7 @@ export type GetVolumeResponse = IResponse<IGetVolumeApiResponse>;
 
 export const getVolume = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   id,
 }: IGetVolumeApiRequest): Promise<Readonly<GetVolumeResponse>> => {
   const path = '/volumes';

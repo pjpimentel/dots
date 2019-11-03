@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { IResponse, IContext } from '../../../types';
+import { IAction } from '../../action';
 
 export interface ITransferImageApiResponse {
   action: IAction;
@@ -13,7 +14,7 @@ export type TransferImageRes = IResponse<ITransferImageApiResponse>;
 
 export const transferImage = ({
   httpClient,
-}: IContext<AxiosInstance>) => ({
+}: IContext) => ({
   image_id,
   region,
 }: ITransferImageApiRequest): Promise<Readonly<TransferImageRes>> => {
