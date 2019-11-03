@@ -5,12 +5,18 @@ import {readdirSync, Dirent} from 'fs';
 
 const MODULES_ROOT = __dirname + '/../../modules';
 const READ_DIR_OPTIONS = {encoding:null, withFileTypes: true as true};
-const KEYS_BLACKLIST = ['types', '_options'];
+const KEYS_BLACKLIST = ['types', '_options', 'index.ts', 'README.md'];
 
 const _FN_REF = () => true;
 const _IS_KEY_BLACK_LISTED = ({blacklist}: {blacklist: string[]}) => (key: string) => blacklist.includes(key);
-const _IS_DIR = ({isBlacklisted}: {isBlacklisted: (v: string) => boolean}) => (dir: Dirent) => dir.isDirectory() && !isBlacklisted(dir.name);
-const _GET_NAME = () => (dir: Dirent) => dir.name;
+const _IS_DIR = ({isBlacklisted}: {isBlacklisted: (v: string) => boolean}) => (dir: Dirent | string) => {
+  if (typeof dir === 'string') return !isBlacklisted(dir);
+  return dir.isDirectory() && !isBlacklisted(dir.name);
+}
+const _GET_NAME = () => (dir: Dirent | string) => {
+  if (typeof dir === 'string') return dir;
+  return dir.name;
+};
 const _GET_FULL_PATH = (prefix: string) => (suffix: string) => `${prefix}/${suffix}`;
 const _JOIN_AND_CAPITALIZE = () => (value: string) => {
   const splited = value.split('-');
@@ -35,7 +41,6 @@ const getFullPath = _GET_FULL_PATH(MODULES_ROOT);
 const MODULES = readdirSync(MODULES_ROOT, READ_DIR_OPTIONS)
   .filter(isDir)
   .map(getDirName);
-
 
 /// ls src/modules
 const _getFolders = (_module: string) => {
