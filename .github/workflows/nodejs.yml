@@ -1,12 +1,12 @@
-name: Node CI
+name: dots
 
 on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-18.04
-
+    env:
+      CI: true
     strategy:
       matrix:
         node-version: [8.x, 10.x, 12.x]
@@ -16,10 +16,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install, build, and test
-      run: |
-        npm ci
-        npm run test
-        npm run build
-      env:
-        CI: true
+    - name: npm install
+      run: npm ci
+    - name: npm test
+      run: npm run test
+    - name: npm build
+      run: npm run build
