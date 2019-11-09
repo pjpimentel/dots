@@ -1,8 +1,10 @@
 # ··· dots ···
 
+## **BREAKING** changes from dots-wrapper@2 to dots-wrapper@3
+
 ## **digital ocean** API wrapper
 
-[![actions](https://github.com/pjpimentel/dots/workflows/build/badge.svg?branch=v3.0.0)](https://github.com/pjpimentel/dots/actions)
+[![actions](https://github.com/pjpimentel/dots/workflows/build/badge.svg?branch=master)](https://github.com/pjpimentel/dots/actions)
 [![quality](https://sonarcloud.io/api/project_badges/measure?branch=master&project=dots&metric=alert_status)](https://sonarcloud.io/dashboard?branch=master&id=dots)
 [![coverage](https://sonarcloud.io/api/project_badges/measure?branch=master&project=dots&metric=coverage)](https://sonarcloud.io/dashboard?branch=master&id=dots)
 [![security](https://sonarcloud.io/api/project_badges/measure?branch=master&project=dots&metric=security_rating)](https://sonarcloud.io/dashboard?branch=master&id=dots)
