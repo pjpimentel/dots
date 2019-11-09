@@ -1,6 +1,6 @@
 {
   "name": "dots-wrapper",
-  "version": "3.0.0-0",
+  "version": "3.0.0",
   "description": "Digital Ocean API V2 wrapper. TypeScript - Javascript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,7 +8,8 @@
     "build": "rm -rf ./dist && tsc",
     "test": "jest",
     "build:test": "jest",
-    "docs": "typedoc --json dist/docs.json --mode modules"
+    "docs": "typedoc --json dist/docs.json --mode modules",
+    "version": "npm version --no-git-tag-version "
   },
   "repository": {
     "type": "git",
