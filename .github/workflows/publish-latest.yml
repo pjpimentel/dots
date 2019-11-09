@@ -1,9 +1,9 @@
-name: publish-beta
+name: publish-latest
 
 on:
   push:
     branches:
-      - beta
+      - master
     paths:
       - 'package.json'
       - 'package-lock.json'
@@ -29,4 +29,4 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           npm config set '//registry.npmjs.org/:_authToken' $NPM_TOKEN;
-          npm publish --tag beta;
+          npm publish --tag latest;
