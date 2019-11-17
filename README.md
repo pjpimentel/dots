@@ -146,10 +146,14 @@
     1. [delete-snapshot](src/modules/snapshot/README.md#delete-snapshot)
     1. [get-snapshot](src/modules/snapshot/README.md#get-snapshot)
     1. [list-snapshots](src/modules/snapshot/README.md#list-snapshots)
-1. ~~[ssh-key](src/modules/ssh-key/README.md#ssh-key)~~ (available, docs WIP)
+1. [ssh-key](src/modules/ssh-key/README.md#ssh-key)
+    1. [create-ssh-key](src/modules/ssh-key/README.md#create-ssh-key)
+    1. [destroy-ssh-key](src/modules/ssh-key/README.md#destroy-ssh-key)
+    1. [get-ssh-key](src/modules/ssh-key/README.md#get-ssh-key)
+    1. [list-ssh-keys](src/modules/ssh-key/README.md#list-ssh-keys)
+    1. [update-ssh-key](src/modules/ssh-key/README.md#update-ssh-key)
 1. ~~[tag](src/modules/tag/README.md#tag)~~ (available, docs WIP)
 1. ~~[volume](src/modules/volume/README.md#volume)~~ (available, docs WIP)
-
 
 
 ## license: [mit](LICENSE)
