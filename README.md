@@ -1,7 +1,5 @@
 # ··· dots ···
 
-## **BREAKING** changes from dots-wrapper@2 to dots-wrapper@3
-
 ## **digital ocean** API wrapper
 
 [![actions](https://github.com/pjpimentel/dots/workflows/build/badge.svg?branch=master)](https://github.com/pjpimentel/dots/actions)
