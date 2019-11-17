@@ -152,7 +152,13 @@
     1. [get-ssh-key](src/modules/ssh-key/README.md#get-ssh-key)
     1. [list-ssh-keys](src/modules/ssh-key/README.md#list-ssh-keys)
     1. [update-ssh-key](src/modules/ssh-key/README.md#update-ssh-key)
-1. ~~[tag](src/modules/tag/README.md#tag)~~ (available, docs WIP)
+1. [tag](src/modules/tag/README.md#tag)
+    1. [create-tag](src/modules/tag/README.md#create-tag)
+    1. [delete-tag](src/modules/tag/README.md#delete-tag)
+    1. [get-tag](src/modules/tag/README.md#get-tag)
+    1. [list-tags](src/modules/tag/README.md#list-tags)
+    1. [tag-resources](src/modules/tag/README.md#tag-resources)
+    1. [untag-resources](src/modules/tag/README.md#untag-resources)
 1. ~~[volume](src/modules/volume/README.md#volume)~~ (available, docs WIP)
 
 
