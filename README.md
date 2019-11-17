@@ -1,7 +1,5 @@
 # ··· dots ···
 
-## **BREAKING** changes from dots-wrapper@2 to dots-wrapper@3
-
 ## **digital ocean** API wrapper
 
 [![actions](https://github.com/pjpimentel/dots/workflows/build/badge.svg?branch=master)](https://github.com/pjpimentel/dots/actions)
@@ -142,11 +140,34 @@
     1. [list-regions](src/modules/region/README.md#list-regions)
 1. [size](src/modules/size/README.md#size)
     1. [list-sizes](src/modules/size/README.md#list-sizes)
-1. ~~[snapshot](src/modules/snapshot/README.md#snapshot)~~ (available, docs WIP)
-1. ~~[ssh-key](src/modules/ssh-key/README.md#ssh-key)~~ (available, docs WIP)
-1. ~~[tag](src/modules/tag/README.md#tag)~~ (available, docs WIP)
-1. ~~[volume](src/modules/volume/README.md#volume)~~ (available, docs WIP)
-
-
+1. [snapshot](src/modules/snapshot/README.md#snapshot)
+    1. [delete-snapshot](src/modules/snapshot/README.md#delete-snapshot)
+    1. [get-snapshot](src/modules/snapshot/README.md#get-snapshot)
+    1. [list-snapshots](src/modules/snapshot/README.md#list-snapshots)
+1. [ssh-key](src/modules/ssh-key/README.md#ssh-key)
+    1. [create-ssh-key](src/modules/ssh-key/README.md#create-ssh-key)
+    1. [destroy-ssh-key](src/modules/ssh-key/README.md#destroy-ssh-key)
+    1. [get-ssh-key](src/modules/ssh-key/README.md#get-ssh-key)
+    1. [list-ssh-keys](src/modules/ssh-key/README.md#list-ssh-keys)
+    1. [update-ssh-key](src/modules/ssh-key/README.md#update-ssh-key)
+1. [tag](src/modules/tag/README.md#tag)
+    1. [create-tag](src/modules/tag/README.md#create-tag)
+    1. [delete-tag](src/modules/tag/README.md#delete-tag)
+    1. [get-tag](src/modules/tag/README.md#get-tag)
+    1. [list-tags](src/modules/tag/README.md#list-tags)
+    1. [tag-resources](src/modules/tag/README.md#tag-resources)
+    1. [untag-resources](src/modules/tag/README.md#untag-resources)
+1. [volume](src/modules/volume/README.md#volume)
+    1. [attach-volume-to-droplet](src/modules/volume/README.md#attach-volume-to-droplet)
+    1. [create-volume](src/modules/volume/README.md#create-volume)
+    1. [create-volume-snapshot](src/modules/volume/README.md#create-volume-snapshot)
+    1. [delete-volume](src/modules/volume/README.md#delete-volume)
+    1. [detach-volume-from-droplet](src/modules/volume/README.md#detach-volume-from-droplet)
+    1. [get-volume](src/modules/volume/README.md#get-volume)
+    1. [get-volume-action](src/modules/volume/README.md#get-volume-action)
+    1. [list-volume-actions](src/modules/volume/README.md#list-volume-actions)
+    1. [list-volumes](src/modules/volume/README.md#list-volumes)
+    1. [list-volume-snapshots](src/modules/volume/README.md#list-volume-snapshots)
+    1. [resize-volume](src/modules/volume/README.md#resize-volume)
 
 ## license: [mit](LICENSE)
