@@ -1,5 +1,13 @@
 # changelog
 
+## **3.0.2** - 2019-11-20
+
+added browser source
+
+### **added**
+
+* browser build
+
 ## **3.0.1** - 2019-11-17
 
 release to sync npm package README with latest changes

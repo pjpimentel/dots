@@ -41,7 +41,25 @@
   main();
 ```
 
-### ~~browser~~ (wip)
+### browser
+
+index.html
+``` html
+  <script src='https://unpkg.com/dots-wrapper@latest/dist/index-browser.min.js'></script>
+```
+js.js
+``` javascript
+  const {createApiClient} = window.dots;
+  const myApiToken = 'my-long-token';
+  const dots = createApiClient({token: myApiToken});
+
+  const main = async () => {
+    const {data:{account}} = await dots.account.getAccount();
+    console.log(account);
+  };
+
+  main();
+```
 
 ## docs
 
