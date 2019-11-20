@@ -22,7 +22,9 @@ jobs:
       - name: npm test
         run: npm run test
       - name: npm build
-        run: npm run build
+        run: |
+          npm run build
+          npm run build:browser
   quality-check:
     name: quality-check
     runs-on: ubuntu-18.04
