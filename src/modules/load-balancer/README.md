@@ -147,5 +147,3 @@ try {
   console.log(error);
 }
 ```
-
-<!-- TODO: ref field `id` -> `load_balancer_id` -->
