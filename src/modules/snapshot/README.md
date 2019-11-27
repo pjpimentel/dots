@@ -47,5 +47,3 @@ try {
   console.log(error);
 }
 ```
-
-<!-- TODO: ref field `id` -> `snapshot_id` -->
