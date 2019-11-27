@@ -6,7 +6,8 @@ export interface IGetVolumeApiResponse {
 }
 
 export interface IGetVolumeApiRequest {
-  id: string;
+  id?: string;
+  volume_id: string;
 }
 
 export type GetVolumeResponse = IResponse<IGetVolumeApiResponse>;
@@ -15,9 +16,10 @@ export const getVolume = ({
   httpClient,
 }: IContext) => ({
   id,
+  volume_id,
 }: IGetVolumeApiRequest): Promise<Readonly<GetVolumeResponse>> => {
   const path = '/volumes';
-  const url = `${path}/${id}`;
+  const url = `${path}/${volume_id || id}`;
 
   return httpClient.get<IGetVolumeApiResponse>(url);
 };
