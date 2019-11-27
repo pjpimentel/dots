@@ -5,7 +5,7 @@
 ```javascript
 try {
   const input = {
-    id: 123, // number;
+    snapshot_id: 123, // number;
   };
   const {status} = await dots.snapshot.deleteSnapshot(input)
   console.log(status);
@@ -19,7 +19,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 123, // number;
+    snapshot_id: 123, // number;
   };
   const {data:{snapshot}} = await dots.snapshot.getSnapshot(input)
   console.log(snapshot);
