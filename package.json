@@ -3,6 +3,7 @@
   "version": "3.0.2",
   "description": "Digital Ocean API V2 wrapper. TypeScript - Javascript",
   "main": "dist/index.js",
+  "browser": "dist/index-browser.min.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rm -rf ./dist && tsc",
@@ -43,5 +44,12 @@
     "typescript": "^3.5.3",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
-  }
+  },
+  "keywords": [
+    "api",
+    "digital-ocean",
+    "digitalocean",
+    "sdk",
+    "wrapper"
+  ]
 }

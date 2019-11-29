@@ -124,7 +124,7 @@ js.js
     1. [remove-droplets-from-firewall](src/modules/firewall/README.md#remove-droplets-from-firewall)
     1. [remove-rules-from-firewall](src/modules/firewall/README.md#remove-rules-from-firewall)
     1. [remove-tags-from-firewall](src/modules/firewall/README.md#remove-tags-from-firewall)
-    1. [update-firewal](src/modules/firewall/README.md#update-firewal)
+    1. [update-firewall](src/modules/firewall/README.md#update-firewall)
 1. [floating-ip](src/modules/floating-ip/README.md#floating-ip)
     1. [assign-ip-to-droplet](src/modules/floating-ip/README.md#assign-ip-to-droplet)
     1. [create-floating-ip](src/modules/floating-ip/README.md#create-floating-ip)

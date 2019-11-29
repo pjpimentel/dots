@@ -1,5 +1,36 @@
 # changelog
 
+## **3.0.3** - 2019-12-03
+
+### **changed**
+
+the `id` input was removed from the following methods to avoid missunderstands.  
+now it is `{entity}_id`.  
+(to allow backward compatibility the `id` field still accepted but will be removed in future versions)
+
+the following methods were affected:
+
+* **loadBalancer**.addDropletsToLoadBalancer >> id -> load_balancer_id
+* **loadBalancer**.addRulesToLoadBalancer >> id -> load_balancer_id
+* **loadBalancer**.deleteLoadBalancer >> id -> load_balancer_id
+* **loadBalancer**.getLoadBalancer >> id -> load_balancer_id
+* **loadBalancer**.removeDropletsFromLoadBalancer >> id -> load_balancer_id
+* **loadBalancer**.removeRulesFromLoadBalancer >> id -> load_balancer_id
+* **loadBalancer**.updateLoadBalancer >> id -> load_balancer_id
+* **snapshot**.deleteSnapshot >> id -> snapshot_id
+* **snapshot**.getSnapshot >> id -> snapshot_id
+* **sshKey**.destroySshKey >> id -> ssh_key_id
+* **sshKey**.getSshKey >> id -> ssh_key_id
+* **sshKey**.updateSshKey >> id -> ssh_key_id
+* **volume**.attachVolumeToDroplet >> id -> volume_id
+* **volume**.createVolumeSnapshot >> id -> volume_id
+* **volume**.deleteVolume >> id -> volume_id
+* **volume**.detachVolumeFromDroplet >> id -> volume_id
+* **volume**.getVolume >> id -> volume_id
+* **volume**.listVolumeActions >> id -> volume_id
+* **volume**.listVolumeSnapshots >> id -> volume_id
+* **volume**.resizeVolume >> id -> volume_id
+
 ## **3.0.2** - 2019-11-20
 
 added browser source

@@ -161,7 +161,7 @@ try {
 }
 ```
 
-## update-firewal
+## update-firewall
 [original documentation](https://developers.digitalocean.com/documentation/v2/#update-a-firewall)
 
 ```javascript
