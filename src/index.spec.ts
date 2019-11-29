@@ -53,7 +53,7 @@ describe('dots', () => {
       MODULES.forEach((_module) => {
         const path = getFullPath(_module);
         const pathContent = readdirSync(path, READ_DIR_OPTIONS);
-        const readmeFile = pathContent.find((file) => file.name === 'README.md');
+        const readmeFile = pathContent.find((file) => (file.name || file) === 'README.md');
         const hasReadme = !!readmeFile;
         expect(hasReadme).toBe(true);
       });
@@ -62,7 +62,7 @@ describe('dots', () => {
       MODULES.forEach((_module) => {
         const path = getFullPath(_module);
         const pathContent = readdirSync(path, READ_DIR_OPTIONS);
-        const readmeFile = pathContent.find((file) => file.name === 'README.md');
+        const readmeFile = pathContent.find((file) => (file.name || file) === 'README.md');
         const hasReadme = !!readmeFile;
         expect(hasReadme).toBe(true);
         const readmeContent = readFileSync(`${path}/README.md`).toString('utf8');
@@ -85,7 +85,7 @@ describe('dots', () => {
       const links = MODULES.map((_module) => {
         const path = getFullPath(_module);
         const pathContent = readdirSync(path, READ_DIR_OPTIONS);
-        const readmeFile = pathContent.find((file) => file.name === 'README.md');
+        const readmeFile = pathContent.find((file) => (file.name || file) === 'README.md');
         const hasReadme = !!readmeFile;
         expect(hasReadme).toBe(true);
         const readmeContent = readFileSync(`${path}/README.md`).toString('utf8');
