@@ -75,6 +75,7 @@ js.js
     1. [list-certificates](src/modules/certificate/README.md#list-certificates)
 1. [database](src/modules/database/README.md#database)
     1. [create-database-cluster](src/modules/database/README.md#create-database-cluster)
+    1. [get-database-cluster](src/modules/database/README.md#get-database-cluster)
 1. [domain](src/modules/domain/README.md#domain)
     1. [create-domain](src/modules/domain/README.md#create-domain)
     1. [create-domain-record](src/modules/domain/README.md#create-domain-record)
