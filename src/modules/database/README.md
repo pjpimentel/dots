@@ -33,3 +33,18 @@ try {
   console.log(error);
 }
 ```
+
+## list-database-clusters
+[original documentation](https://developers.digitalocean.com/documentation/v2/#list-all-database-clusters)
+```javascript
+try {
+  const input = {
+    page: 1, // number
+    per_page: 25, // number
+  };
+  const {data:{databases}} = await dots.database.listDatabaseClusters(input);
+  console.log(databases);
+} catch (error) {
+  console.log(error);
+}
+```

@@ -170,6 +170,7 @@ export const createApiClient = ({
   const database = Object.freeze({
     createDatabaseCluster: modules.database.createDatabaseCluster(context),
     getDatabaseCluster: modules.database.getDatabaseCluster(context),
+    listDatabaseClusters: modules.database.listDatabaseClusters(context),
   });
 
   return Object.freeze({
