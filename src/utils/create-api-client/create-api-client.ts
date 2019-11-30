@@ -171,6 +171,7 @@ export const createApiClient = ({
     createDatabaseCluster: modules.database.createDatabaseCluster(context),
     getDatabaseCluster: modules.database.getDatabaseCluster(context),
     listDatabaseClusters: modules.database.listDatabaseClusters(context),
+    resizeDatabaseCluster: modules.database.resizeDatabaseCluster(context),
   });
 
   return Object.freeze({

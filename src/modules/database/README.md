@@ -48,3 +48,19 @@ try {
   console.log(error);
 }
 ```
+
+## resize-database-cluster
+[original documentation](https://developers.digitalocean.com/documentation/v2/#resize-a-database-cluster)
+```javascript
+try {
+  const input = {
+    size: '', // string
+    num_nodes: 0, // number
+    database_cluster_id: '', // string
+  };
+  const {status} = await dots.database.resizeDatabaseCluster(input);
+  console.log(status);
+} catch (error) {
+  console.log(error);
+}
+```
