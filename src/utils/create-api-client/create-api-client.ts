@@ -167,12 +167,16 @@ export const createApiClient = ({
     listVolumes: modules.volume.listVolumes(context),
     resizeVolume: modules.volume.resizeVolume(context),
   });
+  const database = Object.freeze({
+    createDatabaseCluster: modules.database.createDatabaseCluster(context),
+  });
 
   return Object.freeze({
     _options,
     account,
     action,
     certificate,
+    database,
     domain,
     droplet,
     firewall,

@@ -2,6 +2,10 @@
 
 ## **3.0.3** - 2019-12-03
 
+### **added**
+
+* **database** module
+
 ### **changed**
 
 the `id` input was removed from the following methods to avoid missunderstands.  
