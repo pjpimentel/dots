@@ -64,3 +64,18 @@ try {
   console.log(error);
 }
 ```
+
+## migrate-database-cluster
+[original documentation](https://developers.digitalocean.com/documentation/v2/#migrate-a-database-cluster-to-a-new-region)
+```javascript
+try {
+  const input = {
+    region: '', // string
+    database_cluster_id: '', // string
+  };
+  const {status} = await dots.database.migrateDatabaseCluster(input);
+  console.log(status);
+} catch (error) {
+  console.log(error);
+}
+```
