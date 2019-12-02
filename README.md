@@ -79,6 +79,7 @@ js.js
     1. [list-database-clusters](src/modules/database/README.md#list-database-clusters)
     1. [migrate-database-cluster](src/modules/database/README.md#migrate-database-cluster)
     1. [resize-database-cluster](src/modules/database/README.md#resize-database-cluster)
+    1. [update-database-cluster-firewall-rules](src/modules/database/README.md#update-database-cluster-firewall-rules)
 1. [domain](src/modules/domain/README.md#domain)
     1. [create-domain](src/modules/domain/README.md#create-domain)
     1. [create-domain-record](src/modules/domain/README.md#create-domain-record)

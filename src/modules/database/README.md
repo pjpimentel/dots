@@ -79,3 +79,18 @@ try {
   console.log(error);
 }
 ```
+
+## update-database-cluster-firewall-rules
+[original documentation](https://developers.digitalocean.com/documentation/v2/#update-firewall-rules--trusted-sources--for-a-database-cluster)
+```javascript
+try {
+  const input = {
+    database_cluster_id: '', // string
+    rules: [], // IDatabaseClusterFirewallRule[]
+  };
+  const {status} = await dots.database.updateDatabaseClusterFirewallRules(input);
+  console.log(status);
+} catch (error) {
+  console.log(error);
+}
+```
