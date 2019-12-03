@@ -110,3 +110,19 @@ try {
   console.log(error);
 }
 ```
+
+## configure-database-cluster-maintenance-window
+[original documentation](https://developers.digitalocean.com/documentation/v2/#configure-a-database-cluster-s-maintenance-window)
+```javascript
+try {
+  const input = {
+    database_cluster_id: '', // string
+    day: '', // number
+    hour: '', // number
+  };
+  const {status} = await dots.database.configureDatabaseClusterMaintenanceWindow(input);
+  console.log(status);
+} catch (error) {
+  console.log(error);
+}
+```

@@ -1,3 +1,4 @@
+export * from './configure-database-cluster-maintenance-window/configure-database-cluster-maintenance-window';
 export * from './create-database-cluster/create-database-cluster';
 export * from './get-database-cluster/get-database-cluster';
 export * from './list-database-cluster-firewall-rules/list-database-cluster-firewall-rules';
