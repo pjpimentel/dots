@@ -1,7 +1,7 @@
 import { IResponse, IContext } from '../../../types';
 import { DatabaseClusterFirewallRuleType } from '..';
 
-export interface IDatabaseClusterFirewallRule {
+export interface IDatabaseClusterNewFirewallRule {
   type: DatabaseClusterFirewallRuleType;
   value: string;
   uuid?: string;
@@ -10,7 +10,7 @@ export interface IDatabaseClusterFirewallRule {
 
 export interface IUpdateDatabaseClusterFirewallRulesApiRequest {
   database_cluster_id: string;
-  rules: IDatabaseClusterFirewallRule[];
+  rules: IDatabaseClusterNewFirewallRule[];
 }
 
 export type UpdateDatabaseClusterFirewallRulesResponse = IResponse<void>;

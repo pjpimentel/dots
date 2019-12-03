@@ -94,3 +94,19 @@ try {
   console.log(error);
 }
 ```
+
+## list-database-cluster-firewall-rules
+[original documentation](https://developers.digitalocean.com/documentation/v2/#list-firewall-rules--trusted-sources--for-a-database-cluster)
+```javascript
+try {
+  const input = {
+    database_cluster_id: '', // string
+    page: 1, // number
+    per_page: 25, // number
+  };
+  const {data:{rules}} = await dots.database.listDatabaseClusterFirewallRules(input);
+  console.log(rules);
+} catch (error) {
+  console.log(error);
+}
+```
