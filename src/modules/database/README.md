@@ -126,3 +126,19 @@ try {
   console.log(error);
 }
 ```
+
+## list-database-cluster-backups
+[original documentation](https://developers.digitalocean.com/documentation/v2/#list-backups-for-a-database-cluster)
+```javascript
+try {
+  const input = {
+    database_cluster_id: '', // string
+    page: 1, // number
+    per_page: 25, // number
+  };
+  const {data:{backups}} = await dots.database.listDatabaseClusterBackups(input);
+  console.log(backups);
+} catch (error) {
+  console.log(error);
+}
+```

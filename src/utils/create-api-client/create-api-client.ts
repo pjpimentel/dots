@@ -171,6 +171,7 @@ export const createApiClient = ({
     configureDatabaseClusterMaintenanceWindow: modules.database.configureDatabaseClusterMaintenanceWindow(context),
     createDatabaseCluster: modules.database.createDatabaseCluster(context),
     getDatabaseCluster: modules.database.getDatabaseCluster(context),
+    listDatabaseClusterBackups: modules.database.listDatabaseClusterBackups(context),
     listDatabaseClusterFirewallRules: modules.database.listDatabaseClusterFirewallRules(context),
     listDatabaseClusters: modules.database.listDatabaseClusters(context),
     migrateDatabaseCluster: modules.database.migrateDatabaseCluster(context),

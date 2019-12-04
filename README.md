@@ -77,6 +77,7 @@ js.js
     1. [configure-database-cluster-maintenance-window](src/modules/database/README.md#configure-database-cluster-maintenance-window)
     1. [create-database-cluster](src/modules/database/README.md#create-database-cluster)
     1. [get-database-cluster](src/modules/database/README.md#get-database-cluster)
+    1. [list-database-cluster-backups](src/modules/database/README.md#list-database-cluster-backups)
     1. [list-database-cluster-firewall-rules](src/modules/database/README.md#list-database-cluster-firewall-rules)
     1. [list-database-clusters](src/modules/database/README.md#list-database-clusters)
     1. [migrate-database-cluster](src/modules/database/README.md#migrate-database-cluster)
