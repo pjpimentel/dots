@@ -142,3 +142,26 @@ try {
   console.log(error);
 }
 ```
+
+## restore-database-cluster-backup
+[original documentation](https://developers.digitalocean.com/documentation/v2/#restore-from-a-database-cluster-backup)
+```javascript
+try {
+  const input = {
+    name: '', // string
+    backup_restore: {
+      database_name: '', // string
+      backup_created_at: '', // string
+    },
+    engine: '', // string
+    version: '', // string
+    region: '', // string
+    size: '', // string
+    num_nodes: 0, // number
+  };
+  const {data:{backups}} = await dots.database.restoreDatabaseClusterBackup(input);
+  console.log(backups);
+} catch (error) {
+  console.log(error);
+}
+```

@@ -6,5 +6,6 @@ export * from './list-database-cluster-firewall-rules/list-database-cluster-fire
 export * from './list-database-clusters/list-database-clusters';
 export * from './migrate-database-cluster/migrate-database-cluster';
 export * from './resize-database-cluster/resize-database-cluster';
+export * from './restore-database-cluster-backup/restore-database-cluster-backup';
 export * from './types';
 export * from './update-database-cluster-firewall-rules/update-database-cluster-firewall-rules';
