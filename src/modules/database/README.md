@@ -159,8 +159,8 @@ try {
     size: '', // string
     num_nodes: 0, // number
   };
-  const {data:{backups}} = await dots.database.restoreDatabaseClusterBackup(input);
-  console.log(backups);
+  const {data:{database}} = await dots.database.restoreDatabaseClusterBackup(input);
+  console.log(database);
 } catch (error) {
   console.log(error);
 }
