@@ -165,3 +165,17 @@ try {
   console.log(error);
 }
 ```
+
+## destroy-database-cluster
+[original documentation](https://developers.digitalocean.com/documentation/v2/#destroy-a-database-cluster)
+```javascript
+try {
+  const input = {
+    database_cluster_id: '', // string
+  };
+  const {status} = await dots.database.destroyDatabaseCluster(input);
+  console.log(status);
+} catch (error) {
+  console.log(error);
+}
+```

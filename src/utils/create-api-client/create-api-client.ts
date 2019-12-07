@@ -170,6 +170,7 @@ export const createApiClient = ({
   const database = Object.freeze({
     configureDatabaseClusterMaintenanceWindow: modules.database.configureDatabaseClusterMaintenanceWindow(context),
     createDatabaseCluster: modules.database.createDatabaseCluster(context),
+    destroyDatabaseCluster: modules.database.destroyDatabaseCluster(context),
     getDatabaseCluster: modules.database.getDatabaseCluster(context),
     listDatabaseClusterBackups: modules.database.listDatabaseClusterBackups(context),
     listDatabaseClusterFirewallRules: modules.database.listDatabaseClusterFirewallRules(context),
