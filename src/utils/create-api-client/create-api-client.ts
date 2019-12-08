@@ -176,6 +176,7 @@ export const createApiClient = ({
     destroyDatabaseCluster: modules.database.destroyDatabaseCluster(context),
     destroyReadOnlyReplica: modules.database.destroyReadOnlyReplica(context),
     getDatabaseCluster: modules.database.getDatabaseCluster(context),
+    getDatabaseClusterDb: modules.database.getDatabaseClusterDb(context),
     getDatabaseClusterUser: modules.database.getDatabaseClusterUser(context),
     getReadOnlyReplica: modules.database.getReadOnlyReplica(context),
     listDatabaseClusterBackups: modules.database.listDatabaseClusterBackups(context),

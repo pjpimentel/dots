@@ -312,7 +312,22 @@ try {
     database_cluster_id: '', // string
     db_name: '', // string
   };
-  const {data:{db}} = await dots.database.createDatabase(input);
+  const {data:{db}} = await dots.database.createDatabaseClusterDb(input);
+  console.log(db);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## get-database-cluster-db
+[original documentation](https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-database)
+```javascript
+try {
+  const input = {
+    database_cluster_id: '', // string
+    db_name: '', // string
+  };
+  const {data:{db}} = await dots.database.getDatabaseClusterDb(input);
   console.log(db);
 } catch (error) {
   console.log(error);
