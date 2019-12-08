@@ -1,8 +1,8 @@
 import { IResponse, IContext } from '../../../types';
-import { IDatabaseCluster, DatabaseClusterEngine } from '..';
+import { IDatabaseClusterReplica } from '..';
 
 export interface ICreateReadOnlyReplicaApiResponse {
-  replica: Partial<IDatabaseCluster>;
+  replica: Partial<IDatabaseClusterReplica>;
 }
 
 export interface ICreateReadOnlyReplicaApiRequest {
