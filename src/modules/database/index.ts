@@ -1,4 +1,5 @@
 export * from './configure-database-cluster-maintenance-window/configure-database-cluster-maintenance-window';
+export * from './create-connection-pool/create-connection-pool';
 export * from './create-database-cluster-db/create-database-cluster-db';
 export * from './create-database-cluster-user/create-database-cluster-user';
 export * from './create-database-cluster/create-database-cluster';

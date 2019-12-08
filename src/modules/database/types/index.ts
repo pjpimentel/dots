@@ -1,3 +1,5 @@
+export * from './database-cluster-connection-pool-mode';
+export * from './database-cluster-connection-pool';
 export * from './database-cluster-connection';
 export * from './database-cluster-db'
 export * from './database-cluster-engine';

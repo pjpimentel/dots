@@ -364,3 +364,22 @@ try {
   console.log(error);
 }
 ```
+
+## create-connection-pool
+[original documentation](https://developers.digitalocean.com/documentation/v2/#add-a-new-connection-pool)
+```javascript
+try {
+  const input = {
+    database_cluster_id: '', // string
+    db_name: '', // string
+    mode: '', // string
+    pool_name: '', // string
+    size: 0, // number
+    user_name: '', // string
+  };
+  const {data:{pool}} = await dots.database.createConnectionPool(input);
+  console.log(pool);
+} catch (error) {
+  console.log(error);
+}
+```
