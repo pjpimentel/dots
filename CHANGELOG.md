@@ -1,6 +1,6 @@
 # changelog
 
-## **3.0.3** - 2019-12-03
+## **3.1.0** - 2019-12-08
 
 ### **added**
 
@@ -8,8 +8,8 @@
 
 ### **changed**
 
-the `id` input was removed from the following methods to avoid missunderstands.  
-now it is `{entity}_id`.  
+the `id` input was removed from the following methods to avoid missunderstands.
+now it is `{entity}_id`.
 (to allow backward compatibility the `id` field still accepted but will be removed in future versions)
 
 the following methods were affected:
