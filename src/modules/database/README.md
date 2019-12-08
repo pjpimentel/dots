@@ -383,3 +383,19 @@ try {
   console.log(error);
 }
 ```
+
+## list-connection-pools
+[original documentation](https://developers.digitalocean.com/documentation/v2/#list-all-connection-pools)
+```javascript
+try {
+  const input = {
+    database_cluster_id: '', // string
+    page: 1, // number
+    per_page: 25, // number
+  };
+  const {data:{pools}} = await dots.database.listConnectionPools(input);
+  console.log(pools);
+} catch (error) {
+  console.log(error);
+}
+```

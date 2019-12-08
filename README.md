@@ -87,6 +87,7 @@ js.js
     1. [get-database-cluster-user](src/modules/database/README.md#get-database-cluster-user)
     1. [get-database-cluster](src/modules/database/README.md#get-database-cluster)
     1. [get-read-only-replica](src/modules/database/README.md#get-read-only-replica)
+    1. [list-connection-pools](src/modules/database/README.md#list-connection-pools)
     1. [list-database-cluster-backups](src/modules/database/README.md#list-database-cluster-backups)
     1. [list-database-cluster-dbs](src/modules/database/README.md#list-database-cluster-dbs)
     1. [list-database-cluster-firewall-rules](src/modules/database/README.md#list-database-cluster-firewall-rules)
