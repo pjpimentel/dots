@@ -1,1 +1,1 @@
-export type DatabaseClusterStatus = 'creating' | 'online' | 'resizing' | 'migrating' | string;
+export type DatabaseClusterStatus = 'creating' | 'online' | 'resizing' | 'migrating' | 'forking' | 'active' | string;

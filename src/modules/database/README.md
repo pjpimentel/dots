@@ -179,3 +179,20 @@ try {
   console.log(error);
 }
 ```
+
+## create-read-only-replica
+[original documentation](https://developers.digitalocean.com/documentation/v2/#create-a-read-only-replica)
+```javascript
+try {
+  const input = {
+    database_cluster_id: '', // string
+    name: '', // string
+    region: '', // string
+    size: '', // string
+  };
+  const {data:{replica}} = await dots.database.createReadOnlyReplica(input);
+  console.log(replica);
+} catch (error) {
+  console.log(error);
+}
+```

@@ -76,6 +76,7 @@ js.js
 1. [database](src/modules/database/README.md#database)
     1. [configure-database-cluster-maintenance-window](src/modules/database/README.md#configure-database-cluster-maintenance-window)
     1. [create-database-cluster](src/modules/database/README.md#create-database-cluster)
+    1. [create-read-only-replica](src/modules/database/README.md#create-read-only-replica)
     1. [destroy-database-cluster](src/modules/database/README.md#destroy-database-cluster)
     1. [get-database-cluster](src/modules/database/README.md#get-database-cluster)
     1. [list-database-cluster-backups](src/modules/database/README.md#list-database-cluster-backups)
