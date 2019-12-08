@@ -1,4 +1,5 @@
 export * from './configure-database-cluster-maintenance-window/configure-database-cluster-maintenance-window';
+export * from './create-database-cluster-user/create-database-cluster-user';
 export * from './create-database-cluster/create-database-cluster';
 export * from './create-read-only-replica/create-read-only-replica';
 export * from './destroy-database-cluster/destroy-database-cluster';

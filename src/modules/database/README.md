@@ -242,3 +242,18 @@ try {
   console.log(error);
 }
 ```
+
+## create-database-cluster-user
+[original documentation](https://developers.digitalocean.com/documentation/v2/#add-a-database-user)
+```javascript
+try {
+  const input = {
+    database_cluster_id: '', // string
+    name: '', // string
+  };
+  const {data:{user}} = await dots.database.createDatabaseClusterUser(input);
+  console.log(user);
+} catch (error) {
+  console.log(error);
+}
+```
