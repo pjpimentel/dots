@@ -3,7 +3,7 @@ import {
   IDatabaseClusterConnection,
 } from '.';
 
-export interface IDatabaseClusterReplica {
+export interface IDatabaseClusterReadOnlyReplica {
   connection: IDatabaseClusterConnection;
   created_at: string;
   name: string;

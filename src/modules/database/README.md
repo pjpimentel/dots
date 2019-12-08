@@ -196,3 +196,18 @@ try {
   console.log(error);
 }
 ```
+
+## get-read-only-replica
+[original documentation](https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-read-only-replica)
+```javascript
+try {
+  const input = {
+    database_cluster_id: '', // string
+    read_only_replica_name: '', // string
+  };
+  const {data:{replica}} = await dots.database.getReadOnlyReplica(input);
+  console.log(replica);
+} catch (error) {
+  console.log(error);
+}
+```
