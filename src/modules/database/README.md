@@ -429,3 +429,17 @@ try {
   console.log(error);
 }
 ```
+
+## get-database-cluster-eviction-policy
+[original documentation](https://developers.digitalocean.com/documentation/v2/#retrieve-the-eviction-policy-for-a-redis-cluster)
+```javascript
+try {
+  const input = {
+    database_cluster_id: '', // string
+  };
+  const {data:{eviction_policy}} = await dots.database.getDatabaseClusterEvictionPolicy(input);
+  console.log(eviction_policy);
+} catch (error) {
+  console.log(error);
+}
+```

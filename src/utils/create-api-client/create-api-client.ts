@@ -181,6 +181,7 @@ export const createApiClient = ({
     getConnectionPool: modules.database.getConnectionPool(context),
     getDatabaseCluster: modules.database.getDatabaseCluster(context),
     getDatabaseClusterDb: modules.database.getDatabaseClusterDb(context),
+    getDatabaseClusterEvictionPolicy: modules.database.getDatabaseClusterEvictionPolicy(context),
     getDatabaseClusterUser: modules.database.getDatabaseClusterUser(context),
     getReadOnlyReplica: modules.database.getReadOnlyReplica(context),
     listConnectionPools: modules.database.listConnectionPools(context),

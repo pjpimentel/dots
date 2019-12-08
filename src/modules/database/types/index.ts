@@ -3,6 +3,7 @@ export * from './database-cluster-connection-pool';
 export * from './database-cluster-connection';
 export * from './database-cluster-db'
 export * from './database-cluster-engine';
+export * from './database-cluster-eviction-policy';
 export * from './database-cluster-firewall-rule-type';
 export * from './database-cluster-maintenance-window';
 export * from './database-cluster-replica';
