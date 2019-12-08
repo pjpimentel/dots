@@ -211,3 +211,19 @@ try {
   console.log(error);
 }
 ```
+
+## list-read-only-replicas
+[original documentation](https://developers.digitalocean.com/documentation/v2/#list-all-read-only-replicas)
+```javascript
+try {
+  const input = {
+    database_cluster_id: '', // string
+    page: 1, // number
+    per_page: 25, // number
+  };
+  const {data:{replicas}} = await dots.database.listReadOnlyReplicas(input);
+  console.log(replicas);
+} catch (error) {
+  console.log(error);
+}
+```
