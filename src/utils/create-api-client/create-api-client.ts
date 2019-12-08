@@ -180,6 +180,7 @@ export const createApiClient = ({
     listDatabaseClusterBackups: modules.database.listDatabaseClusterBackups(context),
     listDatabaseClusterFirewallRules: modules.database.listDatabaseClusterFirewallRules(context),
     listDatabaseClusters: modules.database.listDatabaseClusters(context),
+    listDatabaseClusterUsers: modules.database.listDatabaseClusterUsers(context),
     listReadOnlyReplicas: modules.database.listReadOnlyReplicas(context),
     migrateDatabaseCluster: modules.database.migrateDatabaseCluster(context),
     resizeDatabaseCluster: modules.database.resizeDatabaseCluster(context),

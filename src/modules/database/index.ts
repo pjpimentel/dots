@@ -9,6 +9,7 @@ export * from './get-database-cluster/get-database-cluster';
 export * from './get-read-only-replica/get-read-only-replica';
 export * from './list-database-cluster-backups/list-database-cluster-backups';
 export * from './list-database-cluster-firewall-rules/list-database-cluster-firewall-rules';
+export * from './list-database-cluster-users/list-database-cluster-users';
 export * from './list-database-clusters/list-database-clusters';
 export * from './list-read-only-replicas/list-read-only-replicas';
 export * from './migrate-database-cluster/migrate-database-cluster';

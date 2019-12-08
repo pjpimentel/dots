@@ -272,3 +272,19 @@ try {
   console.log(error);
 }
 ```
+
+## list-database-cluster-users
+[original documentation](https://developers.digitalocean.com/documentation/v2/#list-all-database-users)
+```javascript
+try {
+  const input = {
+    database_cluster_id: '', // string
+    page: 1, // number
+    per_page: 25, // number
+  };
+  const {data:{users}} = await dots.database.listDatabaseClusterUsers(input);
+  console.log(users);
+} catch (error) {
+  console.log(error);
+}
+```
