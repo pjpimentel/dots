@@ -385,7 +385,7 @@ try {
 ```
 
 ## list-connection-pools
-[original documentation](https://developers.digitalocean.com/documentation/v2/#list-all-connection-pools)
+[original documentation](https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-connection-pool)
 ```javascript
 try {
   const input = {
@@ -395,6 +395,21 @@ try {
   };
   const {data:{pools}} = await dots.database.listConnectionPools(input);
   console.log(pools);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## get-connection-pool
+[original documentation](https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-database)
+```javascript
+try {
+  const input = {
+    database_cluster_id: '', // string
+    pool_name: '', // string
+  };
+  const {data:{pool}} = await dots.database.getConnectionPool(input);
+  console.log(pool);
 } catch (error) {
   console.log(error);
 }
