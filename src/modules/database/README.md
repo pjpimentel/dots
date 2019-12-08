@@ -303,3 +303,18 @@ try {
   console.log(error);
 }
 ```
+
+## create-database-cluster-db
+[original documentation](https://developers.digitalocean.com/documentation/v2/#add-a-new-database)
+```javascript
+try {
+  const input = {
+    database_cluster_id: '', // string
+    db_name: '', // string
+  };
+  const {data:{db}} = await dots.database.createDatabase(input);
+  console.log(db);
+} catch (error) {
+  console.log(error);
+}
+```

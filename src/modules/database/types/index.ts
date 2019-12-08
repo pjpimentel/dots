@@ -1,4 +1,5 @@
 export * from './database-cluster-connection';
+export * from './database-cluster-db'
 export * from './database-cluster-engine';
 export * from './database-cluster-firewall-rule-type';
 export * from './database-cluster-maintenance-window';

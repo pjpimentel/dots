@@ -1,8 +1,8 @@
 export * from './configure-database-cluster-maintenance-window/configure-database-cluster-maintenance-window';
 export * from './create-database-cluster-user/create-database-cluster-user';
 export * from './create-database-cluster/create-database-cluster';
+export * from './create-database-cluster-db/create-database-cluster-db';
 export * from './create-read-only-replica/create-read-only-replica';
-export * from './remove-database-cluster-user/remove-database-cluster-user';
 export * from './destroy-database-cluster/destroy-database-cluster';
 export * from './destroy-read-only-replica/destroy-read-only-replica';
 export * from './get-database-cluster-user/get-database-cluster-user';
@@ -14,6 +14,7 @@ export * from './list-database-cluster-users/list-database-cluster-users';
 export * from './list-database-clusters/list-database-clusters';
 export * from './list-read-only-replicas/list-read-only-replicas';
 export * from './migrate-database-cluster/migrate-database-cluster';
+export * from './remove-database-cluster-user/remove-database-cluster-user';
 export * from './resize-database-cluster/resize-database-cluster';
 export * from './restore-database-cluster-backup/restore-database-cluster-backup';
 export * from './types';
