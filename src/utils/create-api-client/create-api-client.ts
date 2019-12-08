@@ -173,6 +173,7 @@ export const createApiClient = ({
     createDatabaseClusterDb: modules.database.createDatabaseClusterDb(context),
     createDatabaseClusterUser: modules.database.createDatabaseClusterUser(context),
     createReadOnlyReplica: modules.database.createReadOnlyReplica(context),
+    deleteDatabaseClusterDb: modules.database.deleteDatabaseClusterDb(context),
     destroyDatabaseCluster: modules.database.destroyDatabaseCluster(context),
     destroyReadOnlyReplica: modules.database.destroyReadOnlyReplica(context),
     getDatabaseCluster: modules.database.getDatabaseCluster(context),

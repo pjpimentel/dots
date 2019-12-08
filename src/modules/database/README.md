@@ -349,3 +349,18 @@ try {
   console.log(error);
 }
 ```
+
+## delete-database-cluster-db
+[original documentation](https://developers.digitalocean.com/documentation/v2/#delete-a-database)
+```javascript
+try {
+  const input = {
+    database_cluster_id: '', // string
+    db_name: '', // string
+  };
+  const {status} = await dots.database.deleteDatabaseClusterDb(input);
+  console.log(status);
+} catch (error) {
+  console.log(error);
+}
+```
