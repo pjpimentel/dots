@@ -443,3 +443,18 @@ try {
   console.log(error);
 }
 ```
+
+## configure-database-cluster-eviction-policy
+[original documentation](https://developers.digitalocean.com/documentation/v2/#configure-the-eviction-policy-for-a-redis-cluster)
+```javascript
+try {
+  const input = {
+    database_cluster_id: '', // string
+    eviction_policy: '', // string
+  };
+  const {status} = await dots.database.configureDatabaseClusterEvictionPolicy(input);
+  console.log(status);
+} catch (error) {
+  console.log(error);
+}
+```

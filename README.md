@@ -74,6 +74,7 @@ js.js
     1. [get-certificate](src/modules/certificate/README.md#get-certificate)
     1. [list-certificates](src/modules/certificate/README.md#list-certificates)
 1. [database](src/modules/database/README.md#database)
+    1. [configure-database-cluster-eviction-policy](src/modules/database/README.md#configure-database-cluster-eviction-policy)
     1. [configure-database-cluster-maintenance-window](src/modules/database/README.md#configure-database-cluster-maintenance-window)
     1. [create-connection-pool](src/modules/database/README.md#create-connection-pool)
     1. [create-database-cluster-db](src/modules/database/README.md#create-database-cluster-db)

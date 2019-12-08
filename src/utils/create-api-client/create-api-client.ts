@@ -168,6 +168,7 @@ export const createApiClient = ({
     resizeVolume: modules.volume.resizeVolume(context),
   });
   const database = Object.freeze({
+    configureDatabaseClusterEvictionPolicy: modules.database.configureDatabaseClusterEvictionPolicy(context),
     configureDatabaseClusterMaintenanceWindow: modules.database.configureDatabaseClusterMaintenanceWindow(context),
     createConnectionPool: modules.database.createConnectionPool(context),
     createDatabaseCluster: modules.database.createDatabaseCluster(context),

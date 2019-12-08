@@ -1,3 +1,4 @@
+export * from './configure-database-cluster-eviction-policy/configure-database-cluster-eviction-policy';
 export * from './configure-database-cluster-maintenance-window/configure-database-cluster-maintenance-window';
 export * from './create-connection-pool/create-connection-pool';
 export * from './create-database-cluster-db/create-database-cluster-db';
