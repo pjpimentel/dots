@@ -4,6 +4,7 @@ export * from './create-database-cluster-db/create-database-cluster-db';
 export * from './create-database-cluster-user/create-database-cluster-user';
 export * from './create-database-cluster/create-database-cluster';
 export * from './create-read-only-replica/create-read-only-replica';
+export * from './delete-connection-pool/delete-connection-pool';
 export * from './delete-database-cluster-db/delete-database-cluster-db';
 export * from './destroy-database-cluster/destroy-database-cluster';
 export * from './destroy-read-only-replica/destroy-read-only-replica';

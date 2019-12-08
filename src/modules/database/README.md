@@ -414,3 +414,18 @@ try {
   console.log(error);
 }
 ```
+
+## delete-connection-pool
+[original documentation](https://developers.digitalocean.com/documentation/v2/#delete-a-connection-pool)
+```javascript
+try {
+  const input = {
+    database_cluster_id: '', // string
+    pool_name: '', // string
+  };
+  const {status} = await dots.database.deleteConnectionPool(input);
+  console.log(status);
+} catch (error) {
+  console.log(error);
+}
+```

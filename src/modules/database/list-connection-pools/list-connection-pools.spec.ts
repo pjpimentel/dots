@@ -23,7 +23,7 @@ describe('database', () => {
   beforeEach(() => {
     mock.resetHistory();
   });
-  describe('list-database-cluster-dbs', () => {
+  describe('list-connection-pools', () => {
     it('should be a fn', () => {
       expect(typeof listConnectionPools).toBe('function');
     });

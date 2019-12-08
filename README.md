@@ -80,6 +80,7 @@ js.js
     1. [create-database-cluster-user](src/modules/database/README.md#create-database-cluster-user)
     1. [create-database-cluster](src/modules/database/README.md#create-database-cluster)
     1. [create-read-only-replica](src/modules/database/README.md#create-read-only-replica)
+    1. [delete-connection-pool](src/modules/database/README.md#delete-connection-pool)
     1. [delete-database-cluster-db](src/modules/database/README.md#delete-database-cluster-db)
     1. [destroy-database-cluster](src/modules/database/README.md#destroy-database-cluster)
     1. [destroy-read-only-replica](src/modules/database/README.md#destroy-read-only-replica)
