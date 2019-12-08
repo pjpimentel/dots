@@ -7,7 +7,7 @@ export interface ICreateDatabaseClusterUserApiResponse {
 
 export interface ICreateDatabaseClusterUserApiRequest {
   database_cluster_id: string;
-  name: string;
+  user_name: string;
 }
 
 export type CreateDatabaseClusterUserResponse = IResponse<ICreateDatabaseClusterUserApiResponse>;
@@ -16,10 +16,10 @@ export const createDatabaseClusterUser = ({
   httpClient,
 }: IContext) => ({
   database_cluster_id,
-  name,
+  user_name,
 }: ICreateDatabaseClusterUserApiRequest): Promise<Readonly<CreateDatabaseClusterUserResponse>> => {
   const path = '/databases';
-  const body = {name};
+  const body = {name: user_name};
   const url = `${path}/${database_cluster_id}/users`;
 
   return httpClient.post<ICreateDatabaseClusterUserApiResponse>(url, body);

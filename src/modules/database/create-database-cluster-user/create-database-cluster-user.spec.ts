@@ -31,7 +31,7 @@ describe('database', () => {
     it('should return a valid response', async () => {
       const _createDatabaseClusterUser = createDatabaseClusterUser(context);
       const response = await _createDatabaseClusterUser({
-        ...MOCK.request.body,
+        user_name: MOCK.request.body.name,
         database_cluster_id: DATABASE_CLUSTER_ID,
       });
       Object.assign(response, {request: mock.history.post[0]});

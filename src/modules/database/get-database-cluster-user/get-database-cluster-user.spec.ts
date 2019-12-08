@@ -33,7 +33,7 @@ describe('database', () => {
       const _getDatabaseClusterUser = getDatabaseClusterUser(context);
       const response = await _getDatabaseClusterUser({
         database_cluster_id: DATABASE_CLUSTER_ID,
-        name: USER_NAME,
+        user_name: USER_NAME,
       });
       Object.assign(response, {request: mock.history.get[0]});
       /// validate response schema

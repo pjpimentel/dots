@@ -249,7 +249,7 @@ try {
 try {
   const input = {
     database_cluster_id: '', // string
-    name: '', // string
+    user_name: '', // string
   };
   const {data:{user}} = await dots.database.createDatabaseClusterUser(input);
   console.log(user);
@@ -264,7 +264,7 @@ try {
 try {
   const input = {
     database_cluster_id: '', // string
-    name: '', // string
+    user_name: '', // string
   };
   const {data:{user}} = await dots.database.getDatabaseClusterUser(input);
   console.log(user);
