@@ -1,12 +1,12 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { createContext } from '../../../utils';
-import {getDatabaseClusterEvictionPolicy} from './get-database-cluster-eviction-policy';
-import * as MOCK from './get-database-cluster-eviction-policy.mock';
+import {getDatabaseClusterSqlMode} from './get-database-cluster-sql-mode';
+import * as MOCK from './get-database-cluster-sql-mode.mock';
 
 describe('database', () => {
   const DATABASE_CLUSTER_ID = 'db-id';
-  const URL = `/databases/${DATABASE_CLUSTER_ID}/eviction_policy`;
+  const URL = `/databases/${DATABASE_CLUSTER_ID}/sql_mode`;
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
@@ -21,16 +21,16 @@ describe('database', () => {
   beforeEach(() => {
     mock.resetHistory();
   });
-  describe('get-database-cluster-eviction-policy', () => {
+  describe('get-database-cluster-sql-mode', () => {
     it('should be a fn', () => {
-      expect(typeof getDatabaseClusterEvictionPolicy).toBe('function');
+      expect(typeof getDatabaseClusterSqlMode).toBe('function');
     });
     it('should return a fn', () => {
-      expect(typeof getDatabaseClusterEvictionPolicy(context)).toBe('function');
+      expect(typeof getDatabaseClusterSqlMode(context)).toBe('function');
     });
     it('should return a valid response', async () => {
-      const _getDatabaseClusterEvictionPolicy = getDatabaseClusterEvictionPolicy(context);
-      const response = await _getDatabaseClusterEvictionPolicy({
+      const _getDatabaseClusterSqlMode = getDatabaseClusterSqlMode(context);
+      const response = await _getDatabaseClusterSqlMode({
         database_cluster_id: DATABASE_CLUSTER_ID,
       });
       Object.assign(response, {request: mock.history.get[0]});
@@ -47,8 +47,8 @@ describe('database', () => {
       expect(request.headers).toMatchObject(MOCK.request.headers);
       /// validate data
       expect(response.data).toBeDefined();
-      const {eviction_policy} = response.data;
-      expect(typeof eviction_policy).toBe('string');
+      const {sql_mode} = response.data;
+      expect(typeof sql_mode).toBe('string');
       /// validate headers
       const {headers, status} = response;
       expect(headers).toMatchObject(MOCK.response.headers);

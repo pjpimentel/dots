@@ -170,6 +170,7 @@ export const createApiClient = ({
   const database = Object.freeze({
     configureDatabaseClusterEvictionPolicy: modules.database.configureDatabaseClusterEvictionPolicy(context),
     configureDatabaseClusterMaintenanceWindow: modules.database.configureDatabaseClusterMaintenanceWindow(context),
+    configureDatabaseClusterSqlModes: modules.database.configureDatabaseClusterSqlModes(context),
     createConnectionPool: modules.database.createConnectionPool(context),
     createDatabaseCluster: modules.database.createDatabaseCluster(context),
     createDatabaseClusterDb: modules.database.createDatabaseClusterDb(context),
@@ -183,6 +184,7 @@ export const createApiClient = ({
     getDatabaseCluster: modules.database.getDatabaseCluster(context),
     getDatabaseClusterDb: modules.database.getDatabaseClusterDb(context),
     getDatabaseClusterEvictionPolicy: modules.database.getDatabaseClusterEvictionPolicy(context),
+    getDatabaseClusterSqlMode: modules.database.getDatabaseClusterSqlMode(context),
     getDatabaseClusterUser: modules.database.getDatabaseClusterUser(context),
     getReadOnlyReplica: modules.database.getReadOnlyReplica(context),
     listConnectionPools: modules.database.listConnectionPools(context),

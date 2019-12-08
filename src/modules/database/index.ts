@@ -1,5 +1,6 @@
 export * from './configure-database-cluster-eviction-policy/configure-database-cluster-eviction-policy';
 export * from './configure-database-cluster-maintenance-window/configure-database-cluster-maintenance-window';
+export * from './configure-database-cluster-sql-modes/configure-database-cluster-sql-modes';
 export * from './create-connection-pool/create-connection-pool';
 export * from './create-database-cluster-db/create-database-cluster-db';
 export * from './create-database-cluster-user/create-database-cluster-user';
@@ -12,6 +13,7 @@ export * from './destroy-read-only-replica/destroy-read-only-replica';
 export * from './get-connection-pool/get-connection-pool';
 export * from './get-database-cluster-db/get-database-cluster-db';
 export * from './get-database-cluster-eviction-policy/get-database-cluster-eviction-policy';
+export * from './get-database-cluster-sql-mode/get-database-cluster-sql-mode';
 export * from './get-database-cluster-user/get-database-cluster-user';
 export * from './get-database-cluster/get-database-cluster';
 export * from './get-read-only-replica/get-read-only-replica';

@@ -458,3 +458,32 @@ try {
   console.log(error);
 }
 ```
+
+## get-database-cluster-sql-mode
+[original documentation](https://developers.digitalocean.com/documentation/v2/#retrieve-the-sql-modes-for-a-mysql-cluster)
+```javascript
+try {
+  const input = {
+    database_cluster_id: '', // string
+  };
+  const {data:{sql_mode}} = await dots.database.getDatabaseClusterSqlMode(input);
+  console.log(sql_mode);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## configure-database-cluster-sql-modes
+[original documentation](https://developers.digitalocean.com/documentation/v2/#configure-the-sql-modes-for-a-mysql-cluster)
+```javascript
+try {
+  const input = {
+    database_cluster_id: '', // string
+    sql_mode: '', // string
+  };
+  const {status} = await dots.database.configureDatabaseClusterSqlModes(input);
+  console.log(status);
+} catch (error) {
+  console.log(error);
+}
+```
