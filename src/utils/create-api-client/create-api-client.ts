@@ -183,6 +183,7 @@ export const createApiClient = ({
     listDatabaseClusterUsers: modules.database.listDatabaseClusterUsers(context),
     listReadOnlyReplicas: modules.database.listReadOnlyReplicas(context),
     migrateDatabaseCluster: modules.database.migrateDatabaseCluster(context),
+    removeDatabaseClusterUser: modules.database.removeDatabaseClusterUser(context),
     resizeDatabaseCluster: modules.database.resizeDatabaseCluster(context),
     restoreDatabaseClusterBackup: modules.database.restoreDatabaseClusterBackup(context),
     updateDatabaseClusterFirewallRules: modules.database.updateDatabaseClusterFirewallRules(context),

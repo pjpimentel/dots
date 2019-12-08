@@ -288,3 +288,18 @@ try {
   console.log(error);
 }
 ```
+
+## remove-database-cluster-user
+[original documentation](https://developers.digitalocean.com/documentation/v2/#remove-a-database-user)
+```javascript
+try {
+  const input = {
+    database_cluster_id: '', // string
+    user_name: '', // string
+  };
+  const {status} = await dots.database.removeDatabaseClusterUser(input);
+  console.log(status);
+} catch (error) {
+  console.log(error);
+}
+```
