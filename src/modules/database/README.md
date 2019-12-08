@@ -227,3 +227,18 @@ try {
   console.log(error);
 }
 ```
+
+## destroy-read-only-replica
+[original documentation](https://developers.digitalocean.com/documentation/v2/#destroy-a-read-only-replica)
+```javascript
+try {
+  const input = {
+    database_cluster_id: '', // string
+    read_only_replica_name: '', // string
+  };
+  const {status} = await dots.database.destroyReadOnlyReplica(input);
+  console.log(status);
+} catch (error) {
+  console.log(error);
+}
+```
