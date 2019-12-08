@@ -10,6 +10,7 @@ export * from './get-database-cluster-user/get-database-cluster-user';
 export * from './get-database-cluster/get-database-cluster';
 export * from './get-read-only-replica/get-read-only-replica';
 export * from './list-database-cluster-backups/list-database-cluster-backups';
+export * from './list-database-cluster-dbs/list-database-cluster-dbs';
 export * from './list-database-cluster-firewall-rules/list-database-cluster-firewall-rules';
 export * from './list-database-cluster-users/list-database-cluster-users';
 export * from './list-database-clusters/list-database-clusters';
