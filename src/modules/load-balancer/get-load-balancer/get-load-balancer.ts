@@ -6,7 +6,8 @@ export interface IGetLoadBalancerApiResponse {
 }
 
 export interface IGetLoadBalancerApiRequest {
-  id: string;
+  load_balancer_id: string;
+  id?: string; /// deprecated will be removed in future versions
 }
 
 export type GetLoadBalancerResponse = IResponse<IGetLoadBalancerApiResponse>;
@@ -15,9 +16,10 @@ export const getLoadBalancer = ({
   httpClient,
 }: IContext) => ({
   id,
+  load_balancer_id,
 }: IGetLoadBalancerApiRequest): Promise<Readonly<GetLoadBalancerResponse>> => {
   const path = '/load_balancers';
-  const url = `${path}/${id}`;
+  const url = `${path}/${load_balancer_id || id}`;
 
   return httpClient.get<IGetLoadBalancerApiResponse>(url);
 };

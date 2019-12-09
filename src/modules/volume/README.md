@@ -6,7 +6,7 @@
 try {
   const input = {
     droplet_id: 123, // number
-    id: '', // string
+    volume_id: '', // string
     region: '', // string?;
   };
   const {data:{action}} = await dots.volume.attachVolumeToDroplet(input)
@@ -42,7 +42,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: '', // string
+    volume_id: '', // string
     name: '', // string
     tags: [''], // string[]?
   };
@@ -58,7 +58,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: '', // string
+    volume_id: '', // string
   };
   const {status} = await dots.volume.deleteVolume(input)
   console.log(status);
@@ -73,7 +73,7 @@ try {
 try {
   const input = {
     droplet_id: 123, // number
-    id: '', // string
+    volume_id: '', // string
     region: '', // string?;
   };
   const {data:{action}} = await dots.volume.detachVolumeFromDroplet(input)
@@ -88,7 +88,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: '', // string
+    volume_id: '', // string
   };
   const {data:{volume}} = await dots.volume.getVolume(input)
   console.log(volume);
@@ -118,7 +118,7 @@ try {
 try {
   const input = {
     page: 1, // number
-    id: '', // string
+    volume_id: '', // string
   };
   const {data:{actions}} = await dots.volume.listVolumeActions(input)
   console.log(actions);
@@ -150,7 +150,7 @@ try {
 try {
   const input = {
     page: 1, // number
-    id: '', // string
+    volume_id: '', // string
   };
   const {data:{snapshots}} = await dots.volume.listVolumeSnapshots(input)
   console.log(snapshots);
@@ -164,7 +164,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: '', // string
+    volume_id: '', // string
     region: '', // string?
     size_gigabytes: 1, // number
   };
@@ -174,5 +174,3 @@ try {
   console.log(error);
 }
 ```
-
-<!-- TODO: ref field `id` -> `volume_id` -->

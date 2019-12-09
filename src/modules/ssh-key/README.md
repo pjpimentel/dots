@@ -20,7 +20,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: '', // string | number;
+    ssh_key_id: '', // string | number;
   };
   const {status} = await dots.sshKey.destroySshKey(input)
   console.log(status);
@@ -34,7 +34,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: '', // string | number;
+    ssh_key_id: '', // string | number;
   };
   const {data:{ssh_key}} = await dots.sshKey.getSshKey(input)
   console.log(ssh_key);
@@ -62,7 +62,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: '', // string | number;
+    ssh_key_id: '', // string | number;
     name: 'new-name', // string;
   };
   const {data:{ssh_key}} = await dots.sshKey.updateSshKey(input)
@@ -71,5 +71,3 @@ try {
   console.log(error);
 }
 ```
-
-<!-- TODO: ref field `id` -> `ssh_key_id` -->

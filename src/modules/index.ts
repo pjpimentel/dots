@@ -1,6 +1,7 @@
 import * as account from './account';
 import * as action from './action';
 import * as certificate from './certificate';
+import * as database from './database';
 import * as domain from './domain';
 import * as droplet from './droplet';
 import * as firewall from './firewall';
@@ -18,6 +19,7 @@ export {
   account,
   action,
   certificate,
+  database,
   domain,
   droplet,
   firewall,

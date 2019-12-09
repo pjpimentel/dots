@@ -7,7 +7,7 @@
 try {
   const input = {
     droplet_ids: [123], // number[]
-    id: 'load-balander-id', // string;
+    load_balancer_id: 'load-balander-id', // string;
   };
   const {status} = await dots.loadBalancer.addDropletsToLoadBalancer(input);
   console.log(status);
@@ -22,7 +22,7 @@ try {
 try {
   const input = {
     forwarding_rules: [{...}], // IForwardingRule[]
-    id: 'load-balancer-id', // string;
+    load_balancer_id: 'load-balancer-id', // string;
   };
   const {status} = await dots.loadBalancer.addRulesToLoadBalancer(input);
   console.log(status);
@@ -58,7 +58,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 'load-balancer-id', // string
+    load_balancer_id: 'load-balancer-id', // string
   };
   const {status} = await dots.loadBalancer.deleteLoadBalancer(input);
   console.log(status);
@@ -72,7 +72,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 'load-balancer-id', // string
+    load_balancer_id: 'load-balancer-id', // string
   };
   const {data:{load_balancer}} = await dots.loadBalancer.getLoadBalancer(input);
   console.log(load_balancer);
@@ -101,7 +101,7 @@ try {
 try {
   const input = {
     droplet_ids: [123], // number[]
-    id: 'load-balander-id', // string;
+    load_balancer_id: 'load-balander-id', // string;
   };
   const {status} = await dots.loadBalancer.removeDropletsFromLoadBalancer(input);
   console.log(status);
@@ -116,7 +116,7 @@ try {
 try {
   const input = {
     forwarding_rules: [{...}], // IForwardingRule[]
-    id: 'load-balancer-id', // string;
+    load_balancer_id: 'load-balancer-id', // string;
   };
   const {status} = await dots.loadBalancer.removeRulesFromLoadBalancer(input);
   console.log(status);
@@ -130,7 +130,7 @@ try {
 ```javascript
 try {
   const input = {
-    id: 'load-balancer-id', // string;
+    load_balancer_id: 'load-balancer-id', // string;
     algorithm: '', // string
     droplet_ids: [123], // number[]
     enable_proxy_protocol: true, // boolean
@@ -147,5 +147,3 @@ try {
   console.log(error);
 }
 ```
-
-<!-- TODO: ref field `id` -> `load_balancer_id` -->

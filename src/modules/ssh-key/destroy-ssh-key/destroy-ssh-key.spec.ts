@@ -30,7 +30,28 @@ describe('ssh-key', () => {
     });
     it('should return a valid response', async () => {
       const _destroySshKey = destroySshKey(context);
-      const response = await _destroySshKey({id: KEY_ID});
+      const response = await _destroySshKey({ssh_key_id: KEY_ID});
+      Object.assign(response, { request: mock.history.delete[0]});
+      /// validate response schema
+      expect(typeof response).toBe('object');
+      expect(typeof response.headers).toBe('object');
+      expect(typeof response.request).toBe('object');
+      expect(typeof response.status).toBe('number');
+      /// validate request
+      const {request} = response;
+      expect(request.url).toBe(context.endpoint + URL);
+      expect(request.method).toBe('delete');
+      expect(request.headers).toMatchObject(MOCK.request.headers);
+      expect(request.data).toBeUndefined();
+      /// validate headers
+      const {headers, status} = response;
+      expect(headers).toMatchObject(MOCK.response.headers);
+      expect(status).toBe(MOCK.response.headers.status);
+    });
+    /// this test can be removed after id field remove
+    it('should return a valid response (deprecated)', async () => {
+      const _destroySshKey = destroySshKey(context);
+      const response = await _destroySshKey({id: KEY_ID} as any);
       Object.assign(response, { request: mock.history.delete[0]});
       /// validate response schema
       expect(typeof response).toBe('object');

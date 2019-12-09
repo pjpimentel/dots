@@ -1,6 +1,9 @@
 import { IResponse, IContext } from '../../../types';
 import { ILoadBalancer } from '..';
 
+export interface ICustomLoadBalancerPayload extends ILoadBalancer {
+  load_balancer_id: string;
+}
 export interface IUpdateLoadBalancerApiResponse {
   load_balancer: ILoadBalancer;
 }
@@ -11,6 +14,7 @@ export const updateLoadBalancer = ({
   httpClient,
 }: IContext) => ({
   id,
+  load_balancer_id,
   algorithm,
   droplet_ids,
   enable_proxy_protocol,
@@ -20,7 +24,7 @@ export const updateLoadBalancer = ({
   redirect_http_to_https,
   region,
   sticky_sessions,
-}: ILoadBalancer): Promise<Readonly<UpdateLoadBalancerResponse>> => {
+}: ICustomLoadBalancerPayload): Promise<Readonly<UpdateLoadBalancerResponse>> => {
   const path = '/load_balancers';
   const body = {
     algorithm,
@@ -33,7 +37,7 @@ export const updateLoadBalancer = ({
     region,
     sticky_sessions,
   };
-  const url = `${path}/${id}`;
+  const url = `${path}/${load_balancer_id || id}`;
 
   return httpClient.put<IUpdateLoadBalancerApiResponse>(url, body);
 };

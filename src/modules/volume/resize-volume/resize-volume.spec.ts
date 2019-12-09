@@ -36,7 +36,7 @@ describe('volume', () => {
     it('should return a valid response', async () => {
       const _resizeVolume = resizeVolume(context);
       const response = await _resizeVolume({
-        id: VOLUME_ID,
+        volume_id: VOLUME_ID,
         ...MOCK.request.body
       });
       Object.assign(response, {request: mock.history.post[0]});
@@ -68,9 +68,34 @@ describe('volume', () => {
     it('should POST only required parameters', async () => {
       const _resizeVolume = resizeVolume(context);
       const response = await _resizeVolume({
-        id: VOLUME_ID,
+        volume_id: VOLUME_ID,
         ...MOCK.request.minimumBody
       });
+      Object.assign(response, {request: mock.history.post[0]});
+      /// validate request
+      const {request} = response;
+      expect(request.url).toBe(context.endpoint + URL);
+      expect(request.method).toBe('post');
+      expect(request.headers).toMatchObject(MOCK.request.headers);
+      expect(request.data).toBeDefined();
+      const {
+        /// required
+        type,
+        size_gigabytes,
+        /// non-required
+        region,
+      } = JSON.parse(request.data);
+      expect(type).toBe(MOCK.request.minimumBody.type);
+      expect(size_gigabytes).toBe(MOCK.request.minimumBody.size_gigabytes);
+      expect(region).toBeUndefined();
+    });
+    /// this test can be removed after id field remove
+    it('should POST only required parameters (deprecated)', async () => {
+      const _resizeVolume = resizeVolume(context);
+      const response = await _resizeVolume({
+        id: VOLUME_ID,
+        ...MOCK.request.minimumBody
+      } as any);
       Object.assign(response, {request: mock.history.post[0]});
       /// validate request
       const {request} = response;

@@ -61,8 +61,6 @@ try {
 }
 ```
 
-# domain-records
-
 ## create-domain-record
 [original documentation](https://developers.digitalocean.com/documentation/v2/#create-a-new-domain-record)
 
