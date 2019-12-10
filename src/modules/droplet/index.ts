@@ -2,6 +2,7 @@ export * from './change-droplet-kernel/change-droplet-kernel';
 export * from './create-droplet/create-droplet';
 export * from './create-droplets/create-droplets';
 export * from './delete-droplet/delete-droplet';
+export * from './delete-droplet-by-tag/delete-droplet-by-tag';
 export * from './disable-droplet-backups/disable-droplet-backups';
 export * from './do-action-by-droplet-tag/do-action-by-droplet-tag';
 export * from './enable-droplet-backups/enable-droplet-backups';

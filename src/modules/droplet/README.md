@@ -67,6 +67,21 @@ try {
 }
 ```
 
+## delete-droplet-by-tag
+[original documentation](https://developers.digitalocean.com/documentation/v2/#deleting-droplets-by-tag)
+
+```javascript
+try {
+  const input = {
+    tag_name: "tagName", // string
+  };
+  const {status} = await dots.droplet.deleteDropletByTag(input);
+  console.log(status);
+} catch (error) {
+  console.log(error);
+}
+```
+
 ## disable-droplet-backups
 [original documentation](https://developers.digitalocean.com/documentation/v2/#disable-backups)
 
