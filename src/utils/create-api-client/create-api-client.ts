@@ -200,6 +200,9 @@ export const createApiClient = ({
     restoreDatabaseClusterBackup: modules.database.restoreDatabaseClusterBackup(context),
     updateDatabaseClusterFirewallRules: modules.database.updateDatabaseClusterFirewallRules(context),
   });
+  const project = Object.freeze({
+    createProject: modules.project.createProject(context),
+  });
 
   return Object.freeze({
     _options,
@@ -213,6 +216,7 @@ export const createApiClient = ({
     floatingIp,
     image,
     loadBalancer,
+    project,
     region,
     size,
     snapshot,

@@ -186,6 +186,8 @@ js.js
     1. [remove-droplets-from-load-balancer](src/modules/load-balancer/README.md#remove-droplets-from-load-balancer)
     1. [remove-rules-from-load-balancer](src/modules/load-balancer/README.md#remove-rules-from-load-balancer)
     1. [update-load-balancer](src/modules/load-balancer/README.md#update-load-balancer)
+1. [project](src/modules/project/README.md#project)
+    1. [create-project](src/modules/project/README.md#create-project)
 1. [region](src/modules/region/README.md#region)
     1. [list-regions](src/modules/region/README.md#list-regions)
 1. [size](src/modules/size/README.md#size)

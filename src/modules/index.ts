@@ -8,6 +8,7 @@ import * as firewall from './firewall';
 import * as floatingIp from './floating-ip';
 import * as image from './image';
 import * as loadBalancer from './load-balancer';
+import * as project from './project';
 import * as region from './region';
 import * as size from './size';
 import * as snapshot from './snapshot';
@@ -26,6 +27,7 @@ export {
   floatingIp,
   image,
   loadBalancer,
+  project,
   region,
   size,
   snapshot,
