@@ -1,13 +1,13 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { createContext } from '../../../utils';
-import {listTags} from './list-tags';
-import * as MOCK from './list-tags.mock';
+import {listProjects} from './list-projects';
+import * as MOCK from './list-projects.mock';
 
-describe('tag', () => {
+describe('project', () => {
   const PAGE = 3;
   const PER_PAGE = 26;
-  const URL = '/tags';
+  const URL = '/projects';
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
@@ -22,16 +22,16 @@ describe('tag', () => {
   beforeEach(() => {
     mock.resetHistory();
   });
-  describe('list-tags', () => {
+  describe('list-projects', () => {
     it('should be a fn', () => {
-      expect(typeof listTags).toBe('function');
+      expect(typeof listProjects).toBe('function');
     });
     it('should return a fn', () => {
-      expect(typeof listTags(context)).toBe('function');
+      expect(typeof listProjects(context)).toBe('function');
     });
     it('should return a valid response', async () => {
-      const _listTags = listTags(context);
-      const response = await _listTags({page: PAGE, per_page: PER_PAGE});
+      const _listProjects = listProjects(context);
+      const response = await _listProjects({page: PAGE, per_page: PER_PAGE});
       Object.assign(response, { request: mock.history.get[0]});
       /// validate response schema
       expect(typeof response).toBe('object');
@@ -49,13 +49,11 @@ describe('tag', () => {
       expect(request.params.per_page).toBe(PER_PAGE);
       /// validate data
       expect(response.data).toBeDefined();
-      expect(response.data.tags).toBeDefined();
-      const {tags} = response.data;
-      const [tag] = tags;
-      expect(typeof tag.name).toBe('string');
-      expect(typeof tag.resources.count).toBe('number');
-      expect(typeof tag.resources.droplets.count).toBe('number');
-      expect(typeof tag.resources.droplets.last_tagged_uri).toBe('string');
+      expect(response.data.projects).toBeDefined();
+      const {projects} = response.data;
+      const [project] = projects;
+      expect(typeof project.name).toBe('string');
+      expect(typeof project.id).toBe('string');
       /// validate headers
       const {headers, status} = response;
       expect(headers).toMatchObject(MOCK.response.headers);
@@ -64,8 +62,8 @@ describe('tag', () => {
     it('should have default parameters', async () => {
       const defaultPage = 1;
       const defaultper_page = 25;
-      const _listTags = listTags(context);
-      const response = await _listTags({});
+      const _listProjects = listProjects(context);
+      const response = await _listProjects({});
       Object.assign(response, { request: mock.history.get[0]});
       /// validate request
       const {request} = response;

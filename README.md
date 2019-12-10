@@ -188,6 +188,7 @@ js.js
     1. [update-load-balancer](src/modules/load-balancer/README.md#update-load-balancer)
 1. [project](src/modules/project/README.md#project)
     1. [create-project](src/modules/project/README.md#create-project)
+    1. [list-projects](src/modules/project/README.md#list-projects)
 1. [region](src/modules/region/README.md#region)
     1. [list-regions](src/modules/region/README.md#list-regions)
 1. [size](src/modules/size/README.md#size)
