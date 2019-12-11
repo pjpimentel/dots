@@ -221,4 +221,10 @@ js.js
     1. [list-volume-snapshots](src/modules/volume/README.md#list-volume-snapshots)
     1. [resize-volume](src/modules/volume/README.md#resize-volume)
 
+## contributors
+
+<a href="https://github.com/ngryman">
+    <img src="https://avatars2.githubusercontent.com/u/13304815?v=3" title="ngryman" width="80" height="80">
+</a>
+
 ## license: [mit](LICENSE)

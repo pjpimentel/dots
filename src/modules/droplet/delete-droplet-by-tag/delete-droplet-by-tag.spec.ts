@@ -6,7 +6,7 @@ import * as MOCK from './delete-droplet-by-tag.mock';
 
 describe('droplet', () => {
   const TAG_NAME = "tagName";
-  const URL = `/droplets?tag_name=${TAG_NAME}`;
+  const URL = `/droplets`;
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
   mock.onDelete(URL).reply(
@@ -42,6 +42,8 @@ describe('droplet', () => {
       expect(request.url).toBe(context.endpoint + URL);
       expect(request.method).toBe('delete');
       expect(request.headers).toMatchObject(MOCK.request.headers);
+      expect(request.params).toBeDefined();
+      expect(request.params.tag_name).toBe(TAG_NAME);
       expect(request.data).toBeUndefined();
       /// validate headers
       const { headers, status } = response;

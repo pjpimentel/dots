@@ -6,7 +6,6 @@
   "browser": "dist/index-browser.min.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "prepare": "npm run build",
     "build": "rm -rf ./dist && tsc",
     "build:browser": "webpack --mode=production",
     "test": "jest",
@@ -50,6 +49,8 @@
     "api",
     "digital-ocean",
     "digitalocean",
+    "digital",
+    "ocean",
     "sdk",
     "wrapper"
   ]

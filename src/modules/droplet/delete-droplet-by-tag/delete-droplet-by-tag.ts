@@ -12,7 +12,8 @@ export const deleteDropletByTag = ({
   tag_name,
 }: IDeleteDropletByTagApiRequest): Promise<Readonly<DeleteDropletByTagResponse>> => {
     const path = '/droplets';
-    const url = `${path}?tag_name=${tag_name}`;
+    const queryParams = {tag_name};
+    const url = `${path}`;
 
-    return httpClient.delete(url);
+    return httpClient.delete(url, {params: queryParams});
   };
