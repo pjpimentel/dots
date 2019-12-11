@@ -4,7 +4,7 @@
 
 ### **added**
 
-* **droplet**.deleteDropletsByTag ([@Cosmic-Goat](https://github.com/Cosmic-Goat)   )
+* **droplet**.deleteDropletsByTag ([@Cosmic-Goat](https://github.com/Cosmic-Goat))
 
 ## **3.1.0** - 2019-12-08
 
