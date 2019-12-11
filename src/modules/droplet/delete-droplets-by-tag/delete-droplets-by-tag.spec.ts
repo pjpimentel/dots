@@ -1,8 +1,8 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { createContext } from '../../../utils';
-import { deleteDropletByTag } from './delete-droplet-by-tag';
-import * as MOCK from './delete-droplet-by-tag.mock';
+import { deleteDropletsByTag } from './delete-droplets-by-tag';
+import * as MOCK from './delete-droplets-by-tag.mock';
 
 describe('droplet', () => {
   const TAG_NAME = "tagName";
@@ -21,16 +21,16 @@ describe('droplet', () => {
   beforeEach(() => {
     mock.resetHistory();
   });
-  describe('delete-droplet-by-tag', () => {
+  describe('delete-droplets-by-tag', () => {
     it('should be a fn', () => {
-      expect(typeof deleteDropletByTag).toBe('function');
+      expect(typeof deleteDropletsByTag).toBe('function');
     });
     it('should return a fn', () => {
-      expect(typeof deleteDropletByTag(context)).toBe('function');
+      expect(typeof deleteDropletsByTag(context)).toBe('function');
     });
     it('should return a valid response', async () => {
-      const _deleteDropletByTag = deleteDropletByTag(context);
-      const response = await _deleteDropletByTag({ tag_name: TAG_NAME });
+      const _deleteDropletsByTag = deleteDropletsByTag(context);
+      const response = await _deleteDropletsByTag({ tag_name: TAG_NAME });
       Object.assign(response, { request: mock.history.delete[0] });
       /// validate response schema
       expect(typeof response).toBe('object');

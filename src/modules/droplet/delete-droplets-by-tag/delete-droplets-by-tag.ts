@@ -6,7 +6,7 @@ export interface IDeleteDropletByTagApiRequest {
 
 export type DeleteDropletByTagResponse = IResponse<void>;
 
-export const deleteDropletByTag = ({
+export const deleteDropletsByTag = ({
   httpClient,
 }: IContext) => ({
   tag_name,

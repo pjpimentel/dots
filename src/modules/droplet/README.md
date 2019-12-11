@@ -67,7 +67,7 @@ try {
 }
 ```
 
-## delete-droplet-by-tag
+## delete-droplets-by-tag
 [original documentation](https://developers.digitalocean.com/documentation/v2/#deleting-droplets-by-tag)
 
 ```javascript
@@ -75,7 +75,7 @@ try {
   const input = {
     tag_name: "tagName", // string
   };
-  const {status} = await dots.droplet.deleteDropletByTag(input);
+  const {status} = await dots.droplet.deleteDropletsByTag(input);
   console.log(status);
 } catch (error) {
   console.log(error);
