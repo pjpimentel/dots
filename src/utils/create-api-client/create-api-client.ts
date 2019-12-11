@@ -57,6 +57,7 @@ export const createApiClient = ({
     createDroplet: modules.droplet.createDroplet(context),
     createDroplets: modules.droplet.createDroplets(context),
     deleteDroplet: modules.droplet.deleteDroplet(context),
+    deleteDropletsByTag: modules.droplet.deleteDropletsByTag(context),
     disableDropletBackups: modules.droplet.disableDropletBackups(context),
     doActionByDropletTag: modules.droplet.doActionByDropletTag(context),
     enableDropletBackups: modules.droplet.enableDropletBackups(context),

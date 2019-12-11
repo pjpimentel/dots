@@ -1,10 +1,16 @@
 # changelog
 
-## **3.1.1** - 2019-12-15
+## **3.1.2** - 2019-12-15
 
 ### **added**
 
 * **project** module
+
+## **3.1.1** - 2019-12-10
+
+### **added**
+
+* **droplet**.deleteDropletsByTag ([@Cosmic-Goat](https://github.com/Cosmic-Goat))
 
 ## **3.1.0** - 2019-12-08
 
