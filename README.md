@@ -223,7 +223,7 @@ js.js
 
 ## contributors
 
-<a href="https://github.com/Cosmic-Goat" target=_blank>
+<a href="https://github.com/Cosmic-Goat" target="_blank">
     <img src="https://avatars2.githubusercontent.com/u/13304815?v=3" title="ngryman" width="80" height="80">
 </a>
 
