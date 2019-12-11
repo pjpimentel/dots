@@ -120,6 +120,7 @@ js.js
     1. [create-droplet](src/modules/droplet/README.md#create-droplet)
     1. [create-droplets](src/modules/droplet/README.md#create-droplets)
     1. [delete-droplet](src/modules/droplet/README.md#delete-droplet)
+    1. [delete-droplet-by-tag](src/modules/droplet/README.md#delete-droplet-by-tag)
     1. [disable-droplet-backups](src/modules/droplet/README.md#disable-droplet-backups)
     1. [do-action-by-droplet-tag](src/modules/droplet/README.md#do-action-by-droplet-tag)
     1. [enable-droplet-backups](src/modules/droplet/README.md#enable-droplet-backups)
