@@ -120,6 +120,7 @@ js.js
     1. [create-droplet](src/modules/droplet/README.md#create-droplet)
     1. [create-droplets](src/modules/droplet/README.md#create-droplets)
     1. [delete-droplet](src/modules/droplet/README.md#delete-droplet)
+    1. [delete-droplets-by-tag](src/modules/droplet/README.md#delete-droplets-by-tag)
     1. [disable-droplet-backups](src/modules/droplet/README.md#disable-droplet-backups)
     1. [do-action-by-droplet-tag](src/modules/droplet/README.md#do-action-by-droplet-tag)
     1. [enable-droplet-backups](src/modules/droplet/README.md#enable-droplet-backups)
@@ -219,5 +220,11 @@ js.js
     1. [list-volumes](src/modules/volume/README.md#list-volumes)
     1. [list-volume-snapshots](src/modules/volume/README.md#list-volume-snapshots)
     1. [resize-volume](src/modules/volume/README.md#resize-volume)
+
+## contributors
+
+<a href="https://github.com/Cosmic-Goat" target="_blank">
+    <img src="https://avatars2.githubusercontent.com/u/13304815?v=3" title="ngryman" width="80" height="80">
+</a>
 
 ## license: [mit](LICENSE)
