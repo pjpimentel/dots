@@ -69,3 +69,17 @@ try {
   console.log(error);
 }
 ```
+
+## get-project
+[original documentation](https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-project)
+```javascript
+try {
+  const input = {
+    project_id: '', // string
+  };
+  const {data:{project}} = await dots.project.getProject(input)
+  console.log(project);
+} catch (error) {
+  console.log(error);
+}
+```
