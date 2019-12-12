@@ -204,6 +204,7 @@ export const createApiClient = ({
   const project = Object.freeze({
     createProject: modules.project.createProject(context),
     listProjects: modules.project.listProjects(context),
+    patchProject: modules.project.patchProject(context),
     updateProject: modules.project.updateProject(context),
   });
 

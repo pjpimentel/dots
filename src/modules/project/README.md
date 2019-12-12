@@ -50,3 +50,22 @@ try {
   console.log(error);
 }
 ```
+
+## patch-project
+[original documentation](https://developers.digitalocean.com/documentation/v2/#patch-a-project)
+```javascript
+try {
+  const input = {
+    project_id: '', // string
+    name: '', // string
+    description: '', // string
+    purpose: '', // string
+    environment: '', // string
+    is_default: true, // boolean
+  };
+  const {data:{project}} = await dots.project.patchProject(input)
+  console.log(project);
+} catch (error) {
+  console.log(error);
+}
+```

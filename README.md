@@ -190,6 +190,7 @@ js.js
 1. [project](src/modules/project/README.md#project)
     1. [create-project](src/modules/project/README.md#create-project)
     1. [list-projects](src/modules/project/README.md#list-projects)
+    1. [patch-project](src/modules/project/README.md#patch-project)
     1. [update-project](src/modules/project/README.md#update-project)
 1. [region](src/modules/region/README.md#region)
     1. [list-regions](src/modules/region/README.md#list-regions)
