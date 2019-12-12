@@ -10,7 +10,7 @@ try {
     purpose: '', // string
     environment: '', // string
   };
-  const {data:{project}} = await dots.project.createProject(input)
+  const {data:{project}} = await dots.project.createProject(input);
   console.log(project);
 } catch (error) {
   console.log(error);
@@ -25,7 +25,7 @@ try {
     page: 1, // number
     per_page: 25, // number
   };
-  const {data:{projects}} = await dots.project.listProjects(input)
+  const {data:{projects}} = await dots.project.listProjects(input);
   console.log(projects);
 } catch (error) {
   console.log(error);
@@ -44,7 +44,7 @@ try {
     environment: '', // string
     is_default: true, // boolean
   };
-  const {data:{project}} = await dots.project.updateProject(input)
+  const {data:{project}} = await dots.project.updateProject(input);
   console.log(project);
 } catch (error) {
   console.log(error);
@@ -63,7 +63,7 @@ try {
     environment: '', // string
     is_default: true, // boolean
   };
-  const {data:{project}} = await dots.project.patchProject(input)
+  const {data:{project}} = await dots.project.patchProject(input);
   console.log(project);
 } catch (error) {
   console.log(error);
@@ -77,7 +77,18 @@ try {
   const input = {
     project_id: '', // string
   };
-  const {data:{project}} = await dots.project.getProject(input)
+  const {data:{project}} = await dots.project.getProject(input);
+  console.log(project);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## get-default-project
+[original documentation](https://developers.digitalocean.com/documentation/v2/#retrieve-the-default-project)
+```javascript
+try {
+  const {data:{project}} = await dots.project.getDefaultProject();
   console.log(project);
 } catch (error) {
   console.log(error);

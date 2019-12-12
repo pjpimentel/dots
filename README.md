@@ -189,6 +189,7 @@ js.js
     1. [update-load-balancer](src/modules/load-balancer/README.md#update-load-balancer)
 1. [project](src/modules/project/README.md#project)
     1. [create-project](src/modules/project/README.md#create-project)
+    1. [get-default-project](src/modules/project/README.md#get-default-project)
     1. [get-project](src/modules/project/README.md#get-project)
     1. [list-projects](src/modules/project/README.md#list-projects)
     1. [patch-project](src/modules/project/README.md#patch-project)
