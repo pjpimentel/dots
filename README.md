@@ -192,6 +192,8 @@ js.js
     1. [delete-project](src/modules/project/README.md#delete-project)
     1. [get-default-project](src/modules/project/README.md#get-default-project)
     1. [get-project](src/modules/project/README.md#get-project)
+    1. [list-default-project-resources](src/modules/project/README.md#list-default-project-resources)
+    1. [list-project-resources](src/modules/project/README.md#list-project-resources)
     1. [list-projects](src/modules/project/README.md#list-projects)
     1. [patch-default-project](src/modules/project/README.md#patch-default-project)
     1. [patch-project](src/modules/project/README.md#patch-project)

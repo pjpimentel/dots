@@ -143,3 +143,34 @@ try {
   console.log(error);
 }
 ```
+
+## list-project-resources
+[original documentation](https://developers.digitalocean.com/documentation/v2/#list-all-resources)
+```javascript
+try {
+  const input = {
+    page: 1, // number
+    per_page: 25, // number
+    project_id: '', // string
+  };
+  const {data:{resources}} = await dots.project.listProjectResources(input);
+  console.log(resources);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## list-default-project-resources
+[original documentation](https://developers.digitalocean.com/documentation/v2/#llist-default-project-resources)
+```javascript
+try {
+  const input = {
+    page: 1, // number
+    per_page: 25, // number
+  };
+  const {data:{resources}} = await dots.project.listDefaultProjectResources(input);
+  console.log(resources);
+} catch (error) {
+  console.log(error);
+}
+```

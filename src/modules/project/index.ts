@@ -2,6 +2,8 @@ export * from './create-project/create-project';
 export * from './delete-project/delete-project';
 export * from './get-default-project/get-default-project';
 export * from './get-project/get-project';
+export * from './list-default-project-resources/list-default-project-resources';
+export * from './list-project-resources/list-project-resources';
 export * from './list-projects/list-projects';
 export * from './patch-default-project/patch-default-project';
 export * from './patch-project/patch-project';
