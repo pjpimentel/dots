@@ -94,3 +94,38 @@ try {
   console.log(error);
 }
 ```
+
+## update-default-project
+[original documentation](https://developers.digitalocean.com/documentation/v2/#update-the-default-project)
+```javascript
+  const input = {
+    name: '', // string
+    description: '', // string
+    purpose: '', // string
+    environment: '', // string
+    is_default: true, // boolean
+  };
+  const {data:{project}} = await dots.project.updateDefaultProject(input);
+  console.log(project);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## patch-default-project
+[original documentation](https://developers.digitalocean.com/documentation/v2/#patch-the-default-project)
+```javascript
+try {
+  const input = {
+    name: '', // string
+    description: '', // string
+    purpose: '', // string
+    environment: '', // string
+    is_default: true, // boolean
+  };
+  const {data:{project}} = await dots.project.patchDefaultProject(input);
+  console.log(project);
+} catch (error) {
+  console.log(error);
+}
+```

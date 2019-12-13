@@ -206,7 +206,9 @@ export const createApiClient = ({
     getDefaultProject: modules.project.getDefaultProject(context),
     getProject: modules.project.getProject(context),
     listProjects: modules.project.listProjects(context),
+    patchDefaultProject: modules.project.patchDefaultProject(context),
     patchProject: modules.project.patchProject(context),
+    updateDefaultProject: modules.project.updateDefaultProject(context),
     updateProject: modules.project.updateProject(context),
   });
 
