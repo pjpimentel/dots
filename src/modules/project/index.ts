@@ -1,3 +1,5 @@
+export * from './assign-resources-to-default-project/assign-resources-to-default-project';
+export * from './assign-resources-to-project/assign-resources-to-project';
 export * from './create-project/create-project';
 export * from './delete-project/delete-project';
 export * from './get-default-project/get-default-project';

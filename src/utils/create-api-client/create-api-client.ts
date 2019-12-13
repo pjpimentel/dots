@@ -202,6 +202,8 @@ export const createApiClient = ({
     updateDatabaseClusterFirewallRules: modules.database.updateDatabaseClusterFirewallRules(context),
   });
   const project = Object.freeze({
+    assignResourcesToDefaultProject: modules.project.assignResourcesToDefaultProject(context),
+    assignResourcesToProject: modules.project.assignResourcesToProject(context),
     createProject: modules.project.createProject(context),
     deleteProject: modules.project.deleteProject(context),
     getDefaultProject: modules.project.getDefaultProject(context),

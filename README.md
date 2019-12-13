@@ -188,6 +188,8 @@ js.js
     1. [remove-rules-from-load-balancer](src/modules/load-balancer/README.md#remove-rules-from-load-balancer)
     1. [update-load-balancer](src/modules/load-balancer/README.md#update-load-balancer)
 1. [project](src/modules/project/README.md#project)
+    1. [assign-resources-to-default-project](src/modules/project/README.md#assign-resources-to-default-project)
+    1. [assign-resources-to-project](src/modules/project/README.md#assign-resources-to-project)
     1. [create-project](src/modules/project/README.md#create-project)
     1. [delete-project](src/modules/project/README.md#delete-project)
     1. [get-default-project](src/modules/project/README.md#get-default-project)

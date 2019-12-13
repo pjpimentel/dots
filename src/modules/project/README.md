@@ -161,7 +161,7 @@ try {
 ```
 
 ## list-default-project-resources
-[original documentation](https://developers.digitalocean.com/documentation/v2/#llist-default-project-resources)
+[original documentation](https://developers.digitalocean.com/documentation/v2/#list-default-project-resources)
 ```javascript
 try {
   const input = {
@@ -169,6 +169,35 @@ try {
     per_page: 25, // number
   };
   const {data:{resources}} = await dots.project.listDefaultProjectResources(input);
+  console.log(resources);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## assign-resources-to-project
+[original documentation](https://developers.digitalocean.com/documentation/v2/#assign-resources)
+```javascript
+try {
+  const input = {
+    resources: [], // string[]
+    project_id: '', // string
+  };
+  const {data:{resources}} = await dots.project.assignResourcesToProject(input);
+  console.log(resources);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## assign-resources-to-default-project
+[original documentation](https://developers.digitalocean.com/documentation/v2/#assign-default-project-resources)
+```javascript
+try {
+  const input = {
+    resources: [], // string[]
+  };
+  const {data:{resources}} = await dots.project.assignResourcesToDefaultProject(input);
   console.log(resources);
 } catch (error) {
   console.log(error);
