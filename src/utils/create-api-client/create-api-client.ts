@@ -201,6 +201,21 @@ export const createApiClient = ({
     restoreDatabaseClusterBackup: modules.database.restoreDatabaseClusterBackup(context),
     updateDatabaseClusterFirewallRules: modules.database.updateDatabaseClusterFirewallRules(context),
   });
+  const project = Object.freeze({
+    assignResourcesToDefaultProject: modules.project.assignResourcesToDefaultProject(context),
+    assignResourcesToProject: modules.project.assignResourcesToProject(context),
+    createProject: modules.project.createProject(context),
+    deleteProject: modules.project.deleteProject(context),
+    getDefaultProject: modules.project.getDefaultProject(context),
+    getProject: modules.project.getProject(context),
+    listDefaultProjectResources: modules.project.listDefaultProjectResources(context),
+    listProjectResources: modules.project.listProjectResources(context),
+    listProjects: modules.project.listProjects(context),
+    patchDefaultProject: modules.project.patchDefaultProject(context),
+    patchProject: modules.project.patchProject(context),
+    updateDefaultProject: modules.project.updateDefaultProject(context),
+    updateProject: modules.project.updateProject(context),
+  });
 
   return Object.freeze({
     _options,
@@ -214,6 +229,7 @@ export const createApiClient = ({
     floatingIp,
     image,
     loadBalancer,
+    project,
     region,
     size,
     snapshot,
