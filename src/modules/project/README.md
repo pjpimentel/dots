@@ -129,3 +129,17 @@ try {
   console.log(error);
 }
 ```
+
+## delete-project
+[original documentation](https://developers.digitalocean.com/documentation/v2/#delete-an-existing-project)
+```javascript
+try {
+  const input = {
+    project_id: '', // string
+  };
+  const {status} = await dots.project.deleteProject(input)
+  console.log(status);
+} catch (error) {
+  console.log(error);
+}
+```
