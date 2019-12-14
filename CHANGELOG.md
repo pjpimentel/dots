@@ -6,6 +6,10 @@
 
 * **kubernetes** module
 
+### **fix**
+
+* updateLoadBalancer test
+
 ## **3.1.2** - 2019-12-12
 
 ### **added**
