@@ -4,3 +4,4 @@ export * from './list-kubernetes-cluster-available-upgrades/list-kubernetes-clus
 export * from './list-kubernetes-clusters/list-kubernetes-clusters';
 export * from './types';
 export * from './update-kubernetes-cluster/update-kubernetes-cluster';
+export * from './upgrade-kubernetes-cluster/upgrade-kubernetes-cluster';

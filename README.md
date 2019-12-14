@@ -183,6 +183,7 @@ js.js
     1. [list-kubernetes-cluster-available-upgrades](src/modules/kubernetes/README.md#list-kubernetes-cluster-available-upgrades)
     1. [list-kubernetes-clusters](src/modules/kubernetes/README.md#list-kubernetes-clusters)
     1. [update-kubernetes-cluster](src/modules/kubernetes/README.md#update-kubernetes-cluster)
+    1. [upgrade-kubernetes-cluster](src/modules/kubernetes/README.md#upgrade-kubernetes-cluster)
 1. [load-balancer](src/modules/load-balancer/README.md#load-balancer)
     1. [add-droplets-to-load-balancer](src/modules/load-balancer/README.md#add-droplets-to-load-balancer)
     1. [add-rules-to-load-balancer](src/modules/load-balancer/README.md#add-rules-to-load-balancer)

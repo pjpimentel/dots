@@ -222,6 +222,7 @@ export const createApiClient = ({
     listKubernetesClusterAvailableUpgrades: modules.kubernetes.listKubernetesClusterAvailableUpgrades(context),
     listKubernetesClusters: modules.kubernetes.listKubernetesClusters(context),
     updateKubernetesCluster: modules.kubernetes.updateKubernetesCluster(context),
+    upgradeKubernetesCluster: modules.kubernetes.upgradeKubernetesCluster(context),
   });
 
   return Object.freeze({

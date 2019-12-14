@@ -81,3 +81,19 @@ try {
   console.log(error);
 }
 ```
+
+## upgrade-kubernetes-cluster
+[original documentation](https://developers.digitalocean.com/documentation/v2/#upgrade-a-kubernetes-cluster)
+
+```javascript
+try {
+  const input = {
+    kubernetes_cluster_id: '', // string;
+    version: '', // string
+  };
+  const {status} = await dots.kubernetes.upgradeKubernetesCluster(input);
+  console.log(status);
+} catch (error) {
+  console.log(error);
+}
+```
