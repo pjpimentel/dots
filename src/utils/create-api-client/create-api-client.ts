@@ -220,6 +220,7 @@ export const createApiClient = ({
     createKubernetesCluster: modules.kubernetes.createKubernetesCluster(context),
     getKubernetesCluster: modules.kubernetes.getKubernetesCluster(context),
     listKubernetesClusters: modules.kubernetes.listKubernetesClusters(context),
+    updateKubernetesCluster: modules.kubernetes.updateKubernetesCluster(context),
   });
 
   return Object.freeze({

@@ -48,3 +48,22 @@ try {
   console.log(error);
 }
 ```
+
+## update-kubernetes-cluster
+[original documentation](https://developers.digitalocean.com/documentation/v2/#update-a-kubernetes-cluster)
+
+```javascript
+try {
+  const input = {
+    kubernetes_cluster_id: '', // string;
+    name: '', // string
+    auto_upgrade: true, // boolean
+    tags: [], // string[]
+    maintenance_policy: [{...}], // IKubernetesClusterMaintenancePolicy[]
+  };
+  const {data:{kubernetes_cluster}} = await dots.kubernetes.updateKubernetesCluster(input);
+  console.log(kubernetes_cluster);
+} catch (error) {
+  console.log(error);
+}
+```
