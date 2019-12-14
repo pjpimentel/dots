@@ -1,4 +1,5 @@
+export type KubernetesClusterStatus = 'running' | 'provisioning' | 'errored';
 export interface IKubernetesClusterStatus {
-  status: 'running' | 'provisioning' | 'errored' | string;
+  status: KubernetesClusterStatus | string;
   message: string;
 }

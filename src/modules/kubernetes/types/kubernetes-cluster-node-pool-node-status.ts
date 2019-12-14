@@ -1,3 +1,4 @@
+export type NodePoolNodeStatusState = 'running' | 'provisioning' | 'errored';
 export interface IKubernetesClusterNodePoolNodeStatus {
-  state: 'running' | 'provisioning' | 'errored' | string;
+  state: NodePoolNodeStatusState | string;
 }
