@@ -179,6 +179,7 @@ js.js
     1. [update-image](src/modules/image/README.md#update-image)
 1. [kubernetes](src/modules/kubernetes/README.md#kubernetes)
     1. [create-kubernetes-cluster](src/modules/kubernetes/README.md#create-kubernetes-cluster)
+    1. [delete-kubernetes-cluster](src/modules/kubernetes/README.md#delete-kubernetes-cluster)
     1. [get-kubernetes-cluster](src/modules/kubernetes/README.md#get-kubernetes-cluster)
     1. [list-kubernetes-cluster-available-upgrades](src/modules/kubernetes/README.md#list-kubernetes-cluster-available-upgrades)
     1. [list-kubernetes-clusters](src/modules/kubernetes/README.md#list-kubernetes-clusters)

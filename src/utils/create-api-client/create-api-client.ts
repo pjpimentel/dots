@@ -218,6 +218,7 @@ export const createApiClient = ({
   });
   const kubernetes = Object.freeze({
     createKubernetesCluster: modules.kubernetes.createKubernetesCluster(context),
+    deleteKubernetesCluster: modules.kubernetes.deleteKubernetesCluster(context),
     getKubernetesCluster: modules.kubernetes.getKubernetesCluster(context),
     listKubernetesClusterAvailableUpgrades: modules.kubernetes.listKubernetesClusterAvailableUpgrades(context),
     listKubernetesClusters: modules.kubernetes.listKubernetesClusters(context),
