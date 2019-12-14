@@ -220,6 +220,7 @@ export const createApiClient = ({
     createKubernetesCluster: modules.kubernetes.createKubernetesCluster(context),
     deleteKubernetesCluster: modules.kubernetes.deleteKubernetesCluster(context),
     getKubernetesCluster: modules.kubernetes.getKubernetesCluster(context),
+    getKubernetesClusterCredentials: modules.kubernetes.getKubernetesClusterCredentials(context),
     getKubernetesClusterKubeconfig: modules.kubernetes.getKubernetesClusterKubeconfig(context),
     listKubernetesClusterAvailableUpgrades: modules.kubernetes.listKubernetesClusterAvailableUpgrades(context),
     listKubernetesClusters: modules.kubernetes.listKubernetesClusters(context),

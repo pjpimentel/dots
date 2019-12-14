@@ -121,8 +121,23 @@ try {
     kubernetes_cluster_id: '', // string
     expiration_in_seconds: 0, // number
   };
-  const {data} = await dots.kubernetes.getKubernetesClusterKubeconfig(input);
-  console.log(data);
+  const {data:kubeconfig} = await dots.kubernetes.getKubernetesClusterKubeconfig(input);
+  console.log(kubeconfig);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## get-kubernetes-cluster-credentials
+[original documentation](https://developers.digitalocean.com/documentation/v2/#retrieve-credentials-for-a-kubernetes-cluster)
+```javascript
+try {
+  const input = {
+    kubernetes_cluster_id: '', // string
+    expiration_in_seconds: 0, // number
+  };
+  const {data:credentials} = await dots.kubernetes.getKubernetesClusterCredentials(input);
+  console.log(credentials);
 } catch (error) {
   console.log(error);
 }
