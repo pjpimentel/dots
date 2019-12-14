@@ -97,6 +97,7 @@ try {
   console.log(error);
 }
 ```
+
 ## delete-kubernetes-cluster
 [original documentation](https://developers.digitalocean.com/documentation/v2/#delete-a-kubernetes-cluster)
 
@@ -107,6 +108,21 @@ try {
   };
   const {status} = await dots.kubernetes.deleteKubernetesCluster(input);
   console.log(status);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## get-kubernetes-cluster-kubeconfig
+[original documentation](https://developers.digitalocean.com/documentation/v2/#retrieve-the-kubeconfig-for-a-kubernetes-cluster)
+```javascript
+try {
+  const input = {
+    kubernetes_cluster_id: '', // string
+    expiration_in_seconds: 0, // number
+  };
+  const {data} = await dots.kubernetes.getKubernetesClusterKubeconfig(input);
+  console.log(data);
 } catch (error) {
   console.log(error);
 }
