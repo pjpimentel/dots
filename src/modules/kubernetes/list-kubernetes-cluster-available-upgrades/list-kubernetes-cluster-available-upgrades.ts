@@ -21,7 +21,7 @@ export const listKubernetesClusterAvailableUpgrades = ({
   kubernetes_cluster_id,
 }: IListKubernetesClusterAvailableUpgradesApiRequest): Promise<Readonly<ListKubernetesClusterAvailableUpgradesResponse>> => {
   const path = '/kubernetes/clusters';
-  const url = `${path}/${kubernetes_cluster_id}`;
+  const url = `${path}/${kubernetes_cluster_id}/upgrades`;
 
   return httpClient.get<IListKubernetesClusterAvailableUpgradesApiResponse>(url);
 };

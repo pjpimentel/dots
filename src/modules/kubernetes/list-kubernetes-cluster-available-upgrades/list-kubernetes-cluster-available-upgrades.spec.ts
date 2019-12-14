@@ -6,7 +6,7 @@ import * as MOCK from './list-kubernetes-cluster-available-upgrades.mock';
 
 describe('kubernetes', () => {
   const KUBERNETES_CLUSTER_ID = 'cluster-id';
-  const URL = `/kubernetes/clusters/${KUBERNETES_CLUSTER_ID}`;
+  const URL = `/kubernetes/clusters/${KUBERNETES_CLUSTER_ID}/upgrades`;
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
