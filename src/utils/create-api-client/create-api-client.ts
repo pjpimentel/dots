@@ -216,6 +216,9 @@ export const createApiClient = ({
     updateDefaultProject: modules.project.updateDefaultProject(context),
     updateProject: modules.project.updateProject(context),
   });
+  const kubernetes = Object.freeze({
+    createKubernetesCluster: modules.kubernetes.createKubernetesCluster(context),
+  });
 
   return Object.freeze({
     _options,
@@ -228,6 +231,7 @@ export const createApiClient = ({
     firewall,
     floatingIp,
     image,
+    kubernetes,
     loadBalancer,
     project,
     region,

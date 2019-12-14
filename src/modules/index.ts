@@ -7,6 +7,7 @@ import * as droplet from './droplet';
 import * as firewall from './firewall';
 import * as floatingIp from './floating-ip';
 import * as image from './image';
+import * as kubernetes from './kubernetes';
 import * as loadBalancer from './load-balancer';
 import * as project from './project';
 import * as region from './region';
@@ -26,6 +27,7 @@ export {
   firewall,
   floatingIp,
   image,
+  kubernetes,
   loadBalancer,
   project,
   region,
