@@ -180,6 +180,7 @@ js.js
 1. [kubernetes](src/modules/kubernetes/README.md#kubernetes)
     1. [create-kubernetes-cluster](src/modules/kubernetes/README.md#create-kubernetes-cluster)
     1. [get-kubernetes-cluster](src/modules/kubernetes/README.md#get-kubernetes-cluster)
+    1. [list-kubernetes-cluster-available-upgrades](src/modules/kubernetes/README.md#list-kubernetes-cluster-available-upgrades)
     1. [list-kubernetes-clusters](src/modules/kubernetes/README.md#list-kubernetes-clusters)
     1. [update-kubernetes-cluster](src/modules/kubernetes/README.md#update-kubernetes-cluster)
 1. [load-balancer](src/modules/load-balancer/README.md#load-balancer)

@@ -67,3 +67,17 @@ try {
   console.log(error);
 }
 ```
+
+## list-kubernetes-cluster-available-upgrades
+[original documentation](https://developers.digitalocean.com/documentation/v2/#retrieve-available-upgrades-for-an-existing-kubernetes-cluster)
+```javascript
+try {
+  const input = {
+    kubernetes_cluster_id: '', // string;
+  };
+  const {data:{available_upgrade_versions}} = await dots.kubernetes.listKubernetesClusterAvailableUpgrades(input);
+  console.log(available_upgrade_versions);
+} catch (error) {
+  console.log(error);
+}
+```
