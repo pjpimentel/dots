@@ -33,3 +33,18 @@ try {
   console.log(error);
 }
 ```
+
+## list-kubernetes-clusters
+[original documentation](https://developers.digitalocean.com/documentation/v2/#list-all-kubernetes-clusters)
+```javascript
+try {
+  const input = {
+    page: 1, // number
+    per_page: 25, // number
+  };
+  const {data:{kubernetes_clusters}} = await dots.kubernetes.listKubernetesClusters(input);
+  console.log(kubernetes_clusters);
+} catch (error) {
+  console.log(error);
+}
+```
