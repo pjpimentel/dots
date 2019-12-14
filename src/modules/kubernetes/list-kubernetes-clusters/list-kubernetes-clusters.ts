@@ -13,7 +13,7 @@ export const listKubernetesClusters = ({
   page = 1,
   per_page = 25,
 }: IListRequest): Promise<Readonly<ListKubernetesClusterResponse>> => {
-  const path = '/kubernetes';
+  const path = '/kubernetes/clusters';
   const queryParams = {page, per_page};
   const url = `${path}`;
 

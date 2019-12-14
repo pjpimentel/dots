@@ -7,7 +7,7 @@ import * as MOCK from './list-kubernetes-clusters.mock';
 describe('kubernetes', () => {
   const PAGE = 3;
   const PER_PAGE = 26;
-  const URL = '/kubernetes';
+  const URL = '/kubernetes/clusters';
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(

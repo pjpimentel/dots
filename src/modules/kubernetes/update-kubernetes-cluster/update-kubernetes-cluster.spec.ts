@@ -6,7 +6,7 @@ import * as MOCK from './update-kubernetes-cluster.mock';
 
 describe('kubernetes', () => {
   const KUBERNETES_CLUSTER_ID = MOCK.response.body.kubernetes_cluster.id;
-  const URL = `/kubernetes/${KUBERNETES_CLUSTER_ID}`;
+  const URL = `/kubernetes/clusters/${KUBERNETES_CLUSTER_ID}`;
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
   mock.onPut(URL, MOCK.request.body).reply(
