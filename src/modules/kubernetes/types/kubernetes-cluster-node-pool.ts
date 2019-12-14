@@ -7,4 +7,4 @@ export interface IKubernetesClusterNodePool {
   count: number;
   tags: string[];
   nodes: IKubernetesClusterNodePoolNode[];
-};
+}

@@ -16,4 +16,4 @@ export interface IKubernetesCluster {
   status: IKubernetesClusterStatus;
   created_at: string;
   updated_at: string;
-};
+}
