@@ -236,11 +236,20 @@ export const createApiClient = ({
     updateNodePool: modules.kubernetes.updateNodePool(context),
     upgradeKubernetesCluster: modules.kubernetes.upgradeKubernetesCluster(context),
   });
+  const cdnEndpoint = Object.freeze({
+    createCdnEndpoint: modules.cdnEndpoint.createCdnEndpoint(context),
+    getCdnEndpoint: modules.cdnEndpoint.getCdnEndpoint(context),
+    listCdnEndpoints: modules.cdnEndpoint.listCdnEndpoints(context),
+    deleteCdnEndpoint: modules.cdnEndpoint.deleteCdnEndpoint(context),
+    updateCdnEndpoint: modules.cdnEndpoint.updateCdnEndpoint(context),
+    purgeCache: modules.cdnEndpoint.purgeCache(context),
+  });
 
   return Object.freeze({
     _options,
     account,
     action,
+    cdnEndpoint,
     certificate,
     database,
     domain,
