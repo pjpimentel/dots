@@ -1,7 +1,7 @@
 import { IKernel, INetwork } from '.';
 import { ISize } from '../../size';
 
-/// droplet raw objecet
+export type DropletStatus = 'new' | 'active' | 'off' | 'archive';
 export interface IDroplet {
   backup_ids: string[];
   created_at: string;
@@ -19,7 +19,7 @@ export interface IDroplet {
   size_slug: string;
   size: ISize;
   snapshot_ids: string[];
-  status: 'new' | 'active' | 'off' | 'archive' | string;
+  status: DropletStatus | string;
   tags: string[];
   vcpus: number;
   volume_ids: string[];

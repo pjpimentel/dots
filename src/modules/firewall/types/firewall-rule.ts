@@ -1,4 +1,5 @@
+export type FirewallRuleProtocol = 'tcp' | 'udp' | 'icmp';
 export interface IFirewallRule {
   ports: string;
-  protocol: string | 'tcp' | 'udp' | 'icmp';
+  protocol: FirewallRuleProtocol | string;
 }

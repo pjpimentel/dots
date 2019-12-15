@@ -1,4 +1,3 @@
-/// snapshot raw object
 export interface ISnapshot {
   created_at: string;
   id: string;
