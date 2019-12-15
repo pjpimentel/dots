@@ -2,6 +2,7 @@ import * as account from './account';
 import * as action from './action';
 import * as cdnEndpoint from './cdn-endpoint';
 import * as certificate from './certificate';
+import * as containerRegistry from './container-registry';
 import * as database from './database';
 import * as domain from './domain';
 import * as droplet from './droplet';
@@ -23,6 +24,7 @@ export {
   action,
   cdnEndpoint,
   certificate,
+  containerRegistry,
   database,
   domain,
   droplet,

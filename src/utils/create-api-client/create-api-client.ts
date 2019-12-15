@@ -244,6 +244,12 @@ export const createApiClient = ({
     updateCdnEndpoint: modules.cdnEndpoint.updateCdnEndpoint(context),
     purgeCache: modules.cdnEndpoint.purgeCache(context),
   });
+  const containerRegistry = Object.freeze({
+    configureRegistry: modules.containerRegistry.configureRegistry(context),
+    deleteRegistry: modules.containerRegistry.deleteRegistry(context),
+    getDockerCredentials: modules.containerRegistry.getDockerCredentials(context),
+    getRegistry: modules.containerRegistry.getRegistry(context),
+  })
 
   return Object.freeze({
     _options,
@@ -251,6 +257,7 @@ export const createApiClient = ({
     action,
     cdnEndpoint,
     certificate,
+    containerRegistry,
     database,
     domain,
     droplet,
