@@ -1,17 +1,17 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { createContext } from '../../../utils';
-import {deleteKubernetesCluster} from './delete-kubernetes-cluster';
-import * as MOCK from './delete-kubernetes-cluster.mock';
+import {getClusterlintDiagnostics} from './get-clusterlint-diagnostics';
+import * as MOCK from './get-clusterlint-diagnostics.mock';
 
 describe('kubernetes', () => {
   const KUBERNETES_CLUSTER_ID = 'cluster-id';
-  const URL = `/kubernetes/clusters/${KUBERNETES_CLUSTER_ID}`;
+  const URL = `/kubernetes/clusters/${KUBERNETES_CLUSTER_ID}/clusterlint`;
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
-  mock.onDelete(URL).reply(
+  mock.onGet(URL).reply(
     MOCK.response.headers.status,
-    undefined,
+    MOCK.response.body,
     MOCK.response.headers,
   );
   const context = createContext({
@@ -21,30 +21,35 @@ describe('kubernetes', () => {
   beforeEach(() => {
     mock.resetHistory();
   });
-  describe('delete-kubernetes-cluster', () => {
+  describe('get-node-pool', () => {
     it('should be a fn', () => {
-      expect(typeof deleteKubernetesCluster).toBe('function');
+      expect(typeof getClusterlintDiagnostics).toBe('function');
     });
     it('should return a fn', () => {
-      expect(typeof deleteKubernetesCluster(context)).toBe('function');
+      expect(typeof getClusterlintDiagnostics(context)).toBe('function');
     });
     it('should return a valid response', async () => {
-      const _deleteKubernetesCluster = deleteKubernetesCluster(context);
-      const response = await _deleteKubernetesCluster({
-        kubernenetes_cluster_id: KUBERNETES_CLUSTER_ID
+      const _getClusterlintDiagnostics = getClusterlintDiagnostics(context);
+      const response = await _getClusterlintDiagnostics({
+        kubernetes_cluster_id: KUBERNETES_CLUSTER_ID,
       });
-      Object.assign(response, {request: mock.history.delete[0]});
+      Object.assign(response, {request: mock.history.get[0]});
       /// validate response schema
       expect(typeof response).toBe('object');
+      expect(typeof response.data).toBe('object');
       expect(typeof response.headers).toBe('object');
       expect(typeof response.request).toBe('object');
       expect(typeof response.status).toBe('number');
       /// validate request
       const {request} = response;
       expect(request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('delete');
+      expect(request.method).toBe('get');
       expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeUndefined();
+      /// validate data
+      expect(response.data).toBeDefined();
+      const {run_id, diagnostics} = response.data;
+      expect(typeof run_id).toBe('string');
+      expect(Array.isArray(diagnostics)).toBe(true);
       /// validate headers
       const {headers, status} = response;
       expect(headers).toMatchObject(MOCK.response.headers);

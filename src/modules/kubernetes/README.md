@@ -142,3 +142,153 @@ try {
   console.log(error);
 }
 ```
+
+## get-node-pool
+[original documentation](https://developers.digitalocean.com/documentation/v2/#retrieve-a-node-pool-for-a-kubernetes-cluster)
+```javascript
+try {
+  const input = {
+    kubernetes_cluster_id: '', // string
+    node_pool_id: '', // string
+  };
+  const {data:{node_pool}} = await dots.kubernetes.getNodePool(input);
+  console.log(node_pool);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## list-node-pools
+[original documentation](https://developers.digitalocean.com/documentation/v2/#list-all-node-pools-in-a-kubernetes-clusters)
+```javascript
+try {
+  const input = {
+    kubernetes_cluster_id: '', // string
+    page: 1, // number
+    per_page: 25, // number
+  };
+  const {data:{node_pools}} = await dots.kubernetes.listNodePools(input);
+  console.log(node_pools);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## create-node-pool
+[original documentation](https://developers.digitalocean.com/documentation/v2/#add-a-node-pool-to-a-kubernetes-cluster)
+```javascript
+try {
+  const input = {
+    kubernetes_cluster_id: '', // string
+    size: 0, // number
+    name: '', // string
+    count: 0, // number,
+    tags: [], // string[]
+    auto_scale: true, // boolean
+    min_nodes: 0, // number
+    max_nodes: 0, // number
+  };
+  const {data:{node_pool}} = await dots.kubernetes.createNodePool(input);
+  console.log(node_pool);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## update-node-pool
+[original documentation](https://developers.digitalocean.com/documentation/v2/#update-a-node-pool-in-a-kubernetes-cluster)
+```javascript
+try {
+  const input = {
+    kubernetes_cluster_id: '', // string
+    node_pool_id: '', // string
+    name: '', // string
+    count: 0, // number,
+    tags: [], // string[]
+    auto_scale: true, // boolean
+    min_nodes: 0, // number
+    max_nodes: 0, // number
+  };
+  const {data:{node_pool}} = await dots.kubernetes.updateNodePool(input);
+  console.log(node_pool);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## delete-node-pool
+[original documentation](https://developers.digitalocean.com/documentation/v2/#delete-a-node-pool-in-a-kubernetes-cluster)
+```javascript
+try {
+  const input = {
+    kubernetes_cluster_id: '', // string
+    node_pool_id: '', // string
+  };
+  const {status} = await dots.kubernetes.deleteNodePool(input);
+  console.log(status);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## delete-node
+[original documentation](https://developers.digitalocean.com/documentation/v2/#delete-a-node-in-a-kubernetes-cluster)
+```javascript
+try {
+  const input = {
+    kubernetes_cluster_id: '', // string
+    node_pool_id: '', // string
+    node_id: '', // string
+    drain_node: true, // boolean
+    replace_node: false, // boolean
+  };
+  const {status} = await dots.kubernetes.deleteNodePool(input);
+  console.log(status);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## run-clusterlint-on-kubernetes-cluster
+[original documentation](https://developers.digitalocean.com/documentation/v2/#run-clusterlint-checks-on-a-kubernetes-cluster)
+```javascript
+try {
+  const input = {
+    kubernetes_cluster_id: '', // string
+    include_groups: [], // string[]
+    include_checks: [], // string[]
+    exclude_groups: [], // string[]
+    exclude_checks: [], // string[]
+  };
+  const {data:{run_id}} = await dots.kubernetes.runClusterlintOnKubernetesCluster(input);
+  console.log(run_id);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## get-clusterlint-diagnostics
+[original documentation](https://developers.digitalocean.com/documentation/v2/#fetch-clusterlint-diagnostics-for-a-kubernetes-cluster)
+```javascript
+try {
+  const input = {
+    kubernetes_cluster_id: '', // string
+    run_id: '', // string
+  };
+  const {data:diagnostics} = await dots.kubernetes.getClusterlintDiagnostics(input);
+  console.log(diagnostics);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## list-available-options-of-kubernetes
+[original documentation](https://developers.digitalocean.com/documentation/v2/#list-available-regions--node-sizes--and-versions-of-kubernetes)
+```javascript
+try {
+  const {data:{options}} = await dots.kubernetes.listAvailableOptionsOfKubernetes(input);
+  console.log(options);
+} catch (error) {
+  console.log(error);
+}
+```
