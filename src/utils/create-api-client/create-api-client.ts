@@ -216,6 +216,26 @@ export const createApiClient = ({
     updateDefaultProject: modules.project.updateDefaultProject(context),
     updateProject: modules.project.updateProject(context),
   });
+  const kubernetes = Object.freeze({
+    createKubernetesCluster: modules.kubernetes.createKubernetesCluster(context),
+    createNodePool: modules.kubernetes.createNodePool(context),
+    deleteKubernetesCluster: modules.kubernetes.deleteKubernetesCluster(context),
+    deleteNode: modules.kubernetes.deleteNode(context),
+    deleteNodePool: modules.kubernetes.deleteNodePool(context),
+    getClusterlintDiagnostics: modules.kubernetes.getClusterlintDiagnostics(context),
+    getKubernetesCluster: modules.kubernetes.getKubernetesCluster(context),
+    getKubernetesClusterCredentials: modules.kubernetes.getKubernetesClusterCredentials(context),
+    getKubernetesClusterKubeconfig: modules.kubernetes.getKubernetesClusterKubeconfig(context),
+    getNodePool: modules.kubernetes.getNodePool(context),
+    listAvailableOptionsOfKubernetes: modules.kubernetes.listAvailableOptionsOfKubernetes(context),
+    listKubernetesClusterAvailableUpgrades: modules.kubernetes.listKubernetesClusterAvailableUpgrades(context),
+    listKubernetesClusters: modules.kubernetes.listKubernetesClusters(context),
+    listNodePools: modules.kubernetes.listNodePools(context),
+    runClusterlintOnKubernetesCluster: modules.kubernetes.runClusterlintOnKubernetesCluster(context),
+    updateKubernetesCluster: modules.kubernetes.updateKubernetesCluster(context),
+    updateNodePool: modules.kubernetes.updateNodePool(context),
+    upgradeKubernetesCluster: modules.kubernetes.upgradeKubernetesCluster(context),
+  });
 
   return Object.freeze({
     _options,
@@ -228,6 +248,7 @@ export const createApiClient = ({
     firewall,
     floatingIp,
     image,
+    kubernetes,
     loadBalancer,
     project,
     region,

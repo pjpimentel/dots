@@ -66,6 +66,7 @@ try {
   console.log(error);
 }
 ```
+
 ## get-load-balancer
 [original documentation](https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-load-balancer)
 

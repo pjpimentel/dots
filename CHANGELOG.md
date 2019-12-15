@@ -1,5 +1,15 @@
 # changelog
 
+## **3.1.3** - 2019-12-14
+
+### **added**
+
+* **kubernetes** module
+
+### **fix**
+
+* updateLoadBalancer test
+
 ## **3.1.2** - 2019-12-12
 
 ### **added**

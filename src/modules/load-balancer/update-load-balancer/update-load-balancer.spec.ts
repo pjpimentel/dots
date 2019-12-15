@@ -82,22 +82,22 @@ describe('load-balancer', () => {
         region,
         forwarding_rules,
         /// non-required
-        droplet_idsregion,
-        enable_proxy_protocolregion,
-        health_checkregion,
-        redirect_http_to_httpsregion,
-        algorithmregion,
-        sticky_sessionsregion,
+        droplet_ids,
+        enable_proxy_protocol,
+        health_check,
+        redirect_http_to_https,
+        algorithm,
+        sticky_sessions,
       } = JSON.parse(request.data);
       expect(name).toBe(MOCK.request.minimumBody.name);
       expect(region).toBe(MOCK.request.minimumBody.region);
       expect(forwarding_rules).toStrictEqual(MOCK.request.minimumBody.forwarding_rules);
-      expect(droplet_idsregion).toBeUndefined();
-      expect(enable_proxy_protocolregion).toBeUndefined();
-      expect(health_checkregion).toBeUndefined();
-      expect(redirect_http_to_httpsregion).toBeUndefined();
-      expect(algorithmregion).toBeUndefined();
-      expect(sticky_sessionsregion).toBeUndefined();
+      expect(droplet_ids).toBeUndefined();
+      expect(enable_proxy_protocol).toBeUndefined();
+      expect(health_check).toBeUndefined();
+      expect(redirect_http_to_https).toBeUndefined();
+      expect(algorithm).toBeUndefined();
+      expect(sticky_sessions).toBeUndefined();
     });
     /// this test can be removed after id field remove
     it('should POST only required parameters (deprecated)', async () => {
@@ -119,22 +119,22 @@ describe('load-balancer', () => {
         region,
         forwarding_rules,
         /// non-required
-        droplet_idsregion,
-        enable_proxy_protocolregion,
-        health_checkregion,
-        redirect_http_to_httpsregion,
-        algorithmregion,
-        sticky_sessionsregion,
+        droplet_ids,
+        enable_proxy_protocol,
+        health_check,
+        redirect_http_to_https,
+        algorithm,
+        sticky_sessions,
       } = JSON.parse(request.data);
       expect(name).toBe(MOCK.request.minimumBody.name);
       expect(region).toBe(MOCK.request.minimumBody.region);
       expect(forwarding_rules).toStrictEqual(MOCK.request.minimumBody.forwarding_rules);
-      expect(droplet_idsregion).toBeUndefined();
-      expect(enable_proxy_protocolregion).toBeUndefined();
-      expect(health_checkregion).toBeUndefined();
-      expect(redirect_http_to_httpsregion).toBeUndefined();
-      expect(algorithmregion).toBeUndefined();
-      expect(sticky_sessionsregion).toBeUndefined();
+      expect(droplet_ids).toBeUndefined();
+      expect(enable_proxy_protocol).toBeUndefined();
+      expect(health_check).toBeUndefined();
+      expect(redirect_http_to_https).toBeUndefined();
+      expect(algorithm).toBeUndefined();
+      expect(sticky_sessions).toBeUndefined();
     });
   });
 });
