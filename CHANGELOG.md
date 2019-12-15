@@ -1,5 +1,16 @@
 # changelog
 
+## **3.1.4** - 2019-12-15
+
+### **added**
+
+* **cdn-endpoints** module
+* **container-registry** module
+
+### **fix**
+
+* list-available-options-of-kubernetes url path
+
 ## **3.1.3** - 2019-12-14
 
 ### **added**

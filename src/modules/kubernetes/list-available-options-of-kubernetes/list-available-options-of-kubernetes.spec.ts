@@ -5,7 +5,7 @@ import {listAvailableOptionsOfKubernetes} from './list-available-options-of-kube
 import * as MOCK from './list-available-options-of-kubernetes.mock';
 
 describe('kubernetes', () => {
-  const URL = `/kubernetes/clusters/options`;
+  const URL = `/kubernetes/options`;
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
