@@ -1,14 +1,14 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { createContext } from '../../../utils';
-import {listAvailableOptionsOfKubernetes} from './list-available-options-of-kubernetes';
-import * as MOCK from './list-available-options-of-kubernetes.mock';
+import {updateCdnEndpoint} from './update-cdn-endpoint';
+import * as MOCK from './update-cdn-endpoint.mock';
 
-describe('kubernetes', () => {
-  const URL = `/kubernetes/options`;
+describe('cdn-endpoint', () => {
+  const URL = `/cdn/endpoints/${MOCK.response.body.endpoint.id}`;
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
-  mock.onGet(URL).reply(
+  mock.onPut(URL, MOCK.request.body).reply(
     MOCK.response.headers.status,
     MOCK.response.body,
     MOCK.response.headers,
@@ -20,17 +20,20 @@ describe('kubernetes', () => {
   beforeEach(() => {
     mock.resetHistory();
   });
-  describe('list-available-options-of-kubernetes', () => {
+  describe('update-ssh-key', () => {
     it('should be a fn', () => {
-      expect(typeof listAvailableOptionsOfKubernetes).toBe('function');
+      expect(typeof updateCdnEndpoint).toBe('function');
     });
     it('should return a fn', () => {
-      expect(typeof listAvailableOptionsOfKubernetes(context)).toBe('function');
+      expect(typeof updateCdnEndpoint(context)).toBe('function');
     });
     it('should return a valid response', async () => {
-      const _listAvailableOptionsOfKubernetes = listAvailableOptionsOfKubernetes(context);
-      const response = await _listAvailableOptionsOfKubernetes();
-      Object.assign(response, {request: mock.history.get[0]});
+      const _updateCdnEndpoint = updateCdnEndpoint(context);
+      const response = await _updateCdnEndpoint({
+        ...MOCK.request.body,
+        cdn_endpoint_id: MOCK.response.body.endpoint.id,
+      });
+      Object.assign(response, {request: mock.history.put[0]});
       /// validate response schema
       expect(typeof response).toBe('object');
       expect(typeof response.data).toBe('object');
@@ -40,14 +43,15 @@ describe('kubernetes', () => {
       /// validate request
       const {request} = response;
       expect(request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('get');
+      expect(request.method).toBe('put');
       expect(request.headers).toMatchObject(MOCK.request.headers);
+      expect(request.data).toBeDefined();
+      const requestBody = JSON.parse(request.data);
+      expect(requestBody).toMatchObject(MOCK.request.body);
       /// validate data
       expect(response.data).toBeDefined();
-      const {options:{regions, sizes, versions}} = response.data;
-      expect(Array.isArray(regions)).toBe(true);
-      expect(Array.isArray(sizes)).toBe(true);
-      expect(Array.isArray(versions)).toBe(true);
+      const {endpoint} = response.data;
+      expect(typeof endpoint.id).toBe('string');
       /// validate headers
       const {headers, status} = response;
       expect(headers).toMatchObject(MOCK.response.headers);

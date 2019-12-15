@@ -1,11 +1,11 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { createContext } from '../../../utils';
-import {listAvailableOptionsOfKubernetes} from './list-available-options-of-kubernetes';
-import * as MOCK from './list-available-options-of-kubernetes.mock';
+import {getDockerCredentials} from './get-docker-credentials';
+import * as MOCK from './get-docker-credentials.mock';
 
-describe('kubernetes', () => {
-  const URL = `/kubernetes/options`;
+describe('container-registry', () => {
+  const URL = `/registry/docker-credentials`;
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
@@ -20,17 +20,17 @@ describe('kubernetes', () => {
   beforeEach(() => {
     mock.resetHistory();
   });
-  describe('list-available-options-of-kubernetes', () => {
+  describe('get-docker-credentials', () => {
     it('should be a fn', () => {
-      expect(typeof listAvailableOptionsOfKubernetes).toBe('function');
+      expect(typeof getDockerCredentials).toBe('function');
     });
     it('should return a fn', () => {
-      expect(typeof listAvailableOptionsOfKubernetes(context)).toBe('function');
+      expect(typeof getDockerCredentials(context)).toBe('function');
     });
     it('should return a valid response', async () => {
-      const _listAvailableOptionsOfKubernetes = listAvailableOptionsOfKubernetes(context);
-      const response = await _listAvailableOptionsOfKubernetes();
-      Object.assign(response, {request: mock.history.get[0]});
+      const _getDockerCredentials = getDockerCredentials(context);
+      const response = await _getDockerCredentials({});
+      Object.assign(response, { request: mock.history.get[0]});
       /// validate response schema
       expect(typeof response).toBe('object');
       expect(typeof response.data).toBe('object');
@@ -42,16 +42,24 @@ describe('kubernetes', () => {
       expect(request.url).toBe(context.endpoint + URL);
       expect(request.method).toBe('get');
       expect(request.headers).toMatchObject(MOCK.request.headers);
+      expect(request.params.read_write).toBeFalsy();
       /// validate data
       expect(response.data).toBeDefined();
-      const {options:{regions, sizes, versions}} = response.data;
-      expect(Array.isArray(regions)).toBe(true);
-      expect(Array.isArray(sizes)).toBe(true);
-      expect(Array.isArray(versions)).toBe(true);
+      expect(response.data.auths).toBeDefined();
       /// validate headers
       const {headers, status} = response;
       expect(headers).toMatchObject(MOCK.response.headers);
       expect(status).toBe(MOCK.response.headers.status);
+    });
+    it('should set read_write to true', async () => {
+      const _getDockerCredentials = getDockerCredentials(context);
+      const response = await _getDockerCredentials({
+        can_write: true,
+      });
+      Object.assign(response, { request: mock.history.get[0]});
+      /// validate request
+      const {request} = response;
+      expect(request.params.read_write).toBe(true);
     });
   });
 });

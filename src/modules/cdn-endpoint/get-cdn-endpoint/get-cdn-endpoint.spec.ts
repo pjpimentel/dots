@@ -1,11 +1,12 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { createContext } from '../../../utils';
-import {listAvailableOptionsOfKubernetes} from './list-available-options-of-kubernetes';
-import * as MOCK from './list-available-options-of-kubernetes.mock';
+import {getCdnEndpoint} from './get-cdn-endpoint';
+import * as MOCK from './get-cdn-endpoint.mock';
 
-describe('kubernetes', () => {
-  const URL = `/kubernetes/options`;
+describe('cdn-endpoint', () => {
+  const CDN_ENDPOINT_ID = MOCK.response.body.endpoint.id;
+  const URL = `/cdn/endpoints/${CDN_ENDPOINT_ID}`;
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
@@ -20,17 +21,17 @@ describe('kubernetes', () => {
   beforeEach(() => {
     mock.resetHistory();
   });
-  describe('list-available-options-of-kubernetes', () => {
+  describe('get-cdn-endpoint', () => {
     it('should be a fn', () => {
-      expect(typeof listAvailableOptionsOfKubernetes).toBe('function');
+      expect(typeof getCdnEndpoint).toBe('function');
     });
     it('should return a fn', () => {
-      expect(typeof listAvailableOptionsOfKubernetes(context)).toBe('function');
+      expect(typeof getCdnEndpoint(context)).toBe('function');
     });
     it('should return a valid response', async () => {
-      const _listAvailableOptionsOfKubernetes = listAvailableOptionsOfKubernetes(context);
-      const response = await _listAvailableOptionsOfKubernetes();
-      Object.assign(response, {request: mock.history.get[0]});
+      const _getCdnEndpoint = getCdnEndpoint(context);
+      const response = await _getCdnEndpoint({cdn_endpoint_id: CDN_ENDPOINT_ID});
+      Object.assign(response, { request: mock.history.get[0]});
       /// validate response schema
       expect(typeof response).toBe('object');
       expect(typeof response.data).toBe('object');
@@ -44,10 +45,9 @@ describe('kubernetes', () => {
       expect(request.headers).toMatchObject(MOCK.request.headers);
       /// validate data
       expect(response.data).toBeDefined();
-      const {options:{regions, sizes, versions}} = response.data;
-      expect(Array.isArray(regions)).toBe(true);
-      expect(Array.isArray(sizes)).toBe(true);
-      expect(Array.isArray(versions)).toBe(true);
+      expect(response.data.endpoint).toBeDefined();
+      const {endpoint} = response.data;
+      expect(typeof endpoint.id).toBe('string');
       /// validate headers
       const {headers, status} = response;
       expect(headers).toMatchObject(MOCK.response.headers);

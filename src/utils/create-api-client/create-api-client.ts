@@ -236,12 +236,28 @@ export const createApiClient = ({
     updateNodePool: modules.kubernetes.updateNodePool(context),
     upgradeKubernetesCluster: modules.kubernetes.upgradeKubernetesCluster(context),
   });
+  const cdnEndpoint = Object.freeze({
+    createCdnEndpoint: modules.cdnEndpoint.createCdnEndpoint(context),
+    getCdnEndpoint: modules.cdnEndpoint.getCdnEndpoint(context),
+    listCdnEndpoints: modules.cdnEndpoint.listCdnEndpoints(context),
+    deleteCdnEndpoint: modules.cdnEndpoint.deleteCdnEndpoint(context),
+    updateCdnEndpoint: modules.cdnEndpoint.updateCdnEndpoint(context),
+    purgeCache: modules.cdnEndpoint.purgeCache(context),
+  });
+  const containerRegistry = Object.freeze({
+    configureRegistry: modules.containerRegistry.configureRegistry(context),
+    deleteRegistry: modules.containerRegistry.deleteRegistry(context),
+    getDockerCredentials: modules.containerRegistry.getDockerCredentials(context),
+    getRegistry: modules.containerRegistry.getRegistry(context),
+  })
 
   return Object.freeze({
     _options,
     account,
     action,
+    cdnEndpoint,
     certificate,
+    containerRegistry,
     database,
     domain,
     droplet,
