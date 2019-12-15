@@ -1,3 +1,4 @@
+export type CertificateState = "pending" | "verified" | "error";
 export interface ICertificate{
   dns_names: string[];
   id: string;
@@ -6,5 +7,5 @@ export interface ICertificate{
   not_after: string;
   sha1_fingerprint: string;
   created_at: string;
-  state: string | "pending" | "verified" | "error";
+  state: CertificateState | string;
 }

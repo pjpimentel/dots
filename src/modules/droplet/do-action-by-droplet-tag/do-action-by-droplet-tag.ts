@@ -5,18 +5,19 @@ export interface IDoActionByDropletTagApiResponse {
   actions: IAction[];
 }
 
+export type ActionType = "power_cycle"
+  | "power_on"
+  | "power_off"
+  | "shutdown"
+  | "enable_private_networking"
+  | "enable_ipv6"
+  | "enable_backups"
+  | "disable_backups"
+  | "snapshot";
+
 export interface IDoActionByDropletTagApiRequest {
   tag_name: string;
-  type: "power_cycle"
-    | "power_on"
-    | "power_off"
-    | "shutdown"
-    | "enable_private_networking"
-    | "enable_ipv6"
-    | "enable_backups"
-    | "disable_backups"
-    | "snapshot"
-    | string;
+  type: ActionType | string;
 }
 
 export type DoActionByDropletTagResponse = IResponse<IDoActionByDropletTagApiResponse>;

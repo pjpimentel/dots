@@ -1,4 +1,4 @@
-/// Action raw object
+export type ActionStatus = 'in-progress' | 'completed' | 'errored';
 export interface IAction {
   completed_at: string;
   id: number;
@@ -6,6 +6,6 @@ export interface IAction {
   resource_id: number;
   resource_type: string;
   started_at: string;
-  status: 'in-progress' | 'completed' | 'errored' | string;
+  status: ActionStatus | string;
   type: string;
 }
