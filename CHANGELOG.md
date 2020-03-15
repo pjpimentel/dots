@@ -1,5 +1,11 @@
 # changelog
 
+## **3.1.6** - 2020-03-15
+
+### **fix**
+
+* automatic update package acorn from 5.7.3 to 5.7.4
+
 ## **3.1.5** - 2019-12-15
 
 ### **fix**
