@@ -42,7 +42,7 @@ describe('kubernetes', () => {
       expect(typeof response.status).toBe('number');
       /// validate request
       const {request} = response;
-      expect(request.url).toBe(context.endpoint + URL);
+      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
       expect(request.method).toBe('get');
       expect(request.headers).toMatchObject(MOCK.request.headers);
       /// validate data
