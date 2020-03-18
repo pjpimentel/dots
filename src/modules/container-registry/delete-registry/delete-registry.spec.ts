@@ -38,7 +38,7 @@ describe('container-registry', () => {
       expect(typeof response.status).toBe('number');
       /// validate request
       const {request} = response;
-      expect(request.url).toBe(context.endpoint + URL);
+      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
       expect(request.method).toBe('delete');
       expect(request.headers).toMatchObject(MOCK.request.headers);
       expect(request.data).toBeUndefined();

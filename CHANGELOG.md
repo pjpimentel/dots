@@ -1,5 +1,12 @@
 # changelog
 
+## **3.1.7** - 2020-03-17
+
+### **fix**
+
+* packages update
+* npm audit
+
 ## **3.1.6** - 2020-03-15
 
 ### **fix**

@@ -44,7 +44,7 @@ describe('domain', () => {
       expect(typeof response.status).toBe('number');
       /// validate request
       const {request} = response;
-      expect(request.url).toBe(context.endpoint + URL);
+      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
       expect(request.method).toBe('post');
       expect(request.headers).toMatchObject(MOCK.request.headers);
       expect(request.data).toBeDefined();
@@ -65,7 +65,7 @@ describe('domain', () => {
       Object.assign(response, {request: mock.history.post[0]});
       /// validate request
       const {request} = response;
-      expect(request.url).toBe(context.endpoint + URL);
+      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
       expect(request.method).toBe('post');
       expect(request.headers).toMatchObject(MOCK.request.headers);
       expect(request.data).toBeDefined();
