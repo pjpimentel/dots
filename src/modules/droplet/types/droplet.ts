@@ -5,24 +5,24 @@ import { IImage } from '../../image';
 
 export type DropletStatus = 'new' | 'active' | 'off' | 'archive';
 export interface IDroplet {
-  id: number;
-  name: string;
-  memory: number;
-  vcpus: number;
-  disk: number;
-  locked: boolean;
-  status: DropletStatus | string;
-  kernel: IKernel;
-  created_at: string;
   backup_ids: string[];
-  next_backup_window: object; // TODO: IBackupWindow
-  snapshot_ids: string[];
-  image: IImage | string | number;
-  volume_ids: string[];
-  size: ISize;
-  size_slug: string;
-  networks:	INetwork;
-  region: IRegion;
+  created_at: string;
+  disk: number;
   features: string[];
-  tags: string[]; 
+  id: number;
+  image: IImage | string | number;
+  kernel: IKernel;
+  locked: boolean;
+  memory: number;
+  name: string;
+  networks:	INetwork;
+  next_backup_window: object; // TODO: IBackupWindow
+  region: IRegion | string;
+  size_slug: string;
+  size: ISize;
+  snapshot_ids: string[];
+  status: DropletStatus | string;
+  tags: string[];
+  vcpus: number;
+  volume_ids: string[];
 }
