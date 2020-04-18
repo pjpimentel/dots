@@ -1,26 +1,28 @@
 import { IKernel, INetwork } from '.';
 import { ISize } from '../../size';
+import { IRegion } from '../../region';
+import { IImage } from '../../image';
 
 export type DropletStatus = 'new' | 'active' | 'off' | 'archive';
 export interface IDroplet {
-  backup_ids: string[];
-  created_at: string;
-  disk: number;
-  features: string[];
   id: number;
-  image: string | number;
-  kernel: IKernel;
-  locked: boolean;
-  memory: number;
   name: string;
-  networks:	INetwork;
-  next_backup_window: object; // TODO: IBackupWindow
-  region: string;
-  size_slug: string;
-  size: ISize;
-  snapshot_ids: string[];
-  status: DropletStatus | string;
-  tags: string[];
+  memory: number;
   vcpus: number;
+  disk: number;
+  locked: boolean;
+  status: DropletStatus | string;
+  kernel: IKernel;
+  created_at: string;
+  backup_ids: string[];
+  next_backup_window: object; // TODO: IBackupWindow
+  snapshot_ids: string[];
+  image: IImage | string | number;
   volume_ids: string[];
+  size: ISize;
+  size_slug: string;
+  networks:	INetwork;
+  region: IRegion;
+  features: string[];
+  tags: string[]; 
 }
