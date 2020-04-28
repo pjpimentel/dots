@@ -1,5 +1,12 @@
 # changelog
 
+## **3.1.9** - 2020-04-27
+
+### **fix**
+
+* IKubernetesClusterStatus type
+* npm audit
+
 ## **3.1.8** - 2020-04-18
 
 ### **fix**
