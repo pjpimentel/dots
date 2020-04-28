@@ -274,5 +274,8 @@ js.js
 <a href="https://github.com/Aitthi" target="_blank">
     <img src="https://avatars2.githubusercontent.com/u/26670680?v=3" title="ngryman" width="80" height="80">
 </a>
+<a href="https://github.com/FreakyTurtle" target="_blank">
+    <img src="https://avatars2.githubusercontent.com/u/8461972?v=3" title="ngryman" width="80" height="80">
+</a>
 
 ## license: [mit](LICENSE)
