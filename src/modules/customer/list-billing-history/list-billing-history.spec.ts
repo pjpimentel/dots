@@ -1,13 +1,13 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { createContext } from '../../../utils';
-import {listDropletNeighborhoods} from './list-droplet-neighborhoods';
-import * as MOCK from './list-droplet-neighborhoods.mock';
+import {listBillingHistory} from './list-billing-history';
+import * as MOCK from './list-billing-history.mock';
 
-describe('droplet', () => {
+describe('customer', () => {
   const PAGE = 3;
   const PER_PAGE = 26;
-  const URL = '/reports/droplet_neighbors_ids';
+  const URL = '/customers/my/billing_history';
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
@@ -22,20 +22,17 @@ describe('droplet', () => {
   beforeEach(() => {
     mock.resetHistory();
   });
-  describe('list-droplet-neighborhoods', () => {
+  describe('list-billing-history', () => {
     it('should be a fn', () => {
-      expect(typeof listDropletNeighborhoods).toBe('function');
+      expect(typeof listBillingHistory).toBe('function');
     });
     it('should return a fn', () => {
-      expect(typeof listDropletNeighborhoods(context)).toBe('function');
+      expect(typeof listBillingHistory(context)).toBe('function');
     });
     it('should return a valid response', async () => {
-      const _listDropletNeighborhoods = listDropletNeighborhoods(context);
-      const response = await _listDropletNeighborhoods({
-        page: PAGE,
-        per_page: PER_PAGE,
-      });
-      Object.assign(response, {request: mock.history.get[0]});
+      const _listBillingHistory = listBillingHistory(context);
+      const response = await _listBillingHistory({page: PAGE, per_page: PER_PAGE});
+      Object.assign(response, { request: mock.history.get[0]});
       /// validate response schema
       expect(typeof response).toBe('object');
       expect(typeof response.data).toBe('object');
@@ -50,15 +47,19 @@ describe('droplet', () => {
       expect(request.params).toBeDefined();
       expect(request.params.page).toBe(PAGE);
       expect(request.params.per_page).toBe(PER_PAGE);
-      expect(request.params.resource_type).toBeUndefined();
       /// validate data
       expect(response.data).toBeDefined();
-      expect(response.data.neighbor_ids).toBeDefined();
-      const {neighbor_ids} = response.data;
-      expect(Array.isArray(neighbor_ids)).toBeTruthy()
-      const [neighborhood] = neighbor_ids;
-      const [droplet_id] = neighborhood;
-      expect(typeof droplet_id).toBe('number');
+      expect(response.data.links).toBeDefined();
+      expect(response.data.meta).toBeDefined();
+      expect(response.data.billing_history).toBeDefined();
+      const {billing_history} = response.data;
+      const [history] = billing_history;
+      expect(typeof history.description).toBe('string');
+      expect(typeof history.amount).toBe('string');
+      expect(typeof history.invoice_id).toBe('string');
+      expect(typeof history.invoice_uuid).toBe('string');
+      expect(typeof history.date).toBe('string');
+      expect(typeof history.type).toBe('string')
       /// validate headers
       const {headers, status} = response;
       expect(headers).toMatchObject(MOCK.response.headers);
@@ -67,8 +68,8 @@ describe('droplet', () => {
     it('should have default parameters', async () => {
       const defaultPage = 1;
       const defaultper_page = 25;
-      const _listDropletNeighborhoods = listDropletNeighborhoods(context);
-      const response = await _listDropletNeighborhoods({});
+      const _listBillingHistory = listBillingHistory(context);
+      const response = await _listBillingHistory({});
       Object.assign(response, { request: mock.history.get[0]});
       /// validate request
       const {request} = response;

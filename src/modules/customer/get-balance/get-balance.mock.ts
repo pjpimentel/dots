@@ -6,17 +6,10 @@ export const request = {
 };
 export const response = {
     "body": {
-      "neighbor_ids": [
-        [
-          168671828,
-          168663509,
-          168671815
-        ],
-        [
-          168671883,
-          168671750
-        ]
-      ]
+      "month_to_date_balance": "23.44",
+      "account_balance": "12.23",
+      "month_to_date_usage": "11.21",
+      "generated_at": "2019-07-09T15:01:12Z"
     },
     "headers": {
       "content-type": "application/json; charset=utf-8",

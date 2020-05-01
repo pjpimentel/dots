@@ -249,7 +249,11 @@ export const createApiClient = ({
     deleteRegistry: modules.containerRegistry.deleteRegistry(context),
     getDockerCredentials: modules.containerRegistry.getDockerCredentials(context),
     getRegistry: modules.containerRegistry.getRegistry(context),
-  })
+  });
+  const customer = Object.freeze({
+    getBalance: modules.customer.getBalance(context),
+    listBillingHistory: modules.customer.listBillingHistory(context),
+  });
 
   return Object.freeze({
     _options,
@@ -258,6 +262,7 @@ export const createApiClient = ({
     cdnEndpoint,
     certificate,
     containerRegistry,
+    customer,
     database,
     domain,
     droplet,
