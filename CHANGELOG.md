@@ -10,6 +10,7 @@
 ### **fix**
 
 * dev dependencies security issue GHSA-jpcq-cgw6-v4j6
+* DO changed list-all-droplet-neighbors behavior https://developers.digitalocean.com/documentation/changelog/api-v2/changes-to-the-droplet-neighbors-report/
 
 ## **3.1.9** - 2020-04-27
 

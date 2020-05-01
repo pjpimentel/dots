@@ -7,7 +7,7 @@ import * as MOCK from './list-droplet-neighborhoods.mock';
 describe('droplet', () => {
   const PAGE = 3;
   const PER_PAGE = 26;
-  const URL = '/reports/droplet_neighbors';
+  const URL = '/reports/droplet_neighbors_ids';
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
@@ -53,13 +53,12 @@ describe('droplet', () => {
       expect(request.params.resource_type).toBeUndefined();
       /// validate data
       expect(response.data).toBeDefined();
-      expect(response.data.neighbors).toBeDefined();
-      const {neighbors} = response.data;
-      expect(Array.isArray(neighbors)).toBeTruthy()
-      const [neighborhood] = neighbors;
-      const [droplet] = neighborhood;
-      expect(typeof droplet.id).toBe('number');
-      expect(typeof droplet.name).toBe('string');
+      expect(response.data.neighbor_ids).toBeDefined();
+      const {neighbor_ids} = response.data;
+      expect(Array.isArray(neighbor_ids)).toBeTruthy()
+      const [neighborhood] = neighbor_ids;
+      const [droplet_id] = neighborhood;
+      expect(typeof droplet_id).toBe('number');
       /// validate headers
       const {headers, status} = response;
       expect(headers).toMatchObject(MOCK.response.headers);

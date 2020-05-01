@@ -242,12 +242,9 @@ try {
 
 ```javascript
 try {
-  const input = {
-    droplet_id: 123, // number
-    per_page: 100, // number
-  };
-  const {data:{neighbors}} = await dots.droplet.listDropletNeighborhoods(input);
-  console.log(neighbors);
+  const input = {};
+  const {data:{neighbor_ids}} = await dots.droplet.listDropletNeighborhoods(input);
+  console.log(neighbor_ids);
 } catch (error) {
   console.log(error);
 }
