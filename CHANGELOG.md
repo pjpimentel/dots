@@ -5,6 +5,7 @@
 ## **added**
 
 * customer.getBalance
+* customer.listBillingHistory
 
 ### **fix**
 

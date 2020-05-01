@@ -4,7 +4,7 @@ import { createContext } from '../../../utils';
 import {getBalance} from './get-balance';
 import * as MOCK from './get-balance.mock';
 
-describe('balance', () => {
+describe('customer', () => {
   const URL = '/customers/my/balance';
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
