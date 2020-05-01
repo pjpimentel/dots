@@ -1,5 +1,11 @@
 # changelog
 
+## **3.1.x** - 2020-04-30
+
+### **fix**
+
+* dev dependencies security issue GHSA-jpcq-cgw6-v4j6
+
 ## **3.1.9** - 2020-04-27
 
 ### **fix**
