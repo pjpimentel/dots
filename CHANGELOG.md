@@ -2,6 +2,10 @@
 
 ## **3.1.x** - 2020-04-30
 
+## **added**
+
+* customer.getBalance
+
 ### **fix**
 
 * dev dependencies security issue GHSA-jpcq-cgw6-v4j6
