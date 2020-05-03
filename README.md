@@ -270,6 +270,7 @@ js.js
     1. [resize-volume](src/modules/volume/README.md#resize-volume)
 1. [vpc](src/modules/vpc/README.md#vpc)
     1. [create-vpc](src/modules/vpc/README.md#create-vpc)
+    1. [get-vpc](src/modules/vpc/README.md#get-vpc)
 
 ## contributors
 
