@@ -45,3 +45,18 @@ try {
   console.log(error);
 }
 ```
+
+## update-vpc
+[original documentation](https://developers.digitalocean.com/documentation/v2/#update-a-vpc)
+```javascript
+try {
+  const input = {
+    name: '', // string
+    description: '', // string
+  };
+  const {data:{vpc}} = await dots.vpc.updateVpc(input)
+  console.log(vpc);
+} catch (error) {
+  console.log(error);
+}
+```
