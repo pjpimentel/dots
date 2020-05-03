@@ -7,7 +7,7 @@ export interface IUpdateVpcApiResponse {
 
 export interface IUpdateVpcApiRequest {
   description?: string;
-  name: string;
+  name?: string;
   vpc_id: string;
 }
 
@@ -27,5 +27,5 @@ export const updateVpc = ({
     };
     const url = `${path}/${vpc_id}`;
 
-    return httpClient.put<IUpdateVpcApiResponse>(url, body);
+    return httpClient.patch<IUpdateVpcApiResponse>(url, body);
   };

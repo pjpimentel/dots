@@ -9,7 +9,7 @@ describe('vpc', () => {
   const URL = `/vpcs/${VPC_ID}`;
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
-  mock.onPut(URL, MOCK.request.body).reply(
+  mock.onPatch(URL, MOCK.request.body).reply(
     MOCK.response.headers.status,
     MOCK.response.body,
     MOCK.response.headers,
@@ -34,7 +34,7 @@ describe('vpc', () => {
         ...MOCK.request.body,
         vpc_id: VPC_ID,
       });
-      Object.assign(response, {request: mock.history.put[0]});
+      Object.assign(response, {request: mock.history.patch[0]});
       /// validate response schema
       expect(typeof response).toBe('object');
       expect(typeof response.data).toBe('object');
@@ -44,7 +44,7 @@ describe('vpc', () => {
       /// validate request
       const {request} = response;
       expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('put');
+      expect(request.method).toBe('patch');
       expect(request.headers).toMatchObject(MOCK.request.headers);
       expect(request.data).toBeDefined();
       const requestBody = JSON.parse(request.data);
