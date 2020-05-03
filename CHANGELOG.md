@@ -5,6 +5,7 @@
 ## **added**
 
 * vpc module
+* kubernetes node pool labels
 
 ## **3.1.10** - 2020-04-30
 

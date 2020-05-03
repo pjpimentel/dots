@@ -13,6 +13,10 @@ export const request = {
     "auto_scale": true,
     "min_nodes": 0,
     "max_nodes": 0,
+    "labels": {
+      "service": "web",
+      "priority": "high"
+    }
   },
   "minimumBody": {
     "size": "s-2vcpu-4gb",
@@ -33,6 +37,10 @@ export const response = {
         "k8s:29433ce6-4df7-4957-a880-fbc2ccd54354",
         "k8s:worker"
       ],
+      "labels": {
+        "service": "web",
+        "priority": "high"
+      },
       "nodes": [
         {
           "id": "33bb3b8f-2533-487d-9ad6-a5da3098526a",

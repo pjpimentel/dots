@@ -59,6 +59,7 @@ describe('kubernetes', () => {
       const {node_pool} = response.data;
       expect(typeof node_pool.name).toBe('string');
       expect(typeof node_pool.id).toBe('string');
+      expect(node_pool.labels).toMatchObject(MOCK.request.body.labels);
       /// validate headers
       const {headers, status} = response;
       expect(headers).toMatchObject(MOCK.response.headers);

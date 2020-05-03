@@ -1,5 +1,8 @@
 import { IResponse, IContext } from '../../../types';
-import { IKubernetesClusterNodePool } from '..';
+import {
+  IKubernetesClusterNodePool,
+  IKubernetesClusterNodePoolLabels,
+} from '../';
 
 export interface ICreateNodePoolApiResponse {
   node_pool: IKubernetesClusterNodePool;
@@ -14,6 +17,7 @@ export interface ICreateNodePoolApiRequest {
   name: string;
   size: string;
   tags?: string[];
+  labels?: IKubernetesClusterNodePoolLabels;
 }
 
 export type CreateNodePoolResponse = IResponse<ICreateNodePoolApiResponse>;
@@ -21,19 +25,21 @@ export type CreateNodePoolResponse = IResponse<ICreateNodePoolApiResponse>;
 export const createNodePool = ({
   httpClient,
 }: IContext) => ({
-  kubernetes_cluster_id,
-  size,
-  name,
-  count,
-  tags,
   auto_scale,
-  min_nodes,
+  count,
+  kubernetes_cluster_id,
+  labels,
   max_nodes,
+  min_nodes,
+  name,
+  size,
+  tags,
 }: ICreateNodePoolApiRequest): Promise<Readonly<CreateNodePoolResponse>> => {
   const path = '/kubernetes/clusters';
   const body = {
     auto_scale,
     count,
+    labels,
     max_nodes,
     min_nodes,
     name,
