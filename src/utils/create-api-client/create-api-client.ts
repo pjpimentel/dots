@@ -256,6 +256,7 @@ export const createApiClient = ({
   });
   const vpc = Object.freeze({
     createVpc: modules.vpc.createVpc(context),
+    deleteVpc: modules.vpc.deleteVpc(context),
     getVpc: modules.vpc.getVpc(context),
     listVpcResources: modules.vpc.listVpcResources(context),
     listVpcs: modules.vpc.listVpcs(context),

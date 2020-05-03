@@ -77,3 +77,17 @@ try {
   console.log(error);
 }
 ```
+
+## delete-vpc
+[original documentation](https://developers.digitalocean.com/documentation/v2/#delete-a-vpc)
+```javascript
+try {
+  const input = {
+    vpc_id: '', // string
+  };
+  const {status} = await dots.vpc.deleteVpc(input)
+  console.log(status);
+} catch (error) {
+  console.log(error);
+}
+```
