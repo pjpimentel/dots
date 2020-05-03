@@ -1,12 +1,16 @@
 # changelog
 
-## **3.2.0** - 2020-05-xx
+## **3.2.0** - 2020-05-03
 
 ## **added**
 
 * vpc module
 * kubernetes node pool labels
 * mysql_settings to createDatabaseClusterUser
+
+### **fix**
+
+* npm audit
 
 ## **3.1.10** - 2020-04-30
 
