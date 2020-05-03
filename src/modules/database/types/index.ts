@@ -6,6 +6,7 @@ export * from './database-cluster-engine';
 export * from './database-cluster-eviction-policy';
 export * from './database-cluster-firewall-rule-type';
 export * from './database-cluster-maintenance-window';
+export * from './database-cluster-mysql-user-settings';
 export * from './database-cluster-replica';
 export * from './database-cluster-status';
 export * from './database-cluster-user';

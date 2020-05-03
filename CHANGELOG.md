@@ -6,6 +6,7 @@
 
 * vpc module
 * kubernetes node pool labels
+* mysql_settings to createDatabaseClusterUser
 
 ## **3.1.10** - 2020-04-30
 
