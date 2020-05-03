@@ -19,6 +19,7 @@ import * as snapshot from './snapshot';
 import * as sshKey from './ssh-key';
 import * as tag from './tag';
 import * as volume from './volume';
+import * as vpc from './vpc';
 
 export {
   account,
@@ -42,4 +43,5 @@ export {
   sshKey,
   tag,
   volume,
+  vpc,
 };

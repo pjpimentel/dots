@@ -254,6 +254,14 @@ export const createApiClient = ({
     getBalance: modules.customer.getBalance(context),
     listBillingHistory: modules.customer.listBillingHistory(context),
   });
+  const vpc = Object.freeze({
+    createVpc: modules.vpc.createVpc(context),
+    deleteVpc: modules.vpc.deleteVpc(context),
+    getVpc: modules.vpc.getVpc(context),
+    listVpcResources: modules.vpc.listVpcResources(context),
+    listVpcs: modules.vpc.listVpcs(context),
+    updateVpc: modules.vpc.updateVpc(context),
+  });
 
   return Object.freeze({
     _options,
@@ -278,5 +286,6 @@ export const createApiClient = ({
     sshKey,
     tag,
     volume,
+    vpc,
   });
 };

@@ -268,6 +268,13 @@ js.js
     1. [list-volumes](src/modules/volume/README.md#list-volumes)
     1. [list-volume-snapshots](src/modules/volume/README.md#list-volume-snapshots)
     1. [resize-volume](src/modules/volume/README.md#resize-volume)
+1. [vpc](src/modules/vpc/README.md#vpc)
+    1. [create-vpc](src/modules/vpc/README.md#create-vpc)
+    1. [get-vpc](src/modules/vpc/README.md#get-vpc)
+    1. [list-vpcs](src/modules/vpc/README.md#list-vpcs)
+    1. [update-vpc](src/modules/vpc/README.md#update-vpc)
+    1. [list-vpc-resources](src/modules/vpc/README.md#list-vpc-resources)
+    1. [delete-vpc](src/modules/vpc/README.md#delete-vpc)
 
 ## contributors
 

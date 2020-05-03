@@ -24,6 +24,7 @@ export interface ICreateKubernetesClusterApiRequest {
   auto_upgrade?: boolean;
   maintenance_policy?: Partial<IKubernetesClusterMaintenancePolicy>;
   node_pools: ICreateKubernetesClusterNodePoolApiRequest[];
+  vpc_uuid?: string;
 }
 
 export type CreateKubernetesClusterResponse = IResponse<ICreateKubernetesClusterApiResponse>;
@@ -38,6 +39,7 @@ export const createKubernetesCluster = ({
   auto_upgrade,
   maintenance_policy,
   node_pools,
+  vpc_uuid,
 }: ICreateKubernetesClusterApiRequest): Promise<Readonly<CreateKubernetesClusterResponse>> => {
   const path = '/kubernetes/clusters';
   const body = {
@@ -48,6 +50,7 @@ export const createKubernetesCluster = ({
     auto_upgrade,
     maintenance_policy,
     node_pools,
+    vpc_uuid,
   };
   const url = `${path}`;
 

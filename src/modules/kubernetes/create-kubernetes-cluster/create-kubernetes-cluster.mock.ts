@@ -25,7 +25,8 @@ export const request = {
         "count": 2,
         "name": "backend-pool"
       }
-    ]
+    ],
+    "vpc_uuid": "vpc_uuid",
   },
   "minimumBody": {
     "name": "prod-cluster-01",

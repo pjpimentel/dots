@@ -16,6 +16,7 @@ export interface IDatabaseCluster {
   name: string;
   num_nodes: number;
   private_connection: IDatabaseClusterConnection;
+  private_network_uuid: string;
   region: string;
   size: string;
   status: DatabaseClusterStatus;

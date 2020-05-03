@@ -99,42 +99,5 @@ describe('load-balancer', () => {
       expect(algorithm).toBeUndefined();
       expect(sticky_sessions).toBeUndefined();
     });
-    /// this test can be removed after id field remove
-    it('should POST only required parameters (deprecated)', async () => {
-      const _updateLoadBalancer = updateLoadBalancer(context);
-      const response = await _updateLoadBalancer({
-        ...MOCK.request.minimumBody,
-        id: LOAD_BALANCER_ID,
-      } as any);
-      Object.assign(response, {request: mock.history.put[0]});
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('put');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeDefined();
-      const {
-        /// required
-        name,
-        region,
-        forwarding_rules,
-        /// non-required
-        droplet_ids,
-        enable_proxy_protocol,
-        health_check,
-        redirect_http_to_https,
-        algorithm,
-        sticky_sessions,
-      } = JSON.parse(request.data);
-      expect(name).toBe(MOCK.request.minimumBody.name);
-      expect(region).toBe(MOCK.request.minimumBody.region);
-      expect(forwarding_rules).toStrictEqual(MOCK.request.minimumBody.forwarding_rules);
-      expect(droplet_ids).toBeUndefined();
-      expect(enable_proxy_protocol).toBeUndefined();
-      expect(health_check).toBeUndefined();
-      expect(redirect_http_to_https).toBeUndefined();
-      expect(algorithm).toBeUndefined();
-      expect(sticky_sessions).toBeUndefined();
-    });
   });
 });

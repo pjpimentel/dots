@@ -1,10 +1,14 @@
-import { IKubernetesClusterNodePoolNode } from '.'
+import {
+  IKubernetesClusterNodePoolLabels,
+  IKubernetesClusterNodePoolNode,
+} from './';
 
 export interface IKubernetesClusterNodePool {
-  id: string;
-  name: string;
-  size: string;
   count: number;
-  tags: string[];
+  id: string;
+  labels: IKubernetesClusterNodePoolLabels;
+  name: string;
   nodes: IKubernetesClusterNodePoolNode[];
+  size: string;
+  tags: string[];
 }

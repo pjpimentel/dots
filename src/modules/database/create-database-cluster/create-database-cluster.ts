@@ -9,6 +9,7 @@ export interface ICreateDatabaseClusterApiRequest {
   engine: DatabaseClusterEngine;
   name: string;
   num_nodes: number;
+  private_network_uuid?: string;
   region: string;
   size: string;
   tags?: string[];
@@ -23,6 +24,7 @@ export const createDatabaseCluster = ({
   engine,
   name,
   num_nodes,
+  private_network_uuid,
   region,
   size,
   tags,
@@ -33,6 +35,7 @@ export const createDatabaseCluster = ({
     engine,
     name,
     num_nodes,
+    private_network_uuid,
     region,
     size,
     tags,

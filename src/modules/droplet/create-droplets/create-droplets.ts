@@ -18,6 +18,7 @@ export interface ICreateDropletsApiRequest {
   tags?: string[];
   user_data?: string;
   volumes?: string[];
+  vpc_uuid?: string;
 }
 
 export type CreateDropletsResponse = IResponse<ICreateDropletsApiResponse>;
@@ -37,6 +38,7 @@ export const createDroplets = ({
   tags,
   user_data,
   volumes,
+  vpc_uuid,
 }: ICreateDropletsApiRequest): Promise<Readonly<CreateDropletsResponse>> => {
   const path = '/droplets';
   const body = {
@@ -52,6 +54,7 @@ export const createDroplets = ({
     tags,
     user_data,
     volumes,
+    vpc_uuid,
   };
   const url = `${path}`;
 
