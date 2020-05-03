@@ -30,3 +30,18 @@ try {
   console.log(error);
 }
 ```
+
+## list-vpcs
+[original documentation](https://developers.digitalocean.com/documentation/v2/#list-all-vpcs)
+```javascript
+try {
+  const input = {
+    page: 1, // number
+    per_page: 1, // mumber
+  };
+  const {data:{vpcs}} = await dots.vpc.listVpcs(input)
+  console.log(vpcs);
+} catch (error) {
+  console.log(error);
+}
+```
