@@ -273,6 +273,7 @@ js.js
     1. [get-vpc](src/modules/vpc/README.md#get-vpc)
     1. [list-vpcs](src/modules/vpc/README.md#list-vpcs)
     1. [update-vpc](src/modules/vpc/README.md#update-vpc)
+    1. [list-vpc-resources](src/modules/vpc/README.md#list-vpc-resources)
 
 ## contributors
 

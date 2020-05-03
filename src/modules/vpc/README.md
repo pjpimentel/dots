@@ -60,3 +60,20 @@ try {
   console.log(error);
 }
 ```
+
+## list-vpc-resources
+[original documentation](https://developers.digitalocean.com/documentation/v2/#list-the-member-resources-of-a-vpc)
+```javascript
+try {
+  const input = {
+    page: 1, // number
+    per_page: 25, // number
+    vpc_id: '', // string
+    resource_type: '', // string
+  };
+  const {data:{members}} = await dots.project.listVpcResources(input);
+  console.log(members);
+} catch (error) {
+  console.log(error);
+}
+```
