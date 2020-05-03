@@ -25,4 +25,5 @@ export interface IDroplet {
   tags: string[];
   vcpus: number;
   volume_ids: string[];
+  vpc_uuid: string;
 }

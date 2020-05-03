@@ -16,6 +16,7 @@ export const request = {
     "tags": ["web"],
     "user_data": 'test-user-data',
     "volumes": [],
+    "vpc_uuid": "vpc_uuid",
   },
   "minimumBody": {
     "name": "example.com",

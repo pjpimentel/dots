@@ -1,8 +1,24 @@
 import { IResponse, IContext } from '../../../types';
-import { ILoadBalancer } from '..';
+import {
+  ILoadBalancer,
+  IForwardingRule,
+  IHealthCheck,
+  IStickSessions,
+} from '..';
 
-export interface ICustomLoadBalancerPayload extends ILoadBalancer {
+export interface ICustomLoadBalancerPayload {
+  algorithm?: string;
+  droplet_ids?: number[];
+  enable_proxy_protocol?: boolean;
+  forwarding_rules: IForwardingRule[];
+  health_check?: IHealthCheck;
   load_balancer_id: string;
+  name: string;
+  redirect_http_to_https?: boolean;
+  region: string;
+  sticky_sessions?: IStickSessions;
+  tag?: string;
+  vpc_uuid?: string;
 }
 export interface IUpdateLoadBalancerApiResponse {
   load_balancer: ILoadBalancer;
@@ -13,17 +29,18 @@ export type UpdateLoadBalancerResponse = IResponse<IUpdateLoadBalancerApiRespons
 export const updateLoadBalancer = ({
   httpClient,
 }: IContext) => ({
-  id,
-  load_balancer_id,
   algorithm,
   droplet_ids,
   enable_proxy_protocol,
   forwarding_rules,
   health_check,
+  load_balancer_id,
   name,
   redirect_http_to_https,
   region,
   sticky_sessions,
+  tag,
+  vpc_uuid,
 }: ICustomLoadBalancerPayload): Promise<Readonly<UpdateLoadBalancerResponse>> => {
   const path = '/load_balancers';
   const body = {
@@ -36,8 +53,10 @@ export const updateLoadBalancer = ({
     redirect_http_to_https,
     region,
     sticky_sessions,
+    tag,
+    vpc_uuid,
   };
-  const url = `${path}/${load_balancer_id || id}`;
+  const url = `${path}/${load_balancer_id}`;
 
   return httpClient.put<IUpdateLoadBalancerApiResponse>(url, body);
 };

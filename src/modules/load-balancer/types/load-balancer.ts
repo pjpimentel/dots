@@ -11,4 +11,5 @@ export interface ILoadBalancer {
   redirect_http_to_https?: boolean;
   region: string;
   sticky_sessions?: IStickSessions;
+  vpc_uuid: string;
 }

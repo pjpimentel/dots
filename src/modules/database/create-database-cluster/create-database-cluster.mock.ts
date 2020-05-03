@@ -12,7 +12,8 @@ export const request = {
     "num_nodes": 2,
     "tags": [
       "production"
-    ]
+    ],
+    "private_network_uuid": "private_network_uuid",
   },
   "minimumBody": {
     "name": "backend",

@@ -1,19 +1,20 @@
 import { IKubernetesClusterStatus, IKubernetesClusterMaintenancePolicy, IKubernetesClusterNodePool } from '.';
 
 export interface IKubernetesCluster {
-  id: string;
-  name: string;
-  region: string;
-  version: string;
-  cluster_subnet: string;
-  service_subnet: string;
-  ipv4: string;
-  endpoint: string;
-  tags: string[];
-  node_pools: IKubernetesClusterNodePool[];
-  maintenance_policy: IKubernetesClusterMaintenancePolicy;
   auto_upgrade: boolean;
-  status: IKubernetesClusterStatus;
+  cluster_subnet: string;
   created_at: string;
+  endpoint: string;
+  id: string;
+  ipv4: string;
+  maintenance_policy: IKubernetesClusterMaintenancePolicy;
+  name: string;
+  node_pools: IKubernetesClusterNodePool[];
+  region: string;
+  service_subnet: string;
+  status: IKubernetesClusterStatus;
+  tags: string[];
   updated_at: string;
+  version: string;
+  vpc_uuid: string;
 }

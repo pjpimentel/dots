@@ -38,7 +38,9 @@ export const request = {
     "droplet_ids": [
       3164444,
       3164445
-    ]
+    ],
+    "vpc_uuid": "vpc_uuid",
+    "tag": "droplet-tag"
   },
   "minimumBody": {
     "name": "example-lb-01",
