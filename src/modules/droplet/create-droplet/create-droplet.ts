@@ -14,7 +14,7 @@ export interface ICreateDropletApiRequest {
   private_networking?: boolean;
   region: string;
   size: string;
-  ssh_keys?: number[];
+  ssh_keys?: Array<string | number>;
   tags?: string[];
   user_data?: string;
   volumes?: string[];
