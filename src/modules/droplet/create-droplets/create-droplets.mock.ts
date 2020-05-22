@@ -15,7 +15,7 @@ export const request = {
     "private_networking": false,
     "region": "nyc3",
     "size": "s-1vcpu-1gb",
-    "ssh_keys": [107149],
+    "ssh_keys": [107149,'fingerprint'],
     "tags": ["web"],
     "user_data": 'test-user-data',
     "volumes": [],
