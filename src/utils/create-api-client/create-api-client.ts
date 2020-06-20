@@ -253,6 +253,7 @@ export const createApiClient = ({
   const customer = Object.freeze({
     getBalance: modules.customer.getBalance(context),
     listBillingHistory: modules.customer.listBillingHistory(context),
+    listInvoiceItems: modules.customer.listInvoiceItems(context),
     listInvoices: modules.customer.listInvoices(context),
   });
   const vpc = Object.freeze({

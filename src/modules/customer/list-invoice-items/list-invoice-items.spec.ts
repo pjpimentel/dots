@@ -1,13 +1,14 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { createContext } from '../../../utils';
-import {listInvoices} from './list-invoices';
-import * as MOCK from './list-invoices.mock';
+import {listInvoiceItems} from './list-invoice-items';
+import * as MOCK from './list-invoice-items.mock';
 
 describe('customer', () => {
   const PAGE = 3;
   const PER_PAGE = 26;
-  const URL = '/customers/my/invoices';
+  const INVOICE_UUID = '123-123-123-123';
+  const URL = `/customers/my/invoices/${INVOICE_UUID}`;
   const TOKEN = 'bearer-token';
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
@@ -22,14 +23,16 @@ describe('customer', () => {
   beforeEach(() => {
     mock.resetHistory();
   });
-  describe('list-invoices', () => {
+  describe('list-invoice-items', () => {
     it('should be and return a fn', () => {
-      expect(typeof listInvoices).toBe('function');
-      expect(typeof listInvoices(context)).toBe('function');
+      expect(typeof listInvoiceItems).toBe('function');
+      expect(typeof listInvoiceItems(context)).toBe('function');
     });
     it('should return a valid response', async () => {
-      const _listInvoices = listInvoices(context);
-      const response = await _listInvoices({page: PAGE, per_page: PER_PAGE});
+      const _listInvoiceItems = listInvoiceItems(context);
+      const response = await _listInvoiceItems({
+        page: PAGE, per_page: PER_PAGE, invoice_uuid: INVOICE_UUID,
+      });
       Object.assign(response, { request: mock.history.get[0]});
       /// validate response schema
       expect(typeof response).toBe('object');
@@ -47,12 +50,11 @@ describe('customer', () => {
       expect(request.params.per_page).toBe(PER_PAGE);
       /// validate data
       expect(response.data).toBeDefined();
-      expect(response.data.invoices).toBeDefined();
-      const {invoices, invoice_preview} = response.data;
-      const [invoice] = invoices;
-      expect(typeof invoice.invoice_uuid).toBe('string');
-      expect(typeof invoice.amount).toBe('string');
-      expect(typeof invoice_preview.updated_at).toBe('string');
+      expect(response.data.invoice_items).toBeDefined();
+      const {invoice_items} = response.data;
+      const [invoice_item] = invoice_items;
+      expect(typeof invoice_item.product).toBe('string');
+      expect(typeof invoice_item.amount).toBe('string');
       /// validate headers
       const {headers, status} = response;
       expect(headers).toMatchObject(MOCK.response.headers);
@@ -61,8 +63,10 @@ describe('customer', () => {
     it('should have default parameters', async () => {
       const defaultPage = 1;
       const defaultper_page = 25;
-      const _listInvoices = listInvoices(context);
-      const response = await _listInvoices({});
+      const _listInvoiceItems = listInvoiceItems(context);
+      const response = await _listInvoiceItems({
+        invoice_uuid: INVOICE_UUID,
+      });
       Object.assign(response, { request: mock.history.get[0]});
       /// validate request
       const {request} = response;

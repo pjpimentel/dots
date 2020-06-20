@@ -32,3 +32,14 @@ try {
   console.log(error);
 }
 ```
+
+## list-invoice-items
+[original documentation](https://developers.digitalocean.com/documentation/v2/#retrieve-an-invoice-by-uuid)
+```javascript
+try {
+  const {data:{invoice_items}} = await dots.customer.listInvoiceItems();
+  console.log(invoice_items);
+} catch (error) {
+  console.log(error);
+}
+```
