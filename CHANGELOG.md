@@ -1,5 +1,14 @@
 # changelog
 
+## **3.3.0** - 2020-06-20
+
+## **added**
+
+* listInvoices, downloadInvoice, getInvoiceSummary, getInvoice to customer module
+
+## **fix**
+
+* npm audit + dependencies updates
 ## **3.2.1** - 2020-05-22
 
 ## **fix**
