@@ -21,3 +21,14 @@ try {
   console.log(error);
 }
 ```
+
+## list-invoices
+[original documentation](https://developers.digitalocean.com/documentation/v2/#list-all-invoices)
+```javascript
+try {
+  const {data:{invoices}} = await dots.customer.listInvoices();
+  console.log(invoices);
+} catch (error) {
+  console.log(error);
+}
+```
