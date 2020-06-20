@@ -251,6 +251,7 @@ export const createApiClient = ({
     getRegistry: modules.containerRegistry.getRegistry(context),
   });
   const customer = Object.freeze({
+    downloadInvoice: modules.customer.downloadInvoice(context),
     getBalance: modules.customer.getBalance(context),
     getInvoiceSummary: modules.customer.getInvoiceSummary(context),
     listBillingHistory: modules.customer.listBillingHistory(context),

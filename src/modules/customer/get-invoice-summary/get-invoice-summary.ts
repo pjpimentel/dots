@@ -14,7 +14,7 @@ export const getInvoiceSummary = ({
   invoice_uuid,
 }: IGetInvoiceSummaryApiRequest): Promise<Readonly<GetInvoiceSummaryResponse>> => {
   const path = '/customers/my/invoices';
-  const url = `${path}/${invoice_uuid}`;
+  const url = `${path}/${invoice_uuid}/summary`;
 
   return httpClient.get<IInvoiceSummary>(url);
 };

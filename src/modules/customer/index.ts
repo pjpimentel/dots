@@ -1,3 +1,4 @@
+export * from './download-invoice/download-invoice';
 export * from './get-balance/get-balance';
 export * from './get-invoice-summary/get-invoice-summary';
 export * from './list-billing-history/list-billing-history';
