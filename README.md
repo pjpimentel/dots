@@ -86,8 +86,12 @@ js.js
     1. [get-docker-credentials](src/modules/container-registry/README.md#get-docker-credentials)
     1. [get-registry](src/modules/container-registry/README.md#get-registry)
 1. [customer](src/modules/customer/README.md#customer)
+    <!-- 1. [download-invoice](src/modules/invoice/README.md#download-invoice) -->
     1. [get-balance](src/modules/customer/README.md#get-balance)
+    1. [get-invoice-summary](src/modules/customer/README.md#get-invoice-summary)
+    1. [list-invoice-items](src/modules/customer/README.md#list-invoice-items)
     1. [list-billing-history](src/modules/customer/README.md#list-billing-history)
+    1. [list-invoices](src/modules/customer/README.md#list-invoices)
 1. [database](src/modules/database/README.md#database)
     1. [configure-database-cluster-eviction-policy](src/modules/database/README.md#configure-database-cluster-eviction-policy)
     1. [configure-database-cluster-maintenance-window](src/modules/database/README.md#configure-database-cluster-maintenance-window)

@@ -43,3 +43,14 @@ try {
   console.log(error);
 }
 ```
+
+## get-invoice-summary
+[original documentation](https://developers.digitalocean.com/documentation/v2/#retrieve-an-invoice-summary-by-uuid)
+```javascript
+try {
+  const {data:invoice_summary} = await dots.customer.getInvoiceSummary();
+  console.log(invoice_summary);
+} catch (error) {
+  console.log(error);
+}
+```
