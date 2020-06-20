@@ -3,7 +3,6 @@ import MockAdapter from 'axios-mock-adapter';
 import { createContext } from '../../../utils';
 import {downloadInvoice} from './download-invoice';
 import * as MOCK from './download-invoice.mock';
-import { Stream } from 'stream';
 
 describe('customer', () => {
   const INVOICE_UUID = '123-123-123-123';
@@ -12,7 +11,7 @@ describe('customer', () => {
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
     MOCK.response.headers.status,
-    Stream.Readable.from(MOCK.response.body),
+    MOCK.response.body,
     MOCK.response.headers,
   );
   const context = createContext({
@@ -33,7 +32,7 @@ describe('customer', () => {
       Object.assign(response, { request: mock.history.get[0]});
       /// validate response schema
       expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
+      expect(typeof response.data).toBeTruthy();
       expect(typeof response.headers).toBe('object');
       expect(typeof response.request).toBe('object');
       expect(typeof response.status).toBe('number');
