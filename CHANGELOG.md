@@ -1,5 +1,11 @@
 # changelog
 
+## **3.3.1** - 2020-07-15
+
+## **fix**
+
+* npm audit + dependencies updates
+
 ## **3.3.0** - 2020-06-20
 
 ## **added**

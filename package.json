@@ -1,6 +1,6 @@
 {
   "name": "dots-wrapper",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "description": "Digital Ocean API V2 wrapper. TypeScript - Javascript",
   "main": "dist/index.js",
   "browser": "dist/index-browser.min.js",
@@ -48,6 +48,7 @@
   "keywords": [
     "api",
     "cloud",
+    "digital ocean",
     "digital-ocean",
     "digital",
     "digitalocean",
