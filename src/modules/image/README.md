@@ -52,6 +52,7 @@ try {
 
 ## get-image
 [original documentation¹](https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-image-by-id)
+
 [original documentation²](https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-image-by-slug)
 
 ```javascript

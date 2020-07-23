@@ -70,6 +70,7 @@ try {
 
 ## download-invoice
 [original documentation](https://developers.digitalocean.com/documentation/v2/#retrieve-an-invoice-csv-by-uuid)
+
 [original documentation²](https://developers.digitalocean.com/documentation/v2/#retrieve-an-invoice-pdf-by-uuid)
 ```javascript
 try {

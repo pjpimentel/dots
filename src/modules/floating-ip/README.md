@@ -18,6 +18,7 @@ try {
 
 ## create-floating-ip
 [original documentation¹](https://developers.digitalocean.com/documentation/v2/#create-a-new-floating-ip-assigned-to-a-droplet)
+
 [original documentation²](https://developers.digitalocean.com/documentation/v2/#create-a-new-floating-ip-reserved-to-a-region)
 
 ```javascript
