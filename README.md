@@ -1,6 +1,6 @@
-# ··· dots ···
+# dots
 
-## **digital ocean** API wrapper
+## digital ocean api wrapper
 
 [![actions](https://github.com/pjpimentel/dots/workflows/build/badge.svg?branch=master)](https://github.com/pjpimentel/dots/actions)
 [![quality](https://sonarcloud.io/api/project_badges/measure?branch=master&project=dots&metric=alert_status)](https://sonarcloud.io/dashboard?branch=master&id=dots)
