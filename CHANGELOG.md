@@ -1,5 +1,12 @@
 # changelog
 
+## **3.3.3** - 2020-08-10
+
+## **fix**
+
+* load balancer types
+* npm audit + dependencies updates
+
 ## **3.3.2** - 2020-07-22
 
 ## **ref**

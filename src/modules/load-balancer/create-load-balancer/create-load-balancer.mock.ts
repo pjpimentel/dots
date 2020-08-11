@@ -6,6 +6,7 @@ export const request = {
   "body": {
     "name": "example-lb-01",
     "region": "nyc3",
+    "enable_backend_keepalive": true,
     "forwarding_rules": [
       {
         "entry_protocol": "http",
