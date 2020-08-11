@@ -1,15 +1,20 @@
 import { IForwardingRule, IHealthCheck, IStickSessions } from '.';
 
 export interface ILoadBalancer {
-  algorithm?: string;
-  droplet_ids?: number[];
-  enable_proxy_protocol?: boolean;
+  algorithm: string;
+  created_at: string;
+  droplet_ids: number[];
+  enable_backend_keepalive: boolean;
+  enable_proxy_protocol: boolean;
   forwarding_rules: IForwardingRule[];
-  health_check?: IHealthCheck;
-  id?: string;
+  health_check: IHealthCheck;
+  id: string;
+  ip: string;
   name: string;
-  redirect_http_to_https?: boolean;
+  redirect_http_to_https: boolean;
   region: string;
-  sticky_sessions?: IStickSessions;
+  status: "new" | "active" | "errored" | string;
+  sticky_sessions: IStickSessions;
+  tag: string;
   vpc_uuid: string;
 }

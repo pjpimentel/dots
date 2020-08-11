@@ -8,6 +8,7 @@ export interface ICreateLoadBalancerApiResponse {
 export interface ICreateLoadBalancerApiRequest {
   algorithm?: string;
   droplet_ids?: number[];
+  enable_backend_keepalive?: boolean;
   enable_proxy_protocol?: boolean;
   forwarding_rules: IForwardingRule[];
   health_check?: IHealthCheck;
@@ -26,6 +27,7 @@ export const createLoadBalancer = ({
 }: IContext) => ({
   algorithm,
   droplet_ids,
+  enable_backend_keepalive,
   enable_proxy_protocol,
   forwarding_rules,
   health_check,
@@ -40,6 +42,7 @@ export const createLoadBalancer = ({
   const body = {
     algorithm,
     droplet_ids,
+    enable_backend_keepalive,
     enable_proxy_protocol,
     forwarding_rules,
     health_check,
