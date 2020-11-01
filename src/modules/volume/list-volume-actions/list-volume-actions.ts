@@ -6,7 +6,6 @@ export interface IListVolumeActionsApiResponse extends IListResponse {
 }
 
 export interface IListVolumeActionsApiRequest extends IListRequest {
-  id?: string;
   volume_id: string;
 }
 
@@ -15,14 +14,13 @@ export type ListVolumeActionssResponse = IResponse<IListVolumeActionsApiResponse
 export const listVolumeActions = ({
   httpClient,
 }: IContext) => ({
-  id,
   page = 1,
   per_page = 25,
   volume_id,
 }: IListVolumeActionsApiRequest): Promise<Readonly<ListVolumeActionssResponse>> => {
   const path = '/volumes';
   const queryParams = {page, per_page};
-  const url = `${path}/${volume_id || id}/actions`;
+  const url = `${path}/${volume_id}/actions`;
 
   return httpClient.get<IListVolumeActionsApiResponse>(url, {params: queryParams});
 };

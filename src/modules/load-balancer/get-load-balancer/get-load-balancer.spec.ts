@@ -56,34 +56,5 @@ describe('load-balancer', () => {
       expect(headers).toMatchObject(MOCK.response.headers);
       expect(status).toBe(MOCK.response.headers.status);
     });
-    /// this test can be removed after id field remove
-    it('should return a valid response (deprecated)', async () => {
-      const _getLoadBalancer = getLoadBalancer(context);
-      const response = await _getLoadBalancer({
-        id: LOAD_BALANCER_ID,
-      } as any);
-      Object.assign(response, { request: mock.history.get[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('get');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      /// validate data
-      expect(response.data).toBeDefined();
-      expect(response.data.load_balancer).toBeDefined();
-      const {load_balancer} = response.data;
-      expect(typeof load_balancer.name).toBe('string');
-      expect(typeof load_balancer.id).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
   });
 });
