@@ -8,6 +8,7 @@ export interface ICreateVpcApiResponse {
 export interface ICreateVpcApiRequest {
   description?: string;
   ip_range?: string;
+  is_default?: boolean
   name: string;
   region: string;
 }
@@ -19,11 +20,13 @@ export const createVpc = ({
 }: IContext) => ({
   description,
   ip_range,
+  is_default,
   name,
   region,
 }: ICreateVpcApiRequest): Promise<Readonly<CreateVpcResponse>> => {
   const path = '/vpcs';
   const body = {
+    default: is_default,
     description,
     ip_range,
     name,

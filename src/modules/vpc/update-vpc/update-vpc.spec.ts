@@ -32,6 +32,7 @@ describe('vpc', () => {
       const _updateVpc = updateVpc(context);
       const response = await _updateVpc({
         ...MOCK.request.body,
+        is_default: MOCK.request.body.default,
         vpc_id: VPC_ID,
       });
       Object.assign(response, {request: mock.history.patch[0]});
