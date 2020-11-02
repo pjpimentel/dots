@@ -1,7 +1,6 @@
 export const request = {
   "headers": {
     "Content-Type": "application/json",
-    "Authorization": "Bearer bearer-token"
   },
   "body": {
     "name": "My SSH Public Key",

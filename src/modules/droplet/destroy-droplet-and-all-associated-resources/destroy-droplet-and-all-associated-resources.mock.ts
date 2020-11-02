@@ -1,7 +1,7 @@
 export const request = {
   "headers": {
     "Accept": "application/json, text/plain, */*",
-    "Authorization": "Bearer bearer-token",
+    "Authorization": `Bearer ${process.env.TEST_TOKEN}`,
     "Content-Type": "application/json",
     "X-Dangerous": "true",
   },

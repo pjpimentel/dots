@@ -1,7 +1,6 @@
 export const request = {
   "headers": {
     "Content-Type": "application/json",
-    "Authorization": "Bearer bearer-token"
   },
   "body": {
     "sql_mode": "ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE"

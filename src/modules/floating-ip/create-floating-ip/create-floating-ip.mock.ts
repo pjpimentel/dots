@@ -1,7 +1,6 @@
 export const request = {
   "headers": {
     "Content-Type": "application/json",
-    "Authorization": "Bearer bearer-token"
   },
   "bodyByDropletId": {
     "droplet_id": 123456

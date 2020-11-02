@@ -22,7 +22,9 @@ export const listVolumes = ({
   const queryParams = {page, per_page};
   const hasNameFilter = typeof name === 'string';
 
-  if (hasNameFilter) Object.assign(queryParams, {name});
+  if (hasNameFilter) {
+    Object.assign(queryParams, {name});
+  }
 
   const url = `${path}`;
 

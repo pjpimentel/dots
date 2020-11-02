@@ -28,4 +28,3 @@ export const listDropletAssociatedResources = ({
 
   return httpClient.get<IListDropletAssociatedResourcesApiResponse>(url);
 };
-;
