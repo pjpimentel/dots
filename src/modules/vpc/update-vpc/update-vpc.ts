@@ -7,6 +7,7 @@ export interface IUpdateVpcApiResponse {
 
 export interface IUpdateVpcApiRequest {
   description?: string;
+  is_default?: boolean;
   name?: string;
   vpc_id: string;
 }
@@ -17,11 +18,13 @@ export const updateVpc = ({
   httpClient,
 }: IContext) => ({
   description,
+  is_default,
   name,
   vpc_id,
 }: IUpdateVpcApiRequest): Promise<Readonly<UpdateVpcResponse>> => {
     const path = '/vpcs';
     const body = {
+      default: is_default,
       description,
       name,
     };

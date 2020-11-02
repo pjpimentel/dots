@@ -1,6 +1,7 @@
 import {
   IKubernetesClusterNodePoolLabels,
   IKubernetesClusterNodePoolNode,
+  IKubernetesClusterNodePoolTaint,
 } from './';
 
 export interface IKubernetesClusterNodePool {
@@ -11,4 +12,5 @@ export interface IKubernetesClusterNodePool {
   nodes: IKubernetesClusterNodePoolNode[];
   size: string;
   tags: string[];
+  taints: IKubernetesClusterNodePoolTaint[];
 }

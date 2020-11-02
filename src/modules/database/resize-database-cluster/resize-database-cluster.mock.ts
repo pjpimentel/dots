@@ -1,7 +1,6 @@
 export const request = {
   "headers": {
     "Content-Type": "application/json",
-    "Authorization": "Bearer bearer-token"
   },
   "body": {
     "size": "db-s-4vcpu-8gb",

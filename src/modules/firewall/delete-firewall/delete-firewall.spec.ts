@@ -7,7 +7,7 @@ import * as MOCK from './delete-firewall.mock';
 describe('firewall', () => {
   const FIREWALL_ID = 'my-firewall-id';
   const URL = `/firewalls/${FIREWALL_ID}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onDelete(URL).reply(
     MOCK.response.headers.status,

@@ -7,7 +7,7 @@ import * as MOCK from './create-read-only-replica.mock';
 describe('database', () => {
   const DATABASE_CLUSTER_ID = 'db-id';
   const URL = `/databases/${DATABASE_CLUSTER_ID}/replicas`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onPost(URL, MOCK.request.body).reply(
     MOCK.response.headers.status,

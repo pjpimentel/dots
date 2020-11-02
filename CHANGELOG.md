@@ -1,5 +1,33 @@
 # changelog
 
+## (wip) **3.5.0** = 2020-11-XX
+
+## **added**
+
+* apps module
+
+## **3.4.0** - 2020-11-01
+
+## **fix**
+
+* add missing attributes to firewall type
+* npm audit + dependencies updates
+
+## **added**
+
+* list domain record filters
+* k8s node pool taints
+* droplet.destroyDropletAndAllAssociatedResources
+* droplet.destroyDropletAndAssociatedResources
+* droplet.getDropletDestroyStatus
+* droplet.listDropletAssociatedResources
+* droplet.retryDropletDestroy
+* "is_default" parameter to vpc.updateVpc and vpc.createVpc
+
+## **removed**
+
+* "id" field compatibility, see 3.1.0
+
 ## **3.3.3** - 2020-08-10
 
 ## **fix**

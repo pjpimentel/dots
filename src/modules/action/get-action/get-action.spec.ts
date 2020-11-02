@@ -6,7 +6,7 @@ import * as MOCK from './get-action.mock';
 
 describe('action', () => {
   const URL = `/action/${MOCK.response.body.action.id}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
     MOCK.response.headers.status,

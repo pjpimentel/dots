@@ -82,6 +82,40 @@ try {
 }
 ```
 
+## destroy-droplet-and-all-associated-resources
+[original documentation](https://developers.digitalocean.com/documentation/v2/#destroy-a-droplet-and-all-of-its-associated-resources--dangerous-)
+
+```javascript
+try {
+  const input = {
+    droplet_id: 123, // number
+    acknowledge: true, // bool
+  };
+  const {status} = await dots.droplet.destroyDropletAndAllAssociatedResources(input);
+  console.log(status);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## destroy-droplet-and-associated-resources
+[original documentation](https://developers.digitalocean.com/documentation/v2/#selectively-destroy-a-droplet-and-its-associated-resources)
+
+```javascript
+try {
+  const input = {
+    droplet_id: 123, // number
+    snapshots: ["id"], // string[]
+    volumes: ["id"], // string[]
+    volume_snapshots: ["id"], // string[]
+  };
+  const {status} = await dots.droplet.destroyDropletAndAssociatedResources(input);
+  console.log(status);
+} catch (error) {
+  console.log(error);
+}
+```
+
 ## disable-droplet-backups
 [original documentation](https://developers.digitalocean.com/documentation/v2/#disable-backups)
 
@@ -180,10 +214,25 @@ try {
 try {
   const input = {
     action_droplet_id: 123, // number
-    droplet_droplet_id: 123, // number
+    droplet_id: 123, // number
   };
   const {data:{action}} = await dots.droplet.getDropletAction(input);
   console.log(action);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## get-droplet-destroy-status
+[original documentation](https://developers.digitalocean.com/documentation/v2/#check-status-of-a-droplet-destroy-with-associated-resources-request)
+
+```javascript
+try {
+  const input = {
+    droplet_id: 123, // number
+  };
+  const {data} = await dots.droplet.getDropletDestroyStatus(input);
+  console.log(data);
 } catch (error) {
   console.log(error);
 }
@@ -200,6 +249,21 @@ try {
   };
   const {data:{actions}} = await dots.droplet.listDropletActions(input);
   console.log(actions);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## list-droplet-associated-resources
+[original documentation](https://developers.digitalocean.com/documentation/v2/#list-associated-resources-for-a-droplet)
+
+```javascript
+try {
+  const input = {
+    droplet_id: 123, // number
+  };
+  const {data:{snapshots}} = await dots.droplet.listDropletAssociatedResources(input);
+  console.log(snapshots);
 } catch (error) {
   console.log(error);
 }
@@ -430,11 +494,26 @@ try {
 ```javascript
 try {
   const input = {
-    droplet_id: 123, // string,
+    droplet_id: 123, // number,
     image: 123 // string|number,
   };
   const {data:{droplet}} = await dots.droplet.restoreDroplet(input);
   console.log(droplet);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## retry-droplet-destroy
+[original documentation](https://developers.digitalocean.com/documentation/v2/#retry-a-droplet-destroy-with-associated-resources-request)
+
+```javascript
+try {
+  const input = {
+    droplet_id: 123, // number,
+  };
+  const {status} = await dots.droplet.retryDropletDestroy(input);
+  console.log(status);
 } catch (error) {
   console.log(error);
 }

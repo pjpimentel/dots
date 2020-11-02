@@ -9,7 +9,7 @@ describe('volume', () => {
   const PAGE = 3;
   const PER_PAGE = 26;
   const URL = `/volumes/${VOLUME_ID}/actions`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
     MOCK.response.headers.status,
@@ -79,21 +79,6 @@ describe('volume', () => {
       const response = await _listVolumeActions({
         volume_id: VOLUME_ID,
       });
-      Object.assign(response, { request: mock.history.get[0]});
-      /// validate request
-      const {request} = response;
-      expect(request.params).toBeDefined();
-      expect(request.params.page).toBe(defaultPage);
-      expect(request.params.per_page).toBe(defaultper_page);
-    });
-    /// this test can be removed after id field remove
-    it('should have default parameters (deprecated)', async () => {
-      const defaultPage = 1;
-      const defaultper_page = 25;
-      const _listVolumeActions = listVolumeActions(context);
-      const response = await _listVolumeActions({
-        id: VOLUME_ID,
-      } as any);
       Object.assign(response, { request: mock.history.get[0]});
       /// validate request
       const {request} = response;

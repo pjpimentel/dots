@@ -7,7 +7,7 @@ import * as MOCK from './update-vpc.mock';
 describe('vpc', () => {
   const VPC_ID = MOCK.response.body.vpc.id;
   const URL = `/vpcs/${VPC_ID}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onPatch(URL, MOCK.request.body).reply(
     MOCK.response.headers.status,
@@ -32,6 +32,7 @@ describe('vpc', () => {
       const _updateVpc = updateVpc(context);
       const response = await _updateVpc({
         ...MOCK.request.body,
+        is_default: MOCK.request.body.default,
         vpc_id: VPC_ID,
       });
       Object.assign(response, {request: mock.history.patch[0]});

@@ -1,6 +1,6 @@
 {
   "name": "dots-wrapper",
-  "version": "3.3.3",
+  "version": "3.4.0",
   "description": "Digital Ocean API V2 wrapper. TypeScript - Javascript",
   "main": "dist/index.js",
   "browser": "dist/index-browser.min.js",
@@ -8,7 +8,7 @@
   "scripts": {
     "build": "rm -rf ./dist && tsc",
     "build:browser": "webpack --mode=production",
-    "test": "jest",
+    "test": "export TEST_TOKEN=bearer-token && jest",
     "build:test": "jest",
     "docs": "typedoc --json dist/docs.json --mode modules",
     "version": "npm version --no-git-tag-version "
@@ -27,22 +27,22 @@
     "dist"
   ],
   "dependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.21.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.1",
-    "@babel/preset-env": "^7.11.0",
-    "@babel/preset-typescript": "^7.10.4",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-typescript": "^7.12.1",
     "@types/jest": "^25.2.3",
-    "@types/node": "^13.13.15",
-    "axios-mock-adapter": "^1.18.2",
+    "@types/node": "^13.13.30",
+    "axios-mock-adapter": "^1.19.0",
     "babel-jest": "^25.5.1",
     "jest": "^25.5.4",
-    "license-webpack-plugin": "^2.3.0",
+    "license-webpack-plugin": "^2.3.1",
     "ts-jest": "^25.5.1",
     "typedoc": "^0.17.8",
     "typescript": "^3.9.7",
-    "webpack": "^4.44.1",
+    "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
   },
   "keywords": [

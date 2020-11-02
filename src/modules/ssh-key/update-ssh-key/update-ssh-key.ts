@@ -6,7 +6,6 @@ export interface IUpdateSshKeyApiResponse {
 }
 
 export interface IUpdateSshKeyApiRequest {
-  id?: string | number;
   name: string;
   ssh_key_id: string | number;
 }
@@ -16,7 +15,6 @@ export type UpdateSshKeyResponse = IResponse<IUpdateSshKeyApiResponse>;
 export const updateSshKey = ({
   httpClient,
 }: IContext) => ({
-  id,
   name,
   ssh_key_id,
 }: IUpdateSshKeyApiRequest): Promise<Readonly<UpdateSshKeyResponse>> => {
@@ -24,7 +22,7 @@ export const updateSshKey = ({
   const body = {
     name,
   };
-  const url = `${path}/${ssh_key_id || id}`;
+  const url = `${path}/${ssh_key_id}`;
 
   return httpClient.put<IUpdateSshKeyApiResponse>(url, body);
 };

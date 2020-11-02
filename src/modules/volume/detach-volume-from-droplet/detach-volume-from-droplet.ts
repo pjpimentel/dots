@@ -7,7 +7,6 @@ export interface IDetachVolumeToDropletApiResponse {
 
 export interface IDetachVolumeToDropletApiRequest {
   droplet_id: number;
-  id?: string;
   region?: string;
   volume_id: string;
 }
@@ -18,14 +17,13 @@ export const detachVolumeFromDroplet = ({
   httpClient,
 }: IContext) => ({
   droplet_id,
-  id,
   region,
   volume_id,
 }: IDetachVolumeToDropletApiRequest): Promise<Readonly<DetachVolumeToDropletResponse>> => {
   const path = '/volumes';
   const type = 'detach';
   const body = {droplet_id, region, type};
-  const url = `${path}/${volume_id || id}/actions`;
+  const url = `${path}/${volume_id}/actions`;
 
   return httpClient.post<IDetachVolumeToDropletApiResponse>(url, body);
 };

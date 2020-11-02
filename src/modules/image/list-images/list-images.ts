@@ -30,9 +30,17 @@ export const listImages = ({
   const hasPrivateFilter = typeof user_images === 'boolean';
   const hasTagFilter = typeof tag_name === 'string';
 
-  if (hasTypeFilter) Object.assign(queryParams, {type});
-  if (hasPrivateFilter) Object.assign(queryParams, {private: user_images});
-  if (hasTagFilter) Object.assign(queryParams, {tag_name});
+  if (hasTypeFilter) {
+    Object.assign(queryParams, {type});
+  }
+
+  if (hasPrivateFilter) {
+    Object.assign(queryParams, {private: user_images});
+  }
+
+  if (hasTagFilter) {
+    Object.assign(queryParams, {tag_name});
+  }
 
   const url = `${path}`;
 

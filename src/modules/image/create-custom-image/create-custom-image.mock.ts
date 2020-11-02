@@ -1,7 +1,6 @@
 export const request = {
   "headers": {
     "Content-Type": "application/json",
-    "Authorization": "Bearer bearer-token"
   },
   "body": {
     "name": "ubuntu-18.04-minimal",

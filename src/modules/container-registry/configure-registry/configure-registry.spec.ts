@@ -6,7 +6,7 @@ import * as MOCK from './configure-registry.mock';
 
 describe('container-registry', () => {
   const URL = '/registry';
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onPost(URL, MOCK.request.body).reply(
     MOCK.response.headers.status,

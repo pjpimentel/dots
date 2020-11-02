@@ -8,7 +8,7 @@ describe('database', () => {
   const DATABASE_CLUSTER_ID = 'db-id';
   const READ_ONLY_REPLICA_NAME = MOCK.response.body.replica.name;
   const URL = `/databases/${DATABASE_CLUSTER_ID}/replicas/${READ_ONLY_REPLICA_NAME}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
     MOCK.response.headers.status,

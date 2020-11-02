@@ -6,7 +6,7 @@ export interface IUserBillingAddress {
   country_iso2_code: string;
   created_at: string;
   updated_at: string;
-};
+}
 export interface IInvoiceOverage {
   name: string;
   amount: string;
@@ -41,4 +41,4 @@ export interface IInvoiceSummary {
   overages: IInvoiceOverage;
   taxes: IInvoiceTaxes;
   credits_and_adjustments: IInvoiceCreditAdjustments;
-};
+}

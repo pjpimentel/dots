@@ -7,7 +7,7 @@ import * as MOCK from './assign-ip-to-droplet.mock';
 describe('floating-ip', () => {
   const IP_ADDRESS = 'ip-address';
   const URL = `/floating_ips/${IP_ADDRESS}/actions`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onPost(URL, MOCK.request.body).reply(
     MOCK.response.headers.status,

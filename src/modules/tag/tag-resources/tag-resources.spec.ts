@@ -7,7 +7,7 @@ import * as MOCK from './tag-resources.mock';
 describe('tag', () => {
   const TAG_NAME = 'tag-name';
   const URL = `/tags/${TAG_NAME}/resources`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onPost(URL, MOCK.request.body).reply(
     MOCK.response.headers.status,

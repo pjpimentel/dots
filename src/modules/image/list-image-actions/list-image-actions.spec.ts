@@ -9,7 +9,7 @@ describe('image', () => {
   const PER_PAGE = 26;
   const IMAGE_ID = MOCK.response.body.actions[0].resource_id;
   const URL = `/images/${IMAGE_ID}/actions`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
     MOCK.response.headers.status,

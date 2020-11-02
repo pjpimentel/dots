@@ -6,7 +6,7 @@ import * as MOCK from './get-default-project.mock';
 
 describe('project', () => {
   const URL = `/projects/default`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
     MOCK.response.headers.status,

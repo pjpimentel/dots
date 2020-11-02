@@ -9,7 +9,7 @@ describe('kubernetes', () => {
   const NODE_POOL_ID = 'node-pool-id';
   const NODE_ID = 'node-id';
   const URL = `/kubernetes/clusters/${KUBERNETES_CLUSTER_ID}/node_pools/${NODE_POOL_ID}/nodes/${NODE_ID}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onDelete(URL).reply(
     MOCK.response.headers.status,

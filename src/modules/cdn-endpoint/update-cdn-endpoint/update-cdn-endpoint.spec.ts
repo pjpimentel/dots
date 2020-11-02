@@ -6,7 +6,7 @@ import * as MOCK from './update-cdn-endpoint.mock';
 
 describe('cdn-endpoint', () => {
   const URL = `/cdn/endpoints/${MOCK.response.body.endpoint.id}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onPut(URL, MOCK.request.body).reply(
     MOCK.response.headers.status,

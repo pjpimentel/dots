@@ -22,7 +22,9 @@ export const listDroplets = ({
   const queryParams = {page, per_page};
   const hasTagnameFilter = typeof tag_name === 'string';
 
-  if (hasTagnameFilter) Object.assign(queryParams, {tag_name});
+  if (hasTagnameFilter) {
+    Object.assign(queryParams, {tag_name});
+  }
 
   const url = `${path}`;
 

@@ -7,7 +7,7 @@ import * as MOCK from './delete-project.mock';
 describe('project', () => {
   const PROJECT_ID = 'my-project';
   const URL = `/projects/${PROJECT_ID}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onDelete(URL).reply(
     MOCK.response.headers.status,

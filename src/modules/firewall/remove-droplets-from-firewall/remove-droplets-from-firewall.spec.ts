@@ -7,7 +7,7 @@ import * as MOCK from './remove-droplets-from-firewall.mock';
 describe('firewall', () => {
   const FIREWALL_ID = 'firewall-id';
   const URL = `/firewalls/${FIREWALL_ID}/droplets`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onDelete(URL, MOCK.request.body).reply(
     MOCK.response.headers.status,

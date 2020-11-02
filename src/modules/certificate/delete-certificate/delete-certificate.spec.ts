@@ -7,7 +7,7 @@ import * as MOCK from './delete-certificate.mock';
 describe('certificate', () => {
   const CERTIFICATE_ID = 'my-certificate';
   const URL = `/certificates/${CERTIFICATE_ID}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onDelete(URL).reply(
     MOCK.response.headers.status,

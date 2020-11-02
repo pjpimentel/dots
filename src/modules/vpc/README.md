@@ -5,10 +5,11 @@
 ```javascript
 try {
   const input = {
+    description: '', // string
+    ip_range: '', // string
+    is_default: true, // bool
     name: '', // string
     region: '', // string
-    ip_range: '', // string
-    description: '', // string
   };
   const {data:{vpc}} = await dots.vpc.createVpc(input)
   console.log(vpc);
@@ -51,8 +52,9 @@ try {
 ```javascript
 try {
   const input = {
-    name: '', // string
     description: '', // string
+    is_default: true, // bool
+    name: '', // string
   };
   const {data:{vpc}} = await dots.vpc.updateVpc(input)
   console.log(vpc);

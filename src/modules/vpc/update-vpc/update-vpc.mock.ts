@@ -1,11 +1,11 @@
 export const request = {
   "headers": {
     "Content-Type": "application/json",
-    "Authorization": "Bearer bearer-token"
   },
   "body": {
     "name": "renamed-new-vpc",
-    "description": "A new description"
+    "description": "A new description",
+    "default": true
   },
 };
 export const response = {
