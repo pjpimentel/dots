@@ -2,6 +2,7 @@ import { IResponse, IContext } from '../../../types';
 import {
   IKubernetesClusterNodePool,
   IKubernetesClusterNodePoolLabels,
+  IKubernetesClusterNodePoolTaint,
 } from '../';
 
 export interface ICreateNodePoolApiResponse {
@@ -12,12 +13,13 @@ export interface ICreateNodePoolApiRequest {
   auto_scale?: boolean;
   count: number;
   kubernetes_cluster_id: string;
+  labels?: IKubernetesClusterNodePoolLabels;
   max_nodes?: number;
   min_nodes?: number;
   name: string;
   size: string;
   tags?: string[];
-  labels?: IKubernetesClusterNodePoolLabels;
+  taints?: IKubernetesClusterNodePoolTaint[];
 }
 
 export type CreateNodePoolResponse = IResponse<ICreateNodePoolApiResponse>;
@@ -34,6 +36,7 @@ export const createNodePool = ({
   name,
   size,
   tags,
+  taints,
 }: ICreateNodePoolApiRequest): Promise<Readonly<CreateNodePoolResponse>> => {
   const path = '/kubernetes/clusters';
   const body = {
@@ -45,6 +48,7 @@ export const createNodePool = ({
     name,
     size,
     tags,
+    taints,
   };
   const url = `${path}/${kubernetes_cluster_id}/node_pools`;
 

@@ -1,19 +1,23 @@
 import { IResponse, IContext } from '../../../types';
 import { IKubernetesCluster } from '..';
-import { IKubernetesClusterMaintenancePolicy } from '../types';
+import {
+  IKubernetesClusterMaintenancePolicy,
+  IKubernetesClusterNodePoolTaint,
+} from '../types';
 
 export interface ICreateKubernetesClusterApiResponse {
   kubernetes_cluster: IKubernetesCluster;
 }
 
 export interface ICreateKubernetesClusterNodePoolApiRequest {
-  size: string;
-  name: string;
-  count: number;
-  tags?: string[];
   auto_scale?: boolean;
-  min_nodes?: number;
+  count: number;
   max_nodes?: number;
+  min_nodes?: number;
+  name: string;
+  size: string;
+  tags?: string[];
+  taints?: IKubernetesClusterNodePoolTaint[];
 }
 
 export interface ICreateKubernetesClusterApiRequest {

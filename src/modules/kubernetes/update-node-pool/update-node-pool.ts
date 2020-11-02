@@ -2,18 +2,20 @@ import { IResponse, IContext } from '../../../types';
 import {
   IKubernetesClusterNodePool,
   IKubernetesClusterNodePoolLabels,
+  IKubernetesClusterNodePoolTaint,
 } from '../';
 
 export interface IUpdateNodePoolApiRequest {
-  kubernetes_cluster_id: string;
-  node_pool_id: string;
-  name: string;
-  count: number;
-  tags?: string[];
   auto_scale?: boolean;
-  min_nodes?: number;
-  max_nodes?: number;
+  count: number;
+  kubernetes_cluster_id: string;
   labels?: IKubernetesClusterNodePoolLabels;
+  max_nodes?: number;
+  min_nodes?: number;
+  name: string;
+  node_pool_id: string;
+  tags?: string[];
+  taints?: IKubernetesClusterNodePoolTaint[];
 }
 export interface IUpdateNodePoolApiResponse {
   node_pool: IKubernetesClusterNodePool;
@@ -33,6 +35,7 @@ export const updateNodePool = ({
   name,
   node_pool_id,
   tags,
+  taints,
 }: IUpdateNodePoolApiRequest): Promise<Readonly<UpdateNodePoolResponse>> => {
   const path = '/kubernetes/clusters';
   const body = {
@@ -43,6 +46,7 @@ export const updateNodePool = ({
     min_nodes,
     name,
     tags,
+    taints,
   };
   const url = `${path}/${kubernetes_cluster_id}/node_pools/${node_pool_id}`;
 
