@@ -7,7 +7,7 @@ import * as MOCK from './configure-database-cluster-eviction-policy.mock';
 describe('database', () => {
   const DATABASE_CLUSTER_ID = 'database-cluster-id';
   const URL = `/databases/${DATABASE_CLUSTER_ID}/eviction_policy`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onPut(URL, MOCK.request.body).reply(
     MOCK.response.headers.status,

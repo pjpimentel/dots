@@ -6,7 +6,7 @@ import * as MOCK from './get-docker-credentials.mock';
 
 describe('container-registry', () => {
   const URL = `/registry/docker-credentials`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
     MOCK.response.headers.status,

@@ -6,7 +6,7 @@ import * as MOCK from './create-custom-image.mock';
 
 describe('image', () => {
   const URL = '/images';
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onPost(URL, MOCK.request.body).reply(
     MOCK.response.headers.status,

@@ -7,7 +7,7 @@ import * as MOCK from './delete-vpc.mock';
 describe('vpc', () => {
   const VPC_ID = 'my-vpc';
   const URL = `/vpcs/${VPC_ID}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onDelete(URL).reply(
     MOCK.response.headers.status,

@@ -7,7 +7,7 @@ import * as MOCK from './delete-snapshot.mock';
 describe('snapshot', () => {
   const IMAGE_ID = 10001;
   const URL = `/snapshots/${IMAGE_ID}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onDelete(URL).reply(
     MOCK.response.headers.status,

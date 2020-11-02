@@ -8,7 +8,7 @@
   "scripts": {
     "build": "rm -rf ./dist && tsc",
     "build:browser": "webpack --mode=production",
-    "test": "jest",
+    "test": "export TEST_TOKEN=bearer-token && jest",
     "build:test": "jest",
     "docs": "typedoc --json dist/docs.json --mode modules",
     "version": "npm version --no-git-tag-version "

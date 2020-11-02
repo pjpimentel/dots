@@ -7,7 +7,7 @@ import * as MOCK from './retry-droplet-destroy.mock';
 describe('droplet', () => {
   const DROPLET_ID = 123;
   const URL = `/droplets/${DROPLET_ID}/destroy_with_associated_resources/retry`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onPost(URL).reply(
     MOCK.response.headers.status,

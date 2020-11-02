@@ -7,7 +7,7 @@ import * as MOCK from './get-certificate.mock';
 describe('certificate', () => {
   const CERTIFICATE_ID = MOCK.response.body.certificate.id;
   const URL = `/certificates/${CERTIFICATE_ID}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
     MOCK.response.headers.status,

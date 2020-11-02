@@ -7,7 +7,7 @@ import * as MOCK from './delete-cdn-endpoint.mock';
 describe('cdn-endpoint', () => {
   const CDN_ENDPOINT_ID = 'my-id';
   const URL = `/cdn/endpoints/${CDN_ENDPOINT_ID}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onDelete(URL).reply(
     MOCK.response.headers.status,

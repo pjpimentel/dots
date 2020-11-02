@@ -7,7 +7,7 @@ import * as MOCK from './delete-tag.mock';
 describe('tag', () => {
   const TAG_NAME = 'my-tag';
   const URL = `/tags/${TAG_NAME}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onDelete(URL).reply(
     MOCK.response.headers.status,

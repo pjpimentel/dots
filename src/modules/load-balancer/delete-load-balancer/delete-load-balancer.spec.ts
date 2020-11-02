@@ -7,7 +7,7 @@ import * as MOCK from './delete-load-balancer.mock';
 describe('load-balancer', () => {
   const LOAD_BALANCER_ID = 'my-loadBalancer-id';
   const URL = `/load_balancers/${LOAD_BALANCER_ID}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onDelete(URL).reply(
     MOCK.response.headers.status,

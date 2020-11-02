@@ -8,7 +8,7 @@ describe('cdn-endpoint', () => {
   const PAGE = 3;
   const PER_PAGE = 26;
   const URL = '/cdn/endpoints';
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
     MOCK.response.headers.status,

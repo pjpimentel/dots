@@ -7,7 +7,7 @@ import * as MOCK from './upgrade-kubernetes-cluster.mock';
 describe('kubernetes', () => {
   const KUBERNETES_CLUSTER_ID = 'cluster-id';
   const URL = `/kubernetes/clusters/${KUBERNETES_CLUSTER_ID}/upgrade`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onPost(URL, MOCK.request.body).reply(
     MOCK.response.headers.status,

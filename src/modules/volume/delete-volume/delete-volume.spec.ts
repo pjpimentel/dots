@@ -7,7 +7,7 @@ import * as MOCK from './delete-volume.mock';
 describe('volume', () => {
   const VOLUME_ID = 'my-volume-id';
   const URL = `/volumes/${VOLUME_ID}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onDelete(URL).reply(
     MOCK.response.headers.status,

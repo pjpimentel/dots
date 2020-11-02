@@ -8,7 +8,7 @@ describe('domain', () => {
   const DOMAIN_NAME = 'domain-name';
   const DOMAIN_RECORD_ID = MOCK.response.body.domain_record.id;
   const URL = `/domains/${DOMAIN_NAME}/records/${DOMAIN_RECORD_ID}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
     MOCK.response.headers.status,

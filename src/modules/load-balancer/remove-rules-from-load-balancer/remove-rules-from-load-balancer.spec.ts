@@ -7,7 +7,7 @@ import * as MOCK from './remove-rules-from-load-balancer.mock';
 describe('load-balancer', () => {
   const LOAD_BALANCER_ID = 'load-balancer-id';
   const URL = `/load_balancers/${LOAD_BALANCER_ID}/forwarding_rules`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onDelete(URL, MOCK.request.body).reply(
     MOCK.response.headers.status,

@@ -7,7 +7,7 @@ import * as MOCK from './destroy-droplet-and-all-associated-resources.mock';
 describe('droplet', () => {
   const DROPLET_ID = 123;
   const URL = `/droplets/${DROPLET_ID}/destroy_with_associated_resources/dangerous`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onDelete(URL, undefined, MOCK.request.headers).reply(
     MOCK.response.headers.status,

@@ -7,7 +7,7 @@ import * as MOCK from './get-firewall.mock';
 describe('firewall', () => {
   const FIREWALL_ID = MOCK.response.body.firewall.id;
   const URL = `/firewalls/${FIREWALL_ID}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
     MOCK.response.headers.status,

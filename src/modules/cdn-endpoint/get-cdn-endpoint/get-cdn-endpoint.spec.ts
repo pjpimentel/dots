@@ -7,7 +7,7 @@ import * as MOCK from './get-cdn-endpoint.mock';
 describe('cdn-endpoint', () => {
   const CDN_ENDPOINT_ID = MOCK.response.body.endpoint.id;
   const URL = `/cdn/endpoints/${CDN_ENDPOINT_ID}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
     MOCK.response.headers.status,

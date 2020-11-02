@@ -9,7 +9,7 @@ describe('database', () => {
   const PER_PAGE = 26;
   const DATABASE_CLUSTER_ID = 'id';
   const URL = `/databases/${DATABASE_CLUSTER_ID}/backups`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
     MOCK.response.headers.status,

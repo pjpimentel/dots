@@ -6,7 +6,7 @@ import * as MOCK from './get-snapshot.mock';
 
 describe('snapshot', () => {
   const URL_BY_ID = `/snapshots/${MOCK.response.body.snapshot.id}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onGet(URL_BY_ID).reply(
     MOCK.response.headers.status,

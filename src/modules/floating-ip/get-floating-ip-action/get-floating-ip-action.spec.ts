@@ -8,7 +8,7 @@ describe('floating-ip', () => {
   const IP_ADDRESS = 'ip-address';
   const ACTION_ID = MOCK.response.body.action.id;
   const URL = `/floating_ips/${IP_ADDRESS}/actions/${ACTION_ID}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
     MOCK.response.headers.status,

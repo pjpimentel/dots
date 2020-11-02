@@ -7,7 +7,7 @@ import * as MOCK from './get-project.mock';
 describe('project', () => {
   const PROJECT_ID = MOCK.response.body.project.id;
   const URL = `/projects/${PROJECT_ID}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
     MOCK.response.headers.status,

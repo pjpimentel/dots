@@ -7,7 +7,7 @@ import * as MOCK from './attach-volume-to-droplet.mock';
 describe('volume', () => {
   const VOLUME_ID = MOCK.response.body.action.resource_id;
   const URL = `/volumes/${VOLUME_ID}/actions`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onPost(URL, MOCK.request.body).reply(
     MOCK.response.headers.status,

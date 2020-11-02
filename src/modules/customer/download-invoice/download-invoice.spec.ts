@@ -7,7 +7,7 @@ import * as MOCK from './download-invoice.mock';
 describe('customer', () => {
   const INVOICE_UUID = '123-123-123-123';
   const URL = `/customers/my/invoices/${INVOICE_UUID}/csv`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
     MOCK.response.headers.status,

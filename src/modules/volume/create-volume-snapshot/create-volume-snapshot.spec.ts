@@ -8,7 +8,7 @@ describe('volume', () => {
   const VOLUME_ID = MOCK.response.body.snapshot.resource_id;
   const SNAPSHOT_NAME = MOCK.request.body.name;
   const URL = `/volumes/${VOLUME_ID}/snapshots`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onPost(URL, MOCK.request.body).reply(
     MOCK.response.headers.status,

@@ -9,7 +9,7 @@ describe('volume', () => {
   const PER_PAGE = 26;
   const VOLUME_ID = MOCK.response.body.snapshots[0].resource_id;
   const URL = `/volumes/${VOLUME_ID}/snapshots`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
     MOCK.response.headers.status,

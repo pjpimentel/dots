@@ -7,7 +7,7 @@ import * as MOCK from './get-database-cluster.mock';
 describe('database', () => {
   const DATABASE_CLUSTER_ID = MOCK.response.body.database.id;
   const URL = `/databases/${DATABASE_CLUSTER_ID}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
     MOCK.response.headers.status,

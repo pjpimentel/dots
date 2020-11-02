@@ -7,7 +7,7 @@ import * as MOCK from './destroy-ssh-key.mock';
 describe('ssh-key', () => {
   const KEY_ID = 'key-id';
   const URL = `/account/keys/${KEY_ID}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onDelete(URL).reply(
     MOCK.response.headers.status,

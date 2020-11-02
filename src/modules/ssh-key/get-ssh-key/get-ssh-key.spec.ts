@@ -7,7 +7,7 @@ import * as MOCK from './get-ssh-key.mock';
 describe('ssh-key', () => {
   const KEY_ID = MOCK.response.body.ssh_key.id;
   const URL = `/account/keys/${KEY_ID}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
     MOCK.response.headers.status,

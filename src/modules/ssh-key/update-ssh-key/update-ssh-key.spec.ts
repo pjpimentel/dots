@@ -6,7 +6,7 @@ import * as MOCK from './update-ssh-key.mock';
 
 describe('ssh-key', () => {
   const URL = `/account/keys/${MOCK.response.body.ssh_key.id}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onPut(URL, MOCK.request.body).reply(
     MOCK.response.headers.status,

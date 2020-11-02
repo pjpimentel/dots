@@ -6,7 +6,7 @@ import * as MOCK from './get-floating-ip.mock';
 
 describe('floating-ip', () => {
   const URL = `/floating_ips/${MOCK.response.body.floating_ip.ip}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
     MOCK.response.headers.status,

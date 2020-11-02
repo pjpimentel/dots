@@ -8,7 +8,7 @@ describe('image', () => {
   const IMAGE_ID = MOCK.response.body.action.resource_id;
   const ACTION_ID = MOCK.response.body.action.id;
   const URL = `/images/${IMAGE_ID}/actions/${ACTION_ID}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
     MOCK.response.headers.status,

@@ -7,7 +7,7 @@ import * as MOCK from './delete-droplets-by-tag.mock';
 describe('droplet', () => {
   const TAG_NAME = "tagName";
   const URL = `/droplets`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onDelete(URL).reply(
     MOCK.response.headers.status,

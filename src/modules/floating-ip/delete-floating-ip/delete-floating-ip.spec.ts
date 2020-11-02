@@ -7,7 +7,7 @@ import * as MOCK from './delete-floating-ip.mock';
 describe('floating-ip', () => {
   const IP_ADDRESS = 'my-floating-ip';
   const URL = `/floating_ips/${IP_ADDRESS}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onDelete(URL).reply(
     MOCK.response.headers.status,

@@ -7,7 +7,7 @@ import * as MOCK from './delete-domain.mock';
 describe('domain', () => {
   const DOMAIN_NAME = 'my-domain';
   const URL = `/domains/${DOMAIN_NAME}`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onDelete(URL).reply(
     MOCK.response.headers.status,

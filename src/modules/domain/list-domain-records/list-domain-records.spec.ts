@@ -9,7 +9,7 @@ describe('domain', () => {
   const PER_PAGE = 26;
   const DOMAIN_NAME = 'domain-name'
   const URL = `/domains/${DOMAIN_NAME}/records`;
-  const TOKEN = 'bearer-token';
+  const TOKEN = process.env.TEST_TOKEN as string;
   const mock = new MockAdapter(axios);
   mock.onGet(URL).reply(
     MOCK.response.headers.status,
