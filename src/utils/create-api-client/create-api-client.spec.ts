@@ -72,7 +72,7 @@ describe('utils', () => {
     it('should create a valid instance', () => {
       const _createApiClient = createApiClient({createContext, modules});
       const endpoint = 'https://api.digitalocean.com/v2/test-match';
-      const token = 'my-token';
+      const token = process.env.TEST_TOKEN as string;
       const requestTimeoutInMs = 2323;
       const client = _createApiClient({
         endpoint,

@@ -2,9 +2,11 @@
 
 ## (wip) **3.5.0** = 2020-11-XX
 
-## **added**
+## **changes**
 
-* apps module
+* npm audit + dependencies updates
+* add app module
+* add 1clickapps module
 
 ## **3.4.0** - 2020-11-01
 

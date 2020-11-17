@@ -4,6 +4,7 @@
     "allowUnreachableCode": false,
     "declaration": true,
     "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
     "noImplicitAny": true,
     "outDir": "dist",

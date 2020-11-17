@@ -1,5 +1,6 @@
 import * as account from './account';
 import * as action from './action';
+import * as app from './app';
 import * as cdnEndpoint from './cdn-endpoint';
 import * as certificate from './certificate';
 import * as containerRegistry from './container-registry';
@@ -24,6 +25,7 @@ import * as vpc from './vpc';
 export {
   account,
   action,
+  app,
   cdnEndpoint,
   certificate,
   containerRegistry,

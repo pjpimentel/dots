@@ -271,11 +271,17 @@ export const createApiClient = ({
     listVpcs: modules.vpc.listVpcs(context),
     updateVpc: modules.vpc.updateVpc(context),
   });
+  const app = Object.freeze({
+    createApp: modules.app.createApp(context),
+    getApp: modules.app.getApp(context),
+    listApps: modules.app.listApps(context),
+  });
 
   return Object.freeze({
     _options,
     account,
     action,
+    app,
     cdnEndpoint,
     certificate,
     containerRegistry,
