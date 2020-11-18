@@ -273,8 +273,11 @@ export const createApiClient = ({
   });
   const app = Object.freeze({
     createApp: modules.app.createApp(context),
+    deleteApp: modules.app.deleteApp(context),
     getApp: modules.app.getApp(context),
     listApps: modules.app.listApps(context),
+    runAppDetection: modules.app.runAppDetection(context),
+    updateApp: modules.app.updateApp(context),
   });
 
   return Object.freeze({

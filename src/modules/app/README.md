@@ -45,3 +45,52 @@ try {
   console.log(error);
 }
 ```
+
+## update-app
+[original documentation](https://developers.digitalocean.com/documentation/v2/#update-an-app)
+
+```javascript
+try {
+  const input = {
+    spec: {}, // IAppSpec
+    app_id: '', // string
+  };
+  const {data:{app}} = await dots.app.updateApp(input);
+  console.log(app);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## delete-app
+[original documentation](https://developers.digitalocean.com/documentation/v2/#delete-an-app)
+
+```javascript
+try {
+  const input = {
+    app_id: '', // string
+  };
+  const {status} = await dots.app.deleteApp(input);
+  console.log(status);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## run-app-detection
+[original documentation](https://developers.digitalocean.com/documentation/v2/#run-app-detection)
+
+```javascript
+try {
+  const input = {
+    git: {}, // GitSpec
+    github: {}, // GithubSpec
+    commit_sha: '', // strin
+    component_type: '', // string
+  };
+  const {data:{components}} = await dots.app.runAppDetection(input);
+  console.log(components);
+} catch (error) {
+  console.log(error);
+}
+```

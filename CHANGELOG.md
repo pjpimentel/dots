@@ -7,6 +7,7 @@
 * npm audit + dependencies updates
 * add app module
 * add 1clickapps module
+* removed node 8 test support
 
 ## **3.4.0** - 2020-11-01
 
