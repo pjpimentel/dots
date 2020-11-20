@@ -95,7 +95,7 @@ try {
 }
 ```
 
-## list-app-deploymenyts
+## list-app-deployments
 [original documentation](https://developers.digitalocean.com/documentation/v2/#list-app-deployments)
 
 ```javascript

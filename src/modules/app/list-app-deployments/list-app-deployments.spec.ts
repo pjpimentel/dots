@@ -1,7 +1,7 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { createContext } from '../../../utils';
-import {ListAppDeployments} from './list-app-deployments';
+import {listAppDeployments} from './list-app-deployments';
 import * as MOCK from './list-app-deployments.mock';
 
 describe('app', () => {
@@ -24,14 +24,14 @@ describe('app', () => {
   });
   describe('list-app-deployments', () => {
     it('should be a fn', () => {
-      expect(typeof ListAppDeployments).toBe('function');
+      expect(typeof listAppDeployments).toBe('function');
     });
     it('should return a fn', () => {
-      expect(typeof ListAppDeployments(context)).toBe('function');
+      expect(typeof listAppDeployments(context)).toBe('function');
     });
     it('should return a valid response', async () => {
-      const _ListAppDeployments = ListAppDeployments(context);
-      const response = await _ListAppDeployments({
+      const _listAppDeployments = listAppDeployments(context);
+      const response = await _listAppDeployments({
         app_id: MOCK.response.body.deployments[0].id,
         page: PAGE,
         per_page: PER_PAGE,
@@ -67,8 +67,8 @@ describe('app', () => {
     it('should have default parameters', async () => {
       const defaultPage = 1;
       const defaultper_page = 25;
-      const _ListAppDeployments = ListAppDeployments(context);
-      const response = await _ListAppDeployments({
+      const _listAppDeployments = listAppDeployments(context);
+      const response = await _listAppDeployments({
         app_id: MOCK.response.body.deployments[0].id,
       });
       Object.assign(response, { request: mock.history.get[0]});

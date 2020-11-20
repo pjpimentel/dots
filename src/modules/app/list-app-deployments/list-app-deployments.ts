@@ -11,7 +11,7 @@ export interface IListAppDeploymentsApiRequest extends IListRequest {
 
 export type ListAppDeploymentsResponse = IResponse<IListAppDeploymentsApiResponse>;
 
-export const ListAppDeployments = ({
+export const listAppDeployments = ({
   httpClient,
 }: IContext) => ({
   app_id,
