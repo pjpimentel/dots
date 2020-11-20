@@ -1,8 +1,8 @@
-import { IAppServiceRoute, IGithubSourceSpec } from ".";
+import { IAppServiceRoute, IGithubSource } from ".";
 
 export interface IAppSpecService {
   environment_slug: string;
-  github: IGithubSourceSpec;
+  github: IGithubSource;
   instance_count: number;
   instance_size_slug: string;
   name: string;
