@@ -1,5 +1,5 @@
 import { IResponse, IContext } from '../../../types';
-import { IApp, IGithubSpec, IGitSpec } from '..';
+import { IApp, IGithubSource, IGitSource } from '..';
 
 export interface IRunAppDetectionComponent {
   environment_slug: string;
@@ -15,8 +15,8 @@ export interface IRunAppDetectionApiResponse {
 export interface IRunAppDetectionApiRequest {
   commit_sha?: string;
   component_type?: string;
-  git?: GitSpec;
-  github?: GithubSpec;
+  git?: IGitSource;
+  github?: IGithubSource;
 }
 
 export type RunAppDetectionResponse = IResponse<IRunAppDetectionApiResponse>;

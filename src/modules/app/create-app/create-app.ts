@@ -1,5 +1,5 @@
 import { IResponse, IContext } from '../../../types';
-import { IApp } from '..';
+import { IApp, IAppSpec } from '..';
 
 export interface ICreateAppApiResponse {
   app: IApp;
