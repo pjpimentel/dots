@@ -94,3 +94,20 @@ try {
   console.log(error);
 }
 ```
+
+## list-app-deploymenyts
+[original documentation](https://developers.digitalocean.com/documentation/v2/#list-app-deployments)
+
+```javascript
+try {
+  const input = {
+    app_id: '', // string
+    page: 1, // number
+    per_page: 100, // number
+  };
+  const {data:{deployments}} = await dots.apps.listAppDeployments(input);
+  console.log(deployments);
+} catch (error) {
+  console.log(error);
+}
+```

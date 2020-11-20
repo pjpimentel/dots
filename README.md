@@ -80,7 +80,8 @@ js.js
     1. [list-apps](src/modules/app/README.md#list-apps)
     1. [run-app-detection](src/modules/app/README.md#run-app-detection)
     1. [update-app](src/modules/app/README.md#update-app)
-    <!-- 1. 1. [list-app-deployments-src/modules/app/README.md#list-app-deployments)
+    1. [list-app-deployments](src/modules/app/README.md#list-app-deployments)
+    <!-- 1.
     1. [create-deployment-src/modules/app/README.md#create-deployment)
     1. [get-deployment-logs-src/modules/app/README.md#get-deployment-logs)
     1. [get-aggregated-deployment-logs-src/modules/app/README.md#get-aggregated-deployment-logs) -->
