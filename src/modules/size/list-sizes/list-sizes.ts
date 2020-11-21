@@ -14,8 +14,8 @@ export const listSizes = ({
   per_page = 25,
 }: IListRequest): Promise<Readonly<ListSizesResponse>> => {
   const path = '/sizes';
-  const queryParams = {page, per_page};
+  const query_params = {page, per_page};
   const url = `${path}`;
 
-  return httpClient.get<IListSizeApiResponse>(url, {params: queryParams});
+  return httpClient.get<IListSizeApiResponse>(url, {params: query_params});
 };

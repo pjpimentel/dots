@@ -29,11 +29,11 @@ export const doActionByDropletTag = ({
   type,
 }: IDoActionByDropletTagApiRequest): Promise<Readonly<DoActionByDropletTagResponse>> => {
   const path = '/droplets/actions';
-  const queryParams = {tag_name};
+  const query_params = {tag_name};
   const body = {type};
   const url = `${path}`;
 
   return httpClient.post<IDoActionByDropletTagApiResponse>(url, body, {
-    params: queryParams,
+    params: query_params,
   });
 };

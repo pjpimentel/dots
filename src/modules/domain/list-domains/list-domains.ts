@@ -14,8 +14,8 @@ export const listDomains = ({
   per_page = 25,
 }: IListRequest): Promise<Readonly<ListDomainsResponse>> => {
   const path = '/domains';
-  const queryParams = {page, per_page};
+  const query_params = {page, per_page};
   const url = `${path}`;
 
-  return httpClient.get<IListDomainsApiResponse>(url, {params: queryParams});
+  return httpClient.get<IListDomainsApiResponse>(url, {params: query_params});
 };

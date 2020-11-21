@@ -14,8 +14,8 @@ export const listFirewalls = ({
   per_page = 25,
 }: IListRequest): Promise<Readonly<ListFirewallsResponse>> => {
   const path = '/firewalls';
-  const queryParams = {page, per_page};
+  const query_params = {page, per_page};
   const url = `${path}`;
 
-  return httpClient.get<IListFirewallsApiResponse>(url, {params: queryParams});
+  return httpClient.get<IListFirewallsApiResponse>(url, {params: query_params});
 };

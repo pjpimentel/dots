@@ -27,8 +27,8 @@ export const listDatabaseClusterFirewallRules = ({
   database_cluster_id,
 }: IListDatabaseClusterFirewallRulesApiRequest): Promise<Readonly<ListDatabaseClusterFirewallRulesResponse>> => {
   const path = '/databases';
-  const queryParams = {page, per_page};
+  const query_params = {page, per_page};
   const url = `${path}/${database_cluster_id}/firewall`;
 
-  return httpClient.get<IListDatabaseClusterFirewallRulesApiResponse>(url, {params: queryParams});
+  return httpClient.get<IListDatabaseClusterFirewallRulesApiResponse>(url, {params: query_params});
 };

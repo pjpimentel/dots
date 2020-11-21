@@ -20,29 +20,19 @@ export const listImages = ({
 }: IContext) => ({
   page = 1,
   per_page = 25,
-  tag_name,
-  type,
-  user_images,
+  tag_name = undefined,
+  type = undefined,
+  user_images = undefined,
 }: IListImageApiRequest): Promise<Readonly<ListImagesResponse>> => {
   const path = '/images';
-  const queryParams = {page, per_page};
-  const hasTypeFilter = typeof type === 'string';
-  const hasPrivateFilter = typeof user_images === 'boolean';
-  const hasTagFilter = typeof tag_name === 'string';
-
-  if (hasTypeFilter) {
-    Object.assign(queryParams, {type});
-  }
-
-  if (hasPrivateFilter) {
-    Object.assign(queryParams, {private: user_images});
-  }
-
-  if (hasTagFilter) {
-    Object.assign(queryParams, {tag_name});
-  }
-
+  const query_params = {
+    page,
+    per_page,
+    private: user_images,
+    tag_name,
+    type,
+  };
   const url = `${path}`;
 
-  return httpClient.get<IListImageApiResponse>(url, {params: queryParams});
+  return httpClient.get<IListImageApiResponse>(url, {params: query_params});
 };

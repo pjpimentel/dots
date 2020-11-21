@@ -19,10 +19,10 @@ export const listDropletKernels = ({
   per_page = 25,
 }: IListDropletKernelsApiRequest): Promise<Readonly<ListDropletKernelsResponse>> => {
   const path = '/droplets';
-  const queryParams = {page, per_page};
+  const query_params = {page, per_page};
   const url = `${path}/${droplet_id}/kernels`;
 
   return httpClient.get<IListDropletKernelsApiResponse>(url, {
-    params: queryParams,
+    params: query_params,
   });
 };

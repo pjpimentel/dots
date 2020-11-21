@@ -23,8 +23,8 @@ export const listDatabaseClusterBackups = ({
   database_cluster_id,
 }: IListDatabaseClusterBackupsApiRequest): Promise<Readonly<ListDatabaseClusterBackupsResponse>> => {
   const path = '/databases';
-  const queryParams = {page, per_page};
+  const query_params = {page, per_page};
   const url = `${path}/${database_cluster_id}/backups`;
 
-  return httpClient.get<IListDatabaseClusterBackupsApiResponse>(url, {params: queryParams});
+  return httpClient.get<IListDatabaseClusterBackupsApiResponse>(url, {params: query_params});
 };

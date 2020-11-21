@@ -19,8 +19,8 @@ export const listReadOnlyReplicas = ({
   database_cluster_id,
 }: IListReadOnlyReplicasApiRequest): Promise<Readonly<ListReadOnlyReplicasResponse>> => {
   const path = '/databases';
-  const queryParams = {page, per_page};
+  const query_params = {page, per_page};
   const url = `${path}/${database_cluster_id}/replicas`;
 
-  return httpClient.get<IListReadOnlyReplicasApiResponse>(url, {params: queryParams});
+  return httpClient.get<IListReadOnlyReplicasApiResponse>(url, {params: query_params});
 };

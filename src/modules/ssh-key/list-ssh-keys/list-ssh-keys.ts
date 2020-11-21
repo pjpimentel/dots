@@ -14,8 +14,8 @@ export const listSshKeys = ({
   per_page = 25,
 }: IListRequest): Promise<Readonly<ListSshKeysResponse>> => {
   const path = '/account/keys';
-  const queryParams = {page, per_page};
+  const query_params = {page, per_page};
   const url = `${path}`;
 
-  return httpClient.get<IListSshKeysApiResponse>(url, {params: queryParams});
+  return httpClient.get<IListSshKeysApiResponse>(url, {params: query_params});
 };

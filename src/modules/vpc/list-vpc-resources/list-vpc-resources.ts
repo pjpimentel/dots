@@ -21,8 +21,8 @@ export const listVpcResources = ({
   vpc_id,
 }: IListVpcResourcesApiRequest): Promise<Readonly<ListVpcResourcesResponse>> => {
   const path = '/vpcs';
-  const queryParams = {page, per_page, resource_type};
+  const query_params = {page, per_page, resource_type};
   const url = `${path}/${vpc_id}/members`;
 
-  return httpClient.get<IListVpcResourcesApiResponse>(url, {params: queryParams});
+  return httpClient.get<IListVpcResourcesApiResponse>(url, {params: query_params});
 };
