@@ -222,6 +222,7 @@ export const createApiClient = ({
     updateProject: modules.project.updateProject(context),
   });
   const kubernetes = Object.freeze({
+    addContainerRegistry: modules.kubernetes.addContainerRegistry(context),
     createKubernetesCluster: modules.kubernetes.createKubernetesCluster(context),
     createNodePool: modules.kubernetes.createNodePool(context),
     deleteKubernetesCluster: modules.kubernetes.deleteKubernetesCluster(context),
@@ -236,6 +237,7 @@ export const createApiClient = ({
     listKubernetesClusterAvailableUpgrades: modules.kubernetes.listKubernetesClusterAvailableUpgrades(context),
     listKubernetesClusters: modules.kubernetes.listKubernetesClusters(context),
     listNodePools: modules.kubernetes.listNodePools(context),
+    removeContainerRegistry: modules.kubernetes.removeContainerRegistry(context),
     runClusterlintOnKubernetesCluster: modules.kubernetes.runClusterlintOnKubernetesCluster(context),
     updateKubernetesCluster: modules.kubernetes.updateKubernetesCluster(context),
     updateNodePool: modules.kubernetes.updateNodePool(context),

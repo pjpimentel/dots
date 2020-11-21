@@ -1,3 +1,4 @@
+export * from './add-container-registry/add-container-registry';
 export * from './create-kubernetes-cluster/create-kubernetes-cluster';
 export * from './create-node-pool/create-node-pool';
 export * from './delete-kubernetes-cluster/delete-kubernetes-cluster';
@@ -12,6 +13,7 @@ export * from './list-available-options-of-kubernetes/list-available-options-of-
 export * from './list-kubernetes-cluster-available-upgrades/list-kubernetes-cluster-available-upgrades';
 export * from './list-kubernetes-clusters/list-kubernetes-clusters';
 export * from './list-node-pools/list-node-pools';
+export * from './remove-container-registry/remove-container-registry';
 export * from './run-clusterlint-on-kubernetes-cluster/run-clusterlint-on-kubernetes-cluster';
 export * from './types';
 export * from './update-kubernetes-cluster/update-kubernetes-cluster';

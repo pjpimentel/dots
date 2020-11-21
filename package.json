@@ -10,7 +10,6 @@
     "build:browser": "webpack --mode=production",
     "test": "export TEST_TOKEN=bearer-token && jest",
     "build:test": "jest",
-    "docs": "typedoc --json dist/docs.json --mode modules",
     "version": "npm version --no-git-tag-version "
   },
   "repository": {
