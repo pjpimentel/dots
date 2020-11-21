@@ -1,4 +1,4 @@
-import { IForwardingRule, IHealthCheck, IStickSessions } from '.';
+import { IForwardingRule, IHealthCheck, IStickSessions, LoadBalancerStatus } from '.';
 
 export interface ILoadBalancer {
   algorithm: string;
@@ -13,7 +13,7 @@ export interface ILoadBalancer {
   name: string;
   redirect_http_to_https: boolean;
   region: string;
-  status: "new" | "active" | "errored" | string;
+  status: LoadBalancerStatus | string;
   sticky_sessions: IStickSessions;
   tag: string;
   vpc_uuid: string;

@@ -1,4 +1,5 @@
 import { IResponse, IContext } from '../../../types';
+import { AppDeploymentLogType } from '..';
 
 export interface IGetAggregatedAppDeploymentLogsApiResponse {
   historic_urls: string[];
@@ -11,7 +12,7 @@ export interface IGetAggregatedAppDeploymentLogsApiRequest {
   deployment_id: string;
   follow?: boolean;
   pod_connection_timeout?: string;
-  type?: 'BUILD' | 'DEPLOY' | 'RUN' | string;
+  type?: AppDeploymentLogType | string;
 }
 
 export type GetAggregatedAppDeploymentLogsResponse = IResponse<IGetAggregatedAppDeploymentLogsApiResponse>;

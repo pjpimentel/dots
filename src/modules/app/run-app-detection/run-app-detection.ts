@@ -1,12 +1,12 @@
 import { IResponse, IContext } from '../../../types';
-import { IApp, IGithubSource, IGitSource } from '..';
+import { IGithubSource, IGitSource } from '..';
 
 export interface IRunAppDetectionComponent {
   environment_slug: string;
   run_command: string;
   strategy: string;
   types: string[];
-};
+}
 
 export interface IRunAppDetectionApiResponse {
   components: IRunAppDetectionComponent[];

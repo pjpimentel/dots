@@ -9,7 +9,6 @@ export type ActionType = "power_cycle"
   | "power_on"
   | "power_off"
   | "shutdown"
-  | "enable_private_networking" // TODO: is deprecated?
   | "enable_ipv6"
   | "enable_backups"
   | "disable_backups"

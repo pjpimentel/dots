@@ -7,7 +7,7 @@ export interface IListAppDeploymentsApiResponse extends IListResponse {
 
 export interface IListAppDeploymentsApiRequest extends IListRequest {
   app_id: string;
-};
+}
 
 export type ListAppDeploymentsResponse = IResponse<IListAppDeploymentsApiResponse>;
 
