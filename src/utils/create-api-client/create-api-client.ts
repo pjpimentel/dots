@@ -272,9 +272,14 @@ export const createApiClient = ({
     updateVpc: modules.vpc.updateVpc(context),
   });
   const app = Object.freeze({
+    cancelAppDeployment: modules.app.cancelAppDeployment(context),
     createApp: modules.app.createApp(context),
+    createAppDeployment: modules.app.createAppDeployment(context),
     deleteApp: modules.app.deleteApp(context),
+    getAggregatedAppDeploymentLogs: modules.app.getAggregatedAppDeploymentLogs(context),
     getApp: modules.app.getApp(context),
+    getAppDeployment: modules.app.getAppDeployment(context),
+    getAppDeploymentLogs: modules.app.getAppDeploymentLogs(context),
     listAppDeployments: modules.app.listAppDeployments(context),
     listApps: modules.app.listApps(context),
     runAppDetection: modules.app.runAppDetection(context),

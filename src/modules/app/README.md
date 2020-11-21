@@ -111,3 +111,90 @@ try {
   console.log(error);
 }
 ```
+
+## get-app-deployment
+[original documentation](https://developers.digitalocean.com/documentation/v2/#retrieve-an-app-deployment)
+
+```javascript
+try {
+  const input = {
+    app_id: '', // string
+    deployment_id: '', // string
+  };
+  const {data:{deployment}} = await dots.apps.getAppDeployment(input);
+  console.log(deployment);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## create-app-deployment
+[original documentation](https://developers.digitalocean.com/documentation/v2/#create-an-app-deployment)
+
+```javascript
+try {
+  const input = {
+    app_id: '', // string
+  };
+  const {data:{deployment}} = await dots.apps.createAppDeployment(input);
+  console.log(deployment);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## cancel-app-deployment
+[original documentation](https://developers.digitalocean.com/documentation/v2/#cancel-a-deployment)
+
+```javascript
+try {
+  const input = {
+    app_id: '', // string
+    deployment_id: '', // string
+  };
+  const {data:{deployment}} = await dots.apps.cancelAppDeployment(input);
+  console.log(deployment);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## get-app-deployment-logs
+[original documentation](https://developers.digitalocean.com/documentation/v2/#retrieve-deployment-logs)
+
+```javascript
+try {
+  const input = {
+    app_id: '', // string
+    component_name: '', // string
+    deployment_id: '', // string
+    follow: true, // boolean
+    pod_connection_timeout: '', // string
+    type: '', // string
+  };
+  const {data:{live_url}} = await dots.apps.getAppDeploymentLogs(input);
+  console.log(live_url);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## get-aggregated-app-deployment-logs
+[original documentation](https://developers.digitalocean.com/documentation/v2/#retrieve-aggregate-deployment-logs)
+
+```javascript
+try {
+  const input = {
+    app_id: '', // string
+    component_name: '', // string
+    deployment_id: '', // string
+    follow: true, // boolean
+    pod_connection_timeout: '', // string
+    type: '', // string
+  };
+  const {data:{live_url}} = await dots.apps.getAggregatedAppDeploymentLogs(input);
+  console.log(live_url);
+} catch (error) {
+  console.log(error);
+}
+```

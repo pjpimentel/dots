@@ -1,6 +1,6 @@
 # changelog
 
-## (wip) **3.5.0** = 2020-11-XX
+## (wip) **3.5.0** = 2020-11-21
 
 ## **changes**
 
@@ -8,6 +8,7 @@
 * add app module
 * add 1clickapps module
 * removed node 8 test support
+* add k8s container registry methods
 
 ## **3.4.0** - 2020-11-01
 
