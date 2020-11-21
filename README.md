@@ -18,10 +18,9 @@
   import { createApiClient } from 'dots-wrapper';
   const myApiToken = 'my-long-token';
   const dots = createApiClient({token: myApiToken});
-  const { getAccount } = dots.account;
 
   const main = async () => {
-    const {data:{account}} = await getAccount();
+    const {data:{account}} = await dots.account.getAccount();
     console.log(account);
   };
 
@@ -33,10 +32,9 @@
   const {createApiClient} = require('dots-wrapper');
   const myApiToken = 'my-long-token';
   const dots = createApiClient({token: myApiToken});
-  const { getAccount } = dots.account;
 
   const main = async () => {
-    const {data:{account}} = await getAccount();
+    const {data:{account}} = await dots.account.getAccount();
     console.log(account);
   };
 
@@ -54,10 +52,9 @@ js.js
   const {createApiClient} = window.dots;
   const myApiToken = 'my-long-token';
   const dots = createApiClient({token: myApiToken});
-  const { getAccount } = dots.account;
 
   const main = async () => {
-    const {data:{account}} = await .getAccount();
+    const {data:{account}} = await dots.account.getAccount();
     console.log(account);
   };
 
@@ -66,8 +63,6 @@ js.js
 
 ## docs
 
-1. [1-click-apps](src/modules/1-click-apps/README.md#1-click-apps)
-    1. [get-account](src/modules/account/README.md#get-account)
 1. [account](src/modules/account/README.md#account)
     1. [get-account](src/modules/account/README.md#get-account)
 1. [action](src/modules/action/README.md#action)
