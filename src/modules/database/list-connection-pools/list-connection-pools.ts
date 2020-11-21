@@ -19,8 +19,8 @@ export const listConnectionPools = ({
   database_cluster_id,
 }: IListdConnectionPoolsApiRequest): Promise<Readonly<ListdConnectionPoolsResponse>> => {
   const path = '/databases';
-  const queryParams = {page, per_page};
+  const query_params = {page, per_page};
   const url = `${path}/${database_cluster_id}/pools`;
 
-  return httpClient.get<IListdConnectionPoolsApiResponse>(url, {params: queryParams});
+  return httpClient.get<IListdConnectionPoolsApiResponse>(url, {params: query_params});
 };

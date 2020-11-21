@@ -14,8 +14,8 @@ export const getKubernetesClusterKubeconfig = ({
   expiration_in_seconds,
 }: IGetKubernetesClusterKubeconfigApiRequest): Promise<Readonly<GetKubernetesClusterKubeconfigResponse>> => {
   const path = '/kubernetes/clusters';
-  const queryParams = {expiry_seconds: expiration_in_seconds};
+  const query_params = {expiry_seconds: expiration_in_seconds};
   const url = `${path}/${kubernetes_cluster_id}/kubeconfig`;
 
-  return httpClient.get<string>(url, {params: queryParams});
+  return httpClient.get<string>(url, {params: query_params});
 };

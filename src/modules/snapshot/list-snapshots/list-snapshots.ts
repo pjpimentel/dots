@@ -19,14 +19,12 @@ export const listSnapshots = ({
   resource_type = undefined,
 }: IListSnapshotApiRequest): Promise<Readonly<ListSnapshotsResponse>> => {
   const path = '/snapshots';
-  const queryParams = {page, per_page};
-  const hasResourceTypeFilter = typeof resource_type === 'string';
-
-  if (hasResourceTypeFilter) {
-    Object.assign(queryParams, {resource_type});
-  }
-
+  const query_params = {
+    page,
+    per_page,
+    resource_type,
+  };
   const url = `${path}`;
 
-  return httpClient.get<IListSnapshotApiResponse>(url, {params: queryParams});
+  return httpClient.get<IListSnapshotApiResponse>(url, {params: query_params});
 };

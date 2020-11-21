@@ -222,6 +222,7 @@ export const createApiClient = ({
     updateProject: modules.project.updateProject(context),
   });
   const kubernetes = Object.freeze({
+    addContainerRegistry: modules.kubernetes.addContainerRegistry(context),
     createKubernetesCluster: modules.kubernetes.createKubernetesCluster(context),
     createNodePool: modules.kubernetes.createNodePool(context),
     deleteKubernetesCluster: modules.kubernetes.deleteKubernetesCluster(context),
@@ -236,6 +237,7 @@ export const createApiClient = ({
     listKubernetesClusterAvailableUpgrades: modules.kubernetes.listKubernetesClusterAvailableUpgrades(context),
     listKubernetesClusters: modules.kubernetes.listKubernetesClusters(context),
     listNodePools: modules.kubernetes.listNodePools(context),
+    removeContainerRegistry: modules.kubernetes.removeContainerRegistry(context),
     runClusterlintOnKubernetesCluster: modules.kubernetes.runClusterlintOnKubernetesCluster(context),
     updateKubernetesCluster: modules.kubernetes.updateKubernetesCluster(context),
     updateNodePool: modules.kubernetes.updateNodePool(context),
@@ -271,11 +273,26 @@ export const createApiClient = ({
     listVpcs: modules.vpc.listVpcs(context),
     updateVpc: modules.vpc.updateVpc(context),
   });
+  const app = Object.freeze({
+    cancelAppDeployment: modules.app.cancelAppDeployment(context),
+    createApp: modules.app.createApp(context),
+    createAppDeployment: modules.app.createAppDeployment(context),
+    deleteApp: modules.app.deleteApp(context),
+    getAggregatedAppDeploymentLogs: modules.app.getAggregatedAppDeploymentLogs(context),
+    getApp: modules.app.getApp(context),
+    getAppDeployment: modules.app.getAppDeployment(context),
+    getAppDeploymentLogs: modules.app.getAppDeploymentLogs(context),
+    listAppDeployments: modules.app.listAppDeployments(context),
+    listApps: modules.app.listApps(context),
+    runAppDetection: modules.app.runAppDetection(context),
+    updateApp: modules.app.updateApp(context),
+  });
 
   return Object.freeze({
     _options,
     account,
     action,
+    app,
     cdnEndpoint,
     certificate,
     containerRegistry,

@@ -23,7 +23,7 @@ export const listDomainRecords = ({
   type,
 }: IListDomainRecordsRequest): Promise<Readonly<ListDomainRecordsResponse>> => {
   const path = '/domains';
-  const queryParams = {
+  const query_params = {
     name,
     page,
     per_page,
@@ -31,5 +31,5 @@ export const listDomainRecords = ({
   };
   const url = `${path}/${domain_name}/records`;
 
-  return httpClient.get<IListDomainRecordsApiResponse>(url, {params: queryParams});
+  return httpClient.get<IListDomainRecordsApiResponse>(url, {params: query_params});
 };

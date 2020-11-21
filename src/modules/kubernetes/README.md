@@ -286,8 +286,36 @@ try {
 [original documentation](https://developers.digitalocean.com/documentation/v2/#list-available-regions--node-sizes--and-versions-of-kubernetes)
 ```javascript
 try {
-  const {data:{options}} = await dots.kubernetes.listAvailableOptionsOfKubernetes(input);
+  const {data:{options}} = await dots.kubernetes.listAvailableOptionsOfKubernetes();
   console.log(options);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## add-container-registry
+[original documentation](https://developers.digitalocean.com/documentation/v2/#add-container-registry-to-kubernetes-clusters)
+```javascript
+try {
+  const input = {
+    cluster_uuids: [''], // string[]
+  };
+  const {status} = await dots.kubernetes.addContainerRegistry(input);
+  console.log(status);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## remove-container-registry
+[original documentation](https://developers.digitalocean.com/documentation/v2/#remove-container-registry-to-kubernetes-clusters)
+```javascript
+try {
+  const input = {
+    cluster_uuids: [''], // string[]
+  };
+  const {status} = await dots.kubernetes.removeContainerRegistry(input);
+  console.log(status);
 } catch (error) {
   console.log(error);
 }

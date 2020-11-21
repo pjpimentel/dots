@@ -14,8 +14,8 @@ export const listActions = ({
   per_page = 25,
 }: IListRequest): Promise<Readonly<ListActionsResponse>> => {
   const path = '/actions';
-  const queryParams = {page, per_page};
+  const query_params = {page, per_page};
   const url = `${path}`;
 
-  return httpClient.get<IListActionApiResponse>(url, {params: queryParams});
+  return httpClient.get<IListActionApiResponse>(url, {params: query_params});
 };

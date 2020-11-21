@@ -8,7 +8,7 @@ describe('utils', () => {
     });
     it('should return valid context', () => {
       const endpoint = 'https://api.digitalocean.com/v2/test-match';
-      const token = 'my-token';
+      const token = process.env.TEST_TOKEN as string;
       const requestTimeoutInMs = 2000;
       const ctx = createContext({
         axios,

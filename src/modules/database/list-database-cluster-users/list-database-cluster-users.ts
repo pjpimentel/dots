@@ -19,8 +19,8 @@ export const listDatabaseClusterUsers = ({
   database_cluster_id,
 }: IListDatabaseClusterUsersApiRequest): Promise<Readonly<ListDatabaseClusterUsersResponse>> => {
   const path = '/databases';
-  const queryParams = {page, per_page};
+  const query_params = {page, per_page};
   const url = `${path}/${database_cluster_id}/users`;
 
-  return httpClient.get<IListDatabaseClusterUsersApiResponse>(url, {params: queryParams});
+  return httpClient.get<IListDatabaseClusterUsersApiResponse>(url, {params: query_params});
 };

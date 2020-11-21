@@ -14,8 +14,8 @@ export const listProjects = ({
   per_page = 25,
 }: IListRequest): Promise<Readonly<ListProjectsResponse>> => {
   const path = '/projects';
-  const queryParams = {page, per_page};
+  const query_params = {page, per_page};
   const url = `${path}`;
 
-  return httpClient.get<IListProjectsApiResponse>(url, {params: queryParams});
+  return httpClient.get<IListProjectsApiResponse>(url, {params: query_params});
 };

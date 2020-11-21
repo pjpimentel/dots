@@ -19,8 +19,8 @@ export const listProjectResources = ({
   project_id,
 }: IListProjectResourcesApiRequest): Promise<Readonly<ListProjectResourcesResponse>> => {
   const path = '/projects';
-  const queryParams = {page, per_page};
+  const query_params = {page, per_page};
   const url = `${path}/${project_id}/resources`;
 
-  return httpClient.get<IListProjectResourcesApiResponse>(url, {params: queryParams});
+  return httpClient.get<IListProjectResourcesApiResponse>(url, {params: query_params});
 };

@@ -14,8 +14,8 @@ export const listDefaultProjectResources = ({
   per_page = 25,
 }: IListRequest): Promise<Readonly<ListDefaultProjectResourcesResponse>> => {
   const path = '/projects';
-  const queryParams = {page, per_page};
+  const query_params = {page, per_page};
   const url = `${path}/default/resources`;
 
-  return httpClient.get<IListDefaultProjectResourcesApiResponse>(url, {params: queryParams});
+  return httpClient.get<IListDefaultProjectResourcesApiResponse>(url, {params: query_params});
 };

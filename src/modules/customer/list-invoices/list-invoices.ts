@@ -15,8 +15,8 @@ export const listInvoices = ({
   per_page = 25,
 }: IListRequest): Promise<Readonly<ListInvoicesResponse>> => {
   const path = '/customers/my/invoices';
-  const queryParams = {page, per_page};
+  const query_params = {page, per_page};
   const url = `${path}`;
 
-  return httpClient.get<IListInvoicesApiResponse>(url, {params: queryParams});
+  return httpClient.get<IListInvoicesApiResponse>(url, {params: query_params});
 };

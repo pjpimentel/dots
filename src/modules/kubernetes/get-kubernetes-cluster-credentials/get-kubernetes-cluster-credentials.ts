@@ -23,8 +23,8 @@ export const getKubernetesClusterCredentials = ({
   expiration_in_seconds,
 }: IGetKubernetesClusterCredentialsApiRequest): Promise<Readonly<GetKubernetesClusterCredentialsResponse>> => {
   const path = '/kubernetes/clusters';
-  const queryParams = {expiry_seconds: expiration_in_seconds};
+  const query_params = {expiry_seconds: expiration_in_seconds};
   const url = `${path}/${kubernetes_cluster_id}/credentials`;
 
-  return httpClient.get<IGetKubernetesClusterCredentialsApiResponse>(url, {params: queryParams});
+  return httpClient.get<IGetKubernetesClusterCredentialsApiResponse>(url, {params: query_params});
 };

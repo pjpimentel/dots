@@ -16,17 +16,15 @@ export const listDroplets = ({
 }: IContext) => ({
   page = 1,
   per_page = 25,
-  tag_name,
+  tag_name = undefined,
 }: IListDropletsApiRequest): Promise<Readonly<ListDropletsResponse>> => {
   const path = '/droplets';
-  const queryParams = {page, per_page};
-  const hasTagnameFilter = typeof tag_name === 'string';
-
-  if (hasTagnameFilter) {
-    Object.assign(queryParams, {tag_name});
-  }
-
+  const query_params = {
+    page,
+    per_page,
+    tag_name,
+  };
   const url = `${path}`;
 
-  return httpClient.get<IListDropletsApiResponse>(url, {params: queryParams});
+  return httpClient.get<IListDropletsApiResponse>(url, {params: query_params});
 };

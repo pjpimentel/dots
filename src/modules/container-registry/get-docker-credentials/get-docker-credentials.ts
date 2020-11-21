@@ -16,8 +16,8 @@ export const getDockerCredentials = ({
   can_write = false,
 }: IGetDockerCredentialsApiRequest): Promise<Readonly<GetDockerCredentialsResponse>> => {
   const path = '/registry/docker-credentials';
-  const queryParams = {read_write: can_write};
+  const query_params = {read_write: can_write};
   const url = `${path}`;
 
-  return httpClient.get<IGetDockerCredentialsApiResponse>(url, {params: queryParams});
+  return httpClient.get<IGetDockerCredentialsApiResponse>(url, {params: query_params});
 };

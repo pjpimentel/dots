@@ -1,10 +1,13 @@
 # changelog
 
-## (wip) **3.5.0** = 2020-11-XX
+## **3.5.0** = 2020-11-21
 
-## **added**
+## **changes**
 
-* apps module
+* npm audit + dependencies updates
+* add app module
+* removed node 8 test support
+* add k8s container registry methods
 
 ## **3.4.0** - 2020-11-01
 

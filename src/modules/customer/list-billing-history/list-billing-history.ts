@@ -14,8 +14,8 @@ export const listBillingHistory = ({
   per_page = 25,
 }: IListRequest): Promise<Readonly<ListBillingHistoryResponse>> => {
   const path = '/customers/my/billing_history';
-  const queryParams = {page, per_page};
+  const query_params = {page, per_page};
   const url = `${path}`;
 
-  return httpClient.get<IListBillingHistoryApiResponse>(url, {params: queryParams});
+  return httpClient.get<IListBillingHistoryApiResponse>(url, {params: query_params});
 };
