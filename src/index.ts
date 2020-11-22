@@ -1,14 +1,62 @@
-import * as modules from './modules';
-import * as _utils from './utils';
+import * as account from './account';
+import * as action from './action';
+import * as app from './app';
+import * as cdnEndpoint from './cdn-endpoint';
+import * as certificate from './certificate';
+import * as containerRegistry from './container-registry';
+import * as customer from './customer';
+import * as database from './database';
+import * as domain from './domain';
+import * as droplet from './droplet';
+import * as firewall from './firewall';
+import * as floatingIp from './floating-ip';
+import * as image from './image';
+import * as kubernetes from './kubernetes';
+import * as loadBalancer from './load-balancer';
+import * as project from './project';
+import * as region from './region';
+import * as size from './size';
+import * as snapshot from './snapshot';
+import * as sshKey from './ssh-key';
+import * as tag from './tag';
+import * as volume from './volume';
+import * as vpc from './vpc';
+import * as commom from './commom';
 
-const createApiClient = _utils.createApiClient({
+const modules = {
+  account,
+  action,
+  app,
+  cdnEndpoint,
+  certificate,
+  containerRegistry,
+  customer,
+  database,
+  domain,
+  droplet,
+  firewall,
+  floatingIp,
+  image,
+  kubernetes,
+  loadBalancer,
+  project,
+  region,
+  size,
+  snapshot,
+  sshKey,
+  tag,
+  volume,
+  vpc,
+};
+
+const createApiClient = commom.createApiClient({
   modules,
-  createContext: _utils.createContext,
+  createContext: commom.createContext,
 });
 
 const utils = {
   createApiClient,
-  createContext: _utils.createContext,
+  createContext: commom.createContext,
 };
 
 export {createApiClient, modules, utils};
