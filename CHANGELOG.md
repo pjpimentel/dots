@@ -1,5 +1,11 @@
 # changelog
 
+## **3.5.1** = 2020-12-03
+
+## **changes**
+
+* app platform type fixes (thanks @rijkvanzanten)
+
 ## **3.5.0** = 2020-11-21
 
 ## **changes**
