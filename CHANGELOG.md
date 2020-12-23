@@ -1,5 +1,11 @@
 # changelog
 
+## **3.5.2** = 2020-12-22
+
+## **changes**
+
+* npm audit + dependencies updates
+
 ## **3.5.1** = 2020-12-03
 
 ## **changes**
