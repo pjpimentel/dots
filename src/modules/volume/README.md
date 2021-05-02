@@ -67,6 +67,21 @@ try {
 }
 ```
 
+## delete-volume-by-name
+[original documentation](https://developers.digitalocean.com/documentation/v2/#dedelete-a-block-storage-volume-by-name)
+```javascript
+try {
+  const input = {
+    volume_name: '', // string
+    region: '', // string
+  };
+  const {status} = await dots.volume.deleteVolumeByName(input)
+  console.log(status);
+} catch (error) {
+  console.log(error);
+}
+```
+
 ## detach-volume-from-droplet
 [original documentation](https://developers.digitalocean.com/documentation/v2/#remove-a-block-storage-volume-from-a-droplet)
 ```javascript

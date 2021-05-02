@@ -162,15 +162,16 @@ export const createApiClient = ({
   });
   const volume = Object.freeze({
     attachVolumeToDroplet: modules.volume.attachVolumeToDroplet(context),
-    createVolumeSnapshot: modules.volume.createVolumeSnapshot(context),
     createVolume: modules.volume.createVolume(context),
+    createVolumeSnapshot: modules.volume.createVolumeSnapshot(context),
     deleteVolume: modules.volume.deleteVolume(context),
+    deleteVolumeByName: modules.volume.deleteVolumeByName(context),
     detachVolumeFromDroplet: modules.volume.detachVolumeFromDroplet(context),
-    getVolumeAction: modules.volume.getVolumeAction(context),
     getVolume: modules.volume.getVolume(context),
+    getVolumeAction: modules.volume.getVolumeAction(context),
     listVolumeActions: modules.volume.listVolumeActions(context),
-    listVolumeSnapshots: modules.volume.listVolumeSnapshots(context),
     listVolumes: modules.volume.listVolumes(context),
+    listVolumeSnapshots: modules.volume.listVolumeSnapshots(context),
     resizeVolume: modules.volume.resizeVolume(context),
   });
   const database = Object.freeze({

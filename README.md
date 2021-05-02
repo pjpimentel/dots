@@ -285,6 +285,7 @@ js.js
     1. [attach-volume-to-droplet](src/modules/volume/README.md#attach-volume-to-droplet)
     1. [create-volume](src/modules/volume/README.md#create-volume)
     1. [create-volume-snapshot](src/modules/volume/README.md#create-volume-snapshot)
+    1. [delete-volume-by-name](src/modules/volume/README.md#delete-volume-by-name)
     1. [delete-volume](src/modules/volume/README.md#delete-volume)
     1. [detach-volume-from-droplet](src/modules/volume/README.md#detach-volume-from-droplet)
     1. [get-volume](src/modules/volume/README.md#get-volume)
