@@ -1,5 +1,12 @@
 # changelog
 
+## **3.5.4** = 2021-05-01
+
+## **changes**
+
+* npm audit + dependencies updates
+* add method volume.deleteVolumeByName
+
 ## **3.5.3** = 2021-03-29
 
 ## **changes**
