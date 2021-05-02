@@ -68,7 +68,7 @@ try {
 ```
 
 ## delete-volume-by-name
-[original documentation](https://developers.digitalocean.com/documentation/v2/#dedelete-a-block-storage-volume-by-name)
+[original documentation](https://developers.digitalocean.com/documentation/v2/#delete-a-block-storage-volume-by-name)
 ```javascript
 try {
   const input = {
