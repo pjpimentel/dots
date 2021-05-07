@@ -1,5 +1,12 @@
 # changelog
 
+## **3.5.5** = 2021-05-06
+
+## **changes**
+
+* npm audit + dependencies updates
+* security update, https://github.com/advisories/GHSA-35jh-r3h4-6jhm
+
 ## **3.5.4** = 2021-05-01
 
 ## **changes**
