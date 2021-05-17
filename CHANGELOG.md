@@ -1,205 +1,136 @@
 # changelog
 
-## **3.5.5** = 2021-05-06
+## **2021-05-17**
 
-## **changes**
+* fixed domain module docs
+
+## **2021-05-06** - new version: 3.5.5
 
 * npm audit + dependencies updates
 * security update, https://github.com/advisories/GHSA-35jh-r3h4-6jhm
 
-## **3.5.4** = 2021-05-01
-
-## **changes**
+## **2021-05-01** - new version: 3.5.4
 
 * npm audit + dependencies updates
 * add method volume.deleteVolumeByName
 
-## **3.5.3** = 2021-03-29
-
-## **changes**
+## **2021-03-29** - new version: 3.5.3
 
 * npm audit + dependencies updates
 
-## **3.5.2** = 2020-12-22
-
-## **changes**
+## **2020-12-22** - new version: 3.5.2
 
 * npm audit + dependencies updates
 
-## **3.5.1** = 2020-12-03
-
-## **changes**
+## **2020-12-03** - new version: 3.5.1
 
 * app platform type fixes (thanks @rijkvanzanten)
 
-## **3.5.0** = 2020-11-21
-
-## **changes**
+## **2020-11-21** - new version: 3.5.0
 
 * npm audit + dependencies updates
 * add app module
 * removed node 8 test support
 * add k8s container registry methods
 
-## **3.4.0** - 2020-11-01
-
-## **fix**
+## **2020-11-01** - new version: 3.4.0
 
 * add missing attributes to firewall type
 * npm audit + dependencies updates
+* add list domain record filters
+* add k8s node pool taints
+* add droplet.destroyDropletAndAllAssociatedResources
+* add droplet.destroyDropletAndAssociatedResources
+* add droplet.getDropletDestroyStatus
+* add droplet.listDropletAssociatedResources
+* add droplet.retryDropletDestroy
+* "add is_default" parameter to vpc.updateVpc and vpc.createVpc
+* removed "id" field compatibility, see 3.1.0
 
-## **added**
-
-* list domain record filters
-* k8s node pool taints
-* droplet.destroyDropletAndAllAssociatedResources
-* droplet.destroyDropletAndAssociatedResources
-* droplet.getDropletDestroyStatus
-* droplet.listDropletAssociatedResources
-* droplet.retryDropletDestroy
-* "is_default" parameter to vpc.updateVpc and vpc.createVpc
-
-## **removed**
-
-* "id" field compatibility, see 3.1.0
-
-## **3.3.3** - 2020-08-10
-
-## **fix**
+## **2020-08-10** - new version: 3.3.3
 
 * load balancer types
 * npm audit + dependencies updates
 
-## **3.3.2** - 2020-07-22
-
-## **ref**
+## **2020-07-22** - new version: 3.3.2
 
 * pkg.json homepage
 
-## **3.3.1** - 2020-07-15
-
-## **fix**
+## **2020-07-15** - new version: 3.3.1
 
 * npm audit + dependencies updates
 
-## **3.3.0** - 2020-06-20
+## **2020-06-20** - new version: 3.3.0
 
-## **added**
-
-* listInvoices, downloadInvoice, getInvoiceSummary, getInvoice to customer module
-
-## **fix**
-
+* add listInvoices, downloadInvoice, getInvoiceSummary, getInvoice to customer module
 * npm audit + dependencies updates
-## **3.2.1** - 2020-05-22
-
-## **fix**
+## **2020-05-22** - new version: 3.2.1
 
 * ICreateDropletsApiRequest && ICreateDropletApiRequest ssh_keys attr
 
-## **3.2.0** - 2020-05-03
+## **2020-05-03** - new version: 3.2.0
 
-## **added**
-
-* vpc module
-* kubernetes node pool labels
-* mysql_settings to createDatabaseClusterUser
-
-### **fix**
-
+* add vpc module
+* add kubernetes node pool labels
+* add mysql_settings to createDatabaseClusterUser
 * npm audit
 
-## **3.1.10** - 2020-04-30
+## **2020-04-30** - new version: 3.1.10
 
-## **added**
+* add customer.getBalance
+* add customer.listBillingHistory
+* fix dev dependencies security issue GHSA-jpcq-cgw6-v4j6
+* fix DO changed list-all-droplet-neighbors behavior https://developers.digitalocean.com/documentation/changelog/api-v2/changes-to-the-droplet-neighbors-report/
 
-* customer.getBalance
-* customer.listBillingHistory
-
-### **fix**
-
-* dev dependencies security issue GHSA-jpcq-cgw6-v4j6
-* DO changed list-all-droplet-neighbors behavior https://developers.digitalocean.com/documentation/changelog/api-v2/changes-to-the-droplet-neighbors-report/
-
-## **3.1.9** - 2020-04-27
-
-### **fix**
+## **2020-04-27** - new version: 3.1.9
 
 * IKubernetesClusterStatus type
 * npm audit
 
-## **3.1.8** - 2020-04-18
-
-### **fix**
+## **2020-04-18** - new version: 3.1.8
 
 * IDroplet type
 
-## **3.1.7** - 2020-03-17
-
-### **fix**
+## **2020-03-17** - new version: 3.1.7
 
 * packages update
 * npm audit
 
-## **3.1.6** - 2020-03-15
-
-### **fix**
+## **2020-03-15** - new version: 3.1.6
 
 * automatic update package acorn from 5.7.3 to 5.7.4
 
-## **3.1.5** - 2019-12-15
+## **2019-12-15** - new version: 3.1.5
 
-### **fix**
+* fix quality gate issues
 
-* quality gate issues
+## **2019-12-15** - new version: 3.1.4
 
-## **3.1.4** - 2019-12-15
+* add **cdn-endpoints** module
+* add **container-registry** module
+* fix list-available-options-of-kubernetes url path
 
-### **added**
+## **2019-12-14** - new version: 3.1.3
 
-* **cdn-endpoints** module
-* **container-registry** module
+* add **kubernetes** module
+* fix updateLoadBalancer test
 
-### **fix**
+## **2019-12-12** - new version: 3.1.2
 
-* list-available-options-of-kubernetes url path
+* add **project** module
 
-## **3.1.3** - 2019-12-14
+## **2019-12-10** - new version: 3.1.1
 
-### **added**
+* add **droplet**.deleteDropletsByTag ([@Cosmic-Goat](https://github.com/Cosmic-Goat))
 
-* **kubernetes** module
-
-### **fix**
-
-* updateLoadBalancer test
-
-## **3.1.2** - 2019-12-12
-
-### **added**
-
-* **project** module
-
-## **3.1.1** - 2019-12-10
-
-### **added**
-
-* **droplet**.deleteDropletsByTag ([@Cosmic-Goat](https://github.com/Cosmic-Goat))
-
-## **3.1.0** - 2019-12-08
-
-### **added**
-
-* **database** module
-
-### **changed**
+## **2019-12-08** - new version: 3.1.0
 
 the `id` input was removed from the following methods to avoid missunderstands.
 now it is `{entity}_id`.
 (to allow backward compatibility the `id` field still accepted but will be removed in future versions)
 
 the following methods were affected:
-
+* add **database** module
 * **loadBalancer**.addDropletsToLoadBalancer >> id -> load_balancer_id
 * **loadBalancer**.addRulesToLoadBalancer >> id -> load_balancer_id
 * **loadBalancer**.deleteLoadBalancer >> id -> load_balancer_id
@@ -221,23 +152,15 @@ the following methods were affected:
 * **volume**.listVolumeSnapshots >> id -> volume_id
 * **volume**.resizeVolume >> id -> volume_id
 
-## **3.0.2** - 2019-11-20
-
-added browser source
-
-### **added**
+## **2019-11-20** - new version: 3.0.2
 
 * browser build
 
-## **3.0.1** - 2019-11-17
-
-release to sync npm package README with latest changes
-
-### **changed**
+## **2019-11-17** - new version: 3.0.1
 
 * updated main readme
 
-## **3.0.0** - 2019-11-09
+## **2019-11-09** - new version: 3.0.0
 
 project refactor to make it (simple and better) to (use and mantain).
 
@@ -250,6 +173,6 @@ the main changes are:
 * as DO use snake_case, ALL camelCase properties were removed.
 * unit tests with 100% code coverage.
 
-## **2.6.0**
+## version 2.6.0
 
 * initial stable version

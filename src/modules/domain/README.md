@@ -67,15 +67,16 @@ try {
 ```javascript
 try {
   const input = {
-    type: "A", // string
-    name: "www", // string
     data: "162.10.66.0", // string
-    priority: null, // number
-    port: null, // number
-    ttl: 1800, // number
-    weight: null, // number
+    domain_name: ''// string
     flags: null, // number
-    tag: null // string
+    name: "www", // string
+    port: null, // number
+    priority: null, // number
+    tag: null, // string
+    ttl: 1800, // number
+    type: "A", // string
+    weight: null, // number
   };
   const {data:{domain_record}} = await dots.domain.createDomainRecord(input);
   console.log(domain_record);
@@ -90,8 +91,9 @@ try {
 ```javascript
 try {
   const input = {
-    name: "pimentel.co", // string
+    domain_name: ''// string
     domain_record_id: 0, // number
+    name: "pimentel.co", // string
   };
   const {status} = await dots.domain.deleteDomainRecord(input);
   console.log(status);
@@ -106,8 +108,9 @@ try {
 ```javascript
 try {
   const input = {
-    name: "pimentel.co", // string
+    domain_name: ''// string
     domain_record_id: 0, // number
+    name: "pimentel.co", // string
   };
   const {data:{domain_record}} = await dots.domain.getDomainRecord(input);
   console.log(domain_record);
@@ -122,6 +125,7 @@ try {
 ```javascript
 try {
   const input = {
+    domain_name: ''// string
     per_page: 100, // number
   };
   const {data:{domain_records}} = await dots.domain.listDomainRecords(input);
@@ -138,6 +142,8 @@ try {
 try {
   const input = {
     data: '127.0.0.1', // string
+    domain_name: ''// string
+    domain_record_id: 0, // number
   };
   const {data:{domain_record}} = await dots.domain.updateDomainRecord(input);
   console.log(domain_record);
