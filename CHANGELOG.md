@@ -1,5 +1,10 @@
 # changelog
 
+## **2021-05-29** - new version 3.5.6
+
+* npm audit + dependencies updates
+* security update, https://github.com/advisories/GHSA-6fc8-4gx4-v693
+
 ## **2021-05-17**
 
 * fixed domain module docs
