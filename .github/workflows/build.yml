@@ -9,22 +9,23 @@ jobs:
     env:
       CI: true
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [10.x, 12.x, 14.x, 16.x]
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
       - name: npm install
         run: npm ci
       - name: npm test
         run: npm run test
-      - name: npm build
-        run: |
-          npm run build
-          npm run build:browser
+      - name: npm build node
+        run:  npm run build
+      - name: npm build browser
+        run:  npm run build:browser
   quality-check:
     name: quality-check
     runs-on: ubuntu-18.04
@@ -32,18 +33,19 @@ jobs:
     env:
       CI: true
     steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js 12
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2
         with:
-          node-version: 12.x
-      - name: install && test
+          node-version: 14.x
+      - name: install
+        run: npm ci
+      - name: test
         run: |
-          npm ci
           npm run test
           sed -i -- "s|$GITHUB_WORKSPACE|/github/workspace|g" coverage/lcov.info
       - name: sonar-cloud scan
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        uses: SonarSource/sonarcloud-github-action@v1.5
+        uses: SonarSource/sonarcloud-github-action@v1.6
