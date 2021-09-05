@@ -47,9 +47,10 @@ jobs:
       - name: log
         run: |
           pwd
-          ls -lah
-          ls -lah coverage/lcov.info
           echo $GITHUB_WORKSPACE
+          ls -lah
+          ls -lah coverage
+          cat coverage/lcov.info
       - name: sonar-cloud scan
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
