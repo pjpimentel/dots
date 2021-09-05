@@ -34,6 +34,8 @@ jobs:
       CI: true
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Use Node.js 14
         uses: actions/setup-node@v2
         with:
@@ -41,9 +43,7 @@ jobs:
       - name: install
         run: npm ci
       - name: test
-        run: |
-          npm run test
-          sed -i -- "s|$GITHUB_WORKSPACE|/github/workspace|g" coverage/lcov.info
+        run: npm run test
       - name: sonar-cloud scan
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
