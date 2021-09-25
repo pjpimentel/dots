@@ -1,5 +1,9 @@
 # changelog
 
+## **2021-09-25** - new version 3.5.9
+
+* npm audit + dependencies updates
+
 ## **2021-09-04** - new version 3.5.8
 
 * npm audit + dependencies updates
