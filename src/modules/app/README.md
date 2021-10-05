@@ -9,7 +9,7 @@ try {
     page: 1, // number
     per_page: 100, // number
   };
-  const {data:{apps}} = await dots.apps.listApps(input);
+  const {data:{apps}} = await dots.app.listApps(input);
   console.log(apps);
 } catch (error) {
   console.log(error);
@@ -105,7 +105,7 @@ try {
     page: 1, // number
     per_page: 100, // number
   };
-  const {data:{deployments}} = await dots.apps.listAppDeployments(input);
+  const {data:{deployments}} = await dots.app.listAppDeployments(input);
   console.log(deployments);
 } catch (error) {
   console.log(error);
@@ -121,7 +121,7 @@ try {
     app_id: '', // string
     deployment_id: '', // string
   };
-  const {data:{deployment}} = await dots.apps.getAppDeployment(input);
+  const {data:{deployment}} = await dots.app.getAppDeployment(input);
   console.log(deployment);
 } catch (error) {
   console.log(error);
@@ -137,7 +137,7 @@ try {
     app_id: '', // string
     force_build: false, // boolean
   };
-  const {data:{deployment}} = await dots.apps.createAppDeployment(input);
+  const {data:{deployment}} = await dots.app.createAppDeployment(input);
   console.log(deployment);
 } catch (error) {
   console.log(error);
@@ -153,7 +153,7 @@ try {
     app_id: '', // string
     deployment_id: '', // string
   };
-  const {data:{deployment}} = await dots.apps.cancelAppDeployment(input);
+  const {data:{deployment}} = await dots.app.cancelAppDeployment(input);
   console.log(deployment);
 } catch (error) {
   console.log(error);
@@ -173,7 +173,7 @@ try {
     pod_connection_timeout: '', // string
     type: '', // string
   };
-  const {data:{live_url}} = await dots.apps.getAppDeploymentLogs(input);
+  const {data:{live_url}} = await dots.app.getAppDeploymentLogs(input);
   console.log(live_url);
 } catch (error) {
   console.log(error);
@@ -193,7 +193,7 @@ try {
     pod_connection_timeout: '', // string
     type: '', // string
   };
-  const {data:{live_url}} = await dots.apps.getAggregatedAppDeploymentLogs(input);
+  const {data:{live_url}} = await dots.app.getAggregatedAppDeploymentLogs(input);
   console.log(live_url);
 } catch (error) {
   console.log(error);
