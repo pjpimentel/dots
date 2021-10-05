@@ -1,5 +1,9 @@
 # changelog
 
+## **2021-10-04** - new version 3.6.0
+
+* add "force_build" input to dots.app.createAppDeployment (thanks @codyogden)
+
 ## **2021-09-25** - new version 3.5.9
 
 * npm audit + dependencies updates

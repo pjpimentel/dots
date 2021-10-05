@@ -42,6 +42,7 @@ describe('app', () => {
       expect(request.baseURL + request.url).toBe(context.endpoint + URL);
       expect(request.method).toBe('post');
       expect(request.headers).toMatchObject(MOCK.request.headers);
+      expect(JSON.parse(request.data)).toMatchObject({});
       /// validate data
       expect(response.data).toBeDefined();
       const {deployment} = response.data;
@@ -51,6 +52,20 @@ describe('app', () => {
       const {headers, status} = response;
       expect(headers).toMatchObject(MOCK.response.headers);
       expect(status).toBe(MOCK.response.headers.status);
+    });
+
+    it('should send force_build parameter', async () => {
+      const _createAppDeployment = createAppDeployment(context);
+
+      const force_build = Math.random() as unknown as boolean;
+      await _createAppDeployment({
+        ...MOCK.request.body,
+        force_build,
+      });
+
+      const [request = {}] = mock.history.post;
+
+      expect(JSON.parse(request.data)).toMatchObject({force_build});
     });
   });
 });

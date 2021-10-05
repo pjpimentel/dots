@@ -135,6 +135,7 @@ try {
 try {
   const input = {
     app_id: '', // string
+    force_build: false, // boolean
   };
   const {data:{deployment}} = await dots.apps.createAppDeployment(input);
   console.log(deployment);
