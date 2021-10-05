@@ -1,8 +1,12 @@
 # changelog
 
+## **2021-10-05** - new version 3.6.1
+
+* readme update + docs update thanks ([@codyogden](https://github.com/codyogden))
+
 ## **2021-10-04** - new version 3.6.0
 
-* add "force_build" input to dots.app.createAppDeployment (thanks @codyogden)
+* add "force_build" input to dots.app.createAppDeployment
 
 ## **2021-09-25** - new version 3.5.9
 
@@ -45,7 +49,7 @@
 
 ## **2020-12-03** - new version: 3.5.1
 
-* app platform type fixes (thanks @rijkvanzanten)
+* app platform type fixes (thanks ([@rijkvanzanten](https://github.com/rijkvanzanten)))
 
 ## **2020-11-21** - new version: 3.5.0
 
