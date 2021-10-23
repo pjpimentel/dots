@@ -8,6 +8,11 @@ on:
   schedule:
     - cron: '0 17 * * *'
 
+permissions:
+  metadata: read
+  contents: read
+  statuses: write
+
 jobs:
   analyse:
     name: Analyse
