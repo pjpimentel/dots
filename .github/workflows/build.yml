@@ -1,6 +1,12 @@
 name: build
 
-on: [push]
+on:
+  push:
+    paths:
+      - 'src/**'
+      - 'package.json'
+      - 'package-lock.json'
+  workflow_dispatch:
 
 jobs:
   test:
