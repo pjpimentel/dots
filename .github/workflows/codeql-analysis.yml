@@ -12,6 +12,8 @@ on:
 permissions:
   contents: read
   statuses: write
+  security-events: write
+
 
 jobs:
   analyse:
