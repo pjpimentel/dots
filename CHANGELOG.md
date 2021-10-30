@@ -1,5 +1,9 @@
 # changelog
 
+## **2021-10-30** - new version 3.6.2
+
+* npm audit + dependencies updates
+
 ## **2021-10-05** - new version 3.6.1
 
 * readme update + docs update thanks ([@codyogden](https://github.com/codyogden))
