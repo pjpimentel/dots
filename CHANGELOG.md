@@ -1,6 +1,6 @@
 # changelog
 
-## **2021-10-29** - new version 3.6.2
+## **2021-10-30** - new version 3.6.2
 
 * npm audit + dependencies updates
 
