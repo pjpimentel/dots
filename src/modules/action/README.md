@@ -4,7 +4,7 @@
 [original documentation](https://developers.digitalocean.com/documentation/v2/#retrieve-an-existing-action)
 ```javascript
 try {
-  const input = {id: 'my-action-id'};
+  const input = {action_id: 'my-action-id'};
   const {data:{action}} = await dots.action.getAction(input);
   console.log(action);
 } catch (error) {
