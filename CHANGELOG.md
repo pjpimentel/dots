@@ -1,5 +1,10 @@
 # changelog
 
+## **2022-02-10** - new version 3.6.3
+
+* npm audit + dependencies updates
+* fix dots.action.getAction(input) (https://github.com/pjpimentel/dots/issues/186)
+
 ## **2021-10-30** - new version 3.6.2
 
 * npm audit + dependencies updates
