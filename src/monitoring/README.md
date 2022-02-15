@@ -23,11 +23,27 @@ try {
 ```javascript
 try {
   const input = {
+    end: "", // string
     host_id: "", // string
     start: "", // string
-    end: "", // string
   };
   const {data:{data}} = await dots.monitoring.getDropletCpuMetrics(input)
+  console.log(data);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## get-droplet-free-memory-metrics
+[original documentation](https://docs.digitalocean.com/reference/api/api-reference/#operation/get_droplet_memory_free_metrics)
+```javascript
+try {
+  const input = {
+    end: "", // string
+    host_id: "", // string
+    start: "", // string
+  };
+  const {data:{data}} = await dots.monitoring.getDropletFreeMemoryMetrics(input)
   console.log(data);
 } catch (error) {
   console.log(error);
