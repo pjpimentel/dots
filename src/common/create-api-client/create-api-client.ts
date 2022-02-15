@@ -289,6 +289,7 @@ export const createApiClient = ({
     updateApp: modules.app.updateApp(context),
   });
   const monitoring = Object.freeze({
+    getDropletBandwidthMetrics: modules.monitoring.getDropletBandwidthMetrics(context),
     getDropletCpuMetrics: modules.monitoring.getDropletCpuMetrics(context),
   });
 
