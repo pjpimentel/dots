@@ -247,6 +247,7 @@ js.js
     1. [remove-rules-from-load-balancer](src/load-balancer/README.md#remove-rules-from-load-balancer)
     1. [update-load-balancer](src/load-balancer/README.md#update-load-balancer)
 1. [monitoring](src/monitoring/README.md#monitoring)
+    1. [get-droplet-available-memory-metrics](src/monitoring/README.md#get-droplet-available-memory-metrics)
     1. [get-droplet-bandwidth-metrics](src/monitoring/README.md#get-droplet-bandwidth-metrics)
     1. [get-droplet-cpu-metrics](src/monitoring/README.md#get-droplet-cpu-metrics)
     1. [get-droplet-free-memory-metrics](src/monitoring/README.md#get-droplet-free-memory-metrics)

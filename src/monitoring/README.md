@@ -1,5 +1,21 @@
 # monitoring
 
+## get-droplet-available-memory-metrics
+[original documentation](https://docs.digitalocean.com/reference/api/api-reference/#operation/get_droplet_memory_available_metrics)
+```javascript
+try {
+  const input = {
+    end: "", // string
+    host_id: "", // string
+    start: "", // string
+  };
+  const {data:{data}} = await dots.monitoring.getDropletAvailableMemoryMetrics(input)
+  console.log(data);
+} catch (error) {
+  console.log(error);
+}
+```
+
 ## get-droplet-bandwidth-metrics
 [original documentation](https://docs.digitalocean.com/reference/api/api-reference/#operation/get_droplet_bandwidth_metrics)
 ```javascript
