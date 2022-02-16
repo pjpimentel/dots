@@ -250,6 +250,7 @@ js.js
     1. [get-droplet-bandwidth-metrics](src/monitoring/README.md#get-droplet-bandwidth-metrics)
     1. [get-droplet-cpu-metrics](src/monitoring/README.md#get-droplet-cpu-metrics)
     1. [get-droplet-free-memory-metrics](src/monitoring/README.md#get-droplet-free-memory-metrics)
+    1. [get-droplet-total-memory-metrics](src/monitoring/README.md#get-droplet-total-memory-metrics)
 1. [project](src/project/README.md#project)
     1. [assign-resources-to-default-project](src/project/README.md#assign-resources-to-default-project)
     1. [assign-resources-to-project](src/project/README.md#assign-resources-to-project)

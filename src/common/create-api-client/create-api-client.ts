@@ -292,6 +292,7 @@ export const createApiClient = ({
     getDropletBandwidthMetrics: modules.monitoring.getDropletBandwidthMetrics(context),
     getDropletCpuMetrics: modules.monitoring.getDropletCpuMetrics(context),
     getDropletFreeMemoryMetrics: modules.monitoring.getDropletFreeMemoryMetrics(context),
+    getDropletTotalMemoryMetrics: modules.monitoring.getDropletTotalMemoryMetrics(context),
   });
 
   return Object.freeze({

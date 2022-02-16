@@ -49,3 +49,19 @@ try {
   console.log(error);
 }
 ```
+
+## get-droplet-total-memory-metrics
+[original documentation](https://docs.digitalocean.com/reference/api/api-reference/#operation/get_droplet_memory_total_metrics)
+```javascript
+try {
+  const input = {
+    end: "", // string
+    host_id: "", // string
+    start: "", // string
+  };
+  const {data:{data}} = await dots.monitoring.getDropletTotalMemoryMetrics(input)
+  console.log(data);
+} catch (error) {
+  console.log(error);
+}
+```
