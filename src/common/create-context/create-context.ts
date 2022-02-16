@@ -14,18 +14,16 @@ export const createContext = ({
   endpoint = 'https://api.digitalocean.com/v2',
   token,
 }: ICreateContextInput): Readonly<IContext> => {
-
-  const {freeze} = Object;
-  const headers = freeze({
+  const headers = Object.freeze({
     'Authorization': `Bearer ${token}`,
     'Content-Type': 'application/json',
   });
-  const axiosConfig: AxiosRequestConfig = freeze({
+  const axiosConfig: AxiosRequestConfig = Object.freeze({
     baseURL: endpoint,
     headers,
     timeout: requestTimeoutInMs,
   });
   const httpClient = axios.create(axiosConfig);
 
-  return freeze({ endpoint, httpClient });
+  return Object.freeze({ endpoint, httpClient });
 };
