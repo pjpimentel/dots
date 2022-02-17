@@ -1,14 +1,11 @@
 import * as modules from './modules';
-import * as _utils from './utils';
 
-const createApiClient = _utils.createApiClient({
+const createApiClient = modules.common.createApiClient({
   modules,
-  createContext: _utils.createContext,
+  createContext: modules.common.createContext,
 });
 
-const utils = {
+export {
   createApiClient,
-  createContext: _utils.createContext,
+  modules,
 };
-
-export {createApiClient, modules, utils};

@@ -1,5 +1,11 @@
 # changelog
 
+## **2022-02-16** - new version 3.7.0
+
+* npm audit + dependencies updates
+* add module dots.monitoring
+* breaking change: removed dots.util, now it's called dots.modules.common
+
 ## **2022-02-10** - new version 3.6.3
 
 * npm audit + dependencies updates

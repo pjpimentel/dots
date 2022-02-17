@@ -1,9 +1,9 @@
 import {readdirSync, Dirent, readFileSync } from 'fs';
 import * as dots from './index';
 
-const MODULES_ROOT = __dirname + '/modules';
+const MODULES_ROOT = __dirname;
 const READ_DIR_OPTIONS = {encoding:null, withFileTypes: true as true};
-const KEYS_BLACKLIST = ['types', '_options', 'index.ts', 'README.md'];
+const KEYS_BLACKLIST = ['types', '_options', 'index.ts', 'README.md', 'common'];
 
 const _IS_KEY_BLACK_LISTED = ({blacklist}: {blacklist: string[]}) => (key: string) => blacklist.includes(key);
 const _IS_DIR = ({isBlacklisted}: {isBlacklisted: (v: string) => boolean}) => (dir: Dirent | string) => {
@@ -43,9 +43,7 @@ describe('dots', () => {
   describe('entrypoint', () => {
     it('should be a fn', () => {
       expect(dots.modules).toBeDefined();
-      expect(dots.utils).toBeDefined();
-      expect(dots.utils.createApiClient).toBeInstanceOf(Function);
-      expect(dots.utils.createContext).toBeInstanceOf(Function);
+      expect(dots.createApiClient).toBeInstanceOf(Function);
     });
   });
   describe('readme', () => {
@@ -79,9 +77,9 @@ describe('dots', () => {
       });
     });
     it('main readme should contain valid links', () => {
-      const _base = 'src/modules';
-      const mainReadmePath = './README.md'; 
-      const mainReadmeContent = readFileSync(mainReadmePath).toString('utf8'); 
+      const _base = 'src';
+      const mainReadmePath = './README.md';
+      const mainReadmeContent = readFileSync(mainReadmePath).toString('utf8');
       const links = MODULES.map((_module) => {
         const path = getFullPath(_module);
         const pathContent = readdirSync(path, READ_DIR_OPTIONS);
