@@ -37,7 +37,7 @@ try {
 [original documentation](https://developers.digitalocean.com/documentation/v2/#list-all-cdn-endpoints)
 ```javascript
 try {
-  const const input = {
+  const input = {
     page: 1, // number
     per_page: 100, // number
   };
@@ -52,7 +52,7 @@ try {
 [original documentation](https://developers.digitalocean.com/documentation/v2/#delete-a-cdn-endpoint)
 ```javascript
 try {
-  const const input = {
+  const input = {
     cdn_endpoint_id: '', // string
   };
   const {status} = await dots.cdnEdnpoint.deleteCdnEndpoint(input);
@@ -84,7 +84,7 @@ try {
 [original documentation](https://developers.digitalocean.com/documentation/v2/#purge-the-cache-for-an-existing-cdn-endpoint)
 ```javascript
 try {
-  const const input = {
+  const input = {
     cdn_endpoint_id: '', // string
   };
   const {status} = await dots.cdnEdnpoint.purgeCache(input);

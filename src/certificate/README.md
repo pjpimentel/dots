@@ -50,7 +50,7 @@ try {
 [original documentation](https://developers.digitalocean.com/documentation/v2/#list-all-certificates)
 ```javascript
 try {
-  const const input = {per_page: 100};
+  const input = {per_page: 100};
   const {data:{certificates}} = await dots.certificate.listCertificates(input);
   console.log(certificates);
 } catch (error) {

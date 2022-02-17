@@ -16,7 +16,7 @@ try {
 [original documentation](https://developers.digitalocean.com/documentation/v2/#list-all-actions)
 ```javascript
 try {
-  const const input = {per_page: 100};
+  const input = {per_page: 100};
   const {data:{actions}} = await dots.action.listActions(input);
   console.log(actions);
 } catch (error) {
