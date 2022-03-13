@@ -1,5 +1,9 @@
 # changelog
 
+## **2022-03-13** - new version 3.7.2
+
+* npm audit + dependencies updates
+
 ## **2022-02-26** - new version 3.7.1
 
 * npm audit + dependencies updates
