@@ -87,10 +87,6 @@ describe('utils', () => {
       const createdClientKeys = Object.keys(client).filter(isValidKey).sort();
       const ENDPOINTS_KEYS = Object.keys(ENDPOINTS).sort();
 
-      console.log({
-        ENDPOINTS_KEYS,
-        MODULES,
-      })
       expect(ENDPOINTS_KEYS).toMatchObject(createdClientKeys);
 
       createdClientEntries.forEach(([key, value]) => {
