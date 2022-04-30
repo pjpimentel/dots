@@ -1,5 +1,11 @@
 # changelog
 
+## **2022-04-30** - new version 3.7.5
+
+* add downloads badge to readme.md
+* npm audit + dependencies updates
+* remove console.log from spec file
+
 ## **2022-04-09** - new version 3.7.4
 
 * npm audit + dependencies updates
