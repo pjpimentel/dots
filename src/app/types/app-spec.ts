@@ -4,6 +4,7 @@ import {
   IAppJobSpec,
   IAppServiceSpec,
   IAppStaticSiteSpec,
+  IAppVariableDefinition,
   IAppWorkerSpec,
 } from ".";
 
@@ -49,4 +50,9 @@ export interface IAppSpec {
    * Database instances which can provide persistence to workloads within the application.
    */
   databases?: IAppDatabaseSpec[];
+
+  /**
+   * A list of environment variables made available to the component.
+   */
+  envs?: IAppVariableDefinition[];
 }
