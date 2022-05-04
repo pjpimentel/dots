@@ -1,3 +1,5 @@
+import { IAppVariableDefinition, IGithubSource, IGitSource, IImageSource } from ".";
+
 export interface IAppWorkerSpec {
   /**
    * The name. Must be unique across all components within the same app.
@@ -54,14 +56,14 @@ export interface IAppWorkerSpec {
    * The instance size to use for this component. Default: basic-xxs
    */
   instance_size_slug?:
-  | 'basic-xxs'
-  | 'basic-xs'
-  | 'basic-s'
-  | 'basic-m'
-  | 'professional-xs'
-  | 'professional-s'
-  | 'professional-m'
-  | 'professional-1l'
-  | 'professional-l'
-  | 'professional-xl';
+    | "basic-xxs"
+    | "basic-xs"
+    | "basic-s"
+    | "basic-m"
+    | "professional-xs"
+    | "professional-s"
+    | "professional-m"
+    | "professional-1l"
+    | "professional-l"
+    | "professional-xl";
 }

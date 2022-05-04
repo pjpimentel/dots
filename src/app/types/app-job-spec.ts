@@ -1,3 +1,5 @@
+import { IAppVariableDefinition, IGithubSource, IGitSource, IImageSource } from ".";
+
 export interface IAppJobSpec {
   /**
    * The name. Must be unique across all components within the same app.
@@ -54,16 +56,16 @@ export interface IAppJobSpec {
    * The instance size to use for this component. Default: basic-xxs
    */
   instance_size_slug?:
-  | 'basic-xxs'
-  | 'basic-xs'
-  | 'basic-s'
-  | 'basic-m'
-  | 'professional-xs'
-  | 'professional-s'
-  | 'professional-m'
-  | 'professional-1l'
-  | 'professional-l'
-  | 'professional-xl';
+    | "basic-xxs"
+    | "basic-xs"
+    | "basic-s"
+    | "basic-m"
+    | "professional-xs"
+    | "professional-s"
+    | "professional-m"
+    | "professional-1l"
+    | "professional-l"
+    | "professional-xl";
 
   /**
    * Default: "UNSPECIFIED"
@@ -73,5 +75,5 @@ export interface IAppJobSpec {
    * POST_DEPLOY: Indicates a job that runs after an app deployment.
    * FAILED_DEPLOY: Indicates a job that runs after a component fails to deploy.
    */
-  kind?: 'UNSPECIFIED' | 'PRE_DEPLOY' | 'POST_DEPLOY' | 'FAILED_DEPLOY';
+  kind?: "UNSPECIFIED" | "PRE_DEPLOY" | "POST_DEPLOY" | "FAILED_DEPLOY";
 }

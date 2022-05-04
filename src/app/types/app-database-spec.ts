@@ -21,7 +21,7 @@ export interface IAppDatabaseSpec {
    * PG: PostgreSQL
    * REDIS: Redis
    */
-  engine?: 'UNSET' | 'MYSQL' | 'PG' | 'REDIS';
+  engine?: "UNSET" | "MYSQL" | "PG" | "REDIS";
 
   /**
    * The name. Must be unique across all components within the same app.

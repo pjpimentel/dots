@@ -1,4 +1,11 @@
-import { IAppSpecService } from ".";
+import {
+  IAppDatabaseSpec,
+  IAppDomainSpec,
+  IAppJobSpec,
+  IAppServiceSpec,
+  IAppStaticSiteSpec,
+  IAppWorkerSpec,
+} from ".";
 
 export interface IAppSpec {
   /**

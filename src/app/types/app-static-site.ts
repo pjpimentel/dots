@@ -1,4 +1,4 @@
-
+import { IAppCors, IAppVariableDefinition, IGithubSource, IGitSource, IImageSource } from ".";
 
 export interface IAppStaticSiteSpec {
   /**
