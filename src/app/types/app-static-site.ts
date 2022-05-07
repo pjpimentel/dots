@@ -1,13 +1,6 @@
-import {
-  IAppCors,
-  IAppServiceRoute,
-  IAppVariableDefinition,
-  IGithubSource,
-  IGitSource,
-  IImageSource,
-} from ".";
+import { IAppCors, IAppVariableDefinition, IGithubSource, IGitSource, IImageSource } from ".";
 
-export interface IAppServiceSpec {
+export interface IAppStaticSiteSpec {
   /**
    * The name. Must be unique across all components within the same app.
    * [ 2 .. 32 ] characters ^[a-z][a-z0-9-]{0,30}[a-z0-9]$
@@ -53,46 +46,30 @@ export interface IAppServiceSpec {
   environment_slug?: string;
 
   /**
-   * The amount of instances that this component should be scaled to. Default: 1
+   * The name of the index document to use when serving this static site. Default: index.html
+   * Default: "index.html"
    */
-  instance_count?: number;
+  index_document?: string;
 
   /**
-   * Default: "basic-xxs"
-   * Enum: "basic-xxs" "basic-xs" "basic-s" "basic-m" "professional-xs" "professional-s" "professional-m" "professional-1l" "professional-l" "professional-xl"
-   * The instance size to use for this component. Default: basic-xxs
+   * The name of the error document to use when serving this static site. Default: 404.html. If no such file exists within the built assets, App Platform will supply one.
+   * Default: "404.html"
    */
-  instance_size_slug?:
-    | "basic-xxs"
-    | "basic-xs"
-    | "basic-s"
-    | "basic-m"
-    | "professional-xs"
-    | "professional-s"
-    | "professional-m"
-    | "professional-1l"
-    | "professional-l"
-    | "professional-xl";
-
-  cors?: IAppCors[];
-
-  health_check?: any;
+  error_document?: string;
 
   /**
-   * integer <int64> [ 1 .. 65535 ]
-   * The internal port on which this service's run command will listen. Default: 8080 If there is not an environment variable with the name PORT, one will be automatically added with its value set to the value of this field.
+   * The name of the document to use as the fallback for any requests to documents that are not found when serving this static site. Only 1 of catchall_document or error_document can be set.
    */
-  http_port?: number;
+  catchall_document?: string;
 
   /**
-   * Array of integers <int64>
-   * The ports on which this service will listen for internal traffic.
+   * An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: _static, dist, public, build.
    */
-  internal_ports?: number[];
+  output_dir?: string;
 
   /**
-   * A list of HTTP routes that should be routed to this component.
    * Array of objects (A criterion for routing HTTP traffic to a component.)
+   * A list of HTTP routes that should be routed to this component.
    */
-  routes?: IAppServiceRoute[];
+  cors?: IAppCors[];
 }

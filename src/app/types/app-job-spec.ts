@@ -1,13 +1,6 @@
-import {
-  IAppCors,
-  IAppServiceRoute,
-  IAppVariableDefinition,
-  IGithubSource,
-  IGitSource,
-  IImageSource,
-} from ".";
+import { IAppVariableDefinition, IGithubSource, IGitSource, IImageSource } from ".";
 
-export interface IAppServiceSpec {
+export interface IAppJobSpec {
   /**
    * The name. Must be unique across all components within the same app.
    * [ 2 .. 32 ] characters ^[a-z][a-z0-9-]{0,30}[a-z0-9]$
@@ -74,25 +67,13 @@ export interface IAppServiceSpec {
     | "professional-l"
     | "professional-xl";
 
-  cors?: IAppCors[];
-
-  health_check?: any;
-
   /**
-   * integer <int64> [ 1 .. 65535 ]
-   * The internal port on which this service's run command will listen. Default: 8080 If there is not an environment variable with the name PORT, one will be automatically added with its value set to the value of this field.
+   * Default: "UNSPECIFIED"
+   * Enum: "UNSPECIFIED" "PRE_DEPLOY" "POST_DEPLOY" "FAILED_DEPLOY"
+   * UNSPECIFIED: Default job type, will auto-complete to POST_DEPLOY kind.
+   * PRE_DEPLOY: Indicates a job that runs before an app deployment.
+   * POST_DEPLOY: Indicates a job that runs after an app deployment.
+   * FAILED_DEPLOY: Indicates a job that runs after a component fails to deploy.
    */
-  http_port?: number;
-
-  /**
-   * Array of integers <int64>
-   * The ports on which this service will listen for internal traffic.
-   */
-  internal_ports?: number[];
-
-  /**
-   * A list of HTTP routes that should be routed to this component.
-   * Array of objects (A criterion for routing HTTP traffic to a component.)
-   */
-  routes?: IAppServiceRoute[];
+  kind?: "UNSPECIFIED" | "PRE_DEPLOY" | "POST_DEPLOY" | "FAILED_DEPLOY";
 }
