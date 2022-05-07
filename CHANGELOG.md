@@ -2,6 +2,8 @@
 
 ## 2022-05-07 - new version 3.7.6
 
+* add node 18.x test support
+* drop node 10.x test support
 * fix app spec types, thanks ([@carlosbaraza](https://github.com/carlosbaraza))
 * npm audit + dependencies updates
 
