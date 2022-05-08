@@ -1,5 +1,12 @@
 # changelog
 
+## 2022-05-07 - new version 3.7.6
+
+* add node 18.x test support
+* drop node 10.x test support
+* fix app spec types, thanks ([@carlosbaraza](https://github.com/carlosbaraza))
+* npm audit + dependencies updates
+
 ## **2022-04-30** - new version 3.7.5
 
 * add downloads badge to readme.md

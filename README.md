@@ -311,6 +311,9 @@ js.js
 
 ## contributors
 
+<a href="https://github.com/carlosbaraza" target="_blank">
+    <img src="https://avatars2.githubusercontent.com/u/1270425?v=3" title="ngryman" width="80" height="80">
+</a>
 <a href="https://github.com/codyogden" target="_blank">
     <img src="https://avatars2.githubusercontent.com/u/11383626?v=3" title="ngryman" width="80" height="80">
 </a>
