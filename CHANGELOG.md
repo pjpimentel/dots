@@ -1,5 +1,9 @@
 # changelog
 
+## **2022-05-21** - new version 3.7.7
+
+* npm audit + dependencies updates
+
 ## 2022-05-07 - new version 3.7.6
 
 * add node 18.x test support
