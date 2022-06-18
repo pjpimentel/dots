@@ -1,5 +1,8 @@
 # changelog
 
+## **2022-06-18** - new version 3.7.9
+
+* dependencies updates
 ## **2022-05-29** - new version 3.7.8
 
 * npm audit + dependencies updates
