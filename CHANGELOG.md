@@ -3,6 +3,7 @@
 ## **2022-07-09** - new version 3.7.10
 
 * dependencies updates
+* fix IApp type
 
 ## **2022-06-18** - new version 3.7.9
 

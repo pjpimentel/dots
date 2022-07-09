@@ -1,20 +1,28 @@
 import { IAppDeployment, IAppSpec } from ".";
-import { IRegion } from '../../region';
+
+export interface IAppRegion {
+  continent: string;
+  data_centers: string[];
+  flag: string;
+  label: string;
+  slug: string;
+}
 
 export interface IApp {
-  id: string;
-  owner_uuid: string;
-  spec: IAppSpec;
-  default_ingress: string;
-  created_at: string;
-  updated_at: string;
   active_deployment: IAppDeployment;
-  in_progress_deployment?: IAppDeployment;
-  last_deployment_created_at: string;
-  live_url: string;
-  region: IRegion;
-  tier_slug: string;
-  live_url_base: string;
-  live_domain: string;
+  created_at: string;
+  default_ingress: string;
   domains: string[];
+  id: string;
+  in_progress_deployment?: IAppDeployment;
+  last_deployment_active_at?: string;
+  last_deployment_created_at: string;
+  live_domain: string;
+  live_url_base: string;
+  live_url?: string;
+  owner_uuid: string;
+  region: IAppRegion;
+  spec: IAppSpec;
+  tier_slug: string;
+  updated_at: string;
 }
