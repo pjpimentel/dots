@@ -31,6 +31,7 @@ try {
 try {
   const input = {
     can_write: false, // boolean
+    expiry_seconds: 0, // number
   };
   const {data:credentials} = await dots.containerRegistry.getDockerCredentials(input)
   console.log(credentials);

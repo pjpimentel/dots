@@ -1,5 +1,10 @@
 # changelog
 
+## **2022-08-22** - new version 3.7.13
+
+* dependencies updates
+* add param expiry_seconds to getDockerCredentials
+
 ## **2022-08-13** - new version 3.7.12
 
 * dependencies updates

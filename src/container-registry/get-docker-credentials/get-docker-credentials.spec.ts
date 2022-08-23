@@ -43,6 +43,7 @@ describe('container-registry', () => {
       expect(request.method).toBe('get');
       expect(request.headers).toMatchObject(MOCK.request.headers);
       expect(request.params.read_write).toBeFalsy();
+      expect(request.params.expiry_seconds).toBeFalsy();
       /// validate data
       expect(response.data).toBeDefined();
       expect(response.data.auths).toBeDefined();
@@ -60,6 +61,18 @@ describe('container-registry', () => {
       /// validate request
       const {request} = response;
       expect(request.params.read_write).toBe(true);
+    });
+    it('should set expiry_seconds query param', async () => {
+      const _getDockerCredentials = getDockerCredentials(context);
+      const input = {
+        can_write: true,
+        expiry_seconds: Math.random(),
+      };
+      const response = await _getDockerCredentials(input);
+      Object.assign(response, { request: mock.history.get[0]});
+      /// validate request
+      const {request} = response;
+      expect(request.params.expiry_seconds).toBe(input.expiry_seconds);
     });
   });
 });
