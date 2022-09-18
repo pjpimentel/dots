@@ -1,5 +1,9 @@
 # changelog
 
+## **2022-09-18** - new version 3.7.14
+
+* dependencies updates
+
 ## **2022-08-22** - new version 3.7.13
 
 * dependencies updates
