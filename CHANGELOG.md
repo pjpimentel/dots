@@ -1,5 +1,10 @@
 # changelog
 
+## **2022-09-18** - new version 3.8.0
+
+* dependencies updates
+* drop node 12.x test support
+
 ## **2022-08-22** - new version 3.7.13
 
 * dependencies updates
