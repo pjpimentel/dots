@@ -28,7 +28,7 @@
     "dist"
   ],
   "dependencies": {
-    "axios": "^0.27.2"
+    "axios": "^1.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
