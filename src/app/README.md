@@ -8,6 +8,7 @@ try {
   const input = {
     page: 1, // number
     per_page: 100, // number
+    with_projects: false, // boolean
   };
   const {data:{apps}} = await dots.app.listApps(input);
   console.log(apps);
@@ -38,6 +39,7 @@ try {
 try {
   const input = {
     spec: {}, // IAppSpec
+    project_id: '', // string
   };
   const {data:{app}} = await dots.app.createApp(input);
   console.log(app);

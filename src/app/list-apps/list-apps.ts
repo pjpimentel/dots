@@ -5,6 +5,10 @@ export interface IListAppsApiResponse extends IListResponse {
   apps: IApp[];
 }
 
+export interface IListAppApiRequest extends IListRequest {
+  with_projects?: boolean;
+}
+
 export type ListAppsResponse = IResponse<IListAppsApiResponse>;
 
 export const listApps = ({
@@ -12,9 +16,10 @@ export const listApps = ({
 }: IContext) => ({
   page = 1,
   per_page = 25,
-}: IListRequest): Promise<Readonly<ListAppsResponse>> => {
+  with_projects = false,
+}: IListAppApiRequest): Promise<Readonly<ListAppsResponse>> => {
   const path = '/apps';
-  const params = {page, per_page};
+  const params = {page, per_page, with_projects};
 
   const url = `${path}`;
 
