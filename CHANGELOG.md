@@ -1,5 +1,11 @@
 # changelog
 
+## **2023-05-03** - new version 3.8.2
+
+* dependencies updates
+* add `with_projects` input to app.listApps
+* add `project_id` input to app.createApp
+
 ## **2022-10-09** - new version 3.8.1
 
 * dependencies updates
