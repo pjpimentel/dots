@@ -6,6 +6,7 @@ export interface ICreateAppApiResponse {
 }
 
 export interface ICreateAppApiRequest {
+  project_id?: string;
   spec: Partial<IAppSpec>;
 }
 
@@ -14,10 +15,11 @@ export type CreateAppResponse = IResponse<ICreateAppApiResponse>;
 export const createApp = ({
   httpClient,
 }: IContext) => ({
+  project_id,
   spec,
 }: ICreateAppApiRequest): Promise<Readonly<CreateAppResponse>> => {
   const path = '/apps';
-  const body = {spec};
+  const body = {project_id, spec};
   const url = `${path}`;
 
   return httpClient.post<ICreateAppApiResponse>(url, body);

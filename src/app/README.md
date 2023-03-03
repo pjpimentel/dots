@@ -39,6 +39,7 @@ try {
 try {
   const input = {
     spec: {}, // IAppSpec
+    project_id: '', // string
   };
   const {data:{app}} = await dots.app.createApp(input);
   console.log(app);
