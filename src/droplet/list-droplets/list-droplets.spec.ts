@@ -12,6 +12,7 @@ describe('droplet', () => {
       expect(typeof listDroplets).toBe('function');
       expect(typeof listDroplets(MOCK.context)).toBe('function');
     });
+
     it('should send page and per_page parameter', async () => {
       const _listDroplets = listDroplets(MOCK.context);
 
@@ -57,6 +58,22 @@ describe('droplet', () => {
           tag_name: tag_name,
         },
       });
+    });
+
+    it('should output expected type', async () => {
+      const _listDroplets = listDroplets(MOCK.context);
+
+      const output = await _listDroplets({});
+
+      expect(output.data.droplets).toBeDefined();
+
+      expect(output.data.links?.pages).toBeDefined();
+      expect(output.data.links?.pages?.first).toBeDefined();
+      expect(output.data.links?.pages?.last).toBeDefined();
+      expect(output.data.links?.pages?.next).toBeDefined();
+      expect(output.data.links?.pages?.prev).toBeDefined();
+
+      expect(output.data.meta?.total).toBeDefined();
     });
   });
 });
