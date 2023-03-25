@@ -1,5 +1,10 @@
 # changelog
 
+## **2023-05-25** - new version 3.8.3
+
+* fix `IListResponse` type
+* dependencies updates
+
 ## **2023-05-03** - new version 3.8.2
 
 * dependencies updates

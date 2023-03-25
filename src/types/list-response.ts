@@ -1,12 +1,19 @@
-import { IListMeta, IListLinks } from ".";
-
 /// list response base interface [used in paginated responses]
 export interface IListResponse {
-  meta: IListMeta;
-  links: IListLinks;
+  links?: {
+    actions?: {
+      href: string;
+      id: number;
+      rel: string;
+    }[];
+    pages?: {
+      first?: string;
+      prev?: string;
+      next?: string;
+      last?: string;
+    }
+  };
+  meta?: {
+    total?: number;
+  };
 }
-// items: C[];
-// lastPage: number;
-// per_page: number;
-// total: number;
-// currentPage: number;
