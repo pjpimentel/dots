@@ -21,8 +21,11 @@ export interface IApp {
   live_url_base: string;
   live_url?: string;
   owner_uuid: string;
+  pending_deployment?: IAppDeployment;
+  project_id: string;
   region: IAppRegion;
   spec: IAppSpec;
   tier_slug: string;
   updated_at: string;
+  pinned_deployment?: IAppDeployment;
 }
