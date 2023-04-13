@@ -1,11 +1,16 @@
 # changelog
 
-## **2023-05-25** - new version 3.8.3
+## **2023-04-12** - new version 3.8.4
+
+* fix `IApp` type ([@kkhanhluu](https://github.com/kkhanhluu))
+* dependencies updates
+
+## **2023-03-25** - new version 3.8.3
 
 * fix `IListResponse` type
 * dependencies updates
 
-## **2023-05-03** - new version 3.8.2
+## **2023-02-03** - new version 3.8.2
 
 * dependencies updates
 * add `with_projects` input to app.listApps

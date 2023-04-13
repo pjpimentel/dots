@@ -311,23 +311,26 @@ js.js
 
 ## contributors
 
+<a href="https://github.com/kkhanhluu" target="_blank">
+    <img src="https://avatars2.githubusercontent.com/u/38130967?v=3" width="80" height="80">
+</a>
 <a href="https://github.com/carlosbaraza" target="_blank">
-    <img src="https://avatars2.githubusercontent.com/u/1270425?v=3" title="ngryman" width="80" height="80">
+    <img src="https://avatars2.githubusercontent.com/u/1270425?v=3" width="80" height="80">
 </a>
 <a href="https://github.com/codyogden" target="_blank">
-    <img src="https://avatars2.githubusercontent.com/u/11383626?v=3" title="ngryman" width="80" height="80">
+    <img src="https://avatars2.githubusercontent.com/u/11383626?v=3" width="80" height="80">
 </a>
 <a href="https://github.com/rijkvanzanten" target="_blank">
-    <img src="https://avatars2.githubusercontent.com/u/9141017?v=3" title="ngryman" width="80" height="80">
+    <img src="https://avatars2.githubusercontent.com/u/9141017?v=3" width="80" height="80">
 </a>
 <a href="https://github.com/FreakyTurtle" target="_blank">
-    <img src="https://avatars2.githubusercontent.com/u/8461972?v=3" title="ngryman" width="80" height="80">
+    <img src="https://avatars2.githubusercontent.com/u/8461972?v=3" width="80" height="80">
 </a>
 <a href="https://github.com/Aitthi" target="_blank">
-    <img src="https://avatars2.githubusercontent.com/u/26670680?v=3" title="ngryman" width="80" height="80">
+    <img src="https://avatars2.githubusercontent.com/u/26670680?v=3" width="80" height="80">
 </a>
 <a href="https://github.com/Cosmic-Goat" target="_blank">
-    <img src="https://avatars2.githubusercontent.com/u/13304815?v=3" title="ngryman" width="80" height="80">
+    <img src="https://avatars2.githubusercontent.com/u/13304815?v=3" width="80" height="80">
 </a>
 
 ## license: [mit](LICENSE)
