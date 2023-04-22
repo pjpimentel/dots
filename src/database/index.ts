@@ -23,6 +23,7 @@ export * from './list-database-cluster-dbs/list-database-cluster-dbs';
 export * from './list-database-cluster-firewall-rules/list-database-cluster-firewall-rules';
 export * from './list-database-cluster-users/list-database-cluster-users';
 export * from './list-database-clusters/list-database-clusters';
+export * from './list-database-options/list-database-options';
 export * from './list-read-only-replicas/list-read-only-replicas';
 export * from './migrate-database-cluster/migrate-database-cluster';
 export * from './remove-database-cluster-user/remove-database-cluster-user';
@@ -30,3 +31,4 @@ export * from './resize-database-cluster/resize-database-cluster';
 export * from './restore-database-cluster-backup/restore-database-cluster-backup';
 export * from './types';
 export * from './update-database-cluster-firewall-rules/update-database-cluster-firewall-rules';
+

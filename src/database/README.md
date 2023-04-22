@@ -49,6 +49,17 @@ try {
 }
 ```
 
+## list-database-options
+[original documentation](https://docs.digitalocean.com/reference/api/kafka-beta-api-reference/#operation/databases_list_options)
+```javascript
+try {
+  const {data:{options}} = await dots.database.listDatabaseOptions();
+  console.log(options);
+} catch (error) {
+  console.log(error);
+}
+```
+
 ## resize-database-cluster
 [original documentation](https://developers.digitalocean.com/documentation/v2/#resize-a-database-cluster)
 ```javascript
