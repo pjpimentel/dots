@@ -1,5 +1,10 @@
 # changelog
 
+## **2023-04-23** - new version 3.9.0
+
+* add `listDatabaseOptions` ([@mueschmaddhttpslistDatabaseOptions/github/mueschm))
+* dependencies updates
+
 ## **2023-04-12** - new version 3.8.4
 
 * fix `IApp` type ([@kkhanhluu](https://github.com/kkhanhluu))
