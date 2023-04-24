@@ -312,6 +312,9 @@ js.js
 
 ## contributors
 
+<a href="https://github.com/mueschm" target="_blank">
+    <img src="https://avatars2.githubusercontent.com/u/532523?v=3" width="80" height="80">
+</a>
 <a href="https://github.com/kkhanhluu" target="_blank">
     <img src="https://avatars2.githubusercontent.com/u/38130967?v=3" width="80" height="80">
 </a>
