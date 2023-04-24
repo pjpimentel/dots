@@ -133,6 +133,7 @@ js.js
     1. [list-database-cluster-firewall-rules](src/database/README.md#list-database-cluster-firewall-rules)
     1. [list-database-cluster-users](src/database/README.md#list-database-cluster-users)
     1. [list-database-clusters](src/database/README.md#list-database-clusters)
+    1. [list-database-options](src/database/README.md#list-database-options)
     1. [list-read-only-replicas](src/database/README.md#list-read-only-replicas)
     1. [migrate-database-cluster](src/database/README.md#migrate-database-cluster)
     1. [remove-database-cluster-user](src/database/README.md#remove-database-cluster-user)
