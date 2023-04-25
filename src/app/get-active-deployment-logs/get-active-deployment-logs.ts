@@ -14,7 +14,7 @@ export interface IGetActiveDeploymentLogsApiRequest {
   type?: AppDeploymentLogType | string;
 }
 
-export type GetAppDeploymentLogsResponse =
+export type GetActiveDeploymentLogsResponse =
   IResponse<IGetActiveDeploymentLogsApiResponse>;
 
 export const getActiveDeploymentLogs =
@@ -26,7 +26,7 @@ export const getActiveDeploymentLogs =
     pod_connection_timeout,
     type,
   }: IGetActiveDeploymentLogsApiRequest): Promise<
-    Readonly<GetAppDeploymentLogsResponse>
+    Readonly<GetActiveDeploymentLogsResponse>
   > => {
     const path = '/apps';
     const url = `${path}/${app_id}/components/${component_name}/logs`;
