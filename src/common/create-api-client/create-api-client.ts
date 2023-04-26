@@ -280,6 +280,7 @@ export const createApiClient = ({
       createApp: modules.app.createApp(context),
       createAppDeployment: modules.app.createAppDeployment(context),
       deleteApp: modules.app.deleteApp(context),
+      getActiveDeploymentLogs: modules.app.getActiveDeploymentLogs(context),
       getAggregatedAppDeploymentLogs: modules.app.getAggregatedAppDeploymentLogs(context),
       getApp: modules.app.getApp(context),
       getAppDeployment: modules.app.getAppDeployment(context),

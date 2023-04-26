@@ -75,6 +75,7 @@ js.js
     1. [create-app-deployment](src/app/README.md#create-app-deployment)
     1. [create-app](src/app/README.md#create-app)
     1. [delete-app](src/app/README.md#delete-app)
+    1. [get-active-deployment-logs](src/app/README.md#get-active-deployment-logs)
     1. [get-aggregated-app-deployment-logs](src/app/README.md#get-aggregated-app-deployment-logs)
     1. [get-app-deployment-logs](src/app/README.md#get-app-deployment-logs)
     1. [get-app-deployment](src/app/README.md#get-app-deployment)

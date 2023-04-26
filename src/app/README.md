@@ -79,6 +79,25 @@ try {
 }
 ```
 
+## get-active-deployment-logs
+[original documentation](https://docs.digitalocean.com/reference/api/api-reference/#operation/apps_get_logs_active_deployment)
+
+```javascript
+try {
+  const input = {
+    app_id: '', // string
+    component_name: '', // string
+    follow: true // boolean
+    pod_connection_timeout: '', // string
+    type: '', // string
+  };
+  const {data} = await dots.app.getActiveDeploymentLogs(input);
+  console.log(data);
+} catch (error) {
+  console.log(error);
+}
+```
+
 ## run-app-detection
 [original documentation](https://developers.digitalocean.com/documentation/v2/#run-app-detection)
 

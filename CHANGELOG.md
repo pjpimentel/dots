@@ -1,8 +1,13 @@
 # changelog
 
+## **2023-04-25** - new version 3.10.0
+
+* add `getActiveDeploymentLogs` ([@kkhanhluu](https://github.com/kkhanhluu))
+* dependencies updates
+
 ## **2023-04-23** - new version 3.9.0
 
-* add `listDatabaseOptions` ([@mueschmaddhttpslistDatabaseOptions/github/mueschm))
+* add `listDatabaseOptions` ([@mueschm](https://github.com/mueschm))
 * dependencies updates
 
 ## **2023-04-12** - new version 3.8.4
