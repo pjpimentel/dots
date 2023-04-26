@@ -2,6 +2,7 @@ export * from './cancel-app-deployment/cancel-app-deployment';
 export * from './create-app-deployment/create-app-deployment';
 export * from './create-app/create-app';
 export * from './delete-app/delete-app';
+export * from './get-active-deployment-logs/get-active-deployment-logs';
 export * from './get-aggregated-app-deployment-logs/get-aggregated-app-deployment-logs';
 export * from './get-app-deployment-logs/get-app-deployment-logs';
 export * from './get-app-deployment/get-app-deployment';
