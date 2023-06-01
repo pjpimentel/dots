@@ -21,11 +21,11 @@ try {
 ```javascript
 try {
   const input = {
-    host_id: "", // string
-    start: "", // string
     end: "", // string
-    interface: "", // string,
-    direction: "", // string.
+    host_id: "", // string
+    network_interface: "", // string,
+    start: "", // string
+    traffic_direction: "", // string.
   };
   const {data:{data}} = await dots.monitoring.getDropletBandwidthMetrics(input)
   console.log(data);

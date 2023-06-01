@@ -1,5 +1,10 @@
 # changelog
 
+## **2023-05-31** - new version 3.10.1
+
+* dependencies updates
+* fix `get-droplet-bandwidth-metrics` documentation
+
 ## **2023-04-25** - new version 3.10.0
 
 * add `getActiveDeploymentLogs` ([@kkhanhluu](https://github.com/kkhanhluu))
