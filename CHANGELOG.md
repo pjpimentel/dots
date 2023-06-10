@@ -1,5 +1,12 @@
 # changelog
 
+## **2023-06-30** - new version 3.11.0
+
+* removed package axios-mock-adapter
+* update all dependencies
+* updated all unit tests using axios-mock-adapter 
+* updated axios to latest version :)
+
 ## **2023-05-31** - new version 3.10.1
 
 * dependencies updates
