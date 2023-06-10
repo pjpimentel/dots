@@ -11,8 +11,7 @@ export const deleteApp = ({
 }: IContext) => ({
   app_id,
 }: IDeleteAppApiRequest): Promise<Readonly<DeleteAppResponse>> => {
-  const path = '/apps';
-  const url = `${path}/${app_id}`;
+  const url = `/apps/${app_id}`;
 
   return httpClient.delete(url);
 };

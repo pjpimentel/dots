@@ -16,8 +16,7 @@ export const getApp = ({
 }: IContext) => ({
   app_id,
 }: IGetAppApiRequest): Promise<Readonly<GetAppResponse>> => {
-  const path = '/apps';
-  const url = `${path}/${app_id}`;
+  const url = `/apps/${app_id}`;
 
   return httpClient.get<IGetAppApiResponse>(url);
 };

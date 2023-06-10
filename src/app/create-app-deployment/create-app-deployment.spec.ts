@@ -1,71 +1,42 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {createAppDeployment} from './create-app-deployment';
-import * as MOCK from './create-app-deployment.mock';
+import { createAppDeployment } from './create-app-deployment';
 
-describe('app', () => {
-  const URL = `/apps/${MOCK.request.body.app_id}/deployments`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onPost(URL, undefined).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('create-app-deployment', () => {
+  const default_input = {
+    app_id: `${Math.random()}`,
+    force_build: `${Math.random()}`,
+  } as any;
+  const default_output = Math.random();
+
+  const httpClient = {
+    post: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.post.mockClear();
   });
-  describe('create-app-deployment', () => {
-    it('should be a fn', () => {
-      expect(typeof createAppDeployment).toBe('function');
-    });
-    it('should return a fn', () => {
-      expect(typeof createAppDeployment(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _createAppDeployment = createAppDeployment(context);
-      const response = await _createAppDeployment(MOCK.request.body);
-      Object.assign(response, {request: mock.history.post[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('post');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(JSON.parse(request.data)).toMatchObject({});
-      /// validate data
-      expect(response.data).toBeDefined();
-      const {deployment} = response.data;
-      expect(typeof deployment.id).toBe('string');
-      expect(typeof deployment.spec.name).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
 
-    it('should send force_build parameter', async () => {
-      const _createAppDeployment = createAppDeployment(context);
+  it('should be and return a fn', () => {
+    expect(typeof createAppDeployment).toBe('function');
+    expect(typeof createAppDeployment(context)).toBe('function');
+  });
 
-      const force_build = Math.random() as unknown as boolean;
-      await _createAppDeployment({
-        ...MOCK.request.body,
-        force_build,
-      });
+  it('should call axios.post', async () => {
+    const _createAppDeployment = createAppDeployment(context);
+    await _createAppDeployment(default_input);
 
-      const [request = {}] = mock.history.post;
-
-      expect(JSON.parse(request.data)).toMatchObject({force_build});
+    expect(httpClient.post).toHaveBeenCalledWith(`/apps/${default_input.app_id}/deployments`, {
+      force_build: default_input.force_build,
     });
+  });
+
+  it('should output axios response', async () => {
+    const _createAppDeployment = createAppDeployment(context);
+    const output = await _createAppDeployment(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

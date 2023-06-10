@@ -1,37 +1,40 @@
-import {createApp} from './create-app';
-import * as MOCK from './create-app.mock';
+import { createApp } from './create-app';
 
-describe('app', () => {
+describe('create-app', () => {
+  const default_input = {
+    project_id: `${Math.random()}`,
+    spec: `${Math.random()}`,
+  } as any;
+  const default_output = Math.random();
+
+  const httpClient = {
+    post: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    MOCK.httpClient.post.mockClear();
+    httpClient.post.mockClear();
   });
-  describe('create-app', () => {
-    it('should be and return a  fn', () => {
-      expect(typeof createApp).toBe('function');
-      expect(typeof createApp(MOCK.context)).toBe('function');
-    });
 
-    it('should send `spec` parameter', async () => {
-      const _createApp = createApp(MOCK.context);
+  it('should be and return a fn', () => {
+    expect(typeof createApp).toBe('function');
+    expect(typeof createApp(context)).toBe('function');
+  });
 
-      await _createApp(MOCK.default_input);
+  it('should call axios.post', async () => {
+    const _createApp = createApp(context);
+    await _createApp(default_input);
 
-      expect(MOCK.httpClient.post).toHaveBeenCalledWith(MOCK.endpoint, MOCK.default_input);
-    });
+    expect(httpClient.post).toHaveBeenCalledWith(`/apps`, default_input);
+  });
 
-    it('should send `project_id` parameter', async () => {
-      const _createApp = createApp(MOCK.context);
+  it('should output axios response', async () => {
+    const _createApp = createApp(context);
+    const output = await _createApp(default_input);
 
-      const project_id = `${Math.random()}`;
-      await _createApp({
-        ...MOCK.default_input,
-        project_id,
-      });
-
-      expect(MOCK.httpClient.post).toHaveBeenCalledWith(MOCK.endpoint, {
-        spec: MOCK.default_input.spec,
-        project_id,
-      });
-    });
+    expect(output).toBe(default_output);
   });
 });

@@ -18,9 +18,8 @@ export const updateApp = ({
   app_id,
   spec,
 }: IUpdateAppApiRequest): Promise<Readonly<UpdateAppResponse>> => {
-    const path = '/apps';
+    const url = `/apps/${app_id}`;
     const body = {spec};
-    const url = `${path}/${app_id}`;
 
     return httpClient.put<IUpdateAppApiResponse>(url, body);
   };

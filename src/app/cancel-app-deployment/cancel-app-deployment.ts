@@ -18,8 +18,7 @@ export const cancelAppDeployment = ({
   app_id,
   deployment_id,
 }: ICancelAppDeploymentApiRequest): Promise<Readonly<CancelAppDeploymentResponse>> => {
-  const path = '/apps';
-  const url = `${path}/${app_id}/deployments/${deployment_id}/cancel`;
+  const url = `/apps/${app_id}/deployments/${deployment_id}/cancel`;
 
   return httpClient.post<ICancelAppDeploymentApiResponse>(url);
 };
