@@ -13,9 +13,8 @@ export const purgeCache = ({
   cdn_endpoint_id,
   files,
 }: IPurgeCacheApiRequest): Promise<Readonly<PurgeCacheResponse>> => {
-  const path = '/cdn/endpoints';
+  const url = `/cdn/endpoints/${cdn_endpoint_id}/cache`;
   const body = {files};
-  const url = `${path}/${cdn_endpoint_id}/cache`;
 
   return httpClient.delete(url, {data: body});
 };

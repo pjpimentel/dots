@@ -13,9 +13,8 @@ export const listCdnEndpoints = ({
   page = 1,
   per_page = 25,
 }: IListRequest): Promise<Readonly<ListCdnEndpointsResponse>> => {
-  const path = '/cdn/endpoints';
+  const url = '/cdn/endpoints';
   const query_params = {page, per_page};
-  const url = `${path}`;
 
   return httpClient.get<IListCdnEndpointsApiResponse>(url, {params: query_params});
 };

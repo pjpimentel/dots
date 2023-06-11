@@ -11,8 +11,7 @@ export const deleteCdnEndpoint = ({
 }: IContext) => ({
   cdn_endpoint_id,
 }: IDeleteCdnEndpointApiRequest): Promise<Readonly<DeleteCdnEndpointResponse>> => {
-  const path = '/cdn/endpoints';
-  const url = `${path}/${cdn_endpoint_id}`;
+  const url = `/cdn/endpoints/${cdn_endpoint_id}`;
 
   return httpClient.delete(url);
 };
