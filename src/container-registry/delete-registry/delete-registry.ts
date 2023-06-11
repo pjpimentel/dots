@@ -5,8 +5,7 @@ export type DeleteRegistryResponse = IResponse<void>;
 export const deleteRegistry = ({
   httpClient,
 }: IContext) => (): Promise<Readonly<DeleteRegistryResponse>> => {
-  const path = '/registry';
-  const url = `${path}`;
+  const url = '/registry';
 
   return httpClient.delete(url);
 };
