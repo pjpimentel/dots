@@ -11,8 +11,7 @@ export const deleteCertificate = ({
 }: IContext) => ({
   certificate_id,
 }: IDeleteCertificateApiRequest): Promise<Readonly<DeleteCertificateResponse>> => {
-  const path = '/certificates';
-  const url = `${path}/${certificate_id}`;
+  const url = `/certificates/${certificate_id}`;
 
   return httpClient.delete(url);
 };
