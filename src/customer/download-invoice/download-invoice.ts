@@ -14,8 +14,7 @@ export const downloadInvoice = ({
   invoice_uuid,
   format,
 }: IDownloadInvoiceApiRequest): Promise<Readonly<DownloadInvoiceResponse>> => {
-  const path = '/customers/my/invoices';
-  const url = `${path}/${invoice_uuid}/${format}`;
+  const url = `/customers/my/invoices/${invoice_uuid}/${format}`;
 
   return httpClient.get<Stream>(url, {
     responseType: 'stream',
