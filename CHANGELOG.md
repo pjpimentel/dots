@@ -5,7 +5,8 @@
 * removed package axios-mock-adapter
 * update all dependencies
 * updated all unit tests using axios-mock-adapter 
-* updated axios to latest version :)
+* upgrade axios to latest version :)
+* upgrade codeql workflow from v1 to v2
 
 ## **2023-05-31** - new version 3.10.1
 
