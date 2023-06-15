@@ -11,8 +11,7 @@ export const destroyDatabaseCluster = ({
 }: IContext) => ({
   database_cluster_id,
 }: IDestroyDatabaseClusterApiRequest): Promise<Readonly<DestroyDatabaseClusterResponse>> => {
-  const path = '/databases';
-  const url = `${path}/${database_cluster_id}`;
+  const url = `/databases/${database_cluster_id}`;
 
   return httpClient.delete<void>(url);
 };

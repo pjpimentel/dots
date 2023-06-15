@@ -30,7 +30,7 @@ export const createDatabaseCluster = ({
   tags,
   version,
 }: ICreateDatabaseClusterApiRequest): Promise<Readonly<CreateDatabaseClusterResponse>> => {
-  const path = '/databases';
+  const url = '/databases';
   const body = {
     engine,
     name,
@@ -41,7 +41,6 @@ export const createDatabaseCluster = ({
     tags,
     version,
   };
-  const url = `${path}`;
 
   return httpClient.post<ICreateDatabaseClusterApiResponse>(url, body);
 };

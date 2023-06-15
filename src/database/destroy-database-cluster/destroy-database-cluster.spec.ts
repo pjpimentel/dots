@@ -1,56 +1,39 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {destroyDatabaseCluster} from './destroy-database-cluster';
-import * as MOCK from './destroy-database-cluster.mock';
+import { destroyDatabaseCluster } from './destroy-database-cluster';
 
-describe('database', () => {
-  const DATABASE_CLUSTER_ID = 'database-cluster-id';
-  const URL = `/databases/${DATABASE_CLUSTER_ID}`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onDelete(URL, MOCK.request.body).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('destroy-database-cluster', () => {
+  const default_input = {
+    database_cluster_id: Math.random(),
+  } as any;
+  const default_output = Math.random();
+
+  const httpClient = {
+    delete: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.delete.mockClear();
   });
-  describe('destroy-database-cluster', () => {
-    it('should be a fn', () => {
-      expect(typeof destroyDatabaseCluster).toBe('function');
-    });
-    it('should return a fn', () => {
-      expect(typeof destroyDatabaseCluster(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _destroyDatabaseCluster = destroyDatabaseCluster(context);
-      const response = await _destroyDatabaseCluster({
-        database_cluster_id: DATABASE_CLUSTER_ID
-      });
-      Object.assign(response, {request: mock.history.delete[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('delete');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeUndefined();
-      /// validate data
-      expect(response.data).toBeUndefined();
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
+
+  it('should be and return a fn', () => {
+    expect(typeof destroyDatabaseCluster).toBe('function');
+    expect(typeof destroyDatabaseCluster(context)).toBe('function');
+  });
+
+  it('should call axios.delete', async () => {
+    const _destroyDatabaseCluster = destroyDatabaseCluster(context);
+    await _destroyDatabaseCluster(default_input);
+
+    expect(httpClient.delete).toHaveBeenCalledWith(`/databases/${default_input.database_cluster_id}`);
+  });
+
+  it('should output axios response', async () => {
+    const _destroyDatabaseCluster = destroyDatabaseCluster(context);
+    const output = await _destroyDatabaseCluster(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

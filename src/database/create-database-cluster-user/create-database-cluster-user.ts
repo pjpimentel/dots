@@ -23,9 +23,8 @@ export const createDatabaseClusterUser = ({
   mysql_settings,
   user_name,
 }: ICreateDatabaseClusterUserApiRequest): Promise<Readonly<CreateDatabaseClusterUserResponse>> => {
-  const path = '/databases';
+  const url = `/databases/${database_cluster_id}/users`;
   const body = {name: user_name, mysql_settings};
-  const url = `${path}/${database_cluster_id}/users`;
 
   return httpClient.post<ICreateDatabaseClusterUserApiResponse>(url, body);
 };

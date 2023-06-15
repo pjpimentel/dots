@@ -26,7 +26,7 @@ export const createConnectionPool = ({
   size,
   user_name,
 }: ICreateConnectionPoolApiRequest): Promise<Readonly<CreateConnectionPoolResponse>> => {
-  const path = '/databases';
+  const url = `/databases/${database_cluster_id}/pools`;
   const body = {
     db: db_name,
     mode,
@@ -34,7 +34,6 @@ export const createConnectionPool = ({
     size,
     user: user_name,
   };
-  const url = `${path}/${database_cluster_id}/pools`;
 
   return httpClient.post<ICreateConnectionPoolApiResponse>(url, body);
 };

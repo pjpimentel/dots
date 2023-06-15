@@ -13,9 +13,8 @@ export const configureDatabaseClusterSqlModes = ({
   database_cluster_id,
   sql_mode,
 }: IConfigureDatabaseClusterSqlModeApiRequest): Promise<Readonly<ConfigureDatabaseClusterSqlModeResponse>> => {
-  const path = '/databases';
+  const url = `/databases/${database_cluster_id}/sql_mode`;
   const body = {sql_mode};
-  const url = `${path}/${database_cluster_id}/sql_mode`;
 
   return httpClient.put<void>(url, body);
 };
