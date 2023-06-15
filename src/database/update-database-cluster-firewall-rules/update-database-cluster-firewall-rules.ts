@@ -21,9 +21,8 @@ export const updateDatabaseClusterFirewallRules = ({
   database_cluster_id,
   rules,
 }: IUpdateDatabaseClusterFirewallRulesApiRequest): Promise<Readonly<UpdateDatabaseClusterFirewallRulesResponse>> => {
-  const path = '/databases';
+  const url = `/databases/${database_cluster_id}/firewall`;
   const body = {rules};
-  const url = `${path}/${database_cluster_id}/firewall`;
 
   return httpClient.put<void>(url, body);
 };

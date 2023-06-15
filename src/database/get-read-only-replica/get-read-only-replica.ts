@@ -18,8 +18,7 @@ export const getReadOnlyReplica = ({
   database_cluster_id,
   read_only_replica_name,
 }: IGetReadOnlyReplicaApiRequest): Promise<Readonly<GetReadOnlyReplicaResponse>> => {
-  const path = '/databases';
-  const url = `${path}/${database_cluster_id}/replicas/${read_only_replica_name}`;
+  const url = `/databases/${database_cluster_id}/replicas/${read_only_replica_name}`;
 
   return httpClient.get<IGetReadOnlyReplicaApiResponse>(url);
 };

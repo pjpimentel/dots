@@ -16,8 +16,7 @@ export const getDatabaseCluster = ({
 }: IContext) => ({
   database_cluster_id,
 }: IGetDatabaseClusterApiRequest): Promise<Readonly<GetDatabaseClusterResponse>> => {
-  const path = '/databases';
-  const url = `${path}/${database_cluster_id}`;
+  const url = `/databases/${database_cluster_id}`;
 
   return httpClient.get<IGetDatabaseClusterApiResponse>(url);
 };

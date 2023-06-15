@@ -16,8 +16,7 @@ export const getDatabaseClusterEvictionPolicy = ({
 }: IContext) => ({
   database_cluster_id,
 }: IGetDatabaseClusterEvictionPolicyApiRequest): Promise<Readonly<GetDatabaseClusterEvictionPolicyResponse>> => {
-  const path = '/databases';
-  const url = `${path}/${database_cluster_id}/eviction_policy`;
+  const url = `/databases/${database_cluster_id}/eviction_policy`;
 
   return httpClient.get<IGetDatabaseClusterEvictionPolicyApiResponse>(url);
 };

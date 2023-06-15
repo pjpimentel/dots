@@ -18,8 +18,7 @@ export const getDatabaseClusterDb = ({
   database_cluster_id,
   db_name,
 }: IGetDatabaseClusterDbApiRequest): Promise<Readonly<GetDatabaseClusterDbResponse>> => {
-  const path = '/databases';
-  const url = `${path}/${database_cluster_id}/dbs/${db_name}`;
+  const url = `/databases/${database_cluster_id}/dbs/${db_name}`;
 
   return httpClient.get<IGetDatabaseClusterDbApiResponse>(url);
 };

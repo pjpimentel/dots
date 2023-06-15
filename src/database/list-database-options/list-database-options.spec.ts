@@ -1,23 +1,36 @@
-import {listDatabaseOptions} from './list-database-options';
-import * as MOCK from './list-database-options.mock';
+import { listDatabaseOptions } from './list-database-options';
 
-describe('database', () => {
+describe('list-database-options', () => {
+  const default_output = Math.random();
+
+  const httpClient = {
+    get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    MOCK.httpClient.get.mockClear();
+    httpClient.get.mockClear();
   });
 
-  describe('list-database-options', () => {
-    it('should be and return a  fn', () => {
-      expect(typeof listDatabaseOptions).toBe('function');
-      expect(typeof listDatabaseOptions(MOCK.context)).toBe('function');
-    });
+  it('should be and return a fn', () => {
+    expect(typeof listDatabaseOptions).toBe('function');
+    expect(typeof listDatabaseOptions(context)).toBe('function');
+  });
 
-    it('should call axios.get', async () => {
-      const _listDatabaseOptions = listDatabaseOptions(MOCK.context);
+  it('should call axios.get', async () => {
+    const _listDatabaseOptions = listDatabaseOptions(context);
+    await _listDatabaseOptions();
 
-      await _listDatabaseOptions();
+    expect(httpClient.get).toHaveBeenCalledWith(`/databases/options`);
+  });
 
-      expect(MOCK.httpClient.get).toHaveBeenCalledWith(MOCK.endpoint);
-    });
+  it('should output axios response', async () => {
+    const _listDatabaseOptions = listDatabaseOptions(context);
+    const output = await _listDatabaseOptions();
+
+    expect(output).toBe(default_output);
   });
 });

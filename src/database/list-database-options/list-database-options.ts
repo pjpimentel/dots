@@ -27,8 +27,7 @@ export type ListDatabaseOptionsResponse = IResponse<IListDatabaseOptionsApiRespo
 export const listDatabaseOptions = ({
   httpClient,
 }: IContext) => (): Promise<Readonly<ListDatabaseOptionsResponse>> => {
-  const path = '/databases/options';
-  const url = `${path}`;
+  const url = '/databases/options';
 
   return httpClient.get<IListDatabaseOptionsApiResponse>(url);
 };

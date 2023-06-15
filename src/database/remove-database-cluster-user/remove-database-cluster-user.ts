@@ -13,8 +13,7 @@ export const removeDatabaseClusterUser = ({
   database_cluster_id,
   user_name,
 }: IRemoveDatabaseClusterUserApiRequest): Promise<Readonly<RemoveDatabaseClusterUserResponse>> => {
-  const path = '/databases';
-  const url = `${path}/${database_cluster_id}/users/${user_name}`;
+  const url = `/databases/${database_cluster_id}/users/${user_name}`;
 
   return httpClient.delete<void>(url);
 };

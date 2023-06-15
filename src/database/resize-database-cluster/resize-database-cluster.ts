@@ -15,12 +15,11 @@ export const resizeDatabaseCluster = ({
   num_nodes,
   size,
 }: IResizeDatabaseClusterApiRequest): Promise<Readonly<ResizeDatabaseClusterResponse>> => {
-  const path = '/databases';
+  const url = `/databases/${database_cluster_id}/resize`;
   const body = {
     num_nodes,
     size,
   };
-  const url = `${path}/${database_cluster_id}/resize`;
 
   return httpClient.put<void>(url, body);
 };
