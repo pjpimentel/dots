@@ -2,15 +2,16 @@
 
 ## **2023-06-30** - new version 3.11.0
 
+* add node 20 to tests coverage.
 * removed package axios-mock-adapter
 * update all dependencies
 * updated all unit tests using axios-mock-adapter 
-* upgrade axios to latest version :)
-* upgrade workflow codeql from v1 to v2
 * upgrade actions/checkout@v2 to actions/checkout@v3
-* upgrade node from 16 to 18 on publish workflow
 * upgrade actions/setup-node@v2 to actions/setup-node@v3
+* upgrade axios to latest version :)
+* upgrade node from 16 to 18 on publish workflow
 * upgrade SonarSource/sonarcloud-github-action@v1.6 to SonarSource/sonarcloud-github-action@v1.9.1
+* upgrade workflow codeql from v1 to v2
 
 ## **2023-05-31** - new version 3.10.1
 
