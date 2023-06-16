@@ -15,17 +15,21 @@ jobs:
     env:
       CI: true
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.x
+
       - name: npm install
         run: npm ci
+
       - name: npm build
         run: |
           npm run build
           npm run build:browser
+
       - name: npm publish
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
