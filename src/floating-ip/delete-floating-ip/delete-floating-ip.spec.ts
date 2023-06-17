@@ -2,7 +2,7 @@ import { deleteFloatingIp } from './delete-floating-ip';
 
 describe('delete-floating-ip', () => {
   const default_input = {
-    ipd: Math.random(),
+    ip: Math.random(),
   } as any;
   const default_output = Math.random();
 
