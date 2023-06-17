@@ -16,8 +16,7 @@ export const getSnapshot = ({
 }: IContext) => ({
   snapshot_id,
 }: IGetSnapshotApiRequest): Promise<Readonly<GetSnapshotResponse>> => {
-  const path = '/snapshots';
-  const url = `${path}/${snapshot_id}`;
+  const url = `/snapshots/${snapshot_id}`;
 
   return httpClient.get<IGetSnapshotApiResponse>(url);
 };

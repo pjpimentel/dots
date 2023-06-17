@@ -11,8 +11,7 @@ export const deleteSnapshot = ({
 }: IContext) => ({
   snapshot_id,
 }: IDeleteSnapshotApiRequest): Promise<Readonly<DeleteSnapshotRes>> => {
-  const path = '/snapshots';
-  const url = `${path}/${snapshot_id}`;
+  const url = `/snapshots/${snapshot_id}`;
 
   return httpClient.delete(url);
 };
