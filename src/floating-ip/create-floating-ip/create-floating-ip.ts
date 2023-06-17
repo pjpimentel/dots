@@ -22,8 +22,7 @@ export type CreateFloatingIpResponse = IResponse<ICreateFloatingIpApiResponse>;
 export const createFloatingIp = ({
   httpClient,
 }: IContext) => (body: CreateFloatingIpApiRequest): Promise<Readonly<CreateFloatingIpResponse>> => {
-  const path = '/floating_ips';
-  const url = `${path}`;
+  const url = '/floating_ips';
 
   return httpClient.post<ICreateFloatingIpApiResponse>(url, body);
 };

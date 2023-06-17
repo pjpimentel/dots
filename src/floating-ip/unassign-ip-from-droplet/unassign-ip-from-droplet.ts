@@ -17,10 +17,9 @@ export const unassignIpFromDroplet = ({
 }: IContext) => ({
   ip,
 }: IUnassignIpFromDropletApiRequest): Promise<Readonly<UnassignIpFromDropletResponse>> => {
-  const path = '/floating_ips';
+  const url = `/floating_ips/${ip}/actions`;
   const type = 'unassign';
   const body = {type};
-  const url = `${path}/${ip}/actions`;
 
   return httpClient.post<IUnassignIpFromDropletApiResponse>(url, body);
 };

@@ -16,8 +16,7 @@ export const getFloatingIp = ({
 }: IContext) => ({
   ip,
 }: IGetFloatingIpApiRequest): Promise<Readonly<GetFloatingIpResponse>> => {
-  const path = '/floating_ips';
-  const url = `${path}/${ip}`;
+  const url = `/floating_ips/${ip}`;
 
   return httpClient.get<IGetFloatingIpApiResponse>(url);
 };
