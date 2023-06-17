@@ -16,8 +16,7 @@ export const getDomain = ({
 }: IContext) => ({
   name,
 }: IGetDomainApiRequest): Promise<Readonly<GetDomainResponse>> => {
-  const path = '/domains';
-  const url = `${path}/${name}`;
+  const url = `/domains/${name}`;
 
   return httpClient.get<IGetDomainApiResponse>(url);
 };

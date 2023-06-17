@@ -18,12 +18,11 @@ export const createDomain = ({
   ip_address,
   name,
 }: ICreateDomainApiRequest): Promise<Readonly<CreateDomainResponse>> => {
-  const path = '/domains';
+  const url = '/domains';
   const body = {
     ip_address,
     name,
   };
-  const url = `${path}`;
 
   return httpClient.post<ICreateDomainApiResponse>(url, body);
 };

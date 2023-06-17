@@ -25,7 +25,7 @@ export const createDomainRecord = ({
   type,
   weight,
 }: ICreateDomainRecordApiRequest): Promise<Readonly<CreateDomainRecordResponse>> => {
-  const path = '/domains';
+  const url = `/domains/${domain_name}/records`;
   const body = {
     data,
     flags,
@@ -37,7 +37,6 @@ export const createDomainRecord = ({
     type,
     weight,
   };
-  const url = `${path}/${domain_name}/records`;
 
   return httpClient.post<ICreateDomainRecordApiResponse>(url, body);
 };
