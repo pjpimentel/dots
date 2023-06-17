@@ -13,9 +13,8 @@ export const listRegions = ({
   page = 1,
   per_page = 25,
 }: IListRequest): Promise<Readonly<ListRegionsResponse>> => {
-  const path = '/regions';
+  const url = '/regions';
   const query_params = {page, per_page};
-  const url = `${path}`;
 
   return httpClient.get<IListRegionsApiResponse>(url, {params: query_params});
 };
