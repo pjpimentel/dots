@@ -13,9 +13,8 @@ export const addTagsToFirewall = ({
   firewall_id,
   tags,
 }: IAddTagsToFirewallApiRequest): Promise<Readonly<AddTagsToFirewallResponse>> => {
-  const path = '/firewalls';
+  const url = `/firewalls/${firewall_id}/tags`;
   const body = {tags};
-  const url = `${path}/${firewall_id}/tags`;
 
   return httpClient.post<void>(url, body);
 };

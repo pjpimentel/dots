@@ -11,8 +11,7 @@ export const deleteFirewall = ({
 }: IContext) => ({
   firewall_id,
 }: IDeleteFirewallApiRequest): Promise<Readonly<DeleteFirewallResponse>> => {
-  const path = '/firewalls';
-  const url = `${path}/${firewall_id}`;
+  const url = `/firewalls/${firewall_id}`;
 
   return httpClient.delete(url);
 };

@@ -1,58 +1,46 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {createFirewall} from './create-firewall';
-import * as MOCK from './create-firewall.mock';
+import { createFirewall } from './create-firewall';
 
-describe('firewall', () => {
-  const URL = '/firewalls';
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onPost(URL, MOCK.request.body).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('create-firewall', () => {
+  const default_input = {
+    droplet_ids: Math.random(),
+    inbound_rules: Math.random(),
+    name: Math.random(),
+    outbound_rules: Math.random(),
+    tags: Math.random(),
+  } as any;
+  const default_output = Math.random();
+
+  const httpClient = {
+    post: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.post.mockClear();
   });
-  describe('create-firewall', () => {
-    it('should be a fn', () => {
-      expect(typeof createFirewall).toBe('function');
+
+  it('should be and return a fn', () => {
+    expect(typeof createFirewall).toBe('function');
+    expect(typeof createFirewall(context)).toBe('function');
+  });
+
+  it('should call axios.post', async () => {
+    const _createFirewall = createFirewall(context);
+    await _createFirewall(default_input);
+
+    expect(httpClient.post).toHaveBeenCalledWith(`/firewalls`, {
+      ...default_input,
+      firewall_id: undefined,
     });
-    it('should return a fn', () => {
-      expect(typeof createFirewall(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _createFirewall = createFirewall(context);
-      const response = await _createFirewall(MOCK.request.body);
-      Object.assign(response, {request: mock.history.post[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('post');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeDefined();
-      const requestBody = JSON.parse(request.data);
-      expect(requestBody).toMatchObject(MOCK.request.body);
-      /// validate data
-      expect(response.data).toBeDefined();
-      const {firewall} = response.data;
-      expect(typeof firewall.name).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
+  });
+
+  it('should output axios response', async () => {
+    const _createFirewall = createFirewall(context);
+    const output = await _createFirewall(default_input);
+
+    expect(output).toBe(default_output);
   });
 });
