@@ -40,7 +40,7 @@ export const createDroplets = ({
   volumes,
   vpc_uuid,
 }: ICreateDropletsApiRequest): Promise<Readonly<CreateDropletsResponse>> => {
-  const path = '/droplets';
+  const url = '/droplets';
   const body = {
     backups,
     image,
@@ -56,7 +56,6 @@ export const createDroplets = ({
     volumes,
     vpc_uuid,
   };
-  const url = `${path}`;
 
   return httpClient.post<ICreateDropletsApiResponse>(url, body);
 };

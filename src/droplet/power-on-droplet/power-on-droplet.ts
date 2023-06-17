@@ -16,10 +16,9 @@ export const powerOnDroplet = ({
 }: IContext) => ({
   droplet_id,
 }: IPowerOnDropletApiRequest): Promise<Readonly<PowerOnDropletResponse>> => {
-  const path = '/droplets';
+  const url = `/droplets/${droplet_id}/actions`;
   const type = 'power_on';
   const body = {type};
-  const url = `${path}/${droplet_id}/actions`;
 
   return httpClient.post<IPowerOnDropletApiResponse>(url, body);
 };

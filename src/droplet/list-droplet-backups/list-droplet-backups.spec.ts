@@ -1,84 +1,61 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {listDropletBackups} from './list-droplet-backups';
-import * as MOCK from './list-droplet-backups.mock';
+import { listDropletBackups } from './list-droplet-backups';
 
-describe('droplet', () => {
-  const DROPLET_ID = 123;
-  const PAGE = 3;
-  const PER_PAGE = 26;
-  const URL = `/droplets/${DROPLET_ID}/backups`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onGet(URL).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('list-droplet-backups', () => {
+  const default_input = {
+    droplet_id: Math.random(),
+  } as any;
+  const default_output = Math.random();
+
+  const httpClient = {
+    get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.get.mockClear();
   });
-  describe('list-droplet-backups', () => {
-    it('should be a fn', () => {
-      expect(typeof listDropletBackups).toBe('function');
+
+  it('should be and return a fn', () => {
+    expect(typeof listDropletBackups).toBe('function');
+    expect(typeof listDropletBackups(context)).toBe('function');
+  });
+
+  it('should call axios.get', async () => {
+    const _listDropletBackups = listDropletBackups(context);
+    await _listDropletBackups(default_input);
+
+    expect(httpClient.get).toHaveBeenCalledWith(`/droplets/${default_input.droplet_id}/backups`, {
+      params: {
+        page: 1,
+        per_page: 25,
+      },
     });
-    it('should return a fn', () => {
-      expect(typeof listDropletBackups(context)).toBe('function');
+  });
+
+  it('should use `page` and `per_page` input', async () => {
+    const _listDropletBackups = listDropletBackups(context);
+    const input = {
+      ...default_input,
+      page: Math.random(),
+      per_page: Math.random(),
+    } as any;
+    await _listDropletBackups(input);
+
+    expect(httpClient.get).toHaveBeenCalledWith(`/droplets/${default_input.droplet_id}/backups`, {
+      params: {
+        page: input.page,
+        per_page: input.per_page,
+      },
     });
-    it('should return a valid response', async () => {
-      const _listDropletBackups = listDropletBackups(context);
-      const response = await _listDropletBackups({
-        droplet_id: DROPLET_ID,
-        page: PAGE,
-        per_page: PER_PAGE,
-      });
-      Object.assign(response, {request: mock.history.get[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('get');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.params).toBeDefined();
-      expect(request.params.page).toBe(PAGE);
-      expect(request.params.per_page).toBe(PER_PAGE);
-      expect(request.params.resource_type).toBeUndefined();
-      /// validate data
-      expect(response.data).toBeDefined();
-      expect(response.data.meta).toBeDefined();
-      expect(response.data.backups).toBeDefined();
-      const {backups} = response.data;
-      const [backup] = backups;
-      expect(typeof backup.id).toBe('number');
-      expect(typeof backup.name).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
-    it('should have default parameters', async () => {
-      const defaultPage = 1;
-      const defaultper_page = 25;
-      const _listDropletBackups = listDropletBackups(context);
-      const response = await _listDropletBackups({
-        droplet_id: DROPLET_ID,
-      });
-      Object.assign(response, { request: mock.history.get[0]});
-      /// validate request
-      const {request} = response;
-      expect(request.params).toBeDefined();
-      expect(request.params.page).toBe(defaultPage);
-      expect(request.params.per_page).toBe(defaultper_page);
-    });
+  });
+
+  it('should output axios response', async () => {
+    const _listDropletBackups = listDropletBackups(context);
+    const output = await _listDropletBackups(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

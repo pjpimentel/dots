@@ -16,10 +16,9 @@ export const resetDropletPassword = ({
 }: IContext) => ({
   droplet_id,
 }: IResetDropletPasswordApiRequest): Promise<Readonly<ResetDropletPasswordResponse>> => {
-  const path = '/droplets';
+  const url = `/droplets/${droplet_id}/actions`;
   const type = 'password_reset';
   const body = {type};
-  const url = `${path}/${droplet_id}/actions`;
 
   return httpClient.post<IResetDropletPasswordApiResponse>(url, body);
 };

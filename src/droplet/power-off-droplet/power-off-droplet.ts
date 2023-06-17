@@ -16,10 +16,9 @@ export const powerOffDroplet = ({
 }: IContext) => ({
   droplet_id,
 }: IPowerOffDropletApiRequest): Promise<Readonly<PowerOffDropletResponse>> => {
-  const path = '/droplets';
+  const url = `/droplets/${droplet_id}/actions`;
   const type = 'power_off';
   const body = {type};
-  const url = `${path}/${droplet_id}/actions`;
 
   return httpClient.post<IPowerOffDropletApiResponse>(url, body);
 };

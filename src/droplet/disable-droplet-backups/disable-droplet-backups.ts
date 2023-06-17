@@ -16,10 +16,9 @@ export const disableDropletBackups = ({
 }: IContext) => ({
   droplet_id,
 }: IDisableDropletBackupsApiRequest): Promise<Readonly<DisableDropletBackupsResponse>> => {
-  const path = '/droplets';
+  const url = `/droplets/${droplet_id}/actions`;
   const type = 'disable_backups';
   const body = {type};
-  const url = `${path}/${droplet_id}/actions`;
 
   return httpClient.post<IDisableDropletBackupsApiResponse>(url, body);
 };

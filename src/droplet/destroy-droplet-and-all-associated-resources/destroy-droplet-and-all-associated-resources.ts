@@ -13,8 +13,7 @@ export const destroyDropletAndAllAssociatedResources = ({
   acknowledge,
   droplet_id,
 }: IdestroyDropletAndAllAssociatedResourcesApiRequest): Promise<Readonly<destroyDropletAndAllAssociatedResourcesResponse>> => {
-  const path = '/droplets';
-  const url = `${path}/${droplet_id}/destroy_with_associated_resources/dangerous`;
+  const url = `/droplets/${droplet_id}/destroy_with_associated_resources/dangerous`;
   const headers = {
     'X-Dangerous': `${acknowledge}`,
   };
