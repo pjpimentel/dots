@@ -11,8 +11,7 @@ export const deleteImage = ({
 }: IContext) => ({
   image_id,
 }: IDeleteImageApiRequest): Promise<Readonly<DeleteImageRes>> => {
-  const path = '/images';
-  const url = `${path}/${image_id}`;
+  const url = `/images/${image_id}`;
 
   return httpClient.delete(url);
 };

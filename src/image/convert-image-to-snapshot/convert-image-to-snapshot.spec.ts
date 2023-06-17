@@ -1,66 +1,43 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
 import { convertImageToSnapshot } from './convert-image-to-snapshot';
-import * as MOCK from './convert-image-to-snapshot.mock';
 
-describe('image', () => {
-  const IMAGE_ID = MOCK.response.body.action.resource_id;
-  const URL = `/images/${IMAGE_ID}/actions`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onPost(URL, MOCK.request.body).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('convert-image-to-snapshot', () => {
+  const default_input = {
+    image_id: Math.random(),
+  } as any;
+  const default_output = Math.random();
+
+  const httpClient = {
+    post: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.post.mockClear();
   });
-  describe('convert-image-to-snapshot', () => {
-    it('should be a fn', () => {
-      expect(typeof convertImageToSnapshot).toBe('function');
+
+  it('should be and return a fn', () => {
+    expect(typeof convertImageToSnapshot).toBe('function');
+    expect(typeof convertImageToSnapshot(context)).toBe('function');
+  });
+
+  it('should call axios.post', async () => {
+    const _convertImageToSnapshot = convertImageToSnapshot(context);
+    await _convertImageToSnapshot(default_input);
+
+    expect(httpClient.post).toHaveBeenCalledWith(`/images/${default_input.image_id}/actions`, {
+      ...default_input,
+      image_id: undefined,
+      type: 'convert'
     });
-    it('should return a fn', () => {
-      expect(typeof convertImageToSnapshot(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _convertImageToSnapshot = convertImageToSnapshot(context);
-      const response = await _convertImageToSnapshot({
-        image_id: IMAGE_ID,
-      });
-      Object.assign(response, { request: mock.history.post[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('post');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeDefined();
-      const body = JSON.parse(request.data);
-      expect(body).toMatchObject(MOCK.request.body);
-      expect(body.type).toBe('convert');
-      /// validate data
-      expect(response.data).toBeDefined();
-      const {action} = response.data;
-      expect(action).toBeDefined();
-      expect(typeof action.id).toBe('number');
-      expect(typeof action.status).toBe('string');
-      expect(action.resource_id).toBe(IMAGE_ID);
-      expect(action.resource_type).toBe('image');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
+  });
+
+  it('should output axios response', async () => {
+    const _convertImageToSnapshot = convertImageToSnapshot(context);
+    const output = await _convertImageToSnapshot(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

@@ -26,8 +26,7 @@ export const createCustomImage = ({
   tags,
   url,
 }: ICreateCustomImageApiRequest): Promise<Readonly<CreateCustomImageRes>> => {
-  const path = '/images';
-  const _url = `${path}`;
+  const _url = `/images`;
   const body = {
     description,
     distribution,
