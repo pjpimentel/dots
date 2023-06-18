@@ -10,8 +10,7 @@ export type GetDefaultProjectResponse = IResponse<IGetDefaultProjectApiResponse>
 export const getDefaultProject = ({
   httpClient,
 }: IContext) => () : Promise<Readonly<GetDefaultProjectResponse>> => {
-  const path = '/projects';
-  const url = `${path}/default`;
+  const url = `/projects/default`;
 
   return httpClient.get<IGetDefaultProjectApiResponse>(url);
 };

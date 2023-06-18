@@ -1,60 +1,43 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {patchDefaultProject} from './patch-default-project';
-import * as MOCK from './patch-default-project.mock';
+import { patchDefaultProject } from './patch-default-project';
 
-describe('project', () => {
-  const PROJECT_ID = 'default';
-  const URL = `/projects/${PROJECT_ID}`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onPatch(URL, MOCK.request.body).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('patch-default-project', () => {
+  const default_input = {
+    description: Math.random(),
+    environment: Math.random(),
+    is_default: Math.random(),
+    name: Math.random(),
+    purpose: Math.random(),
+  } as any;
+  const default_output = Math.random();
+
+  const httpClient = {
+    patch: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.patch.mockClear();
   });
-  describe('patch-default-project', () => {
-    it('should be a fn', () => {
-      expect(typeof patchDefaultProject).toBe('function');
-    });
-    it('should return a fn', () => {
-      expect(typeof patchDefaultProject(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _patchDefaultProject = patchDefaultProject(context);
-      const response = await _patchDefaultProject(MOCK.request.body);
-      Object.assign(response, {request: mock.history.patch[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('patch');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeDefined();
-      const requestBody = JSON.parse(request.data);
-      expect(requestBody).toMatchObject(MOCK.request.body);
-      /// validate data
-      expect(response.data).toBeDefined();
-      const {project} = response.data;
-      expect(typeof project.name).toBe('string');
-      expect(typeof project.id).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
+
+  it('should be and return a fn', () => {
+    expect(typeof patchDefaultProject).toBe('function');
+    expect(typeof patchDefaultProject(context)).toBe('function');
+  });
+
+  it('should call axios.patch', async () => {
+    const _patchDefaultProject = patchDefaultProject(context);
+    await _patchDefaultProject(default_input);
+
+    expect(httpClient.patch).toHaveBeenCalledWith(`/projects/default`, default_input);
+  });
+
+  it('should output axios response', async () => {
+    const _patchDefaultProject = patchDefaultProject(context);
+    const output = await _patchDefaultProject(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

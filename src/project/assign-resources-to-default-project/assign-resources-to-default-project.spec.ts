@@ -1,62 +1,39 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {assignResourcesToDefaultProject} from './assign-resources-to-default-project';
-import * as MOCK from './assign-resources-to-default-project.mock';
+import { assignResourcesToDefaultProject } from './assign-resources-to-default-project';
 
-describe('project', () => {
-  const PROJECT_ID = 'default';
-  const URL = `/projects/${PROJECT_ID}/resources`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onPost(URL, MOCK.request.body).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('assign-resources-to-default-project', () => {
+  const default_input = {
+    resources: Math.random(),
+  } as any;
+  const default_output = Math.random();
+
+  const httpClient = {
+    post: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.post.mockClear();
   });
-  describe('assign-resources-to-default-project', () => {
-    it('should be a fn', () => {
-      expect(typeof assignResourcesToDefaultProject).toBe('function');
-    });
-    it('should return a fn', () => {
-      expect(typeof assignResourcesToDefaultProject(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _assignResourcesToDefaultProject = assignResourcesToDefaultProject(context);
-      const response = await _assignResourcesToDefaultProject(MOCK.request.body);
-      Object.assign(response, {request: mock.history.post[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('post');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeDefined();
-      const requestBody = JSON.parse(request.data);
-      expect(requestBody).toMatchObject(MOCK.request.body);
-      /// validate data
-      expect(response.data).toBeDefined();
-      expect(response.data.links).toBeDefined();
-      expect(response.data.meta).toBeDefined();
-      expect(response.data.resources).toBeDefined();
-      const {resources} = response.data;
-      const [resource] = resources;
-      expect(typeof resource.urn).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
+
+  it('should be and return a fn', () => {
+    expect(typeof assignResourcesToDefaultProject).toBe('function');
+    expect(typeof assignResourcesToDefaultProject(context)).toBe('function');
+  });
+
+  it('should call axios.post', async () => {
+    const _assignResourcesToDefaultProject = assignResourcesToDefaultProject(context);
+    await _assignResourcesToDefaultProject(default_input);
+
+    expect(httpClient.post).toHaveBeenCalledWith(`/projects/default/resources`, default_input);
+  });
+
+  it('should output axios response', async () => {
+    const _assignResourcesToDefaultProject = assignResourcesToDefaultProject(context);
+    const output = await _assignResourcesToDefaultProject(default_input);
+
+    expect(output).toBe(default_output);
   });
 });
