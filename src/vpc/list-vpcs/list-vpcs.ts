@@ -13,9 +13,8 @@ export const listVpcs = ({
   page = 1,
   per_page = 25,
 }: IListRequest): Promise<Readonly<ListVpcsResponse>> => {
-  const path = '/vpcs';
+  const url = `/vpcs`;
   const query_params = {page, per_page};
-  const url = `${path}`;
 
   return httpClient.get<IListVpcsApiResponse>(url, {params: query_params});
 };

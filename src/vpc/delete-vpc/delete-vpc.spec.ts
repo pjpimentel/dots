@@ -1,52 +1,39 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {deleteVpc} from './delete-vpc';
-import * as MOCK from './delete-vpc.mock';
+import { deleteVpc } from './delete-vpc';
 
-describe('vpc', () => {
-  const VPC_ID = 'my-vpc';
-  const URL = `/vpcs/${VPC_ID}`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onDelete(URL).reply(
-    MOCK.response.headers.status,
-    undefined,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('delete-vpc', () => {
+  const default_input = {
+    vpc_id: Math.random(),
+  } as any;
+  const default_output = Math.random();
+
+  const httpClient = {
+    delete: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.delete.mockClear();
   });
-  describe('delete-vpc', () => {
-    it('should be a fn', () => {
-      expect(typeof deleteVpc).toBe('function');
-    });
-    it('should return a fn', () => {
-      expect(typeof deleteVpc(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _deleteVpc = deleteVpc(context);
-      const response = await _deleteVpc({vpc_id: VPC_ID});
-      Object.assign(response, { request: mock.history.delete[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('delete');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeUndefined();
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
+
+  it('should be and return a fn', () => {
+    expect(typeof deleteVpc).toBe('function');
+    expect(typeof deleteVpc(context)).toBe('function');
+  });
+
+  it('should call axios.delete', async () => {
+    const _deleteVpc = deleteVpc(context);
+    await _deleteVpc(default_input);
+
+    expect(httpClient.delete).toHaveBeenCalledWith(`/vpcs/${default_input.vpc_id}`);
+  });
+
+  it('should output axios response', async () => {
+    const _deleteVpc = deleteVpc(context);
+    const output = await _deleteVpc(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

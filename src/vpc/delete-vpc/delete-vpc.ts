@@ -11,8 +11,7 @@ export const deleteVpc = ({
 }: IContext) => ({
   vpc_id,
 }: IDeleteVpcApiRequest): Promise<Readonly<DeleteVpcResponse>> => {
-  const path = '/vpcs';
-  const url = `${path}/${vpc_id}`;
+  const url = `/vpcs/${vpc_id}`;
 
   return httpClient.delete(url);
 };

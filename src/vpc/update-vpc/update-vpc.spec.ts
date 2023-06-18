@@ -1,64 +1,46 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {updateVpc} from './update-vpc';
-import * as MOCK from './update-vpc.mock';
+import { updateVpc } from './update-vpc';
 
-describe('vpc', () => {
-  const VPC_ID = MOCK.response.body.vpc.id;
-  const URL = `/vpcs/${VPC_ID}`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onPatch(URL, MOCK.request.body).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('update-vpc', () => {
+  const default_input = {
+    description: Math.random(),
+    is_default: Math.random(),
+    name: Math.random(),
+    vpc_id: Math.random(),
+  } as any;
+  const default_output = Math.random();
+
+  const httpClient = {
+    patch: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.patch.mockClear();
   });
-  describe('update-vpc', () => {
-    it('should be a fn', () => {
-      expect(typeof updateVpc).toBe('function');
+
+  it('should be and return a fn', () => {
+    expect(typeof updateVpc).toBe('function');
+    expect(typeof updateVpc(context)).toBe('function');
+  });
+
+  it('should call axios.patch', async () => {
+    const _updateVpc = updateVpc(context);
+    await _updateVpc(default_input);
+
+    expect(httpClient.patch).toHaveBeenCalledWith(`/vpcs/${default_input.vpc_id}`, {
+      default: default_input.is_default,
+      description: default_input.description,
+      name: default_input.name,
     });
-    it('should return a fn', () => {
-      expect(typeof updateVpc(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _updateVpc = updateVpc(context);
-      const response = await _updateVpc({
-        ...MOCK.request.body,
-        is_default: MOCK.request.body.default,
-        vpc_id: VPC_ID,
-      });
-      Object.assign(response, {request: mock.history.patch[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('patch');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeDefined();
-      const requestBody = JSON.parse(request.data);
-      expect(requestBody).toMatchObject(MOCK.request.body);
-      /// validate data
-      expect(response.data).toBeDefined();
-      const {vpc} = response.data;
-      expect(typeof vpc.name).toBe('string');
-      expect(typeof vpc.id).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
+  });
+
+  it('should output axios response', async () => {
+    const _updateVpc = updateVpc(context);
+    const output = await _updateVpc(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

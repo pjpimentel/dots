@@ -1,97 +1,64 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {listVpcResources} from './list-vpc-resources';
-import * as MOCK from './list-vpc-resources.mock';
+import { listVpcResources } from './list-vpc-resources';
 
-describe('vpc', () => {
-  const PAGE = 3;
-  const PER_PAGE = 26;
-  const VPC_ID = 'id';
-  const URL = `/vpcs/${VPC_ID}/members`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onGet(URL).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('list-vpc-resources', () => {
+  const default_input = {
+    resource_type: Math.random(),
+    vpc_id: Math.random(),
+  } as any;
+  const default_output = Math.random();
+
+  const httpClient = {
+    get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.get.mockClear();
   });
-  describe('list-vpc-resources', () => {
-    it('should be a fn', () => {
-      expect(typeof listVpcResources).toBe('function');
+
+  it('should be and return a fn', () => {
+    expect(typeof listVpcResources).toBe('function');
+    expect(typeof listVpcResources(context)).toBe('function');
+  });
+
+  it('should call axios.get', async () => {
+    const _listVpcResources = listVpcResources(context);
+    await _listVpcResources(default_input);
+
+    expect(httpClient.get).toHaveBeenCalledWith(`/vpcs/${default_input.vpc_id}/members`, {
+      params: {
+        page: 1,
+        per_page: 25,
+        resource_type: default_input.resource_type
+      },
     });
-    it('should return a fn', () => {
-      expect(typeof listVpcResources(context)).toBe('function');
+  });
+
+  it('should use `page`, `per_page` and `resource_type` input', async () => {
+    const _listVpcResources = listVpcResources(context);
+    const input = {
+      ...default_input,
+      page: Math.random(),
+      per_page: Math.random(),
+    } as any;
+    await _listVpcResources(input);
+
+    expect(httpClient.get).toHaveBeenCalledWith(`/vpcs/${default_input.vpc_id}/members`, {
+      params: {
+        page: input.page,
+        per_page: input.per_page,
+        resource_type: input.resource_type
+      },
     });
-    it('should return a valid response', async () => {
-      const _listVpcResources = listVpcResources(context);
-      const response = await _listVpcResources({
-        page: PAGE,
-        per_page: PER_PAGE,
-        vpc_id: VPC_ID,
-      });
-      Object.assign(response, {request: mock.history.get[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('get');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.params).toBeDefined();
-      expect(request.params.page).toBe(PAGE);
-      expect(request.params.per_page).toBe(PER_PAGE);
-      expect(request.params.resource_type).toBeUndefined();
-      /// validate data
-      expect(response.data).toBeDefined();
-      expect(response.data.links).toBeDefined();
-      expect(response.data.meta).toBeDefined();
-      expect(response.data.members).toBeDefined();
-      const {members} = response.data;
-      const [resource] = members;
-      expect(typeof resource.urn).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
-    it('should have default parameters', async () => {
-      const defaultPage = 1;
-      const defaultper_page = 25;
-      const _listVpcResources = listVpcResources(context);
-      const response = await _listVpcResources({
-        vpc_id: VPC_ID,
-      });
-      Object.assign(response, { request: mock.history.get[0]});
-      /// validate request
-      const {request} = response;
-      expect(request.params).toBeDefined();
-      expect(request.params.page).toBe(defaultPage);
-      expect(request.params.per_page).toBe(defaultper_page);
-    });
-    it('should handle `resource_type` parameter', async () => {
-      const RESOURCE_TYPE = 'droplet';
-      const _listVpcResources = listVpcResources(context);
-      const response = await _listVpcResources({
-        vpc_id: VPC_ID,
-        resource_type: RESOURCE_TYPE,
-      });
-      Object.assign(response, { request: mock.history.get[0]});
-      /// validate request
-      const {request} = response;
-      expect(request.params).toBeDefined();
-      expect(request.params.resource_type).toBe(RESOURCE_TYPE);
-    });
+  });
+
+  it('should output axios response', async () => {
+    const _listVpcResources = listVpcResources(context);
+    const output = await _listVpcResources(default_input);
+
+    expect(output).toBe(default_output);
   });
 });
