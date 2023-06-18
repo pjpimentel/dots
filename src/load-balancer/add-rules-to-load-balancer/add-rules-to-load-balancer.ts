@@ -14,11 +14,10 @@ export const addRulesToLoadBalancer = ({
   forwarding_rules,
   load_balancer_id,
 }: IAddRulesToLoadBalancerApiRequest): Promise<Readonly<AddRulesToLoadBalancerResponse>> => {
-  const path = '/load_balancers';
+  const url = `/load_balancers/${load_balancer_id}/forwarding_rules`;
   const body = {
     forwarding_rules,
   };
-  const url = `${path}/${load_balancer_id}/forwarding_rules`;
 
   return httpClient.post<void>(url, body);
 };

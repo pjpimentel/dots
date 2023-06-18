@@ -13,9 +13,8 @@ export const listLoadBalancers = ({
   page = 1,
   per_page = 25,
 }: IListRequest): Promise<Readonly<ListLoadBalancersResponse>> => {
-  const path = '/load_balancers';
+  const url = '/load_balancers';
   const query_params = {page, per_page};
-  const url = `${path}`;
 
   return httpClient.get<IListLoadBalancersApiResponse>(url, {params: query_params});
 };

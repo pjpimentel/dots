@@ -13,11 +13,10 @@ export const removeDropletsFromLoadBalancer = ({
   droplet_ids,
   load_balancer_id,
 }: IRemoveDropletsFromLoadBalancerApiRequest): Promise<Readonly<RemoveDropletsFromLoadBalancerResponse>> => {
-  const path = '/load_balancers';
+  const url = `/load_balancers/${load_balancer_id}/droplets`;
   const body = {
     droplet_ids,
   };
-  const url = `${path}/${load_balancer_id}/droplets`;
 
   return httpClient.delete(url, {data: body});
 };

@@ -13,11 +13,10 @@ export const addDropletsToLoadBalancer = ({
   droplet_ids,
   load_balancer_id,
 }: IAddDropletsToLoadBalancerApiRequest): Promise<Readonly<AddDropletsToLoadBalancerResponse>> => {
-  const path = '/load_balancers';
+  const url = `/load_balancers/${load_balancer_id}/droplets`;
   const body = {
     droplet_ids,
   };
-  const url = `${path}/${load_balancer_id}/droplets`;
 
   return httpClient.post<void>(url, body);
 };

@@ -42,7 +42,7 @@ export const updateLoadBalancer = ({
   tag,
   vpc_uuid,
 }: ICustomLoadBalancerPayload): Promise<Readonly<UpdateLoadBalancerResponse>> => {
-  const path = '/load_balancers';
+  const url = `/load_balancers/${load_balancer_id}`;
   const body = {
     algorithm,
     droplet_ids,
@@ -56,7 +56,6 @@ export const updateLoadBalancer = ({
     tag,
     vpc_uuid,
   };
-  const url = `${path}/${load_balancer_id}`;
 
   return httpClient.put<IUpdateLoadBalancerApiResponse>(url, body);
 };
