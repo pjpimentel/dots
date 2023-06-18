@@ -20,9 +20,8 @@ export const createVolumeSnapshot = ({
   tags,
   volume_id,
 }: ICreateVolumeSnapshotApiRequest): Promise<Readonly<CreateVolumeSnapshotRes>> => {
-  const path = '/volumes';
+  const url = `/volumes/${volume_id}/snapshots`;
   const body = {name, tags};
-  const url = `${path}/${volume_id}/snapshots`;
 
   return httpClient.post<ICreateVolumeSnapshotApiResponse>(url, body);
 };

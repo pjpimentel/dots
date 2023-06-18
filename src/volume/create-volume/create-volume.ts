@@ -30,7 +30,7 @@ export const createVolume = ({
   snapshot_id,
   tags,
 }: ICreateVolumeApiRequest): Promise<Readonly<CreateVolumeResponse>> => {
-  const path = '/volumes';
+  const url = `/volumes`;
   const body = {
     description,
     filesystem_label,
@@ -41,7 +41,6 @@ export const createVolume = ({
     snapshot_id,
     tags,
   };
-  const url = `${path}`;
 
   return httpClient.post<ICreateVolumeApiResponse>(url, body);
 };

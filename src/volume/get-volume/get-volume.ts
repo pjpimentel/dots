@@ -16,8 +16,7 @@ export const getVolume = ({
 }: IContext) => ({
   volume_id,
 }: IGetVolumeApiRequest): Promise<Readonly<GetVolumeResponse>> => {
-  const path = '/volumes';
-  const url = `${path}/${volume_id}`;
+  const url = `/volumes/${volume_id}`;
 
   return httpClient.get<IGetVolumeApiResponse>(url);
 };
