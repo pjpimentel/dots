@@ -16,8 +16,7 @@ export const getTag = ({
 }: IContext) => ({
   tag_name,
 }: IGetTagApiRequest): Promise<Readonly<GetTagResponse>> => {
-  const path = '/tags';
-  const url = `${path}/${tag_name}`;
+  const url = `/tags/${tag_name}`;
 
   return httpClient.get<IGetTagApiResponse>(url);
 };

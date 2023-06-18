@@ -16,9 +16,8 @@ export const createTag = ({
 }: IContext) => ({
   name,
 }: ICreateTagApiRequest): Promise<Readonly<CreateTagResponse>> => {
-  const path = '/tags';
+  const url = `/tags`;
   const body = {name};
-  const url = `${path}`;
 
   return httpClient.post<ICreateTagApiResponse>(url, body);
 };

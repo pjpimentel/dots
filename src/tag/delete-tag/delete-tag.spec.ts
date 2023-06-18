@@ -1,52 +1,39 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {deleteTag} from './delete-tag';
-import * as MOCK from './delete-tag.mock';
+import { deleteTag } from './delete-tag';
 
-describe('tag', () => {
-  const TAG_NAME = 'my-tag';
-  const URL = `/tags/${TAG_NAME}`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onDelete(URL).reply(
-    MOCK.response.headers.status,
-    undefined,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('delete-tag', () => {
+  const default_input = {
+    tag_name: Math.random(),
+  } as any;
+  const default_output = Math.random();
+
+  const httpClient = {
+    delete: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.delete.mockClear();
   });
-  describe('delete-tag', () => {
-    it('should be a fn', () => {
-      expect(typeof deleteTag).toBe('function');
-    });
-    it('should return a fn', () => {
-      expect(typeof deleteTag(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _deleteTag = deleteTag(context);
-      const response = await _deleteTag({tag_name: TAG_NAME});
-      Object.assign(response, { request: mock.history.delete[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('delete');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeUndefined();
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
+
+  it('should be and return a fn', () => {
+    expect(typeof deleteTag).toBe('function');
+    expect(typeof deleteTag(context)).toBe('function');
+  });
+
+  it('should call axios.delete', async () => {
+    const _deleteTag = deleteTag(context);
+    await _deleteTag(default_input);
+
+    expect(httpClient.delete).toHaveBeenCalledWith(`/tags/${default_input.tag_name}`);
+  });
+
+  it('should output axios response', async () => {
+    const _deleteTag = deleteTag(context);
+    const output = await _deleteTag(default_input);
+
+    expect(output).toBe(default_output);
   });
 });
