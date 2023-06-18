@@ -18,11 +18,10 @@ export const updateSshKey = ({
   name,
   ssh_key_id,
 }: IUpdateSshKeyApiRequest): Promise<Readonly<UpdateSshKeyResponse>> => {
-  const path = '/account/keys';
+  const url = `/account/keys/${ssh_key_id}`;
   const body = {
     name,
   };
-  const url = `${path}/${ssh_key_id}`;
 
   return httpClient.put<IUpdateSshKeyApiResponse>(url, body);
 };

@@ -16,8 +16,7 @@ export const getSshKey = ({
 }: IContext) => ({
   ssh_key_id,
 }: IGetSshKeyApiRequest): Promise<Readonly<GetSshKeyResponse>> => {
-  const path = '/account/keys';
-  const url = `${path}/${ssh_key_id}`;
+  const url = `/account/keys/${ssh_key_id}`;
 
   return httpClient.get<IGetSshKeyApiResponse>(url);
 };

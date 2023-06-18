@@ -18,12 +18,11 @@ export const createSshKey = ({
   name,
   public_key,
 }: ICreateSshKeyApiRequest): Promise<Readonly<CreateSshKeyResponse>> => {
-  const path = '/account/keys';
+  const url = '/account/keys';
   const body = {
     name,
     public_key,
   };
-  const url = `${path}`;
 
   return httpClient.post<ICreateSshKeyApiResponse>(url, body);
 };

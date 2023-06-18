@@ -1,61 +1,43 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {updateSshKey} from './update-ssh-key';
-import * as MOCK from './update-ssh-key.mock';
+import { updateSshKey } from './update-ssh-key';
 
-describe('ssh-key', () => {
-  const URL = `/account/keys/${MOCK.response.body.ssh_key.id}`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onPut(URL, MOCK.request.body).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('update-ssh-key', () => {
+  const default_input = {
+    ssh_key_id: Math.random(),
+    name: Math.random(),
+  } as any;
+  const default_output = Math.random();
+
+  const httpClient = {
+    put: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.put.mockClear();
   });
-  describe('update-ssh-key', () => {
-    it('should be a fn', () => {
-      expect(typeof updateSshKey).toBe('function');
+
+  it('should be and return a fn', () => {
+    expect(typeof updateSshKey).toBe('function');
+    expect(typeof updateSshKey(context)).toBe('function');
+  });
+
+  it('should call axios.put', async () => {
+    const _updateSshKey = updateSshKey(context);
+    await _updateSshKey(default_input);
+
+    expect(httpClient.put).toHaveBeenCalledWith(`/account/keys/${default_input.ssh_key_id}`, {
+      ...default_input,
+      ssh_key_id: undefined,
     });
-    it('should return a fn', () => {
-      expect(typeof updateSshKey(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _updateSshKey = updateSshKey(context);
-      const response = await _updateSshKey({
-        ...MOCK.request.body,
-        ssh_key_id: MOCK.response.body.ssh_key.id,
-      });
-      Object.assign(response, {request: mock.history.put[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('put');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeDefined();
-      const requestBody = JSON.parse(request.data);
-      expect(requestBody).toMatchObject(MOCK.request.body);
-      /// validate data
-      expect(response.data).toBeDefined();
-      const {ssh_key} = response.data;
-      expect(typeof ssh_key.name).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
+  });
+
+  it('should output axios response', async () => {
+    const _updateSshKey = updateSshKey(context);
+    const output = await _updateSshKey(default_input);
+
+    expect(output).toBe(default_output);
   });
 });
