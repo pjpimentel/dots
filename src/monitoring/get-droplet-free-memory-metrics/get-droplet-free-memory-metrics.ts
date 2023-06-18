@@ -16,12 +16,12 @@ export const getDropletFreeMemoryMetrics = ({
   host_id,
   start,
 }: IGetDropletFreeMemoryMetricsInput): Promise<Readonly<GetDropletFreeMemoryMetricsResponse>> => {
-  const path = '/monitoring/metrics/droplet/memory_free';
+  const url = '/monitoring/metrics/droplet/memory_free';
   const query_params = {
     end,
     host_id,
     start,
   };
 
-  return httpClient.get<IDefaultMetricsResponse>(path, {params: query_params});
+  return httpClient.get<IDefaultMetricsResponse>(url, {params: query_params});
 };
