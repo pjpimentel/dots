@@ -21,8 +21,8 @@ describe('list-ssh-keys', () => {
   });
 
   it('should call axios.get', async () => {
-    const _listSnapshots = listSshKeys(context);
-    await _listSnapshots({});
+    const _listSshKeys = listSshKeys(context);
+    await _listSshKeys({});
 
     expect(httpClient.get).toHaveBeenCalledWith(`/account/keys`, {
       params: {
@@ -32,13 +32,13 @@ describe('list-ssh-keys', () => {
     });
   });
 
-  it('should use `page`, `per_page` and `resource_type` input', async () => {
-    const _listSnapshots = listSshKeys(context);
+  it('should use `page` and `per_page` input', async () => {
+    const _listSshKeys = listSshKeys(context);
     const input = {
       page: Math.random(),
       per_page: Math.random(),
     } as any;
-    await _listSnapshots(input);
+    await _listSshKeys(input);
 
     expect(httpClient.get).toHaveBeenCalledWith(`/account/keys`, {
       params: {
@@ -49,8 +49,8 @@ describe('list-ssh-keys', () => {
   });
 
   it('should output axios response', async () => {
-    const _listSnapshots = listSshKeys(context);
-    const output = await _listSnapshots({});
+    const _listSshKeys = listSshKeys(context);
+    const output = await _listSshKeys({});
 
     expect(output).toBe(default_output);
   });
