@@ -45,7 +45,7 @@ export const createKubernetesCluster = ({
   node_pools,
   vpc_uuid,
 }: ICreateKubernetesClusterApiRequest): Promise<Readonly<CreateKubernetesClusterResponse>> => {
-  const path = '/kubernetes/clusters';
+  const url = '/kubernetes/clusters';
   const body = {
     name,
     region,
@@ -56,7 +56,6 @@ export const createKubernetesCluster = ({
     node_pools,
     vpc_uuid,
   };
-  const url = `${path}`;
 
   return httpClient.post<ICreateKubernetesClusterApiResponse>(url, body);
 };

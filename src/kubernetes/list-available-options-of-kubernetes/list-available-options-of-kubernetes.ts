@@ -30,8 +30,7 @@ export type ListAvailableOptionsOfKubernetesResponse = IResponse<IListAvailableO
 export const listAvailableOptionsOfKubernetes = ({
   httpClient,
 }: IContext) => (): Promise<Readonly<ListAvailableOptionsOfKubernetesResponse>> => {
-  const path = '/kubernetes/options';
-  const url = `${path}`;
+  const url = '/kubernetes/options';
 
   return httpClient.get<IListAvailableOptionsOfKubernetesApiResponse>(url);
 };

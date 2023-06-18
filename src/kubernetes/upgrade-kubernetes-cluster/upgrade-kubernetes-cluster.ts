@@ -13,9 +13,8 @@ export const upgradeKubernetesCluster = ({
   kubernetes_cluster_id,
   version,
 }: IUpgradeKubernetesClusterApiRequest): Promise<Readonly<UpgradeKubernetesClusterResponse>> => {
-  const path = '/kubernetes/clusters';
+  const url = `/kubernetes/clusters/${kubernetes_cluster_id}/upgrade`;
   const body = {version};
-  const url = `${path}/${kubernetes_cluster_id}/upgrade`;
 
   return httpClient.post<void>(url, body);
 };

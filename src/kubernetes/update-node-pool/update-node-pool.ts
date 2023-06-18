@@ -37,7 +37,7 @@ export const updateNodePool = ({
   tags,
   taints,
 }: IUpdateNodePoolApiRequest): Promise<Readonly<UpdateNodePoolResponse>> => {
-  const path = '/kubernetes/clusters';
+  const url = `/kubernetes/clusters/${kubernetes_cluster_id}/node_pools/${node_pool_id}`;
   const body = {
     auto_scale,
     count,
@@ -48,7 +48,6 @@ export const updateNodePool = ({
     tags,
     taints,
   };
-  const url = `${path}/${kubernetes_cluster_id}/node_pools/${node_pool_id}`;
 
   return httpClient.put<IUpdateNodePoolApiResponse>(url, body);
 };

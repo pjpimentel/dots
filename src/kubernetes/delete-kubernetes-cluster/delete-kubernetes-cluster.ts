@@ -11,8 +11,7 @@ export const deleteKubernetesCluster = ({
 }: IContext) => ({
   kubernetes_cluster_id,
 }: IDeleteKubernetesClusterApiRequest): Promise<Readonly<DeleteKubernetesClusterResponse>> => {
-  const path = '/kubernetes/clusters';
-  const url = `${path}/${kubernetes_cluster_id}`;
+  const url = `/kubernetes/clusters/${kubernetes_cluster_id}`;
 
   return httpClient.delete(url);
 };

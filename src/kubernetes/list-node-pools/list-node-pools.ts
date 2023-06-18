@@ -18,9 +18,8 @@ export const listNodePools = ({
   page = 1,
   per_page = 25,
 }: IListNodePoolsApiRequest): Promise<Readonly<ListNodePoolsResponse>> => {
-  const path = '/kubernetes/clusters';
+  const url = `/kubernetes/clusters/${kubernetes_cluster_id}/node_pools`;
   const query_params = {page, per_page};
-  const url = `${path}/${kubernetes_cluster_id}/node_pools`;
 
   return httpClient.get<IListNodePoolsApiResponse>(url, {params: query_params});
 };

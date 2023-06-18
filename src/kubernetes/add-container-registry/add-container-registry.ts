@@ -11,9 +11,8 @@ export const addContainerRegistry = ({
 }: IContext) => ({
   cluster_uuids,
 }: IAddContainerRegistryApiRequest): Promise<Readonly<AddContainerRegistryResponse>> => {
-  const path = '/kubernetes/clusters/registry';
+  const url = '/kubernetes/clusters/registry';
   const body = {cluster_uuids};
-  const url = `${path}`;
 
   return httpClient.post(url, body);
 };
