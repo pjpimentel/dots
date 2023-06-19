@@ -1,4 +1,4 @@
-import { AxiosRequestConfig, AxiosStatic } from 'axios';
+import { AxiosStatic } from 'axios';
 import { IContext } from '../../types';
 
 export interface ICreateContextInput {
