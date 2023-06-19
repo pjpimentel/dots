@@ -18,12 +18,11 @@ export const createContext = ({
     'Authorization': `Bearer ${token}`,
     'Content-Type': 'application/json',
   });
-  const axiosConfig: AxiosRequestConfig = Object.freeze({
+  const httpClient = axios.create({
     baseURL: endpoint,
     headers,
     timeout: requestTimeoutInMs,
   });
-  const httpClient = axios.create(axiosConfig);
 
   return Object.freeze({ endpoint, httpClient });
 };
