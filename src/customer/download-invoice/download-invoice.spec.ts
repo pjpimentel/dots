@@ -29,7 +29,7 @@ describe('download-invoice', () => {
     await _downloadInvoice(default_input);
 
     expect(httpClient.get).toHaveBeenCalledWith(`/customers/my/invoices/${default_input.invoice_uuid}/${default_input.format}`, {
-      responseType: "stream" // TODO: test with new axios version
+      responseType: "stream"
     });
   });
 

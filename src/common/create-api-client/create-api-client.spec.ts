@@ -60,6 +60,7 @@ const ENDPOINTS = MODULES.reduce((mods, _module) => {
   return {...mods, [prettyModuleName]: _createEndpointsMirror(folders)};
 }, {});
 const isValidKey = (key: string = '') => key && key[0] !== '_';
+const sort_fn = (a: string, b: string) => a.localeCompare(b);
 
 describe('create-api-client', () => {
   it('should be and return a fn', () => {
@@ -83,14 +84,14 @@ describe('create-api-client', () => {
     expect(client._options.requestTimeoutInMs).toBe(requestTimeoutInMs);
 
     const createdClientEntries = Object.entries(client).filter(([key]) => isValidKey(key));
-    const createdClientKeys = Object.keys(client).filter(isValidKey).sort();
-    const ENDPOINTS_KEYS = Object.keys(ENDPOINTS).sort();
+    const createdClientKeys = Object.keys(client).filter(isValidKey).sort(sort_fn);
+    const ENDPOINTS_KEYS = Object.keys(ENDPOINTS).sort(sort_fn);
 
     expect(ENDPOINTS_KEYS).toMatchObject(createdClientKeys);
 
     createdClientEntries.forEach(([key, value]) => {
-      const clientMethods = Object.keys(value).sort();
-      const listedMethods = Object.keys((ENDPOINTS as any)[key]).sort();
+      const clientMethods = Object.keys(value).sort(sort_fn);
+      const listedMethods = Object.keys((ENDPOINTS as any)[key]).sort(sort_fn);
       expect(clientMethods).toMatchObject(listedMethods);
     });
   });
