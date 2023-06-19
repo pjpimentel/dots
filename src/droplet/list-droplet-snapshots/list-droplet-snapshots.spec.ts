@@ -41,7 +41,7 @@ describe('list-droplet-snapshots', () => {
       ...default_input,
       page: require('crypto').randomBytes(2),
       per_page: require('crypto').randomBytes(2),
-    } as any;
+    };
     await _listDropletSnapshots(input);
 
     expect(httpClient.get).toHaveBeenCalledWith(`/droplets/${default_input.droplet_id}/snapshots`, {

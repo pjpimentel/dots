@@ -11,7 +11,7 @@ export const updateFirewall = ({
   httpClient,
 }: IContext) => ({
   droplet_ids,
-  id, //TODO: firewall_id is a better name
+  id,
   inbound_rules,
   name,
   outbound_rules,

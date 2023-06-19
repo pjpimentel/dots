@@ -41,7 +41,7 @@ describe('list-project-resources', () => {
       ...default_input,
       page: require('crypto').randomBytes(2),
       per_page: require('crypto').randomBytes(2),
-    } as any;
+    };
     await _listProjectResources(input);
 
     expect(httpClient.get).toHaveBeenCalledWith(`/projects/${default_input.project_id}/resources`, {

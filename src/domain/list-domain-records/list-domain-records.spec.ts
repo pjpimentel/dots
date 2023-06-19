@@ -42,7 +42,7 @@ describe('list-domain-records', () => {
       page: require('crypto').randomBytes(2),
       per_page: require('crypto').randomBytes(2),
       type: require('crypto').randomBytes(2),
-    } as any;
+    };
     await _listDomainRecords(input);
 
     expect(httpClient.get).toHaveBeenCalledWith(`/domains/${default_input.domain_name}/records`, {

@@ -41,7 +41,7 @@ describe('list-image-actions', () => {
       ...default_input,
       page: require('crypto').randomBytes(2),
       per_page: require('crypto').randomBytes(2),
-    } as any;
+    };
     await _listImageActions(input);
 
     expect(httpClient.get).toHaveBeenCalledWith(`/images/${default_input.image_id}/actions`, {

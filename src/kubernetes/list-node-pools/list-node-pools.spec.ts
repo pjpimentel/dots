@@ -41,7 +41,7 @@ describe('list-node-pools', () => {
       ...default_input,
       page: require('crypto').randomBytes(2),
       per_page: require('crypto').randomBytes(2),
-    } as any;
+    };
     await _listNodePools(input);
 
     expect(httpClient.get).toHaveBeenCalledWith(`/kubernetes/clusters/${default_input.kubernetes_cluster_id}/node_pools`, {

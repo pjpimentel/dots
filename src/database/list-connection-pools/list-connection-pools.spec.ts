@@ -41,7 +41,7 @@ describe('list-connection-pools', () => {
       ...default_input,
       page: require('crypto').randomBytes(2),
       per_page: require('crypto').randomBytes(2),
-    } as any;
+    };
     await _listConnectionPools(input);
 
     expect(httpClient.get).toHaveBeenCalledWith(`/databases/${default_input.database_cluster_id}/pools`, {

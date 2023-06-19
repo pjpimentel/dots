@@ -43,7 +43,7 @@ describe('list-vpc-resources', () => {
       ...default_input,
       page: require('crypto').randomBytes(2),
       per_page: require('crypto').randomBytes(2),
-    } as any;
+    };
     await _listVpcResources(input);
 
     expect(httpClient.get).toHaveBeenCalledWith(`/vpcs/${default_input.vpc_id}/members`, {

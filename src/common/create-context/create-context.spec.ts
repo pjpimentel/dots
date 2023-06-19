@@ -8,8 +8,8 @@ describe('create-context', () => {
 
   it('should return valid context', () => {
     const endpoint = 'https://api.digitalocean.com/v2/test-match';
-    const token = process.env.TEST_TOKEN as string;
-    const requestTimeoutInMs = 2000;
+    const token = require('crypto').randomBytes(2);
+    const requestTimeoutInMs = require('crypto').randomBytes(2);
     const context = createContext({
       axios,
       endpoint,
@@ -22,8 +22,7 @@ describe('create-context', () => {
     expect(context.httpClient.defaults.headers).toBeDefined();
 
     const baseURL = context.httpClient.defaults.baseURL;
-    // TODO: remove following cast after axios type is fixed
-    const headers: Record<string, string> = context.httpClient.defaults.headers as unknown as Record<string, string>;
+    const headers = context.httpClient.defaults.headers;
 
     expect(headers.Authorization).toEqual(`Bearer ${token}`);
     expect(headers['Content-Type']).toEqual('application/json');

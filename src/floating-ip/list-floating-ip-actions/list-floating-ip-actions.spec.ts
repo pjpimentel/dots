@@ -41,7 +41,7 @@ describe('list-floating-ip-actions', () => {
       ...default_input,
       page: require('crypto').randomBytes(2),
       per_page: require('crypto').randomBytes(2),
-    } as any;
+    };
     await _listFloatingIpActions(input);
 
     expect(httpClient.get).toHaveBeenCalledWith(`/floating_ips/${default_input.ip}/actions`, {

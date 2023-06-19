@@ -41,7 +41,7 @@ describe('list-droplet-kernels', () => {
       ...default_input,
       page: require('crypto').randomBytes(2),
       per_page: require('crypto').randomBytes(2),
-    } as any;
+    };
     await _listDropletKernels(input);
 
     expect(httpClient.get).toHaveBeenCalledWith(`/droplets/${default_input.droplet_id}/kernels`, {

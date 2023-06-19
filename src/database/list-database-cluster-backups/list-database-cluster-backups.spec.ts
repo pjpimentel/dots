@@ -41,7 +41,7 @@ describe('list-database-cluster-backups', () => {
       ...default_input,
       page: require('crypto').randomBytes(2),
       per_page: require('crypto').randomBytes(2),
-    } as any;
+    };
     await _listDatabaseClusterBackups(input);
 
     expect(httpClient.get).toHaveBeenCalledWith(`/databases/${default_input.database_cluster_id}/backups`, {
