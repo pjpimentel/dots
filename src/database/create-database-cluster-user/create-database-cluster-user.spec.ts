@@ -2,11 +2,11 @@ import { createDatabaseClusterUser } from './create-database-cluster-user';
 
 describe('create-database-cluster-user', () => {
   const default_input = {
-    database_cluster_id: Math.random(),
-    user_name: Math.random(),
-    mysql_settings: Math.random(),
+    database_cluster_id: require('crypto').randomBytes(2),
+    user_name: require('crypto').randomBytes(2),
+    mysql_settings: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

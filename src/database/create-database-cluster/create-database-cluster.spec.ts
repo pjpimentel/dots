@@ -2,16 +2,16 @@ import { createDatabaseCluster } from './create-database-cluster';
 
 describe('create-database-cluster', () => {
   const default_input = {
-    engine: Math.random(),
-    name: Math.random(),
-    num_nodes: Math.random(),
-    private_network_uuid: Math.random(),
-    region: Math.random(),
-    size: Math.random(),
-    tags: Math.random(),
-    version: Math.random(),
+    engine: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
+    num_nodes: require('crypto').randomBytes(2),
+    private_network_uuid: require('crypto').randomBytes(2),
+    region: require('crypto').randomBytes(2),
+    size: require('crypto').randomBytes(2),
+    tags: require('crypto').randomBytes(2),
+    version: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

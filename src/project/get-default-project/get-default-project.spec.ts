@@ -1,7 +1,7 @@
 import { getDefaultProject } from './get-default-project';
 
 describe('get-default-project', () => {
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),

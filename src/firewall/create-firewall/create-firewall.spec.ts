@@ -2,13 +2,13 @@ import { createFirewall } from './create-firewall';
 
 describe('create-firewall', () => {
   const default_input = {
-    droplet_ids: Math.random(),
-    inbound_rules: Math.random(),
-    name: Math.random(),
-    outbound_rules: Math.random(),
-    tags: Math.random(),
+    droplet_ids: require('crypto').randomBytes(2),
+    inbound_rules: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
+    outbound_rules: require('crypto').randomBytes(2),
+    tags: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

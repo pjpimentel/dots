@@ -2,14 +2,14 @@ import { createConnectionPool } from './create-connection-pool';
 
 describe('create-connection-pool', () => {
   const default_input = {
-    database_cluster_id: Math.random(),
-    db_name: Math.random(),
-    mode: Math.random(),
-    pool_name: Math.random(),
-    size: Math.random(),
-    user_name: Math.random(),
+    database_cluster_id: require('crypto').randomBytes(2),
+    db_name: require('crypto').randomBytes(2),
+    mode: require('crypto').randomBytes(2),
+    pool_name: require('crypto').randomBytes(2),
+    size: require('crypto').randomBytes(2),
+    user_name: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

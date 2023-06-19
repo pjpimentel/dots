@@ -2,13 +2,13 @@ import { getActiveDeploymentLogs } from './get-active-deployment-logs';
 
 describe('get-active-deployment-logs', () => {
   const default_input = {
-    app_id:`${Math.random()}`,
-    component_name:`${Math.random()}`,
-    follow:`${Math.random()}`,
-    pod_connection_timeout:`${Math.random()}`,
-    type:`${Math.random()}`,
+    app_id:`${require('crypto').randomBytes(2)}`,
+    component_name:`${require('crypto').randomBytes(2)}`,
+    follow:`${require('crypto').randomBytes(2)}`,
+    pod_connection_timeout:`${require('crypto').randomBytes(2)}`,
+    type:`${require('crypto').randomBytes(2)}`,
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),

@@ -2,13 +2,13 @@ import { updateDefaultProject } from './update-default-project';
 
 describe('update-default-project', () => {
   const default_input = {
-    description: Math.random(),
-    environment: Math.random(),
-    is_default: Math.random(),
-    name: Math.random(),
-    purpose: Math.random(),
+    description: require('crypto').randomBytes(2),
+    environment: require('crypto').randomBytes(2),
+    is_default: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
+    purpose: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     put: jest.fn().mockReturnValue(Promise.resolve(default_output)),

@@ -2,10 +2,10 @@ import { updateApp } from './update-app';
 
 describe('update-app', () => {
   const default_input = {
-    app_id: `${Math.random()}`,
-    spec: `${Math.random()}`,
+    app_id: `${require('crypto').randomBytes(2)}`,
+    spec: `${require('crypto').randomBytes(2)}`,
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     put: jest.fn().mockReturnValue(Promise.resolve(default_output)),

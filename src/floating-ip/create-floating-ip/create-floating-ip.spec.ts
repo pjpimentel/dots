@@ -2,10 +2,10 @@ import { createFloatingIp } from './create-floating-ip';
 
 describe('create-floating-ip', () => {
   const default_input = {
-    droplet_id: Math.random(),
-    region: Math.random(),
+    droplet_id: require('crypto').randomBytes(2),
+    region: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

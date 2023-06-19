@@ -2,10 +2,10 @@ import { addTagsToFirewall } from './add-tags-to-firewall';
 
 describe('add-tags-to-firewall', () => {
   const default_input = {
-    firewall_id: Math.random(),
-    tags: Math.random(),
+    firewall_id: require('crypto').randomBytes(2),
+    tags: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

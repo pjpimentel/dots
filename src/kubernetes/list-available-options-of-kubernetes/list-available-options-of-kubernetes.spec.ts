@@ -1,7 +1,7 @@
 import { listAvailableOptionsOfKubernetes } from './list-available-options-of-kubernetes';
 
 describe('list-available-options-of-kubernetes', () => {
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),

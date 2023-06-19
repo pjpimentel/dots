@@ -2,10 +2,10 @@ import { cancelAppDeployment } from './cancel-app-deployment';
 
 describe('cancel-app-deployment', () => {
   const default_input = {
-    app_id: `${Math.random()}`,
-    deployment_id: `${Math.random()}`,
+    app_id: `${require('crypto').randomBytes(2)}`,
+    deployment_id: `${require('crypto').randomBytes(2)}`,
   };
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

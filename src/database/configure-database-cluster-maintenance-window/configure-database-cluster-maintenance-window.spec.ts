@@ -2,11 +2,11 @@ import { configureDatabaseClusterMaintenanceWindow } from './configure-database-
 
 describe('configure-database-cluster-maintenance-window', () => {
   const default_input = {
-    database_cluster_id: Math.random(),
-    day: Math.random(),
-    hour: Math.random(),
+    database_cluster_id: require('crypto').randomBytes(2),
+    day: require('crypto').randomBytes(2),
+    hour: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     put: jest.fn().mockReturnValue(Promise.resolve(default_output)),

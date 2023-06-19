@@ -2,16 +2,16 @@ import { createKubernetesCluster } from './create-kubernetes-cluster';
 
 describe('create-kubernetes-cluster', () => {
   const default_input = {
-    name: Math.random(),
-    region: Math.random(),
-    version: Math.random(),
-    tags: Math.random(),
-    auto_upgrade: Math.random(),
-    maintenance_policy: Math.random(),
-    node_pools: Math.random(),
-    vpc_uuid: Math.random(),
+    name: require('crypto').randomBytes(2),
+    region: require('crypto').randomBytes(2),
+    version: require('crypto').randomBytes(2),
+    tags: require('crypto').randomBytes(2),
+    auto_upgrade: require('crypto').randomBytes(2),
+    maintenance_policy: require('crypto').randomBytes(2),
+    node_pools: require('crypto').randomBytes(2),
+    vpc_uuid: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

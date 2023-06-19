@@ -2,10 +2,10 @@ import { addDropletsToLoadBalancer } from './add-droplets-to-load-balancer';
 
 describe('add-droplets-to-load-balancer', () => {
   const default_input = {
-    load_balancer_id: Math.random(),
-    droplet_ids: Math.random(),
+    load_balancer_id: require('crypto').randomBytes(2),
+    droplet_ids: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

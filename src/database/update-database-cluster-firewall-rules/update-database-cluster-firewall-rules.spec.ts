@@ -2,10 +2,10 @@ import { updateDatabaseClusterFirewallRules } from './update-database-cluster-fi
 
 describe('update-database-cluster-firewall-rules', () => {
   const default_input = {
-    database_cluster_id: Math.random(),
-    rules: Math.random(),
+    database_cluster_id: require('crypto').randomBytes(2),
+    rules: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     put: jest.fn().mockReturnValue(Promise.resolve(default_output)),

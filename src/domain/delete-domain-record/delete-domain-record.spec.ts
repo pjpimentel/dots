@@ -2,10 +2,10 @@ import { deleteDomainRecord } from './delete-domain-record';
 
 describe('delete-domain-record', () => {
   const default_input = {
-    domain_name: Math.random(),
-    domain_record_id: Math.random()
+    domain_name: require('crypto').randomBytes(2),
+    domain_record_id: require('crypto').randomBytes(2)
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     delete: jest.fn().mockReturnValue(Promise.resolve(default_output)),

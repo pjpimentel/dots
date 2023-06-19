@@ -2,10 +2,10 @@ import { getReadOnlyReplica } from './get-read-only-replica';
 
 describe('get-read-only-replica', () => {
   const default_input = {
-    database_cluster_id: Math.random(),
-    read_only_replica_name: Math.random(),
+    database_cluster_id: require('crypto').randomBytes(2),
+    read_only_replica_name: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),

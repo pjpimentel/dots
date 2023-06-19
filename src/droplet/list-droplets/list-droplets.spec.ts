@@ -1,7 +1,7 @@
 import { listDroplets } from './list-droplets';
 
 describe('list-droplets', () => {
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
@@ -35,9 +35,9 @@ describe('list-droplets', () => {
   it('should use `page`, `per_page` and `tag_name` input', async () => {
     const _listDroplets = listDroplets(context);
     const input = {
-      tag_name: Math.random(),
-      page: Math.random(),
-      per_page: Math.random(),
+      tag_name: require('crypto').randomBytes(2),
+      page: require('crypto').randomBytes(2),
+      per_page: require('crypto').randomBytes(2),
     } as any;
     await _listDroplets(input);
 

@@ -2,12 +2,12 @@ import { createProject } from './create-project';
 
 describe('create-project', () => {
   const default_input = {
-    name: Math.random(),
-    description: Math.random(),
-    purpose: Math.random(),
-    environment: Math.random(),
+    name: require('crypto').randomBytes(2),
+    description: require('crypto').randomBytes(2),
+    purpose: require('crypto').randomBytes(2),
+    environment: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

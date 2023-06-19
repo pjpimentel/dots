@@ -2,9 +2,9 @@ import { deleteApp } from './delete-app';
 
 describe('delete-app', () => {
   const default_input = {
-    app_id: `${Math.random()}`,
+    app_id: `${require('crypto').randomBytes(2)}`,
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     delete: jest.fn().mockReturnValue(Promise.resolve(default_output)),

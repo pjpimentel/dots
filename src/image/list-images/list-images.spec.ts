@@ -1,7 +1,7 @@
 import { listImages } from './list-images';
 
 describe('list-images', () => {
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
@@ -35,11 +35,11 @@ describe('list-images', () => {
   it('should use `page`, `per_page`, `tag_name`, `type` and `user_images` input', async () => {
     const _listImages = listImages(context);
     const input = {
-      page: Math.random(),
-      per_page: Math.random(),
-      tag_name: Math.random(),
-      type: Math.random(),
-      user_images: Math.random(),
+      page: require('crypto').randomBytes(2),
+      per_page: require('crypto').randomBytes(2),
+      tag_name: require('crypto').randomBytes(2),
+      type: require('crypto').randomBytes(2),
+      user_images: require('crypto').randomBytes(2),
     } as any;
     await _listImages(input);
 

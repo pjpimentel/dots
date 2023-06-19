@@ -2,9 +2,9 @@ import { getVolumeAction } from './get-volume-action';
 
 describe('get-volume-action', () => {
   const default_input = {
-    volume_id: Math.random(),
+    volume_id: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),

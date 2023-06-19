@@ -4,12 +4,12 @@ describe('get-droplet-cpu-metrics', () => {
   const endpoint = '/monitoring/metrics/droplet/cpu';
 
   const default_input = {
-    host_id: Math.random(),
-    start: Math.random(),
-    end: Math.random(),
+    host_id: require('crypto').randomBytes(2),
+    start: require('crypto').randomBytes(2),
+    end: require('crypto').randomBytes(2),
   };
 
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),

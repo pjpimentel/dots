@@ -2,9 +2,9 @@ import { deleteFirewall } from './delete-firewall';
 
 describe('delete-firewall', () => {
   const default_input = {
-    firewall_id: Math.random(),
+    firewall_id: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     delete: jest.fn().mockReturnValue(Promise.resolve(default_output)),

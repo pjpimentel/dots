@@ -2,12 +2,12 @@ import { updateImage } from './update-image';
 
 describe('update-image', () => {
   const default_input = {
-    description: Math.random(),
-    distribution: Math.random(),
-    image_id: Math.random(),
-    name: Math.random(),
+    description: require('crypto').randomBytes(2),
+    distribution: require('crypto').randomBytes(2),
+    image_id: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

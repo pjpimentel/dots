@@ -2,12 +2,12 @@ import { createCdnEndpoint } from './create-cdn-endpoint';
 
 describe('create-cdn-endpoint', () => {
   const default_input = {
-    origin: Math.random(),
-    ttl: Math.random(),
-    certificate_id: Math.random(),
-    custom_domain: Math.random(),
+    origin: require('crypto').randomBytes(2),
+    ttl: require('crypto').randomBytes(2),
+    certificate_id: require('crypto').randomBytes(2),
+    custom_domain: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

@@ -2,10 +2,10 @@ import { getKubernetesClusterKubeconfig } from './get-kubernetes-cluster-kubecon
 
 describe('get-kubernetes-cluster-kubeconfig', () => {
   const default_input = {
-    kubernetes_cluster_id: Math.random(),
-    expiration_in_seconds: Math.random(),
+    kubernetes_cluster_id: require('crypto').randomBytes(2),
+    expiration_in_seconds: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),

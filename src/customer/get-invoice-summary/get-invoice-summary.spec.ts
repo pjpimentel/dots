@@ -2,9 +2,9 @@ import { getInvoiceSummary } from './get-invoice-summary';
 
 describe('get-invoice-summary', () => {
   const default_input = {
-    invoice_uuid: Math.random(),
+    invoice_uuid: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),

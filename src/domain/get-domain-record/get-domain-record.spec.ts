@@ -2,10 +2,10 @@ import { getDomainRecord } from './get-domain-record';
 
 describe('get-domain-record', () => {
   const default_input = {
-    domain_name: Math.random(),
-    domain_record_id: Math.random(),
+    domain_name: require('crypto').randomBytes(2),
+    domain_record_id: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),

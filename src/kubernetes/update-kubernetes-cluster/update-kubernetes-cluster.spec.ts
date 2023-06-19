@@ -2,13 +2,13 @@ import { updateKubernetesCluster } from './update-kubernetes-cluster';
 
 describe('update-kubernetes-cluster', () => {
   const default_input = {
-    auto_upgrade: Math.random(),
-    kubernetes_cluster_id: Math.random(),
-    maintenance_policy: Math.random(),
-    name: Math.random(),
-    tags: Math.random(),
+    auto_upgrade: require('crypto').randomBytes(2),
+    kubernetes_cluster_id: require('crypto').randomBytes(2),
+    maintenance_policy: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
+    tags: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     put: jest.fn().mockReturnValue(Promise.resolve(default_output)),

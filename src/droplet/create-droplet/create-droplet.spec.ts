@@ -2,21 +2,21 @@ import { createDroplet } from './create-droplet';
 
 describe('create-droplet', () => {
   const default_input = {
-    backups: Math.random(),
-    image: Math.random(),
-    ipv6: Math.random(),
-    monitoring: Math.random(),
-    name: Math.random(),
-    private_networking: Math.random(),
-    region: Math.random(),
-    size: Math.random(),
-    ssh_keys: Math.random(),
-    tags: Math.random(),
-    user_data: Math.random(),
-    volumes: Math.random(),
-    vpc_uuid: Math.random(),
+    backups: require('crypto').randomBytes(2),
+    image: require('crypto').randomBytes(2),
+    ipv6: require('crypto').randomBytes(2),
+    monitoring: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
+    private_networking: require('crypto').randomBytes(2),
+    region: require('crypto').randomBytes(2),
+    size: require('crypto').randomBytes(2),
+    ssh_keys: require('crypto').randomBytes(2),
+    tags: require('crypto').randomBytes(2),
+    user_data: require('crypto').randomBytes(2),
+    volumes: require('crypto').randomBytes(2),
+    vpc_uuid: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

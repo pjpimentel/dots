@@ -2,12 +2,12 @@ import { updateVpc } from './update-vpc';
 
 describe('update-vpc', () => {
   const default_input = {
-    description: Math.random(),
-    is_default: Math.random(),
-    name: Math.random(),
-    vpc_id: Math.random(),
+    description: require('crypto').randomBytes(2),
+    is_default: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
+    vpc_id: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     patch: jest.fn().mockReturnValue(Promise.resolve(default_output)),

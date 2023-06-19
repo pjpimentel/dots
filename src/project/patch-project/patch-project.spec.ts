@@ -2,14 +2,14 @@ import { patchProject } from './patch-project';
 
 describe('patch-project', () => {
   const default_input = {
-    project_id: Math.random(),
-    description: Math.random(),
-    environment: Math.random(),
-    is_default: Math.random(),
-    name: Math.random(),
-    purpose: Math.random(),
+    project_id: require('crypto').randomBytes(2),
+    description: require('crypto').randomBytes(2),
+    environment: require('crypto').randomBytes(2),
+    is_default: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
+    purpose: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     patch: jest.fn().mockReturnValue(Promise.resolve(default_output)),

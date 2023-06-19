@@ -2,10 +2,10 @@ import { updateSshKey } from './update-ssh-key';
 
 describe('update-ssh-key', () => {
   const default_input = {
-    ssh_key_id: Math.random(),
-    name: Math.random(),
+    ssh_key_id: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     put: jest.fn().mockReturnValue(Promise.resolve(default_output)),

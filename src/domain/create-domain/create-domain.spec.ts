@@ -2,10 +2,10 @@ import { createDomain } from './create-domain';
 
 describe('create-domain', () => {
   const default_input = {
-    ip_address: Math.random(),
-    name: Math.random(),
+    ip_address: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

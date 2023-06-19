@@ -2,10 +2,10 @@ import { configureDatabaseClusterSqlModes } from './configure-database-cluster-s
 
 describe('configure-database-cluster-sql-modes', () => {
   const default_input = {
-    database_cluster_id: Math.random(),
-    sql_mode: Math.random(),
+    database_cluster_id: require('crypto').randomBytes(2),
+    sql_mode: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     put: jest.fn().mockReturnValue(Promise.resolve(default_output)),

@@ -4,14 +4,14 @@ describe('get-droplet-bandwidth-metrics', () => {
   const endpoint = '/monitoring/metrics/droplet/bandwidth';
 
   const default_input = {
-    end: Math.random(),
-    host_id: Math.random(),
-    network_interface: `${Math.random()}`,
-    start: Math.random(),
-    traffic_direction: `${Math.random()}`,
+    end: require('crypto').randomBytes(2),
+    host_id: require('crypto').randomBytes(2),
+    network_interface: `${require('crypto').randomBytes(2)}`,
+    start: require('crypto').randomBytes(2),
+    traffic_direction: `${require('crypto').randomBytes(2)}`,
   };
 
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),

@@ -2,10 +2,10 @@ import { deleteConnectionPool } from './delete-connection-pool';
 
 describe('delete-connection-pool', () => {
   const default_input = {
-    database_cluster_id: Math.random(),
-    pool_name: Math.random(),
+    database_cluster_id: require('crypto').randomBytes(2),
+    pool_name: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     delete: jest.fn().mockReturnValue(Promise.resolve(default_output)),

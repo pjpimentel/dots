@@ -2,11 +2,11 @@ import { resizeVolume } from './resize-volume';
 
 describe('resize-volume', () => {
   const default_input = {
-    region: Math.random(),
-    size_gigabytes: Math.random(),
-    volume_id: Math.random(),
+    region: require('crypto').randomBytes(2),
+    size_gigabytes: require('crypto').randomBytes(2),
+    volume_id: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

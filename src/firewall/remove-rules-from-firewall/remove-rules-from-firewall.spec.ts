@@ -2,11 +2,11 @@ import { removeRulesFromFirewall } from './remove-rules-from-firewall';
 
 describe('remove-rules-from-firewall', () => {
   const default_input = {
-    firewall_id: Math.random(),
-    inbound_rules: Math.random(),
-    outbound_rules: Math.random(),
+    firewall_id: require('crypto').randomBytes(2),
+    inbound_rules: require('crypto').randomBytes(2),
+    outbound_rules: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     delete: jest.fn().mockReturnValue(Promise.resolve(default_output)),

@@ -2,9 +2,9 @@ import { listDomainRecords } from './list-domain-records';
 
 describe('list-domain-records', () => {
   const default_input = {
-    domain_name: Math.random(),
+    domain_name: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
@@ -39,9 +39,9 @@ describe('list-domain-records', () => {
     const _listDomainRecords = listDomainRecords(context);
     const input = {
       ...default_input,
-      page: Math.random(),
-      per_page: Math.random(),
-      type: Math.random(),
+      page: require('crypto').randomBytes(2),
+      per_page: require('crypto').randomBytes(2),
+      type: require('crypto').randomBytes(2),
     } as any;
     await _listDomainRecords(input);
 

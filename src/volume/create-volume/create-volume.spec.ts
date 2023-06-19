@@ -2,16 +2,16 @@ import { createVolume } from './create-volume';
 
 describe('create-volume', () => {
   const default_input = {
-    description: Math.random(),
-    filesystem_label: Math.random(),
-    filesystem_type: Math.random(),
-    name: Math.random(),
-    region: Math.random(),
-    size_gigabytes: Math.random(),
-    snapshot_id: Math.random(),
-    tags: Math.random(),
+    description: require('crypto').randomBytes(2),
+    filesystem_label: require('crypto').randomBytes(2),
+    filesystem_type: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
+    region: require('crypto').randomBytes(2),
+    size_gigabytes: require('crypto').randomBytes(2),
+    snapshot_id: require('crypto').randomBytes(2),
+    tags: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

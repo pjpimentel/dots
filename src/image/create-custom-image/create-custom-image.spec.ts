@@ -2,14 +2,14 @@ import { createCustomImage } from './create-custom-image';
 
 describe('create-custom-image', () => {
   const default_input = {
-    description: Math.random(),
-    distribution: Math.random(),
-    name: Math.random(),
-    region: Math.random(),
-    tags: Math.random(),
-    url: Math.random(),
+    description: require('crypto').randomBytes(2),
+    distribution: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
+    region: require('crypto').randomBytes(2),
+    tags: require('crypto').randomBytes(2),
+    url: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

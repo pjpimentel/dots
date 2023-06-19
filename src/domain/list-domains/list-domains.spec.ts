@@ -1,7 +1,7 @@
 import { listDomains } from './list-domains';
 
 describe('list-domains', () => {
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
@@ -35,8 +35,8 @@ describe('list-domains', () => {
   it('should use `page` and `per_page` input', async () => {
     const _listDomains = listDomains(context);
     const input = {
-      page: Math.random(),
-      per_page: Math.random(),
+      page: require('crypto').randomBytes(2),
+      per_page: require('crypto').randomBytes(2),
     } as any;
     await _listDomains(input);
 

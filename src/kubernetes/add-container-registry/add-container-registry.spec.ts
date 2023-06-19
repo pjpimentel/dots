@@ -2,9 +2,9 @@ import { addContainerRegistry } from './add-container-registry';
 
 describe('add-container-registry', () => {
   const default_input = {
-    cluster_uuids: Math.random(),
+    cluster_uuids: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

@@ -2,10 +2,10 @@ import { getFloatingIpAction } from './get-floating-ip-action';
 
 describe('get-floating-ip-action', () => {
   const default_input = {
-    ip: Math.random(),
-    action_id: Math.random(),
+    ip: require('crypto').randomBytes(2),
+    action_id: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),

@@ -2,10 +2,10 @@ import { downloadInvoice } from './download-invoice';
 
 describe('download-invoice', () => {
   const default_input = {
-    invoice_uuid: Math.random(),
-    format: Math.random(),
+    invoice_uuid: require('crypto').randomBytes(2),
+    format: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),

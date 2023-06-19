@@ -2,19 +2,19 @@ import { updateDomainRecord } from './update-domain-record';
 
 describe('update-domain-record', () => {
   const default_input = {
-    data: Math.random(),
-    domain_name: Math.random(),
-    domain_record_id: Math.random(),
-    flags: Math.random(),
-    name: Math.random(),
-    port: Math.random(),
-    priority: Math.random(),
-    tag: Math.random(),
-    ttl: Math.random(),
-    type: Math.random(),
-    weight: Math.random(),
+    data: require('crypto').randomBytes(2),
+    domain_name: require('crypto').randomBytes(2),
+    domain_record_id: require('crypto').randomBytes(2),
+    flags: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
+    port: require('crypto').randomBytes(2),
+    priority: require('crypto').randomBytes(2),
+    tag: require('crypto').randomBytes(2),
+    ttl: require('crypto').randomBytes(2),
+    type: require('crypto').randomBytes(2),
+    weight: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     put: jest.fn().mockReturnValue(Promise.resolve(default_output)),

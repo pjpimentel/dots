@@ -2,9 +2,9 @@ import { getDockerCredentials } from './get-docker-credentials';
 
 describe('get-docker-credentials', () => {
   const default_input = {
-    certificate_id: `${Math.random()}`
+    certificate_id: `${require('crypto').randomBytes(2)}`
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
@@ -37,8 +37,8 @@ describe('get-docker-credentials', () => {
   it('should send `can_write` and `expiry_seconds` query parameters', async () => {
     const _getDockerCredentials = getDockerCredentials(context);
     const input = {
-      can_write: Math.random(),
-      expiry_seconds: Math.random(),
+      can_write: require('crypto').randomBytes(2),
+      expiry_seconds: require('crypto').randomBytes(2),
     } as any;
 
     await _getDockerCredentials(input);

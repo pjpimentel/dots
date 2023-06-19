@@ -2,13 +2,13 @@ import { runClusterlintOnKubernetesCluster } from './run-clusterlint-on-kubernet
 
 describe('run-clusterlint-on-kubernetes-cluster', () => {
   const default_input = {
-    include_groups: Math.random(),
-    include_checks: Math.random(),
-    exclude_groups: Math.random(),
-    exclude_checks: Math.random(),
-    kubernetes_cluster_id: Math.random(),
+    include_groups: require('crypto').randomBytes(2),
+    include_checks: require('crypto').randomBytes(2),
+    exclude_groups: require('crypto').randomBytes(2),
+    exclude_checks: require('crypto').randomBytes(2),
+    kubernetes_cluster_id: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

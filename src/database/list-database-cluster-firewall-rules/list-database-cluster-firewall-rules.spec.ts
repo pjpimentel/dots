@@ -2,9 +2,9 @@ import { listDatabaseClusterFirewallRules } from './list-database-cluster-firewa
 
 describe('list-database-cluster-firewall-rules', () => {
   const default_input = {
-    database_cluster_id: Math.random(),
+    database_cluster_id: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
@@ -39,8 +39,8 @@ describe('list-database-cluster-firewall-rules', () => {
     const _listDatabaseClusterFirewallRules = listDatabaseClusterFirewallRules(context);
     const input = {
       ...default_input,
-      page: Math.random(),
-      per_page: Math.random(),
+      page: require('crypto').randomBytes(2),
+      per_page: require('crypto').randomBytes(2),
     } as any;
     await _listDatabaseClusterFirewallRules(input);
 

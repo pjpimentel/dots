@@ -2,10 +2,10 @@ import { createAppDeployment } from './create-app-deployment';
 
 describe('create-app-deployment', () => {
   const default_input = {
-    app_id: `${Math.random()}`,
-    force_build: `${Math.random()}`,
+    app_id: `${require('crypto').randomBytes(2)}`,
+    force_build: `${require('crypto').randomBytes(2)}`,
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

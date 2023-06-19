@@ -2,10 +2,10 @@ import { listVpcResources } from './list-vpc-resources';
 
 describe('list-vpc-resources', () => {
   const default_input = {
-    resource_type: Math.random(),
-    vpc_id: Math.random(),
+    resource_type: require('crypto').randomBytes(2),
+    vpc_id: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
@@ -41,8 +41,8 @@ describe('list-vpc-resources', () => {
     const _listVpcResources = listVpcResources(context);
     const input = {
       ...default_input,
-      page: Math.random(),
-      per_page: Math.random(),
+      page: require('crypto').randomBytes(2),
+      per_page: require('crypto').randomBytes(2),
     } as any;
     await _listVpcResources(input);
 

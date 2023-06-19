@@ -2,9 +2,9 @@ import { assignResourcesToDefaultProject } from './assign-resources-to-default-p
 
 describe('assign-resources-to-default-project', () => {
   const default_input = {
-    resources: Math.random(),
+    resources: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

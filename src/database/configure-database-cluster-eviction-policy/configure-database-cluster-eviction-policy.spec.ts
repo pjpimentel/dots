@@ -2,10 +2,10 @@ import { configureDatabaseClusterEvictionPolicy } from './configure-database-clu
 
 describe('configure-database-cluster-eviction-policy', () => {
   const default_input = {
-    database_cluster_id: Math.random(),
-    eviction_policy: Math.random(),
+    database_cluster_id: require('crypto').randomBytes(2),
+    eviction_policy: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     put: jest.fn().mockReturnValue(Promise.resolve(default_output)),

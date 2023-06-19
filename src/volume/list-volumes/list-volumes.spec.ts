@@ -1,7 +1,7 @@
 import { listVolumes } from './list-volumes';
 
 describe('list-volumes', () => {
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
@@ -35,9 +35,9 @@ describe('list-volumes', () => {
   it('should use `page`, `per_page` and `name` input', async () => {
     const _listVolumes = listVolumes(context);
     const input = {
-      name: Math.random(),
-      page: Math.random(),
-      per_page: Math.random(),
+      name: require('crypto').randomBytes(2),
+      page: require('crypto').randomBytes(2),
+      per_page: require('crypto').randomBytes(2),
     } as any;
     await _listVolumes(input);
 

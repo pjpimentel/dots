@@ -2,10 +2,10 @@ import { getSnapshot } from './get-snapshot';
 
 describe('get-snapshot', () => {
   const default_input = {
-    snapshot_id: Math.random(),
-    slug: Math.random(),
+    snapshot_id: require('crypto').randomBytes(2),
+    slug: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),

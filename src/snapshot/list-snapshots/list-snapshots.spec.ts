@@ -1,7 +1,7 @@
 import { listSnapshots } from './list-snapshots';
 
 describe('list-snapshots', () => {
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
@@ -35,9 +35,9 @@ describe('list-snapshots', () => {
   it('should use `page`, `per_page` and `resource_type` input', async () => {
     const _listSnapshots = listSnapshots(context);
     const input = {
-      page: Math.random(),
-      per_page: Math.random(),
-      resource_type: Math.random(),
+      page: require('crypto').randomBytes(2),
+      per_page: require('crypto').randomBytes(2),
+      resource_type: require('crypto').randomBytes(2),
     } as any;
     await _listSnapshots(input);
 

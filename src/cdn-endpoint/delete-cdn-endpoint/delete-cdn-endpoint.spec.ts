@@ -2,9 +2,9 @@ import { deleteCdnEndpoint } from './delete-cdn-endpoint';
 
 describe('delete-cdn-endpoint', () => {
   const default_input = {
-    cdn_endpoint_id: `${Math.random()}`,
+    cdn_endpoint_id: `${require('crypto').randomBytes(2)}`,
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     delete: jest.fn().mockReturnValue(Promise.resolve(default_output)),

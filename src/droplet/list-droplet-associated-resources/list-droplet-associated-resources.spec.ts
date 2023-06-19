@@ -2,9 +2,9 @@ import { listDropletAssociatedResources } from './list-droplet-associated-resour
 
 describe('list-droplet-associated-resources', () => {
   const default_input = {
-    droplet_id: Math.random(),
+    droplet_id: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),

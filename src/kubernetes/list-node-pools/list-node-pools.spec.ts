@@ -2,9 +2,9 @@ import { listNodePools } from './list-node-pools';
 
 describe('list-node-pools', () => {
   const default_input = {
-    kubernetes_cluster_id: Math.random(),
+    kubernetes_cluster_id: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
@@ -39,8 +39,8 @@ describe('list-node-pools', () => {
     const _listNodePools = listNodePools(context);
     const input = {
       ...default_input,
-      page: Math.random(),
-      per_page: Math.random(),
+      page: require('crypto').randomBytes(2),
+      per_page: require('crypto').randomBytes(2),
     } as any;
     await _listNodePools(input);
 

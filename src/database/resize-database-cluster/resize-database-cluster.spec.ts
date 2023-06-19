@@ -2,11 +2,11 @@ import { resizeDatabaseCluster } from './resize-database-cluster';
 
 describe('resize-database-cluster', () => {
   const default_input = {
-    database_cluster_id: Math.random(),
-    num_nodes: Math.random(),
-    size: Math.random(),
+    database_cluster_id: require('crypto').randomBytes(2),
+    num_nodes: require('crypto').randomBytes(2),
+    size: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     put: jest.fn().mockReturnValue(Promise.resolve(default_output)),

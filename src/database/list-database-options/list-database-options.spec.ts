@@ -1,7 +1,7 @@
 import { listDatabaseOptions } from './list-database-options';
 
 describe('list-database-options', () => {
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),

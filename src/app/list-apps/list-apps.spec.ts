@@ -1,7 +1,7 @@
 import { listApps } from './list-apps';
 
 describe('list-apps', () => {
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
@@ -36,9 +36,9 @@ describe('list-apps', () => {
   it('should use `page`, `per_page` and `with_projects` input', async () => {
     const _listApps = listApps(context);
     const input = {
-      with_projects: Math.random(),
-      page: Math.random(),
-      per_page: Math.random(),
+      with_projects: require('crypto').randomBytes(2),
+      page: require('crypto').randomBytes(2),
+      per_page: require('crypto').randomBytes(2),
     } as any;
     await _listApps(input);
 

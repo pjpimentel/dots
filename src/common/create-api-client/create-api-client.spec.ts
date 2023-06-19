@@ -71,9 +71,9 @@ describe('utils', () => {
     });
     it('should create a valid instance', () => {
       const _createApiClient = createApiClient({createContext, modules});
-      const endpoint = `https://api.digitalocean.com/v2/test-match-${Math.random()}`;
+      const endpoint = `https://api.digitalocean.com/v2/test-match-${require('crypto').randomBytes(2)}`;
       const token = process.env.TEST_TOKEN as string;
-      const requestTimeoutInMs = Math.random();
+      const requestTimeoutInMs = require('crypto').randomBytes(2);
       const client = _createApiClient({
         endpoint,
         requestTimeoutInMs,

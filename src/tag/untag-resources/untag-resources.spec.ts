@@ -2,9 +2,9 @@ import { untagResources } from './untag-resources';
 
 describe('untag-resources', () => {
   const default_input = {
-    tag_name: Math.random(),
+    tag_name: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     delete: jest.fn().mockReturnValue(Promise.resolve(default_output)),

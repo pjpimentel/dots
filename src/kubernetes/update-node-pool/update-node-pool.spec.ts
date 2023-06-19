@@ -2,18 +2,18 @@ import { updateNodePool } from './update-node-pool';
 
 describe('update-node-pool', () => {
   const default_input = {
-    auto_scale: Math.random(),
-    count: Math.random(),
-    labels: Math.random(),
-    max_nodes: Math.random(),
-    min_nodes: Math.random(),
-    name: Math.random(),
-    node_pool_id: Math.random(),
-    tags: Math.random(),
-    taints: Math.random(),
-    kubernetes_cluster_id: Math.random(),
+    auto_scale: require('crypto').randomBytes(2),
+    count: require('crypto').randomBytes(2),
+    labels: require('crypto').randomBytes(2),
+    max_nodes: require('crypto').randomBytes(2),
+    min_nodes: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
+    node_pool_id: require('crypto').randomBytes(2),
+    tags: require('crypto').randomBytes(2),
+    taints: require('crypto').randomBytes(2),
+    kubernetes_cluster_id: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     put: jest.fn().mockReturnValue(Promise.resolve(default_output)),

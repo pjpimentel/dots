@@ -2,9 +2,9 @@ import { getLoadBalancer } from './get-load-balancer';
 
 describe('get-load-balancer', () => {
   const default_input = {
-    load_balancer_id: Math.random(),
+    load_balancer_id: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),

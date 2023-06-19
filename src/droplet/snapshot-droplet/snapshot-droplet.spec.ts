@@ -2,10 +2,10 @@ import { snapshotDroplet } from './snapshot-droplet';
 
 describe('snapshot-droplet', () => {
   const default_input = {
-    droplet_id: Math.random(),
-    name: Math.random(),
+    droplet_id: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

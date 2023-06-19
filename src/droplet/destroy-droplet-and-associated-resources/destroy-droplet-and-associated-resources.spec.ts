@@ -2,12 +2,12 @@ import { destroyDropletAndAssociatedResources } from './destroy-droplet-and-asso
 
 describe('destroy-droplet-and-associated-resources', () => {
   const default_input = {
-    droplet_id: Math.random(),
-    snapshots: Math.random(),
-    volume_snapshots: Math.random(),
-    volumes: Math.random(),
+    droplet_id: require('crypto').randomBytes(2),
+    snapshots: require('crypto').randomBytes(2),
+    volume_snapshots: require('crypto').randomBytes(2),
+    volumes: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     delete: jest.fn().mockReturnValue(Promise.resolve(default_output)),

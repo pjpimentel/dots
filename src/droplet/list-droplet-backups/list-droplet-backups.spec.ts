@@ -2,9 +2,9 @@ import { listDropletBackups } from './list-droplet-backups';
 
 describe('list-droplet-backups', () => {
   const default_input = {
-    droplet_id: Math.random(),
+    droplet_id: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
@@ -39,8 +39,8 @@ describe('list-droplet-backups', () => {
     const _listDropletBackups = listDropletBackups(context);
     const input = {
       ...default_input,
-      page: Math.random(),
-      per_page: Math.random(),
+      page: require('crypto').randomBytes(2),
+      per_page: require('crypto').randomBytes(2),
     } as any;
     await _listDropletBackups(input);
 

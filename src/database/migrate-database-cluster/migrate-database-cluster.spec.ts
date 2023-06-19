@@ -2,10 +2,10 @@ import { migrateDatabaseCluster } from './migrate-database-cluster';
 
 describe('migrate-database-cluster', () => {
   const default_input = {
-    database_cluster_id: Math.random(),
-    region: Math.random(),
+    database_cluster_id: require('crypto').randomBytes(2),
+    region: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     put: jest.fn().mockReturnValue(Promise.resolve(default_output)),

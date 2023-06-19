@@ -2,12 +2,12 @@ import { updateCdnEndpoint } from './update-cdn-endpoint';
 
 describe('update-cdn-endpoint', () => {
   const default_input = {
-    cdn_endpoint_id: Math.random(),
-    ttl: Math.random(),
-    certificate_id: Math.random(),
-    custom_domain: Math.random(),
+    cdn_endpoint_id: require('crypto').randomBytes(2),
+    ttl: require('crypto').randomBytes(2),
+    certificate_id: require('crypto').randomBytes(2),
+    custom_domain: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     put: jest.fn().mockReturnValue(Promise.resolve(default_output)),

@@ -2,18 +2,18 @@ import { createDomainRecord } from './create-domain-record';
 
 describe('create-domain-record', () => {
   const default_input = {
-    domain_name: Math.random(),
-    data: Math.random(),
-    flags: Math.random(),
-    name: Math.random(),
-    port: Math.random(),
-    priority: Math.random(),
-    tag: Math.random(),
-    ttl: Math.random(),
-    type: Math.random(),
-    weight: Math.random(),
+    domain_name: require('crypto').randomBytes(2),
+    data: require('crypto').randomBytes(2),
+    flags: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
+    port: require('crypto').randomBytes(2),
+    priority: require('crypto').randomBytes(2),
+    tag: require('crypto').randomBytes(2),
+    ttl: require('crypto').randomBytes(2),
+    type: require('crypto').randomBytes(2),
+    weight: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

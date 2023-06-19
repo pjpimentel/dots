@@ -2,12 +2,12 @@ import { runAppDetection } from './run-app-detection';
 
 describe('run-app-detection', () => {
   const default_input = {
-    commit_sha: `${Math.random()}`,
-    component_type: `${Math.random()}`,
-    git: `${Math.random()}`,
-    github: `${Math.random()}`,
+    commit_sha: `${require('crypto').randomBytes(2)}`,
+    component_type: `${require('crypto').randomBytes(2)}`,
+    git: `${require('crypto').randomBytes(2)}`,
+    github: `${require('crypto').randomBytes(2)}`,
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

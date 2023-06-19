@@ -2,10 +2,10 @@ import { getImageAction } from './get-image-action';
 
 describe('get-image-action', () => {
   const default_input = {
-    image_id: Math.random(),
-    action_id: Math.random(),
+    image_id: require('crypto').randomBytes(2),
+    action_id: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),

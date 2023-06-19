@@ -1,7 +1,7 @@
 import { listCdnEndpoints } from './list-cdn-endpoints';
 
 describe('list-cdn-endpoints', () => {
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
@@ -35,8 +35,8 @@ describe('list-cdn-endpoints', () => {
   it('should use `page` and `per_page` input', async () => {
     const _listCdnEndpoints = listCdnEndpoints(context);
     const input = {
-      page: Math.random(),
-      per_page: Math.random(),
+      page: require('crypto').randomBytes(2),
+      per_page: require('crypto').randomBytes(2),
     } as any;
     await _listCdnEndpoints(input);
 

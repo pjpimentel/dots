@@ -2,10 +2,10 @@ import { addRulesToLoadBalancer } from './add-rules-to-load-balancer';
 
 describe('add-rules-to-load-balancer', () => {
   const default_input = {
-    load_balancer_id: Math.random(),
-    forwarding_rules: Math.random(),
+    load_balancer_id: require('crypto').randomBytes(2),
+    forwarding_rules: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

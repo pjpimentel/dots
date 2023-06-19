@@ -2,13 +2,13 @@ import { createVpc } from './create-vpc';
 
 describe('create-vpc', () => {
   const default_input = {
-    description: Math.random(),
-    ip_range: Math.random(),
-    is_default: Math.random(),
-    name: Math.random(),
-    region: Math.random(),
+    description: require('crypto').randomBytes(2),
+    ip_range: require('crypto').randomBytes(2),
+    is_default: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
+    region: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

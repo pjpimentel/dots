@@ -39,13 +39,13 @@ describe('create-context', () => {
 });
 
 it('should use default parameters', () => {
-  const http_client = Math.random();
+  const http_client = require('crypto').randomBytes(2);
   const axios = {
     create: jest.fn().mockReturnValue(http_client)
   }
   const input = {
     axios,
-    token: Math.random(),
+    token: require('crypto').randomBytes(2),
   } as any;
   const context = createContext(input);
 

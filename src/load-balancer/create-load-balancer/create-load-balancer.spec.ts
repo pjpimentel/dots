@@ -2,20 +2,20 @@ import { createLoadBalancer } from './create-load-balancer';
 
 describe('create-load-balancer', () => {
   const default_input = {
-    algorithm: Math.random(),
-    droplet_ids: Math.random(),
-    enable_backend_keepalive: Math.random(),
-    enable_proxy_protocol: Math.random(),
-    forwarding_rules: Math.random(),
-    health_check: Math.random(),
-    name: Math.random(),
-    redirect_http_to_https: Math.random(),
-    region: Math.random(),
-    sticky_sessions: Math.random(),
-    tag: Math.random(),
-    vpc_uuid: Math.random(),
+    algorithm: require('crypto').randomBytes(2),
+    droplet_ids: require('crypto').randomBytes(2),
+    enable_backend_keepalive: require('crypto').randomBytes(2),
+    enable_proxy_protocol: require('crypto').randomBytes(2),
+    forwarding_rules: require('crypto').randomBytes(2),
+    health_check: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
+    redirect_http_to_https: require('crypto').randomBytes(2),
+    region: require('crypto').randomBytes(2),
+    sticky_sessions: require('crypto').randomBytes(2),
+    tag: require('crypto').randomBytes(2),
+    vpc_uuid: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

@@ -2,14 +2,14 @@ import { createCertificate } from './create-certificate';
 
 describe('create-certificate', () => {
   const default_input = {
-    certificate_chain: Math.random(),
-    dns_names: Math.random(),
-    leaf_certificate: Math.random(),
-    name: Math.random(),
-    private_key: Math.random(),
-    type: Math.random(),
+    certificate_chain: require('crypto').randomBytes(2),
+    dns_names: require('crypto').randomBytes(2),
+    leaf_certificate: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
+    private_key: require('crypto').randomBytes(2),
+    type: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

@@ -2,10 +2,10 @@ import { createSshKey } from './create-ssh-key';
 
 describe('create-ssh-key', () => {
   const default_input = {
-    name: Math.random(),
-    public_key: Math.random(),
+    name: require('crypto').randomBytes(2),
+    public_key: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     post: jest.fn().mockReturnValue(Promise.resolve(default_output)),

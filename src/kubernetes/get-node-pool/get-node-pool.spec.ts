@@ -2,10 +2,10 @@ import { getNodePool } from './get-node-pool';
 
 describe('get-node-pool', () => {
   const default_input = {
-    kubernetes_cluster_id: Math.random(),
-    node_pool_id: Math.random(),
+    kubernetes_cluster_id: require('crypto').randomBytes(2),
+    node_pool_id: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),

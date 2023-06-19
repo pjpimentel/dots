@@ -2,9 +2,9 @@ import { getProject } from './get-project';
 
 describe('get-project', () => {
   const default_input = {
-    project_id: Math.random(),
+    project_id: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),

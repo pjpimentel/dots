@@ -2,10 +2,10 @@ import { getDatabaseClusterDb } from './get-database-cluster-db';
 
 describe('get-database-cluster-db', () => {
   const default_input = {
-    database_cluster_id: Math.random(),
-    db_name: Math.random(),
+    database_cluster_id: require('crypto').randomBytes(2),
+    db_name: require('crypto').randomBytes(2),
   } as any;
-  const default_output = Math.random();
+  const default_output = require('crypto').randomBytes(2);
 
   const httpClient = {
     get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
