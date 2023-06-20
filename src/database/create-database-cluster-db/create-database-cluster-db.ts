@@ -18,9 +18,8 @@ export const createDatabaseClusterDb = ({
   database_cluster_id,
   db_name,
 }: ICreateDatabaseDbApiRequest): Promise<Readonly<CreateDatabaseDbResponse>> => {
-  const path = '/databases';
+  const url = `/databases/${database_cluster_id}/dbs`;
   const body = {name: db_name};
-  const url = `${path}/${database_cluster_id}/dbs`;
 
   return httpClient.post<ICreateDatabaseDbApiResponse>(url, body);
 };

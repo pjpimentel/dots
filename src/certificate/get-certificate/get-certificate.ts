@@ -16,8 +16,7 @@ export const getCertificate = ({
 }: IContext) => ({
   certificate_id,
 }: IGetCertificateApiRequest): Promise<Readonly<GetCertificateResponse>> => {
-  const path = '/certificates';
-  const url = `${path}/${certificate_id}`;
+  const url = `/certificates/${certificate_id}`;
 
   return httpClient.get<IGetCertificateApiResponse>(url);
 };

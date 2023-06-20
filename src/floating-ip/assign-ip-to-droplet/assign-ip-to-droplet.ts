@@ -19,10 +19,9 @@ export const assignIpToDroplet = ({
   droplet_id,
   ip,
 }: IAssignIpToDropletApiRequest): Promise<Readonly<AssignIpToDropletResponse>> => {
-  const path = '/floating_ips';
+  const url = `/floating_ips/${ip}/actions`;
   const type = 'assign';
   const body = {droplet_id, type};
-  const url = `${path}/${ip}/actions`;
 
   return httpClient.post<IAssignIpToDropletApiResponse>(url, body);
 };

@@ -1,59 +1,49 @@
-import {getActiveDeploymentLogs} from './get-active-deployment-logs';
-import * as MOCK from './get-active-deployment-logs.mock';
+import { getActiveDeploymentLogs } from './get-active-deployment-logs';
 
-describe('app', () => {
+describe('get-active-deployment-logs', () => {
+  const default_input = {
+    app_id:`${require('crypto').randomBytes(2)}`,
+    component_name:`${require('crypto').randomBytes(2)}`,
+    follow:`${require('crypto').randomBytes(2)}`,
+    pod_connection_timeout:`${require('crypto').randomBytes(2)}`,
+    type:`${require('crypto').randomBytes(2)}`,
+  } as any;
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    MOCK.httpClient.get.mockClear();
+    httpClient.get.mockClear();
   });
 
-  describe('get-active-deployment-logs', () => {
-    it('should be and return a fn', () => {
-      expect(typeof getActiveDeploymentLogs).toBe('function');
-      expect(typeof getActiveDeploymentLogs(MOCK.context)).toBe('function');
+  it('should be and return a fn', () => {
+    expect(typeof getActiveDeploymentLogs).toBe('function');
+    expect(typeof getActiveDeploymentLogs(context)).toBe('function');
+  });
+
+  it('should call axios.get', async () => {
+    const _getActiveDeploymentLogs = getActiveDeploymentLogs(context);
+    await _getActiveDeploymentLogs(default_input);
+
+    expect(httpClient.get).toHaveBeenCalledWith(`/apps/${default_input.app_id}/components/${default_input.component_name}/logs`, {
+      params: {
+        follow: default_input.follow,
+        pod_connection_timeout: default_input.pod_connection_timeout,
+        type: default_input.type,
+      }
     });
+  });
 
-    it('should call axios.get', async () => {
-      const _getActiveDeploymentLogs = getActiveDeploymentLogs(MOCK.context);
+  it('should output axios response', async () => {
+    const _getActiveDeploymentLogs = getActiveDeploymentLogs(context);
+    const output = await _getActiveDeploymentLogs(default_input);
 
-      const input = {
-        app_id: Math.random().toString(),
-        component_name: Math.random().toString(),
-      };
-
-      await _getActiveDeploymentLogs(input);
-
-      expect(MOCK.httpClient.get).toHaveBeenCalledWith(
-        `${MOCK.endpoint}/${input.app_id}/components/${input.component_name}/logs`,
-        {
-          params: {}
-        }
-      );
-    });
-
-    it('should send query parameters', async () => {
-      const _getActiveDeploymentLogs = getActiveDeploymentLogs(MOCK.context);
-
-      const input = {
-        app_id: Math.random().toString(),
-        component_name: Math.random().toString(),
-        follow: Math.random() as any as boolean,
-        pod_connection_timeout: Math.random().toString(),
-        type: Math.random().toString(),
-      };
-
-      await _getActiveDeploymentLogs(input);
-
-      expect(MOCK.httpClient.get).toHaveBeenCalledWith(
-        `${MOCK.endpoint}/${input.app_id}/components/${input.component_name}/logs`,
-        {
-          params: {
-            follow: input.follow,
-            pod_connection_timeout: input.pod_connection_timeout,
-            type: input.type,
-          }
-        }
-      );
-
-    });
+    expect(output).toBe(default_output);
   });
 });

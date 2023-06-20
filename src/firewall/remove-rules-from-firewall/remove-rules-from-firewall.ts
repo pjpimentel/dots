@@ -16,9 +16,8 @@ export const removeRulesFromFirewall = ({
   inbound_rules,
   outbound_rules,
 }: IRemoveRulesFromFirewallApiRequest): Promise<Readonly<RemoveRulesFromFirewallResponse>> => {
-  const path = '/firewalls';
+  const url = `/firewalls/${firewall_id}/rules`;
   const body = {inbound_rules, outbound_rules};
-  const url = `${path}/${firewall_id}/rules`;
 
   return httpClient.delete(url, {data: body});
 };

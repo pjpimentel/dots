@@ -18,9 +18,8 @@ export const listImageActions = ({
   per_page = 25,
   image_id,
 }: IListImageActionsApiRequest): Promise<Readonly<ListImageActionsResponse>> => {
-  const path = '/images';
+  const url = `/images/${image_id}/actions`;
   const query_params = {page, per_page};
-  const url = `${path}/${image_id}/actions`;
 
   return httpClient.get<IListImageActionsApiResponse>(url, {params: query_params});
 };

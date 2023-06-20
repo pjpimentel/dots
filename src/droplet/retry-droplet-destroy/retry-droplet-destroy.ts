@@ -11,8 +11,7 @@ export const retryDropletDestroy = ({
 }: IContext) => ({
   droplet_id,
 }: IRetryDropletDestroyApiRequest): Promise<Readonly<RetryDropletDestroyResponse>> => {
-  const path = '/droplets';
-  const url = `${path}/${droplet_id}/destroy_with_associated_resources/retry`;
+  const url = `/droplets/${droplet_id}/destroy_with_associated_resources/retry`;
 
   return httpClient.post(url);
 };

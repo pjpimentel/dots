@@ -11,9 +11,8 @@ export const removeContainerRegistry = ({
 }: IContext) => ({
   cluster_uuids,
 }: IRemoveContainerRegistryApiRequest): Promise<Readonly<RemoveContainerRegistryResponse>> => {
-  const path = '/kubernetes/clusters/registry';
+  const url = '/kubernetes/clusters/registry';
   const body = {cluster_uuids};
-  const url = `${path}`;
 
   return httpClient.delete(url, {data: body});
 };

@@ -16,8 +16,7 @@ export const getVpc = ({
 }: IContext) => ({
   vpc_id,
 }: IGetVpcApiRequest): Promise<Readonly<GetVpcResponse>> => {
-  const path = '/vpcs';
-  const url = `${path}/${vpc_id}`;
+  const url = `/vpcs/${vpc_id}`;
 
   return httpClient.get<IGetVpcApiResponse>(url);
 };

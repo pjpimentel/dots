@@ -1,64 +1,53 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {updateDomainRecord} from './update-domain-record';
-import * as MOCK from './update-domain-record.mock';
+import { updateDomainRecord } from './update-domain-record';
 
-describe('domain', () => {
-  const DOMAIN_NAME = 'domain-name';
-  const DOMAIN_RECORD_ID = MOCK.response.body.domain_record.id;
-  const URL = `/domains/${DOMAIN_NAME}/records/${DOMAIN_RECORD_ID}`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onPut(URL, MOCK.request.body).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('update-domain-record', () => {
+  const default_input = {
+    data: require('crypto').randomBytes(2),
+    domain_name: require('crypto').randomBytes(2),
+    domain_record_id: require('crypto').randomBytes(2),
+    flags: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
+    port: require('crypto').randomBytes(2),
+    priority: require('crypto').randomBytes(2),
+    tag: require('crypto').randomBytes(2),
+    ttl: require('crypto').randomBytes(2),
+    type: require('crypto').randomBytes(2),
+    weight: require('crypto').randomBytes(2),
+  } as any;
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    put: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.put.mockClear();
   });
-  describe('update-domain-record', () => {
-    it('should be a fn', () => {
-      expect(typeof updateDomainRecord).toBe('function');
+
+  it('should be and return a fn', () => {
+    expect(typeof updateDomainRecord).toBe('function');
+    expect(typeof updateDomainRecord(context)).toBe('function');
+  });
+
+  it('should call axios.put', async () => {
+    const _updateDomainRecord = updateDomainRecord(context);
+    await _updateDomainRecord(default_input);
+
+    expect(httpClient.put).toHaveBeenCalledWith(`/domains/${default_input.domain_name}/records/${default_input.domain_record_id}`, {
+      ...default_input,
+      domain_name: undefined,
+      domain_record_id: undefined
     });
-    it('should return a fn', () => {
-      expect(typeof updateDomainRecord(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _updateDomainRecord = updateDomainRecord(context);
-      const response = await _updateDomainRecord({
-        domain_name: DOMAIN_NAME,
-        domain_record_id: DOMAIN_RECORD_ID,
-        ...MOCK.request.body
-      });
-      Object.assign(response, {request: mock.history.put[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('put');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeDefined();
-      const requestBody = JSON.parse(request.data);
-      expect(requestBody).toMatchObject(MOCK.request.body);
-      /// validate data
-      expect(response.data).toBeDefined();
-      const {domain_record} = response.data;
-      expect(typeof domain_record.name).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
+  });
+
+  it('should output axios response', async () => {
+    const _updateDomainRecord = updateDomainRecord(context);
+    const output = await _updateDomainRecord(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

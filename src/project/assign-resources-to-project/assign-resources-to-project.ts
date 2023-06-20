@@ -18,9 +18,8 @@ export const assignResourcesToProject = ({
   project_id,
   resources,
 }: IAssignResourcesToProjectApiRequest): Promise<Readonly<AssignResourcesToProjectResponse>> => {
-  const path = '/projects';
+  const url = `/projects/${project_id}/resources`;
   const body = {resources};
-  const url = `${path}/${project_id}/resources`;
 
   return httpClient.post<IAssignResourcesToProjectApiResponse>(url, body);
 };

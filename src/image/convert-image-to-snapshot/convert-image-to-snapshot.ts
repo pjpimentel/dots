@@ -16,8 +16,7 @@ export const convertImageToSnapshot = ({
 }: IContext) => ({
   image_id,
 }: IConvertImageToSnapshotApiRequest): Promise<Readonly<ConvertImageToSnapshotRes>> => {
-  const path = '/images';
-  const url = `${path}/${image_id}/actions`;
+  const url = `/images/${image_id}/actions`;
   const body = {type: 'convert'};
 
   return httpClient.post<IConvertImageToSnapshotApiResponse>(url, body);

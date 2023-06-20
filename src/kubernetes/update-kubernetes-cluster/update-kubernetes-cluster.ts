@@ -23,14 +23,13 @@ export const updateKubernetesCluster = ({
   name,
   tags,
 }: IUpdateKubernetesClusterApiRequest): Promise<Readonly<UpdateKubernetesClusterResponse>> => {
-  const path = '/kubernetes/clusters';
+  const url = `/kubernetes/clusters/${kubernetes_cluster_id}`;
   const body = {
     auto_upgrade,
     maintenance_policy,
     name,
     tags,
   };
-  const url = `${path}/${kubernetes_cluster_id}`;
 
   return httpClient.put<IUpdateKubernetesClusterApiResponse>(url, body);
 };

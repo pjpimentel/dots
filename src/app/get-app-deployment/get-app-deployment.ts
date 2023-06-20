@@ -18,8 +18,7 @@ export const getAppDeployment = ({
   app_id,
   deployment_id,
 }: IGetAppDeploymentApiRequest): Promise<Readonly<GetAppDeploymentResponse>> => {
-  const path = '/apps';
-  const url = `${path}/${app_id}/deployments/${deployment_id}`;
+  const url = `/apps/${app_id}/deployments/${deployment_id}`;
 
   return httpClient.get<IGetAppDeploymentApiResponse>(url);
 };

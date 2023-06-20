@@ -11,8 +11,7 @@ export const deleteTag = ({
 }: IContext) => ({
   tag_name,
 }: IDeleteTagApiRequest): Promise<Readonly<DeleteTagResponse>> => {
-  const path = '/tags';
-  const url = `${path}/${tag_name}`;
+  const url = `/tags/${tag_name}`;
 
   return httpClient.delete(url);
 };

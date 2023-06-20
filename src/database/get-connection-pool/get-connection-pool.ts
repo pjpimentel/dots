@@ -18,8 +18,7 @@ export const getConnectionPool = ({
   database_cluster_id,
   pool_name,
 }: IGetConnectionPoolApiRequest): Promise<Readonly<GetConnectionPoolResponse>> => {
-  const path = '/databases';
-  const url = `${path}/${database_cluster_id}/pools/${pool_name}`;
+  const url = `/databases/${database_cluster_id}/pools/${pool_name}`;
 
   return httpClient.get<IGetConnectionPoolApiResponse>(url);
 };

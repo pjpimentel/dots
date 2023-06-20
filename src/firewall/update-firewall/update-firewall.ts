@@ -17,7 +17,7 @@ export const updateFirewall = ({
   outbound_rules,
   tags,
 }: IFirewall): Promise<Readonly<UpdateFirewallResponse>> => {
-  const path = '/firewalls';
+  const url = `/firewalls/${id}`;
   const body = {
     droplet_ids,
     inbound_rules,
@@ -25,7 +25,6 @@ export const updateFirewall = ({
     outbound_rules,
     tags,
   };
-  const url = `${path}/${id}`;
 
   return httpClient.put<IUpdateFirewallApiResponse>(url, body);
 };

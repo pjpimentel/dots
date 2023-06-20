@@ -13,9 +13,8 @@ export const migrateDatabaseCluster = ({
   database_cluster_id,
   region,
 }: IMigrateDatabaseClusterApiRequest): Promise<Readonly<MigrateDatabaseClusterResponse>> => {
-  const path = '/databases';
+  const url = `/databases/${database_cluster_id}/migrate`;
   const body = {region};
-  const url = `${path}/${database_cluster_id}/migrate`;
 
   return httpClient.put<void>(url, body);
 };

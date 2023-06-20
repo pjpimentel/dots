@@ -6,8 +6,7 @@ export type GetBalanceResponse = IResponse<IBalance>;
 export const getBalance = ({
   httpClient,
 }: IContext) => (): Promise<Readonly<GetBalanceResponse>> => {
-  const path = '/customers/my/balance';
-  const url = `${path}`;
+  const url = '/customers/my/balance';
 
   return httpClient.get<IBalance>(url);
 };

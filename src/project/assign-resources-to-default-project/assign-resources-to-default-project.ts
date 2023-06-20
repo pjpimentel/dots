@@ -16,9 +16,8 @@ export const assignResourcesToDefaultProject = ({
 }: IContext) => ({
   resources,
 }: IAssignResourcesToDefaultProjectApiRequest): Promise<Readonly<AssignResourcesToDefaultProjectResponse>> => {
-  const path = '/projects';
+  const url = `/projects/default/resources`;
   const body = {resources};
-  const url = `${path}/default/resources`;
 
   return httpClient.post<IAssignResourcesToDefaultProjectApiResponse>(url, body);
 };

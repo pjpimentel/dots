@@ -20,10 +20,9 @@ export const resizeVolume = ({
   size_gigabytes,
   volume_id,
 }: IResizeVolumeToDropletApiRequest): Promise<Readonly<ResizeVolumeToDropletResponse>> => {
-  const path = '/volumes';
+  const url = `/volumes/${volume_id}/actions`;
   const type = 'resize';
   const body = {region, size_gigabytes, type};
-  const url = `${path}/${volume_id}/actions`;
 
   return httpClient.post<IResizeVolumeToDropletApiResponse>(url, body);
 };

@@ -1,54 +1,39 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {deleteKubernetesCluster} from './delete-kubernetes-cluster';
-import * as MOCK from './delete-kubernetes-cluster.mock';
+import { deleteKubernetesCluster } from './delete-kubernetes-cluster';
 
-describe('kubernetes', () => {
-  const KUBERNETES_CLUSTER_ID = 'cluster-id';
-  const URL = `/kubernetes/clusters/${KUBERNETES_CLUSTER_ID}`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onDelete(URL).reply(
-    MOCK.response.headers.status,
-    undefined,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('delete-kubernetes-cluster', () => {
+  const default_input = {
+    kubernetes_cluster_id: require('crypto').randomBytes(2),
+  } as any;
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    delete: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.delete.mockClear();
   });
-  describe('delete-kubernetes-cluster', () => {
-    it('should be a fn', () => {
-      expect(typeof deleteKubernetesCluster).toBe('function');
-    });
-    it('should return a fn', () => {
-      expect(typeof deleteKubernetesCluster(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _deleteKubernetesCluster = deleteKubernetesCluster(context);
-      const response = await _deleteKubernetesCluster({
-        kubernetes_cluster_id: KUBERNETES_CLUSTER_ID
-      });
-      Object.assign(response, {request: mock.history.delete[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('delete');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeUndefined();
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
+
+  it('should be and return a fn', () => {
+    expect(typeof deleteKubernetesCluster).toBe('function');
+    expect(typeof deleteKubernetesCluster(context)).toBe('function');
+  });
+
+  it('should call axios.delete', async () => {
+    const _deleteKubernetesCluster = deleteKubernetesCluster(context);
+    await _deleteKubernetesCluster(default_input);
+
+    expect(httpClient.delete).toHaveBeenCalledWith(`/kubernetes/clusters/${default_input.kubernetes_cluster_id}`);
+  });
+
+  it('should output axios response', async () => {
+    const _deleteKubernetesCluster = deleteKubernetesCluster(context);
+    const output = await _deleteKubernetesCluster(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

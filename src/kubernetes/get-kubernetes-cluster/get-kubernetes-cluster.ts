@@ -16,8 +16,7 @@ export const getKubernetesCluster = ({
 }: IContext) => ({
   kubernetes_cluster_id,
 }: IGetKubernetesClusterApiRequest): Promise<Readonly<GetKubernetesClusterResponse>> => {
-  const path = '/kubernetes/clusters';
-  const url = `${path}/${kubernetes_cluster_id}`;
+  const url = `/kubernetes/clusters/${kubernetes_cluster_id}`;
 
   return httpClient.get<IGetKubernetesClusterApiResponse>(url);
 };

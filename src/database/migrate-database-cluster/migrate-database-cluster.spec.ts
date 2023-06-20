@@ -1,59 +1,42 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {migrateDatabaseCluster} from './migrate-database-cluster';
-import * as MOCK from './migrate-database-cluster.mock';
+import { migrateDatabaseCluster } from './migrate-database-cluster';
 
-describe('database', () => {
-  const DATABASE_CLUSTER_ID = 'database-cluster-id';
-  const URL = `/databases/${DATABASE_CLUSTER_ID}/migrate`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onPut(URL, MOCK.request.body).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('migrate-database-cluster', () => {
+  const default_input = {
+    database_cluster_id: require('crypto').randomBytes(2),
+    region: require('crypto').randomBytes(2),
+  } as any;
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    put: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.put.mockClear();
   });
-  describe('migrate-database-cluster', () => {
-    it('should be a fn', () => {
-      expect(typeof migrateDatabaseCluster).toBe('function');
+
+  it('should be and return a fn', () => {
+    expect(typeof migrateDatabaseCluster).toBe('function');
+    expect(typeof migrateDatabaseCluster(context)).toBe('function');
+  });
+
+  it('should call axios.put', async () => {
+    const _migrateDatabaseCluster = migrateDatabaseCluster(context);
+    await _migrateDatabaseCluster(default_input);
+
+    expect(httpClient.put).toHaveBeenCalledWith(`/databases/${default_input.database_cluster_id}/migrate`, {
+      region: default_input.region
     });
-    it('should return a fn', () => {
-      expect(typeof migrateDatabaseCluster(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _migrateDatabaseCluster = migrateDatabaseCluster(context);
-      const response = await _migrateDatabaseCluster({
-        ...MOCK.request.body,
-        database_cluster_id: DATABASE_CLUSTER_ID
-      });
-      Object.assign(response, {request: mock.history.put[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('put');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeDefined();
-      const requestBody = JSON.parse(request.data);
-      expect(requestBody).toMatchObject(MOCK.request.body);
-      /// validate data
-      expect(response.data).toBeUndefined();
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
+  });
+
+  it('should output axios response', async () => {
+    const _migrateDatabaseCluster = migrateDatabaseCluster(context);
+    const output = await _migrateDatabaseCluster(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

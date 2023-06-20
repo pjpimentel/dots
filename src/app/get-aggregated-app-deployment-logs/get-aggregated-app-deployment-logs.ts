@@ -27,8 +27,7 @@ export const getAggregatedAppDeploymentLogs = ({
   pod_connection_timeout,
   type,
 }: IGetAggregatedAppDeploymentLogsApiRequest): Promise<Readonly<GetAggregatedAppDeploymentLogsResponse>> => {
-  const path = '/apps';
-  const url = `${path}/${app_id}/deployments/${deployment_id}/logs`;
+  const url = `/apps/${app_id}/deployments/${deployment_id}/logs`;
   const query_params = {component_name, follow, pod_connection_timeout, type};
 
   return httpClient.get<IGetAggregatedAppDeploymentLogsApiResponse>(url, {params: query_params});

@@ -16,9 +16,8 @@ export const configureRegistry = ({
 }: IContext) => ({
   name,
 }: IConfigureRegistryApiRequest): Promise<Readonly<ConfigureRegistryResponse>> => {
-  const path = '/registry';
+  const url = '/registry';
   const body = {name};
-  const url = `${path}`;
 
   return httpClient.post<IConfigureRegistryApiResponse>(url, body);
 };

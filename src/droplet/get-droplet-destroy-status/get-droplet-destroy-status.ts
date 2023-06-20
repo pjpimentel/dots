@@ -32,8 +32,7 @@ export const getDropletDestroyStatus = ({
 }: IContext) => ({
   droplet_id,
 }: IGetDropletDestroyStatusApiRequest): Promise<Readonly<GetDropletDestroyStatusResponse>> => {
-  const path = '/droplets';
-  const url = `${path}/${droplet_id}/destroy_with_associated_resources/status`;
+  const url = `/droplets/${droplet_id}/destroy_with_associated_resources/status`;
 
   return httpClient.get<IGetDropletDestroyStatusApiResponse>(url);
 };

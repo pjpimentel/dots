@@ -18,10 +18,9 @@ export const changeDropletKernel = ({
   droplet_id,
   kernel,
 }: IChangeDropletKernelApiRequest): Promise<Readonly<ChangeDropletKernelResponse>> => {
-  const path = '/droplets';
+  const url = `/droplets/${droplet_id}/actions`;
   const type = 'change_kernel';
   const body = {kernel, type};
-  const url = `${path}/${droplet_id}/actions`;
 
   return httpClient.post<IChangeDropletKernelApiResponse>(url, body);
 };

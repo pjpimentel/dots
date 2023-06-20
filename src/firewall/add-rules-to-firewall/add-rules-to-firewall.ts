@@ -16,9 +16,8 @@ export const addRulesToFirewall = ({
   inbound_rules,
   outbound_rules,
 }: IAddRulesToFirewallApiRequest): Promise<Readonly<AddRulesToFirewallResponse>> => {
-  const path = '/firewalls';
+  const url = `/firewalls/${firewall_id}/rules`;
   const body = {inbound_rules, outbound_rules};
-  const url = `${path}/${firewall_id}/rules`;
 
   return httpClient.post<void>(url, body);
 };

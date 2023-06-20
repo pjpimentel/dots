@@ -18,9 +18,8 @@ export const listDatabaseClusterDbs = ({
   per_page = 25,
   database_cluster_id,
 }: IListDatabaseClusterDbsApiRequest): Promise<Readonly<ListDatabaseClusterDbsResponse>> => {
-  const path = '/databases';
+  const url = `/databases/${database_cluster_id}/dbs`;
   const query_params = {page, per_page};
-  const url = `${path}/${database_cluster_id}/dbs`;
 
   return httpClient.get<IListDatabaseClusterDbsApiResponse>(url, {params: query_params});
 };

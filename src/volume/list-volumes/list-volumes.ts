@@ -18,9 +18,8 @@ export const listVolumes = ({
   page = 1,
   per_page = 25,
 }: IListVolumesApiRequest): Promise<Readonly<ListVolumesResponse>> => {
-  const path = '/volumes';
+  const url = `/volumes`;
   const query_params = {name, page, per_page};
-  const url = `${path}`;
 
   return httpClient.get<IListVolumesApiResponse>(url, {params: query_params});
 };

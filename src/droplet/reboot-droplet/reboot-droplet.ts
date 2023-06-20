@@ -16,10 +16,9 @@ export const rebootDroplet = ({
 }: IContext) => ({
   droplet_id,
 }: IRebootDropletApiRequest): Promise<Readonly<RebootDropletResponse>> => {
-  const path = '/droplets';
+  const url = `/droplets/${droplet_id}/actions`;
   const type = 'reboot';
   const body = {type};
-  const url = `${path}/${droplet_id}/actions`;
 
   return httpClient.post<IRebootDropletApiResponse>(url, body);
 };

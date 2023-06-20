@@ -22,13 +22,12 @@ export const updateCdnEndpoint = ({
   certificate_id,
   custom_domain,
 }: IUpdateCdnEndpointApiRequest): Promise<Readonly<UpdateCdnEndpointResponse>> => {
-  const path = '/cdn/endpoints';
+  const url = `/cdn/endpoints/${cdn_endpoint_id}`;
   const body = {
     ttl,
     certificate_id,
     custom_domain,
   };
-  const url = `${path}/${cdn_endpoint_id}`;
 
   return httpClient.put<IUpdateCdnEndpointApiResponse>(url, body);
 };

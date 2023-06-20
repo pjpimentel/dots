@@ -13,8 +13,7 @@ export const destroyReadOnlyReplica = ({
   database_cluster_id,
   read_only_replica_name,
 }: IDestroyReadOnlyReplicaApiRequest): Promise<Readonly<DestroyReadOnlyReplicaResponse>> => {
-  const path = '/databases';
-  const url = `${path}/${database_cluster_id}/replicas/${read_only_replica_name}`;
+  const url = `/databases/${database_cluster_id}/replicas/${read_only_replica_name}`;
 
   return httpClient.delete<void>(url);
 };

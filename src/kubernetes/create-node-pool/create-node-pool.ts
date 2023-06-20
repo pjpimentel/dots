@@ -38,7 +38,7 @@ export const createNodePool = ({
   tags,
   taints,
 }: ICreateNodePoolApiRequest): Promise<Readonly<CreateNodePoolResponse>> => {
-  const path = '/kubernetes/clusters';
+  const url = `/kubernetes/clusters/${kubernetes_cluster_id}/node_pools`;
   const body = {
     auto_scale,
     count,
@@ -50,7 +50,6 @@ export const createNodePool = ({
     tags,
     taints,
   };
-  const url = `${path}/${kubernetes_cluster_id}/node_pools`;
 
   return httpClient.post<ICreateNodePoolApiResponse>(url, body);
 };

@@ -16,8 +16,7 @@ export const getLoadBalancer = ({
 }: IContext) => ({
   load_balancer_id,
 }: IGetLoadBalancerApiRequest): Promise<Readonly<GetLoadBalancerResponse>> => {
-  const path = '/load_balancers';
-  const url = `${path}/${load_balancer_id}`;
+  const url = `/load_balancers/${load_balancer_id}`;
 
   return httpClient.get<IGetLoadBalancerApiResponse>(url);
 };

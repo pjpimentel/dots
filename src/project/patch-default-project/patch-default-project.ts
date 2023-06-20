@@ -24,15 +24,14 @@ export const patchDefaultProject = ({
   name,
   purpose,
 }: IPatchDefaultProjectApiRequest): Promise<Readonly<PatchDefaultProjectResponse>> => {
-    const path = '/projects';
-    const body = {
-      description,
-      environment,
-      is_default,
-      name,
-      purpose,
-    };
-    const url = `${path}/default`;
-
-    return httpClient.patch<IPatchDefaultProjectApiResponse>(url, body);
+  const url = `/projects/default`;
+  const body = {
+    description,
+    environment,
+    is_default,
+    name,
+    purpose,
   };
+
+  return httpClient.patch<IPatchDefaultProjectApiResponse>(url, body);
+};

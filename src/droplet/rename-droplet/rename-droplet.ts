@@ -18,10 +18,9 @@ export const renameDroplet = ({
   droplet_id,
   name,
 }: IRenameDropletApiRequest): Promise<Readonly<RenameDropletResponse>> => {
-  const path = '/droplets';
+  const url = `/droplets/${droplet_id}/actions`;
   const type = 'rename';
   const body = {name, type};
-  const url = `${path}/${droplet_id}/actions`;
 
   return httpClient.post<IRenameDropletApiResponse>(url, body);
 };

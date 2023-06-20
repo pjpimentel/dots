@@ -1,86 +1,57 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {listRegions} from './list-regions';
-import * as MOCK from './list-regions.mock';
+import { listRegions } from './list-regions';
 
-describe('region', () => {
-  const PAGE = 3;
-  const PER_PAGE = 26;
-  const URL = '/regions';
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onGet(URL).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('list-regions', () => {
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.get.mockClear();
   });
-  describe('list-regions', () => {
-    it('should be a fn', () => {
-      expect(typeof listRegions).toBe('function');
+
+  it('should be and return a fn', () => {
+    expect(typeof listRegions).toBe('function');
+    expect(typeof listRegions(context)).toBe('function');
+  });
+
+  it('should call axios.get', async () => {
+    const _listRegions = listRegions(context);
+    await _listRegions({});
+
+    expect(httpClient.get).toHaveBeenCalledWith(`/regions`, {
+      params: {
+        page: 1,
+        per_page: 25,
+      },
     });
-    it('should return a fn', () => {
-      expect(typeof listRegions(context)).toBe('function');
+  });
+
+  it('should use `page` and `per_page` input', async () => {
+    const _listRegions = listRegions(context);
+    const input = {
+      page: require('crypto').randomBytes(2),
+      per_page: require('crypto').randomBytes(2),
+    } as any;
+    await _listRegions(input);
+
+    expect(httpClient.get).toHaveBeenCalledWith(`/regions`, {
+      params: {
+        page: input.page,
+        per_page: input.per_page,
+      },
     });
-    it('should return a valid response', async () => {
-      const _listRegions = listRegions(context);
-      const response = await _listRegions({page: PAGE, per_page: PER_PAGE});
-      Object.assign(response, { request: mock.history.get[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('get');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.params).toBeDefined();
-      expect(request.params.page).toBe(PAGE);
-      expect(request.params.per_page).toBe(PER_PAGE);
-      /// validate data
-      expect(response.data).toBeDefined();
-      expect(response.data.links).toBeDefined();
-      expect(response.data.meta).toBeDefined();
-      expect(response.data.regions).toBeDefined();
-      const {regions} = response.data;
-      const [region] = regions;
-      expect(typeof region.available).toBe('boolean');
-      expect(typeof region.name).toBe('string');
-      expect(typeof region.slug).toBe('string');
-      expect(Array.isArray(region.sizes)).toBe(true);
-      region.sizes.forEach((sizes) => {
-        expect(typeof sizes).toBe('string');
-      });
-      expect(Array.isArray(region.features)).toBe(true);
-      region.features.forEach((feature) => {
-        expect(typeof feature).toBe('string');
-      });
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
-    it('should have default parameters', async () => {
-      const defaultPage = 1;
-      const defaultper_page = 25;
-      const _listRegions = listRegions(context);
-      const response = await _listRegions({});
-      Object.assign(response, { request: mock.history.get[0]});
-      /// validate request
-      const {request} = response;
-      expect(request.params).toBeDefined();
-      expect(request.params.page).toBe(defaultPage);
-      expect(request.params.per_page).toBe(defaultper_page);
-    });
+  });
+
+  it('should output axios response', async () => {
+    const _listRegions = listRegions(context);
+    const output = await _listRegions({});
+
+    expect(output).toBe(default_output);
   });
 });

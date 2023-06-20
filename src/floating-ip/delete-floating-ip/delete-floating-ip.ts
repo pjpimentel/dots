@@ -11,8 +11,7 @@ export const deleteFloatingIp = ({
 }: IContext) => ({
   ip,
 }: IDeleteFloatingIpApiRequest): Promise<Readonly<DeleteFloatingIpResponse>> => {
-  const path = '/floating_ips';
-  const url = `${path}/${ip}`;
+  const url = `/floating_ips/${ip}`;
 
   return httpClient.delete(url);
 };

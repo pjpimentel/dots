@@ -38,7 +38,7 @@ export const createLoadBalancer = ({
   tag,
   vpc_uuid,
 }: ICreateLoadBalancerApiRequest): Promise<Readonly<CreateLoadBalancerResponse>> => {
-  const path = '/load_balancers';
+  const url = '/load_balancers';
   const body = {
     algorithm,
     droplet_ids,
@@ -53,7 +53,6 @@ export const createLoadBalancer = ({
     tag,
     vpc_uuid,
   };
-  const url = `${path}`;
 
   return httpClient.post<ICreateLoadBalancerApiResponse>(url, body);
 };

@@ -13,9 +13,8 @@ export const listDatabaseClusters = ({
   page = 1,
   per_page = 25,
 }: IListRequest): Promise<Readonly<ListDatabaseClusterResponse>> => {
-  const path = '/databases';
+  const url = '/databases';
   const query_params = {page, per_page};
-  const url = `${path}`;
 
   return httpClient.get<IListDatabaseClusterApiResponse>(url, {params: query_params});
 };

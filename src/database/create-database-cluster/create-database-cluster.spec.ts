@@ -1,93 +1,46 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {createDatabaseCluster} from './create-database-cluster';
-import * as MOCK from './create-database-cluster.mock';
+import { createDatabaseCluster } from './create-database-cluster';
 
-describe('database', () => {
-  const URL = '/databases';
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onPost(URL, MOCK.request.body).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  mock.onPost(URL, MOCK.request.minimumBody).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('create-database-cluster', () => {
+  const default_input = {
+    engine: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
+    num_nodes: require('crypto').randomBytes(2),
+    private_network_uuid: require('crypto').randomBytes(2),
+    region: require('crypto').randomBytes(2),
+    size: require('crypto').randomBytes(2),
+    tags: require('crypto').randomBytes(2),
+    version: require('crypto').randomBytes(2),
+  } as any;
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    post: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.post.mockClear();
   });
-  describe('create-database-cluster', () => {
-    it('should be a fn', () => {
-      expect(typeof createDatabaseCluster).toBe('function');
-    });
-    it('should return a fn', () => {
-      expect(typeof createDatabaseCluster(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _createDatabaseCluster = createDatabaseCluster(context);
-      const response = await _createDatabaseCluster(MOCK.request.body);
-      Object.assign(response, {request: mock.history.post[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('post');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeDefined();
-      const requestBody = JSON.parse(request.data);
-      expect(requestBody).toMatchObject(MOCK.request.body);
-      /// validate data
-      expect(response.data).toBeDefined();
-      const {database} = response.data;
-      expect(typeof database.id).toBe('string');
-      expect(typeof database.name).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
-    it('should POST only required parameters', async () => {
-      const _createDatabaseCluster = createDatabaseCluster(context);
-      const response = await _createDatabaseCluster(MOCK.request.minimumBody);
-      Object.assign(response, {request: mock.history.post[0]});
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('post');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeDefined();
-      const {
-        /// required
-        engine,
-        name,
-        num_nodes,
-        region,
-        size,
-        /// non-required
-        tags,
-        version,
-      } = JSON.parse(request.data);
-      expect(name).toBe(MOCK.request.minimumBody.name);
-      expect(region).toBe(MOCK.request.minimumBody.region);
-      expect(size).toBe(MOCK.request.minimumBody.size);
-      expect(engine).toBe(MOCK.request.minimumBody.engine);
-      expect(num_nodes).toBe(MOCK.request.minimumBody.num_nodes);
-      expect(tags).toBeUndefined();
-      expect(version).toBeUndefined();
-    });
+
+  it('should be and return a fn', () => {
+    expect(typeof createDatabaseCluster).toBe('function');
+    expect(typeof createDatabaseCluster(context)).toBe('function');
+  });
+
+  it('should call axios.post', async () => {
+    const _createDatabaseCluster = createDatabaseCluster(context);
+    await _createDatabaseCluster(default_input);
+
+    expect(httpClient.post).toHaveBeenCalledWith(`/databases`, default_input);
+  });
+
+  it('should output axios response', async () => {
+    const _createDatabaseCluster = createDatabaseCluster(context);
+    const output = await _createDatabaseCluster(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

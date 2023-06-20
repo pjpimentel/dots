@@ -1,63 +1,47 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {updateProject} from './update-project';
-import * as MOCK from './update-project.mock';
+import { updateProject } from './update-project';
 
-describe('project', () => {
-  const PROJECT_ID = MOCK.response.body.project.id;
-  const URL = `/projects/${PROJECT_ID}`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onPut(URL, MOCK.request.body).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('update-project', () => {
+  const default_input = {
+    project_id: require('crypto').randomBytes(2),
+    description: require('crypto').randomBytes(2),
+    environment: require('crypto').randomBytes(2),
+    is_default: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
+    purpose: require('crypto').randomBytes(2),
+  } as any;
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    put: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.put.mockClear();
   });
-  describe('update-project', () => {
-    it('should be a fn', () => {
-      expect(typeof updateProject).toBe('function');
+
+  it('should be and return a fn', () => {
+    expect(typeof updateProject).toBe('function');
+    expect(typeof updateProject(context)).toBe('function');
+  });
+
+  it('should call axios.put', async () => {
+    const _updateProject = updateProject(context);
+    await _updateProject(default_input);
+
+    expect(httpClient.put).toHaveBeenCalledWith(`/projects/${default_input.project_id}`, {
+      ...default_input,
+      project_id: undefined
     });
-    it('should return a fn', () => {
-      expect(typeof updateProject(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _updateProject = updateProject(context);
-      const response = await _updateProject({
-        ...MOCK.request.body,
-        project_id: PROJECT_ID,
-      });
-      Object.assign(response, {request: mock.history.put[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('put');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeDefined();
-      const requestBody = JSON.parse(request.data);
-      expect(requestBody).toMatchObject(MOCK.request.body);
-      /// validate data
-      expect(response.data).toBeDefined();
-      const {project} = response.data;
-      expect(typeof project.name).toBe('string');
-      expect(typeof project.id).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
+  });
+
+  it('should output axios response', async () => {
+    const _updateProject = updateProject(context);
+    const output = await _updateProject(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

@@ -31,8 +31,7 @@ export const getClusterlintDiagnostics = ({
 }: IContext) => ({
   kubernetes_cluster_id,
 }: IGetClusterlintDiagnosticsApiRequest): Promise<Readonly<GetClusterlintDiagnosticsResponse>> => {
-  const path = '/kubernetes/clusters';
-  const url = `${path}/${kubernetes_cluster_id}/clusterlint`;
+  const url = `/kubernetes/clusters/${kubernetes_cluster_id}/clusterlint`;
 
   return httpClient.get<IGetClusterlintDiagnosticsApiResponse>(url);
 };

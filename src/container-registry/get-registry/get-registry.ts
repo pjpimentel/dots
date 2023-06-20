@@ -10,8 +10,7 @@ export type GetRegistryResponse = IResponse<IGetRegistryApiResponse>;
 export const getRegistry = ({
   httpClient,
 }: IContext) => (): Promise<Readonly<GetRegistryResponse>> => {
-  const path = '/registry';
-  const url = `${path}`;
+  const url = '/registry';
 
   return httpClient.get<IGetRegistryApiResponse>(url);
 };

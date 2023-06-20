@@ -23,14 +23,13 @@ export const runClusterlintOnKubernetesCluster = ({
   exclude_groups,
   exclude_checks,
 }: IRunClusterlintOnKubernetesClusterRequest): Promise<Readonly<RunClusterlintResponse>> => {
-  const path = '/kubernetes/clusters';
+  const url = `/kubernetes/clusters/${kubernetes_cluster_id}/clusterlint`;
   const body = {
     include_groups,
     include_checks,
     exclude_groups,
     exclude_checks,
   };
-  const url = `${path}/${kubernetes_cluster_id}/clusterlint`;
 
   return httpClient.post<IRunClusterlintOnKubernetesClusterResponse>(url, body);
 };

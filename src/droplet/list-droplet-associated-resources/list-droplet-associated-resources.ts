@@ -23,8 +23,7 @@ export const listDropletAssociatedResources = ({
 }: IContext) => ({
   droplet_id,
 }: IListDropletAssociatedResourcesApiRequest): Promise<Readonly<ListDropletAssociatedResourcesResponse>> => {
-  const path = '/droplets';
-  const url = `${path}/${droplet_id}/destroy_with_associated_resources`;
+  const url = `/droplets/${droplet_id}/destroy_with_associated_resources`;
 
   return httpClient.get<IListDropletAssociatedResourcesApiResponse>(url);
 };

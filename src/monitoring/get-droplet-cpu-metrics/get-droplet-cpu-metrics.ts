@@ -16,12 +16,12 @@ export const getDropletCpuMetrics = ({
   host_id,
   start,
 }: IGetDropletCpuMetricsInput): Promise<Readonly<GetDropletCpuMetricsResponse>> => {
-  const path = '/monitoring/metrics/droplet/cpu';
+  const url = '/monitoring/metrics/droplet/cpu';
   const query_params = {
     end,
     host_id,
     start,
   };
 
-  return httpClient.get<IDefaultMetricsResponse>(path, {params: query_params});
+  return httpClient.get<IDefaultMetricsResponse>(url, {params: query_params});
 };

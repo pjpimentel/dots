@@ -1,57 +1,39 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {getCdnEndpoint} from './get-cdn-endpoint';
-import * as MOCK from './get-cdn-endpoint.mock';
+import { getCdnEndpoint } from './get-cdn-endpoint';
 
-describe('cdn-endpoint', () => {
-  const CDN_ENDPOINT_ID = MOCK.response.body.endpoint.id;
-  const URL = `/cdn/endpoints/${CDN_ENDPOINT_ID}`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onGet(URL).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('get-cdn-endpoint', () => {
+  const default_input = {
+    cdn_endpoint_id: `${require('crypto').randomBytes(2)}`
+  } as any;
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.get.mockClear();
   });
-  describe('get-cdn-endpoint', () => {
-    it('should be a fn', () => {
-      expect(typeof getCdnEndpoint).toBe('function');
-    });
-    it('should return a fn', () => {
-      expect(typeof getCdnEndpoint(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _getCdnEndpoint = getCdnEndpoint(context);
-      const response = await _getCdnEndpoint({cdn_endpoint_id: CDN_ENDPOINT_ID});
-      Object.assign(response, { request: mock.history.get[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('get');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      /// validate data
-      expect(response.data).toBeDefined();
-      expect(response.data.endpoint).toBeDefined();
-      const {endpoint} = response.data;
-      expect(typeof endpoint.id).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
+
+  it('should be and return a fn', () => {
+    expect(typeof getCdnEndpoint).toBe('function');
+    expect(typeof getCdnEndpoint(context)).toBe('function');
+  });
+
+  it('should call axios.get', async () => {
+    const _getCdnEndpoint = getCdnEndpoint(context);
+    await _getCdnEndpoint(default_input);
+
+    expect(httpClient.get).toHaveBeenCalledWith(`/cdn/endpoints/${default_input.cdn_endpoint_id}`);
+  });
+
+  it('should output axios response', async () => {
+    const _getCdnEndpoint = getCdnEndpoint(context);
+    const output = await _getCdnEndpoint(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

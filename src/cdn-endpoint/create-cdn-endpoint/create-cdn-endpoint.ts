@@ -22,14 +22,13 @@ export const createCdnEndpoint = ({
   certificate_id,
   custom_domain,
 }: ICreateCdnEndpointApiRequest): Promise<Readonly<CreateCdnEndpointResponse>> => {
-  const path = '/cdn/endpoints';
+  const url = '/cdn/endpoints';
   const body = {
     origin,
     ttl,
     certificate_id,
     custom_domain,
   };
-  const url = `${path}`;
 
   return httpClient.post<ICreateCdnEndpointApiResponse>(url, body);
 };

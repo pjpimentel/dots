@@ -16,8 +16,7 @@ export const getProject = ({
 }: IContext) => ({
   project_id,
 }: IGetProjectApiRequest): Promise<Readonly<GetProjectResponse>> => {
-  const path = '/projects';
-  const url = `${path}/${project_id}`;
+  const url = `/projects/${project_id}`;
 
   return httpClient.get<IGetProjectApiResponse>(url);
 };

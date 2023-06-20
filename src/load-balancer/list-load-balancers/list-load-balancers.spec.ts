@@ -1,77 +1,57 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {listLoadBalancers} from './list-load-balancers';
-import * as MOCK from './list-load-balancers.mock';
+import { listLoadBalancers } from './list-load-balancers';
 
-describe('load-balancer', () => {
-  const PAGE = 3;
-  const PER_PAGE = 26;
-  const URL = '/load_balancers';
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onGet(URL).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('list-load-balancers', () => {
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.get.mockClear();
   });
-  describe('list-load-balancers', () => {
-    it('should be a fn', () => {
-      expect(typeof listLoadBalancers).toBe('function');
+
+  it('should be and return a fn', () => {
+    expect(typeof listLoadBalancers).toBe('function');
+    expect(typeof listLoadBalancers(context)).toBe('function');
+  });
+
+  it('should call axios.get', async () => {
+    const _listLoadBalancers = listLoadBalancers(context);
+    await _listLoadBalancers({});
+
+    expect(httpClient.get).toHaveBeenCalledWith(`/load_balancers`, {
+      params: {
+        page: 1,
+        per_page: 25,
+      },
     });
-    it('should return a fn', () => {
-      expect(typeof listLoadBalancers(context)).toBe('function');
+  });
+
+  it('should use `page` and `per_page` input', async () => {
+    const _listLoadBalancers = listLoadBalancers(context);
+    const input = {
+      page: require('crypto').randomBytes(2),
+      per_page: require('crypto').randomBytes(2),
+    } as any;
+    await _listLoadBalancers(input);
+
+    expect(httpClient.get).toHaveBeenCalledWith(`/load_balancers`, {
+      params: {
+        page: input.page,
+        per_page: input.per_page,
+      },
     });
-    it('should return a valid response', async () => {
-      const _listLoadBalancers = listLoadBalancers(context);
-      const response = await _listLoadBalancers({page: PAGE, per_page: PER_PAGE});
-      Object.assign(response, { request: mock.history.get[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('get');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.params).toBeDefined();
-      expect(request.params.page).toBe(PAGE);
-      expect(request.params.per_page).toBe(PER_PAGE);
-      /// validate data
-      expect(response.data).toBeDefined();
-      expect(response.data.links).toBeDefined();
-      expect(response.data.meta).toBeDefined();
-      expect(response.data.load_balancers).toBeDefined();
-      const {load_balancers} = response.data;
-      const [loadBalancer] = load_balancers;
-      expect(typeof loadBalancer.id).toBe('string');
-      expect(typeof loadBalancer.name).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
-    it('should have default parameters', async () => {
-      const defaultPage = 1;
-      const defaultper_page = 25;
-      const _listLoadBalancers = listLoadBalancers(context);
-      const response = await _listLoadBalancers({});
-      Object.assign(response, { request: mock.history.get[0]});
-      /// validate request
-      const {request} = response;
-      expect(request.params).toBeDefined();
-      expect(request.params.page).toBe(defaultPage);
-      expect(request.params.per_page).toBe(defaultper_page);
-    });
+  });
+
+  it('should output axios response', async () => {
+    const _listLoadBalancers = listLoadBalancers(context);
+    const output = await _listLoadBalancers({});
+
+    expect(output).toBe(default_output);
   });
 });

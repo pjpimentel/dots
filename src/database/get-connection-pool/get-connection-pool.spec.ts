@@ -1,60 +1,40 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {getConnectionPool} from './get-connection-pool';
-import * as MOCK from './get-connection-pool.mock';
+import { getConnectionPool } from './get-connection-pool';
 
-describe('database', () => {
-  const DATABASE_CLUSTER_ID = 'db-id';
-  const POOL_NAME = MOCK.response.body.pool.name;
-  const URL = `/databases/${DATABASE_CLUSTER_ID}/pools/${POOL_NAME}`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onGet(URL).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('get-connection-pool', () => {
+  const default_input = {
+    database_cluster_id: require('crypto').randomBytes(2),
+    pool_name: require('crypto').randomBytes(2),
+  } as any;
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.get.mockClear();
   });
-  describe('get-database-cluster-db', () => {
-    it('should be a fn', () => {
-      expect(typeof getConnectionPool).toBe('function');
-    });
-    it('should return a fn', () => {
-      expect(typeof getConnectionPool(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _getConnectionPool = getConnectionPool(context);
-      const response = await _getConnectionPool({
-        database_cluster_id: DATABASE_CLUSTER_ID,
-        pool_name: POOL_NAME,
-      });
-      Object.assign(response, {request: mock.history.get[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('get');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      /// validate data
-      expect(response.data).toBeDefined();
-      const {pool} = response.data;
-      expect(typeof pool.name).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
+
+  it('should be and return a fn', () => {
+    expect(typeof getConnectionPool).toBe('function');
+    expect(typeof getConnectionPool(context)).toBe('function');
+  });
+
+  it('should call axios.get', async () => {
+    const _getConnectionPool = getConnectionPool(context);
+    await _getConnectionPool(default_input);
+
+    expect(httpClient.get).toHaveBeenCalledWith(`/databases/${default_input.database_cluster_id}/pools/${default_input.pool_name}`);
+  });
+
+  it('should output axios response', async () => {
+    const _getConnectionPool = getConnectionPool(context);
+    const output = await _getConnectionPool(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

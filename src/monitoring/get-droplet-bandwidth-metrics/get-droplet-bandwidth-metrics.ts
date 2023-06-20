@@ -20,7 +20,7 @@ export const getDropletBandwidthMetrics = ({
   start,
   traffic_direction,
 }: IGetDropletBandwidthMetricsInput): Promise<Readonly<GetDropletBandwidthMetricsResponse>> => {
-  const path = '/monitoring/metrics/droplet/bandwidth';
+  const url = '/monitoring/metrics/droplet/bandwidth';
   const query_params = {
     direction: traffic_direction,
     end,
@@ -29,5 +29,5 @@ export const getDropletBandwidthMetrics = ({
     start,
   };
 
-  return httpClient.get<IDefaultMetricsResponse>(path, {params: query_params});
+  return httpClient.get<IDefaultMetricsResponse>(url, {params: query_params});
 };

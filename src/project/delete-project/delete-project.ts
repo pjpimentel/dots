@@ -11,8 +11,7 @@ export const deleteProject = ({
 }: IContext) => ({
   project_id,
 }: IDeleteProjectApiRequest): Promise<Readonly<DeleteProjectResponse>> => {
-  const path = '/projects';
-  const url = `${path}/${project_id}`;
+  const url = `/projects/${project_id}`;
 
   return httpClient.delete(url);
 };

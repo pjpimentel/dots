@@ -1,59 +1,42 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {addDropletsToFirewall} from './add-droplets-to-firewall';
-import * as MOCK from './add-droplets-to-firewall.mock';
+import { addDropletsToFirewall } from './add-droplets-to-firewall';
 
-describe('firewall', () => {
-  const FIREWALL_ID = 'firewall-id';
-  const URL = `/firewalls/${FIREWALL_ID}/droplets`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onPost(URL, MOCK.request.body).reply(
-    MOCK.response.headers.status,
-    undefined,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('add-droplets-to-firewall', () => {
+  const default_input = {
+    firewall_id: require('crypto').randomBytes(2),
+  } as any;
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    post: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.post.mockClear();
   });
-  describe('add-droplets-to-firewall', () => {
-    it('should be a fn', () => {
-      expect(typeof addDropletsToFirewall).toBe('function');
+
+  it('should be and return a fn', () => {
+    expect(typeof addDropletsToFirewall).toBe('function');
+    expect(typeof addDropletsToFirewall(context)).toBe('function');
+  });
+
+  it('should call axios.post', async () => {
+    const _addDropletsToFirewall = addDropletsToFirewall(context);
+    await _addDropletsToFirewall(default_input);
+
+    expect(httpClient.post).toHaveBeenCalledWith(`/firewalls/${default_input.firewall_id}/droplets`, {
+      ...default_input,
+      firewall_id: undefined,
     });
-    it('should return a fn', () => {
-      expect(typeof addDropletsToFirewall(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _addDropletsToFirewall = addDropletsToFirewall(context);
-      const response = await _addDropletsToFirewall({
-        ...MOCK.request.body,
-        firewall_id: FIREWALL_ID,
-      });
-      Object.assign(response, {request: mock.history.post[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('post');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeDefined();
-      const requestBody = JSON.parse(request.data);
-      expect(requestBody).toMatchObject(MOCK.request.body);
-      /// validate data
-      expect(response.data).toBeUndefined();
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
+  });
+
+  it('should output axios response', async () => {
+    const _addDropletsToFirewall = addDropletsToFirewall(context);
+    const output = await _addDropletsToFirewall(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

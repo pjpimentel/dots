@@ -22,14 +22,13 @@ export const listDomainRecords = ({
   per_page = 25,
   type,
 }: IListDomainRecordsRequest): Promise<Readonly<ListDomainRecordsResponse>> => {
-  const path = '/domains';
+  const url = `/domains/${domain_name}/records`;
   const query_params = {
     name,
     page,
     per_page,
     type,
   };
-  const url = `${path}/${domain_name}/records`;
 
   return httpClient.get<IListDomainRecordsApiResponse>(url, {params: query_params});
 };

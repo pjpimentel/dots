@@ -18,8 +18,7 @@ export const createAppDeployment = ({
   app_id,
   force_build,
 }: ICreateAppDeploymentApiRequest): Promise<Readonly<CreateAppDeploymentResponse>> => {
-  const path = '/apps';
-  const url = `${path}/${app_id}/deployments`;
+  const url = `/apps/${app_id}/deployments`;
   const body = {force_build};
 
   return httpClient.post<ICreateAppDeploymentApiResponse>(url, body);

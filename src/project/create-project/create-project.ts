@@ -22,14 +22,13 @@ export const createProject = ({
   purpose,
   environment,
 }: ICreateProjectApiRequest): Promise<Readonly<CreateProjectResponse>> => {
-  const path = '/projects';
+  const url = '/projects';
   const body = {
     name,
     description,
     purpose,
     environment,
   };
-  const url = `${path}`;
 
   return httpClient.post<ICreateProjectApiResponse>(url, body);
 };

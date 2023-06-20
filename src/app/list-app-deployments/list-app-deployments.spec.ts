@@ -1,82 +1,61 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {listAppDeployments} from './list-app-deployments';
-import * as MOCK from './list-app-deployments.mock';
+import { listAppDeployments } from './list-app-deployments';
 
-describe('app', () => {
-  const PAGE = 3;
-  const PER_PAGE = 26;
-  const URL = `/apps/${MOCK.response.body.deployments[0].id}/deployments`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onGet(URL).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('list-app-deployments', () => {
+  const default_input = {
+    app_id: `${require('crypto').randomBytes(2)}`,
+  };
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.get.mockClear();
   });
-  describe('list-app-deployments', () => {
-    it('should be a fn', () => {
-      expect(typeof listAppDeployments).toBe('function');
+
+  it('should be and return a fn', () => {
+    expect(typeof listAppDeployments).toBe('function');
+    expect(typeof listAppDeployments(context)).toBe('function');
+  });
+
+  it('should call axios.get', async () => {
+    const _listAppDeployments = listAppDeployments(context);
+    await _listAppDeployments(default_input);
+
+    expect(httpClient.get).toHaveBeenCalledWith(`/apps/${default_input.app_id}/deployments`, {
+      params: {
+        page: 1,
+        per_page: 25,
+      },
     });
-    it('should return a fn', () => {
-      expect(typeof listAppDeployments(context)).toBe('function');
+  });
+
+  it('should use `page` and `per_page` input', async () => {
+    const _listAppDeployments = listAppDeployments(context);
+    const input = {
+      ...default_input,
+      page: require('crypto').randomBytes(2),
+      per_page: require('crypto').randomBytes(2),
+    }
+    await _listAppDeployments(input);
+
+    expect(httpClient.get).toHaveBeenCalledWith(`/apps/${input.app_id}/deployments`, {
+      params: {
+        page: input.page,
+        per_page: input.per_page,
+      },
     });
-    it('should return a valid response', async () => {
-      const _listAppDeployments = listAppDeployments(context);
-      const response = await _listAppDeployments({
-        app_id: MOCK.response.body.deployments[0].id,
-        page: PAGE,
-        per_page: PER_PAGE,
-      });
-      Object.assign(response, {request: mock.history.get[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('get');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.params).toBeDefined();
-      expect(request.params.page).toBe(PAGE);
-      expect(request.params.per_page).toBe(PER_PAGE);
-      expect(request.params.resource_type).toBeUndefined();
-      /// validate data
-      expect(response.data).toBeDefined();
-      expect(response.data.deployments).toBeDefined();
-      const {deployments} = response.data;
-      const [deployment] = deployments;
-      expect(typeof deployment.id).toBe('string');
-      expect(typeof deployment.spec.name).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
-    it('should have default parameters', async () => {
-      const defaultPage = 1;
-      const defaultper_page = 25;
-      const _listAppDeployments = listAppDeployments(context);
-      const response = await _listAppDeployments({
-        app_id: MOCK.response.body.deployments[0].id,
-      });
-      Object.assign(response, { request: mock.history.get[0]});
-      /// validate request
-      const {request} = response;
-      expect(request.params).toBeDefined();
-      expect(request.params.page).toBe(defaultPage);
-      expect(request.params.per_page).toBe(defaultper_page);
-    });
+  });
+
+  it('should output axios response', async () => {
+    const _listAppDeployments = listAppDeployments(context);
+    const output = await _listAppDeployments(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

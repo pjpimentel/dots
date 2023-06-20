@@ -15,9 +15,8 @@ export const configureDatabaseClusterMaintenanceWindow = ({
   day,
   hour,
 }: IConfigureDatabaseClusterMaintenanceWindowApiRequest): Promise<Readonly<ConfigureDatabaseClusterMaintenanceWindowResponse>> => {
-  const path = '/databases';
+  const url = `/databases/${database_cluster_id}/maintenance`;
   const body = {day,hour};
-  const url = `${path}/${database_cluster_id}/maintenance`;
 
   return httpClient.put<void>(url, body);
 };

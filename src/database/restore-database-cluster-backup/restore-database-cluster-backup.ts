@@ -35,7 +35,7 @@ export const restoreDatabaseClusterBackup = ({
   tags,
   version,
 }: IRestoreDatabaseClusterBackupApiRequest): Promise<Readonly<RestoreDatabaseClusterBackupResponse>> => {
-  const path = '/databases';
+  const url = '/databases';
   const body = {
     backup_restore,
     engine,
@@ -46,7 +46,6 @@ export const restoreDatabaseClusterBackup = ({
     tags,
     version,
   };
-  const url = `${path}`;
 
   return httpClient.post<IRestoreDatabaseClusterBackupApiResponse>(url, body);
 };

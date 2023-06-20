@@ -1,59 +1,39 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {getFloatingIp} from './get-floating-ip';
-import * as MOCK from './get-floating-ip.mock';
+import { getFloatingIp } from './get-floating-ip';
 
-describe('floating-ip', () => {
-  const URL = `/floating_ips/${MOCK.response.body.floating_ip.ip}`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onGet(URL).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('get-floating-ip', () => {
+  const default_input = {
+    ip: require('crypto').randomBytes(2),
+  } as any;
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.get.mockClear();
   });
-  describe('get-floating-ip', () => {
-    it('should be a fn', () => {
-      expect(typeof getFloatingIp).toBe('function');
-    });
-    it('should return a fn', () => {
-      expect(typeof getFloatingIp(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _getFloatingIp = getFloatingIp(context);
-      const response = await _getFloatingIp({
-        ip: MOCK.response.body.floating_ip.ip
-      });
-      Object.assign(response, {request: mock.history.get[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('get');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      /// validate data
-      expect(response.data).toBeDefined();
-      expect(response.data.floating_ip).toBeDefined();
-      const {floating_ip} = response.data;
-      expect(typeof floating_ip.ip).toBe('string');
-      expect(floating_ip.ip).toBe(MOCK.response.body.floating_ip.ip);
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
+
+  it('should be and return a fn', () => {
+    expect(typeof getFloatingIp).toBe('function');
+    expect(typeof getFloatingIp(context)).toBe('function');
+  });
+
+  it('should call axios.get', async () => {
+    const _getFloatingIp = getFloatingIp(context);
+    await _getFloatingIp(default_input);
+
+    expect(httpClient.get).toHaveBeenCalledWith(`/floating_ips/${default_input.ip}`);
+  });
+
+  it('should output axios response', async () => {
+    const _getFloatingIp = getFloatingIp(context);
+    const output = await _getFloatingIp(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

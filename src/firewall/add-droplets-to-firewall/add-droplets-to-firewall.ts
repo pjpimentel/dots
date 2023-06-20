@@ -13,11 +13,10 @@ export const addDropletsToFirewall = ({
   droplet_ids,
   firewall_id,
 }: IAddDropletsToFirewallApiRequest): Promise<Readonly<AddDropletsToFirewallResponse>> => {
-  const path = '/firewalls';
+  const url = `/firewalls/${firewall_id}/droplets`;
   const body = {
     droplet_ids,
   };
-  const url = `${path}/${firewall_id}/droplets`;
 
   return httpClient.post<void>(url, body);
 };

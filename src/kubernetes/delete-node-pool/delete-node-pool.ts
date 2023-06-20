@@ -13,8 +13,7 @@ export const deleteNodePool = ({
   kubernetes_cluster_id,
   node_pool_id,
 }: IDeleteNodePoolApiRequest): Promise<Readonly<DeleteNodePoolResponse>> => {
-  const path = '/kubernetes/clusters';
-  const url = `${path}/${kubernetes_cluster_id}/node_pools/${node_pool_id}`;
+  const url = `/kubernetes/clusters/${kubernetes_cluster_id}/node_pools/${node_pool_id}`;
 
   return httpClient.delete(url);
 };

@@ -17,8 +17,7 @@ export const destroyDropletAndAssociatedResources = ({
   volume_snapshots,
   volumes,
 }: IdestroyDropletAndAssociatedResourcesApiRequest): Promise<Readonly<destroyDropletAndAssociatedResourcesResponse>> => {
-  const path = '/droplets';
-  const url = `${path}/${droplet_id}/destroy_with_associated_resources/selective`;
+  const url = `/droplets/${droplet_id}/destroy_with_associated_resources/selective`;
   const body = {
     snapshots,
     volume_snapshots,

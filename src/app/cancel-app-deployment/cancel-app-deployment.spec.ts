@@ -1,60 +1,40 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {cancelAppDeployment} from './cancel-app-deployment';
-import * as MOCK from './cancel-app-deployment.mock';
+import { cancelAppDeployment } from './cancel-app-deployment';
 
-describe('app', () => {
-  const DEPLOY_ID = 'deploy-id';
-  const URL = `/apps/${MOCK.request.body.app_id}/deployments/${DEPLOY_ID}/cancel`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onPost(URL, undefined).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('cancel-app-deployment', () => {
+  const default_input = {
+    app_id: `${require('crypto').randomBytes(2)}`,
+    deployment_id: `${require('crypto').randomBytes(2)}`,
+  };
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    post: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.post.mockClear();
   });
-  describe('cancel-app-deployment', () => {
-    it('should be a fn', () => {
-      expect(typeof cancelAppDeployment).toBe('function');
-    });
-    it('should return a fn', () => {
-      expect(typeof cancelAppDeployment(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _cancelAppDeployment = cancelAppDeployment(context);
-      const response = await _cancelAppDeployment({
-        app_id: MOCK.request.body.app_id,
-        deployment_id: DEPLOY_ID,
-      });
-      Object.assign(response, {request: mock.history.post[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('post');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      /// validate data
-      expect(response.data).toBeDefined();
-      const {deployment} = response.data;
-      expect(typeof deployment.id).toBe('string');
-      expect(typeof deployment.spec.name).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
+
+  it('should be and return a fn', () => {
+    expect(typeof cancelAppDeployment).toBe('function');
+    expect(typeof cancelAppDeployment(context)).toBe('function');
+  });
+
+  it('should call axios.post', async () => {
+    const _cancelAppDeployment = cancelAppDeployment(context);
+    await _cancelAppDeployment(default_input);
+
+    expect(httpClient.post).toHaveBeenCalledWith(`/apps/${default_input.app_id}/deployments/${default_input.deployment_id}/cancel`);
+  });
+
+  it('should output axios response', async () => {
+    const _cancelAppDeployment = cancelAppDeployment(context);
+    const output = await _cancelAppDeployment(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

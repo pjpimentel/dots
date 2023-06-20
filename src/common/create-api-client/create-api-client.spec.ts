@@ -4,7 +4,7 @@ import {createContext} from '../create-context/create-context';
 import {readdirSync, Dirent} from 'fs';
 
 const MODULES_ROOT = __dirname + '/../..';
-const READ_DIR_OPTIONS = {encoding:null, withFileTypes: true as true};
+const READ_DIR_OPTIONS = {encoding:null, withFileTypes: true as const};
 const KEYS_BLACKLIST = ['types', '_options', 'index.ts', 'README.md', 'common'];
 
 const _FN_REF = () => true;
@@ -60,40 +60,39 @@ const ENDPOINTS = MODULES.reduce((mods, _module) => {
   return {...mods, [prettyModuleName]: _createEndpointsMirror(folders)};
 }, {});
 const isValidKey = (key: string = '') => key && key[0] !== '_';
+const sort_fn = (a: string, b: string) => a.localeCompare(b);
 
-describe('utils', () => {
-  describe('create-api-client', () => {
-    it('should be a fn', () => {
-      expect(typeof createApiClient).toBe('function');
+describe('create-api-client', () => {
+  it('should be and return a fn', () => {
+    expect(typeof createApiClient).toBe('function');
+    expect(typeof createApiClient({createContext, modules})).toBe('function');
+  });
+
+  it('should create a valid instance', () => {
+    const _createApiClient = createApiClient({createContext, modules});
+    const endpoint = require('crypto').randomBytes(2);
+    const token = require('crypto').randomBytes(2);
+    const requestTimeoutInMs = require('crypto').randomBytes(2);
+    const client = _createApiClient({
+      endpoint,
+      requestTimeoutInMs,
+      token,
     });
-    it('should return a fn', () => {
-      expect(typeof createApiClient({createContext, modules})).toBe('function');
-    });
-    it('should create a valid instance', () => {
-      const _createApiClient = createApiClient({createContext, modules});
-      const endpoint = `https://api.digitalocean.com/v2/test-match-${Math.random()}`;
-      const token = process.env.TEST_TOKEN as string;
-      const requestTimeoutInMs = Math.random();
-      const client = _createApiClient({
-        endpoint,
-        requestTimeoutInMs,
-        token,
-      });
-      expect(client).toBeDefined();
-      expect(client._options.endpoint).toBe(endpoint);
-      expect(client._options.requestTimeoutInMs).toBe(requestTimeoutInMs);
 
-      const createdClientEntries = Object.entries(client).filter(([key]) => isValidKey(key));
-      const createdClientKeys = Object.keys(client).filter(isValidKey).sort();
-      const ENDPOINTS_KEYS = Object.keys(ENDPOINTS).sort();
+    expect(client).toBeDefined();
+    expect(client._options.endpoint).toBe(endpoint);
+    expect(client._options.requestTimeoutInMs).toBe(requestTimeoutInMs);
 
-      expect(ENDPOINTS_KEYS).toMatchObject(createdClientKeys);
+    const createdClientEntries = Object.entries(client).filter(([key]) => isValidKey(key));
+    const createdClientKeys = Object.keys(client).filter(isValidKey).sort(sort_fn);
+    const ENDPOINTS_KEYS = Object.keys(ENDPOINTS).sort(sort_fn);
 
-      createdClientEntries.forEach(([key, value]) => {
-        const clientMethods = Object.keys(value).sort();
-        const listedMethods = Object.keys((ENDPOINTS as any)[key]).sort();
-        expect(clientMethods).toMatchObject(listedMethods);
-      });
+    expect(ENDPOINTS_KEYS).toMatchObject(createdClientKeys);
+
+    createdClientEntries.forEach(([key, value]) => {
+      const clientMethods = Object.keys(value).sort(sort_fn);
+      const listedMethods = Object.keys((ENDPOINTS as any)[key]).sort(sort_fn);
+      expect(clientMethods).toMatchObject(listedMethods);
     });
   });
 });

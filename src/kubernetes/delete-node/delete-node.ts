@@ -19,8 +19,7 @@ export const deleteNode = ({
   drain_node = true,
   replace_node = false,
 }: IDeleteNodeApiRequest): Promise<Readonly<DeleteNodeResponse>> => {
-  const path = '/kubernetes/clusters';
-  const url = `${path}/${kubernetes_cluster_id}/node_pools/${node_pool_id}/nodes/${node_id}`;
+  const url = `/kubernetes/clusters/${kubernetes_cluster_id}/node_pools/${node_pool_id}/nodes/${node_id}`;
   const query_params = {
     replace: replace_node ? 1 : 0,
     skip_drain: drain_node ? 0 : 1,

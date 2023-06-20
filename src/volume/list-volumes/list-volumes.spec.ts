@@ -1,89 +1,59 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {listVolumes} from './list-volumes';
-import * as MOCK from './list-volumes.mock';
+import { listVolumes } from './list-volumes';
 
-describe('volume', () => {
-  const PAGE = 3;
-  const PER_PAGE = 26;
-  const URL = '/volumes';
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onGet(URL).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('list-volumes', () => {
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.get.mockClear();
   });
-  describe('list-volumes', () => {
-    it('should be a fn', () => {
-      expect(typeof listVolumes).toBe('function');
-    });
-    it('should return a fn', () => {
-      expect(typeof listVolumes(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _listVolumes = listVolumes(context);
-      const response = await _listVolumes({page: PAGE, per_page: PER_PAGE});
-      Object.assign(response, {request: mock.history.get[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('get');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.params).toBeDefined();
-      expect(request.params.page).toBe(PAGE);
-      expect(request.params.per_page).toBe(PER_PAGE);
-      expect(request.params.resource_type).toBeUndefined();
-      /// validate data
-      expect(response.data).toBeDefined();
-      expect(response.data.links).toBeDefined();
-      expect(response.data.meta).toBeDefined();
-      expect(response.data.volumes).toBeDefined();
-      const {volumes} = response.data;
-      const [volume] = volumes;
-      expect(typeof volume.id).toBe('string');
-      expect(typeof volume.name).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
-    it('should have default parameters', async () => {
-      const defaultPage = 1;
-      const defaultper_page = 25;
-      const _listVolumes = listVolumes(context);
-      const response = await _listVolumes({});
-      Object.assign(response, { request: mock.history.get[0]});
-      /// validate request
-      const {request} = response;
-      expect(request.params).toBeDefined();
-      expect(request.params.page).toBe(defaultPage);
-      expect(request.params.per_page).toBe(defaultper_page);
-    });
-    it('should accept `name` filter', async () => {
-      const name = 'my-volume';
-      const _listVolumes = listVolumes(context);
-      const response = await _listVolumes({name});
 
-      Object.assign(response, { request: mock.history.get[0]});
-      /// validate both requests
-      const {request: {params}} = response;
-      expect(params).toBeDefined();
-      expect(params.name).toBe(name);
+  it('should be and return a fn', () => {
+    expect(typeof listVolumes).toBe('function');
+    expect(typeof listVolumes(context)).toBe('function');
+  });
+
+  it('should call axios.get', async () => {
+    const _listVolumes = listVolumes(context);
+    await _listVolumes({});
+
+    expect(httpClient.get).toHaveBeenCalledWith(`/volumes`, {
+      params: {
+        page: 1,
+        per_page: 25,
+      },
     });
+  });
+
+  it('should use `page`, `per_page` and `name` input', async () => {
+    const _listVolumes = listVolumes(context);
+    const input = {
+      name: require('crypto').randomBytes(2),
+      page: require('crypto').randomBytes(2),
+      per_page: require('crypto').randomBytes(2),
+    } as any;
+    await _listVolumes(input);
+
+    expect(httpClient.get).toHaveBeenCalledWith(`/volumes`, {
+      params: {
+        name: input.name,
+        page: input.page,
+        per_page: input.per_page,
+      },
+    });
+  });
+
+  it('should output axios response', async () => {
+    const _listVolumes = listVolumes(context);
+    const output = await _listVolumes({});
+
+    expect(output).toBe(default_output);
   });
 });

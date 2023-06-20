@@ -1,60 +1,39 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {getTag} from './get-tag';
-import * as MOCK from './get-tag.mock';
+import { getTag } from './get-tag';
 
-describe('tag', () => {
-  const TAG_NAME = MOCK.response.body.tag.name;
-  const URL = `/tags/${TAG_NAME}`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onGet(URL).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('get-tag', () => {
+  const default_input = {
+    tag_name: require('crypto').randomBytes(2),
+  } as any;
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.get.mockClear();
   });
-  describe('get-sshKey', () => {
-    it('should be a fn', () => {
-      expect(typeof getTag).toBe('function');
-    });
-    it('should return a fn', () => {
-      expect(typeof getTag(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _getTag = getTag(context);
-      const response = await _getTag({tag_name: TAG_NAME});
-      Object.assign(response, { request: mock.history.get[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('get');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      /// validate data
-      expect(response.data).toBeDefined();
-      expect(response.data.tag).toBeDefined();
-      const {tag} = response.data;
-      expect(typeof tag.name).toBe('string');
-      expect(typeof tag.resources.count).toBe('number');
-      expect(typeof tag.resources.droplets.count).toBe('number');
-      expect(typeof tag.resources.droplets.last_tagged_uri).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
+
+  it('should be and return a fn', () => {
+    expect(typeof getTag).toBe('function');
+    expect(typeof getTag(context)).toBe('function');
+  });
+
+  it('should call axios.get', async () => {
+    const _getTag = getTag(context);
+    await _getTag(default_input);
+
+    expect(httpClient.get).toHaveBeenCalledWith(`/tags/${default_input.tag_name}`);
+  });
+
+  it('should output axios response', async () => {
+    const _getTag = getTag(context);
+    const output = await _getTag(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

@@ -13,8 +13,7 @@ export const deleteConnectionPool = ({
   database_cluster_id,
   pool_name,
 }: IDeleteConnectionPoolApiRequest): Promise<Readonly<DeleteConnectionPoolResponse>> => {
-  const path = '/databases';
-  const url = `${path}/${database_cluster_id}/pools/${pool_name}`;
+  const url = `/databases/${database_cluster_id}/pools/${pool_name}`;
 
   return httpClient.delete<void>(url);
 };

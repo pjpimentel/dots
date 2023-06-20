@@ -1,93 +1,47 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {updateKubernetesCluster} from './update-kubernetes-cluster';
-import * as MOCK from './update-kubernetes-cluster.mock';
+import { updateKubernetesCluster } from './update-kubernetes-cluster';
 
-describe('kubernetes', () => {
-  const KUBERNETES_CLUSTER_ID = MOCK.response.body.kubernetes_cluster.id;
-  const URL = `/kubernetes/clusters/${KUBERNETES_CLUSTER_ID}`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onPut(URL, MOCK.request.body).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  mock.onPut(URL, MOCK.request.minimumBody).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('update-kubernetes-cluster', () => {
+  const default_input = {
+    auto_upgrade: require('crypto').randomBytes(2),
+    kubernetes_cluster_id: require('crypto').randomBytes(2),
+    maintenance_policy: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
+    tags: require('crypto').randomBytes(2),
+  } as any;
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    put: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.put.mockClear();
   });
-  describe('update-kubernetes-cluster', () => {
-    it('should be a fn', () => {
-      expect(typeof updateKubernetesCluster).toBe('function');
+
+  it('should be and return a fn', () => {
+    expect(typeof updateKubernetesCluster).toBe('function');
+    expect(typeof updateKubernetesCluster(context)).toBe('function');
+  });
+
+  it('should call axios.put', async () => {
+    const _updateKubernetesCluster = updateKubernetesCluster(context);
+    await _updateKubernetesCluster(default_input);
+
+    expect(httpClient.put).toHaveBeenCalledWith(`/kubernetes/clusters/${default_input.kubernetes_cluster_id}`, {
+      ...default_input,
+      kubernetes_cluster_id: undefined,
+      node_pool_id: undefined
     });
-    it('should return a fn', () => {
-      expect(typeof updateKubernetesCluster(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _updateKubernetesCluster = updateKubernetesCluster(context);
-      const response = await _updateKubernetesCluster({
-        ...MOCK.request.body,
-        kubernetes_cluster_id: KUBERNETES_CLUSTER_ID,
-      });
-      Object.assign(response, {request: mock.history.put[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('put');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeDefined();
-      const requestBody = JSON.parse(request.data);
-      expect(requestBody).toMatchObject(MOCK.request.body);
-      /// validate data
-      expect(response.data).toBeDefined();
-      const {kubernetes_cluster} = response.data;
-      expect(typeof kubernetes_cluster.name).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
-    it('should POST only required parameters', async () => {
-      const _updateKubernetesCluster = updateKubernetesCluster(context);
-      const response = await _updateKubernetesCluster({
-        ...MOCK.request.minimumBody,
-        kubernetes_cluster_id: KUBERNETES_CLUSTER_ID,
-      });
-      Object.assign(response, {request: mock.history.put[0]});
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('put');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeDefined();
-      const {
-        /// required
-        name,
-        /// non-required
-        maintenance_policy,
-        auto_upgrade,
-        tags,
-      } = JSON.parse(request.data);
-      expect(name).toBe(MOCK.request.minimumBody.name);
-      expect(maintenance_policy).toBeUndefined();
-      expect(auto_upgrade).toBeUndefined();
-      expect(tags).toBeUndefined();
-    });
+  });
+
+  it('should output axios response', async () => {
+    const _updateKubernetesCluster = updateKubernetesCluster(context);
+    const output = await _updateKubernetesCluster(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

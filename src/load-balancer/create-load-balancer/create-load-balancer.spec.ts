@@ -1,96 +1,50 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {createLoadBalancer} from './create-load-balancer';
-import * as MOCK from './create-load-balancer.mock';
+import { createLoadBalancer } from './create-load-balancer';
 
-describe('load-balancer', () => {
-  const URL = '/load_balancers';
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onPost(URL, MOCK.request.body).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  mock.onPost(URL, MOCK.request.minimumBody).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('create-load-balancer', () => {
+  const default_input = {
+    algorithm: require('crypto').randomBytes(2),
+    droplet_ids: require('crypto').randomBytes(2),
+    enable_backend_keepalive: require('crypto').randomBytes(2),
+    enable_proxy_protocol: require('crypto').randomBytes(2),
+    forwarding_rules: require('crypto').randomBytes(2),
+    health_check: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
+    redirect_http_to_https: require('crypto').randomBytes(2),
+    region: require('crypto').randomBytes(2),
+    sticky_sessions: require('crypto').randomBytes(2),
+    tag: require('crypto').randomBytes(2),
+    vpc_uuid: require('crypto').randomBytes(2),
+  } as any;
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    post: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.post.mockClear();
   });
-  describe('create-load-balancer', () => {
-    it('should be a fn', () => {
-      expect(typeof createLoadBalancer).toBe('function');
-    });
-    it('should return a fn', () => {
-      expect(typeof createLoadBalancer(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _createLoadBalancer = createLoadBalancer(context);
-      const response = await _createLoadBalancer(MOCK.request.body);
-      Object.assign(response, {request: mock.history.post[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('post');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeDefined();
-      const requestBody = JSON.parse(request.data);
-      expect(requestBody).toMatchObject(MOCK.request.body);
-      /// validate data
-      expect(response.data).toBeDefined();
-      const {load_balancer} = response.data;
-      expect(typeof load_balancer.name).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
-    it('should POST only required parameters', async () => {
-      const _createLoadBalancer = createLoadBalancer(context);
-      const response = await _createLoadBalancer(MOCK.request.minimumBody);
-      Object.assign(response, {request: mock.history.post[0]});
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('post');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeDefined();
-      const {
-        /// required
-        name,
-        region,
-        forwarding_rules,
-        /// non-required
-        droplet_idsregion,
-        enable_proxy_protocolregion,
-        health_checkregion,
-        redirect_http_to_httpsregion,
-        algorithmregion,
-        sticky_sessionsregion,
-      } = JSON.parse(request.data);
-      expect(name).toBe(MOCK.request.minimumBody.name);
-      expect(region).toBe(MOCK.request.minimumBody.region);
-      expect(forwarding_rules).toStrictEqual(MOCK.request.minimumBody.forwarding_rules);
-      expect(droplet_idsregion).toBeUndefined();
-      expect(enable_proxy_protocolregion).toBeUndefined();
-      expect(health_checkregion).toBeUndefined();
-      expect(redirect_http_to_httpsregion).toBeUndefined();
-      expect(algorithmregion).toBeUndefined();
-      expect(sticky_sessionsregion).toBeUndefined();
-    });
+
+  it('should be and return a fn', () => {
+    expect(typeof createLoadBalancer).toBe('function');
+    expect(typeof createLoadBalancer(context)).toBe('function');
+  });
+
+  it('should call axios.post', async () => {
+    const _createLoadBalancer = createLoadBalancer(context);
+    await _createLoadBalancer(default_input);
+
+    expect(httpClient.post).toHaveBeenCalledWith(`/load_balancers`, default_input);
+  });
+
+  it('should output axios response', async () => {
+    const _createLoadBalancer = createLoadBalancer(context);
+    const output = await _createLoadBalancer(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

@@ -18,9 +18,8 @@ export const listInvoiceItems = ({
   page = 1,
   per_page = 25,
 }: IListInvoiceItemsApiRequest): Promise<Readonly<ListInvoiceItemsResponse>> => {
-  const path = '/customers/my/invoices';
+  const url = `/customers/my/invoices/${invoice_uuid}`;
   const query_params = {page, per_page};
-  const url = `${path}/${invoice_uuid}`;
 
   return httpClient.get<IListInvoiceItemsApiResponse>(url, {params: query_params});
 };

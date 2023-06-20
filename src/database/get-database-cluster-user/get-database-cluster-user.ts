@@ -18,8 +18,7 @@ export const getDatabaseClusterUser = ({
   database_cluster_id,
   user_name,
 }: IGetDatabaseClusterUserApiRequest): Promise<Readonly<GetDatabaseClusterUserResponse>> => {
-  const path = '/databases';
-  const url = `${path}/${database_cluster_id}/users/${user_name}`;
+  const url = `/databases/${database_cluster_id}/users/${user_name}`;
 
   return httpClient.get<IGetDatabaseClusterUserApiResponse>(url);
 };

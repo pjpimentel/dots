@@ -14,9 +14,8 @@ export const untagResources = ({
   tag_name,
   resources,
 }: IUntagResourcesApiRequest): Promise<Readonly<UntagResourcesResponse>> => {
-  const path = '/tags';
+  const url = `/tags/${tag_name}/resources`;
   const body = {resources};
-  const url = `${path}/${tag_name}/resources`;
 
   return httpClient.delete<void>(url, {data: body});
 };

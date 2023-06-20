@@ -26,7 +26,7 @@ export const createCertificate = ({
   private_key,
   type,
 }: ICreateCertificateApiRequest): Promise<Readonly<CreateCertificateResponse>> => {
-  const path = '/certificates';
+  const url = '/certificates';
   const body = {
     certificate_chain,
     dns_names,
@@ -35,7 +35,6 @@ export const createCertificate = ({
     private_key,
     type,
   };
-  const url = `${path}`;
 
   return httpClient.post<ICreateCertificateApiResponse>(url, body);
 };

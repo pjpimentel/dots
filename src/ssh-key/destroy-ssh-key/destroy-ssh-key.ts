@@ -11,8 +11,7 @@ export const destroySshKey = ({
 }: IContext) => ({
   ssh_key_id,
 }: IDestroySshKeyApiRequest): Promise<Readonly<DestroySshKeyResponse>> => {
-  const path = '/account/keys';
-  const url = `${path}/${ssh_key_id}`;
+  const url = `/account/keys/${ssh_key_id}`;
 
   return httpClient.delete(url);
 };

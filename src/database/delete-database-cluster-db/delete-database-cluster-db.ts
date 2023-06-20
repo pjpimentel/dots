@@ -13,8 +13,7 @@ export const deleteDatabaseClusterDb = ({
   database_cluster_id,
   db_name,
 }: IDeleteDatabaseClusterDbApiRequest): Promise<Readonly<DeleteDatabaseClusterDbResponse>> => {
-  const path = '/databases';
-  const url = `${path}/${database_cluster_id}/dbs/${db_name}`;
+  const url = `/databases/${database_cluster_id}/dbs/${db_name}`;
 
   return httpClient.delete<void>(url);
 };

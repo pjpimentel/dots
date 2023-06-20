@@ -16,8 +16,7 @@ export const getDroplet = ({
 }: IContext) => ({
   droplet_id,
 }: IGetDropletApiRequest): Promise<Readonly<GetDropletResponse>> => {
-  const path = '/droplets';
-  const url = `${path}/${droplet_id}`;
+  const url = `/droplets/${droplet_id}`;
 
   return httpClient.get<IGetDropletApiResponse>(url);
 };

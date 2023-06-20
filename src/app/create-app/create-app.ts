@@ -18,9 +18,8 @@ export const createApp = ({
   project_id,
   spec,
 }: ICreateAppApiRequest): Promise<Readonly<CreateAppResponse>> => {
-  const path = '/apps';
+  const url = '/apps';
   const body = {project_id, spec};
-  const url = `${path}`;
 
   return httpClient.post<ICreateAppApiResponse>(url, body);
 };

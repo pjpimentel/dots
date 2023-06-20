@@ -16,8 +16,7 @@ export const getCdnEndpoint = ({
 }: IContext) => ({
   cdn_endpoint_id,
 }: IGetCdnEndpointApiRequest): Promise<Readonly<GetCdnEndpointResponse>> => {
-  const path = '/cdn/endpoints';
-  const url = `${path}/${cdn_endpoint_id}`;
+  const url = `/cdn/endpoints/${cdn_endpoint_id}`;
 
   return httpClient.get<IGetCdnEndpointApiResponse>(url);
 };

@@ -16,10 +16,9 @@ export const enableDropletBackups = ({
 }: IContext) => ({
   droplet_id,
 }: IEnableDropletBackupsApiRequest): Promise<Readonly<EnableDropletBackupsResponse>> => {
-  const path = '/droplets';
+  const url = `/droplets/${droplet_id}/actions`;
   const type = 'enable_backups';
   const body = {type};
-  const url = `${path}/${droplet_id}/actions`;
 
   return httpClient.post<IEnableDropletBackupsApiResponse>(url, body);
 };

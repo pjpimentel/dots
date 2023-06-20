@@ -18,9 +18,8 @@ export const listFloatingIpActions = ({
   page = 1,
   per_page = 25,
 }: IListFloatingIpActionsApiRequest): Promise<Readonly<ListFloatingIpActionssResponse>> => {
-  const path = '/floating_ips';
+  const url = `/floating_ips/${ip}/actions`;
   const query_params = {page, per_page};
-  const url = `${path}/${ip}/actions`;
 
   return httpClient.get<IListFloatingIpActionsApiResponse>(url, {params: query_params});
 };

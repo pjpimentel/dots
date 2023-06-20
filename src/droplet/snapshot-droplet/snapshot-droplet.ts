@@ -18,10 +18,9 @@ export const snapshotDroplet = ({
   droplet_id,
   name,
 }: ISnapshotDropletApiRequest): Promise<Readonly<SnapshotDropletResponse>> => {
-  const path = '/droplets';
+  const url = `/droplets/${droplet_id}/actions`;
   const type = 'snapshot';
   const body = {name, type};
-  const url = `${path}/${droplet_id}/actions`;
 
   return httpClient.post<ISnapshotDropletApiResponse>(url, body);
 };

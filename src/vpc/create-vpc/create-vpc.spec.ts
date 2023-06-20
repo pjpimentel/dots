@@ -1,60 +1,49 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {createVpc} from './create-vpc';
-import * as MOCK from './create-vpc.mock';
+import { createVpc } from './create-vpc';
 
-describe('vpc', () => {
-  const URL = '/vpcs';
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onPost(URL, MOCK.request.body).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('create-vpc', () => {
+  const default_input = {
+    description: require('crypto').randomBytes(2),
+    ip_range: require('crypto').randomBytes(2),
+    is_default: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
+    region: require('crypto').randomBytes(2),
+  } as any;
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    post: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.post.mockClear();
   });
-  describe('create-vpc', () => {
-    it('should be a fn', () => {
-      expect(typeof createVpc).toBe('function');
+
+  it('should be and return a fn', () => {
+    expect(typeof createVpc).toBe('function');
+    expect(typeof createVpc(context)).toBe('function');
+  });
+
+  it('should call axios.post', async () => {
+    const _createVpc = createVpc(context);
+    await _createVpc(default_input);
+
+    expect(httpClient.post).toHaveBeenCalledWith(`/vpcs`, {
+      default: default_input.is_default,
+      description: default_input.description,
+      ip_range: default_input.ip_range,
+      name: default_input.name,
+      region: default_input.region,
     });
-    it('should return a fn', () => {
-      expect(typeof createVpc(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _createVpc = createVpc(context);
-      const response = await _createVpc(MOCK.request.body);
-      Object.assign(response, {request: mock.history.post[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('post');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeDefined();
-      const requestBody = JSON.parse(request.data);
-      expect(requestBody).toMatchObject(MOCK.request.body);
-      /// validate data
-      expect(response.data).toBeDefined();
-      const {vpc} = response.data;
-      expect(typeof vpc.name).toBe('string');
-      expect(typeof vpc.description).toBe('string');
-      expect(typeof vpc.ip_range).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
+  });
+
+  it('should output axios response', async () => {
+    const _createVpc = createVpc(context);
+    const output = await _createVpc(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

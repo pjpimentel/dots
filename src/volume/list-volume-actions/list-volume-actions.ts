@@ -18,9 +18,8 @@ export const listVolumeActions = ({
   per_page = 25,
   volume_id,
 }: IListVolumeActionsApiRequest): Promise<Readonly<ListVolumeActionssResponse>> => {
-  const path = '/volumes';
+  const url = `/volumes/${volume_id}/actions`;
   const query_params = {page, per_page};
-  const url = `${path}/${volume_id}/actions`;
 
   return httpClient.get<IListVolumeActionsApiResponse>(url, {params: query_params});
 };

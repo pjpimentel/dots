@@ -20,10 +20,9 @@ export const detachVolumeFromDroplet = ({
   region,
   volume_id,
 }: IDetachVolumeToDropletApiRequest): Promise<Readonly<DetachVolumeToDropletResponse>> => {
-  const path = '/volumes';
+  const url = `/volumes/${volume_id}/actions`;
   const type = 'detach';
   const body = {droplet_id, region, type};
-  const url = `${path}/${volume_id}/actions`;
 
   return httpClient.post<IDetachVolumeToDropletApiResponse>(url, body);
 };

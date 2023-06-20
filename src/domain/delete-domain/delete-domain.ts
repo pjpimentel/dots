@@ -11,8 +11,7 @@ export const deleteDomain = ({
 }: IContext) => ({
   name,
 }: IDeleteDomainApiRequest): Promise<Readonly<DeleteDomainResponse>> => {
-  const path = '/domains';
-  const url = `${path}/${name}`;
+  const url = `/domains/${name}`;
 
   return httpClient.delete(url);
 };

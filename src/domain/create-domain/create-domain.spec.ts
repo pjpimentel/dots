@@ -1,82 +1,40 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {createDomain} from './create-domain';
-import * as MOCK from './create-domain.mock';
+import { createDomain } from './create-domain';
 
-describe('domain', () => {
-  const URL = '/domains';
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onPost(URL, MOCK.request.body).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  mock.onPost(URL, MOCK.request.minimumBody).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('create-domain', () => {
+  const default_input = {
+    ip_address: require('crypto').randomBytes(2),
+    name: require('crypto').randomBytes(2),
+  } as any;
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    post: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.post.mockClear();
   });
-  describe('create-domain', () => {
-    it('should be a fn', () => {
-      expect(typeof createDomain).toBe('function');
-    });
-    it('should return a fn', () => {
-      expect(typeof createDomain(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _createDomain = createDomain(context);
-      const response = await _createDomain(MOCK.request.body);
-      Object.assign(response, {request: mock.history.post[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('post');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeDefined();
-      const requestBody = JSON.parse(request.data);
-      expect(requestBody).toMatchObject(MOCK.request.body);
-      /// validate data
-      expect(response.data).toBeDefined();
-      const {domain} = response.data;
-      expect(typeof domain.name).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
-    it('should POST only required parameters', async () => {
-      const _createDomain = createDomain(context);
-      const response = await _createDomain(MOCK.request.minimumBody);
-      Object.assign(response, {request: mock.history.post[0]});
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('post');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeDefined();
-      const {
-        /// required
-        name,
-        /// non-required
-        ip_address,
-      } = JSON.parse(request.data);
-      expect(name).toBe(MOCK.request.minimumBody.name);
-      expect(ip_address).toBeUndefined();
-    });
+
+  it('should be and return a fn', () => {
+    expect(typeof createDomain).toBe('function');
+    expect(typeof createDomain(context)).toBe('function');
+  });
+
+  it('should call axios.post', async () => {
+    const _createDomain = createDomain(context);
+    await _createDomain(default_input);
+
+    expect(httpClient.post).toHaveBeenCalledWith(`/domains`, default_input);
+  });
+
+  it('should output axios response', async () => {
+    const _createDomain = createDomain(context);
+    const output = await _createDomain(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

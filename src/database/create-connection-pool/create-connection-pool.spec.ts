@@ -1,65 +1,50 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {createConnectionPool} from './create-connection-pool';
-import * as MOCK from './create-connection-pool.mock';
+import { createConnectionPool } from './create-connection-pool';
 
-describe('database', () => {
-  const DATABASE_CLUSTER_ID = 'db-id';
-  const URL = `/databases/${DATABASE_CLUSTER_ID}/pools`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onPost(URL, MOCK.request.body).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('create-connection-pool', () => {
+  const default_input = {
+    database_cluster_id: require('crypto').randomBytes(2),
+    db_name: require('crypto').randomBytes(2),
+    mode: require('crypto').randomBytes(2),
+    pool_name: require('crypto').randomBytes(2),
+    size: require('crypto').randomBytes(2),
+    user_name: require('crypto').randomBytes(2),
+  } as any;
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    post: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.post.mockClear();
   });
-  describe('create-connection-pool', () => {
-    it('should be a fn', () => {
-      expect(typeof createConnectionPool).toBe('function');
+
+  it('should be and return a fn', () => {
+    expect(typeof createConnectionPool).toBe('function');
+    expect(typeof createConnectionPool(context)).toBe('function');
+  });
+
+  it('should call axios.post', async () => {
+    const _createConnectionPool = createConnectionPool(context);
+    await _createConnectionPool(default_input);
+
+    expect(httpClient.post).toHaveBeenCalledWith(`/databases/${default_input.database_cluster_id}/pools`, {
+      db: default_input.db_name,
+      mode: default_input.mode,
+      name: default_input.pool_name,
+      size: default_input.size,
+      user: default_input.user_name,
     });
-    it('should return a fn', () => {
-      expect(typeof createConnectionPool(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _createConnectionPool = createConnectionPool(context);
-      const response = await _createConnectionPool({
-        pool_name: MOCK.request.body.name,
-        db_name: MOCK.request.body.db,
-        user_name: MOCK.request.body.user,
-        database_cluster_id: DATABASE_CLUSTER_ID,
-        ...MOCK.request.body,
-      });
-      Object.assign(response, {request: mock.history.post[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('post');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeDefined();
-      const requestBody = JSON.parse(request.data);
-      expect(requestBody).toMatchObject(MOCK.request.body);
-      /// validate data
-      expect(response.data).toBeDefined();
-      const {pool} = response.data;
-      expect(typeof pool.name).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
+  });
+
+  it('should output axios response', async () => {
+    const _createConnectionPool = createConnectionPool(context);
+    const output = await _createConnectionPool(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

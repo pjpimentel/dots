@@ -24,7 +24,7 @@ export const createVpc = ({
   name,
   region,
 }: ICreateVpcApiRequest): Promise<Readonly<CreateVpcResponse>> => {
-  const path = '/vpcs';
+  const url = `/vpcs`;
   const body = {
     default: is_default,
     description,
@@ -32,7 +32,6 @@ export const createVpc = ({
     name,
     region,
   };
-  const url = `${path}`;
 
   return httpClient.post<ICreateVpcApiResponse>(url, body);
 };

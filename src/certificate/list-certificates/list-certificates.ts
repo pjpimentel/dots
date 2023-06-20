@@ -13,9 +13,8 @@ export const listCertificates = ({
   page = 1,
   per_page = 25,
 }: IListRequest): Promise<Readonly<ListCertificatesResponse>> => {
-  const path = '/certificates';
+  const url = '/certificates';
   const query_params = {page, per_page};
-  const url = `${path}`;
 
   return httpClient.get<IListCertificatesApiResponse>(url, {params: query_params});
 };

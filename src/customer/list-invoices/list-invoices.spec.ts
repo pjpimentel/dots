@@ -1,74 +1,57 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {listInvoices} from './list-invoices';
-import * as MOCK from './list-invoices.mock';
+import { listInvoices } from './list-invoices';
 
-describe('customer', () => {
-  const PAGE = 3;
-  const PER_PAGE = 26;
-  const URL = '/customers/my/invoices';
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onGet(URL).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('list-invoices', () => {
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.get.mockClear();
   });
-  describe('list-invoices', () => {
-    it('should be and return a fn', () => {
-      expect(typeof listInvoices).toBe('function');
-      expect(typeof listInvoices(context)).toBe('function');
+
+  it('should be and return a fn', () => {
+    expect(typeof listInvoices).toBe('function');
+    expect(typeof listInvoices(context)).toBe('function');
+  });
+
+  it('should call axios.get', async () => {
+    const _listInvoices = listInvoices(context);
+    await _listInvoices({});
+
+    expect(httpClient.get).toHaveBeenCalledWith(`/customers/my/invoices`, {
+      params: {
+        page: 1,
+        per_page: 25,
+      },
     });
-    it('should return a valid response', async () => {
-      const _listInvoices = listInvoices(context);
-      const response = await _listInvoices({page: PAGE, per_page: PER_PAGE});
-      Object.assign(response, { request: mock.history.get[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('get');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.params).toBeDefined();
-      expect(request.params.page).toBe(PAGE);
-      expect(request.params.per_page).toBe(PER_PAGE);
-      /// validate data
-      expect(response.data).toBeDefined();
-      expect(response.data.invoices).toBeDefined();
-      const {invoices, invoice_preview} = response.data;
-      const [invoice] = invoices;
-      expect(typeof invoice.invoice_uuid).toBe('string');
-      expect(typeof invoice.amount).toBe('string');
-      expect(typeof invoice_preview.updated_at).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
+  });
+
+  it('should use `page` and `per_page` input', async () => {
+    const _listInvoices = listInvoices(context);
+    const input = {
+      page: require('crypto').randomBytes(2),
+      per_page: require('crypto').randomBytes(2),
+    } as any;
+    await _listInvoices(input);
+
+    expect(httpClient.get).toHaveBeenCalledWith(`/customers/my/invoices`, {
+      params: {
+        page: input.page,
+        per_page: input.per_page,
+      },
     });
-    it('should have default parameters', async () => {
-      const defaultPage = 1;
-      const defaultper_page = 25;
-      const _listInvoices = listInvoices(context);
-      const response = await _listInvoices({});
-      Object.assign(response, { request: mock.history.get[0]});
-      /// validate request
-      const {request} = response;
-      expect(request.params).toBeDefined();
-      expect(request.params.page).toBe(defaultPage);
-      expect(request.params.per_page).toBe(defaultper_page);
-    });
+  });
+
+  it('should output axios response', async () => {
+    const _listInvoices = listInvoices(context);
+    const output = await _listInvoices({});
+
+    expect(output).toBe(default_output);
   });
 });

@@ -18,13 +18,12 @@ export const listDroplets = ({
   per_page = 25,
   tag_name = undefined,
 }: IListDropletsApiRequest): Promise<Readonly<ListDropletsResponse>> => {
-  const path = '/droplets';
+  const url = '/droplets';
   const query_params = {
     page,
     per_page,
     tag_name,
   };
-  const url = `${path}`;
 
   return httpClient.get<IListDropletsApiResponse>(url, {params: query_params});
 };

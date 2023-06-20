@@ -1,106 +1,100 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {deleteNode} from './delete-node';
-import * as MOCK from './delete-node.mock';
+import { deleteNode } from './delete-node';
 
-describe('kubernetes', () => {
-  const KUBERNETES_CLUSTER_ID = 'cluster-id';
-  const NODE_POOL_ID = 'node-pool-id';
-  const NODE_ID = 'node-id';
-  const URL = `/kubernetes/clusters/${KUBERNETES_CLUSTER_ID}/node_pools/${NODE_POOL_ID}/nodes/${NODE_ID}`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onDelete(URL).reply(
-    MOCK.response.headers.status,
-    undefined,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('delete-node', () => {
+  const default_input = {
+    kubernetes_cluster_id: require('crypto').randomBytes(2),
+    node_pool_id: require('crypto').randomBytes(2),
+    node_id: require('crypto').randomBytes(2),
+  } as any;
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    delete: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.delete.mockClear();
   });
-  describe('delete-node', () => {
-    it('should be a fn', () => {
-      expect(typeof deleteNode).toBe('function');
+
+  it('should be and return a fn', () => {
+    expect(typeof deleteNode).toBe('function');
+    expect(typeof deleteNode(context)).toBe('function');
+  });
+
+  it('should call axios.delete', async () => {
+    const _deleteNode = deleteNode(context);
+    await _deleteNode(default_input);
+
+    expect(httpClient.delete).toHaveBeenCalledWith(`/kubernetes/clusters/${default_input.kubernetes_cluster_id}/node_pools/${default_input.node_pool_id}/nodes/${default_input.node_id}`, {
+      params: {
+        skip_drain: 0,
+        replace: 0
+      }
     });
-    it('should return a fn', () => {
-      expect(typeof deleteNode(context)).toBe('function');
+  });
+
+  it('should send `skip_drain` as expected', async () => {
+    const _deleteNode = deleteNode(context);
+    await _deleteNode({
+      ...default_input,
+      drain_node: true
     });
-    it('should return a valid response', async () => {
-      const _deleteNode = deleteNode(context);
-      const response = await _deleteNode({
-        kubernetes_cluster_id: KUBERNETES_CLUSTER_ID,
-        node_pool_id: NODE_POOL_ID,
-        node_id: NODE_ID,
-      });
-      Object.assign(response, {request: mock.history.delete[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('delete');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeUndefined();
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
+
+    expect(httpClient.delete).toHaveBeenCalledWith(expect.anything(), {
+      params: {
+        skip_drain: 0,
+        replace: 0
+      }
     });
-    it('should set skip_drain parameter to 0', async () => {
-      const _deleteNode = deleteNode(context);
-      const response = await _deleteNode({
-        kubernetes_cluster_id: KUBERNETES_CLUSTER_ID,
-        node_pool_id: NODE_POOL_ID,
-        node_id: NODE_ID,
-        drain_node: true,
-      });
-      Object.assign(response, {request: mock.history.delete[0]});
-      const {request} = response;
-      expect(request.params.skip_drain).toBe(0);
+
+    await _deleteNode({
+      ...default_input,
+      drain_node: false
     });
-    it('should set skip_drain parameter to 1', async () => {
-      const _deleteNode = deleteNode(context);
-      const response = await _deleteNode({
-        kubernetes_cluster_id: KUBERNETES_CLUSTER_ID,
-        node_pool_id: NODE_POOL_ID,
-        node_id: NODE_ID,
-        drain_node: false,
-      });
-      Object.assign(response, {request: mock.history.delete[0]});
-      const {request} = response;
-      expect(request.params.skip_drain).toBe(1);
+
+    expect(httpClient.delete).toHaveBeenCalledWith(expect.anything(), {
+      params: {
+        skip_drain: 1,
+        replace: 0
+      }
     });
-    it('should set replace parameter to 0', async () => {
-      const _deleteNode = deleteNode(context);
-      const response = await _deleteNode({
-        kubernetes_cluster_id: KUBERNETES_CLUSTER_ID,
-        node_pool_id: NODE_POOL_ID,
-        node_id: NODE_ID,
-        replace_node: false,
-      });
-      Object.assign(response, {request: mock.history.delete[0]});
-      const {request} = response;
-      expect(request.params.replace).toBe(0);
+  });
+
+  it('should send `replace` as expected', async () => {
+    const _deleteNode = deleteNode(context);
+    await _deleteNode({
+      ...default_input,
+      replace_node: false
     });
-    it('should set replace parameter to 1', async () => {
-      const _deleteNode = deleteNode(context);
-      const response = await _deleteNode({
-        kubernetes_cluster_id: KUBERNETES_CLUSTER_ID,
-        node_pool_id: NODE_POOL_ID,
-        node_id: NODE_ID,
-        replace_node: true,
-      });
-      Object.assign(response, {request: mock.history.delete[0]});
-      const {request} = response;
-      expect(request.params.replace).toBe(1);
+
+    expect(httpClient.delete).toHaveBeenCalledWith(expect.anything(), {
+      params: {
+        skip_drain: 0,
+        replace: 0
+      }
     });
+
+    await _deleteNode({
+      ...default_input,
+      replace_node: true
+    });
+
+    expect(httpClient.delete).toHaveBeenCalledWith(expect.anything(), {
+      params: {
+        skip_drain: 0,
+        replace: 1
+      }
+    });
+  });
+
+  it('should output axios response', async () => {
+    const _deleteNode = deleteNode(context);
+    const output = await _deleteNode(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

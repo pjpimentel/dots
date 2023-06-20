@@ -1,60 +1,40 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {getDatabaseClusterUser} from './get-database-cluster-user';
-import * as MOCK from './get-database-cluster-user.mock';
+import { getDatabaseClusterUser } from './get-database-cluster-user';
 
-describe('database', () => {
-  const DATABASE_CLUSTER_ID = 'db-id';
-  const USER_NAME = MOCK.response.body.user.name;
-  const URL = `/databases/${DATABASE_CLUSTER_ID}/users/${USER_NAME}`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onGet(URL).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('get-database-cluster-user', () => {
+  const default_input = {
+    database_cluster_id: require('crypto').randomBytes(2),
+    user_name: require('crypto').randomBytes(2),
+  } as any;
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.get.mockClear();
   });
-  describe('get-database-cluster-user', () => {
-    it('should be a fn', () => {
-      expect(typeof getDatabaseClusterUser).toBe('function');
-    });
-    it('should return a fn', () => {
-      expect(typeof getDatabaseClusterUser(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _getDatabaseClusterUser = getDatabaseClusterUser(context);
-      const response = await _getDatabaseClusterUser({
-        database_cluster_id: DATABASE_CLUSTER_ID,
-        user_name: USER_NAME,
-      });
-      Object.assign(response, {request: mock.history.get[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('get');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      /// validate data
-      expect(response.data).toBeDefined();
-      const {user} = response.data;
-      expect(typeof user.name).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
+
+  it('should be and return a fn', () => {
+    expect(typeof getDatabaseClusterUser).toBe('function');
+    expect(typeof getDatabaseClusterUser(context)).toBe('function');
+  });
+
+  it('should call axios.get', async () => {
+    const _getDatabaseClusterUser = getDatabaseClusterUser(context);
+    await _getDatabaseClusterUser(default_input);
+
+    expect(httpClient.get).toHaveBeenCalledWith(`/databases/${default_input.database_cluster_id}/users/${default_input.user_name}`);
+  });
+
+  it('should output axios response', async () => {
+    const _getDatabaseClusterUser = getDatabaseClusterUser(context);
+    const output = await _getDatabaseClusterUser(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

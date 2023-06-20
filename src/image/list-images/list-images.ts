@@ -24,7 +24,7 @@ export const listImages = ({
   type = undefined,
   user_images = undefined,
 }: IListImageApiRequest): Promise<Readonly<ListImagesResponse>> => {
-  const path = '/images';
+  const url = `/images`;
   const query_params = {
     page,
     per_page,
@@ -32,7 +32,6 @@ export const listImages = ({
     tag_name,
     type,
   };
-  const url = `${path}`;
 
   return httpClient.get<IListImageApiResponse>(url, {params: query_params});
 };

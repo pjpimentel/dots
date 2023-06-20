@@ -1,71 +1,44 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {destroyDropletAndAllAssociatedResources} from './destroy-droplet-and-all-associated-resources';
-import * as MOCK from './destroy-droplet-and-all-associated-resources.mock';
+import { destroyDropletAndAllAssociatedResources } from './destroy-droplet-and-all-associated-resources';
 
-describe('droplet', () => {
-  const DROPLET_ID = 123;
-  const URL = `/droplets/${DROPLET_ID}/destroy_with_associated_resources/dangerous`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onDelete(URL, undefined, MOCK.request.headers).reply(
-    MOCK.response.headers.status,
-    undefined,
-    MOCK.response.headers,
-  );
-  mock.onDelete(URL, undefined, {...MOCK.request.headers, "X-Dangerous": "false"}).reply(
-    MOCK.response.headers.status,
-    undefined,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('destroy-droplet-and-all-associated-resources', () => {
+  const default_input = {
+    droplet_id: require('crypto').randomBytes(2),
+    acknowledge: require('crypto').randomBytes(2),
+  } as any;
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    delete: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.delete.mockClear();
   });
-  describe('destroy-droplet-and-all-associated-resources', () => {
-    it('should be a fn', () => {
-      expect(typeof destroyDropletAndAllAssociatedResources).toBe('function');
+
+  it('should be and return a fn', () => {
+    expect(typeof destroyDropletAndAllAssociatedResources).toBe('function');
+    expect(typeof destroyDropletAndAllAssociatedResources(context)).toBe('function');
+  });
+
+  it('should call axios.delete', async () => {
+    const _destroyDropletAndAllAssociatedResources = destroyDropletAndAllAssociatedResources(context);
+    await _destroyDropletAndAllAssociatedResources(default_input);
+
+    expect(httpClient.delete).toHaveBeenCalledWith(`/droplets/${default_input.droplet_id}/destroy_with_associated_resources/dangerous`, {
+      headers: {
+        'X-Dangerous': default_input.acknowledge.toString()
+      }
     });
-    it('should return a fn', () => {
-      expect(typeof destroyDropletAndAllAssociatedResources(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _destroyDropletAndAllAssociatedResources = destroyDropletAndAllAssociatedResources(context);
-      const response = await _destroyDropletAndAllAssociatedResources({
-        acknowledge: true,
-        droplet_id: DROPLET_ID,
-      });
-      Object.assign(response, {request: mock.history.delete[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('delete');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.headers["X-Dangerous"]).toBe("true");
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
-    it('should respect acknowledge input', async () => {
-      const _destroyDropletAndAllAssociatedResources = destroyDropletAndAllAssociatedResources(context);
-      const response = await _destroyDropletAndAllAssociatedResources({
-        acknowledge: false,
-        droplet_id: DROPLET_ID,
-      });
-      Object.assign(response, {request: mock.history.delete[0]});
-      /// validate request
-      const {request} = response;
-      expect(request.headers["X-Dangerous"]).toBe("false");
-    });
+  });
+
+  it('should output axios response', async () => {
+    const _destroyDropletAndAllAssociatedResources = destroyDropletAndAllAssociatedResources(context);
+    const output = await _destroyDropletAndAllAssociatedResources(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

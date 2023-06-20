@@ -16,10 +16,9 @@ export const shutdownDroplet = ({
 }: IContext) => ({
   droplet_id,
 }: IShutdownDropletApiRequest): Promise<Readonly<ShutdownDropletResponse>> => {
-  const path = '/droplets';
+  const url = `/droplets/${droplet_id}/actions`;
   const type = 'shutdown';
   const body = {type};
-  const url = `${path}/${droplet_id}/actions`;
 
   return httpClient.post<IShutdownDropletApiResponse>(url, body);
 };

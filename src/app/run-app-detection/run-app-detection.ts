@@ -29,14 +29,13 @@ export const runAppDetection = ({
   git,
   github,
 }: IRunAppDetectionApiRequest): Promise<Readonly<RunAppDetectionResponse>> => {
-  const path = '/apps/detect';
+  const url = '/apps/detect';
   const body = {
     commit_sha,
     component_type,
     git,
     github,
   };
-  const url = `${path}`;
 
   return httpClient.post<IRunAppDetectionApiResponse>(url, body);
 };

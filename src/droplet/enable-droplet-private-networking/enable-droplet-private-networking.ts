@@ -16,10 +16,9 @@ export const enableDropletPrivateNetworking = ({
 }: IContext) => ({
   droplet_id,
 }: IEnableDropletPrivateNetworkingApiRequest): Promise<Readonly<EnableDropletPrivateNetworkingResponse>> => {
-  const path = '/droplets';
+  const url = `/droplets/${droplet_id}/actions`;
   const type = 'enable_private_networking';
   const body = {type};
-  const url = `${path}/${droplet_id}/actions`;
 
   return httpClient.post<IEnableDropletPrivateNetworkingApiResponse>(url, body);
 };

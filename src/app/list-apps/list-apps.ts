@@ -18,10 +18,8 @@ export const listApps = ({
   per_page = 25,
   with_projects = false,
 }: IListAppApiRequest): Promise<Readonly<ListAppsResponse>> => {
-  const path = '/apps';
+  const url = '/apps';
   const params = {page, per_page, with_projects};
-
-  const url = `${path}`;
 
   return httpClient.get<IListAppsApiResponse>(url, {params});
 };

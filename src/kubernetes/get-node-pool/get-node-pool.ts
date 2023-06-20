@@ -18,8 +18,7 @@ export const getNodePool = ({
   kubernetes_cluster_id,
   node_pool_id,
 }: IGetNodePoolApiRequest): Promise<Readonly<GetNodePoolResponse>> => {
-  const path = '/kubernetes/clusters';
-  const url = `${path}/${kubernetes_cluster_id}/node_pools/${node_pool_id}`;
+  const url = `/kubernetes/clusters/${kubernetes_cluster_id}/node_pools/${node_pool_id}`;
 
   return httpClient.get<IGetNodePoolApiResponse>(url);
 };

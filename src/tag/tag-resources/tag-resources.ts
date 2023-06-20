@@ -14,9 +14,8 @@ export const tagResources = ({
   tag_name,
   resources,
 }: ITagResourcesApiRequest): Promise<Readonly<TagResourcesResponse>> => {
-  const path = '/tags';
+  const url = `/tags/${tag_name}/resources`;
   const body = {resources};
-  const url = `${path}/${tag_name}/resources`;
 
   return httpClient.post<void>(url, body);
 };

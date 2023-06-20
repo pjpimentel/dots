@@ -26,15 +26,14 @@ export const updateProject = ({
   project_id,
   purpose,
 }: IUpdateProjectApiRequest): Promise<Readonly<UpdateProjectResponse>> => {
-    const path = '/projects';
-    const body = {
-      description,
-      environment,
-      is_default,
-      name,
-      purpose,
-    };
-    const url = `${path}/${project_id}`;
-
-    return httpClient.put<IUpdateProjectApiResponse>(url, body);
+  const url = `/projects/${project_id}`;
+  const body = {
+    description,
+    environment,
+    is_default,
+    name,
+    purpose,
   };
+
+  return httpClient.put<IUpdateProjectApiResponse>(url, body);
+};

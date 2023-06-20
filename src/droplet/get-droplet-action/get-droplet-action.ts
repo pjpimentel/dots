@@ -18,8 +18,7 @@ export const getDropletAction = ({
   action_id,
   droplet_id,
 }: IGetDropletActionApiRequest): Promise<Readonly<GetDropletActionResponse>> => {
-  const path = '/droplets';
-  const url = `${path}/${droplet_id}/actions/${action_id}`;
+  const url = `/droplets/${droplet_id}/actions/${action_id}`;
 
   return httpClient.get<IGetDropletActionApiResponse>(url);
 };

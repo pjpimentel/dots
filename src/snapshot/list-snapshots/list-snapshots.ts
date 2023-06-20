@@ -18,13 +18,12 @@ export const listSnapshots = ({
   per_page = 25,
   resource_type = undefined,
 }: IListSnapshotApiRequest): Promise<Readonly<ListSnapshotsResponse>> => {
-  const path = '/snapshots';
+  const url = '/snapshots';
   const query_params = {
     page,
     per_page,
     resource_type,
   };
-  const url = `${path}`;
 
   return httpClient.get<IListSnapshotApiResponse>(url, {params: query_params});
 };

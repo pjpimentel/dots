@@ -24,14 +24,13 @@ export const createReadOnlyReplica = ({
   size,
   tags,
 }: ICreateReadOnlyReplicaApiRequest): Promise<Readonly<CreateReadOnlyReplicaResponse>> => {
-  const path = '/databases';
+  const url = `/databases/${database_cluster_id}/replicas`;
   const body = {
     name,
     region,
     size,
     tags,
   };
-  const url = `${path}/${database_cluster_id}/replicas`;
 
   return httpClient.post<ICreateReadOnlyReplicaApiResponse>(url, body);
 };

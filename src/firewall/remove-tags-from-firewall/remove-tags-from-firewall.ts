@@ -13,9 +13,8 @@ export const removeTagsFromFirewall = ({
   firewall_id,
   tags,
 }: IRemoveTagsFromFirewallApiRequest): Promise<Readonly<RemoveTagsFromFirewallResponse>> => {
-  const path = '/firewalls';
   const body = {tags};
-  const url = `${path}/${firewall_id}/tags`;
+  const url = `/firewalls/${firewall_id}/tags`;
 
   return httpClient.delete(url, {data: body});
 };

@@ -1,60 +1,39 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {listKubernetesClusterAvailableUpgrades} from './list-kubernetes-cluster-available-upgrades';
-import * as MOCK from './list-kubernetes-cluster-available-upgrades.mock';
+import { listKubernetesClusterAvailableUpgrades } from './list-kubernetes-cluster-available-upgrades';
 
-describe('kubernetes', () => {
-  const KUBERNETES_CLUSTER_ID = 'cluster-id';
-  const URL = `/kubernetes/clusters/${KUBERNETES_CLUSTER_ID}/upgrades`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onGet(URL).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('list-kubernetes-cluster-available-upgrades', () => {
+  const default_input = {
+    kubernetes_cluster_id: require('crypto').randomBytes(2),
+  } as any;
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.get.mockClear();
   });
-  describe('list-kubernetes-cluster-available-upgrades', () => {
-    it('should be a fn', () => {
-      expect(typeof listKubernetesClusterAvailableUpgrades).toBe('function');
-    });
-    it('should return a fn', () => {
-      expect(typeof listKubernetesClusterAvailableUpgrades(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _listKubernetesClusterAvailableUpgrades = listKubernetesClusterAvailableUpgrades(context);
-      const response = await _listKubernetesClusterAvailableUpgrades({
-        kubernetes_cluster_id: KUBERNETES_CLUSTER_ID,
-      });
-      Object.assign(response, {request: mock.history.get[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('get');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeUndefined();
-      /// validate data
-      expect(response.data).toBeDefined();
-      const {available_upgrade_versions} = response.data;
-      const [available_upgrade_version] = available_upgrade_versions;
-      expect(typeof available_upgrade_version.slug).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
+
+  it('should be and return a fn', () => {
+    expect(typeof listKubernetesClusterAvailableUpgrades).toBe('function');
+    expect(typeof listKubernetesClusterAvailableUpgrades(context)).toBe('function');
+  });
+
+  it('should call axios.get', async () => {
+    const _listKubernetesClusterAvailableUpgrades = listKubernetesClusterAvailableUpgrades(context);
+    await _listKubernetesClusterAvailableUpgrades(default_input);
+
+    expect(httpClient.get).toHaveBeenCalledWith(`/kubernetes/clusters/${default_input.kubernetes_cluster_id}/upgrades`);
+  });
+
+  it('should output axios response', async () => {
+    const _listKubernetesClusterAvailableUpgrades = listKubernetesClusterAvailableUpgrades(context);
+    const output = await _listKubernetesClusterAvailableUpgrades(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

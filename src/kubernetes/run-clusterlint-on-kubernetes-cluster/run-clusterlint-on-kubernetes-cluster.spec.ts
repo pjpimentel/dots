@@ -1,62 +1,46 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { createContext } from '../../common';
-import {runClusterlintOnKubernetesCluster} from './run-clusterlint-on-kubernetes-cluster';
-import * as MOCK from './run-clusterlint-on-kubernetes-cluster.mock';
+import { runClusterlintOnKubernetesCluster } from './run-clusterlint-on-kubernetes-cluster';
 
-describe('kubernetes', () => {
-  const KUBERNETES_CLUSTER_ID = 'CLUSTER-ID';
-  const URL = `/kubernetes/clusters/${KUBERNETES_CLUSTER_ID}/clusterlint`;
-  const TOKEN = process.env.TEST_TOKEN as string;
-  const mock = new MockAdapter(axios);
-  mock.onPost(URL, MOCK.request.body).reply(
-    MOCK.response.headers.status,
-    MOCK.response.body,
-    MOCK.response.headers,
-  );
-  const context = createContext({
-    axios,
-    token: TOKEN,
-  });
+describe('run-clusterlint-on-kubernetes-cluster', () => {
+  const default_input = {
+    include_groups: require('crypto').randomBytes(2),
+    include_checks: require('crypto').randomBytes(2),
+    exclude_groups: require('crypto').randomBytes(2),
+    exclude_checks: require('crypto').randomBytes(2),
+    kubernetes_cluster_id: require('crypto').randomBytes(2),
+  } as any;
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    post: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    mock.resetHistory();
+    httpClient.post.mockClear();
   });
-  describe('create-node-pool', () => {
-    it('should be a fn', () => {
-      expect(typeof runClusterlintOnKubernetesCluster).toBe('function');
+
+  it('should be and return a fn', () => {
+    expect(typeof runClusterlintOnKubernetesCluster).toBe('function');
+    expect(typeof runClusterlintOnKubernetesCluster(context)).toBe('function');
+  });
+
+  it('should call axios.post', async () => {
+    const _runClusterlintOnKubernetesCluster = runClusterlintOnKubernetesCluster(context);
+    await _runClusterlintOnKubernetesCluster(default_input);
+
+    expect(httpClient.post).toHaveBeenCalledWith(`/kubernetes/clusters/${default_input.kubernetes_cluster_id}/clusterlint`, {
+      ...default_input,
+      kubernetes_cluster_id: undefined
     });
-    it('should return a fn', () => {
-      expect(typeof runClusterlintOnKubernetesCluster(context)).toBe('function');
-    });
-    it('should return a valid response', async () => {
-      const _runClusterlintOnKubernetesCluster = runClusterlintOnKubernetesCluster(context);
-      const response = await _runClusterlintOnKubernetesCluster({
-        ...MOCK.request.body,
-        kubernetes_cluster_id: KUBERNETES_CLUSTER_ID
-      });
-      Object.assign(response, {request: mock.history.post[0]});
-      /// validate response schema
-      expect(typeof response).toBe('object');
-      expect(typeof response.data).toBe('object');
-      expect(typeof response.headers).toBe('object');
-      expect(typeof response.request).toBe('object');
-      expect(typeof response.status).toBe('number');
-      /// validate request
-      const {request} = response;
-      expect(request.baseURL + request.url).toBe(context.endpoint + URL);
-      expect(request.method).toBe('post');
-      expect(request.headers).toMatchObject(MOCK.request.headers);
-      expect(request.data).toBeDefined();
-      const requestBody = JSON.parse(request.data);
-      expect(requestBody).toMatchObject(MOCK.request.body);
-      /// validate data
-      expect(response.data).toBeDefined();
-      const {run_id} = response.data;
-      expect(typeof run_id).toBe('string');
-      /// validate headers
-      const {headers, status} = response;
-      expect(headers).toMatchObject(MOCK.response.headers);
-      expect(status).toBe(MOCK.response.headers.status);
-    });
+  });
+
+  it('should output axios response', async () => {
+    const _runClusterlintOnKubernetesCluster = runClusterlintOnKubernetesCluster(context);
+    const output = await _runClusterlintOnKubernetesCluster(default_input);
+
+    expect(output).toBe(default_output);
   });
 });

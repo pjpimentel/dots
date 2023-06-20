@@ -18,9 +18,8 @@ export const listDropletSnapshots = ({
   page = 1,
   per_page = 25,
 }: IListDropletSnapshotsApiRequest): Promise<Readonly<ListDropletSnapshotsResponse>> => {
-  const path = '/droplets';
+  const url = `/droplets/${droplet_id}/snapshots`;
   const query_params = {page, per_page};
-  const url = `${path}/${droplet_id}/snapshots`;
 
   return httpClient.get<IListDropletSnapshotsApiResponse>(url, {
     params: query_params,

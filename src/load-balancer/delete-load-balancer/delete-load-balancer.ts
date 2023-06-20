@@ -11,8 +11,7 @@ export const deleteLoadBalancer = ({
 }: IContext) => ({
   load_balancer_id,
 }: IDeleteLoadBalancerApiRequest): Promise<Readonly<DeleteLoadBalancerResponse>> => {
-  const path = '/load_balancers';
-  const url = `${path}/${load_balancer_id}`;
+  const url = `/load_balancers/${load_balancer_id}`;
 
   return httpClient.delete(url);
 };

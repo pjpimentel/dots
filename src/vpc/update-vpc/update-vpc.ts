@@ -22,13 +22,12 @@ export const updateVpc = ({
   name,
   vpc_id,
 }: IUpdateVpcApiRequest): Promise<Readonly<UpdateVpcResponse>> => {
-    const path = '/vpcs';
-    const body = {
-      default: is_default,
-      description,
-      name,
-    };
-    const url = `${path}/${vpc_id}`;
-
-    return httpClient.patch<IUpdateVpcApiResponse>(url, body);
+  const url = `/vpcs/${vpc_id}`;
+  const body = {
+    default: is_default,
+    description,
+    name,
   };
+
+  return httpClient.patch<IUpdateVpcApiResponse>(url, body);
+};

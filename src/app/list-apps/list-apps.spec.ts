@@ -1,59 +1,60 @@
-import {listApps} from './list-apps';
-import * as MOCK from './list-apps.mock';
+import { listApps } from './list-apps';
 
-describe('app', () => {
+describe('list-apps', () => {
+  const default_output = require('crypto').randomBytes(2);
+
+  const httpClient = {
+    get: jest.fn().mockReturnValue(Promise.resolve(default_output)),
+  };
+
+  const context = {
+    httpClient,
+  } as any;
+
   beforeEach(() => {
-    MOCK.httpClient.get.mockClear();
+    httpClient.get.mockClear();
   });
-  describe('list-apps', () => {
-    it('should be and return a  fn', () => {
-      expect(typeof listApps).toBe('function');
-      expect(typeof listApps(MOCK.context)).toBe('function');
+
+  it('should be and return a fn', () => {
+    expect(typeof listApps).toBe('function');
+    expect(typeof listApps(context)).toBe('function');
+  });
+
+  it('should call axios.get', async () => {
+    const _listApps = listApps(context);
+    await _listApps({});
+
+    expect(httpClient.get).toHaveBeenCalledWith(`/apps`, {
+      params: {
+        page: 1,
+        per_page: 25,
+        with_projects: false,
+      },
     });
+  });
 
-    it('should send page and per_page parameter', async () => {
-      const _listApps = listApps(MOCK.context);
+  it('should use `page`, `per_page` and `with_projects` input', async () => {
+    const _listApps = listApps(context);
+    const input = {
+      with_projects: require('crypto').randomBytes(2),
+      page: require('crypto').randomBytes(2),
+      per_page: require('crypto').randomBytes(2),
+    } as any;
+    await _listApps(input);
 
-      await _listApps(MOCK.default_input);
-
-      expect(MOCK.httpClient.get).toHaveBeenCalledWith(MOCK.endpoint, {
-        params: {
-          page: MOCK.default_input.page,
-          per_page: MOCK.default_input.per_page,
-          with_projects: false,
-        },
-      });
+    expect(httpClient.get).toHaveBeenCalledWith(`/apps`, {
+      params: {
+        page: input.page,
+        per_page: input.per_page,
+        with_projects: input.with_projects,
+      },
     });
+  });
 
-    it('should have default parameters', async () => {
-      const _listApps = listApps(MOCK.context);
+  it('should output axios response', async () => {
+    const _listApps = listApps(context);
+    const output = await _listApps({});
 
-      await _listApps({});
-
-      expect(MOCK.httpClient.get).toHaveBeenCalledWith(MOCK.endpoint, {
-        params: {
-          page: 1,
-          per_page: 25,
-          with_projects: false,
-        },
-      });
-    });
-
-    it('should send `with_projects` as true', async () => {
-      const _listApps = listApps(MOCK.context);
-
-      await _listApps({
-        ...MOCK.default_input,
-        with_projects: true,
-      });
-
-      expect(MOCK.httpClient.get).toHaveBeenCalledWith(MOCK.endpoint, {
-        params: {
-          page: MOCK.default_input.page,
-          per_page: MOCK.default_input.per_page,
-          with_projects: true,
-        },
-      });
-    });
+    expect(output).toBe(default_output);
   });
 });
