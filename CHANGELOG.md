@@ -1,5 +1,9 @@
 # changelog
 
+## **2023-07-09** - new version 3.11.1
+
+* update all dependencies
+
 ## **2023-06-19** - new version 3.11.0
 
 * add node 20 to tests coverage.
