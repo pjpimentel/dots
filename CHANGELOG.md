@@ -1,5 +1,9 @@
 # changelog
 
+## **2024-02-12** - new version 3.11.5
+
+* update dependencies
+
 ## **2023-11-16** - new version 3.11.4
 
 * update dependencies
