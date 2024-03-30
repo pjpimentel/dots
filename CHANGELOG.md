@@ -1,5 +1,9 @@
 # changelog
 
+## **2024-03-30** - new version 3.11.7
+
+* update dependencies
+
 ## **2024-03-10** - new version 3.11.6
 
 * update dependencies
