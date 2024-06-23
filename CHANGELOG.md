@@ -1,5 +1,12 @@
 # changelog
 
+## **2024-06-23** - new version 3.11.9
+
+* npm audit + update dependencies
+* drop node 16 support
+* add node 20 support
+* using node 20 to build
+
 ## **2024-05-19** - new version 3.11.8
 
 * update dependencies
