@@ -4,11 +4,6 @@ on:
   pull_request:
     branches:
       - master
-  push:
-    paths:
-      - 'src/**'
-      - 'package.json'
-      - 'package-lock.json'
   workflow_dispatch:
 
 jobs:
