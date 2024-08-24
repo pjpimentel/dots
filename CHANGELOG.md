@@ -1,5 +1,11 @@
 # changelog
 
+## **2024-08-24** - new version 3.11.10
+
+* npm audit + update dependencies
+* upgrade actions/setup-node@v3 to actions/setup-node@v4
+* add dependabot setting for github-actions
+
 ## **2024-06-23** - new version 3.11.9
 
 * npm audit + update dependencies
