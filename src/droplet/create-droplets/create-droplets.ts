@@ -12,7 +12,7 @@ export interface ICreateDropletsApiRequest {
   monitoring?: boolean;
   names: string[];
   private_networking?: boolean;
-  region: string;
+  region?: string;
   size: string;
   ssh_keys?: Array<string | number>;
   tags?: string[];
