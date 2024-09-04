@@ -1,5 +1,10 @@
 # changelog
 
+## **2024-09-04** - new version 3.11.11
+
+* update dependencies
+* modified `region` input to be optional at droplet creation.
+
 ## **2024-08-24** - new version 3.11.10
 
 * npm audit + update dependencies

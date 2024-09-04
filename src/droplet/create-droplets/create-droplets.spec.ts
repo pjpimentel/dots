@@ -48,4 +48,15 @@ describe('create-droplets', () => {
 
     expect(output).toBe(default_output);
   });
+
+  it('should allow empty region input', async () => {
+    const _createDroplets = createDroplets(context);
+    const input = {
+      ...default_input,
+      region: undefined,
+    }
+    await _createDroplets(input);
+
+    expect(httpClient.post).toHaveBeenCalledWith(`/droplets`, input);
+  });
 });
