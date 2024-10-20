@@ -1,5 +1,9 @@
 # changelog
 
+## **2024-10-20** - new version 3.11.12
+
+* update dependencies
+
 ## **2024-09-04** - new version 3.11.11
 
 * update dependencies
