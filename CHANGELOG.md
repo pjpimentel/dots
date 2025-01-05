@@ -1,5 +1,10 @@
 # changelog
 
+## **2025-01-05** - new version 3.11.14
+
+* update dependencies
+* add attribute with_droplet_agent
+
 ## **2024-12-21** - new version 3.11.13
 
 * update dependencies

@@ -15,6 +15,7 @@ describe('create-droplets', () => {
     user_data: require('crypto').randomBytes(2),
     volumes: require('crypto').randomBytes(2),
     vpc_uuid: require('crypto').randomBytes(2),
+    with_droplet_agent: require('crypto').randomBytes(2),
   } as any;
   const default_output = require('crypto').randomBytes(2);
 
