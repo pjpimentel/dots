@@ -1,5 +1,9 @@
 # changelog
 
+## **2025-02-01** - new version 3.11.15
+
+* update dependencies
+
 ## **2025-01-05** - new version 3.11.14
 
 * update dependencies
