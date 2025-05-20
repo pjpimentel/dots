@@ -20,7 +20,7 @@ export interface IGenAiKnowledgeBaseCreateRequest {
   tags?: string[];
   database_id?: string;
   vpc_uuid?: string;
-  datasources: IGenAiDataSourceSpec[];
+  datasources?: IGenAiDataSourceSpec[];
 }
 
 export interface IGenAiKnowledgeBaseUpdateRequest {

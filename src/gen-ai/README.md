@@ -202,66 +202,6 @@ try {
 }
 ```
 
-## list-function-routes
-[public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_list_function_routes)
-```javascript
-try {
-  const { data:{ function_routes } } = await dots.genAi.listFunctionRoutes({ agent_uuid: '' });
-  console.log(function_routes);
-} catch (error) {
-  console.log(error);
-}
-```
-
-## attach-function-route
-[public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_attach_agent_function)
-```javascript
-try {
-  const input = { 
-    agent_uuid: '', 
-    function_route: { 
-      function_name: 'getWeather', 
-      description: 'Get current weather', 
-      faas_namespace: 'default',
-      faas_name: 'weather-service' 
-    } 
-  };
-  const { data:{ function_route } } = await dots.genAi.attachFunctionRoute(input);
-  console.log(function_route);
-} catch (error) {
-  console.log(error);
-}
-```
-
-## update-function-route
-[public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_update_agent_function)
-```javascript
-try {
-  const input = { 
-    agent_uuid: '', 
-    function_route_id: '', 
-    updates: { 
-      description: 'Get current weather and forecast',
-      input_schema: { type: 'object', properties: { location: { type: 'string' } } } 
-    } 
-  };
-  const { data:{ function_route } } = await dots.genAi.updateFunctionRoute(input);
-  console.log(function_route);
-} catch (error) {
-  console.log(error);
-}
-```
-
-## detach-function-route
-[public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_detach_agent_function)
-```javascript
-try {
-  await dots.genAi.detachFunctionRoute({ agent_uuid: '', function_route_id: '' });
-} catch (error) {
-  console.log(error);
-}
-```
-
 ## attach-knowledge-base
 [public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_attach_knowledge_base)
 ```javascript
@@ -449,9 +389,35 @@ try {
 [public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_create_knowledge_base_data_source)
 ```javascript
 try {
-  const input = { knowledge_base_uuid: 'uuid', data: { } };
-  const { data:{ knowledge_base_data_source } } = await dots.genAi.addKnowledgeBaseDataSource(input);
+  // Example with Spaces data source
+  const spacesInput = { 
+    knowledge_base_uuid: 'uuid', 
+    data: {
+      knowledge_base_uuid: 'uuid',
+      spaces_data_source: {
+        bucket_name: 'my-bucket',
+        region: 'nyc1',
+        item_path: '/docs'
+      }
+    }
+  };
+  const { data:{ knowledge_base_data_source } } = await dots.genAi.addKnowledgeBaseDataSource(spacesInput);
   console.log(knowledge_base_data_source);
+
+  // Example with Web Crawler data source
+  const webCrawlerInput = { 
+    knowledge_base_uuid: 'uuid', 
+    data: {
+      knowledge_base_uuid: 'uuid',
+      web_crawler_data_source: {
+        base_url: 'https://example.com',
+        crawling_option: 'domain',
+        embed_media: true
+      }
+    }
+  };
+  const { data:{ knowledge_base_data_source: webSource } } = await dots.genAi.addKnowledgeBaseDataSource(webCrawlerInput);
+  console.log(webSource);
 } catch (error) {
   console.log(error);
 }
@@ -524,6 +490,137 @@ try {
   const input = { knowledge_base_uuid: 'uuid', indexing_job_uuid: 'jobid' };
   const { status } = await dots.genAi.cancelIndexingJob(input);
   console.log(status);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## attach-knowledge-bases
+[public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_attach_knowledge_bases)
+```javascript
+try {
+  const input = { 
+    agent_uuid: '', 
+    knowledge_base_uuids: ['kb-uuid-1', 'kb-uuid-2'] 
+  };
+  const { data:{ agent } } = await dots.genAi.attachKnowledgeBases(input);
+  console.log(agent);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## create-anthropic-key
+[public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_create_anthropic_api_key)
+```javascript
+try {
+  const input = { api_key: 'sk-ant-...', name: 'My Anthropic Key' };
+  const { data:{ anthropic_key } } = await dots.genAi.createAnthropicKey(input);
+  console.log(anthropic_key);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## get-anthropic-key
+[public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_get_anthropic_api_key)
+```javascript
+try {
+  const { data:{ anthropic_key } } = await dots.genAi.getAnthropicKey({ key_uuid: '' });
+  console.log(anthropic_key);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## update-anthropic-key
+[public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_update_anthropic_api_key)
+```javascript
+try {
+  const input = { key_uuid: '', updates: { name: 'Updated Key', enabled: true } };
+  const { data:{ anthropic_key } } = await dots.genAi.updateAnthropicKey(input);
+  console.log(anthropic_key);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## delete-anthropic-key
+[public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_delete_anthropic_api_key)
+```javascript
+try {
+  await dots.genAi.deleteAnthropicKey({ key_uuid: '' });
+} catch (error) {
+  console.log(error);
+}
+```
+
+## list-agents-by-openai-key
+[public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_list_agents_by_openai_key)
+```javascript
+try {
+  const { data:{ agents } } = await dots.genAi.listAgentsByOpenAIKey({ key_uuid: '' });
+  console.log(agents);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## list-agents-by-anthropic-key
+[public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_list_agents_by_anthropic_key)
+```javascript
+try {
+  const { data:{ agents } } = await dots.genAi.listAgentsByAnthropicKey({ key_uuid: '' });
+  console.log(agents);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## attach-function-route
+[public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_attach_agent_function)
+```javascript
+try {
+  const input = { 
+    agent_uuid: '', 
+    function_route: { 
+      function_name: 'getWeather', 
+      description: 'Get current weather', 
+      faas_namespace: 'default',
+      faas_name: 'weather-service' 
+    } 
+  };
+  const { data:{ function_route } } = await dots.genAi.attachFunctionRoute(input);
+  console.log(function_route);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## update-function-route
+[public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_update_agent_function)
+```javascript
+try {
+  const input = { 
+    agent_uuid: '', 
+    function_route_id: '', 
+    updates: { 
+      description: 'Get current weather and forecast',
+      input_schema: { type: 'object', properties: { location: { type: 'string' } } } 
+    } 
+  };
+  const { data:{ function_route } } = await dots.genAi.updateFunctionRoute(input);
+  console.log(function_route);
+} catch (error) {
+  console.log(error);
+}
+```
+
+## detach-function-route
+[public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_detach_agent_function)
+```javascript
+try {
+  await dots.genAi.detachFunctionRoute({ agent_uuid: '', function_route_id: '' });
 } catch (error) {
   console.log(error);
 }

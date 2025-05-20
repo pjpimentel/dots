@@ -80,7 +80,7 @@ export interface IGenAiAgentRouteUpdateRequest {
 }
 
 export interface IGenAiAgentDeploymentVisibility {
-  visibility: 'VISIBILITY_PUBLIC' | 'VISIBILITY_PRIVATE';
+  visibility: 'VISIBILITY_PUBLIC' | 'VISIBILITY_PRIVATE' | 'VISIBILITY_UNKNOWN';
 }
 
 export interface IGenAiAgentVersion {
