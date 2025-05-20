@@ -27,7 +27,8 @@ try {
 [public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_list_agents)
 ```javascript
 try {
-  const { data:{ agents } } = await dots.genAi.listAgents();
+  const input = { only_deployed: true };
+  const { data:{ agents } } = await dots.genAi.listAgents(input);
   console.log(agents);
 } catch (error) {
   console.log(error);
@@ -439,7 +440,7 @@ try {
 [public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_list_indexing_jobs)
 ```javascript
 try {
-  const input = { knowledge_base_uuid: 'uuid' };
+  const input = { knowledge_base_uuid: 'uuid', page: 1, per_page: 10 };
   const { data:{ indexing_jobs } } = await dots.genAi.listIndexingJobs(input);
   console.log(indexing_jobs);
 } catch (error) {

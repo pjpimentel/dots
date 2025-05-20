@@ -7,13 +7,16 @@ export interface IListIndexingJobsApiResponse extends IListResponse {
 
 export interface IListIndexingJobsApiRequest {
   knowledge_base_uuid: string;
+  page?: number;
+  per_page?: number;
 }
 
 export type ListIndexingJobsResponse = IResponse<IListIndexingJobsApiResponse>;
 
 export const listIndexingJobs = ({ httpClient }: IContext) => (
-  { knowledge_base_uuid }: IListIndexingJobsApiRequest,
+  { knowledge_base_uuid, page = 1, per_page = 25 }: IListIndexingJobsApiRequest,
 ): Promise<Readonly<ListIndexingJobsResponse>> => {
   const url = `/gen-ai/knowledge_bases/${knowledge_base_uuid}/indexing_jobs`;
-  return httpClient.get<IListIndexingJobsApiResponse>(url);
-}; 
+  const params = { page, per_page };
+  return httpClient.get<IListIndexingJobsApiResponse>(url, { params });
+};

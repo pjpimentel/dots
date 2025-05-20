@@ -3,6 +3,7 @@ export interface IGenAiExternalApiKey {
   name?: string;
   created_at?: string;
   last_used_at?: string;
+  enabled?: boolean;
 }
 
 export interface IGenAiOpenAIKey extends IGenAiExternalApiKey {
