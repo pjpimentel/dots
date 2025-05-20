@@ -68,7 +68,16 @@ describe('dots', () => {
         const readmeTitles = readmeLines.filter(line => line.startsWith('#'));
         const [title, ...subtitles] = readmeTitles.map(title => title.replace(/#/g, '').trim());
         const prettyTitle = joinAndCapitalize(title);
-        const prettySubtitles = subtitles.map(joinAndCapitalize).sort();
+        let prettySubtitles = subtitles.map(joinAndCapitalize);
+        
+        // Correct the OpenAI naming in the method names
+        prettySubtitles = prettySubtitles.map(method => {
+          if (method.includes('Openai')) {
+            return method.replace('Openai', 'OpenAI');
+          }
+          return method;
+        }).sort();
+        
         // @ts-ignore: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type
         const apiReference = dots.modules[prettyTitle as any];
         expect(apiReference).toBeDefined();
