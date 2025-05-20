@@ -14,7 +14,7 @@ export interface IUpdateAgentVisibilityApiResponse {
 
 export interface IUpdateAgentVisibilityApiRequest {
   agent_uuid: string;
-  visibility: 'VISIBILITY_PUBLIC' | 'VISIBILITY_PRIVATE';
+  visibility: 'VISIBILITY_PUBLIC' | 'VISIBILITY_PRIVATE' | 'VISIBILITY_UNKNOWN';
 }
 
 export type UpdateAgentVisibilityResponse = IResponse<IUpdateAgentVisibilityApiResponse>;
@@ -25,7 +25,7 @@ export const updateAgentVisibility = ({ httpClient }: IContext) => (
   const url = `/gen-ai/agents/${agent_uuid}/deployment_visibility`;
   const body = {
     uuid: agent_uuid,
-    visibility
+    visibility: visibility
   };
   return httpClient.put<IUpdateAgentVisibilityApiResponse>(url, body);
 }; 

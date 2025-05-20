@@ -17,7 +17,8 @@ describe('rollback-agent-version', () => {
     const _rollbackAgentVersion = rollbackAgentVersion(context);
     await _rollbackAgentVersion(default_input);
     expect(httpClient.post).toHaveBeenCalledWith(
-      `/gen-ai/agents/${default_input.agent_uuid}/versions/${default_input.version_uuid}/rollback`
+      `/gen-ai/agents/${default_input.agent_uuid}/versions/${default_input.version_uuid}/rollback`,
+      { uuid: default_input.version_uuid }
     );
   });
 

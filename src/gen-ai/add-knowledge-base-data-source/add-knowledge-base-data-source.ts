@@ -16,5 +16,18 @@ export const addKnowledgeBaseDataSource = ({ httpClient }: IContext) => (
   { knowledge_base_uuid, data }: IAddKnowledgeBaseDataSourceApiRequest,
 ): Promise<Readonly<AddKnowledgeBaseDataSourceResponse>> => {
   const url = `/gen-ai/knowledge_bases/${knowledge_base_uuid}/data_sources`;
-  return httpClient.post<IAddKnowledgeBaseDataSourceApiResponse>(url, data);
+  
+  // Make sure we're only sending either spaces_data_source or web_crawler_data_source
+  // in the appropriate format
+  const requestData = {
+    knowledge_base_uuid
+  } as any;
+  
+  if (data.spaces_data_source) {
+    requestData.spaces_data_source = data.spaces_data_source;
+  } else if (data.web_crawler_data_source) {
+    requestData.web_crawler_data_source = data.web_crawler_data_source;
+  }
+  
+  return httpClient.post<IAddKnowledgeBaseDataSourceApiResponse>(url, requestData);
 }; 
