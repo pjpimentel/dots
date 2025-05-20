@@ -11,6 +11,7 @@ import * as domain from './domain';
 import * as droplet from './droplet';
 import * as firewall from './firewall';
 import * as floatingIp from './floating-ip';
+import * as genAi from './gen-ai';
 import * as image from './image';
 import * as kubernetes from './kubernetes';
 import * as loadBalancer from './load-balancer';
@@ -38,6 +39,7 @@ export {
   droplet,
   firewall,
   floatingIp,
+  genAi,
   image,
   kubernetes,
   loadBalancer,

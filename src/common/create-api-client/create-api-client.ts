@@ -112,6 +112,19 @@ export const createApiClient = ({
       listFloatingIps: modules.floatingIp.listFloatingIps(context),
       unassignIpFromDroplet: modules.floatingIp.unassignIpFromDroplet(context),
     });
+    const genAi = Object.freeze({
+      listModels: modules.genAi.listModels(context),
+      listRegions: modules.genAi.listRegions(context),
+      listAgents: modules.genAi.listAgents(context),
+      createAgent: modules.genAi.createAgent(context),
+      getAgent: modules.genAi.getAgent(context),
+      updateAgent: modules.genAi.updateAgent(context),
+      deleteAgent: modules.genAi.deleteAgent(context),
+      listAgentKeys: modules.genAi.listAgentKeys(context),
+      createAgentKey: modules.genAi.createAgentKey(context),
+      updateAgentKey: modules.genAi.updateAgentKey(context),
+      deleteAgentKey: modules.genAi.deleteAgentKey(context),
+    });
     const image = Object.freeze({
       convertImageToSnapshot: modules.image.convertImageToSnapshot(context),
       createCustomImage: modules.image.createCustomImage(context),
@@ -312,6 +325,7 @@ export const createApiClient = ({
       droplet,
       firewall,
       floatingIp,
+      genAi,
       image,
       kubernetes,
       loadBalancer,
