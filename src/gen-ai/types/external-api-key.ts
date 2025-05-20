@@ -10,7 +10,7 @@ export interface IGenAiOpenAIKey extends IGenAiExternalApiKey {
 }
 
 export interface IGenAiAnthropicKey extends IGenAiExternalApiKey {
-  // Anthropic-specific fields would go here
+  models?: string[];
 }
 
 export interface IGenAiExternalApiKeyCreateRequest {
@@ -21,4 +21,5 @@ export interface IGenAiExternalApiKeyCreateRequest {
 export interface IGenAiExternalApiKeyUpdateRequest {
   name?: string;
   enabled?: boolean;
+  api_key?: string;
 } 

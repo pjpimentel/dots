@@ -16,5 +16,6 @@ export const rollbackAgentVersion = ({ httpClient }: IContext) => (
   { agent_uuid, version_uuid }: IRollbackAgentVersionApiRequest,
 ): Promise<Readonly<RollbackAgentVersionResponse>> => {
   const url = `/gen-ai/agents/${agent_uuid}/versions/${version_uuid}/rollback`;
-  return httpClient.post<IRollbackAgentVersionApiResponse>(url);
+  const body = { uuid: version_uuid };
+  return httpClient.post<IRollbackAgentVersionApiResponse>(url, body);
 }; 

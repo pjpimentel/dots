@@ -23,13 +23,13 @@ export * from './update-agent-route/update-agent-route';
 export * from './detach-agent-route/detach-agent-route';
 
 // Function routes
-export * from './list-function-routes/list-function-routes';
 export * from './attach-function-route/attach-function-route';
 export * from './update-function-route/update-function-route';
 export * from './detach-function-route/detach-function-route';
 
 // Knowledge base association with agents
 export * from './attach-knowledge-base/attach-knowledge-base';
+export * from './attach-knowledge-bases/attach-knowledge-bases';
 export * from './detach-knowledge-base/detach-knowledge-base';
 
 // Agent versioning
@@ -42,9 +42,15 @@ export * from './create-openai-key/create-openai-key';
 export * from './get-openai-key/get-openai-key';
 export * from './update-openai-key/update-openai-key';
 export * from './delete-openai-key/delete-openai-key';
+export * from './list-agents-by-openai-key/list-agents-by-openai-key';
 
 // External API keys (Anthropic)
 export * from './list-anthropic-keys/list-anthropic-keys';
+export * from './create-anthropic-key/create-anthropic-key';
+export * from './get-anthropic-key/get-anthropic-key';
+export * from './update-anthropic-key/update-anthropic-key';
+export * from './delete-anthropic-key/delete-anthropic-key';
+export * from './list-agents-by-anthropic-key/list-agents-by-anthropic-key';
 
 // Knowledge bases
 export * from './list-knowledge-bases/list-knowledge-bases';
