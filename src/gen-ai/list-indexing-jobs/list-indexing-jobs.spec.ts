@@ -1,7 +1,7 @@
 import { listIndexingJobs } from './list-indexing-jobs';
 
 describe('list-indexing-jobs', () => {
-  const default_input = { knowledge_base_uuid: 'kbid' } as any;
+  const default_input = { knowledge_base_uuid: 'kbid', page: 2, per_page: 10 } as any;
   const default_output = require('crypto').randomBytes(2);
   const httpClient = { get: jest.fn().mockReturnValue(Promise.resolve(default_output)) };
   const context = { httpClient } as any;
@@ -17,7 +17,17 @@ describe('list-indexing-jobs', () => {
     const _listIndexingJobs = listIndexingJobs(context);
     await _listIndexingJobs(default_input);
     expect(httpClient.get).toHaveBeenCalledWith(
-      `/gen-ai/knowledge_bases/${default_input.knowledge_base_uuid}/indexing_jobs`
+      `/gen-ai/knowledge_bases/${default_input.knowledge_base_uuid}/indexing_jobs`,
+      { params: { page: 2, per_page: 10 } }
+    );
+  });
+
+  it('should use default pagination when not provided', async () => {
+    const _listIndexingJobs = listIndexingJobs(context);
+    await _listIndexingJobs({ knowledge_base_uuid: 'kbid2' } as any);
+    expect(httpClient.get).toHaveBeenCalledWith(
+      `/gen-ai/knowledge_bases/kbid2/indexing_jobs`,
+      { params: { page: 1, per_page: 25 } }
     );
   });
 
