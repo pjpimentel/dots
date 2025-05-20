@@ -50,10 +50,13 @@ const _getFolders = (_module: string) => {
 /// {getAccount}, {getAction, listActions}
 const _createEndpointsMirror = (folders: string[]) => folders.reduce((endpoints, fn) => {
   const prettyFnName = joinAndCapitalize(fn);
-  return {...endpoints, [prettyFnName]: _FN_REF};
+  // Special case for OpenAI methods - ensure correct capitalization
+  const finalName = prettyFnName.includes('Openai') ? 
+    prettyFnName.replace('Openai', 'OpenAI') : prettyFnName;
+  return {...endpoints, [finalName]: _FN_REF};
 }, {});
 /// {account: {getAccount}, action: {getAction, listActions}}
-const ENDPOINTS = MODULES.reduce((mods, _module) => {
+const ENDPOINTS: Record<string, Record<string, any>> = MODULES.reduce((mods, _module) => {
   const folders = _getFolders(_module)
   const prettyModuleName = joinAndCapitalize(_module);
 
