@@ -1,5 +1,7 @@
 import { listAgentVersions } from './list-agent-versions';
 
+// These tests cover experimental functionality that may change.
+
 describe('list-agent-versions', () => {
   const default_input = { agent_uuid: 'aid' } as any;
   const default_output = require('crypto').randomBytes(2);
