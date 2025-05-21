@@ -1,6 +1,11 @@
 import { IContext, IResponse } from '../../types';
 import { IGenAiAgent } from '..';
 
+/**
+ * Experimental: The agent version APIs are not yet part of the stable public
+ * documentation and may change without notice.
+ */
+
 export interface IRollbackAgentVersionApiResponse {
   agent: IGenAiAgent;
 }
@@ -17,5 +22,5 @@ export const rollbackAgentVersion = ({ httpClient }: IContext) => (
 ): Promise<Readonly<RollbackAgentVersionResponse>> => {
   const url = `/gen-ai/agents/${agent_uuid}/versions/${version_uuid}/rollback`;
   const body = { uuid: version_uuid };
-  return httpClient.post<IRollbackAgentVersionApiResponse>(url, body);
-}; 
+  return httpClient.put<IRollbackAgentVersionApiResponse>(url, body);
+};
