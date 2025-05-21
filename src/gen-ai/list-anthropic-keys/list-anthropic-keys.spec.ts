@@ -14,8 +14,11 @@ describe('list-anthropic-keys', () => {
 
   it('should call axios.get', async () => {
     const _listAnthropicKeys = listAnthropicKeys(context);
-    await _listAnthropicKeys();
-    expect(httpClient.get).toHaveBeenCalledWith('/gen-ai/anthropic/keys');
+    await _listAnthropicKeys({ page: 1, per_page: 20 });
+    expect(httpClient.get).toHaveBeenCalledWith(
+      '/gen-ai/anthropic/keys',
+      { params: { page: 1, per_page: 20 } },
+    );
   });
 
   it('should output axios response', async () => {

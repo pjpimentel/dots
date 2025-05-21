@@ -7,7 +7,10 @@ export interface IListRegionsApiResponse extends IListResponse {
 
 export type ListRegionsResponse = IResponse<IListRegionsApiResponse>;
 
-export const listRegions = ({ httpClient }: IContext) => (): Promise<Readonly<ListRegionsResponse>> => {
+export const listRegions = ({ httpClient }: IContext) => (
+  { page = 1, per_page = 25 }: { page?: number; per_page?: number } = {},
+): Promise<Readonly<ListRegionsResponse>> => {
   const url = '/gen-ai/regions';
-  return httpClient.get<IListRegionsApiResponse>(url);
+  const params = { page, per_page };
+  return httpClient.get<IListRegionsApiResponse>(url, { params });
 };

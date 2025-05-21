@@ -7,13 +7,16 @@ export interface IListAgentsByAnthropicKeyApiResponse extends IListResponse {
 
 export interface IListAgentsByAnthropicKeyApiRequest {
   key_uuid: string;
+  page?: number;
+  per_page?: number;
 }
 
 export type ListAgentsByAnthropicKeyResponse = IResponse<IListAgentsByAnthropicKeyApiResponse>;
 
 export const listAgentsByAnthropicKey = ({ httpClient }: IContext) => (
-  { key_uuid }: IListAgentsByAnthropicKeyApiRequest
+  { key_uuid, page = 1, per_page = 25 }: IListAgentsByAnthropicKeyApiRequest
 ): Promise<Readonly<ListAgentsByAnthropicKeyResponse>> => {
   const url = `/gen-ai/anthropic/keys/${key_uuid}/agents`;
-  return httpClient.get<IListAgentsByAnthropicKeyApiResponse>(url);
-}; 
+  const params = { page, per_page };
+  return httpClient.get<IListAgentsByAnthropicKeyApiResponse>(url, { params });
+};

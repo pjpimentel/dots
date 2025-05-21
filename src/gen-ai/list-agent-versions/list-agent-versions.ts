@@ -7,13 +7,16 @@ export interface IListAgentVersionsApiResponse extends IListResponse {
 
 export interface IListAgentVersionsApiRequest {
   agent_uuid: string;
+  page?: number;
+  per_page?: number;
 }
 
 export type ListAgentVersionsResponse = IResponse<IListAgentVersionsApiResponse>;
 
 export const listAgentVersions = ({ httpClient }: IContext) => (
-  { agent_uuid }: IListAgentVersionsApiRequest,
+  { agent_uuid, page = 1, per_page = 25 }: IListAgentVersionsApiRequest,
 ): Promise<Readonly<ListAgentVersionsResponse>> => {
   const url = `/gen-ai/agents/${agent_uuid}/versions`;
-  return httpClient.get<IListAgentVersionsApiResponse>(url);
-}; 
+  const params = { page, per_page };
+  return httpClient.get<IListAgentVersionsApiResponse>(url, { params });
+};

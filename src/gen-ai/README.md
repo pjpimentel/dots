@@ -16,7 +16,7 @@ try {
 [public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_list_datacenter_regions)
 ```javascript
 try {
-  const { data:{ regions } } = await dots.genAi.listRegions();
+  const { data:{ regions } } = await dots.genAi.listRegions({ page: 1, per_page: 25 });
   console.log(regions);
 } catch (error) {
   console.log(error);
@@ -97,7 +97,7 @@ try {
 [public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_list_agent_api_keys)
 ```javascript
 try {
-  const { data:{ api_key_infos } } = await dots.genAi.listAgentKeys({ agent_uuid: '' });
+  const { data:{ api_key_infos } } = await dots.genAi.listAgentKeys({ agent_uuid: '', page: 1, per_page: 25 });
   console.log(api_key_infos);
 } catch (error) {
   console.log(error);
@@ -154,7 +154,7 @@ try {
 [public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_get_agent_children)
 ```javascript
 try {
-  const { data:{ routes } } = await dots.genAi.listAgentRoutes({ agent_uuid: '' });
+  const { data:{ routes } } = await dots.genAi.listAgentRoutes({ agent_uuid: '', page: 1, per_page: 25 });
   console.log(routes);
 } catch (error) {
   console.log(error);
@@ -229,7 +229,7 @@ try {
 [public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_list_agent_versions)
 ```javascript
 try {
-  const { data:{ versions } } = await dots.genAi.listAgentVersions({ agent_uuid: '' });
+  const { data:{ versions } } = await dots.genAi.listAgentVersions({ agent_uuid: '', page: 1, per_page: 25 });
   console.log(versions);
 } catch (error) {
   console.log(error);
@@ -252,7 +252,7 @@ try {
 [public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_list_openai_api_keys)
 ```javascript
 try {
-  const { data:{ openai_keys } } = await dots.genAi.listOpenAIKeys();
+  const { data:{ openai_keys } } = await dots.genAi.listOpenAIKeys({ page: 1, per_page: 25 });
   console.log(openai_keys);
 } catch (error) {
   console.log(error);
@@ -308,7 +308,7 @@ try {
 [public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_list_anthropic_api_keys)
 ```javascript
 try {
-  const { data:{ anthropic_keys } } = await dots.genAi.listAnthropicKeys();
+  const { data:{ anthropic_keys } } = await dots.genAi.listAnthropicKeys({ page: 1, per_page: 25 });
   console.log(anthropic_keys);
 } catch (error) {
   console.log(error);
@@ -319,7 +319,7 @@ try {
 [public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_list_knowledge_bases)
 ```javascript
 try {
-  const { data:{ knowledge_bases } } = await dots.genAi.listKnowledgeBases();
+  const { data:{ knowledge_bases } } = await dots.genAi.listKnowledgeBases({ page: 1, per_page: 25 });
   console.log(knowledge_bases);
 } catch (error) {
   console.log(error);
@@ -378,7 +378,7 @@ try {
 [public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_list_knowledge_base_data_sources)
 ```javascript
 try {
-  const input = { knowledge_base_uuid: 'uuid' };
+  const input = { knowledge_base_uuid: 'uuid', page: 1, per_page: 25 };
   const { data:{ knowledge_base_data_sources } } = await dots.genAi.listKnowledgeBaseDataSources(input);
   console.log(knowledge_base_data_sources);
 } catch (error) {
@@ -560,7 +560,7 @@ try {
 [public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_list_agents_by_openai_key)
 ```javascript
 try {
-  const { data:{ agents } } = await dots.genAi.listAgentsByOpenAIKey({ key_uuid: '' });
+  const { data:{ agents } } = await dots.genAi.listAgentsByOpenAIKey({ key_uuid: '', page: 1, per_page: 25 });
   console.log(agents);
 } catch (error) {
   console.log(error);
@@ -571,7 +571,7 @@ try {
 [public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_list_agents_by_anthropic_key)
 ```javascript
 try {
-  const { data:{ agents } } = await dots.genAi.listAgentsByAnthropicKey({ key_uuid: '' });
+  const { data:{ agents } } = await dots.genAi.listAgentsByAnthropicKey({ key_uuid: '', page: 1, per_page: 25 });
   console.log(agents);
 } catch (error) {
   console.log(error);
