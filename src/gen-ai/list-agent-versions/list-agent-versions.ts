@@ -1,6 +1,11 @@
 import { IContext, IListResponse, IResponse } from '../../types';
 import { IGenAiAgentVersion } from '..';
 
+/**
+ * Experimental: The agent version APIs are not yet part of the stable public
+ * documentation and may change without notice.
+ */
+
 export interface IListAgentVersionsApiResponse extends IListResponse {
   versions: IGenAiAgentVersion[];
 }

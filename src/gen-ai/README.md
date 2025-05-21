@@ -227,6 +227,7 @@ try {
 
 ## list-agent-versions
 [public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_list_agent_versions)
+> **Note**: These endpoints are experimental and may change without notice.
 ```javascript
 try {
   const { data:{ versions } } = await dots.genAi.listAgentVersions({ agent_uuid: '' });
@@ -238,6 +239,7 @@ try {
 
 ## rollback-agent-version
 [public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_rollback_to_agent_version)
+> **Note**: These endpoints are experimental and may change without notice.
 ```javascript
 try {
   const input = { agent_uuid: '', version_uuid: '' };
