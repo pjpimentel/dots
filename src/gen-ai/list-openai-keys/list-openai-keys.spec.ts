@@ -14,8 +14,11 @@ describe('list-openai-keys', () => {
 
   it('should call axios.get', async () => {
     const _listOpenAIKeys = listOpenAIKeys(context);
-    await _listOpenAIKeys();
-    expect(httpClient.get).toHaveBeenCalledWith('/gen-ai/openai/keys');
+    await _listOpenAIKeys({ page: 5, per_page: 10 });
+    expect(httpClient.get).toHaveBeenCalledWith(
+      '/gen-ai/openai/keys',
+      { params: { page: 5, per_page: 10 } },
+    );
   });
 
   it('should output axios response', async () => {

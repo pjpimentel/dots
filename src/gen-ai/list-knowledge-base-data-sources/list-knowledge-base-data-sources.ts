@@ -7,13 +7,16 @@ export interface IListKnowledgeBaseDataSourcesApiResponse extends IListResponse 
 
 export interface IListKnowledgeBaseDataSourcesApiRequest {
   knowledge_base_uuid: string;
+  page?: number;
+  per_page?: number;
 }
 
 export type ListKnowledgeBaseDataSourcesResponse = IResponse<IListKnowledgeBaseDataSourcesApiResponse>;
 
 export const listKnowledgeBaseDataSources = ({ httpClient }: IContext) => (
-  { knowledge_base_uuid }: IListKnowledgeBaseDataSourcesApiRequest,
+  { knowledge_base_uuid, page = 1, per_page = 25 }: IListKnowledgeBaseDataSourcesApiRequest,
 ): Promise<Readonly<ListKnowledgeBaseDataSourcesResponse>> => {
   const url = `/gen-ai/knowledge_bases/${knowledge_base_uuid}/data_sources`;
-  return httpClient.get<IListKnowledgeBaseDataSourcesApiResponse>(url);
-}; 
+  const params = { page, per_page };
+  return httpClient.get<IListKnowledgeBaseDataSourcesApiResponse>(url, { params });
+};

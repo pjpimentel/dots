@@ -7,7 +7,10 @@ export interface IListAnthropicKeysApiResponse extends IListResponse {
 
 export type ListAnthropicKeysResponse = IResponse<IListAnthropicKeysApiResponse>;
 
-export const listAnthropicKeys = ({ httpClient }: IContext) => (): Promise<Readonly<ListAnthropicKeysResponse>> => {
+export const listAnthropicKeys = ({ httpClient }: IContext) => (
+  { page = 1, per_page = 25 }: { page?: number; per_page?: number } = {},
+): Promise<Readonly<ListAnthropicKeysResponse>> => {
   const url = '/gen-ai/anthropic/keys';
-  return httpClient.get<IListAnthropicKeysApiResponse>(url);
-}; 
+  const params = { page, per_page };
+  return httpClient.get<IListAnthropicKeysApiResponse>(url, { params });
+};
