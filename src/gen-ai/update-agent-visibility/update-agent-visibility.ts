@@ -14,7 +14,7 @@ export interface IUpdateAgentVisibilityApiResponse {
 
 export interface IUpdateAgentVisibilityApiRequest {
   agent_uuid: string;
-  visibility: 'VISIBILITY_PUBLIC' | 'VISIBILITY_PRIVATE' | 'VISIBILITY_UNKNOWN';
+  visibility: 'VISIBILITY_PUBLIC' | 'VISIBILITY_PRIVATE' | 'VISIBILITY_UNKNOWN' | 'VISIBILITY_DISABLED';
 }
 
 export type UpdateAgentVisibilityResponse = IResponse<IUpdateAgentVisibilityApiResponse>;

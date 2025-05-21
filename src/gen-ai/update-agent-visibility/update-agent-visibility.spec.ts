@@ -33,4 +33,17 @@ describe('update-agent-visibility', () => {
     const output = await _updateAgentVisibility(default_input);
     expect(output).toBe(default_output);
   });
-}); 
+
+  it('should allow VISIBILITY_DISABLED', async () => {
+    const _updateAgentVisibility = updateAgentVisibility(context);
+    const input = { agent_uuid: 'aid', visibility: 'VISIBILITY_DISABLED' } as any;
+    await _updateAgentVisibility(input);
+    expect(httpClient.put).toHaveBeenCalledWith(
+      `/gen-ai/agents/${input.agent_uuid}/deployment_visibility`,
+      {
+        uuid: input.agent_uuid,
+        visibility: input.visibility
+      }
+    );
+  });
+});
