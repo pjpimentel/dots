@@ -7,7 +7,10 @@ export interface IListOpenAIKeysApiResponse extends IListResponse {
 
 export type ListOpenAIKeysResponse = IResponse<IListOpenAIKeysApiResponse>;
 
-export const listOpenAIKeys = ({ httpClient }: IContext) => (): Promise<Readonly<ListOpenAIKeysResponse>> => {
+export const listOpenAIKeys = ({ httpClient }: IContext) => (
+  { page = 1, per_page = 25 }: { page?: number; per_page?: number } = {},
+): Promise<Readonly<ListOpenAIKeysResponse>> => {
   const url = '/gen-ai/openai/keys';
-  return httpClient.get<IListOpenAIKeysApiResponse>(url);
-}; 
+  const params = { page, per_page };
+  return httpClient.get<IListOpenAIKeysApiResponse>(url, { params });
+};
