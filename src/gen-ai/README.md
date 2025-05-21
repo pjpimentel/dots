@@ -391,14 +391,16 @@ try {
 ```javascript
 try {
   // Example with Spaces data source
-  const spacesInput = { 
-    knowledge_base_uuid: 'uuid', 
+  const spacesInput = {
+    knowledge_base_uuid: 'uuid',
     data: {
       knowledge_base_uuid: 'uuid',
       spaces_data_source: {
         bucket_name: 'my-bucket',
         region: 'nyc1',
-        item_path: '/docs'
+        item_path: '/docs',
+        object_path: '/docs',
+        recursive: true
       }
     }
   };
@@ -406,19 +408,36 @@ try {
   console.log(knowledge_base_data_source);
 
   // Example with Web Crawler data source
-  const webCrawlerInput = { 
-    knowledge_base_uuid: 'uuid', 
+  const webCrawlerInput = {
+    knowledge_base_uuid: 'uuid',
     data: {
       knowledge_base_uuid: 'uuid',
       web_crawler_data_source: {
         base_url: 'https://example.com',
+        url: 'https://example.com',
+        urls: ['https://example.com'],
         crawling_option: 'domain',
+        crawl_depth: 2,
         embed_media: true
       }
     }
   };
   const { data:{ knowledge_base_data_source: webSource } } = await dots.genAi.addKnowledgeBaseDataSource(webCrawlerInput);
   console.log(webSource);
+
+  // Example with Uploaded File data source
+  const fileInput = {
+    knowledge_base_uuid: 'uuid',
+    data: {
+      knowledge_base_uuid: 'uuid',
+      file_upload_data_source: {
+        file_uuid: 'file-uuid',
+        file_name: 'doc.txt'
+      }
+    }
+  };
+  const { data:{ knowledge_base_data_source: fileSource } } = await dots.genAi.addKnowledgeBaseDataSource(fileInput);
+  console.log(fileSource);
 } catch (error) {
   console.log(error);
 }
