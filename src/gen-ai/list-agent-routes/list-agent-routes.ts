@@ -7,13 +7,16 @@ export interface IListAgentRoutesApiResponse extends IListResponse {
 
 export interface IListAgentRoutesApiRequest {
   agent_uuid: string;
+  page?: number;
+  per_page?: number;
 }
 
 export type ListAgentRoutesResponse = IResponse<IListAgentRoutesApiResponse>;
 
 export const listAgentRoutes = ({ httpClient }: IContext) => (
-  { agent_uuid }: IListAgentRoutesApiRequest,
+  { agent_uuid, page = 1, per_page = 25 }: IListAgentRoutesApiRequest,
 ): Promise<Readonly<ListAgentRoutesResponse>> => {
   const url = `/gen-ai/agents/${agent_uuid}/child_agents`;
-  return httpClient.get<IListAgentRoutesApiResponse>(url);
-}; 
+  const params = { page, per_page };
+  return httpClient.get<IListAgentRoutesApiResponse>(url, { params });
+};

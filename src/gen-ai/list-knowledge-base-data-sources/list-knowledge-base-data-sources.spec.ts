@@ -1,7 +1,7 @@
 import { listKnowledgeBaseDataSources } from './list-knowledge-base-data-sources';
 
 describe('list-knowledge-base-data-sources', () => {
-  const default_input = { knowledge_base_uuid: 'kbid' } as any;
+  const default_input = { knowledge_base_uuid: 'kbid', page: 2, per_page: 5 } as any;
   const default_output = require('crypto').randomBytes(2);
   const httpClient = { get: jest.fn().mockReturnValue(Promise.resolve(default_output)) };
   const context = { httpClient } as any;
@@ -17,7 +17,8 @@ describe('list-knowledge-base-data-sources', () => {
     const _listKnowledgeBaseDataSources = listKnowledgeBaseDataSources(context);
     await _listKnowledgeBaseDataSources(default_input);
     expect(httpClient.get).toHaveBeenCalledWith(
-      `/gen-ai/knowledge_bases/${default_input.knowledge_base_uuid}/data_sources`
+      `/gen-ai/knowledge_bases/${default_input.knowledge_base_uuid}/data_sources`,
+      { params: { page: 2, per_page: 5 } },
     );
   });
 

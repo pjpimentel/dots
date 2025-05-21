@@ -18,8 +18,11 @@ describe('list-regions', () => {
 
   it('should call axios.get', async () => {
     const _listRegions = listRegions(context);
-    await _listRegions();
-    expect(httpClient.get).toHaveBeenCalledWith(`/gen-ai/regions`);
+    await _listRegions({ page: 4, per_page: 40 });
+    expect(httpClient.get).toHaveBeenCalledWith(
+      `/gen-ai/regions`,
+      { params: { page: 4, per_page: 40 } },
+    );
   });
 
   it('should output axios response', async () => {
