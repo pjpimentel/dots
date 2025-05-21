@@ -120,7 +120,7 @@ try {
 [public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_update_agent_api_key)
 ```javascript
 try {
-  const input = { agent_uuid: '', api_key_uuid: '', name: 'new name' };
+  const input = { agent_uuid: '', api_key_uuid: '', name: 'new name', enabled: true };
   const { data:{ api_key_info } } = await dots.genAi.updateAgentKey(input);
   console.log(api_key_info);
 } catch (error) {
