@@ -14,16 +14,18 @@ describe('add-knowledge-base-data-source', () => {
   });
 
   it('should handle Spaces data source correctly', async () => {
-    const spaces_input = { 
-      knowledge_base_uuid, 
-      data: { 
+    const spaces_input = {
+      knowledge_base_uuid,
+      data: {
         knowledge_base_uuid,
         spaces_data_source: {
           bucket_name: 'my-bucket',
           region: 'nyc1',
-          item_path: '/docs'
+          item_path: '/docs',
+          object_path: '/docs',
+          recursive: true
         }
-      } 
+      }
     } as any;
     
     const _addKnowledgeBaseDataSource = addKnowledgeBaseDataSource(context);
@@ -45,10 +47,13 @@ describe('add-knowledge-base-data-source', () => {
         knowledge_base_uuid,
         web_crawler_data_source: {
           base_url: 'https://example.com',
+          url: 'https://example.com',
+          urls: ['https://example.com'],
           crawling_option: 'domain',
+          crawl_depth: 2,
           embed_media: true
         }
-      } 
+      }
     } as any;
     
     const _addKnowledgeBaseDataSource = addKnowledgeBaseDataSource(context);
@@ -59,6 +64,30 @@ describe('add-knowledge-base-data-source', () => {
       {
         knowledge_base_uuid,
         web_crawler_data_source: web_crawler_input.data.web_crawler_data_source
+      }
+    );
+  });
+
+  it('should handle File Upload data source correctly', async () => {
+    const file_input = {
+      knowledge_base_uuid,
+      data: {
+        knowledge_base_uuid,
+        file_upload_data_source: {
+          file_uuid: 'file-uuid',
+          file_name: 'doc.txt'
+        }
+      }
+    } as any;
+
+    const _addKnowledgeBaseDataSource = addKnowledgeBaseDataSource(context);
+    await _addKnowledgeBaseDataSource(file_input);
+
+    expect(httpClient.post).toHaveBeenCalledWith(
+      `/gen-ai/knowledge_bases/${knowledge_base_uuid}/data_sources`,
+      {
+        knowledge_base_uuid,
+        file_upload_data_source: file_input.data.file_upload_data_source
       }
     );
   });
