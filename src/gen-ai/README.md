@@ -85,7 +85,7 @@ try {
 [public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_update_agent_deployment_visibility)
 ```javascript
 try {
-  const input = { agent_uuid: '', visibility: 'VISIBILITY_PUBLIC' };
+  const input = { agent_uuid: '', visibility: 'VISIBILITY_PUBLIC' }; // or 'VISIBILITY_PRIVATE', 'VISIBILITY_UNKNOWN', 'VISIBILITY_DISABLED'
   const { data } = await dots.genAi.updateAgentVisibility(input);
   console.log(data.url || data.agent?.endpoint?.url);
 } catch (error) {
