@@ -234,6 +234,7 @@ js.js
     1. [detach-knowledge-base](src/gen-ai/README.md#detach-knowledge-base)
     1. [list-agent-versions](src/gen-ai/README.md#list-agent-versions)
     1. [rollback-agent-version](src/gen-ai/README.md#rollback-agent-version)
+    *The agent versioning methods above are experimental and may change without notice.*
     1. [list-openai-keys](src/gen-ai/README.md#list-openai-keys)
     1. [create-openai-key](src/gen-ai/README.md#create-openai-key)
     1. [get-openai-key](src/gen-ai/README.md#get-openai-key)
