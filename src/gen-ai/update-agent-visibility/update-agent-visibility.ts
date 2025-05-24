@@ -1,5 +1,4 @@
 import { IContext, IResponse } from '../../types';
-import { IGenAiAgentDeploymentVisibility } from '..';
 
 export interface IUpdateAgentVisibilityApiResponse {
   url?: string;
@@ -28,4 +27,4 @@ export const updateAgentVisibility = ({ httpClient }: IContext) => (
     visibility: visibility
   };
   return httpClient.put<IUpdateAgentVisibilityApiResponse>(url, body);
-}; 
+};
