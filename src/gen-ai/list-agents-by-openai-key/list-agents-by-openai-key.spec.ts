@@ -1,7 +1,7 @@
 import { listAgentsByOpenAIKey } from './list-agents-by-openai-key';
 
 describe('list-agents-by-openai-key', () => {
-  const default_input = { key_uuid: 'kid', page: 2, per_page: 30 } as any;
+  const default_input = { key_uuid: 'kid' } as any;
   const default_output = require('crypto').randomBytes(2);
   const httpClient = { get: jest.fn().mockReturnValue(Promise.resolve(default_output)) };
   const context = { httpClient } as any;
@@ -18,6 +18,11 @@ describe('list-agents-by-openai-key', () => {
     await _listAgentsByOpenAIKey(default_input);
     expect(httpClient.get).toHaveBeenCalledWith(
       `/gen-ai/openai/keys/${default_input.key_uuid}/agents`,
+      { params: { page: 1, per_page: 25 } },
+    );
+    await _listAgentsByOpenAIKey({...default_input, page: 2, per_page: 30});
+    expect(httpClient.get).toHaveBeenCalledWith(
+      `/gen-ai/openai/keys/${default_input.key_uuid}/agents`,
       { params: { page: 2, per_page: 30 } },
     );
   });
@@ -27,4 +32,4 @@ describe('list-agents-by-openai-key', () => {
     const output = await _listAgentsByOpenAIKey(default_input);
     expect(output).toBe(default_output);
   });
-}); 
+});
