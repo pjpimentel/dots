@@ -1,5 +1,10 @@
 # changelog
 
+## **2025-05-23** - new version 3.12.0
+
+* npm audit + update dependencies
+* genAi module, thanks ([@AhmedElywa](https://github.com/AhmedElywa))
+
 ## **2025-05-11** - new version 3.11.17
 
 * npm audit + update dependencies
