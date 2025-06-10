@@ -1,7 +1,7 @@
 import { createIndexingJob } from './create-indexing-job';
 
 describe('create-indexing-job', () => {
-  const default_input = { knowledge_base_uuid: 'kbid' } as any;
+  const default_input = { knowledge_base_uuid: 'kbid', data_source_uuids: ['ds_uuid'] } as any;
   const default_output = require('crypto').randomBytes(2);
   const httpClient = { post: jest.fn().mockReturnValue(Promise.resolve(default_output)) };
   const context = { httpClient } as any;
@@ -16,9 +16,7 @@ describe('create-indexing-job', () => {
   it('should call axios.post', async () => {
     const _createIndexingJob = createIndexingJob(context);
     await _createIndexingJob(default_input);
-    expect(httpClient.post).toHaveBeenCalledWith(
-      `/gen-ai/knowledge_bases/${default_input.knowledge_base_uuid}/indexing_jobs`
-    );
+    expect(httpClient.post).toHaveBeenCalledWith(`/gen-ai/indexing_jobs`, default_input);
   });
 
   it('should output axios response', async () => {

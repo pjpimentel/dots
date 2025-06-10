@@ -473,7 +473,7 @@ try {
 [public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_create_indexing_job)
 ```javascript
 try {
-  const input = { knowledge_base_uuid: 'uuid' };
+  const input = { knowledge_base_uuid: 'uuid', data_source_uuids: ['ds_uuid'] };
   const { data:{ indexing_job } } = await dots.genAi.createIndexingJob(input);
   console.log(indexing_job);
 } catch (error) {
