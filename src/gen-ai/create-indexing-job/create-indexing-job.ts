@@ -7,13 +7,14 @@ export interface ICreateIndexingJobApiResponse {
 
 export interface ICreateIndexingJobApiRequest {
   knowledge_base_uuid: string;
+  data_source_uuids: string[];
 }
 
 export type CreateIndexingJobResponse = IResponse<ICreateIndexingJobApiResponse>;
 
 export const createIndexingJob = ({ httpClient }: IContext) => (
-  { knowledge_base_uuid }: ICreateIndexingJobApiRequest,
+  data: ICreateIndexingJobApiRequest,
 ): Promise<Readonly<CreateIndexingJobResponse>> => {
-  const url = `/gen-ai/knowledge_bases/${knowledge_base_uuid}/indexing_jobs`;
-  return httpClient.post<ICreateIndexingJobApiResponse>(url);
+  const url = `/gen-ai/indexing_jobs`;
+  return httpClient.post<ICreateIndexingJobApiResponse>(url, data);
 }; 
