@@ -2,7 +2,7 @@
 
 ## digital ocean api wrapper
 
-[![actions](https://github.com/pjpimentel/dots/workflows/build/badge.svg?branch=master)](https://github.com/pjpimentel/dots/actions)
+[![actions](https://github.com/pjpimentel/dots/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/pjpimentel/dots/actions/workflows/build.yml)
 [![quality](https://sonarcloud.io/api/project_badges/measure?branch=master&project=dots&metric=alert_status)](https://sonarcloud.io/dashboard?branch=master&id=dots)
 [![coverage](https://sonarcloud.io/api/project_badges/measure?branch=master&project=dots&metric=coverage)](https://sonarcloud.io/dashboard?branch=master&id=dots)
 [![security](https://sonarcloud.io/api/project_badges/measure?branch=master&project=dots&metric=security_rating)](https://sonarcloud.io/dashboard?branch=master&id=dots)
@@ -365,6 +365,9 @@ js.js
 
 ## contributors
 
+<a href="https://github.com/digipigeon" target="_blank">
+    <img src="https://avatars2.githubusercontent.com/u/409141?v=3" width="80" height="80">
+</a>
 <a href="https://github.com/AhmedElywa" target="_blank">
     <img src="https://avatars2.githubusercontent.com/u/4535142?v=3" width="80" height="80">
 </a>
