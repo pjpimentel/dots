@@ -1,9 +1,8 @@
 import { getIndexingJob } from './get-indexing-job';
 
 describe('get-indexing-job', () => {
-  const default_input = { 
-    knowledge_base_uuid: 'kbid', 
-    indexing_job_uuid: 'ijid' 
+  const default_input = {
+    indexing_job_uuid: 'ijid'
   } as any;
   const default_output = require('crypto').randomBytes(2);
   const httpClient = { get: jest.fn().mockReturnValue(Promise.resolve(default_output)) };
@@ -20,7 +19,7 @@ describe('get-indexing-job', () => {
     const _getIndexingJob = getIndexingJob(context);
     await _getIndexingJob(default_input);
     expect(httpClient.get).toHaveBeenCalledWith(
-      `/gen-ai/knowledge_bases/${default_input.knowledge_base_uuid}/indexing_jobs/${default_input.indexing_job_uuid}`
+      `/gen-ai/indexing_jobs/${default_input.indexing_job_uuid}`
     );
   });
 
@@ -29,4 +28,4 @@ describe('get-indexing-job', () => {
     const output = await _getIndexingJob(default_input);
     expect(output).toBe(default_output);
   });
-}); 
+});
