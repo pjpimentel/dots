@@ -461,7 +461,7 @@ try {
 [public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_list_indexing_jobs)
 ```javascript
 try {
-  const input = { knowledge_base_uuid: 'uuid', page: 1, per_page: 10 };
+  const input = { page: 1, per_page: 10 };
   const { data:{ indexing_jobs } } = await dots.genAi.listIndexingJobs(input);
   console.log(indexing_jobs);
 } catch (error) {
@@ -497,7 +497,7 @@ try {
 [public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_get_indexing_job)
 ```javascript
 try {
-  const input = { knowledge_base_uuid: 'uuid', indexing_job_uuid: 'jobid' };
+  const input = { indexing_job_uuid: 'jobid' };
   const { data:{ indexing_job } } = await dots.genAi.getIndexingJob(input);
   console.log(indexing_job);
 } catch (error) {
@@ -509,7 +509,7 @@ try {
 [public docs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/GenAI-Platform-(Public-Preview)/operation/genai_cancel_indexing_job)
 ```javascript
 try {
-  const input = { knowledge_base_uuid: 'uuid', indexing_job_uuid: 'jobid' };
+  const input = { indexing_job_uuid: 'jobid' };
   const { status } = await dots.genAi.cancelIndexingJob(input);
   console.log(status);
 } catch (error) {
