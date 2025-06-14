@@ -1,5 +1,10 @@
 # changelog
 
+## **2025-06-14** - new version 3.12.1
+
+* npm audit + update dependencies
+* genAi module fixed for indexing jobs, thanks ([@digipigeon](https://github.com/digipigeon))
+
 ## **2025-05-23** - new version 3.12.0
 
 * npm audit + update dependencies
