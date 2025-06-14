@@ -4,6 +4,9 @@
 
 * npm audit + update dependencies
 * genAi module fixed for indexing jobs, thanks ([@digipigeon](https://github.com/digipigeon))
+* drop nodejs 16.x support
+* add nodejs 24.x support
+* use nodejs 22.x to build and publish
 
 ## **2025-05-23** - new version 3.12.0
 
