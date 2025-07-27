@@ -1,6 +1,6 @@
 {
   "name": "dots-wrapper",
-  "version": "3.12.1",
+  "version": "3.12.2",
   "description": "Digital Ocean v2 api wrapper - javascript - typescript - nodejs",
   "main": "dist/index.js",
   "browser": "dist/index-browser.min.js",
@@ -28,20 +28,20 @@
     "dist"
   ],
   "dependencies": {
-    "axios": "^1.10.0"
+    "axios": "^1.11.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.27.4",
-    "@babel/preset-env": "^7.27.2",
+    "@babel/core": "^7.28.0",
+    "@babel/preset-env": "^7.28.0",
     "@babel/preset-typescript": "^7.27.1",
-    "@types/jest": "^29.5.14",
-    "@types/node": "^24.0.1",
-    "babel-jest": "^30.0.0",
-    "jest": "^30.0.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.1.0",
+    "babel-jest": "^30.0.5",
+    "jest": "^30.0.5",
     "license-webpack-plugin": "^4.0.2",
     "ts-jest": "^29.4.0",
     "typescript": "^5.8.3",
-    "webpack": "^5.99.9",
+    "webpack": "^5.100.2",
     "webpack-cli": "^6.0.1"
   },
   "keywords": [
