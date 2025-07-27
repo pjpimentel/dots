@@ -1,5 +1,9 @@
 # changelog
 
+## **2025-07-27** - new version 3.12.2
+
+* npm audit + update dependencies
+
 ## **2025-06-14** - new version 3.12.1
 
 * npm audit + update dependencies
