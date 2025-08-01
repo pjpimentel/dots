@@ -2,7 +2,7 @@ import { IResponse, IContext } from '../../types';
 import {
   IDatabaseClusterUser,
   IDatabaseClusterMysqlUserSettings,
-  IDatabaseClusterMongoUserSettings
+  IDatabaseClusterUserSettings
 } from '../types';
 
 export interface ICreateDatabaseClusterUserApiResponse {
@@ -13,9 +13,7 @@ export interface ICreateDatabaseClusterUserApiRequest {
   database_cluster_id: string;
   user_name: string;
   mysql_settings?: IDatabaseClusterMysqlUserSettings
-  settings?: {
-    mongo_user_settings?: IDatabaseClusterMongoUserSettings
-  }
+  settings?: IDatabaseClusterUserSettings
 }
 
 export type CreateDatabaseClusterUserResponse = IResponse<ICreateDatabaseClusterUserApiResponse>;
