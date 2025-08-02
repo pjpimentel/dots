@@ -365,6 +365,10 @@ js.js
 
 ## contributors
 
+
+<a href="https://github.com/navanjr" target="_blank">
+    <img src="https://avatars2.githubusercontent.com/u/753288?v=3" width="80" height="80">
+</a>
 <a href="https://github.com/digipigeon" target="_blank">
     <img src="https://avatars2.githubusercontent.com/u/409141?v=3" width="80" height="80">
 </a>

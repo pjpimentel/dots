@@ -52,3 +52,5 @@ dist
 .sonar_lock
 report-task.txt
 .scannerwork
+
+.DS_Store

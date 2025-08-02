@@ -1,5 +1,11 @@
 # changelog
 
+## **2025-08-02** - new version 3.12.3
+
+* update dependencies
+* fix input type for createDatabaseClusterUser ([@navanjr](https://github.com/navanjr))
+<!-- TODO: create fn updateDatabaseClusterUser -->
+
 ## **2025-07-27** - new version 3.12.2
 
 * npm audit + update dependencies
