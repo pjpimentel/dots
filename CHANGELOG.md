@@ -1,5 +1,9 @@
 # changelog
 
+## **2025-08-23** - new version 3.12.4
+
+* update dependencies
+
 ## **2025-08-02** - new version 3.12.3
 
 * update dependencies
