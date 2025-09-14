@@ -9,6 +9,9 @@ on:
       - 'package-lock.json'
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   test:
     name: test
@@ -19,7 +22,7 @@ jobs:
       - uses: actions/checkout@v5
 
       - name: Use Node.js 22.x
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22.x
 
@@ -39,7 +42,7 @@ jobs:
       - uses: actions/checkout@v5
 
       - name: Use Node.js 22.x
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22.x
 
