@@ -1,5 +1,10 @@
 # changelog
 
+## **2025-09-14** - new version 3.12.5
+
+* npm audit + update dependencies
+* upgrade actions/setup-node@v4 to actions/setup-node@v5
+
 ## **2025-08-23** - new version 3.12.4
 
 * update dependencies
