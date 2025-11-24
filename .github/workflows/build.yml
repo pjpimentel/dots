@@ -24,7 +24,7 @@ jobs:
           - 22.x
           - 24.x
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v5
@@ -50,7 +50,7 @@ jobs:
     env:
       CI: true
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
