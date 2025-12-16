@@ -1,5 +1,11 @@
 # changelog
 
+## **2025-12-15** - new version 3.12.6
+
+* npm audit + update dependencies
+* upgrade actions/setup-node@v5 to actions/setup-node@v6
+* upgrade actions/checkout@v5 to actions/checkout@v6
+
 ## **2025-09-14** - new version 3.12.5
 
 * npm audit + update dependencies
