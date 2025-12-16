@@ -28,20 +28,20 @@
     "dist"
   ],
   "dependencies": {
-    "axios": "^1.12.2"
+    "axios": "^1.13.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.28.4",
-    "@babel/preset-env": "^7.28.3",
-    "@babel/preset-typescript": "^7.27.1",
+    "@babel/core": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
+    "@babel/preset-typescript": "^7.28.5",
     "@types/jest": "^30.0.0",
-    "@types/node": "^24.4.0",
-    "babel-jest": "^30.1.2",
-    "jest": "^30.1.3",
+    "@types/node": "^25.0.2",
+    "babel-jest": "^30.2.0",
+    "jest": "^30.2.0",
     "license-webpack-plugin": "^4.0.2",
-    "ts-jest": "^29.4.1",
-    "typescript": "^5.9.2",
-    "webpack": "^5.101.3",
+    "ts-jest": "^29.4.6",
+    "typescript": "^5.9.3",
+    "webpack": "^5.103.0",
     "webpack-cli": "^6.0.1"
   },
   "keywords": [
