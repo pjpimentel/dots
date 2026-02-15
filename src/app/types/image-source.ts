@@ -3,4 +3,9 @@ export interface IImageSource {
   registry: string;
   repository: string;
   tag: string;
+  registry_credentials?: string;
+  digest?: string;
+  deploy_on_push?: {
+    enabled?: boolean;
+  };
 }
