@@ -6,6 +6,6 @@ export interface IImageSource {
   registry_credentials?: string;
   digest?: string;
   deploy_on_push?: {
-    enalbed?: boolean;
+    enabled?: boolean;
   };
 }
