@@ -1,5 +1,10 @@
 # changelog
 
+## **2026-02-15** - new version 3.12.7
+
+* npm audit + update dependencies
+* add registry_credentials, digest, deploy_on_push to IImageSource type;
+
 ## **2025-12-15** - new version 3.12.6
 
 * npm audit + update dependencies
