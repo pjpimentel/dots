@@ -1,5 +1,10 @@
 # changelog
 
+## **2026-04-03** - new version 3.12.8
+
+* npm audit + update dependencies
+* fix tsconfig.json compatibility with typescript 6.x
+
 ## **2026-02-15** - new version 3.12.7
 
 * npm audit + update dependencies
