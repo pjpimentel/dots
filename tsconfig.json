@@ -8,12 +8,17 @@
     "module": "commonjs",
     "noImplicitAny": true,
     "outDir": "dist",
+    "rootDir": "src",
     "removeComments": true,
     "sourceMap": true,
     "strict": true,
     "target": "es2015",
     "typeRoots": [
       "node_modules/@types"
+    ],
+    "types": [
+      "node",
+      "jest"
     ]
   },
   "declaration": true,
