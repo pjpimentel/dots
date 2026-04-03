@@ -10,6 +10,7 @@ on:
   workflow_dispatch:
 
 permissions:
+  id-token: write
   contents: read
 
 jobs:
@@ -55,8 +56,4 @@ jobs:
           npm run build:browser
 
       - name: npm publish
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          npm config set '//registry.npmjs.org/:_authToken' $NPM_TOKEN;
-          npm publish --tag latest;
+        run: npm publish --tag latest;
