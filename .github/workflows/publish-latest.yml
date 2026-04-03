@@ -49,7 +49,9 @@ jobs:
           registry-url: https://registry.npmjs.org/
 
       - name: upgrade npm to make sure it supports Trusted Publishing
-        run: npm install -g npm@latest
+        run: |
+          npm install -g npm@~11.10.0 # remove this line when closed https://github.com/npm/cli/issues/9151
+          npm install -g npm@latest
 
       - name: npm install
         run: npm ci
