@@ -3,6 +3,7 @@
 ## **2026-07-12** - new version 3.12.11
 
 * npm audit + update dependencies
+* removed @babel dev dependencies
 
 ## **2026-06-07** - new version 3.12.10
 

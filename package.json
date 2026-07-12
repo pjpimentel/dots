@@ -9,7 +9,7 @@
     "build:browser": "webpack --mode=production",
     "build:test": "jest --silent",
     "build": "rm -rf ./dist && tsc",
-    "install_latest_dev": "npm install --force --save-dev @babel/core@latest @babel/preset-env@latest @babel/preset-typescript@latest @types/jest@latest @types/node@latest babel-jest@latest jest@latest license-webpack-plugin@latest ts-jest@latest typescript@latest webpack@latest webpack-cli@latest",
+    "install_latest_dev": "npm install --save-dev @types/jest@latest @types/node@latest babel-jest@latest jest@latest license-webpack-plugin@latest ts-jest@latest typescript@latest webpack@latest webpack-cli@latest",
     "install_latest": "npm install --save axios@latest",
     "test": "export TEST_TOKEN=bearer-token && jest",
     "version": "npm version --no-git-tag-version "
@@ -31,16 +31,13 @@
     "axios": "^1.18.1"
   },
   "devDependencies": {
-    "@babel/core": "^8.0.1",
-    "@babel/preset-env": "^8.0.2",
-    "@babel/preset-typescript": "^8.0.1",
     "@types/jest": "^30.0.0",
     "@types/node": "^26.1.1",
     "babel-jest": "^30.4.1",
     "jest": "^30.4.2",
     "license-webpack-plugin": "^4.0.2",
     "ts-jest": "^29.4.11",
-    "typescript": "^7.0.2",
+    "typescript": "^6.0.3",
     "webpack": "^5.108.4",
     "webpack-cli": "^7.2.1"
   },
