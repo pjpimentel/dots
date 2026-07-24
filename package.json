@@ -36,7 +36,7 @@
     "jest": "^30.4.2",
     "license-webpack-plugin": "^4.0.2",
     "ts-jest": "^29.4.11",
-    "typescript": "^6.0.3",
+    "typescript": "^7.0.2",
     "webpack": "^5.108.4",
     "webpack-cli": "^7.2.1"
   },
