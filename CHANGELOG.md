@@ -1,5 +1,16 @@
 # changelog
 
+## **2026-09-13** - new version 3.12.12
+
+* npm audit + update dependencies
+* upgrade typescript 6.x to typescript 7.x
+* removed babel-jest dev dependency
+* removed tslint.json
+* drop nodejs 18.x and 20.x support
+* add nodejs 26.x support
+* use nodejs 24.x to build and publish
+* upgrade actions/setup-node@v6 to actions/setup-node@v7
+
 ## **2026-07-12** - new version 3.12.11
 
 * npm audit + update dependencies

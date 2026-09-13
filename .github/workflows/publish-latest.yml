@@ -22,10 +22,10 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - name: Use Node.js 22.x
+      - name: Use Node.js 24.x
         uses: actions/setup-node@v7
         with:
-          node-version: 22.x
+          node-version: 24.x
 
       - name: npm install
         run: npm ci
@@ -42,16 +42,11 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - name: Use Node.js 22.x
+      - name: Use Node.js 24.x
         uses: actions/setup-node@v7
         with:
-          node-version: 22.x
+          node-version: 24.x
           registry-url: https://registry.npmjs.org/
-
-      - name: upgrade npm to make sure it supports Trusted Publishing
-        run: |
-          npm install -g npm@~11.10.0 # remove this line when closed https://github.com/npm/cli/issues/9151
-          npm install -g npm@latest
 
       - name: npm install
         run: npm ci
