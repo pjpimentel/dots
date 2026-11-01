@@ -1,5 +1,9 @@
 # changelog
 
+## **2026-11-01** - new version 3.12.13
+
+* npm audit + update dependencies
+
 ## **2026-09-13** - new version 3.12.12
 
 * npm audit + update dependencies
